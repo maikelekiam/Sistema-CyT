@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DomainModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="2.0.0.0" name="ModeloDeDominio" namespace="CapaDominio" showPropertiesCompartment="true" xmlns="http://www.telerik.com/ORM">
+  <orm:orm name="ModeloDeDominio" backend="mssql" default-schema="dbo" xmlns:orm="http://tempuri.org/ORM">
+    <orm:namespace name="CapaDominio" default="true">
+      <orm:class name="Origen" uniqueId="2ca09490-7364-4495-af31-fe738037496e">
+        <orm:table name="Origen" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="IdOrigen" />
+          </orm:key-generator>
+          <orm:single-field field-name="idOrigen" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="idOrigen" property="IdOrigen" behavior="readwrite" uniqueId="42f40960-03ec-4b95-8825-526a370c5ff5" type="System.Int32">
+          <orm:column name="idOrigen" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="nombre" property="Nombre" behavior="readwrite" uniqueId="388390bd-03d6-41e3-ba10-3c1d05123c2a" type="System.String">
+          <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="fondos" property="Fondos" behavior="readwrite" uniqueId="8a1128de-3ed8-443e-a9de-0bbb40be883c" type="CapaDominio.Fondo">
+          <orm:collection element-class="CapaDominio.Fondo" inverse-field="origen" order-by="" uniqueId="6b72cbad-5816-4c42-8563-eae6ebd9a06d" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="Fondo" uniqueId="4b705d34-1a02-42fe-a361-82b0f7a85022">
+        <orm:table name="Fondo" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="IdFondo" />
+          </orm:key-generator>
+          <orm:single-field field-name="idFondo" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="idFondo" property="IdFondo" behavior="readwrite" uniqueId="866adddd-00a1-4340-8070-0fad1a9a8a65" type="System.Int32">
+          <orm:column name="idFondo" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="nombre" property="Nombre" behavior="readwrite" uniqueId="1fc293c0-152e-4f81-8760-0518d0944f18" type="System.String">
+          <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="descripcion" property="Descripcion" behavior="readwrite" uniqueId="c50ff040-a5f1-418d-b041-53ef9f16b953" type="System.String">
+          <orm:column name="descripcion" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="idOrigen" property="IdOrigen" behavior="readwrite" uniqueId="4eb29a58-1ee3-4ef0-a5ac-4a80135ecfea" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="idOrigen" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="activo" property="Activo" behavior="readwrite" uniqueId="cc989361-aa4d-4678-a6c5-d3a3d64ac0cc" type="System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="activo" sql-type="bit" nullable="true" length="0" scale="0" ado-type="Bit" />
+        </orm:field>
+        <orm:field name="origen" property="Origen" behavior="readwrite" uniqueId="a735b53d-f917-476b-acd9-9cdb4fd373a1" type="CapaDominio.Origen">
+          <orm:reference uniqueId="6b72cbad-5816-4c42-8563-eae6ebd9a06d" association-name="FondoHasOrigen">
+            <orm:sharedfield name="idOrigen" target-class="CapaDominio.Origen" target-field="idOrigen" />
+            <orm:constraint name="FK_Fondo_Origen" delete-action="dbdefaultrule" destination-table="Origen" />
+          </orm:reference>
+        </orm:field>
+      </orm:class>
+    </orm:namespace>
+    <orm:schema schema="">
+      <orm:table name="Origen">
+        <orm:column name="idOrigen" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+      </orm:table>
+      <orm:table name="Fondo">
+        <orm:column name="idFondo" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="descripcion" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="idOrigen" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="activo" sql-type="bit" nullable="true" length="0" scale="0" ado-type="Bit" />
+        <orm:constraint name="FK_Fondo_Origen" delete-action="dbdefaultrule" destination-table="Origen">
+          <orm:column name="idOrigen" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
+      <orm:procedure name="fn_diagramobjects" is-function="true" return-type="int">
+        <orm:result-sets />
+      </orm:procedure>
+    </orm:schema>
+    <orm:relational-naming-settings>
+      <orm:source-strategy>Property</orm:source-strategy>
+      <orm:remove-camel-case>False</orm:remove-camel-case>
+    </orm:relational-naming-settings>
+  </orm:orm>
+  <ModelSettings xmlns="">
+    <AppConfigConnectionPropertyName>Conn</AppConfigConnectionPropertyName>
+    <AppConfigConnectionString>Data Source=COPADE_077\SQLEXPRESS;Initial Catalog=sistemacyt;Integrated Security=True</AppConfigConnectionString>
+    <InitialCatalog>sistemacyt</InitialCatalog>
+    <NamingSettings>
+      <ClassRules>
+        <CaseMode>PascalCase</CaseMode>
+        <PluralizationMode>Singularize</PluralizationMode>
+      </ClassRules>
+      <FieldRules>
+        <CaseMode>CamelCase</CaseMode>
+      </FieldRules>
+      <PropertyRules>
+        <CaseMode>PascalCase</CaseMode>
+      </PropertyRules>
+      <NavigationPropertyRules>
+        <IsPrefixSuffixEnabled>false</IsPrefixSuffixEnabled>
+      </NavigationPropertyRules>
+    </NamingSettings>
+    <CodeGenerationSettings>
+      <OutputProjectName>CapaDominio</OutputProjectName>
+      <MappingDefinitionType>Xml</MappingDefinitionType>
+    </CodeGenerationSettings>
+    <SchemaUpdateSettings />
+    <BackendConfigurationSettings>
+      <BackendConfiguration>
+        <Backend>MsSql</Backend>
+        <ProviderName>System.Data.SqlClient</ProviderName>
+      </BackendConfiguration>
+    </BackendConfigurationSettings>
+  </ModelSettings>
+  <Types>
+    <DomainClass Id="2ca09490-7364-4495-af31-fe738037496e" name="Origen" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdOrigen">
+      <Property Id="42f40960-03ec-4b95-8825-526a370c5ff5" name="IdOrigen" type="Int32" label="IdOrigen : Int32" kind="Persistent" identity="true" fieldName="idOrigen" />
+      <Property Id="388390bd-03d6-41e3-ba10-3c1d05123c2a" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="797065d1-8e1b-41ea-b405-2cf407c2c989">
+          <NavigationalProperty Id="8a1128de-3ed8-443e-a9de-0bbb40be883c" name="Fondos" type="IList&lt;Fondo&gt;" label="Fondos : IList&lt;Fondo&gt;" nullable="true" kind="Persistent" fieldName="fondos" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="4b705d34-1a02-42fe-a361-82b0f7a85022" name="Fondo" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdFondo">
+      <Property Id="866adddd-00a1-4340-8070-0fad1a9a8a65" name="IdFondo" type="Int32" label="IdFondo : Int32" kind="Persistent" identity="true" fieldName="idFondo" />
+      <Property Id="cc989361-aa4d-4678-a6c5-d3a3d64ac0cc" name="Activo" type="Boolean" label="Activo : Boolean" nullable="true" kind="Persistent" fieldName="activo" />
+      <Property Id="c50ff040-a5f1-418d-b041-53ef9f16b953" name="Descripcion" label="Descripcion : String" kind="Persistent" fieldName="descripcion" />
+      <Property Id="4eb29a58-1ee3-4ef0-a5ac-4a80135ecfea" name="IdOrigen" type="Int32" label="IdOrigen : Int32" nullable="true" kind="Persistent" fieldName="idOrigen" />
+      <Property Id="1fc293c0-152e-4f81-8760-0518d0944f18" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
+      <AssociationTargets>
+        <Association Id="6b72cbad-5816-4c42-8563-eae6ebd9a06d" SourceMultiplicity="ZeroOne" name="FondoHasOrigen">
+          <DomainClassMoniker name="/ModeloDeDominio/Origen" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="db026de2-04d8-43d3-a0d2-56f4d34ba10e">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Origen/Fondos" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="58c4ca80-d234-4549-ab9b-28a7bde9ca14">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Fondo/Origen" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="76d76d80-2cf2-410e-b9e2-0c1ceff47c63">
+          <NavigationalProperty Id="a735b53d-f917-476b-acd9-9cdb4fd373a1" name="Origen" type="Origen" label="Origen : Origen" nullable="true" kind="Persistent" fieldName="origen" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+  </Types>
+  <domainContext>
+    <domainModelHasDomainContext Id="aa16c3bd-df79-4699-9bf3-bcca95465bc6">
+      <domainContainer name="ModeloDeDominio" namespace="CapaDominio" showPropertiesCompartment="true">
+        <entitySetProperty name="Origens" namespace="CapaDominio" type="Origen" label="Origens : IQueryable&lt;CapaDominio.Origen&gt;" />
+        <entitySetProperty name="Fondos" namespace="CapaDominio" type="Fondo" label="Fondos : IQueryable&lt;CapaDominio.Fondo&gt;" />
+      </domainContainer>
+    </domainModelHasDomainContext>
+  </domainContext>
+</DomainModel>
