@@ -85,15 +85,6 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.Button btnGuardarFondo;
         
         /// <summary>
-        /// btnActualizarFondo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnActualizarFondo;
-        
-        /// <summary>
         /// dgvFondo control.
         /// </summary>
         /// <remarks>

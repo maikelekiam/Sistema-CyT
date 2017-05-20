@@ -11,6 +11,7 @@ namespace CapaNegocio
     public class OrigenNego
     {
         OrigenRepo origenRepo = new OrigenRepo();
+
         public void GuardarOrigen(Origen origen)
         {
             origenRepo.GuardarOrigen(origen);
