@@ -38,7 +38,18 @@ namespace Sistema_CyT
         }
         protected void dgvFondos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            //Obtengo el indice de la fila seleccionada con el boton MOSTRAR
+            GridViewRow row = (GridViewRow)(((Button)e.CommandSource).NamingContainer);
+            int rIndex = row.RowIndex;
 
+            //Obtengo el id de la persona seleccionada
+            idFondoSeleccionado = Convert.ToInt32(dgvFondos.Rows[rIndex].Cells[0].Text);
+
+            MostrarFondo();
+        }
+        private void MostrarFondo()
+        {
+            Response.Redirect("MostrarFondo.aspx");
         }
     }
 }
