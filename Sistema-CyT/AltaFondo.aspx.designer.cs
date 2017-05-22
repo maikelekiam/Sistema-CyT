@@ -13,13 +13,13 @@ namespace Sistema_CyT {
     public partial class AltaFondo {
         
         /// <summary>
-        /// Panel1 control.
+        /// PanelSuperior control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::System.Web.UI.WebControls.Panel PanelSuperior;
         
         /// <summary>
         /// lblNombre control.
@@ -83,6 +83,15 @@ namespace Sistema_CyT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnGuardarFondo;
+        
+        /// <summary>
+        /// PanelInferior control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelInferior;
         
         /// <summary>
         /// dgvFondo control.

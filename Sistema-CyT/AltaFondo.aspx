@@ -1,16 +1,17 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AltaFondo.aspx.cs" Inherits="Sistema_CyT.AltaFondo" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
-        <asp:Panel ID="Panel1" CccClass="panel panel-info" runat="server">
+        <asp:Panel ID="PanelSuperior" CssClass="panel panel-success" runat="server">
             <div class="panel-heading">
-                <h3>Formulario de ALTA Fondo</h3>
+                <h3>Formulario ALTA Fondo</h3>
             </div>
-            
             <!-- NOMBRE DEL FONDO -->
             <div class="form-group">
+                <br />
                 <asp:Label ID="lblNombre" runat="server" Text="NOMBRE" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
                 <div class="col-md-6 col-xs-12 ">
-                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control"></asp:TextBox><br />
+                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="1"></asp:TextBox><br />
                 </div>
             </div>
 
@@ -18,7 +19,7 @@
             <div class="form-group">
                 <asp:Label ID="lblDescripcion" runat="server" Text="DESCRIPCION" CssClass="col-md-2 control-label"> </asp:Label>
                 <div class="col-md-6 ">
-                    <asp:TextBox ID="txtDecripcion" runat="server" class="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox><br />
+                    <asp:TextBox ID="txtDecripcion" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox><br />
                 </div>
             </div>
 
@@ -45,9 +46,11 @@
                     <br />
                     <asp:Button ID="btnGuardarFondo" runat="server" Text="Guardar Fondo" CssClass="btn btn-success form-control" OnClick="btnGuardarFondo_Click" />
                 </div>
-            </div>           
+            </div>
+        </asp:Panel>
 
-            <!-- GRILLA CON TODOS LOS FONDOS -->
+        <!-- GRILLA CON TODOS LOS FONDOS -->
+        <asp:Panel ID="PanelInferior" CssClass="panel" runat="server">
             <div class="form-group">
                 <div class="col-md-9 col-md-offset-1">
                     <asp:GridView ID="dgvFondo" runat="server" AutoGenerateColumns="false"

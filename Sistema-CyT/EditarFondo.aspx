@@ -3,14 +3,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="container">
-        <asp:Panel ID="Panel1" CccClass="panel panel-info" runat="server">
+        <asp:Panel ID="Panel1" CssClass="panel panel-info" runat="server">
             <div class="panel-heading">
-                <h3>Formulario de EDITAR Fondo</h3>
+                <h3>Formulario EDITAR Fondo</h3>
             </div>
 
             <!-- LISTA CON LOS FONDOS EN LA BASE DE DATOS -->
             <div class="form-group">
-                <div class="col-md-4 col-md-offset-2">
+                <br />
+                <asp:Label ID="lblDdl" Font-Bold="true" runat="server" Text="&lt Seleccione FONDO &gt" CssClass="col-md-2 control-label"> </asp:Label>
+                <div class="col-md-4">
                     <asp:DropDownList ID="ddlActualizarFondo" runat="server"
                         Width="280"
                         BackColor="WhiteSmoke"
@@ -21,7 +23,6 @@
                         AutoPostBack="True"
                         AppendDataBoundItems="true"
                         OnSelectedIndexChanged="ddlActualizarFondo_SelectedIndexChanged">
-                        <asp:ListItem Value="-1">&lt;Seleccione Fondo&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
             </div>
@@ -30,7 +31,7 @@
             <div class="form-group">
                 <asp:Label ID="lblNombre" runat="server" Text="NOMBRE" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
                 <div class="col-md-6 col-xs-12 ">
-                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control"></asp:TextBox><br />
+                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="1"></asp:TextBox><br />
                 </div>
             </div>
 
@@ -38,7 +39,7 @@
             <div class="form-group">
                 <asp:Label ID="lblDescripcion" runat="server" Text="DESCRIPCION" CssClass="col-md-2 control-label"> </asp:Label>
                 <div class="col-md-6 ">
-                    <asp:TextBox ID="txtDecripcion" runat="server" class="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox><br />
+                    <asp:TextBox ID="txtDecripcion" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox><br />
                 </div>
             </div>
 
@@ -63,7 +64,7 @@
             <!-- BOTON ACTUALIZAR -->
             <div class="form-group">
                 <div class="col-md-2 col-md-offset-2">
-                    <asp:Button ID="btnActualizarFondo" runat="server" Text="Actualizar Fondo" CssClass="btn btn-success form-control" OnClick="btnActualizarFondo_Click" />
+                    <asp:Button ID="btnActualizarFondo" runat="server" Text="Actualizar Fondo" CssClass="btn btn-info form-control" OnClick="btnActualizarFondo_Click" />
                 </div>
             </div>
 
