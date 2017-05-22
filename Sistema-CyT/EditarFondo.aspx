@@ -20,7 +20,7 @@
                         Font-Bold="true"
                         CssClass="form-control"
                         DataTextField="nombre"
-                        AutoPostBack="True"
+                        AutoPostBack="true"
                         AppendDataBoundItems="true"
                         OnSelectedIndexChanged="ddlActualizarFondo_SelectedIndexChanged">
                     </asp:DropDownList>
@@ -54,7 +54,7 @@
                         Font-Bold="false"
                         CssClass="selectpicker form-control show-tick"
                         data-live-search="true"
-                        AutoPostBack="true"
+                        AutoPostBack="false"
                         DataTextField="nombre">
                         <asp:ListItem Value="-1">&lt;Seleccione Origen&gt;</asp:ListItem>
                     </asp:DropDownList>
