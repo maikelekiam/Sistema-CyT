@@ -37,7 +37,7 @@
                                     <li><a runat="server" href="~/AltaFondo.aspx">Alta Fondo</a></li>
                                     <li><a runat="server" href="~/EditarFondo.aspx">Editar Fondo</a></li>
                                     <li class="divider"></li>
-                                    <li><a runat="server" href="#">Listar Fondos</a></li>
+                                    <li><a runat="server" href="~/ListarFondos">Listar Fondos</a></li>
                                     <li><a runat="server" href="#"></a></li>
                                 </ul>
                             </div>
