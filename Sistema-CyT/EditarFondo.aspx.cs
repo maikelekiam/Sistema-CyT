@@ -25,7 +25,23 @@ namespace Sistema_CyT
             {
                 CargarListaFondos();
                 LlenarListaOrigenes();
+                LlenarGrillaFondos();
             }
+        }
+
+        private void LlenarGrillaFondos()
+        {
+            dgvFondo.Columns[0].Visible = true;
+            dgvFondo.Columns[1].Visible = true;
+            dgvFondo.Columns[2].Visible = true;
+            dgvFondo.Columns[3].Visible = true;
+            dgvFondo.Columns[4].Visible = true;
+
+            dgvFondo.DataSource = fondoNego.MostrarFondos().ToList();
+            dgvFondo.DataBind();
+
+            dgvFondo.Columns[0].Visible = false;
+            dgvFondo.Columns[4].Visible = false;
         }
 
         private void LlenarListaOrigenes()
@@ -61,6 +77,7 @@ namespace Sistema_CyT
             fondo.Activo = true;
 
             fondoNego.ActualizarFondo(fondo);
+            LlenarGrillaFondos();
         }
 
         protected void ddlActualizarFondo_SelectedIndexChanged(object sender, EventArgs e)
