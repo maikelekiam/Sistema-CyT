@@ -32,7 +32,7 @@
         <div class="form-group">
             <asp:Label ID="lblAnio" runat="server" Text="AÑO" CssClass="col-md-2 control-label"></asp:Label>
             <div class="col-md-3">
-                <asp:TextBox ID="txtAnio" Width="150" runat="server" CssClass="form-control" MaxLength="4"></asp:TextBox>
+                <asp:TextBox ID="txtAnio" Width="260" runat="server" CssClass="form-control" MaxLength="4"></asp:TextBox>
             </div>
             <asp:Label ID="lblFondo" runat="server" Text="FONDO" CssClass="col-md-2 control-label"> </asp:Label>
             <div class="col-md-3 ">
@@ -109,10 +109,27 @@
         <div class="form-group">
             <asp:Label ID="lblAbierta" runat="server" Text="ESTA ABIERTA ?" CssClass="col-md-2 control-label "></asp:Label>
             <div class="col-md-1">
-                <asp:CheckBox ID="chkAbierta" runat="server" CssClass="form-control" BorderStyle="None" />
+                <asp:CheckBox ID="chkAbierta" runat="server" CssClass="control-label" BorderStyle="None" Checked="true"/>
             </div>
         </div>
-
+        <!--PLAZO DE EJECUCION-->
+        <div class="form-group">
+            <asp:Label ID="lblPlazoEjecucion" runat="server" Text="PLAZO EJECUCION" CssClass="col-md-2 control-label"> </asp:Label>
+            <div class="col-md-3">
+                <asp:TextBox ID="txtPlazoEjecucion" runat="server" CssClass="form-control"></asp:TextBox>
+            </div>
+            <asp:Label ID="lblMontoMaximoProyecto" runat="server" Text="MONTO MAXIMO" CssClass="col-md-2 control-label"> </asp:Label>
+            <div class="col-md-3">
+                <asp:TextBox ID="txtMontoMaximoProyecto" runat="server" CssClass="form-control" ></asp:TextBox>
+            </div>
+        </div>
+        <!--PORCENTAJE DE FINANCIAMIENTO-->
+        <div class="form-group">
+            <asp:Label ID="lblPorcentajeFinanciamiento" runat="server" Text="% FINANCIAMIENTO" CssClass="col-md-2 control-label"> </asp:Label>
+            <div class="col-md-3">
+                <asp:TextBox ID="txtPorcentajeFinanciamiento" runat="server" CssClass="form-control" ></asp:TextBox>
+            </div>
+        </div>
 
 
 

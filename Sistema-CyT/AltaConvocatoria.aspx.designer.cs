@@ -200,5 +200,59 @@ namespace Sistema_CyT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkAbierta;
+        
+        /// <summary>
+        /// lblPlazoEjecucion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPlazoEjecucion;
+        
+        /// <summary>
+        /// txtPlazoEjecucion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPlazoEjecucion;
+        
+        /// <summary>
+        /// lblMontoMaximoProyecto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMontoMaximoProyecto;
+        
+        /// <summary>
+        /// txtMontoMaximoProyecto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMontoMaximoProyecto;
+        
+        /// <summary>
+        /// lblPorcentajeFinanciamiento control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPorcentajeFinanciamiento;
+        
+        /// <summary>
+        /// txtPorcentajeFinanciamiento control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPorcentajeFinanciamiento;
     }
 }
