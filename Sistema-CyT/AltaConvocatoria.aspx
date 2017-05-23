@@ -106,7 +106,19 @@
                 </div>
             </div>
         </div>
+        <div class="form-group">
+            <asp:Label ID="lblAbierta" runat="server" Text="ESTA ABIERTA ?" CssClass="col-md-2 control-label "></asp:Label>
+            <div class="col-md-1">
+                <asp:CheckBox ID="chkAbierta" runat="server" CssClass="form-control" BorderStyle="None" />
+            </div>
+        </div>
+
+
+
+
+
+
+
+
     </asp:Panel>
-
-
 </asp:Content>
