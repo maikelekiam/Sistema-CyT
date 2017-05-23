@@ -63,7 +63,10 @@ namespace Sistema_CyT
 
         protected void btnActualizarFondo_Click(object sender, EventArgs e)
         {
-            ActualizarFondo();
+            if ((txtNombre.Text != "") && (txtDecripcion.Text != ""))
+            {
+                ActualizarFondo();
+            }
         }
 
         private void ActualizarFondo()
@@ -77,13 +80,12 @@ namespace Sistema_CyT
             fondo.Activo = true;
 
             fondoNego.ActualizarFondo(fondo);
+
             LlenarGrillaFondos();
         }
 
         protected void ddlActualizarFondo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            
             id = Convert.ToInt32(ddlActualizarFondo.SelectedValue.ToString());
 
             Fondo fondo = fondoNego.ObtenerFondo(id);
@@ -91,7 +93,6 @@ namespace Sistema_CyT
             txtNombre.Text = fondo.Nombre.ToString();
             txtDecripcion.Text = fondo.Descripcion.ToString();
             ddlOrigen.Text = Convert.ToString(fondo.IdOrigen);
-
         }
     }
 }

@@ -47,8 +47,11 @@ namespace Sistema_CyT
 
         protected void btnGuardarFondo_Click(object sender, EventArgs e)
         {
-            GuardarFondo();
-            LlenarGrillaFondos();
+            if ((txtNombre.Text != "") && (txtDecripcion.Text != ""))
+            {
+                GuardarFondo();
+                LlenarGrillaFondos();
+            }
         }
 
         private void GuardarFondo()
@@ -60,10 +63,8 @@ namespace Sistema_CyT
             fondo.IdOrigen = origenNego.TraerOrigenIdSegunItem(ddlOrigen.SelectedItem.ToString());
             fondo.Activo = true;
 
-            if ((fondo.Nombre != "") && (fondo.Descripcion != ""))
-            {
-                fondoNego.GuardarFondo(fondo);
-            }
+            fondoNego.GuardarFondo(fondo);
+
             LlenarGrillaFondos();
         }
 

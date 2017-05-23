@@ -34,8 +34,9 @@
                         Font-Bold="false"
                         CssClass="selectpicker form-control show-tick"
                         data-live-search="true"
-                        DataTextField="nombre">
-                        <asp:ListItem Value="-1">&lt;Seleccione Origen&gt;</asp:ListItem>
+                        DataTextField="nombre"
+                        AutoPostBack="false"
+                        AppendDataBoundItems="true">
                     </asp:DropDownList>
                 </div>
             </div>
