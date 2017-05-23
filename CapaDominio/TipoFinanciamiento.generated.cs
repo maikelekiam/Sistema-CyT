@@ -22,18 +22,18 @@ using CapaDominio;
 
 namespace CapaDominio	
 {
-	public partial class Fondo
+	public partial class TipoFinanciamiento
 	{
-		private int idFondo;
-		public virtual int IdFondo
+		private int idTipoFinanciamiento;
+		public virtual int IdTipoFinanciamiento
 		{
 			get
 			{
-				return this.idFondo;
+				return this.idTipoFinanciamiento;
 			}
 			set
 			{
-				this.idFondo = value;
+				this.idTipoFinanciamiento = value;
 			}
 		}
 		
@@ -47,58 +47,6 @@ namespace CapaDominio
 			set
 			{
 				this.nombre = value;
-			}
-		}
-		
-		private string descripcion;
-		public virtual string Descripcion
-		{
-			get
-			{
-				return this.descripcion;
-			}
-			set
-			{
-				this.descripcion = value;
-			}
-		}
-		
-		private int? idOrigen;
-		public virtual int? IdOrigen
-		{
-			get
-			{
-				return this.idOrigen;
-			}
-			set
-			{
-				this.idOrigen = value;
-			}
-		}
-		
-		private bool? activo;
-		public virtual bool? Activo
-		{
-			get
-			{
-				return this.activo;
-			}
-			set
-			{
-				this.activo = value;
-			}
-		}
-		
-		private Origen origen;
-		public virtual Origen Origen
-		{
-			get
-			{
-				return this.origen;
-			}
-			set
-			{
-				this.origen = value;
 			}
 		}
 		

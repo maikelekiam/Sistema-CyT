@@ -66,6 +66,30 @@ namespace CapaDominio
 			}
 		}
 		
+		public IQueryable<TipoFinanciamiento> TipoFinanciamientos 
+		{
+			get
+			{
+				return this.GetAll<TipoFinanciamiento>();
+			}
+		}
+		
+		public IQueryable<Modalidad> Modalidads 
+		{
+			get
+			{
+				return this.GetAll<Modalidad>();
+			}
+		}
+		
+		public IQueryable<Convocatorium> Convocatoria 
+		{
+			get
+			{
+				return this.GetAll<Convocatorium>();
+			}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -92,6 +116,18 @@ namespace CapaDominio
 			get;
 		}
 		IQueryable<Fondo> Fondos
+		{
+			get;
+		}
+		IQueryable<TipoFinanciamiento> TipoFinanciamientos
+		{
+			get;
+		}
+		IQueryable<Modalidad> Modalidads
+		{
+			get;
+		}
+		IQueryable<Convocatorium> Convocatoria
 		{
 			get;
 		}

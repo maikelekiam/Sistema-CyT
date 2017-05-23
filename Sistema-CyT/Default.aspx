@@ -3,7 +3,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
-        <h2>Sistema de Informacion de Ciencia y Tecnologia</h2>
+        <h3>Sistema de Informacion de Ciencia y Tecnologia</h3>
         <%--<p class="lead">Este Sistema permite registrar todos los datos concernientes a la identificación de los innovadores
              de la Provincia del Neuquén interesados en la generación o fortalecimiento de innovaciones productiva,
              científica y tecnológica.</p>--%>
