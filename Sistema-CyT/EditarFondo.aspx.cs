@@ -18,6 +18,7 @@ namespace Sistema_CyT
         OrigenNego origenNego = new OrigenNego();
         IEnumerable<Fondo> listaFondos;
         static int id;
+        
 
         protected void Page_Load(object sender, EventArgs e)
         {
