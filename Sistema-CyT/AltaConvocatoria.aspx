@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <asp:Panel ID="Panel1" CssClass="panel panel-success" runat="server">
+    <asp:Panel ID="PanelSuperior" CssClass="panel panel-success" runat="server">
         <div class="panel-heading">
             <h3>Formulario de ALTA Convocatoria</h3>
         </div>
@@ -47,7 +47,7 @@
                 </asp:DropDownList>
             </div>
         </div>
-        <!--TIPO y MODALIDAD-->
+        <!-- TIPO DE FINANCIAMIENTO Y TIPO DE CONVOCATORIA -->
         <div class="form-group">
             <asp:Label ID="lblTipoFinanciamiento" runat="server" Text="TIPO FINANCIAMIENTO" CssClass="col-md-2 control-label"> </asp:Label>
             <div class="col-md-3 ">
@@ -58,10 +58,10 @@
                     Font-Bold="false"
                     CssClass="selectpicker form-control show-tick"
                     DataTextField="nombre">
-                    <asp:ListItem Value="-1">&lt;Seleccione Tipo Financiamiento&gt;</asp:ListItem>
+                    <asp:ListItem Value="-1">&lt;Seleccione Tipo&gt;</asp:ListItem>
                 </asp:DropDownList>
             </div>
-            <asp:Label ID="lblModalidad" runat="server" Text="MODALIDAD" CssClass="col-md-2 control-label"></asp:Label>
+            <asp:Label ID="lblTipoConvocatoria" runat="server" Text="TIPO CONVOCATORIA" CssClass="col-md-2 control-label"></asp:Label>
             <div class="col-md-3 ">
                 <asp:DropDownList ID="ddlModalidad" runat="server"
                     Width="100%"
@@ -70,7 +70,7 @@
                     Font-Bold="false"
                     CssClass="selectpicker form-control show-tick"
                     DataTextField="nombre">
-                    <asp:ListItem Value="-1">&lt;Seleccione Modalidad&gt;</asp:ListItem>
+                    <asp:ListItem Value="-1">&lt;Seleccione Tipo&gt;</asp:ListItem>
                 </asp:DropDownList>
             </div>
         </div>
@@ -109,25 +109,36 @@
         <div class="form-group">
             <asp:Label ID="lblAbierta" runat="server" Text="ESTA ABIERTA ?" CssClass="col-md-2 control-label "></asp:Label>
             <div class="col-md-1">
-                <asp:CheckBox ID="chkAbierta" runat="server" CssClass="control-label" BorderStyle="None" Checked="true"/>
+                <asp:CheckBox ID="chkAbierta" runat="server" CssClass="control-label" BorderStyle="None" Checked="true" />
             </div>
         </div>
+    </asp:Panel>
+
+
+    <asp:Panel ID="PanelInferior" CssClass="panel panel-info" runat="server">
+        <div class="panel-heading">
+            <h4>MODALIDADES</h4>
+        </div>
+        <!--NOMBRE-->
+        <br />
         <!--PLAZO DE EJECUCION-->
         <div class="form-group">
             <asp:Label ID="lblPlazoEjecucion" runat="server" Text="PLAZO EJECUCION" CssClass="col-md-2 control-label"> </asp:Label>
             <div class="col-md-3">
                 <asp:TextBox ID="txtPlazoEjecucion" runat="server" CssClass="form-control"></asp:TextBox>
             </div>
+        </div>
+        <div class="form-group">
             <asp:Label ID="lblMontoMaximoProyecto" runat="server" Text="MONTO MAXIMO" CssClass="col-md-2 control-label"> </asp:Label>
             <div class="col-md-3">
-                <asp:TextBox ID="txtMontoMaximoProyecto" runat="server" CssClass="form-control" ></asp:TextBox>
+                <asp:TextBox ID="txtMontoMaximoProyecto" runat="server" CssClass="form-control"></asp:TextBox>
             </div>
         </div>
         <!--PORCENTAJE DE FINANCIAMIENTO-->
         <div class="form-group">
             <asp:Label ID="lblPorcentajeFinanciamiento" runat="server" Text="% FINANCIAMIENTO" CssClass="col-md-2 control-label"> </asp:Label>
             <div class="col-md-3">
-                <asp:TextBox ID="txtPorcentajeFinanciamiento" runat="server" CssClass="form-control" ></asp:TextBox>
+                <asp:TextBox ID="txtPorcentajeFinanciamiento" runat="server" CssClass="form-control"></asp:TextBox>
             </div>
         </div>
 

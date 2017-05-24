@@ -13,13 +13,13 @@ namespace Sistema_CyT {
     public partial class AltaConvocatoria {
         
         /// <summary>
-        /// Panel1 control.
+        /// PanelSuperior control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::System.Web.UI.WebControls.Panel PanelSuperior;
         
         /// <summary>
         /// lblNombre control.
@@ -130,13 +130,13 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoFinanciamiento;
         
         /// <summary>
-        /// lblModalidad control.
+        /// lblTipoConvocatoria control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblModalidad;
+        protected global::System.Web.UI.WebControls.Label lblTipoConvocatoria;
         
         /// <summary>
         /// ddlModalidad control.
@@ -200,6 +200,15 @@ namespace Sistema_CyT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkAbierta;
+        
+        /// <summary>
+        /// PanelInferior control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelInferior;
         
         /// <summary>
         /// lblPlazoEjecucion control.

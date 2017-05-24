@@ -50,12 +50,94 @@ namespace CapaDominio
 			}
 		}
 		
-		private IList<Convocatorium> convocatoria = new List<Convocatorium>();
-		public virtual IList<Convocatorium> Convocatoria
+		private int? porcentajeFinanciamiento;
+		public virtual int? PorcentajeFinanciamiento
 		{
 			get
 			{
-				return this.convocatoria;
+				return this.porcentajeFinanciamiento;
+			}
+			set
+			{
+				this.porcentajeFinanciamiento = value;
+			}
+		}
+		
+		private int? plazoEjecucion;
+		public virtual int? PlazoEjecucion
+		{
+			get
+			{
+				return this.plazoEjecucion;
+			}
+			set
+			{
+				this.plazoEjecucion = value;
+			}
+		}
+		
+		private string objetivo;
+		public virtual string Objetivo
+		{
+			get
+			{
+				return this.objetivo;
+			}
+			set
+			{
+				this.objetivo = value;
+			}
+		}
+		
+		private long? montoMaximoProyecto;
+		public virtual long? MontoMaximoProyecto
+		{
+			get
+			{
+				return this.montoMaximoProyecto;
+			}
+			set
+			{
+				this.montoMaximoProyecto = value;
+			}
+		}
+		
+		private int? idConvocatoria;
+		public virtual int? IdConvocatoria
+		{
+			get
+			{
+				return this.idConvocatoria;
+			}
+			set
+			{
+				this.idConvocatoria = value;
+			}
+		}
+		
+		private string descripcion;
+		public virtual string Descripcion
+		{
+			get
+			{
+				return this.descripcion;
+			}
+			set
+			{
+				this.descripcion = value;
+			}
+		}
+		
+		private Convocatorium convocatorium;
+		public virtual Convocatorium Convocatorium
+		{
+			get
+			{
+				return this.convocatorium;
+			}
+			set
+			{
+				this.convocatorium = value;
 			}
 		}
 		

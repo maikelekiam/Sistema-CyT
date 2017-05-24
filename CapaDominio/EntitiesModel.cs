@@ -90,6 +90,22 @@ namespace CapaDominio
 			}
 		}
 		
+		public IQueryable<TipoConvocatorium> TipoConvocatoria 
+		{
+			get
+			{
+				return this.GetAll<TipoConvocatorium>();
+			}
+		}
+		
+		public IQueryable<Beneficiario> Beneficiarios 
+		{
+			get
+			{
+				return this.GetAll<Beneficiario>();
+			}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -128,6 +144,14 @@ namespace CapaDominio
 			get;
 		}
 		IQueryable<Convocatorium> Convocatoria
+		{
+			get;
+		}
+		IQueryable<TipoConvocatorium> TipoConvocatoria
+		{
+			get;
+		}
+		IQueryable<Beneficiario> Beneficiarios
 		{
 			get;
 		}

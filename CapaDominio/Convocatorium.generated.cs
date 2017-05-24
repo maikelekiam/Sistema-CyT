@@ -115,19 +115,6 @@ namespace CapaDominio
 			}
 		}
 		
-		private int? idModalidad;
-		public virtual int? IdModalidad
-		{
-			get
-			{
-				return this.idModalidad;
-			}
-			set
-			{
-				this.idModalidad = value;
-			}
-		}
-		
 		private DateTime? fechaApertura;
 		public virtual DateTime? FechaApertura
 		{
@@ -180,6 +167,19 @@ namespace CapaDominio
 			}
 		}
 		
+		private int? idTipoConvocatoria;
+		public virtual int? IdTipoConvocatoria
+		{
+			get
+			{
+				return this.idTipoConvocatoria;
+			}
+			set
+			{
+				this.idTipoConvocatoria = value;
+			}
+		}
+		
 		private TipoFinanciamiento tipoFinanciamiento;
 		public virtual TipoFinanciamiento TipoFinanciamiento
 		{
@@ -193,19 +193,6 @@ namespace CapaDominio
 			}
 		}
 		
-		private Modalidad modalidad;
-		public virtual Modalidad Modalidad
-		{
-			get
-			{
-				return this.modalidad;
-			}
-			set
-			{
-				this.modalidad = value;
-			}
-		}
-		
 		private Fondo fondo;
 		public virtual Fondo Fondo
 		{
@@ -216,6 +203,37 @@ namespace CapaDominio
 			set
 			{
 				this.fondo = value;
+			}
+		}
+		
+		private TipoConvocatorium tipoConvocatorium;
+		public virtual TipoConvocatorium TipoConvocatorium
+		{
+			get
+			{
+				return this.tipoConvocatorium;
+			}
+			set
+			{
+				this.tipoConvocatorium = value;
+			}
+		}
+		
+		private IList<Beneficiario> beneficiarios = new List<Beneficiario>();
+		public virtual IList<Beneficiario> Beneficiarios
+		{
+			get
+			{
+				return this.beneficiarios;
+			}
+		}
+		
+		private IList<Modalidad> modalidads = new List<Modalidad>();
+		public virtual IList<Modalidad> Modalidads
+		{
+			get
+			{
+				return this.modalidads;
 			}
 		}
 		
