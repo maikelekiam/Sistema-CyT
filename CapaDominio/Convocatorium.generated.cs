@@ -237,6 +237,15 @@ namespace CapaDominio
 			}
 		}
 		
+		private IList<Modalidad> modalidads1 = new List<Modalidad>();
+		public virtual IList<Modalidad> Modalidads1
+		{
+			get
+			{
+				return this.modalidads1;
+			}
+		}
+		
 	}
 }
 #pragma warning restore 1591

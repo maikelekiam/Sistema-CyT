@@ -139,13 +139,13 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.Label lblTipoConvocatoria;
         
         /// <summary>
-        /// ddlModalidad control.
+        /// ddlTipoConvocatoria control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlModalidad;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoConvocatoria;
         
         /// <summary>
         /// lblFechaApertura control.
@@ -200,6 +200,15 @@ namespace Sistema_CyT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkAbierta;
+        
+        /// <summary>
+        /// dgvModalidades control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView dgvModalidades;
         
         /// <summary>
         /// PanelInferior control.

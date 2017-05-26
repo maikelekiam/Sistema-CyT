@@ -62,7 +62,7 @@
             </div>
             <asp:Label ID="lblTipoConvocatoria" runat="server" Text="TIPO CONVOCATORIA" CssClass="col-md-2 control-label"></asp:Label>
             <div class="col-md-3 ">
-                <asp:DropDownList ID="ddlModalidad" runat="server"
+                <asp:DropDownList ID="ddlTipoConvocatoria" runat="server"
                     Width="100%"
                     BackColor="WhiteSmoke"
                     ForeColor="#000066"
@@ -111,7 +111,30 @@
                 <asp:CheckBox ID="chkAbierta" runat="server" CssClass="control-label" BorderStyle="None" Checked="true" />
             </div>
         </div>
+
+
+        <!--LISTA DE MODALIDADES CARGADAS-->
+        <div class="form-group">
+            <div class="col-md-12">
+                <asp:GridView ID="dgvModalidades" runat="server" AutoGenerateColumns="true" 
+                    DataKeyNames="idModalidad"
+                    CssClass="table table-hover table-bordered" BorderWidth="4px" EmptyDataText="No existen modalidades cargadas" ShowHeaderWhenEmpty="true">
+                    <Columns>
+                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Center" />
+                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Descripcion" DataField="descripcion" ItemStyle-HorizontalAlign="Left" />
+                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Objetivo" DataField="objetivo" ItemStyle-HorizontalAlign="Left" />
+                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Monto Maximo" DataField="montoMaximoProyecto" ItemStyle-HorizontalAlign="Left" />
+                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="%" DataField="porcentajeFinanciamiento" ItemStyle-HorizontalAlign="Left" />
+                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Plazo Ejecucion" DataField="plazoEjecucion" ItemStyle-HorizontalAlign="Left" />
+                    </Columns>
+                    <SelectedRowStyle BackColor="Azure" />
+                </asp:GridView>
+            </div>
+        </div>
     </asp:Panel>
+
+
+
 
 
     <asp:Panel ID="PanelInferior" CssClass="panel panel-info" runat="server">
