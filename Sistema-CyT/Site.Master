@@ -20,36 +20,38 @@
             <Scripts>
             </Scripts>
         </asp:ScriptManager>
-        <div class="navbar navbar-default">
-            <div class="container">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" runat="server" href="~/Default.aspx">
-                        <h3>Sistema CyT</h3>
+                        <h2>Sistema CyT</h2>
                     </a>
                 </div>
-
                 <div class="row">
                     <div class="col-md-12">
                         <div class="text-right">
                             <div class="btn-group">
                                 <button class="btn btn-success dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">CONVOCATORIAS <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
-                                    <li><a runat="server" href="~/AltaConvocatoria.aspx">Alta Convocatoria</a></li>
-                                    <li><a runat="server" href="~/EditarConvocatoria.aspx">Editar Convocatoria</a></li>
+                                    <li><a runat="server" href="~/AltaConvocatoria.aspx"><span class="glyphicon glyphicon-plus"></span>Alta Convocatoria</a></li>
+                                    <li><a runat="server" href="~/EditarConvocatoria.aspx"><span class="glyphicon glyphicon-edit"></span>Editar Convocatoria</a></li>
                                     <li class="divider"></li>
-                                    <li><a runat="server" href="~/ListarConvocatorias">Listar Convocatorias</a></li>
+                                    <li><a runat="server" href="~/ListarConvocatorias"><span class="glyphicon glyphicon-list"></span>Listar Convocatorias</a></li>
                                     <li><a runat="server" href="#"></a></li>
                                 </ul>
                             </div>
                             <div class="btn-group">
                                 <button class="btn btn-info dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">FONDOS <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
-                                    <li><a runat="server" href="~/AltaFondo.aspx">Alta Fondo</a></li>
-                                    <li><a runat="server" href="~/EditarFondo.aspx">Editar Fondo</a></li>
+                                    <li><a runat="server" href="~/AltaFondo.aspx"><span class="glyphicon glyphicon-plus"></span>Alta Fondo</a></li>
+                                    <li><a runat="server" href="~/EditarFondo.aspx"><span class="glyphicon glyphicon-edit"></span>Editar Fondo</a></li>
                                     <li class="divider"></li>
-                                    <li><a runat="server" href="~/ListarFondos">Listar Fondos</a></li>
+                                    <li><a runat="server" href="~/ListarFondos"><span class="glyphicon glyphicon-list"></span>Listar Fondos</a></li>
                                     <li><a runat="server" href="#"></a></li>
                                 </ul>
+                            </div>
+                            <div class="btn-group">
+                                <a class="btn-danger form-control" runat="server" href="~/Default.aspx">SALIR <span class="glyphicon glyphicon-log-out"></span></a>
                             </div>
                         </div>
                     </div>
@@ -58,20 +60,25 @@
         </div>
 
         <div class="container body-content">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-            <hr />
             <footer>
                 <p>CyT - COPADE - <%: DateTime.Now.Year %> - Sistema Informatico de Ciencia y Tecnologia</p>
             </footer>
         </div>
     </form>
 
-
     <script src="js/jquery-1.12.3.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/bootstrap-datepicker.js"></script>
     <script src="js/panel-collapsible.js"></script>
+
+    
 
 </body>
 </html>

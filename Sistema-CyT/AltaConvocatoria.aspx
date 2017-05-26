@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AltaConvocatoria.aspx.cs" Inherits="Sistema_CyT.AltaConvocatoria" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
     <asp:Panel ID="PanelSuperior" CssClass="panel panel-success" runat="server">
         <div class="panel-heading">
             <h3>Formulario de ALTA Convocatoria</h3>
@@ -32,7 +31,7 @@
         <div class="form-group">
             <asp:Label ID="lblAnio" runat="server" Text="AÑO" CssClass="col-md-2 control-label"></asp:Label>
             <div class="col-md-3">
-                <asp:TextBox ID="txtAnio" Width="260" runat="server" CssClass="form-control" MaxLength="4"></asp:TextBox>
+                <asp:TextBox ID="txtAnio" Width="260" runat="server" CssClass="form-control" MaxLength="4" Text="2017"></asp:TextBox>
             </div>
             <asp:Label ID="lblFondo" runat="server" Text="FONDO" CssClass="col-md-2 control-label"> </asp:Label>
             <div class="col-md-3 ">
@@ -125,7 +124,7 @@
         <div class="form-group">
             <asp:Label ID="lblPlazoEjecucion" runat="server" Text="PLAZO EJECUCION" CssClass="col-md-2 control-label"> </asp:Label>
             <div class="col-md-3">
-                <asp:TextBox ID="txtPlazoEjecucion" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:TextBox ID="txtPlazoEjecucion" runat="server" CssClass="form-control" placeholder="meses"></asp:TextBox>
             </div>
         </div>
         <div class="form-group">
