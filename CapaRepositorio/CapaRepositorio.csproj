@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ConvocatoriaRepo.cs" />
     <Compile Include="FondoRepo.cs" />
+    <Compile Include="ListaConvocatoriaModalidadRepo.cs" />
     <Compile Include="ModalidadRepo.cs" />
     <Compile Include="OrigenRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

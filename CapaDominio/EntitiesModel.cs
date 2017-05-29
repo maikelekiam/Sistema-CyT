@@ -50,43 +50,11 @@ namespace CapaDominio
 			:base(connection, backendConfiguration, metadataSource)
 		{ }
 			
-		public IQueryable<Origen> Origens 
-		{
-			get
-			{
-				return this.GetAll<Origen>();
-			}
-		}
-		
-		public IQueryable<Fondo> Fondos 
-		{
-			get
-			{
-				return this.GetAll<Fondo>();
-			}
-		}
-		
 		public IQueryable<TipoFinanciamiento> TipoFinanciamientos 
 		{
 			get
 			{
 				return this.GetAll<TipoFinanciamiento>();
-			}
-		}
-		
-		public IQueryable<Modalidad> Modalidads 
-		{
-			get
-			{
-				return this.GetAll<Modalidad>();
-			}
-		}
-		
-		public IQueryable<Convocatorium> Convocatoria 
-		{
-			get
-			{
-				return this.GetAll<Convocatorium>();
 			}
 		}
 		
@@ -98,11 +66,43 @@ namespace CapaDominio
 			}
 		}
 		
-		public IQueryable<Beneficiario> Beneficiarios 
+		public IQueryable<Origen> Origens 
 		{
 			get
 			{
-				return this.GetAll<Beneficiario>();
+				return this.GetAll<Origen>();
+			}
+		}
+		
+		public IQueryable<Modalidad> Modalidads 
+		{
+			get
+			{
+				return this.GetAll<Modalidad>();
+			}
+		}
+		
+		public IQueryable<ListaConvocatoriaModalidad> ListaConvocatoriaModalidads 
+		{
+			get
+			{
+				return this.GetAll<ListaConvocatoriaModalidad>();
+			}
+		}
+		
+		public IQueryable<Fondo> Fondos 
+		{
+			get
+			{
+				return this.GetAll<Fondo>();
+			}
+		}
+		
+		public IQueryable<Convocatorium> Convocatoria 
+		{
+			get
+			{
+				return this.GetAll<Convocatorium>();
 			}
 		}
 		
@@ -127,23 +127,7 @@ namespace CapaDominio
 	
 	public interface IModeloDeDominioUnitOfWork : IUnitOfWork
 	{
-		IQueryable<Origen> Origens
-		{
-			get;
-		}
-		IQueryable<Fondo> Fondos
-		{
-			get;
-		}
 		IQueryable<TipoFinanciamiento> TipoFinanciamientos
-		{
-			get;
-		}
-		IQueryable<Modalidad> Modalidads
-		{
-			get;
-		}
-		IQueryable<Convocatorium> Convocatoria
 		{
 			get;
 		}
@@ -151,7 +135,23 @@ namespace CapaDominio
 		{
 			get;
 		}
-		IQueryable<Beneficiario> Beneficiarios
+		IQueryable<Origen> Origens
+		{
+			get;
+		}
+		IQueryable<Modalidad> Modalidads
+		{
+			get;
+		}
+		IQueryable<ListaConvocatoriaModalidad> ListaConvocatoriaModalidads
+		{
+			get;
+		}
+		IQueryable<Fondo> Fondos
+		{
+			get;
+		}
+		IQueryable<Convocatorium> Convocatoria
 		{
 			get;
 		}

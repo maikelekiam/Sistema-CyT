@@ -111,12 +111,15 @@
                 <asp:CheckBox ID="chkAbierta" runat="server" CssClass="control-label" BorderStyle="None" Checked="true" />
             </div>
         </div>
-        <div class="form-group">
-            <asp:Label ID="lblModalidad" runat="server" Text="MODALIDADES" CssClass="col-md-2 control-label"> </asp:Label>
-            <div class="col-md-4">
-                <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalModalidad">Agregar Modalidad</button>
+
+        <asp:Panel ID="PanelMostrarModalidad" CssClass="panel" runat="server">
+            <div class="form-group">
+                <asp:Label ID="lblModalidad" runat="server" Text="MODALIDADES" CssClass="col-md-2 control-label"> </asp:Label>
+                <div class="col-md-4">
+                    <button id="btnAgregarModalidad" type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalModalidad">Agregar Modalidad</button>
+                </div>
             </div>
-        </div>
+        </asp:Panel>
         <!-- MODAL AGREGAR MODALIDAD NUEVA -->
         <div class="modal fade" id="modalModalidad" tabindex="-1" role="dialog" aria-labelledby="modalLabelModalidad" aria-hidden="true">
             <div class="modal-dialog modal-lg">
@@ -172,31 +175,35 @@
                     </div>
                     <div class="modal-footer">
                         <asp:Button runat="server" ID="btnModalModalidadSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
-                        <asp:Button runat="server" ID="btnModalModalidadGuardar" Text="GUARDAR" CssClass="btn btn-success" />
+                        <asp:Button runat="server" ID="btnModalModalidadGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalModalidadGuardar_Click"/>
                     </div>
                 </div>
             </div>
         </div>
 
 
-
+        <!--BOTON GUARDAR CONVOCATORIA-->
+        <div class="form-group">
+            <div class="col-md-2 col-md-offset-2">
+                <asp:Button ID="btnGuardarConvocatoria" runat="server" Text="Guardar Convocatoria" CssClass="btn btn-success form-control" OnClick="btnGuardarConvocatoria_Click" />
+            </div>
+        </div>
 
 
         <!--LISTA DE MODALIDADES CARGADAS-->
         <div class="form-group">
             <div class="col-md-12">
-                <asp:GridView ID="dgvModalidades" runat="server" AutoGenerateColumns="true"
+                <asp:GridView ID="dgvModalidades" runat="server" AutoGenerateColumns="false"
                     DataKeyNames="idModalidad"
-                    CssClass="table table-hover table-bordered" BorderWidth="4px" EmptyDataText="No existen modalidades cargadas" ShowHeaderWhenEmpty="true">
+                    CssClass="table table-hover" BorderWidth="2px" EmptyDataText="No existen modalidades cargadas" ShowHeaderWhenEmpty="false">
                     <Columns>
                         <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Center" />
-                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Descripcion" DataField="descripcion" ItemStyle-HorizontalAlign="Left" />
+                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Descripcion" DataField="descripcion" ItemStyle-HorizontalAlign="Left" HeaderStyle-HorizontalAlign="Right" />
                         <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Objetivo" DataField="objetivo" ItemStyle-HorizontalAlign="Left" />
-                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Monto Maximo" DataField="montoMaximoProyecto" ItemStyle-HorizontalAlign="Left" />
-                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="%" DataField="porcentajeFinanciamiento" ItemStyle-HorizontalAlign="Left" />
-                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Plazo Ejecucion" DataField="plazoEjecucion" ItemStyle-HorizontalAlign="Left" />
+                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Monto Maximo" DataField="montoMaximoProyecto" ItemStyle-HorizontalAlign="Center" />
+                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="% Financiamiento" DataField="porcentajeFinanciamiento" ItemStyle-HorizontalAlign="Center" />
+                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Plazo Ejecucion" DataField="plazoEjecucion" ItemStyle-HorizontalAlign="Center" />
                     </Columns>
-                    <SelectedRowStyle BackColor="Azure" />
                 </asp:GridView>
             </div>
         </div>

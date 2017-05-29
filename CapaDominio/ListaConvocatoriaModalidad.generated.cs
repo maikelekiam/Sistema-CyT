@@ -22,18 +22,31 @@ using CapaDominio;
 
 namespace CapaDominio	
 {
-	public partial class Beneficiario
+	public partial class ListaConvocatoriaModalidad
 	{
-		private int idBeneficiario;
-		public virtual int IdBeneficiario
+		private int idModalidad;
+		public virtual int IdModalidad
 		{
 			get
 			{
-				return this.idBeneficiario;
+				return this.idModalidad;
 			}
 			set
 			{
-				this.idBeneficiario = value;
+				this.idModalidad = value;
+			}
+		}
+		
+		private int idConvocatoria;
+		public virtual int IdConvocatoria
+		{
+			get
+			{
+				return this.idConvocatoria;
+			}
+			set
+			{
+				this.idConvocatoria = value;
 			}
 		}
 		
@@ -50,21 +63,29 @@ namespace CapaDominio
 			}
 		}
 		
-		private IList<Convocatorium> convocatoria = new List<Convocatorium>();
-		public virtual IList<Convocatorium> Convocatoria
+		private Convocatorium convocatorium;
+		public virtual Convocatorium Convocatorium
 		{
 			get
 			{
-				return this.convocatoria;
+				return this.convocatorium;
+			}
+			set
+			{
+				this.convocatorium = value;
 			}
 		}
 		
-		private IList<Convocatorium> convocatoria1 = new List<Convocatorium>();
-		public virtual IList<Convocatorium> Convocatoria1
+		private Modalidad modalidad;
+		public virtual Modalidad Modalidad
 		{
 			get
 			{
-				return this.convocatoria1;
+				return this.modalidad;
+			}
+			set
+			{
+				this.modalidad = value;
 			}
 		}
 		

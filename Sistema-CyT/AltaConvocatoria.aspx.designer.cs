@@ -202,6 +202,15 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.CheckBox chkAbierta;
         
         /// <summary>
+        /// PanelMostrarModalidad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelMostrarModalidad;
+        
+        /// <summary>
         /// lblModalidad control.
         /// </summary>
         /// <remarks>
@@ -335,6 +344,15 @@ namespace Sistema_CyT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnModalModalidadGuardar;
+        
+        /// <summary>
+        /// btnGuardarConvocatoria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnGuardarConvocatoria;
         
         /// <summary>
         /// dgvModalidades control.

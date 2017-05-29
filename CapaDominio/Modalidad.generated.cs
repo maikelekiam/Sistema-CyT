@@ -50,29 +50,16 @@ namespace CapaDominio
 			}
 		}
 		
-		private int? porcentajeFinanciamiento;
-		public virtual int? PorcentajeFinanciamiento
+		private string descripcion;
+		public virtual string Descripcion
 		{
 			get
 			{
-				return this.porcentajeFinanciamiento;
+				return this.descripcion;
 			}
 			set
 			{
-				this.porcentajeFinanciamiento = value;
-			}
-		}
-		
-		private int? plazoEjecucion;
-		public virtual int? PlazoEjecucion
-		{
-			get
-			{
-				return this.plazoEjecucion;
-			}
-			set
-			{
-				this.plazoEjecucion = value;
+				this.descripcion = value;
 			}
 		}
 		
@@ -102,51 +89,38 @@ namespace CapaDominio
 			}
 		}
 		
-		private int? idConvocatoria;
-		public virtual int? IdConvocatoria
+		private int? porcentajeFinanciamiento;
+		public virtual int? PorcentajeFinanciamiento
 		{
 			get
 			{
-				return this.idConvocatoria;
+				return this.porcentajeFinanciamiento;
 			}
 			set
 			{
-				this.idConvocatoria = value;
+				this.porcentajeFinanciamiento = value;
 			}
 		}
 		
-		private string descripcion;
-		public virtual string Descripcion
+		private int? plazoEjecucion;
+		public virtual int? PlazoEjecucion
 		{
 			get
 			{
-				return this.descripcion;
+				return this.plazoEjecucion;
 			}
 			set
 			{
-				this.descripcion = value;
+				this.plazoEjecucion = value;
 			}
 		}
 		
-		private Convocatorium convocatorium;
-		public virtual Convocatorium Convocatorium
+		private IList<ListaConvocatoriaModalidad> listaConvocatoriaModalidads = new List<ListaConvocatoriaModalidad>();
+		public virtual IList<ListaConvocatoriaModalidad> ListaConvocatoriaModalidads
 		{
 			get
 			{
-				return this.convocatorium;
-			}
-			set
-			{
-				this.convocatorium = value;
-			}
-		}
-		
-		private IList<Convocatorium> convocatoria = new List<Convocatorium>();
-		public virtual IList<Convocatorium> Convocatoria
-		{
-			get
-			{
-				return this.convocatoria;
+				return this.listaConvocatoriaModalidads;
 			}
 		}
 		
