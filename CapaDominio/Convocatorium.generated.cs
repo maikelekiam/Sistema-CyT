@@ -228,6 +228,15 @@ namespace CapaDominio
 			}
 		}
 		
+		private IList<Beneficiario> beneficiarios1 = new List<Beneficiario>();
+		public virtual IList<Beneficiario> Beneficiarios1
+		{
+			get
+			{
+				return this.beneficiarios1;
+			}
+		}
+		
 		private IList<Modalidad> modalidads = new List<Modalidad>();
 		public virtual IList<Modalidad> Modalidads
 		{

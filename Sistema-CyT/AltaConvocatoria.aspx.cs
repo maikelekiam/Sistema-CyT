@@ -15,6 +15,7 @@ namespace Sistema_CyT
         private FondoNego fondoNego = new FondoNego();
         private TipoFinanciamientoNego tipoFinanciamientoNego = new TipoFinanciamientoNego();
         private TipoConvocatoriaNego tipoConvocatoriaNego = new TipoConvocatoriaNego();
+        private ModalidadNego modalidadNego = new ModalidadNego();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -49,6 +50,11 @@ namespace Sistema_CyT
             ddlTipoConvocatoria.DataSource = tipoConvocatoriaNego.MostrarTipoConvocatorias().ToList();
             ddlTipoConvocatoria.DataValueField = "idTipoConvocatoria";
             ddlTipoConvocatoria.DataBind();
+        }
+        private void LlenarGrillaModalidades()
+        {
+            dgvModalidades.DataSource = modalidadNego.MostrarModalidades().ToList();
+            dgvModalidades.DataBind();
         }
     }
 }

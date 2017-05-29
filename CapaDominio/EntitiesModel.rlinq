@@ -213,6 +213,21 @@
         <orm:field name="modalidads1" property="Modalidads1" behavior="readwrite" uniqueId="a533b26a-c384-441f-806c-65f3a94effb6" type="CapaDominio.Modalidad">
           <orm:collection element-class="CapaDominio.Modalidad" inverse-field="convocatoria" order-by="" uniqueId="2fca2977-7f09-4a0c-bdf9-973a35f3e0ca" />
         </orm:field>
+        <orm:field name="beneficiarios1" property="Beneficiarios1" behavior="readwrite" uniqueId="51641182-43cd-42c6-a8b7-8f234aabb18a" type="CapaDominio.Beneficiario">
+          <orm:join-table uniqueId="e543e5c2-acae-4b68-a20c-5e74724f3fa5" association-name="ConvocatoriaHaveBeneficiarios1">
+            <orm:table name="ListaConvocatoriaBeneficiario" join-table="true" />
+            <orm:owner>
+              <orm:constraint name="FK_ConvocatoriaBeneficiario_Convocatoria" delete-action="dbdefaultrule" destination-table="Convocatoria">
+                <orm:column name="idConvocatoria" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" target-class="CapaDominio.Convocatorium" target-field="idConvocatoria" />
+              </orm:constraint>
+            </orm:owner>
+            <orm:value>
+              <orm:constraint name="FK_ConvocatoriaBeneficiario_Beneficiario" delete-action="dbdefaultrule" destination-table="Beneficiario">
+                <orm:column name="idBeneficiario" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" target-class="CapaDominio.Beneficiario" target-field="idBeneficiario" />
+              </orm:constraint>
+            </orm:value>
+          </orm:join-table>
+        </orm:field>
       </orm:class>
       <orm:class name="TipoConvocatorium" uniqueId="b5cecb6a-7ece-4dd0-bfd2-f4e0cb382feb">
         <orm:table name="TipoConvocatoria" />
@@ -250,6 +265,9 @@
         </orm:field>
         <orm:field name="convocatoria" property="Convocatoria" behavior="readwrite" uniqueId="2cbb2ca0-7594-41c9-ab14-51aee7ea2354" type="CapaDominio.Convocatorium">
           <orm:collection element-class="CapaDominio.Convocatorium" inverse-field="beneficiarios" order-by="" uniqueId="1757b463-650f-45d3-9172-8d8e0044f7b1" />
+        </orm:field>
+        <orm:field name="convocatoria1" property="Convocatoria1" behavior="readwrite" uniqueId="74505fda-1283-40fe-b09a-af2246a6ae04" type="CapaDominio.Convocatorium">
+          <orm:collection element-class="CapaDominio.Convocatorium" inverse-field="beneficiarios1" order-by="" uniqueId="e543e5c2-acae-4b68-a20c-5e74724f3fa5" />
         </orm:field>
       </orm:class>
     </orm:namespace>
@@ -334,6 +352,16 @@
         </orm:constraint>
         <orm:constraint name="FK_ListaConvocatoriaModalidad_Convocatoria" delete-action="dbdefaultrule" destination-table="Convocatoria">
           <orm:column name="idConvocatoria" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="ListaConvocatoriaBeneficiario" join-table="true">
+        <orm:column name="idConvocatoria" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        <orm:column name="idBeneficiario" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        <orm:constraint name="FK_ConvocatoriaBeneficiario_Convocatoria" delete-action="dbdefaultrule" destination-table="Convocatoria">
+          <orm:column name="idConvocatoria" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
+        </orm:constraint>
+        <orm:constraint name="FK_ConvocatoriaBeneficiario_Beneficiario" delete-action="dbdefaultrule" destination-table="Beneficiario">
+          <orm:column name="idBeneficiario" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
         </orm:constraint>
       </orm:table>
       <orm:procedure name="fn_diagramobjects" is-function="true" return-type="int">
@@ -537,6 +565,19 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
+        <Association Id="e543e5c2-acae-4b68-a20c-5e74724f3fa5" name="ConvocatoriaHaveBeneficiarios1">
+          <DomainClassMoniker name="/ModeloDeDominio/Beneficiario" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="9dd95ada-ef91-4546-86f3-9744fa2c512f">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Beneficiario/Convocatoria1" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="498dedcd-b360-4908-a75f-2edadd6faecd">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Convocatorium/Beneficiarios1" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
       </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="271d561d-1b9d-467e-8806-5f82687d085d">
@@ -557,6 +598,9 @@
         <classHasNavigationalProperties Id="913fb1b2-b922-4973-a773-f80a89d1c1d0">
           <NavigationalProperty Id="a533b26a-c384-441f-806c-65f3a94effb6" name="Modalidads1" type="IList&lt;Modalidad&gt;" label="Modalidads1 : IList&lt;Modalidad&gt;" nullable="true" kind="Persistent" fieldName="modalidads1" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="65fbec28-2650-47c2-bcc8-cac9a2068972">
+          <NavigationalProperty Id="51641182-43cd-42c6-a8b7-8f234aabb18a" name="Beneficiarios1" type="IList&lt;Beneficiario&gt;" label="Beneficiarios1 : IList&lt;Beneficiario&gt;" nullable="true" kind="Persistent" fieldName="beneficiarios1" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="b5cecb6a-7ece-4dd0-bfd2-f4e0cb382feb" name="TipoConvocatorium" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdTipoConvocatoria">
@@ -574,6 +618,9 @@
       <navigationalProperties>
         <classHasNavigationalProperties Id="9b4c0d30-69e9-4d62-b67a-69673788bda0">
           <NavigationalProperty Id="2cbb2ca0-7594-41c9-ab14-51aee7ea2354" name="Convocatoria" type="IList&lt;Convocatorium&gt;" label="Convocatoria : IList&lt;Convocatorium&gt;" nullable="true" kind="Persistent" fieldName="convocatoria" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="8288b90d-6684-4e2a-944b-bf30c8b008b8">
+          <NavigationalProperty Id="74505fda-1283-40fe-b09a-af2246a6ae04" name="Convocatoria1" type="IList&lt;Convocatorium&gt;" label="Convocatoria1 : IList&lt;Convocatorium&gt;" nullable="true" kind="Persistent" fieldName="convocatoria1" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>

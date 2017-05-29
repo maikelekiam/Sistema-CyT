@@ -59,6 +59,15 @@ namespace CapaDominio
 			}
 		}
 		
+		private IList<Convocatorium> convocatoria1 = new List<Convocatorium>();
+		public virtual IList<Convocatorium> Convocatoria1
+		{
+			get
+			{
+				return this.convocatoria1;
+			}
+		}
+		
 	}
 }
 #pragma warning restore 1591
