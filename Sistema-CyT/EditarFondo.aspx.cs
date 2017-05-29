@@ -18,7 +18,6 @@ namespace Sistema_CyT
         OrigenNego origenNego = new OrigenNego();
         IEnumerable<Fondo> listaFondos;
         static int id;
-        
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -82,6 +81,8 @@ namespace Sistema_CyT
 
             fondoNego.ActualizarFondo(fondo);
 
+            txtNombre.Text = "";
+            txtDecripcion.Text = "";
             LlenarGrillaFondos();
         }
 

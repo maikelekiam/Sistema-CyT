@@ -8,6 +8,7 @@
                 <h3>Listado de FONDOS</h3>
             </div>
             <div class="form-group">
+                <br />
                 <div class="col-md-9 col-md-offset-1">
                     <asp:GridView ID="dgvFondos" runat="server" AutoGenerateColumns="false"
                         CssClass="table table-hover table-bordered table-striped" BorderWidth="2px"
@@ -25,16 +26,13 @@
                             <asp:BoundField HeaderText="Activo" DataField="activo" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100" />
                             <asp:TemplateField>
                                 <ItemTemplate>
-                                    <asp:Button ID="btnMostrar" runat="server" Text="Mostrar" />
+                                    <asp:Button ID="btnMostrar" runat="server" Text="Mostrar" CssClass="form-control" BackColor="#eaeaea"/>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
-                        <SelectedRowStyle BackColor="Azure" />
                     </asp:GridView>
                 </div>
             </div>
         </asp:Panel>
     </div>
-
-
 </asp:Content>

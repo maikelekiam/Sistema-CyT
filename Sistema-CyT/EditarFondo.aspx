@@ -15,7 +15,7 @@
                 <div class="col-md-4">
                     <asp:DropDownList ID="ddlActualizarFondo" runat="server"
                         Width="280"
-                        BackColor="WhiteSmoke"
+                        BackColor="#ffff99"
                         ForeColor="#000066"
                         Font-Bold="true"
                         CssClass="form-control"
@@ -70,10 +70,13 @@
 
         <!-- GRILLA CON TODOS LOS FONDOS -->
         <asp:Panel ID="PanelInferior" CssClass="panel" runat="server">
+            <div class="panel-heading col-md-offset-1" style="height: 40px;padding:0">
+                <h3>Lista de Fondos Activos</h3>
+            </div>
             <div class="form-group">
                 <div class="col-md-9 col-md-offset-1">
                     <asp:GridView ID="dgvFondo" runat="server" AutoGenerateColumns="false"
-                        CssClass="table table-hover table-bordered table-striped" BorderWidth="3px"
+                        CssClass="table table-hover table-striped" BorderWidth="2px"
                         GridLines="Both" EmptyDataText="No existen fondos registrados" ShowHeaderWhenEmpty="true">
                         <Columns>
                             <asp:BoundField HeaderText="ID" DataField="idFondo" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100" />

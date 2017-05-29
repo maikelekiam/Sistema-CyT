@@ -44,7 +44,6 @@
             <!-- BOTON GUARDAR -->
             <div class="form-group">
                 <div class="col-md-2 col-md-offset-2">
-                    <br />
                     <asp:Button ID="btnGuardarFondo" runat="server" Text="Guardar Fondo" CssClass="btn btn-success form-control" OnClick="btnGuardarFondo_Click" />
                 </div>
             </div>
@@ -52,12 +51,14 @@
 
         <!-- GRILLA CON TODOS LOS FONDOS -->
         <asp:Panel ID="PanelInferior" CssClass="panel" runat="server">
+            <div class="panel-heading col-md-offset-1" style="height: 40px; padding: 0">
+                <h3>Lista de Fondos Activos</h3>
+            </div>
             <div class="form-group">
                 <div class="col-md-9 col-md-offset-1">
                     <asp:GridView ID="dgvFondo" runat="server" AutoGenerateColumns="false"
-                        CssClass="table table-hover table-bordered table-striped" BorderWidth="3px"
-                        GridLines="Both" EmptyDataText="No existen fondos registrados" ShowHeaderWhenEmpty="true"
-                        >
+                        CssClass="table table-hover table-striped" BorderWidth="2px"
+                        GridLines="Both" EmptyDataText="No existen fondos registrados" ShowHeaderWhenEmpty="true">
                         <Columns>
                             <asp:BoundField HeaderText="ID" DataField="idFondo" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100" />
                             <asp:BoundField HeaderText="Nombre" DataField="nombre" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100" />
