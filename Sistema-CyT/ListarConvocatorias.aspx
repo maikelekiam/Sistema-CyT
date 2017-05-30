@@ -28,6 +28,7 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField HeaderText="Apertura" DataFormatString="{0:dd-MMMM-yyyy}" DataField="fechaApertura" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="250" />
+                            <asp:BoundField HeaderText="Cierre" DataFormatString="{0:dd-MMMM-yyyy}" DataField="fechaCierre" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="250" />
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <asp:Button ID="btnMostrar" runat="server" Text="Mostrar" CssClass="form-control" BackColor="#eaeaea"/>
