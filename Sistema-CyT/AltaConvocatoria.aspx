@@ -143,7 +143,7 @@
                         <div class="form-group">
                             <asp:Label ID="lblDescripcionModal" runat="server" Text="DESCRIPCION" CssClass="col-md-4 control-label"> </asp:Label>
                             <div class="col-md-8 ">
-                                <asp:TextBox ID="txtDecripcionModal" runat="server" class="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
+                                <asp:TextBox ID="txtDescripcionModal" runat="server" class="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
                             </div>
                         </div>
                         <div class="form-group">
@@ -175,7 +175,7 @@
                     </div>
                     <div class="modal-footer">
                         <asp:Button runat="server" ID="btnModalModalidadSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
-                        <asp:Button runat="server" ID="btnModalModalidadGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalModalidadGuardar_Click"/>
+                        <asp:Button runat="server" ID="btnModalModalidadGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalModalidadGuardar_Click" />
                     </div>
                 </div>
             </div>
@@ -195,7 +195,7 @@
             <div class="col-md-12">
                 <asp:GridView ID="dgvModalidades" runat="server" AutoGenerateColumns="false"
                     DataKeyNames="idModalidad"
-                    CssClass="table table-hover" BorderWidth="2px" EmptyDataText="No existen modalidades cargadas" ShowHeaderWhenEmpty="false">
+                    CssClass="table table-hover" BorderWidth="2px" EmptyDataText="No existen modalidades cargadas" ShowHeaderWhenEmpty="true">
                     <Columns>
                         <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Center" />
                         <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Descripcion" DataField="descripcion" ItemStyle-HorizontalAlign="Left" HeaderStyle-HorizontalAlign="Right" />

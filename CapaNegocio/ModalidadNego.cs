@@ -15,10 +15,5 @@ namespace CapaNegocio
         {
             modalidadRepo.GuardarModalidad(modalidad);
         }
-
-        public IEnumerable<Modalidad> MostrarModalidades(int id)
-        {
-            return modalidadRepo.MostrarModalidades(id);
-        }
     }
 }

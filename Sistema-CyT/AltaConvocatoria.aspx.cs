@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using CapaDominio;
 using CapaNegocio;
+using System.Windows.Forms;
 
 namespace Sistema_CyT
 {
@@ -16,32 +17,25 @@ namespace Sistema_CyT
         private TipoFinanciamientoNego tipoFinanciamientoNego = new TipoFinanciamientoNego();
         private TipoConvocatoriaNego tipoConvocatoriaNego = new TipoConvocatoriaNego();
         private ModalidadNego modalidadNego = new ModalidadNego();
-        //static int idConvocatoriaActual;
+        static int idConvocatoriaActual;
 
-
-        static List<Modalidad> listaConvocatoriaModalidades= new List<Modalidad>();
+        static List<Modalidad> listaConvocatoriaModalidades = new List<Modalidad>();
         private ListaConvocatoriaModalidadNego listaConvocatoriaModalidadNego = new ListaConvocatoriaModalidadNego();
-
-
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
-
                 LlenarListaFondos();
                 LlenarListaTipofinanciamiento();
                 LlenarListaTipoConvocatoria();
-                //PanelMostrarModalidad.Visible = false;
-                
-                
-                //LlenarGrillaModalidades(idConvocatoriaActual);
+                LimpiarFormulario();
 
-                
-                //LlenarListaTipoDestinatario();
-                //LlenarGrillaConvocatorias();
-                //LimpiarFormulario();
-                //btnActualizarConvocatoria.Visible = false;
+                txtAnio.Text = "2017";
+                txtFechaApertura.Text = Convert.ToString(DateTime.Today.ToString());
+                txtFechaCierre.Text = Convert.ToString(DateTime.Today.ToString());
+
+                //PanelMostrarModalidad.Visible = false;
             }
         }
         private void LlenarListaFondos()
@@ -62,24 +56,29 @@ namespace Sistema_CyT
             ddlTipoConvocatoria.DataValueField = "idTipoConvocatoria";
             ddlTipoConvocatoria.DataBind();
         }
-        private void LlenarGrillaModalidades(int id)
-        {
-            //id = idConvocatoriaActual;
-            dgvModalidades.DataSource = modalidadNego.MostrarModalidades(id);
-            dgvModalidades.DataBind();
-        }
 
         protected void btnGuardarConvocatoria_Click(object sender, EventArgs e)
         {
+            //if (string.IsNullOrEmpty(txtNombre.Text) ||
+            //    string.IsNullOrEmpty(txtDescripcion.Text) ||
+            //    string.IsNullOrEmpty(txtObjetivo.Text) ||
+            //    string.IsNullOrEmpty(txtFechaApertura.Text) ||
+            //    string.IsNullOrEmpty(txtFechaCierre.Text) ||
+            //    string.IsNullOrEmpty(txtAnio.Text)
+            //    )
+            //{
+            //    MessageBox.Show("Debe completar todos los campos");
+            //    return;
+            //}
+
+
             GuardarConvocatoria();
+            LimpiarFormulario();
         }
+
         private void GuardarConvocatoria()
         {
             Convocatorium convocatoria = new Convocatorium();
-            //FondoNego fondoNego = new FondoNego();
-            //TipoFinanciamientoNego tipoFinanciamientoNego = new TipoFinanciamientoNego();
-            //TipoConvocatoriaNego tipoConvocatoriaNego = new TipoConvocatoriaNego();
-
 
             //PRIMERO GUARDO LA CONVOCATORIA
             convocatoria.Nombre = txtNombre.Text;
@@ -103,22 +102,34 @@ namespace Sistema_CyT
 
             //DESPUES GUARDO LA LISTA DE MODALIDADES DE LA CONVOCATORIA ACTUAL
             int idConvocatoria = convocatoriaNego.GuardarConvocatoria(convocatoria);
+            idConvocatoriaActual = idConvocatoria;
 
             foreach (Modalidad t in listaConvocatoriaModalidades)
             {
                 ListaConvocatoriaModalidad listaConvocatoriaModalidad = new ListaConvocatoriaModalidad();
                 listaConvocatoriaModalidad.IdConvocatoria = idConvocatoria;
                 listaConvocatoriaModalidad.IdModalidad = t.IdModalidad;
-
                 listaConvocatoriaModalidadNego.GuardarListaConvocatoriaModalidad(listaConvocatoriaModalidad);
             }
         }
 
         protected void btnModalModalidadGuardar_Click(object sender, EventArgs e)
         {
+            //if (string.IsNullOrEmpty(txtNombreModal.Text) ||
+            //    string.IsNullOrEmpty(txtDescripcionModal.Text) ||
+            //    string.IsNullOrEmpty(txtObjetivoModal.Text) ||
+            //    string.IsNullOrEmpty(txtMontoMaximoProyectoModal.Text) ||
+            //    string.IsNullOrEmpty(txtPlazoEjecucionModal.Text) ||
+            //    string.IsNullOrEmpty(txtPorcentajeFinanciamientoModal.Text)
+            //    )
+            //{
+            //    MessageBox.Show("Debe completar todos los campos");
+            //    return;
+            //}
+
             Modalidad item = new Modalidad();
             item.Nombre = txtNombreModal.Text;
-            item.Descripcion = txtDecripcionModal.Text;
+            item.Descripcion = txtDescripcionModal.Text;
             item.Objetivo = txtObjetivoModal.Text;
             item.MontoMaximoProyecto = Int32.Parse(txtMontoMaximoProyectoModal.Text);
             item.PorcentajeFinanciamiento = Int32.Parse(txtPorcentajeFinanciamientoModal.Text);
@@ -127,6 +138,37 @@ namespace Sistema_CyT
             modalidadNego.GuardarModalidad(item);
 
             listaConvocatoriaModalidades.Add(item);
+
+            txtNombreModal.Text = null;
+            txtDescripcionModal.Text = null;
+            txtObjetivoModal.Text = null;
+            txtMontoMaximoProyectoModal.Text = null;
+            txtPlazoEjecucionModal.Text = null;
+            txtPorcentajeFinanciamientoModal.Text = null;
+
+            LlenarGrillaModalidades();
+        }
+
+        private void LlenarGrillaModalidades()
+        {
+            dgvModalidades.DataSource = listaConvocatoriaModalidades;
+            dgvModalidades.DataBind();
+        }
+
+        private void LimpiarFormulario()
+        {
+            txtNombre.Text = null;
+            txtDescripcion.Text = null;
+            txtObjetivo.Text = null;
+            txtAnio.Text = null;
+            ddlFondo.SelectedIndex = 0;
+            ddlTipoConvocatoria.SelectedIndex = 0;
+            ddlTipoFinanciamiento.SelectedIndex = 0;
+            txtFechaApertura.Text = null;
+            txtFechaCierre.Text = null;
+            chkAbierta.Checked = false;
+            listaConvocatoriaModalidades.Clear();
+            LlenarGrillaModalidades();
         }
     }
 }

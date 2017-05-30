@@ -247,13 +247,13 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.Label lblDescripcionModal;
         
         /// <summary>
-        /// txtDecripcionModal control.
+        /// txtDescripcionModal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDecripcionModal;
+        protected global::System.Web.UI.WebControls.TextBox txtDescripcionModal;
         
         /// <summary>
         /// lblObjetivoModal control.

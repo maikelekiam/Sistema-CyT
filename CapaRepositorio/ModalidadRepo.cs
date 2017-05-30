@@ -17,14 +17,5 @@ namespace CapaRepositorio
                 modeloDeDominio.SaveChanges();
             }
         }
-
-        public IEnumerable<Modalidad> MostrarModalidades(int id)
-        {
-            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
-            {
-                IEnumerable<Modalidad> result = modeloDeDominio.Modalidads.Where(c => c.IdModalidad == id).OrderBy(c => c.IdModalidad).ToList();
-                return modeloDeDominio.CreateDetachedCopy(result);
-            }
-        }
     }
 }
