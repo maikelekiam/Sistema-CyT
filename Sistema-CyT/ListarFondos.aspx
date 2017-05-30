@@ -5,13 +5,13 @@
     <div class="container">
         <asp:Panel ID="Panel1" CssClass="panel panel-warning" runat="server">
             <div class="panel-heading">
-                <h3>Listado de FONDOS</h3>
+                <h3>Lista de FONDOS Activos</h3>
             </div>
             <div class="form-group">
                 <br />
                 <div class="col-md-9 col-md-offset-1">
                     <asp:GridView ID="dgvFondos" runat="server" AutoGenerateColumns="false"
-                        CssClass="table table-hover table-bordered table-striped" BorderWidth="2px"
+                        CssClass="table table-hover table-striped" BorderWidth="2px"
                         GridLines="Both"
                         OnRowCommand="dgvFondos_RowCommand">
                         <Columns>

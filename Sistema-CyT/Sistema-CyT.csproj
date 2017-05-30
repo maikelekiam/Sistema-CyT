@@ -160,6 +160,7 @@
     <Content Include="css\bootstrap-datepicker.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\panel-collapsible.css" />
+    <Content Include="EditarConvocatoria.aspx" />
     <Content Include="EditarFondo.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="js\bootstrap-datepicker.js" />
@@ -263,6 +264,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditarConvocatoria.aspx.cs">
+      <DependentUpon>EditarConvocatoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditarConvocatoria.aspx.designer.cs">
+      <DependentUpon>EditarConvocatoria.aspx</DependentUpon>
     </Compile>
     <Compile Include="EditarFondo.aspx.cs">
       <DependentUpon>EditarFondo.aspx</DependentUpon>

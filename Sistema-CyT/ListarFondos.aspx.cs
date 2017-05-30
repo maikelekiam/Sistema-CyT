@@ -14,12 +14,14 @@ namespace Sistema_CyT
     {
         FondoNego fondoNego = new FondoNego();
         public static int idFondoSeleccionado;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack) return;
 
             MostrarListaFondos();
         }
+
         private void MostrarListaFondos()
         {
             dgvFondos.Columns[0].Visible = true;
@@ -33,16 +35,15 @@ namespace Sistema_CyT
 
             dgvFondos.Columns[0].Visible = false;
             dgvFondos.Columns[4].Visible = false;
-
-            
         }
+
         protected void dgvFondos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             //Obtengo el indice de la fila seleccionada con el boton MOSTRAR
             GridViewRow row = (GridViewRow)(((Button)e.CommandSource).NamingContainer);
             int rIndex = row.RowIndex;
 
-            //Obtengo el id de la persona seleccionada
+            //Obtengo el id del fondo seleccionado
             idFondoSeleccionado = Convert.ToInt32(dgvFondos.Rows[rIndex].Cells[0].Text);
 
             MostrarFondo();

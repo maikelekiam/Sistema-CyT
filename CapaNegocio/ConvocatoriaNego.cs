@@ -16,5 +16,10 @@ namespace CapaNegocio
         {
             return convocatoriaRepo.GuardarConvocatoria(convocatoria);
         }
+
+        public IEnumerable<Convocatorium> MostrarConvocatorias()
+        {
+            return convocatoriaRepo.MostrarConvocatorias();
+        }
     }
 }
