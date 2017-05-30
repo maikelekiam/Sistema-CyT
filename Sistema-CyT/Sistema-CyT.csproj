@@ -169,6 +169,7 @@
     <Content Include="js\panel-collapsible.js" />
     <Content Include="ListarConvocatorias.aspx" />
     <Content Include="ListarFondos.aspx" />
+    <Content Include="MostrarConvocatoria.aspx" />
     <Content Include="MostrarFondo.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -297,6 +298,13 @@
       <DependentUpon>ListarFondos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="MostrarConvocatoria.aspx.cs">
+      <DependentUpon>MostrarConvocatoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MostrarConvocatoria.aspx.designer.cs">
+      <DependentUpon>MostrarConvocatoria.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MostrarFondo.aspx.cs">
       <DependentUpon>MostrarFondo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

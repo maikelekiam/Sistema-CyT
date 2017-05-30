@@ -32,8 +32,8 @@ namespace Sistema_CyT
                 LimpiarFormulario();
 
                 txtAnio.Text = "2017";
-                txtFechaApertura.Text = Convert.ToString(DateTime.Today.ToString());
-                txtFechaCierre.Text = Convert.ToString(DateTime.Today.ToString());
+                txtFechaApertura.Text = Convert.ToString(DateTime.Today.ToShortDateString());
+                txtFechaCierre.Text = Convert.ToString(DateTime.Today.ToShortDateString());
 
                 //PanelMostrarModalidad.Visible = false;
             }
@@ -74,6 +74,7 @@ namespace Sistema_CyT
 
             GuardarConvocatoria();
             LimpiarFormulario();
+            
         }
 
         private void GuardarConvocatoria()

@@ -51,6 +51,7 @@ namespace Sistema_CyT
             {
                 GuardarFondo();
                 LlenarGrillaFondos();
+                Response.Redirect("ListarFondos.aspx");
             }
         }
 

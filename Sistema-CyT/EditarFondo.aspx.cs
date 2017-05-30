@@ -66,6 +66,7 @@ namespace Sistema_CyT
             if ((txtNombre.Text != "") && (txtDecripcion.Text != ""))
             {
                 ActualizarFondo();
+                Response.Redirect("ListarFondos.aspx");
             }
         }
 

@@ -73,6 +73,7 @@
                 </asp:DropDownList>
             </div>
         </div>
+        <!-- FECHA DE APERTURA Y FECHA DE CIERRE -->
         <div class="form-group">
             <asp:Label ID="lblFechaApertura" runat="server" Text="FECHA APERTURA" CssClass="col-md-2 control-label"></asp:Label>
             <div class="col-md-3">
@@ -130,7 +131,6 @@
                         </button>
                         <h4 class="modal-title" id="modalLabelModalidad">AGREGAR MODALIDAD</h4>
                     </div>
-
                     <!-- CUERPO DEL MODAL -->
                     <div class="modal-body">
                         <div class="form-group">
@@ -181,14 +181,12 @@
             </div>
         </div>
 
-
         <!--BOTON GUARDAR CONVOCATORIA-->
         <div class="form-group">
             <div class="col-md-2 col-md-offset-2">
                 <asp:Button ID="btnGuardarConvocatoria" runat="server" Text="Guardar Convocatoria" CssClass="btn btn-success form-control" OnClick="btnGuardarConvocatoria_Click" />
             </div>
         </div>
-
 
         <!--LISTA DE MODALIDADES CARGADAS-->
         <div class="form-group">
