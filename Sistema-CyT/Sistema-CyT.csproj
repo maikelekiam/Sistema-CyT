@@ -166,6 +166,7 @@
     <Content Include="js\bootstrap.js" />
     <Content Include="js\jquery-1.12.3.js" />
     <Content Include="js\panel-collapsible.js" />
+    <Content Include="ListarConvocatorias.aspx" />
     <Content Include="ListarFondos.aspx" />
     <Content Include="MostrarFondo.aspx" />
     <Content Include="packages.config" />
@@ -272,6 +273,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="ListarConvocatorias.aspx.cs">
+      <DependentUpon>ListarConvocatorias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListarConvocatorias.aspx.designer.cs">
+      <DependentUpon>ListarConvocatorias.aspx</DependentUpon>
     </Compile>
     <Compile Include="ListarFondos.aspx.cs">
       <DependentUpon>ListarFondos.aspx</DependentUpon>
