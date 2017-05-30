@@ -22,6 +22,7 @@
                         AutoPostBack="True"
                         AppendDataBoundItems="true"
                         OnSelectedIndexChanged="ddlActualizarConvocatoria_SelectedIndexChanged">
+                        <asp:ListItem Value="-1">&lt;Seleccione Convocatoria&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
             </div>
@@ -43,7 +44,7 @@
             </div>
             <!--OBJETIVO-->
             <div class="form-group">
-                <asp:Label ID="lblObjetivo" runat="server" Text="OBJETIVO" CssClass="col-md-2 control-label"></asp:Label>
+                <asp:Label ID="lblObjetivo"  runat="server" Text="OBJETIVO" CssClass="col-md-2 control-label"></asp:Label>
                 <div class="col-md-8">
                     <asp:TextBox ID="txtObjetivo" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
                 </div>

@@ -26,5 +26,9 @@ namespace CapaNegocio
         {
             return convocatoriaRepo.ObtenerConvocatoria(id);
         }
+        public void ActualizarConvocatoria(Convocatorium convocatoria)
+        {
+            convocatoriaRepo.ActualizarConvocatoria(convocatoria);
+        }
     }
 }

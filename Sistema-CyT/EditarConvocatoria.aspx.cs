@@ -73,10 +73,35 @@ namespace Sistema_CyT
 
         protected void btnActualizarConvocatoria_Click(object sender, EventArgs e)
         {
+            ActualizarConvocatoria();
+        }
+
+        private void ActualizarConvocatoria()
+        {
+            Convocatorium convocatoria = new Convocatorium();
+
+            convocatoria.IdConvocatoria = id;
             
+            convocatoria.Nombre = txtNombre.Text;
+            convocatoria.Descripcion = txtDescripcion.Text;
+            convocatoria.Objetivo = txtObjetivo.Text;
+            convocatoria.Anio = Int32.Parse(txtAnio.Text);
+            convocatoria.IdFondo = Int32.Parse(ddlFondo.SelectedValue);
+            convocatoria.IdTipoFinanciamiento = Int32.Parse(ddlTipoFinanciamiento.SelectedValue);
+            convocatoria.IdTipoConvocatoria = Int32.Parse(ddlTipoConvocatoria.SelectedValue);
+            convocatoria.FechaApertura = Convert.ToDateTime(txtFechaApertura.Text);
+            convocatoria.FechaCierre = Convert.ToDateTime(txtFechaCierre.Text);
 
+            if (chkAbierta.Checked)
+            {
+                convocatoria.Abierta = true;
+            }
+            else if (!chkAbierta.Checked)
+            {
+                convocatoria.Abierta = false;
+            }
 
-
+            convocatoriaNego.ActualizarConvocatoria(convocatoria);
         }
 
         protected void ddlActualizarConvocatoria_SelectedIndexChanged(object sender, EventArgs e)
@@ -84,6 +109,12 @@ namespace Sistema_CyT
             id = Convert.ToInt32(ddlActualizarConvocatoria.SelectedValue.ToString());
 
             Convocatorium convocatoria = convocatoriaNego.ObtenerConvocatoria(id);
+
+            if (convocatoria == null)
+            {
+                LimpiarFormulario();
+                return;
+            }
 
             txtNombre.Text = convocatoria.Nombre.ToString();
             txtDescripcion.Text = convocatoria.Descripcion.ToString();
@@ -109,6 +140,22 @@ namespace Sistema_CyT
 
 
 
+        }
+
+        private void LimpiarFormulario()
+        {
+            txtNombre.Text = null;
+            txtDescripcion.Text = null;
+            txtObjetivo.Text = null;
+            txtAnio.Text = null;
+            ddlFondo.SelectedIndex = 0;
+            ddlTipoConvocatoria.SelectedIndex = 0;
+            ddlTipoFinanciamiento.SelectedIndex = 0;
+            txtFechaApertura.Text = null;
+            txtFechaCierre.Text = null;
+            chkAbierta.Checked = false;
+            listaConvocatoriaModalidades.Clear();
+            //LlenarGrillaModalidades();
         }
     }
 }
