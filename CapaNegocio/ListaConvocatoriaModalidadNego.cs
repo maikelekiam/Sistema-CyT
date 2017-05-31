@@ -16,5 +16,10 @@ namespace CapaNegocio
         {
             listaConvocatoriaModalidadRepo.GuardarListaConvocatoriaModalidad(listaConvocatoriaModalidad);
         }
+
+        public IEnumerable<ListaConvocatoriaModalidad> TraerModalidadSegunConvocatoria(int id)
+        {
+            return listaConvocatoriaModalidadRepo.TraerModalidadSegunConvocatoria(id);
+        } 
     }
 }

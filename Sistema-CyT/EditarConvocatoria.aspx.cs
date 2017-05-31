@@ -8,6 +8,9 @@ using CapaDominio;
 using CapaNegocio;
 using System.Data;
 using System.ComponentModel;
+using System.Runtime.InteropServices;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Sistema_CyT
 {
@@ -18,6 +21,7 @@ namespace Sistema_CyT
         private TipoFinanciamientoNego tipoFinanciamientoNego = new TipoFinanciamientoNego();
         private TipoConvocatoriaNego tipoConvocatoriaNego = new TipoConvocatoriaNego();
         private ModalidadNego modalidadNego = new ModalidadNego();
+        private ListaConvocatoriaModalidadNego listaConvocatoriaModalidadNego = new ListaConvocatoriaModalidadNego();
 
         IEnumerable<Convocatorium> listaConvocatorias;
 
@@ -39,6 +43,8 @@ namespace Sistema_CyT
 
         private void CargarListaConvocatorias()
         {
+            //DESPUES IMPLEMENTAR UN DROPDOWN ANIDADO ENTE FONDO-CONVOCATORIA
+            
             listaConvocatorias = convocatoriaNego.MostrarConvocatorias();
 
             ddlActualizarConvocatoria.DataSource = listaConvocatorias.ToList();
@@ -81,7 +87,7 @@ namespace Sistema_CyT
             Convocatorium convocatoria = new Convocatorium();
 
             convocatoria.IdConvocatoria = id;
-            
+
             convocatoria.Nombre = txtNombre.Text;
             convocatoria.Descripcion = txtDescripcion.Text;
             convocatoria.Objetivo = txtObjetivo.Text;
@@ -102,6 +108,22 @@ namespace Sistema_CyT
             }
 
             convocatoriaNego.ActualizarConvocatoria(convocatoria);
+        }
+
+        private void LimpiarFormulario()
+        {
+            txtNombre.Text = null;
+            txtDescripcion.Text = null;
+            txtObjetivo.Text = null;
+            txtAnio.Text = null;
+            ddlFondo.SelectedIndex = 0;
+            ddlTipoConvocatoria.SelectedIndex = 0;
+            ddlTipoFinanciamiento.SelectedIndex = 0;
+            txtFechaApertura.Text = null;
+            txtFechaCierre.Text = null;
+            chkAbierta.Checked = false;
+            listaConvocatoriaModalidades.Clear();
+            //LlenarGrillaModalidades();
         }
 
         protected void ddlActualizarConvocatoria_SelectedIndexChanged(object sender, EventArgs e)
@@ -137,25 +159,23 @@ namespace Sistema_CyT
 
             //AHORA TENGO QUE TRAER UNA LISTA DE MODALIDADES SEGUN EL IdConvocatoriaActual
 
+            listaConvocatoriaModalidadNego.TraerModalidadSegunConvocatoria(id);
+
+            dgvCM.DataSource = listaConvocatoriaModalidadNego.TraerModalidadSegunConvocatoria(id);
+            dgvCM.DataBind();
+
+
 
 
 
         }
 
-        private void LimpiarFormulario()
-        {
-            txtNombre.Text = null;
-            txtDescripcion.Text = null;
-            txtObjetivo.Text = null;
-            txtAnio.Text = null;
-            ddlFondo.SelectedIndex = 0;
-            ddlTipoConvocatoria.SelectedIndex = 0;
-            ddlTipoFinanciamiento.SelectedIndex = 0;
-            txtFechaApertura.Text = null;
-            txtFechaCierre.Text = null;
-            chkAbierta.Checked = false;
-            listaConvocatoriaModalidades.Clear();
-            //LlenarGrillaModalidades();
-        }
+
+
+
+
+
+
+
     }
 }

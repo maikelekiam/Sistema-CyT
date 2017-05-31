@@ -220,6 +220,15 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.CheckBox chkAbierta;
         
         /// <summary>
+        /// btnActualizarConvocatoria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnActualizarConvocatoria;
+        
+        /// <summary>
         /// dgvModalidades control.
         /// </summary>
         /// <remarks>
@@ -229,12 +238,12 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.GridView dgvModalidades;
         
         /// <summary>
-        /// btnActualizarConvocatoria control.
+        /// dgvCM control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnActualizarConvocatoria;
+        protected global::System.Web.UI.WebControls.GridView dgvCM;
     }
 }

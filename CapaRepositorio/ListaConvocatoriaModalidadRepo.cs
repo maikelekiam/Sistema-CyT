@@ -17,4 +17,14 @@ namespace CapaRepositorio
                 modeloDeDominio.SaveChanges();
             }
         }
-    }}
+
+        public IEnumerable<ListaConvocatoriaModalidad> TraerModalidadSegunConvocatoria(int id)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                IEnumerable<ListaConvocatoriaModalidad> result = modeloDeDominio.ListaConvocatoriaModalidads.Where(c => c.IdConvocatoria == id).ToList();
+                return result;
+            }
+        }
+    }
+}

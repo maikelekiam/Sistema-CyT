@@ -17,5 +17,14 @@ namespace CapaRepositorio
                 modeloDeDominio.SaveChanges();
             }
         }
+
+        public Modalidad ObtenerModalidadSegunId(int id)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                Modalidad modalidad = modeloDeDominio.Modalidads.Where(c => c.IdModalidad == id).FirstOrDefault();
+                return modalidad;
+            }
+        }
     }
 }

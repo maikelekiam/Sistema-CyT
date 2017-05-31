@@ -44,7 +44,7 @@
             </div>
             <!--OBJETIVO-->
             <div class="form-group">
-                <asp:Label ID="lblObjetivo"  runat="server" Text="OBJETIVO" CssClass="col-md-2 control-label"></asp:Label>
+                <asp:Label ID="lblObjetivo" runat="server" Text="OBJETIVO" CssClass="col-md-2 control-label"></asp:Label>
                 <div class="col-md-8">
                     <asp:TextBox ID="txtObjetivo" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
                 </div>
@@ -134,25 +134,6 @@
                     <asp:CheckBox ID="chkAbierta" runat="server" CssClass="control-label" BorderStyle="None" Checked="true" />
                 </div>
             </div>
-
-            <!--LISTA DE MODALIDADES CARGADAS-->
-            <div class="form-group">
-                <div class="col-md-12">
-                    <asp:GridView ID="dgvModalidades" runat="server" AutoGenerateColumns="false"
-                        DataKeyNames="idModalidad"
-                        CssClass="table table-hover" BorderWidth="2px" EmptyDataText="No existen modalidades cargadas" ShowHeaderWhenEmpty="true">
-                        <Columns>
-                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Center" />
-                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Descripcion" DataField="descripcion" ItemStyle-HorizontalAlign="Left" HeaderStyle-HorizontalAlign="Right" />
-                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Objetivo" DataField="objetivo" ItemStyle-HorizontalAlign="Left" />
-                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Monto Maximo" DataField="montoMaximoProyecto" ItemStyle-HorizontalAlign="Center" />
-                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="% Financiamiento" DataField="porcentajeFinanciamiento" ItemStyle-HorizontalAlign="Center" />
-                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Plazo Ejecucion" DataField="plazoEjecucion" ItemStyle-HorizontalAlign="Center" />
-                        </Columns>
-                    </asp:GridView>
-                </div>
-            </div>
-
             <!-- BOTON ACTUALIZAR -->
             <div class="form-group">
                 <div class="col-md-2 col-md-offset-2">
@@ -160,6 +141,43 @@
                 </div>
             </div>
         </asp:Panel>
-    </div> 
+        <!--LISTA DE MODALIDADES CARGADAS-->
+        <div class="panel-heading">
+            <h3>MODALIDADES</h3>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <asp:GridView ID="dgvModalidades" runat="server" AutoGenerateColumns="false"
+                    DataKeyNames="idModalidad"
+                    CssClass="table table-hover" BorderWidth="2px" EmptyDataText="No existen modalidades cargadas" ShowHeaderWhenEmpty="true">
+                    <Columns>
+                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Center" />
+                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Descripcion" DataField="descripcion" ItemStyle-HorizontalAlign="Left" HeaderStyle-HorizontalAlign="Right" />
+                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Objetivo" DataField="objetivo" ItemStyle-HorizontalAlign="Left" />
+                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Monto Maximo" DataField="montoMaximoProyecto" ItemStyle-HorizontalAlign="Center" />
+                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="% Financiamiento" DataField="porcentajeFinanciamiento" ItemStyle-HorizontalAlign="Center" />
+                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Plazo Ejecucion" DataField="plazoEjecucion" ItemStyle-HorizontalAlign="Center" />
+                    </Columns>
+                </asp:GridView>
+            </div>
+        </div>
+
+
+        <!--LISTA DE MODALIDADES PARA LA CONVOCATORIA ACTUAL-->
+        <div class="panel-heading">
+            <h3>MODALIDADES PARA LA CONVOCATORIA ACTUAL</h3>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <asp:GridView ID="dgvCM" runat="server" AutoGenerateColumns="true"
+                    DataKeyNames="idModalidad"
+                    CssClass="table table-hover" BorderWidth="2px" EmptyDataText="No existen modalidades cargadas" ShowHeaderWhenEmpty="true">
+                    
+                </asp:GridView>
+            </div>
+        </div>
+
+
+    </div>
 </asp:Content>
 

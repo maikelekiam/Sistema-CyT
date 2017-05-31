@@ -11,9 +11,15 @@ namespace CapaNegocio
     public class ModalidadNego
     {
         ModalidadRepo modalidadRepo = new ModalidadRepo();
+        
         public void GuardarModalidad(Modalidad modalidad)
         {
             modalidadRepo.GuardarModalidad(modalidad);
+        }
+
+        public Modalidad ObtenerModalidadSegunId(int id)
+        {
+            return modalidadRepo.ObtenerModalidadSegunId(id);
         }
     }
 }
