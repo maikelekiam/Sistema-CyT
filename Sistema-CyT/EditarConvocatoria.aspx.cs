@@ -22,12 +22,10 @@ namespace Sistema_CyT
         private TipoConvocatoriaNego tipoConvocatoriaNego = new TipoConvocatoriaNego();
         private ModalidadNego modalidadNego = new ModalidadNego();
         private ListaConvocatoriaModalidadNego listaConvocatoriaModalidadNego = new ListaConvocatoriaModalidadNego();
-
         IEnumerable<Convocatorium> listaConvocatorias;
-
         static int id;
-
         static List<Modalidad> listaConvocatoriaModalidades = new List<Modalidad>();
+        static IEnumerable<ListaConvocatoriaModalidad> lista = new List<ListaConvocatoriaModalidad>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -73,8 +71,10 @@ namespace Sistema_CyT
 
         private void LlenarGrillaModalidades()
         {
+            dgvModalidades.Columns[0].Visible = true;
             dgvModalidades.DataSource = listaConvocatoriaModalidades;
             dgvModalidades.DataBind();
+            dgvModalidades.Columns[0].Visible = false;
         }
 
         protected void btnActualizarConvocatoria_Click(object sender, EventArgs e)
@@ -123,11 +123,14 @@ namespace Sistema_CyT
             txtFechaCierre.Text = null;
             chkAbierta.Checked = false;
             listaConvocatoriaModalidades.Clear();
-            //LlenarGrillaModalidades();
+            LlenarGrillaModalidades();            
         }
 
         protected void ddlActualizarConvocatoria_SelectedIndexChanged(object sender, EventArgs e)
         {
+            listaConvocatoriaModalidades.Clear();
+            LlenarGrillaModalidades();
+            
             id = Convert.ToInt32(ddlActualizarConvocatoria.SelectedValue.ToString());
 
             Convocatorium convocatoria = convocatoriaNego.ObtenerConvocatoria(id);
@@ -158,24 +161,31 @@ namespace Sistema_CyT
             }
 
             //AHORA TENGO QUE TRAER UNA LISTA DE MODALIDADES SEGUN EL IdConvocatoriaActual
-
-            listaConvocatoriaModalidadNego.TraerModalidadSegunConvocatoria(id);
-
+            lista=listaConvocatoriaModalidadNego.TraerModalidadSegunConvocatoria(id);
             dgvCM.DataSource = listaConvocatoriaModalidadNego.TraerModalidadSegunConvocatoria(id);
             dgvCM.DataBind();
+            //DESPUES QUITAR ESTO DE ARRIBA
 
+            foreach (ListaConvocatoriaModalidad lcm in lista)
+            {
+                Modalidad modalidad = modalidadNego.ObtenerModalidadSegunId(lcm.IdModalidad);
 
+                listaConvocatoriaModalidades.Add(modalidad);
+            }
 
+            LlenarGrillaModalidades();
+            
 
 
         }
 
+        protected void dgvModalidades_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            GridViewRow row = dgvModalidades.Rows[e.NewSelectedIndex];
 
+            string id01 = row.Cells[0].Text;
 
-
-
-
-
-
+            lblNombre.Text = Convert.ToString(id01);
+        }
     }
 }
