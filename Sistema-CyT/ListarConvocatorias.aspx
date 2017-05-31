@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListarConvocatorias.aspx.cs" Inherits="Sistema_CyT.ListarConvocatorias" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-<div class="container">
+    <div class="container">
         <asp:Panel ID="PanelSuperior" CssClass="panel panel-warning" runat="server">
             <div class="panel-heading">
                 <h3>Lista de Convocatorias Vigentes</h3>
@@ -12,7 +13,8 @@
                     <asp:GridView ID="dgvConvocatoria" runat="server" AutoGenerateColumns="false"
                         CssClass="table table-hover table-striped" BorderWidth="2px"
                         GridLines="Both"
-                        OnRowCommand="dgvConvocatoria_RowCommand">
+                        OnRowCommand="dgvConvocatoria_RowCommand"
+                        OnSelectedIndexChanging="dgvConvocatoria_SelectedIndexChanging">
                         <Columns>
                             <asp:BoundField HeaderText="ID" DataField="idConvocatoria" ItemStyle-HorizontalAlign="Left" />
                             <asp:BoundField HeaderText="Año" DataField="anio" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100" />
@@ -31,7 +33,12 @@
                             <asp:BoundField HeaderText="Cierre" DataFormatString="{0:dd-MMMM-yyyy}" DataField="fechaCierre" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="250" />
                             <asp:TemplateField>
                                 <ItemTemplate>
-                                    <asp:Button ID="btnMostrar" runat="server" Text="Mostrar" CssClass="form-control" BackColor="#eaeaea"/>
+                                    <asp:Button ID="btnMostrar" runat="server" Text="Mostrar" CssClass="form-control" BackColor="#eaeaea" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:Button ID="btnEditar" runat="server" Text="Editar" CssClass="form-control" BackColor="#eaeaea" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

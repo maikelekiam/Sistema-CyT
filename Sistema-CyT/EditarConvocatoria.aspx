@@ -46,7 +46,7 @@
             <div class="form-group">
                 <asp:Label ID="lblObjetivo" runat="server" Text="OBJETIVO" CssClass="col-md-2 control-label"></asp:Label>
                 <div class="col-md-8">
-                    <asp:TextBox ID="txtObjetivo"    runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
+                    <asp:TextBox ID="txtObjetivo" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
                 </div>
             </div>
             <!--AÑO y FONDO-->
@@ -163,9 +163,20 @@
                         <asp:ButtonField Text="Editar" ButtonType="Button" CommandName="select" HeaderStyle-BackColor="#cccccc" />
 
                     </Columns>
+
                 </asp:GridView>
+
             </div>
         </div>
+
+
+
+
+
+
+
+
+
 
 
         <!--LISTA DE MODALIDADES PARA LA CONVOCATORIA ACTUAL-->
@@ -177,12 +188,9 @@
                 <asp:GridView ID="dgvCM" runat="server" AutoGenerateColumns="true"
                     DataKeyNames="idModalidad"
                     CssClass="table table-hover" BorderWidth="2px" EmptyDataText="No existen modalidades cargadas" ShowHeaderWhenEmpty="true">
-                    
                 </asp:GridView>
             </div>
         </div>
-
-
     </div>
 </asp:Content>
 

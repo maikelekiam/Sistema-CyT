@@ -162,6 +162,7 @@
     <Content Include="css\panel-collapsible.css" />
     <Content Include="EditarConvocatoria.aspx" />
     <Content Include="EditarFondo.aspx" />
+    <Content Include="EditarModalidad.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="js\bootstrap-datepicker.js" />
     <Content Include="js\bootstrap.js" />
@@ -279,6 +280,13 @@
     </Compile>
     <Compile Include="EditarFondo.aspx.designer.cs">
       <DependentUpon>EditarFondo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditarModalidad.aspx.cs">
+      <DependentUpon>EditarModalidad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditarModalidad.aspx.designer.cs">
+      <DependentUpon>EditarModalidad.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -21,5 +21,10 @@ namespace CapaNegocio
         {
             return modalidadRepo.ObtenerModalidadSegunId(id);
         }
+
+        public void ActualizarModalidad(Modalidad modalidad)
+        {
+            modalidadRepo.ActualizarModalidad(modalidad);
+        }
     }
 }

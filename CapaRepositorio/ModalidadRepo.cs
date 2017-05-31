@@ -26,5 +26,14 @@ namespace CapaRepositorio
                 return modalidad;
             }
         }
+
+        public void ActualizarModalidad(Modalidad modalidad)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                modeloDeDominio.AttachCopy(modalidad);
+                modeloDeDominio.SaveChanges();
+            }
+        }
     }
 }
