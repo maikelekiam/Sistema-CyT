@@ -150,9 +150,36 @@ namespace Sistema_CyT
                 return;
             }
 
+            int contador = 0;
+            string cadena=convocatoria.Nombre.ToString();
+            for (int i=0; i<cadena.Length;i++){
+                if (cadena.Substring(i, 1) != "\n")
+                {
+                    contador++;
+                }
+                else if (cadena.Substring(i, 1) == "\n")
+                {
+                    contador = contador + 90 - i;
+                }
+            }
+
+            lblNombre.Text = Convert.ToString(contador);
+
+            int longitudTextBox = convocatoria.Nombre.Length;
+            int rows = contador / 90;
+            txtNombre.Rows = rows+1;
             txtNombre.Text = convocatoria.Nombre.ToString();
+
+            longitudTextBox = convocatoria.Descripcion.Length;
+            rows = longitudTextBox / 90;
+            txtDescripcion.Rows = rows+1;
             txtDescripcion.Text = convocatoria.Descripcion.ToString();
+
+            longitudTextBox = convocatoria.Objetivo.Length;
+            rows = longitudTextBox / 90;
+            txtObjetivo.Rows = rows+1;
             txtObjetivo.Text = convocatoria.Objetivo.ToString();
+
             txtAnio.Text = convocatoria.Anio.ToString();
             ddlFondo.Text = Convert.ToString(convocatoria.IdFondo);
             ddlTipoConvocatoria.Text = Convert.ToString(convocatoria.IdTipoConvocatoria);
