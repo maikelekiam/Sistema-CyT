@@ -150,10 +150,18 @@ namespace Sistema_CyT
                 return;
             }
 
-            int contador = 0;
+            //RUTINAS PARA QUE EL TEXTBOX MULTILINE SE AJUSTE AUTOMATICAMENTE
+            int contador = 45;
+            string cadcom="qwertyuiopasdfghjklñzxcvbnm1234567890QWERTYUIOPASDFGHJKLÑZXCVBNM.,";
             string cadena=convocatoria.Nombre.ToString();
+
             for (int i=0; i<cadena.Length;i++){
-                if (cadena.Substring(i, 1) != "\n")
+                if (cadcom.Contains(cadena.Substring(i, 1)))
+                //if (cadena.Substring(i, 1) != "\n")
+                {
+                    contador++;
+                }
+                else if (cadena.Substring(i, 1) == " ")
                 {
                     contador++;
                 }
