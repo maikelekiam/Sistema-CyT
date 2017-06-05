@@ -36,7 +36,7 @@
                                     <li><a runat="server" href="~/AltaConvocatoria.aspx"><span class="glyphicon glyphicon-plus"></span>Alta Convocatoria</a></li>
                                     <li><a runat="server" href="~/EditarConvocatoria.aspx"><span class="glyphicon glyphicon-edit"></span>Editar Convocatoria</a></li>
                                     <li class="divider"></li>
-                                    <li><a runat="server" href="~/ListarConvocatorias"><span class="glyphicon glyphicon-list"></span>Listar Convocatorias</a></li>
+                                    <li><a runat="server" href="~/ListarConvocatorias.aspx"><span class="glyphicon glyphicon-list"></span>Listar Convocatorias</a></li>
                                     <li><a runat="server" href="#"></a></li>
                                 </ul>
                             </div>
@@ -46,7 +46,7 @@
                                     <li><a runat="server" href="~/AltaFondo.aspx"><span class="glyphicon glyphicon-plus"></span>Alta Fondo</a></li>
                                     <li><a runat="server" href="~/EditarFondo.aspx"><span class="glyphicon glyphicon-edit"></span>Editar Fondo</a></li>
                                     <li class="divider"></li>
-                                    <li><a runat="server" href="~/ListarFondos"><span class="glyphicon glyphicon-list"></span>Listar Fondos</a></li>
+                                    <li><a runat="server" href="~/ListarFondos.aspx"><span class="glyphicon glyphicon-list"></span>Listar Fondos</a></li>
                                     <li><a runat="server" href="#"></a></li>
                                 </ul>
                             </div>
