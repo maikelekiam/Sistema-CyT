@@ -23,7 +23,7 @@ namespace Sistema_CyT
         private ModalidadNego modalidadNego = new ModalidadNego();
         private ListaConvocatoriaModalidadNego listaConvocatoriaModalidadNego = new ListaConvocatoriaModalidadNego();
         IEnumerable<Convocatorium> listaConvocatorias;
-
+        
         public static int id;
         static List<Modalidad> listaConvocatoriaModalidades = new List<Modalidad>();
         static IEnumerable<ListaConvocatoriaModalidad> lista = new List<ListaConvocatoriaModalidad>();
@@ -150,42 +150,24 @@ namespace Sistema_CyT
                 return;
             }
 
-            //RUTINAS PARA QUE EL TEXTBOX MULTILINE SE AJUSTE AUTOMATICAMENTE
-            int contador = 45;
-            string cadcom="qwertyuiopasdfghjklñzxcvbnm1234567890QWERTYUIOPASDFGHJKLÑZXCVBNM.,";
-            string cadena=convocatoria.Nombre.ToString();
-
-            for (int i=0; i<cadena.Length;i++){
-                if (cadcom.Contains(cadena.Substring(i, 1)))
-                //if (cadena.Substring(i, 1) != "\n")
-                {
-                    contador++;
-                }
-                else if (cadena.Substring(i, 1) == " ")
-                {
-                    contador++;
-                }
-                else if (cadena.Substring(i, 1) == "\n")
-                {
-                    contador = contador + 90 - i;
-                }
-            }
-
+            int contador = CalcularCaracteres(convocatoria.Nombre.ToString());
             lblNombre.Text = Convert.ToString(contador);
-
-            int longitudTextBox = convocatoria.Nombre.Length;
             int rows = contador / 90;
-            txtNombre.Rows = rows+1;
+            txtNombre.Rows = rows;
             txtNombre.Text = convocatoria.Nombre.ToString();
 
-            longitudTextBox = convocatoria.Descripcion.Length;
-            rows = longitudTextBox / 90;
-            txtDescripcion.Rows = rows+1;
+
+            contador = CalcularCaracteres(convocatoria.Descripcion.ToString());
+            lblDescripcion.Text = Convert.ToString(contador);
+            rows = contador / 90;
+            txtDescripcion.Rows = rows;
             txtDescripcion.Text = convocatoria.Descripcion.ToString();
 
-            longitudTextBox = convocatoria.Objetivo.Length;
-            rows = longitudTextBox / 90;
-            txtObjetivo.Rows = rows+1;
+
+            contador = CalcularCaracteres(convocatoria.Objetivo.ToString());
+            lblObjetivo.Text = Convert.ToString(contador);
+            rows = contador / 90;
+            txtObjetivo.Rows = rows;
             txtObjetivo.Text = convocatoria.Objetivo.ToString();
 
             txtAnio.Text = convocatoria.Anio.ToString();
@@ -232,10 +214,30 @@ namespace Sistema_CyT
             Response.Redirect("EditarModalidad.aspx");
 
             //Modalidad modalidad = modalidadNego.ObtenerModalidadSegunId(id);
+        }
 
+        private int CalcularCaracteres(string cadena)
+        {
+            string cadcom = "qwertyuiopasdfghjklñzxcvbnm1234567890QWERTYUIOPASDFGHJKLÑZXCVBNM.,";
+            int c = 45;
 
-
-
+            for (int i = 0; i < cadena.Length; i++)
+            {
+                if (cadcom.Contains(cadena.Substring(i, 1)))
+                //if (cadena.Substring(i, 1) != "\n")
+                {
+                    c++;
+                }
+                else if (cadena.Substring(i, 1) == " ")
+                {
+                    c++;
+                }
+                else if (cadena.Substring(i, 1) == "\n")
+                {
+                    c = c + 90 - i;
+                }
+            }
+            return c;
         }
     }
 }
