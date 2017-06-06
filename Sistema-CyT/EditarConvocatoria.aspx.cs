@@ -6,11 +6,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using CapaDominio;
 using CapaNegocio;
-using System.Data;
-using System.ComponentModel;
-using System.Runtime.InteropServices;
-using System.Drawing;
-using System.Windows.Forms;
 
 namespace Sistema_CyT
 {
@@ -23,7 +18,7 @@ namespace Sistema_CyT
         private ModalidadNego modalidadNego = new ModalidadNego();
         private ListaConvocatoriaModalidadNego listaConvocatoriaModalidadNego = new ListaConvocatoriaModalidadNego();
         IEnumerable<Convocatorium> listaConvocatorias;
-        
+
         public static int id;
         static List<Modalidad> listaConvocatoriaModalidades = new List<Modalidad>();
         static IEnumerable<ListaConvocatoriaModalidad> lista = new List<ListaConvocatoriaModalidad>();
@@ -107,16 +102,19 @@ namespace Sistema_CyT
             convocatoria.FechaApertura = Convert.ToDateTime(txtFechaApertura.Text);
             convocatoria.FechaCierre = Convert.ToDateTime(txtFechaCierre.Text);
 
-            if (chkAbierta.Checked)
-            {
-                convocatoria.Abierta = true;
-            }
-            else if (!chkAbierta.Checked)
-            {
-                convocatoria.Abierta = false;
-            }
+            if (chkAbierta.Checked) { convocatoria.Abierta = true; }
+            else if (!chkAbierta.Checked) { convocatoria.Abierta = false; }
 
+            //DESPUES GUARDO LA LISTA DE MODALIDADES DE LA CONVOCATORIA ACTUAL
             convocatoriaNego.ActualizarConvocatoria(convocatoria);
+
+            foreach (Modalidad t in listaConvocatoriaModalidades)
+            {
+                ListaConvocatoriaModalidad listaConvocatoriaModalidad = new ListaConvocatoriaModalidad();
+                listaConvocatoriaModalidad.IdConvocatoria = id;
+                listaConvocatoriaModalidad.IdModalidad = t.IdModalidad;
+                listaConvocatoriaModalidadNego.ActualizarListaConvocatoriaModalidad(listaConvocatoriaModalidad);
+            }
         }
 
         private void LimpiarFormulario()
@@ -150,24 +148,48 @@ namespace Sistema_CyT
                 return;
             }
 
-            int contador = CalcularCaracteres(convocatoria.Nombre.ToString());
-            lblNombre.Text = Convert.ToString(contador);
-            int rows = contador / 90;
-            txtNombre.Rows = rows;
+            //RUTINAS PARA QUE EL TEXTBOX MULTILINE SE AJUSTE AUTOMATICAMENTE
+            int contador = 45;
+            int c2 = 45;
+            int c3 = 45;
+            int rows;
+            string cadena;
+            string cadcom = "qwertyuiopasdfghjklñzxcvbnm1234567890QWERTYUIOPASDFGHJKLÑZXCVBNM.,";
+
+            //NOMBRE
+            cadena = convocatoria.Nombre.ToString();
+            for (int i = 0; i < cadena.Length; i++)
+            {
+                if (cadcom.Contains(cadena.Substring(i, 1))) { contador++; }
+                else if (cadena.Substring(i, 1) == " ") { contador++; }
+                else if (cadena.Substring(i, 1) == "\n") { contador = contador + 90 - i; }
+            }
+            rows = contador / 90;
+            txtNombre.Rows = rows + 1;
             txtNombre.Text = convocatoria.Nombre.ToString();
 
-
-            contador = CalcularCaracteres(convocatoria.Descripcion.ToString());
-            lblDescripcion.Text = Convert.ToString(contador);
-            rows = contador / 90;
-            txtDescripcion.Rows = rows;
+            //DESCRIPCION
+            cadena = convocatoria.Descripcion.ToString();
+            for (int i = 0; i < cadena.Length; i++)
+            {
+                if (cadcom.Contains(cadena.Substring(i, 1))) { c2++; }
+                else if (cadena.Substring(i, 1) == " ") { c2++; }
+                else if (cadena.Substring(i, 1) == "\n") { c2 = c2 + 90 - i; }
+            }
+            rows = c2 / 90;
+            txtDescripcion.Rows = rows + 1;
             txtDescripcion.Text = convocatoria.Descripcion.ToString();
 
-
-            contador = CalcularCaracteres(convocatoria.Objetivo.ToString());
-            lblObjetivo.Text = Convert.ToString(contador);
-            rows = contador / 90;
-            txtObjetivo.Rows = rows;
+            //OBJETIVO
+            cadena = convocatoria.Objetivo.ToString();
+            for (int i = 0; i < cadena.Length; i++)
+            {
+                if (cadcom.Contains(cadena.Substring(i, 1))) { c3++; }
+                else if (cadena.Substring(i, 1) == " ") { c3++; }
+                else if (cadena.Substring(i, 1) == "\n") { c3 = c3 + 90 - i; }
+            }
+            rows = c3 / 90;
+            txtObjetivo.Rows = rows + 1;
             txtObjetivo.Text = convocatoria.Objetivo.ToString();
 
             txtAnio.Text = convocatoria.Anio.ToString();
@@ -200,44 +222,41 @@ namespace Sistema_CyT
             }
 
             LlenarGrillaModalidades();
-
-
-
         }
 
         protected void dgvModalidades_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
             GridViewRow row = dgvModalidades.Rows[e.NewSelectedIndex];
 
-            id= Convert.ToInt32(row.Cells[0].Text);
+            id = Convert.ToInt32(row.Cells[0].Text);
 
             Response.Redirect("EditarModalidad.aspx");
 
             //Modalidad modalidad = modalidadNego.ObtenerModalidadSegunId(id);
         }
 
-        private int CalcularCaracteres(string cadena)
+        protected void btnModalModalidadGuardar_Click(object sender, EventArgs e)
         {
-            string cadcom = "qwertyuiopasdfghjklñzxcvbnm1234567890QWERTYUIOPASDFGHJKLÑZXCVBNM.,";
-            int c = 45;
+            Modalidad item = new Modalidad();
+            item.Nombre = txtNombreModal.Text;
+            item.Descripcion = txtDescripcionModal.Text;
+            item.Objetivo = txtObjetivoModal.Text;
+            item.MontoMaximoProyecto = Int32.Parse(txtMontoMaximoProyectoModal.Text);
+            item.PorcentajeFinanciamiento = Int32.Parse(txtPorcentajeFinanciamientoModal.Text);
+            item.PlazoEjecucion = Int32.Parse(txtPlazoEjecucionModal.Text);
 
-            for (int i = 0; i < cadena.Length; i++)
-            {
-                if (cadcom.Contains(cadena.Substring(i, 1)))
-                //if (cadena.Substring(i, 1) != "\n")
-                {
-                    c++;
-                }
-                else if (cadena.Substring(i, 1) == " ")
-                {
-                    c++;
-                }
-                else if (cadena.Substring(i, 1) == "\n")
-                {
-                    c = c + 90 - i;
-                }
-            }
-            return c;
+            modalidadNego.GuardarModalidad(item);
+
+            listaConvocatoriaModalidades.Add(item);
+
+            txtNombreModal.Text = null;
+            txtDescripcionModal.Text = null;
+            txtObjetivoModal.Text = null;
+            txtMontoMaximoProyectoModal.Text = null;
+            txtPlazoEjecucionModal.Text = null;
+            txtPorcentajeFinanciamientoModal.Text = null;
+
+            LlenarGrillaModalidades();
         }
     }
 }

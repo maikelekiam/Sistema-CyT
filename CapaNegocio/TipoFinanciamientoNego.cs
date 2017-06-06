@@ -20,5 +20,9 @@ namespace CapaNegocio
         {
             return tipoFinanciamientoRepo.MostrarTipoFinanciamientos();
         }
+        public string ObtenerTipoFinanciamientoString(int id)
+        {
+            return tipoFinanciamientoRepo.ObtenerTipoFinanciamientoString(id);
+        }
     }
 }

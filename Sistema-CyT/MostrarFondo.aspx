@@ -6,7 +6,6 @@
             <div class="panel-heading">
                 <h3>Datos del FONDO</h3>
             </div>
-
             <br />
             <div class="form-group">
                 <asp:Label ID="lblNombre" runat="server" Text="NOMBRE" CssClass="col-md-2 control-label"></asp:Label>

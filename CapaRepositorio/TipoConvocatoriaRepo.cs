@@ -25,6 +25,15 @@ namespace CapaRepositorio
                 return modeloDeDominio.CreateDetachedCopy(result);
             }
         }
+        public string ObtenerTipoConvocatoriaString(int id)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                TipoConvocatorium result = modeloDeDominio.TipoConvocatoria.Where(c => c.IdTipoConvocatoria == id).FirstOrDefault();
+
+                return result.Nombre.ToString(); ;
+            }
+        }
 
     }
 }

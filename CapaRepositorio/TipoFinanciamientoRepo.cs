@@ -26,5 +26,14 @@ namespace CapaRepositorio
                 return modeloDeDominio.CreateDetachedCopy(result);
             }
         }
+        public string ObtenerTipoFinanciamientoString(int id)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                TipoFinanciamiento result = modeloDeDominio.TipoFinanciamientos.Where(c => c.IdTipoFinanciamiento == id).FirstOrDefault();
+
+                return result.Nombre.ToString(); ;
+            }
+        }
     }
 }

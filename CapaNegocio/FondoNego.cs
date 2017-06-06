@@ -34,6 +34,10 @@ namespace CapaNegocio
         {
             return fondoRepo.ObtenerFondo(id);
         }
+        public string ObtenerFondoString(int id)
+        {
+            return fondoRepo.ObtenerFondoString(id);
+        }
 
     }
 }
