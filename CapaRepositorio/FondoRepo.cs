@@ -59,5 +59,14 @@ namespace CapaRepositorio
                 }
             }
         }
+        public string ObtenerFondoString(int id)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                Fondo result = modeloDeDominio.Fondos.Where(c => c.IdFondo == id).FirstOrDefault();
+
+                return result.Nombre.ToString();
+            }
+        }
     }
 }

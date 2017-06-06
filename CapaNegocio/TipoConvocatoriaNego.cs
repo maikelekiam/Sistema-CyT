@@ -21,9 +21,9 @@ namespace CapaNegocio
         {
             return tipoConvocatoriaRepo.MostrarTipoConvocatorias();
         }
-
-        
-
+        public string ObtenerTipoConvocatoriaString(int id)
+        {
+            return tipoConvocatoriaRepo.ObtenerTipoConvocatoriaString(id);
+        }
     }
-
 }
