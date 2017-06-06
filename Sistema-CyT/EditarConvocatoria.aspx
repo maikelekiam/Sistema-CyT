@@ -39,14 +39,14 @@
             <div class="form-group">
                 <asp:Label ID="lblDescripcion" runat="server" Text="DESCRIPCION" CssClass="col-md-2 control-label"> </asp:Label>
                 <div class="col-md-8">
-                    <asp:TextBox ID="txtDescripcion" runat="server" CssClass="form-control" TextMode="MultiLine" ></asp:TextBox>
+                    <asp:TextBox ID="txtDescripcion" runat="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
                 </div>
             </div>
             <!--OBJETIVO-->
             <div class="form-group">
                 <asp:Label ID="lblObjetivo" runat="server" Text="OBJETIVO" CssClass="col-md-2 control-label"></asp:Label>
                 <div class="col-md-8">
-                    <asp:TextBox ID="txtObjetivo" runat="server" CssClass="form-control" TextMode="MultiLine" ></asp:TextBox>
+                    <asp:TextBox ID="txtObjetivo" runat="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
                 </div>
             </div>
             <!--AÑO y FONDO-->
@@ -134,12 +134,85 @@
                     <asp:CheckBox ID="chkAbierta" runat="server" CssClass="control-label" BorderStyle="None" Checked="true" />
                 </div>
             </div>
+
+            <asp:Panel ID="PanelMostrarModalidad" CssClass="panel" runat="server">
+                <div class="form-group">
+                    <asp:Label ID="lblModalidad" runat="server" Text="MODALIDADES" CssClass="col-md-2 control-label"> </asp:Label>
+                    <div class="col-md-4">
+                        <button id="btnAgregarModalidad" type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalModalidad">Agregar Modalidad</button>
+                    </div>
+                </div>
+            </asp:Panel>
+            <!-- MODAL AGREGAR MODALIDAD NUEVA -->
+            <div class="modal fade" id="modalModalidad" tabindex="-1" role="dialog" aria-labelledby="modalLabelModalidad" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="modalLabelModalidad">AGREGAR MODALIDAD</h4>
+                        </div>
+                        <!-- CUERPO DEL MODAL -->
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <br />
+                                <asp:Label ID="lblNombreModal" runat="server" Text="NOMBRE" CssClass="col-md-4 control-label"> </asp:Label>
+                                <div class="col-md-8">
+                                    <asp:TextBox ID="txtNombreModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <asp:Label ID="lblDescripcionModal" runat="server" Text="DESCRIPCION" CssClass="col-md-4 control-label"> </asp:Label>
+                                <div class="col-md-8 ">
+                                    <asp:TextBox ID="txtDescripcionModal" runat="server" class="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <asp:Label ID="lblObjetivoModal" runat="server" Text="OBJETIVO" CssClass="col-md-4 control-label"> </asp:Label>
+                                <div class="col-md-8">
+                                    <asp:TextBox ID="txtObjetivoModal" runat="server" class="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
+                                </div>
+                            </div>
+                            <!--PLAZO DE EJECUCION-->
+                            <div class="form-group">
+                                <asp:Label ID="lblPlazoEjecucionModal" runat="server" Text="PLAZO EJECUCION" CssClass="col-md-4 control-label"> </asp:Label>
+                                <div class="col-md-8">
+                                    <asp:TextBox ID="txtPlazoEjecucionModal" runat="server" CssClass="form-control" placeholder="meses"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <asp:Label ID="lblMontoMaximoProyectoModal" runat="server" Text="MONTO MAXIMO POR PROYECTO" CssClass="col-md-4 control-label"> </asp:Label>
+                                <div class="col-md-8">
+                                    <asp:TextBox ID="txtMontoMaximoProyectoModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+                            <!--PORCENTAJE DE FINANCIAMIENTO-->
+                            <div class="form-group">
+                                <asp:Label ID="lblPorcentajeFinanciamientoModal" runat="server" Text="% FINANCIAMIENTO" CssClass="col-md-4 control-label"> </asp:Label>
+                                <div class="col-md-8">
+                                    <asp:TextBox ID="txtPorcentajeFinanciamientoModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <asp:Button runat="server" ID="btnModalModalidadSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
+                            <asp:Button runat="server" ID="btnModalModalidadGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalModalidadGuardar_Click" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
             <!-- BOTON ACTUALIZAR -->
             <div class="form-group">
                 <div class="col-md-2 col-md-offset-2">
                     <asp:Button ID="btnActualizarConvocatoria" runat="server" Text="Actualizar Convocatoria" CssClass="btn btn-info form-control" OnClick="btnActualizarConvocatoria_Click" />
                 </div>
             </div>
+
         </asp:Panel>
         <!--LISTA DE MODALIDADES CARGADAS-->
         <div class="panel-heading">
