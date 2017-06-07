@@ -13,5 +13,10 @@ namespace Sistema_CyT
         {
 
         }
+
+        protected void btnGuardarProyecto_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
