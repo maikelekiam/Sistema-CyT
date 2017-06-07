@@ -157,6 +157,7 @@
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="AltaConvocatoria.aspx" />
     <Content Include="AltaFondo.aspx" />
+    <Content Include="AltaProyecto.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="css\bootstrap-datepicker.css" />
     <Content Include="css\bootstrap.css" />
@@ -164,6 +165,7 @@
     <Content Include="EditarConvocatoria.aspx" />
     <Content Include="EditarFondo.aspx" />
     <Content Include="EditarModalidad.aspx" />
+    <Content Include="EditarProyecto.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="js\bootstrap-datepicker.js" />
     <Content Include="js\bootstrap.js" />
@@ -171,6 +173,7 @@
     <Content Include="js\panel-collapsible.js" />
     <Content Include="ListarConvocatorias.aspx" />
     <Content Include="ListarFondos.aspx" />
+    <Content Include="ListarProyectos.aspx" />
     <Content Include="MostrarConvocatoria.aspx" />
     <Content Include="MostrarFondo.aspx" />
     <Content Include="packages.config" />
@@ -246,6 +249,13 @@
     <Compile Include="AltaFondo.aspx.designer.cs">
       <DependentUpon>AltaFondo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AltaProyecto.aspx.cs">
+      <DependentUpon>AltaProyecto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AltaProyecto.aspx.designer.cs">
+      <DependentUpon>AltaProyecto.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -291,6 +301,13 @@
     <Compile Include="EditarModalidad.aspx.designer.cs">
       <DependentUpon>EditarModalidad.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EditarProyecto.aspx.cs">
+      <DependentUpon>EditarProyecto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditarProyecto.aspx.designer.cs">
+      <DependentUpon>EditarProyecto.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -307,6 +324,13 @@
     </Compile>
     <Compile Include="ListarFondos.aspx.designer.cs">
       <DependentUpon>ListarFondos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListarProyectos.aspx.cs">
+      <DependentUpon>ListarProyectos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListarProyectos.aspx.designer.cs">
+      <DependentUpon>ListarProyectos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="MostrarConvocatoria.aspx.cs">
