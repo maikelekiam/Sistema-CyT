@@ -106,6 +106,62 @@ namespace CapaDominio
 			}
 		}
 		
+		public IQueryable<Proyecto> Proyectos 
+		{
+			get
+			{
+				return this.GetAll<Proyecto>();
+			}
+		}
+		
+		public IQueryable<Persona> Personas 
+		{
+			get
+			{
+				return this.GetAll<Persona>();
+			}
+		}
+		
+		public IQueryable<Localidad> Localidads 
+		{
+			get
+			{
+				return this.GetAll<Localidad>();
+			}
+		}
+		
+		public IQueryable<Etapa> Etapas 
+		{
+			get
+			{
+				return this.GetAll<Etapa>();
+			}
+		}
+		
+		public IQueryable<Empresa> Empresas 
+		{
+			get
+			{
+				return this.GetAll<Empresa>();
+			}
+		}
+		
+		public IQueryable<Auditorium> Auditoria 
+		{
+			get
+			{
+				return this.GetAll<Auditorium>();
+			}
+		}
+		
+		public IQueryable<Actuacion> Actuacions 
+		{
+			get
+			{
+				return this.GetAll<Actuacion>();
+			}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -152,6 +208,34 @@ namespace CapaDominio
 			get;
 		}
 		IQueryable<Convocatorium> Convocatoria
+		{
+			get;
+		}
+		IQueryable<Proyecto> Proyectos
+		{
+			get;
+		}
+		IQueryable<Persona> Personas
+		{
+			get;
+		}
+		IQueryable<Localidad> Localidads
+		{
+			get;
+		}
+		IQueryable<Etapa> Etapas
+		{
+			get;
+		}
+		IQueryable<Empresa> Empresas
+		{
+			get;
+		}
+		IQueryable<Auditorium> Auditoria
+		{
+			get;
+		}
+		IQueryable<Actuacion> Actuacions
 		{
 			get;
 		}
