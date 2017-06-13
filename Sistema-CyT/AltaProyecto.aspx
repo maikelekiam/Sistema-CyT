@@ -14,6 +14,7 @@
                     <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="1"></asp:TextBox>
                 </div>
             </div>
+            <!--EXPEDIENTE-->
             <div class="form-group">
                 <asp:Label ID="lblNumeroExp" runat="server" Text="EXPEDIENTE" CssClass="col-md-2 control-label"> </asp:Label>
                 <div class="col-md-8">
@@ -29,11 +30,79 @@
                         BackColor="WhiteSmoke"
                         ForeColor="#000066"
                         CssClass="selectpicker form-control show-tick"
-                        data-live-search="true"
                         DataTextField="nombre"
                         AutoPostBack="False"
                         AppendDataBoundItems="true">
                         <asp:ListItem Value="-1">&lt;Seleccione una Convocatoria&gt;</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+            </div>
+            <!--MONTO SOLICITADO-->
+            <div class="form-group">
+                <asp:Label ID="lblMontoSolicitado" runat="server" Text="MONTO SOLICITADO" CssClass="col-md-2 control-label"> </asp:Label>
+                <div class="col-md-4">
+                    <asp:TextBox ID="txtMontoSolicitado" runat="server" CssClass="form-control"></asp:TextBox>
+                </div>
+            </div>
+            <!--MONTO CONTRAPARTE-->
+            <div class="form-group">
+                <asp:Label ID="lblMontoContraparte" runat="server" Text="MONTO CONTRAPARTE" CssClass="col-md-2 control-label"> </asp:Label>
+                <div class="col-md-4">
+                    <asp:TextBox ID="txtMontoContraparte" runat="server" CssClass="form-control"></asp:TextBox>
+                </div>
+            </div>
+            <!--MONTO TOTAL-->
+            <div class="form-group">
+                <asp:Label ID="lblMontoTotal" runat="server" Text="MONTO TOTAL" CssClass="col-md-2 control-label"> </asp:Label>
+                <div class="col-md-4">
+                    <asp:TextBox ID="txtMontoTotal" runat="server" CssClass="form-control"></asp:TextBox>
+                </div>
+            </div>
+            <!--CONTACTO-->
+            <div class="form-group">
+                <asp:Label ID="lblContacto" runat="server" Text="CONTACTO" CssClass="col-md-2 control-label"></asp:Label>
+                <div class="col-md-4 ">
+                    <asp:DropDownList ID="ddlContacto" runat="server"
+                        Width="400"
+                        BackColor="WhiteSmoke"
+                        ForeColor="#000066"
+                        CssClass="selectpicker form-control show-tick"
+                        DataTextField="nombre"
+                        AutoPostBack="False"
+                        AppendDataBoundItems="true">
+                        <asp:ListItem Value="-1">&lt;Seleccione Persona&gt;</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+            </div>
+            <!--EMPRESA-->
+            <div class="form-group">
+                <asp:Label ID="lblEmpresa" runat="server" Text="EMPRESA" CssClass="col-md-2 control-label"></asp:Label>
+                <div class="col-md-4 ">
+                    <asp:DropDownList ID="ddlEmpresa" runat="server"
+                        Width="400"
+                        BackColor="WhiteSmoke"
+                        ForeColor="#000066"
+                        CssClass="selectpicker form-control show-tick"
+                        DataTextField="nombre"
+                        AutoPostBack="False"
+                        AppendDataBoundItems="true">
+                        <asp:ListItem Value="-1">&lt;Seleccione Empresa&gt;</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+            </div>
+            <!--LOCALIDAD-->
+            <div class="form-group">
+                <asp:Label ID="lblLocalidad" runat="server" Text="LOCALIDAD" CssClass="col-md-2 control-label"></asp:Label>
+                <div class="col-md-4 ">
+                    <asp:DropDownList ID="ddlLocalidad" runat="server"
+                        Width="400"
+                        BackColor="WhiteSmoke"
+                        ForeColor="#000066"
+                        CssClass="selectpicker form-control show-tick"
+                        DataTextField="nombre"
+                        AutoPostBack="False"
+                        AppendDataBoundItems="true">
+                        <asp:ListItem Value="-1">&lt;Seleccione Localidad&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
             </div>

@@ -160,6 +160,7 @@
                                     <asp:TextBox ID="txtPlazoEjecucionModal" runat="server" CssClass="form-control" placeholder="meses"></asp:TextBox>
                                 </div>
                             </div>
+                            <!--MONTO MAXIMO POR PROYECTO-->
                             <div class="form-group">
                                 <asp:Label ID="lblMontoMaximoProyectoModal" runat="server" Text="MONTO MAXIMO POR PROYECTO" CssClass="col-md-4 control-label"> </asp:Label>
                                 <div class="col-md-8">

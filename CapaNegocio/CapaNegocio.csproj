@@ -45,10 +45,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConvocatoriaNego.cs" />
+    <Compile Include="EmpresaNego.cs" />
     <Compile Include="FondoNego.cs" />
     <Compile Include="ListaConvocatoriaModalidadNego.cs" />
+    <Compile Include="LocalidadNego.cs" />
     <Compile Include="ModalidadNego.cs" />
     <Compile Include="OrigenNego.cs" />
+    <Compile Include="PersonaNego.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TipoConvocatoriaNego.cs" />
     <Compile Include="TipoFinanciamientoNego.cs" />
