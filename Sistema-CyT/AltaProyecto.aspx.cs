@@ -14,14 +14,24 @@ namespace Sistema_CyT
         LocalidadNego localidadNego = new LocalidadNego();
         PersonaNego personaNego = new PersonaNego();
         EmpresaNego empresaNego = new EmpresaNego();
+        ConvocatoriaNego convocatoriaNego = new ConvocatoriaNego();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack) return;
 
             MostrarLocalidad(); //SIRVE PARA EL DROP DOWN LIST
             MostrarPersona(); //SIRVE PARA EL DROP DOWN LIST
-            MostrarEmpresas(); // SIRVE PARA EL DROP DOWN LIST
+            MostrarEmpresa(); // SIRVE PARA EL DROP DOWN LIST
+            MostrarConvocatoria(); // SIRVE PARA EL DROP DOWN LIST
+        }
 
+        //Muestra en el DROPDOWNLIST las LOCALIDADES
+        private void MostrarConvocatoria()
+        {
+            ddlConvocatoria.DataSource = convocatoriaNego.MostrarConvocatorias().ToList();
+            ddlConvocatoria.DataValueField = "IdConvocatoria";
+            ddlConvocatoria.DataBind();
         }
 
         //Muestra en el DROPDOWNLIST las LOCALIDADES
@@ -33,7 +43,7 @@ namespace Sistema_CyT
         }
 
         //Muestra en el DROPDOWNLIST las EMPRESAS
-        private void MostrarEmpresas()
+        private void MostrarEmpresa()
         {
             ddlEmpresa.DataSource = empresaNego.MostrarEmpresas().ToList();
             ddlEmpresa.DataValueField = "IdEmpresa";
@@ -54,5 +64,18 @@ namespace Sistema_CyT
         {
 
         }
+
+        protected void btnModalEtapaGuardar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
+
+
+
+
     }
 }
