@@ -32,6 +32,8 @@ namespace Sistema_CyT
 
             txtFechaInicioModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
             txtFechaFinalModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
+
+            listaEtapasTemporal.Clear();
         }
 
         //Muestra en el DROPDOWNLIST las LOCALIDADES
@@ -87,9 +89,12 @@ namespace Sistema_CyT
             item.FechaFin = Convert.ToDateTime(txtFechaFinalModal.Text);
             item.Duracion = Int32.Parse(txtDuracionModal.Text);
 
-            //etapaNego.GuardarEtapa(item);
-
             listaEtapasTemporal.Add(item);
+
+            txtNombreModal.Text = null;
+            txtDuracionModal.Text = null;
+            txtFechaInicioModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
+            txtFechaFinalModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
 
             LlenarGrillaEtapas();
         }

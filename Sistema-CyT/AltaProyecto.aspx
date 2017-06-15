@@ -198,13 +198,16 @@
 
             <!--LISTA DE ETAPAS CARGADAS-->
             <div class="form-group">
-                <div class="col-md-12">
-                    <asp:GridView ID="dgvEtapas" runat="server" AutoGenerateColumns="true"
-                        DataKeyNames="idEtapa"
-                        CssClass="table table-hover" BorderWidth="2px" EmptyDataText="No existen etapas cargadas" ShowHeaderWhenEmpty="true">
+                <br />
+                <div class="col-md-9 col-md-offset-1">
+                    <asp:GridView ID="dgvEtapas" runat="server" AutoGenerateColumns="false"
+                        DataKeyNames="idEtapa" GridLines="Both"
+                        CssClass="table table-hover table-striped" BorderWidth="2px" EmptyDataText="No existen etapas cargadas" ShowHeaderWhenEmpty="true">
                         <Columns>
-                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Center" />
-                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Duracion" DataField="duracion" ItemStyle-HorizontalAlign="Left" />
+                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="200"/>
+                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Duracion" DataField="duracion" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="200"/>
+                            <asp:BoundField HeaderText="Inicio" DataFormatString="{0:dd-MMMM-yyyy}" DataField="fechaInicio" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="250" />
+                            <asp:BoundField HeaderText="Fin" DataFormatString="{0:dd-MMMM-yyyy}" DataField="fechaFin" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="250" />
                         </Columns>
                     </asp:GridView>
                 </div>
