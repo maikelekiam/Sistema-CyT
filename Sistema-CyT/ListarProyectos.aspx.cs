@@ -53,10 +53,5 @@ namespace Sistema_CyT
         {
             //Response.Redirect("MostrarFondo.aspx");
         }
-
-        protected void dgvProyectos_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
-        {
-
-        }
     }
 }

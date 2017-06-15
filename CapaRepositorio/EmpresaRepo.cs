@@ -17,5 +17,37 @@ namespace CapaRepositorio
                 return result;
             }
         }
+        public string TraerEmpresa(int id)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                Empresa result = modeloDeDominio.Empresas.Where(c => c.IdEmpresa == id).FirstOrDefault();
+
+                modeloDeDominio.CreateDetachedCopy(result);
+
+                return result.Nombre;
+            }
+        }
+        public int GuardarEmpresa(Empresa empresa)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                modeloDeDominio.Add(empresa);
+                modeloDeDominio.SaveChanges();
+                return empresa.IdEmpresa;
+            }
+        }
+        public int TraerEmpresaIdSegunItem(string item)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                Empresa result = modeloDeDominio.Empresas.Where(c => c.Nombre == item).FirstOrDefault();
+
+                modeloDeDominio.CreateDetachedCopy(result);
+
+                return result.IdEmpresa;
+            }
+        }
+
     }
 }

@@ -209,9 +209,9 @@ namespace Sistema_CyT
             }
 
             //AHORA TENGO QUE TRAER UNA LISTA DE MODALIDADES SEGUN EL IdConvocatoriaActual
-            lista = listaConvocatoriaModalidadNego.TraerModalidadSegunConvocatoria(id);
-            dgvCM.DataSource = listaConvocatoriaModalidadNego.TraerModalidadSegunConvocatoria(id);
-            dgvCM.DataBind();
+            //lista = listaConvocatoriaModalidadNego.TraerModalidadSegunConvocatoria(id);
+            //dgvCM.DataSource = listaConvocatoriaModalidadNego.TraerModalidadSegunConvocatoria(id);
+            //dgvCM.DataBind();
             //DESPUES QUITAR ESTO DE ARRIBA
 
             foreach (ListaConvocatoriaModalidad lcm in lista)

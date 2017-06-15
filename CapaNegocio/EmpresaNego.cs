@@ -16,5 +16,17 @@ namespace CapaNegocio
         {
             return empresaRepo.MostrarEmpresas();
         }
+        public string TraerEmpresa(int id)
+        {
+            return empresaRepo.TraerEmpresa(id);
+        }
+        public int GuardarEmpresa(Empresa empresa)
+        {
+            return empresaRepo.GuardarEmpresa(empresa);
+        }
+        public int TraerEmpresaIdSegunItem(string item)
+        {
+            return empresaRepo.TraerEmpresaIdSegunItem(item);
+        }
     }
 }

@@ -18,6 +18,7 @@ namespace Sistema_CyT
         EtapaNego etapaNego = new EtapaNego();
         ProyectoNego proyectoNego = new ProyectoNego();
         static int idProyectoActual;
+        static int idEmpresaActual = 0;
 
         static List<Etapa> listaEtapasTemporal = new List<Etapa>();
 
@@ -56,7 +57,7 @@ namespace Sistema_CyT
         private void MostrarEmpresa()
         {
             ddlEmpresa.DataSource = empresaNego.MostrarEmpresas().ToList();
-            ddlEmpresa.DataValueField = "IdEmpresa";
+            ddlEmpresa.DataValueField = "nombre";
             ddlEmpresa.DataBind();
         }
 
@@ -118,7 +119,7 @@ namespace Sistema_CyT
             proyecto.MontoContraparte = Int32.Parse(txtMontoContraparte.Text);
             proyecto.MontoTotal = Int32.Parse(txtMontoTotal.Text);
             proyecto.IdPersona = Int32.Parse(ddlContacto.SelectedValue);
-            proyecto.IdEmpresa = Int32.Parse(ddlEmpresa.SelectedValue);
+            proyecto.IdEmpresa = empresaNego.TraerEmpresaIdSegunItem(ddlEmpresa.SelectedItem.ToString());
             proyecto.IdLocalidad = Int32.Parse(ddlLocalidad.SelectedValue);
 
             int idProyecto = proyectoNego.GuardarProyecto(proyecto);
@@ -143,7 +144,23 @@ namespace Sistema_CyT
 
         }
 
+        protected void btnModalEmpresaGuardar_Click(object sender, EventArgs e)
+        {
+            Empresa empresa= new Empresa();
 
+            empresa.Nombre = txtEmpresaModal.Text;
+
+            idEmpresaActual = empresaNego.GuardarEmpresa(empresa);
+
+            ddlEmpresa.Items.Clear();
+            ddlEmpresa.Text = TraerEmpresa(idEmpresaActual);
+            MostrarEmpresa();
+        }
+
+        private string TraerEmpresa(int id)
+        {
+            return empresaNego.TraerEmpresa(id);
+        }
 
 
 

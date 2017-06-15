@@ -242,18 +242,8 @@
             </div>
         </div>
 
-
-
-
-
-
-
-
-
-
-
         <!--LISTA DE MODALIDADES PARA LA CONVOCATORIA ACTUAL-->
-        <div class="panel-heading">
+<%--        <div class="panel-heading">
             <h3>MODALIDADES PARA LA CONVOCATORIA ACTUAL</h3>
         </div>
         <div class="form-group">
@@ -263,7 +253,7 @@
                     CssClass="table table-hover" BorderWidth="2px" EmptyDataText="No existen modalidades cargadas" ShowHeaderWhenEmpty="true">
                 </asp:GridView>
             </div>
-        </div>
+        </div>--%>
     </div>
 </asp:Content>
 
