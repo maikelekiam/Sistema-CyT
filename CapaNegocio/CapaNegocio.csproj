@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="ConvocatoriaNego.cs" />
     <Compile Include="EmpresaNego.cs" />
+    <Compile Include="EtapaNego.cs" />
     <Compile Include="FondoNego.cs" />
     <Compile Include="ListaConvocatoriaModalidadNego.cs" />
     <Compile Include="LocalidadNego.cs" />

@@ -15,6 +15,9 @@ namespace Sistema_CyT
         PersonaNego personaNego = new PersonaNego();
         EmpresaNego empresaNego = new EmpresaNego();
         ConvocatoriaNego convocatoriaNego = new ConvocatoriaNego();
+        EtapaNego etapaNego = new EtapaNego();
+
+        static List<Etapa> listaEtapas = new List<Etapa>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -62,15 +65,46 @@ namespace Sistema_CyT
 
         protected void btnGuardarProyecto_Click(object sender, EventArgs e)
         {
-
+            GuardarProyecto();
         }
 
         protected void btnModalEtapaGuardar_Click(object sender, EventArgs e)
         {
-
+            ModalEtapaGuardar();
         }
 
+        private void ModalEtapaGuardar()
+        {
+            Etapa item = new Etapa();
 
+            item.Nombre = txtNombreModal.Text;
+            item.FechaInicio = Convert.ToDateTime(txtFechaInicioModal.Text);
+            item.FechaFin = Convert.ToDateTime(txtFechaFinalModal.Text);
+            item.Duracion = Int32.Parse(txtDuracionModal.Text);
+
+            etapaNego.GuardarEtapa(item);
+
+            listaEtapas.Add(item);
+
+            LlenarGrillaModalidades();
+        }
+
+        private void LlenarGrillaModalidades()
+        {
+            dgvEtapas.DataSource = listaEtapas;
+            dgvEtapas.DataBind();
+        }
+        
+        private void GuardarProyecto()
+        {
+            Proyecto proyecto = new Proyecto();
+
+            proyecto.Nombre = txtNombre.Text;
+            proyecto.NumeroExpediente = txtNumeroExp.Text;
+
+
+
+        }
 
 
 

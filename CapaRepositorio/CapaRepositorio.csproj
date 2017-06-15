@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="ConvocatoriaRepo.cs" />
     <Compile Include="EmpresaRepo.cs" />
+    <Compile Include="EtapaRepo.cs" />
     <Compile Include="FondoRepo.cs" />
     <Compile Include="ListaConvocatoriaModalidadRepo.cs" />
     <Compile Include="LocalidadRepo.cs" />
