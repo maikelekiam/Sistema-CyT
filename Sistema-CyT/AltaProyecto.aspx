@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
-        <asp:Panel ID="PanelSuperior" runat="server">
+        <asp:Panel ID="PanelSuperior" CssClass="panel panel-success" runat="server">
             <div class="panel-heading">
                 <h3>Formulario de ALTA Proyecto</h3>
             </div>
@@ -106,16 +106,6 @@
                     </asp:DropDownList>
                 </div>
             </div>
-
-
-            <!--BOTON GUARDAR PROYECTO  -->
-            <div class="form-group">
-                <div class="col-md-2 col-md-offset-2">
-                    <br />
-                    <asp:Button ID="btnGuardarProyecto" runat="server" Text="Guardar Proyecto" CssClass="btn btn-success form-control" OnClick="btnGuardarProyecto_Click" />
-                </div>
-            </div>
-
             <asp:Panel ID="PanelMostrarEtapas" CssClass="panel" runat="server">
                 <div class="form-group">
                     <asp:Label ID="lblEtapa" runat="server" Text="ETAPAS" CssClass="col-md-2 control-label"> </asp:Label>
@@ -124,6 +114,29 @@
                     </div>
                 </div>
             </asp:Panel>
+            <!--LISTA DE ETAPAS CARGADAS-->
+            <div class="form-group">
+                <div class="col-md-9 col-md-offset-1">
+                    <asp:GridView ID="dgvEtapas" runat="server" AutoGenerateColumns="false"
+                        DataKeyNames="idEtapa" GridLines="Both"
+                        CssClass="table table-hover table-striped" BorderWidth="2px" EmptyDataText="No existen etapas cargadas" ShowHeaderWhenEmpty="true">
+                        <Columns>
+                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="200" />
+                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Duracion" DataField="duracion" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="200" />
+                            <asp:BoundField HeaderText="Inicio" DataFormatString="{0:dd-MMMM-yyyy}" DataField="fechaInicio" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="250" />
+                            <asp:BoundField HeaderText="Fin" DataFormatString="{0:dd-MMMM-yyyy}" DataField="fechaFin" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="250" />
+                        </Columns>
+                    </asp:GridView>
+                </div>
+            </div>
+            <!--BOTON GUARDAR PROYECTO  -->
+            <div class="form-group">
+                <div class="col-md-2 col-md-offset-2">
+                    <asp:Button ID="btnGuardarProyecto" runat="server" Text="Guardar Proyecto" CssClass="btn btn-success form-control" OnClick="btnGuardarProyecto_Click" />
+                </div>
+            </div>
+
+            
             <!-- MODAL AGREGAR ETAPA NUEVA -->
             <div class="modal fade" id="modalEtapa" tabindex="-1" role="dialog" aria-labelledby="modalLabelEtapa" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
@@ -196,22 +209,7 @@
                 </div>
             </div>
 
-            <!--LISTA DE ETAPAS CARGADAS-->
-            <div class="form-group">
-                <br />
-                <div class="col-md-9 col-md-offset-1">
-                    <asp:GridView ID="dgvEtapas" runat="server" AutoGenerateColumns="false"
-                        DataKeyNames="idEtapa" GridLines="Both"
-                        CssClass="table table-hover table-striped" BorderWidth="2px" EmptyDataText="No existen etapas cargadas" ShowHeaderWhenEmpty="true">
-                        <Columns>
-                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="200"/>
-                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Duracion" DataField="duracion" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="200"/>
-                            <asp:BoundField HeaderText="Inicio" DataFormatString="{0:dd-MMMM-yyyy}" DataField="fechaInicio" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="250" />
-                            <asp:BoundField HeaderText="Fin" DataFormatString="{0:dd-MMMM-yyyy}" DataField="fechaFin" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="250" />
-                        </Columns>
-                    </asp:GridView>
-                </div>
-            </div>
+
 
 
 
