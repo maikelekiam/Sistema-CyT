@@ -73,6 +73,8 @@ namespace Sistema_CyT
         protected void btnGuardarProyecto_Click(object sender, EventArgs e)
         {
             GuardarProyecto();
+
+            Response.Redirect("ListarProyectos.aspx");
         }
 
         protected void btnModalEtapaGuardar_Click(object sender, EventArgs e)

@@ -73,6 +73,8 @@ namespace Sistema_CyT
 
             GuardarConvocatoria();
             LimpiarFormulario();
+
+            Response.Redirect("ListarConvocatorias.aspx");
             
         }
 
