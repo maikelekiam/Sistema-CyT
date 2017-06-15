@@ -199,7 +199,7 @@
             <!--LISTA DE ETAPAS CARGADAS-->
             <div class="form-group">
                 <div class="col-md-12">
-                    <asp:GridView ID="dgvEtapas" runat="server" AutoGenerateColumns="false"
+                    <asp:GridView ID="dgvEtapas" runat="server" AutoGenerateColumns="true"
                         DataKeyNames="idEtapa"
                         CssClass="table table-hover" BorderWidth="2px" EmptyDataText="No existen etapas cargadas" ShowHeaderWhenEmpty="true">
                         <Columns>

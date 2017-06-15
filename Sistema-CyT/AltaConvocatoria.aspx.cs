@@ -6,7 +6,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using CapaDominio;
 using CapaNegocio;
-using System.Windows.Forms;
 
 namespace Sistema_CyT
 {

@@ -16,8 +16,10 @@ namespace Sistema_CyT
         EmpresaNego empresaNego = new EmpresaNego();
         ConvocatoriaNego convocatoriaNego = new ConvocatoriaNego();
         EtapaNego etapaNego = new EtapaNego();
+        ProyectoNego proyectoNego = new ProyectoNego();
+        static int idProyectoActual;
 
-        static List<Etapa> listaEtapas = new List<Etapa>();
+        static List<Etapa> listaEtapasTemporal = new List<Etapa>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,6 +29,9 @@ namespace Sistema_CyT
             MostrarPersona(); //SIRVE PARA EL DROP DOWN LIST
             MostrarEmpresa(); // SIRVE PARA EL DROP DOWN LIST
             MostrarConvocatoria(); // SIRVE PARA EL DROP DOWN LIST
+
+            txtFechaInicioModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
+            txtFechaFinalModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
         }
 
         //Muestra en el DROPDOWNLIST las LOCALIDADES
@@ -82,25 +87,50 @@ namespace Sistema_CyT
             item.FechaFin = Convert.ToDateTime(txtFechaFinalModal.Text);
             item.Duracion = Int32.Parse(txtDuracionModal.Text);
 
-            etapaNego.GuardarEtapa(item);
+            //etapaNego.GuardarEtapa(item);
 
-            listaEtapas.Add(item);
+            listaEtapasTemporal.Add(item);
 
-            LlenarGrillaModalidades();
+            LlenarGrillaEtapas();
         }
 
-        private void LlenarGrillaModalidades()
+        private void LlenarGrillaEtapas()
         {
-            dgvEtapas.DataSource = listaEtapas;
+            dgvEtapas.DataSource = listaEtapasTemporal;
             dgvEtapas.DataBind();
         }
-        
+
         private void GuardarProyecto()
         {
             Proyecto proyecto = new Proyecto();
 
             proyecto.Nombre = txtNombre.Text;
             proyecto.NumeroExpediente = txtNumeroExp.Text;
+            proyecto.IdConvocatoria = Int32.Parse(ddlConvocatoria.SelectedValue);
+            proyecto.MontoSolicitado = Int32.Parse(txtMontoSolicitado.Text);
+            proyecto.MontoContraparte = Int32.Parse(txtMontoContraparte.Text);
+            proyecto.MontoTotal = Int32.Parse(txtMontoTotal.Text);
+            proyecto.IdPersona = Int32.Parse(ddlContacto.SelectedValue);
+            proyecto.IdEmpresa = Int32.Parse(ddlEmpresa.SelectedValue);
+            proyecto.IdLocalidad = Int32.Parse(ddlLocalidad.SelectedValue);
+
+            int idProyecto = proyectoNego.GuardarProyecto(proyecto);
+
+            //DESPUES GUARDO LA LISTA DE ETAPAS DEL PROYECTO ACTUAL
+            idProyectoActual = idProyecto;
+
+            foreach (Etapa item in listaEtapasTemporal)
+            {
+                Etapa etapa = new Etapa();
+
+                etapa.IdProyecto = idProyectoActual;
+                etapa.Nombre = item.Nombre.ToString();
+                etapa.FechaInicio = Convert.ToDateTime(item.FechaInicio.ToString());
+                etapa.FechaFin = Convert.ToDateTime(item.FechaFin.ToString());
+                etapa.Duracion = Int32.Parse(item.Duracion.ToString());
+
+                etapaNego.GuardarEtapa(etapa);
+            }
 
 
 
