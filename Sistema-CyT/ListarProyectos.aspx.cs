@@ -25,10 +25,10 @@ namespace Sistema_CyT
 
         private void MostrarListaProyectos()
         {
-            dgvProyectos.Columns[0].Visible = true;
-            dgvProyectos.Columns[1].Visible = true;
-            dgvProyectos.Columns[2].Visible = true;
-            dgvProyectos.Columns[3].Visible = true;
+            //dgvProyectos.Columns[0].Visible = true;
+            //dgvProyectos.Columns[1].Visible = true;
+            //dgvProyectos.Columns[2].Visible = true;
+            //dgvProyectos.Columns[3].Visible = true;
             //dgvProyectos.Columns[4].Visible = true;
 
             dgvProyectos.DataSource = proyectoNego.MostrarProyectos().ToList();
