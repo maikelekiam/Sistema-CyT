@@ -224,6 +224,9 @@
         <orm:field name="listaConvocatoriaModalidads" property="ListaConvocatoriaModalidads" behavior="readwrite" uniqueId="39e46c13-c352-486e-994f-846d56d24983" type="CapaDominio.ListaConvocatoriaModalidad">
           <orm:collection element-class="CapaDominio.ListaConvocatoriaModalidad" inverse-field="convocatorium" order-by="" uniqueId="ff9cd213-fd63-48ed-93c6-3f7fd6b98649" />
         </orm:field>
+        <orm:field name="proyectos" property="Proyectos" behavior="readwrite" uniqueId="e1a8ffbe-7be6-4d0c-b0d7-17af21b3ae5c" type="CapaDominio.Proyecto">
+          <orm:collection element-class="CapaDominio.Proyecto" inverse-field="convocatorium" order-by="" uniqueId="b28211c6-7505-4eba-90e4-9aaf9dcecc69" />
+        </orm:field>
       </orm:class>
       <orm:class name="Proyecto" uniqueId="3600afee-5598-42c7-8ace-e0ab3c04d9af">
         <orm:table name="Proyecto" />
@@ -290,6 +293,12 @@
         </orm:field>
         <orm:field name="actuacions" property="Actuacions" behavior="readwrite" uniqueId="15f7d9b7-b609-44c1-b077-1c7c19e0510f" type="CapaDominio.Actuacion">
           <orm:collection element-class="CapaDominio.Actuacion" inverse-field="proyecto" order-by="" uniqueId="6a59f8e0-7083-4db1-a474-fe8bbffc5e11" />
+        </orm:field>
+        <orm:field name="convocatorium" property="Convocatorium" behavior="readwrite" uniqueId="d374c7aa-ba32-46cb-b023-da0f66215541" type="CapaDominio.Convocatorium">
+          <orm:reference uniqueId="b28211c6-7505-4eba-90e4-9aaf9dcecc69" association-name="ProyectoHasConvocatorium">
+            <orm:sharedfield name="idConvocatoria" target-class="CapaDominio.Convocatorium" target-field="idConvocatoria" />
+            <orm:constraint name="FK_Proyecto_Convocatoria" delete-action="dbdefaultrule" destination-table="Convocatoria" />
+          </orm:reference>
         </orm:field>
       </orm:class>
       <orm:class name="Persona" uniqueId="09aa65c0-8782-4ae3-84b5-42cb426036fb">
@@ -552,6 +561,9 @@
         </orm:constraint>
         <orm:constraint name="FK_Proyecto_Empresa" delete-action="dbdefaultrule" destination-table="Empresa">
           <orm:column name="idEmpresa" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+        <orm:constraint name="FK_Proyecto_Convocatoria" delete-action="dbdefaultrule" destination-table="Convocatoria">
+          <orm:column name="idConvocatoria" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
         </orm:constraint>
       </orm:table>
       <orm:table name="Persona">
@@ -824,6 +836,9 @@
         <classHasNavigationalProperties Id="27a99fd3-53be-42cc-aac0-d2db306db31c">
           <NavigationalProperty Id="7cb3a328-7331-4b29-8537-4579a9aff829" name="TipoFinanciamiento" type="TipoFinanciamiento" label="TipoFinanciamiento : TipoFinanciamiento" nullable="true" kind="Persistent" fieldName="tipoFinanciamiento" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="1d79a557-52bd-4dab-9cba-c5eb94efe51f">
+          <NavigationalProperty Id="e1a8ffbe-7be6-4d0c-b0d7-17af21b3ae5c" name="Proyectos" type="IList&lt;Proyecto&gt;" label="Proyectos : IList&lt;Proyecto&gt;" nullable="true" kind="Persistent" fieldName="proyectos" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="3600afee-5598-42c7-8ace-e0ab3c04d9af" name="Proyecto" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdProyecto">
@@ -877,6 +892,19 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
+        <Association Id="b28211c6-7505-4eba-90e4-9aaf9dcecc69" SourceMultiplicity="One" name="ProyectoHasConvocatorium">
+          <DomainClassMoniker name="/ModeloDeDominio/Convocatorium" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="08ad3af4-4133-4e45-b7e3-671b33460dd3">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Convocatorium/Proyectos" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="442f7ef7-d493-418d-a138-80f422a662af">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Proyecto/Convocatorium" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
       </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="3e9beb79-dd63-4f00-a328-0b21e0ba6102">
@@ -896,6 +924,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="b4df7798-6950-447e-ab7a-1a8a8a7f693a">
           <NavigationalProperty Id="15f7d9b7-b609-44c1-b077-1c7c19e0510f" name="Actuacions" type="IList&lt;Actuacion&gt;" label="Actuacions : IList&lt;Actuacion&gt;" nullable="true" kind="Persistent" fieldName="actuacions" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="843915f7-1714-4418-84e6-85940c11e957">
+          <NavigationalProperty Id="d374c7aa-ba32-46cb-b023-da0f66215541" name="Convocatorium" type="Convocatorium" label="Convocatorium : Convocatorium" nullable="true" kind="Persistent" fieldName="convocatorium" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>

@@ -193,6 +193,19 @@ namespace CapaDominio
 			}
 		}
 		
+		private Convocatorium convocatorium;
+		public virtual Convocatorium Convocatorium
+		{
+			get
+			{
+				return this.convocatorium;
+			}
+			set
+			{
+				this.convocatorium = value;
+			}
+		}
+		
 		private IList<Etapa> etapas = new List<Etapa>();
 		public virtual IList<Etapa> Etapas
 		{
