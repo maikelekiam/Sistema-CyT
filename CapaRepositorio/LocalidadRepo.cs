@@ -17,5 +17,36 @@ namespace CapaRepositorio
                 return modeloDeDominio.CreateDetachedCopy(result);
             }
         }
+        public string TraerLocalidad(int id)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                Localidad result = modeloDeDominio.Localidads.Where(c => c.IdLocalidad == id).FirstOrDefault();
+
+                modeloDeDominio.CreateDetachedCopy(result);
+
+                return result.Nombre;
+            }
+        }
+        public int GuardarLocalidad(Localidad localidad)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                modeloDeDominio.Add(localidad);
+                modeloDeDominio.SaveChanges();
+                return localidad.IdLocalidad;
+            }
+        }
+        public int TraerLocalidadIdSegunItem(string item)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                Localidad result = modeloDeDominio.Localidads.Where(c => c.Nombre == item).FirstOrDefault();
+
+                modeloDeDominio.CreateDetachedCopy(result);
+
+                return result.IdLocalidad;
+            }
+        }
     }
 }

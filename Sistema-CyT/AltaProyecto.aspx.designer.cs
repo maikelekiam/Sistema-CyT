@@ -211,6 +211,33 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.DropDownList ddlLocalidad;
         
         /// <summary>
+        /// txtLocalidadModal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtLocalidadModal;
+        
+        /// <summary>
+        /// btnModalLocalidadSalir control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnModalLocalidadSalir;
+        
+        /// <summary>
+        /// btnModalLocalidadGuardar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnModalLocalidadGuardar;
+        
+        /// <summary>
         /// PanelMostrarEtapas control.
         /// </summary>
         /// <remarks>

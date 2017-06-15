@@ -90,13 +90,12 @@
                     </asp:DropDownList>
                 </div>
 
-
-                <%--AGREGAR ACA EL MODAL PARA LA NUEVA VIA DE COMUNICACION--%>
+                <%--AGREGAR ACA EL MODAL PARA LA NUEVA EMPRESA--%>
                 <div class="form-group">
                     <div class="col-md-2">
                         <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalEmpresa">Nueva Empresa</button>
                     </div>
-                    <!-- MODAL VIA DE COMUNICACION  -->
+                    <!-- MODAL EMPRESA  -->
                     <div class="modal fade" id="modalEmpresa" tabindex="-1" role="dialog" aria-labelledby="modalLabelEmpresa" aria-hidden="true">
                         <div class="modal-dialog modal-md">
                             <div class="modal-content">
@@ -127,7 +126,7 @@
             <!--LOCALIDAD-->
             <div class="form-group">
                 <asp:Label ID="lblLocalidad" runat="server" Text="LOCALIDAD" CssClass="col-md-2 control-label"></asp:Label>
-                <div class="col-md-4 ">
+                <div class="col-md-5 ">
                     <asp:DropDownList ID="ddlLocalidad" runat="server"
                         Width="400"
                         BackColor="WhiteSmoke"
@@ -139,7 +138,37 @@
                         <asp:ListItem Value="-1">&lt;Seleccione Localidad&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
+                <%--AGREGAR ACA EL MODAL PARA LA NUEVA LOCALIDAD--%>
+                <div class="form-group">
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalLocalidad">Nueva Localidad</button>
+                    </div>
+                    <!-- MODAL LOCALIDAD  -->
+                    <div class="modal fade" id="modalLocalidad" tabindex="-1" role="dialog" aria-labelledby="modalLabelLocalidad" aria-hidden="true">
+                        <div class="modal-dialog modal-md">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title" id="modalLabelLocalidad">Nueva Localidad</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="col-md-8">
+                                        <asp:TextBox ID="txtLocalidadModal" runat="server" CssClass="form-control"></asp:TextBox><br />
+                                    </div>
+                                    <br />
+                                </div>
+                                <div class="modal-footer">
+                                    <asp:Button runat="server" ID="btnModalLocalidadSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
+                                    <asp:Button runat="server" ID="btnModalLocalidadGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalLocalidadGuardar_Click" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
             <asp:Panel ID="PanelMostrarEtapas" CssClass="panel" runat="server">
                 <div class="form-group">
                     <asp:Label ID="lblEtapa" runat="server" Text="ETAPAS" CssClass="col-md-2 control-label"> </asp:Label>

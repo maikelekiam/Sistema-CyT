@@ -16,5 +16,17 @@ namespace CapaNegocio
         {
             return localidadRepo.MostrarLocalidades();
         }
+        public string TraerLocalidad(int id)
+        {
+            return localidadRepo.TraerLocalidad(id);
+        }
+        public int GuardarLocalidad(Localidad localidad)
+        {
+            return localidadRepo.GuardarLocalidad(localidad);
+        }
+        public int TraerLocalidadIdSegunItem(string item)
+        {
+            return localidadRepo.TraerLocalidadIdSegunItem(item);
+        }
     }
 }

@@ -17,8 +17,10 @@ namespace Sistema_CyT
         ConvocatoriaNego convocatoriaNego = new ConvocatoriaNego();
         EtapaNego etapaNego = new EtapaNego();
         ProyectoNego proyectoNego = new ProyectoNego();
+
         static int idProyectoActual;
         static int idEmpresaActual = 0;
+        static int idLocalidadActual = 0;
 
         static List<Etapa> listaEtapasTemporal = new List<Etapa>();
 
@@ -49,7 +51,7 @@ namespace Sistema_CyT
         private void MostrarLocalidad()
         {
             ddlLocalidad.DataSource = localidadNego.MostrarLocalidades().ToList();
-            ddlLocalidad.DataValueField = "IdLocalidad";
+            ddlLocalidad.DataValueField = "nombre";
             ddlLocalidad.DataBind();
         }
 
@@ -120,7 +122,8 @@ namespace Sistema_CyT
             proyecto.MontoTotal = Int32.Parse(txtMontoTotal.Text);
             proyecto.IdPersona = Int32.Parse(ddlContacto.SelectedValue);
             proyecto.IdEmpresa = empresaNego.TraerEmpresaIdSegunItem(ddlEmpresa.SelectedItem.ToString());
-            proyecto.IdLocalidad = Int32.Parse(ddlLocalidad.SelectedValue);
+            //proyecto.IdLocalidad = Int32.Parse(ddlLocalidad.SelectedValue);
+            proyecto.IdLocalidad = localidadNego.TraerLocalidadIdSegunItem(ddlLocalidad.SelectedItem.ToString());
 
             int idProyecto = proyectoNego.GuardarProyecto(proyecto);
 
@@ -162,8 +165,21 @@ namespace Sistema_CyT
             return empresaNego.TraerEmpresa(id);
         }
 
+        protected void btnModalLocalidadGuardar_Click(object sender, EventArgs e)
+        {
+            Localidad localidad = new Localidad();
 
+            localidad.Nombre = txtLocalidadModal.Text;
 
+            idLocalidadActual = localidadNego.GuardarLocalidad(localidad);
 
+            ddlLocalidad.Items.Clear();
+            ddlLocalidad.Text = TraerLocalidad(idLocalidadActual);
+            MostrarLocalidad();
+        }
+        private string TraerLocalidad(int id)
+        {
+            return localidadNego.TraerLocalidad(id);
+        }
     }
 }
