@@ -121,7 +121,8 @@ namespace Sistema_CyT
             proyecto.MontoSolicitado = Int32.Parse(txtMontoSolicitado.Text);
             proyecto.MontoContraparte = Int32.Parse(txtMontoContraparte.Text);
             proyecto.MontoTotal = Int32.Parse(txtMontoTotal.Text);
-            proyecto.IdPersona = Int32.Parse(ddlContacto.SelectedValue);
+            proyecto.IdPersona = personaNego.TraerPersonaIdSegunItem(txtContactoNombreModal.Text, txtContactoApellidoModal.Text);
+            //proyecto.IdPersona = Int32.Parse(ddlContacto.SelectedValue);
             proyecto.IdEmpresa = empresaNego.TraerEmpresaIdSegunItem(ddlEmpresa.SelectedItem.ToString());
             //proyecto.IdLocalidad = Int32.Parse(ddlLocalidad.SelectedValue);
             proyecto.IdLocalidad = localidadNego.TraerLocalidadIdSegunItem(ddlLocalidad.SelectedItem.ToString());
