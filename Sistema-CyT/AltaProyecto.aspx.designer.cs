@@ -148,6 +148,33 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.DropDownList ddlContacto;
         
         /// <summary>
+        /// txtContactoModal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtContactoModal;
+        
+        /// <summary>
+        /// btnModalContactoSalir control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnModalContactoSalir;
+        
+        /// <summary>
+        /// btnModalContactoGuardar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnModalContactoGuardar;
+        
+        /// <summary>
         /// lblEmpresa control.
         /// </summary>
         /// <remarks>

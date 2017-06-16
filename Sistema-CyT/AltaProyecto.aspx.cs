@@ -181,5 +181,10 @@ namespace Sistema_CyT
         {
             return localidadNego.TraerLocalidad(id);
         }
+
+        protected void btnModalContactoGuardar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

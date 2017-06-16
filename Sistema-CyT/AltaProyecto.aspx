@@ -61,7 +61,7 @@
             <!--CONTACTO-->
             <div class="form-group">
                 <asp:Label ID="lblContacto" runat="server" Text="CONTACTO" CssClass="col-md-2 control-label"></asp:Label>
-                <div class="col-md-4 ">
+                <div class="col-md-5 ">
                     <asp:DropDownList ID="ddlContacto" runat="server"
                         Width="400"
                         BackColor="WhiteSmoke"
@@ -72,6 +72,35 @@
                         AppendDataBoundItems="true">
                         <asp:ListItem Value="-1">&lt;Seleccione Persona&gt;</asp:ListItem>
                     </asp:DropDownList>
+                </div>
+                <%--AGREGAR ACA EL MODAL PARA EL NUEVO CONTACTO--%>
+                <div class="form-group">
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalContacto">Nuevo Contacto</button>
+                    </div>
+                    <!-- MODAL CONTACTO  -->
+                    <div class="modal fade" id="modalContacto" tabindex="-1" role="dialog" aria-labelledby="modalLabelContacto" aria-hidden="true">
+                        <div class="modal-dialog modal-md">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title" id="modalLabelContacto">Nuevo Contacto</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="col-md-8">
+                                        <asp:TextBox ID="txtContactoModal" runat="server" CssClass="form-control"></asp:TextBox><br />
+                                    </div>
+                                    <br />
+                                </div>
+                                <div class="modal-footer">
+                                    <asp:Button runat="server" ID="btnModalContactoSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
+                                    <asp:Button runat="server" ID="btnModalContactoGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalContactoGuardar_Click" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!--EMPRESA-->
