@@ -21,6 +21,7 @@ namespace Sistema_CyT
         static int idProyectoActual;
         static int idEmpresaActual = 0;
         static int idLocalidadActual = 0;
+        static int idPersonaActual = 0;
 
         static List<Etapa> listaEtapasTemporal = new List<Etapa>();
 
@@ -69,7 +70,7 @@ namespace Sistema_CyT
             ddlContacto.DataSource = personaNego.MostrarPersonas().ToList();
             IList<Persona> nombreCompleto = personaNego.MostrarPersonas().Select(p => new Persona() { Nombre = p.Nombre + " " + p.Apellido, IdPersona = p.IdPersona }).OrderBy(c => c.IdPersona).ToList();
             ddlContacto.DataSource = nombreCompleto;
-            ddlContacto.DataValueField = "IdPersona";
+            ddlContacto.DataValueField = "nombre";
             ddlContacto.DataBind();
         }
 
@@ -142,14 +143,11 @@ namespace Sistema_CyT
 
                 etapaNego.GuardarEtapa(etapa);
             }
-
-
-
         }
 
         protected void btnModalEmpresaGuardar_Click(object sender, EventArgs e)
         {
-            Empresa empresa= new Empresa();
+            Empresa empresa = new Empresa();
 
             empresa.Nombre = txtEmpresaModal.Text;
 
@@ -184,7 +182,22 @@ namespace Sistema_CyT
 
         protected void btnModalContactoGuardar_Click(object sender, EventArgs e)
         {
+            Persona persona = new Persona();
 
+            persona.Nombre = txtContactoNombreModal.Text;
+            persona.Apellido = txtContactoApellidoModal.Text;
+            persona.Telefono = txtContactoTelefonoModal.Text;
+            persona.CorreoElectronico = txtContactoCorreoElectronicoModal.Text;
+
+            idPersonaActual = personaNego.GuardarPersona(persona);
+
+            ddlContacto.Items.Clear();
+            ddlContacto.Text = TraerContacto(idPersonaActual);
+            MostrarPersona();
+        }
+        private string TraerContacto(int id)
+        {
+            return personaNego.TraerPersona(id);
         }
     }
 }

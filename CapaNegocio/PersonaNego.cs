@@ -16,5 +16,17 @@ namespace CapaNegocio
         {
             return personaRepo.MostrarPersonas();
         }
+        public string TraerPersona(int id)
+        {
+            return personaRepo.TraerPersona(id);
+        }
+        public int GuardarPersona(Persona persona)
+        {
+            return personaRepo.GuardarPersona(persona);
+        }
+        public int TraerPersonaIdSegunItem(string item1, string item2)
+        {
+            return personaRepo.TraerPersonaIdSegunItem(item1, item2);
+        }
     }
 }

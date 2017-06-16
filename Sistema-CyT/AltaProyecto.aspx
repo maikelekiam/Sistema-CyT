@@ -89,14 +89,36 @@
                                     <h4 class="modal-title" id="modalLabelContacto">Nuevo Contacto</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="col-md-8">
-                                        <asp:TextBox ID="txtContactoModal" runat="server" CssClass="form-control"></asp:TextBox><br />
+                                    <div class="form-group">
+                                        <asp:Label ID="lbl01" runat="server" Text="NOMBRE" CssClass="col-md-4 control-label"></asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtContactoNombreModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                        <br />
+                                        <br />
+                                        <asp:Label ID="lbl02" runat="server" Text="APELLIDO" CssClass="col-md-4 control-label"> </asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtContactoApellidoModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                        <br />
+                                        <br />
+                                        <asp:Label ID="lbl03" runat="server" Text="TELEFONO" CssClass="col-md-4 control-label"></asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtContactoTelefonoModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                        <br />
+                                        <br />
+                                        <asp:Label ID="lbl04" runat="server" Text="CORREO ELECTRONICO" CssClass="col-md-4 control-label"></asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtContactoCorreoElectronicoModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                        <br />
+                                        <br />
                                     </div>
-                                    <br />
-                                </div>
-                                <div class="modal-footer">
-                                    <asp:Button runat="server" ID="btnModalContactoSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
-                                    <asp:Button runat="server" ID="btnModalContactoGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalContactoGuardar_Click" />
+                                    <div class="modal-footer">
+                                        <asp:Button runat="server" ID="btnModalContactoSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
+                                        <asp:Button runat="server" ID="btnModalContactoGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalContactoGuardar_Click" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -293,28 +315,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <asp:Button runat="server" ID="btnModalEtapaSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
-                            <asp:Button runat="server" ID="btnModalEtapaGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalEtapaGuardar_Click" />
-                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <asp:Button runat="server" ID="btnModalEtapaSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
+                        <asp:Button runat="server" ID="btnModalEtapaGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalEtapaGuardar_Click" />
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </asp:Panel>
     </div>
 </asp:Content>

@@ -148,13 +148,76 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.DropDownList ddlContacto;
         
         /// <summary>
-        /// txtContactoModal control.
+        /// lbl01 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtContactoModal;
+        protected global::System.Web.UI.WebControls.Label lbl01;
+        
+        /// <summary>
+        /// txtContactoNombreModal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtContactoNombreModal;
+        
+        /// <summary>
+        /// lbl02 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl02;
+        
+        /// <summary>
+        /// txtContactoApellidoModal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtContactoApellidoModal;
+        
+        /// <summary>
+        /// lbl03 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl03;
+        
+        /// <summary>
+        /// txtContactoTelefonoModal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtContactoTelefonoModal;
+        
+        /// <summary>
+        /// lbl04 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl04;
+        
+        /// <summary>
+        /// txtContactoCorreoElectronicoModal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtContactoCorreoElectronicoModal;
         
         /// <summary>
         /// btnModalContactoSalir control.
