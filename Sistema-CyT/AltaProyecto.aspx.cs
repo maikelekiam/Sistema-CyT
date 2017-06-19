@@ -68,7 +68,7 @@ namespace Sistema_CyT
         private void MostrarPersona()
         {
             ddlContacto.DataSource = personaNego.MostrarPersonas().ToList();
-            IList<Persona> nombreCompleto = personaNego.MostrarPersonas().Select(p => new Persona() { Nombre = p.Nombre + " " + p.Apellido, IdPersona = p.IdPersona }).OrderBy(c => c.IdPersona).ToList();
+            IList<Persona> nombreCompleto = personaNego.MostrarPersonas().Select(p => new Persona() { Nombre = p.Nombre + "," + p.Apellido, IdPersona = p.IdPersona }).OrderBy(c => c.IdPersona).ToList();
             ddlContacto.DataSource = nombreCompleto;
             ddlContacto.DataValueField = "nombre";
             ddlContacto.DataBind();
@@ -121,7 +121,20 @@ namespace Sistema_CyT
             proyecto.MontoSolicitado = Int32.Parse(txtMontoSolicitado.Text);
             proyecto.MontoContraparte = Int32.Parse(txtMontoContraparte.Text);
             proyecto.MontoTotal = Int32.Parse(txtMontoTotal.Text);
-            proyecto.IdPersona = personaNego.TraerPersonaIdSegunItem(txtContactoNombreModal.Text, txtContactoApellidoModal.Text);
+
+
+            string cadena = ddlContacto.SelectedItem.ToString();
+            string[] separadas;
+            separadas = cadena.Split(',');
+            string item1 = separadas[0];
+            string item2 = separadas[1];
+
+
+
+            proyecto.IdPersona = personaNego.TraerPersonaIdSegunItem(item1, item2);
+
+
+
             //proyecto.IdPersona = Int32.Parse(ddlContacto.SelectedValue);
             proyecto.IdEmpresa = empresaNego.TraerEmpresaIdSegunItem(ddlEmpresa.SelectedItem.ToString());
             //proyecto.IdLocalidad = Int32.Parse(ddlLocalidad.SelectedValue);

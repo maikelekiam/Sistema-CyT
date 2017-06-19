@@ -41,21 +41,21 @@
             <div class="form-group">
                 <asp:Label ID="lblMontoSolicitado" runat="server" Text="MONTO SOLICITADO" CssClass="col-md-2 control-label"> </asp:Label>
                 <div class="col-md-4">
-                    <asp:TextBox ID="txtMontoSolicitado" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtMontoSolicitado" Text="0" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
             <!--MONTO CONTRAPARTE-->
             <div class="form-group">
                 <asp:Label ID="lblMontoContraparte" runat="server" Text="MONTO CONTRAPARTE" CssClass="col-md-2 control-label"> </asp:Label>
                 <div class="col-md-4">
-                    <asp:TextBox ID="txtMontoContraparte" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtMontoContraparte" Text="0" runat ="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
             <!--MONTO TOTAL-->
             <div class="form-group">
                 <asp:Label ID="lblMontoTotal" runat="server" Text="MONTO TOTAL" CssClass="col-md-2 control-label"> </asp:Label>
                 <div class="col-md-4">
-                    <asp:TextBox ID="txtMontoTotal" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtMontoTotal" Text="0" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
             <!--CONTACTO-->

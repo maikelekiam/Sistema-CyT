@@ -25,7 +25,7 @@ namespace CapaRepositorio
 
                 modeloDeDominio.CreateDetachedCopy(result);
 
-                return result.Nombre + " " + result.Apellido;
+                return result.Nombre + "," + result.Apellido;
             }
         }
         public int GuardarPersona(Persona persona)
@@ -42,17 +42,8 @@ namespace CapaRepositorio
             using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
             {
                 Persona result = modeloDeDominio.Personas.Where(c => ((c.Nombre == item1) && (c.Apellido == item2))).FirstOrDefault();
-
-                if (result != null)
-                {
-                    modeloDeDominio.CreateDetachedCopy(result);
-
-                    return result.IdPersona;
-                }
-                else
-                {
-                    return 1;
-                }
+                modeloDeDominio.CreateDetachedCopy(result);
+                return result.IdPersona;
             }
         }
     }
