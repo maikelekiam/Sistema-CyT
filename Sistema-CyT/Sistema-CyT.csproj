@@ -166,6 +166,7 @@
     <Content Include="EditarFondo.aspx" />
     <Content Include="EditarModalidad.aspx" />
     <Content Include="EditarProyecto.aspx" />
+    <Content Include="FiltrarProyecto.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="js\bootstrap-datepicker.js" />
     <Content Include="js\bootstrap.js" />
@@ -176,6 +177,7 @@
     <Content Include="ListarProyectos.aspx" />
     <Content Include="MostrarConvocatoria.aspx" />
     <Content Include="MostrarFondo.aspx" />
+    <Content Include="MostrarProyecto.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -307,6 +309,13 @@
     <Compile Include="EditarProyecto.aspx.designer.cs">
       <DependentUpon>EditarProyecto.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FiltrarProyecto.aspx.cs">
+      <DependentUpon>FiltrarProyecto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FiltrarProyecto.aspx.designer.cs">
+      <DependentUpon>FiltrarProyecto.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -345,6 +354,13 @@
     </Compile>
     <Compile Include="MostrarFondo.aspx.designer.cs">
       <DependentUpon>MostrarFondo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MostrarProyecto.aspx.cs">
+      <DependentUpon>MostrarProyecto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MostrarProyecto.aspx.designer.cs">
+      <DependentUpon>MostrarProyecto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">

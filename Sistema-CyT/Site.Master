@@ -31,6 +31,12 @@
                     <div class="col-md-12">
                         <div class="text-right">
                             <div class="btn-group">
+                                <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">SEGUIMIENTO <span class="caret"></span></button>
+                                <ul class="dropdown-menu">
+                                    <li><a runat="server" href="~/FiltrarProyecto.aspx"><span class="glyphicon glyphicon-plus"></span>Seguimiento</a></li>
+                                </ul>
+                            </div>
+                            <div class="btn-group">
                                 <button class="btn btn-warning dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">PROYECTOS <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
                                     <li><a runat="server" href="~/AltaProyecto.aspx"><span class="glyphicon glyphicon-plus"></span>Alta Proyecto</a></li>

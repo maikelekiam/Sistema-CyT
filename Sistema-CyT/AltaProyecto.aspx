@@ -205,10 +205,20 @@
                                     <h4 class="modal-title" id="modalLabelLocalidad">Nueva Localidad</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="col-md-8">
-                                        <asp:TextBox ID="txtLocalidadModal" runat="server" CssClass="form-control"></asp:TextBox><br />
+                                    <div class="form-group">
+                                        <asp:Label ID="Label1" runat="server" Text="NOMBRE" CssClass="col-md-4 control-label"></asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtLocalidadNombreModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                        <br />
+                                        <br />
+                                        <asp:Label ID="Label2" runat="server" Text="CODIGO POSTAL" CssClass="col-md-4 control-label"> </asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtLocalidadCodigoPostalModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                        <br />
+                                        <br />
                                     </div>
-                                    <br />
                                 </div>
                                 <div class="modal-footer">
                                     <asp:Button runat="server" ID="btnModalLocalidadSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
@@ -231,13 +241,13 @@
             <div class="form-group">
                 <div class="col-md-9 col-md-offset-1">
                     <asp:GridView ID="dgvEtapas" runat="server" AutoGenerateColumns="false"
-                        DataKeyNames="idEtapa" GridLines="Both"
-                        CssClass="table table-hover table-striped" BorderWidth="2px" EmptyDataText="No existen etapas cargadas" ShowHeaderWhenEmpty="true">
+                        DataKeyNames="idEtapa"
+                        CssClass="table table-hover" BorderWidth="2px" EmptyDataText="No existen etapas cargadas" ShowHeaderWhenEmpty="true">
                         <Columns>
                             <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="200" />
                             <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Duracion" DataField="duracion" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="200" />
-                            <asp:BoundField HeaderText="Inicio" DataFormatString="{0:dd-MMMM-yyyy}" DataField="fechaInicio" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="250" />
-                            <asp:BoundField HeaderText="Fin" DataFormatString="{0:dd-MMMM-yyyy}" DataField="fechaFin" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="250" />
+                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Inicio" DataFormatString="{0:dd-MMMM-yyyy}" DataField="fechaInicio" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="250" />
+                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Fin" DataFormatString="{0:dd-MMMM-yyyy}" DataField="fechaFin" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="250" />
                         </Columns>
                     </asp:GridView>
                 </div>

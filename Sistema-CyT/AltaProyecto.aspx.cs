@@ -168,7 +168,8 @@ namespace Sistema_CyT
         {
             Localidad localidad = new Localidad();
 
-            localidad.Nombre = txtLocalidadModal.Text;
+            localidad.Nombre = txtLocalidadNombreModal.Text;
+            localidad.CodigoPostal = txtLocalidadCodigoPostalModal.Text;
 
             idLocalidadActual = localidadNego.GuardarLocalidad(localidad);
 
@@ -193,10 +194,10 @@ namespace Sistema_CyT
             idPersonaActual = personaNego.GuardarPersona(persona);
 
             ddlContacto.Items.Clear();
-            ddlContacto.Text = TraerContacto(idPersonaActual);
+            ddlContacto.Text = TraerPersona(idPersonaActual);
             MostrarPersona();
         }
-        private string TraerContacto(int id)
+        private string TraerPersona(int id)
         {
             return personaNego.TraerPersona(id);
         }
