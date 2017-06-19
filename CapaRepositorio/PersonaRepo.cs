@@ -25,7 +25,7 @@ namespace CapaRepositorio
 
                 modeloDeDominio.CreateDetachedCopy(result);
 
-                return result.Nombre + "," + result.Apellido;
+                return result.Apellido + "," + result.Nombre;
             }
         }
         public int GuardarPersona(Persona persona)
@@ -37,11 +37,11 @@ namespace CapaRepositorio
                 return persona.IdPersona;
             }
         }
-        public int TraerPersonaIdSegunItem(string item1, string item2)
+        public int TraerPersonaIdSegunItem(string itemApellido, string itemNombre)
         {
             using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
             {
-                Persona result = modeloDeDominio.Personas.Where(c => ((c.Nombre == item1) && (c.Apellido == item2))).FirstOrDefault();
+                Persona result = modeloDeDominio.Personas.Where(c => ((c.Nombre == itemNombre) && (c.Apellido == itemApellido))).FirstOrDefault();
                 modeloDeDominio.CreateDetachedCopy(result);
                 return result.IdPersona;
             }
