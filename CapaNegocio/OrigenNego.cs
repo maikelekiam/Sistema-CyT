@@ -12,9 +12,9 @@ namespace CapaNegocio
     {
         OrigenRepo origenRepo = new OrigenRepo();
 
-        public void GuardarOrigen(Origen origen)
+        public int GuardarOrigen(Origen origen)
         {
-            origenRepo.GuardarOrigen(origen);
+            return origenRepo.GuardarOrigen(origen);
         }
 
         public IEnumerable<Origen> MostrarOrigenes()
@@ -30,6 +30,10 @@ namespace CapaNegocio
         public int TraerOrigenIdSegunItem(string item)
         {
             return origenRepo.TraerOrigenIdSegunItem(item);
+        }
+        public string TraerOrigen(int id)
+        {
+            return origenRepo.TraerOrigen(id);
         }
     }
 

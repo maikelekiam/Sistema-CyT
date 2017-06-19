@@ -13,6 +13,7 @@ namespace Sistema_CyT
     {
         private FondoNego fondoNego = new FondoNego();
         private OrigenNego origenNego = new OrigenNego();
+        public static int idOrigenActual=0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,7 +27,7 @@ namespace Sistema_CyT
         private void LlenarListaOrigenes()
         {
             ddlOrigen.DataSource = origenNego.MostrarOrigenes().ToList();
-            ddlOrigen.DataValueField = "idOrigen";
+            ddlOrigen.DataValueField = "nombre";
             ddlOrigen.DataBind();
         }
 
@@ -72,6 +73,24 @@ namespace Sistema_CyT
         private string TraerOrigenSegunIdFondo(int id)
         {
             return origenNego.TraerOrigenSegunIdFondo(id);
+        }
+
+        protected void btnModalOrigenGuardar_Click(object sender, EventArgs e)
+        {
+            Origen origen = new Origen();
+
+            origen.Nombre = txtOrigenModal.Text;
+
+            idOrigenActual = origenNego.GuardarOrigen(origen);
+
+            ddlOrigen.Items.Clear();
+            ddlOrigen.Text = TraerOrigen(idOrigenActual);
+            LlenarListaOrigenes();
+        }
+
+        private string TraerOrigen(int id)
+        {
+            return origenNego.TraerOrigen(id);
         }
     }
 }

@@ -39,6 +39,37 @@
                         AppendDataBoundItems="true">
                     </asp:DropDownList>
                 </div>
+
+                <%--AGREGAR ACA EL MODAL PARA NUEVO ORIGEN--%>
+                <div class="form-group">
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalOrigen">Nuevo Origen</button>
+                    </div>
+                    <!-- MODAL EMPRESA  -->
+                    <div class="modal fade" id="modalOrigen" tabindex="-1" role="dialog" aria-labelledby="modalLabelOrigen" aria-hidden="true">
+                        <div class="modal-dialog modal-md">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title" id="modalLabelOrigen">Nuevo Origen</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="col-md-8">
+                                        <asp:TextBox ID="txtOrigenModal" runat="server" CssClass="form-control"></asp:TextBox><br />
+                                    </div>
+                                    <br />
+                                </div>
+                                <div class="modal-footer">
+                                    <asp:Button runat="server" ID="btnModalOrigenSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
+                                    <asp:Button runat="server" ID="btnModalOrigenGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalOrigenGuardar_Click" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <!-- BOTON GUARDAR -->
