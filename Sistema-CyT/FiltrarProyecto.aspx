@@ -18,6 +18,7 @@
                         CssClass="selectpicker form-control show-tick"
                         DataTextField="nombre"
                         AutoPostBack="true"
+                        AppendDataBoundItems="true"
                         OnSelectedIndexChanged="ddlFondo_SelectedIndexChanged">
                         <asp:ListItem Value="-1">&lt;Seleccione Fondo&gt;</asp:ListItem>
                     </asp:DropDownList>
@@ -31,7 +32,8 @@
                         ForeColor="#000066"
                         Font-Bold="false"
                         CssClass="selectpicker form-control show-tick"
-                        AutoPostBack="false">
+                        AutoPostBack="true"
+                        AppendDataBoundItems="true">
                         <asp:ListItem Value="-1">&lt;Seleccione Año&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
@@ -50,7 +52,7 @@
                                     <asp:Label ID="lblConvocatoria" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Convocatorium.Nombre") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:ButtonField Text="Select" CommandName="Select" ItemStyle-Width="150" />
+                            <asp:ButtonField Text="Actuaciones" CommandName="Select" ItemStyle-Width="150" />
                         </Columns>
                     </asp:GridView>
                 </div>

@@ -23,10 +23,10 @@ namespace Sistema_CyT
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack) return;
-
-            MostrarListaProyectos();
+            
             LlenarListaFondos();
             LlenarListaAnios();
+            MostrarListaProyectos();
             //listaProyectos.Clear();
         }
         private void LlenarListaFondos()
@@ -94,8 +94,6 @@ namespace Sistema_CyT
 
             //Accessing TemplateField Column controls
             string conv = (dgvProyectos.SelectedRow.FindControl("lblConvocatoria") as Label).Text;
-
-            lblFondo.Text = "IdProyecto =" + dgvProyectos.SelectedRow.Cells[0].Text;
 
             Response.Redirect("Actuaciones.aspx");
         }
