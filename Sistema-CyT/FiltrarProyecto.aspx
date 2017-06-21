@@ -47,14 +47,10 @@
                             <asp:BoundField HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="300" />
                             <asp:TemplateField HeaderText="Convocatoria" HeaderStyle-HorizontalAlign="Left" HeaderStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Center" ControlStyle-Font-Size="Small" HeaderStyle-Width="300">
                                 <ItemTemplate>
-                                    <asp:Label ID="Label1" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Convocatorium.Nombre") %>'></asp:Label>
+                                    <asp:Label ID="lblConvocatoria" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Convocatorium.Nombre") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField>
-                                <ItemTemplate>
-                                    <asp:Button ID="btnActuacion" runat="server" Text="Actuaciones" CssClass="form-control" BackColor="#eaeaea" />
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                            <asp:ButtonField Text="Select" CommandName="Select" ItemStyle-Width="150" />
                         </Columns>
                     </asp:GridView>
                 </div>
@@ -68,8 +64,6 @@
                     </asp:GridView>
                 </div>
             </div>--%>
-
-
         </asp:Panel>
     </div>
 </asp:Content>

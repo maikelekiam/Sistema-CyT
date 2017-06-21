@@ -55,17 +55,6 @@ namespace Sistema_CyT
             dgvProyectos.Columns[0].Visible = false;
             //dgvProyectos.Columns[4].Visible = false;
         }
-        protected void dgvProyectos_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            //Obtengo el indice de la fila seleccionada con el boton MOSTRAR
-            GridViewRow row = (GridViewRow)(((Button)e.CommandSource).NamingContainer);
-            int rIndex = row.RowIndex;
-
-            //Obtengo el id del proyecto seleccionado
-            idProyectoSeleccionado = Convert.ToInt32(dgvProyectos.Rows[rIndex].Cells[0].Text);
-
-            Response.Redirect("Actuaciones.aspx");
-        }
 
         protected void ddlFondo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -87,13 +76,29 @@ namespace Sistema_CyT
                     }
                 }
             }
+
+
+            dgvProyectos.Columns[0].Visible = true;
+            dgvProyectos.Columns[1].Visible = true;
+            dgvProyectos.Columns[2].Visible = true;
+            //dgvProyectos.Columns[3].Visible = true;
             dgvProyectos.DataSource = listaProyectos.ToList();
             dgvProyectos.DataBind();
+            dgvProyectos.Columns[0].Visible = false;
         }
 
         protected void dgvProyectos_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Accessing BoundField Column
+            idProyectoSeleccionado = Convert.ToInt32(dgvProyectos.SelectedRow.Cells[0].Text);
 
-        }                
+            //Accessing TemplateField Column controls
+            string conv = (dgvProyectos.SelectedRow.FindControl("lblConvocatoria") as Label).Text;
+
+            lblFondo.Text = "IdProyecto =" + dgvProyectos.SelectedRow.Cells[0].Text;
+
+            Response.Redirect("Actuaciones.aspx");
+        }
+                              
     }
 }
