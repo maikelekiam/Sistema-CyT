@@ -64,20 +64,12 @@ namespace Sistema_CyT
             //Obtengo el id del proyecto seleccionado
             idProyectoSeleccionado = Convert.ToInt32(dgvProyectos.Rows[rIndex].Cells[0].Text);
 
-            MostrarProyecto();
-        }
-        private void MostrarProyecto()
-        {
-            Response.Redirect("MostrarProyecto.aspx");
+            Response.Redirect("Actuaciones.aspx");
         }
 
         protected void ddlFondo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            String item = ddlFondo.SelectedValue.ToString();
-
-            lblFondo.Text = item;
-
-            FiltrarProyectosPorFondo(Convert.ToInt32(item));
+            FiltrarProyectosPorFondo(Convert.ToInt32(ddlFondo.SelectedValue.ToString()));
         }
         private void FiltrarProyectosPorFondo(int id)
         {
@@ -85,7 +77,6 @@ namespace Sistema_CyT
             List<Convocatorium> listaConvocatorias = convocatoriaNego.MostrarConvocatorias().Where(c => c.IdFondo == id).ToList();
 
             //TRAER UNA LISTA DE PROYECTOS QUE PERTENECEN A listaConvocatorias
-
             foreach (Convocatorium conv in listaConvocatorias)
             {
                 foreach (Proyecto proy in proyectoNego.MostrarProyectos().ToList())
@@ -94,12 +85,15 @@ namespace Sistema_CyT
                     {
                         listaProyectos.Add(proy);
                     }
-
                 }
             }
-
             dgvProyectos.DataSource = listaProyectos.ToList();
             dgvProyectos.DataBind();
+        }
+
+        protected void dgvProyectos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }                
     }
 }

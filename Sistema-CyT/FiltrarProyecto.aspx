@@ -41,7 +41,7 @@
                     <asp:GridView ID="dgvProyectos" runat="server" AutoGenerateColumns="false"
                         CssClass="table table-hover table-striped" BorderWidth="2px"
                         GridLines="Both"
-                        OnRowCommand="dgvProyectos_RowCommand">
+                        OnSelectedIndexChanged="dgvProyectos_SelectedIndexChanged">
                         <Columns>
                             <asp:BoundField HeaderText="ID" DataField="idProyecto" ItemStyle-HorizontalAlign="Left" />
                             <asp:BoundField HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="300" />
@@ -52,7 +52,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField>
                                 <ItemTemplate>
-                                    <asp:Button ID="btnMostrar" runat="server" Text="Mostrar" CssClass="form-control" BackColor="#eaeaea" />
+                                    <asp:Button ID="btnActuacion" runat="server" Text="Actuaciones" CssClass="form-control" BackColor="#eaeaea" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

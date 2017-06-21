@@ -155,6 +155,7 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="Actuaciones.aspx" />
     <Content Include="AltaConvocatoria.aspx" />
     <Content Include="AltaFondo.aspx" />
     <Content Include="AltaProyecto.aspx" />
@@ -235,6 +236,13 @@
     </Compile>
     <Compile Include="Account\RegisterExternalLogin.aspx.designer.cs">
       <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Actuaciones.aspx.cs">
+      <DependentUpon>Actuaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Actuaciones.aspx.designer.cs">
+      <DependentUpon>Actuaciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="AltaConvocatoria.aspx.cs">
       <DependentUpon>AltaConvocatoria.aspx</DependentUpon>
