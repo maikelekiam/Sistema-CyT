@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using CapaDominio;
 using CapaNegocio;
 using System.Data;
+using System.Windows.Forms;
 
 namespace Sistema_CyT
 {
@@ -19,13 +20,27 @@ namespace Sistema_CyT
             if (IsPostBack) return;
 
             MostrarProyecto(FiltrarProyecto.idProyectoSeleccionado);
+            PanelNuevaActuacion.Visible = false;
         }
 
         private void MostrarProyecto(int id)
         {
             Proyecto proyecto = proyectoNego.ObtenerProyecto(id);
 
-            lblNombre.Text = proyecto.Nombre.ToString();
+            lblProyecto.Text = "Proyecto: "+proyecto.Nombre.ToString();
+        
+        }
+
+        protected void btnAgregarActuacion_Click(object sender, EventArgs e)
+        {
+            if (PanelNuevaActuacion.Visible == true)
+            {
+                PanelNuevaActuacion.Visible = false;
+            }
+            else if (PanelNuevaActuacion.Visible == false)
+            {
+                PanelNuevaActuacion.Visible = true;
+            }
         }
     }
 }

@@ -5,15 +5,26 @@
     <div class="container">
         <asp:Panel ID="PanelProyecto" CssClass="panel panel-success" runat="server">
             <div class="panel-heading">
-                <h3>Proyecto</h3>
-            </div>
-            <br />
-            <div class="form-group">
-                <asp:Label ID="lblNombre" runat="server" Text="NOMBRE" CssClass="col-md-2 control-label"></asp:Label>
+                <br />
+                <asp:Label ID="lblProyecto" Style="text-align: left; font-size: large;" Font-Bold="true" runat="server" CssClass="col-md-12 control-label"></asp:Label>
+                <br />
             </div>
         </asp:Panel>
 
-        <asp:Label ID="label2" runat="server" Text="AGREGAR ACTUACION" CssClass="col-md-2 control-label"></asp:Label>
+        <asp:Panel ID="PanelActuacion" CssClass="panel" runat="server">
+            <!-- BOTON GUARDAR -->
+            <div class="form-group">
+                <div class="col-md-2">
+                    <asp:Button ID="btnAgregarActuacion" runat="server" Text="Agregar Actuacion" CssClass="btn btn-info form-control" OnClick="btnAgregarActuacion_Click" />
+                </div>
+            </div>
+        </asp:Panel>
+
+        <asp:Panel ID="PanelNuevaActuacion" CssClass="panel panel-success" runat="server">
+            <asp:Label ID="Label1" runat="server" Text="Hola"></asp:Label>
+
+        </asp:Panel>
+
 
 
     </div>
