@@ -285,20 +285,20 @@
             <orm:constraint name="FK_Proyecto_Empresa" delete-action="dbdefaultrule" destination-table="Empresa" />
           </orm:reference>
         </orm:field>
+        <orm:field name="convocatorium" property="Convocatorium" behavior="readwrite" uniqueId="d374c7aa-ba32-46cb-b023-da0f66215541" type="CapaDominio.Convocatorium">
+          <orm:reference uniqueId="b28211c6-7505-4eba-90e4-9aaf9dcecc69" association-name="ProyectoHasConvocatorium">
+            <orm:sharedfield name="idConvocatoria" target-class="CapaDominio.Convocatorium" target-field="idConvocatoria" />
+            <orm:constraint name="FK_Proyecto_Convocatoria" delete-action="dbdefaultrule" destination-table="Convocatoria" />
+          </orm:reference>
+        </orm:field>
         <orm:field name="etapas" property="Etapas" behavior="readwrite" uniqueId="0955161a-cd59-43c8-b240-26e5498c997b" type="CapaDominio.Etapa">
           <orm:collection element-class="CapaDominio.Etapa" inverse-field="proyecto" order-by="" uniqueId="86abcfcf-a6ca-4102-8f29-8fec87c18d31" />
         </orm:field>
         <orm:field name="auditoria" property="Auditoria" behavior="readwrite" uniqueId="b04621b7-e1b1-41a0-8447-488d8875b9d2" type="CapaDominio.Auditorium">
           <orm:collection element-class="CapaDominio.Auditorium" inverse-field="proyecto" order-by="" uniqueId="368d6ead-45de-47e3-9208-56b218106456" />
         </orm:field>
-        <orm:field name="actuacions" property="Actuacions" behavior="readwrite" uniqueId="15f7d9b7-b609-44c1-b077-1c7c19e0510f" type="CapaDominio.Actuacion">
-          <orm:collection element-class="CapaDominio.Actuacion" inverse-field="proyecto" order-by="" uniqueId="6a59f8e0-7083-4db1-a474-fe8bbffc5e11" />
-        </orm:field>
-        <orm:field name="convocatorium" property="Convocatorium" behavior="readwrite" uniqueId="d374c7aa-ba32-46cb-b023-da0f66215541" type="CapaDominio.Convocatorium">
-          <orm:reference uniqueId="b28211c6-7505-4eba-90e4-9aaf9dcecc69" association-name="ProyectoHasConvocatorium">
-            <orm:sharedfield name="idConvocatoria" target-class="CapaDominio.Convocatorium" target-field="idConvocatoria" />
-            <orm:constraint name="FK_Proyecto_Convocatoria" delete-action="dbdefaultrule" destination-table="Convocatoria" />
-          </orm:reference>
+        <orm:field name="actuacions" property="Actuacions" behavior="readwrite" uniqueId="b6c25e6f-9e22-4bc3-abad-ae9c63999cd6" type="CapaDominio.Actuacion">
+          <orm:collection element-class="CapaDominio.Actuacion" inverse-field="proyecto" order-by="" uniqueId="8fc0487c-70d8-447d-b87d-ae69d3d3acb6" />
         </orm:field>
       </orm:class>
       <orm:class name="Persona" uniqueId="09aa65c0-8782-4ae3-84b5-42cb426036fb">
@@ -403,6 +403,12 @@
         <orm:field name="nombre" property="Nombre" behavior="readwrite" uniqueId="a8b688ac-e536-4487-8420-2f63821a2728" type="System.String">
           <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         </orm:field>
+        <orm:field name="telefono" property="Telefono" behavior="readwrite" uniqueId="b1afd8d6-b825-4937-b597-40861b5012cc" type="System.String">
+          <orm:column name="telefono" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="correoElectronico" property="CorreoElectronico" behavior="readwrite" uniqueId="e900ef94-2405-4269-af0e-ac11426edd7b" type="System.String">
+          <orm:column name="correoElectronico" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
         <orm:field name="proyectos" property="Proyectos" behavior="readwrite" uniqueId="a4e908df-6967-4af6-b785-fab42b38473b" type="CapaDominio.Proyecto">
           <orm:collection element-class="CapaDominio.Proyecto" inverse-field="empresa" order-by="" uniqueId="10d8c6b1-c584-40dd-81ad-8dff2104379f" />
         </orm:field>
@@ -468,11 +474,39 @@
         <orm:field name="detalle" property="Detalle" behavior="readwrite" uniqueId="c30f68f6-b6ee-44c4-87b7-bac609395869" type="System.String">
           <orm:column name="detalle" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         </orm:field>
-        <orm:field name="proyecto" property="Proyecto" behavior="readwrite" uniqueId="9ee8602d-b5f0-4ad2-a4e6-3551d3497267" type="CapaDominio.Proyecto">
-          <orm:reference uniqueId="6a59f8e0-7083-4db1-a474-fe8bbffc5e11" association-name="ActuacionHasProyecto">
+        <orm:field name="idOrganismo" property="IdOrganismo" behavior="readwrite" uniqueId="d9188c25-0d48-414b-abcb-6936ec3d00e4" type="System.Int32">
+          <orm:column name="idOrganismo" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="proyecto" property="Proyecto" behavior="readwrite" uniqueId="f0a8a928-c8ef-4a25-a294-9116271d4a02" type="CapaDominio.Proyecto">
+          <orm:reference uniqueId="8fc0487c-70d8-447d-b87d-ae69d3d3acb6" association-name="ActuacionHasProyecto">
             <orm:sharedfield name="idProyecto" target-class="CapaDominio.Proyecto" target-field="idProyecto" />
-            <orm:constraint name="FK_Actuacion_Proyecto" delete-action="dbdefaultrule" destination-table="Proyecto" />
+            <orm:constraint name="FK_Actuacion_Proyecto1" delete-action="dbdefaultrule" destination-table="Proyecto" />
           </orm:reference>
+        </orm:field>
+        <orm:field name="organismo" property="Organismo" behavior="readwrite" uniqueId="e191379d-aba8-469a-adf2-f355d41147a2" type="CapaDominio.Organismo">
+          <orm:reference uniqueId="6c639838-c11e-412c-8fb4-e2eee61074ce" association-name="ActuacionHasOrganismo">
+            <orm:sharedfield name="idOrganismo" target-class="CapaDominio.Organismo" target-field="idOrganismo" />
+            <orm:constraint name="FK_Actuacion_Organismo" delete-action="dbdefaultrule" destination-table="Organismo" />
+          </orm:reference>
+        </orm:field>
+      </orm:class>
+      <orm:class name="Organismo" uniqueId="3ab36912-6b3d-46a4-b4d7-8b342be5d811">
+        <orm:table name="Organismo" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="IdOrganismo" />
+          </orm:key-generator>
+          <orm:single-field field-name="idOrganismo" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="idOrganismo" property="IdOrganismo" behavior="readwrite" uniqueId="49bcfc8e-23ba-4fec-bdd7-59a9bcddbde0" type="System.Int32">
+          <orm:column name="idOrganismo" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="nombre" property="Nombre" behavior="readwrite" uniqueId="d18847bd-c86c-4924-971c-4a82b449111a" type="System.String">
+          <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="actuacions" property="Actuacions" behavior="readwrite" uniqueId="0e661dcf-69c8-4de1-ac01-bf0b94d6b5af" type="CapaDominio.Actuacion">
+          <orm:collection element-class="CapaDominio.Actuacion" inverse-field="organismo" order-by="" uniqueId="6c639838-c11e-412c-8fb4-e2eee61074ce" />
         </orm:field>
       </orm:class>
     </orm:namespace>
@@ -592,6 +626,8 @@
       <orm:table name="Empresa">
         <orm:column name="idEmpresa" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="telefono" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="correoElectronico" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
       </orm:table>
       <orm:table name="Auditoria">
         <orm:column name="idAuditoria" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
@@ -612,9 +648,17 @@
         <orm:column name="idProyecto" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
         <orm:column name="fecha" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
         <orm:column name="detalle" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
-        <orm:constraint name="FK_Actuacion_Proyecto" delete-action="dbdefaultrule" destination-table="Proyecto">
+        <orm:column name="idOrganismo" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        <orm:constraint name="FK_Actuacion_Proyecto1" delete-action="dbdefaultrule" destination-table="Proyecto">
           <orm:column name="idProyecto" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
         </orm:constraint>
+        <orm:constraint name="FK_Actuacion_Organismo" delete-action="dbdefaultrule" destination-table="Organismo">
+          <orm:column name="idOrganismo" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="Organismo">
+        <orm:column name="idOrganismo" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
       </orm:table>
       <orm:procedure name="fn_diagramobjects" is-function="true" return-type="int">
         <orm:result-sets />
@@ -922,11 +966,11 @@
         <classHasNavigationalProperties Id="d78764e5-14e7-4fa3-bd09-d014b7dc20e2">
           <NavigationalProperty Id="b04621b7-e1b1-41a0-8447-488d8875b9d2" name="Auditoria" type="IList&lt;Auditorium&gt;" label="Auditoria : IList&lt;Auditorium&gt;" nullable="true" kind="Persistent" fieldName="auditoria" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="b4df7798-6950-447e-ab7a-1a8a8a7f693a">
-          <NavigationalProperty Id="15f7d9b7-b609-44c1-b077-1c7c19e0510f" name="Actuacions" type="IList&lt;Actuacion&gt;" label="Actuacions : IList&lt;Actuacion&gt;" nullable="true" kind="Persistent" fieldName="actuacions" isDependent="false" isManaged="false" />
-        </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="843915f7-1714-4418-84e6-85940c11e957">
           <NavigationalProperty Id="d374c7aa-ba32-46cb-b023-da0f66215541" name="Convocatorium" type="Convocatorium" label="Convocatorium : Convocatorium" nullable="true" kind="Persistent" fieldName="convocatorium" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="dc4115f6-d39b-4763-bcfa-c331957e8a55">
+          <NavigationalProperty Id="b6c25e6f-9e22-4bc3-abad-ae9c63999cd6" name="Actuacions" type="IList&lt;Actuacion&gt;" label="Actuacions : IList&lt;Actuacion&gt;" nullable="true" kind="Persistent" fieldName="actuacions" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -986,6 +1030,8 @@
     <DomainClass Id="91ceee25-2f72-453a-9370-baaa5b2c51c8" name="Empresa" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdEmpresa">
       <Property Id="4eaae8f9-7485-43b4-a634-584883338786" name="IdEmpresa" type="Int32" label="IdEmpresa : Int32" kind="Persistent" identity="true" fieldName="idEmpresa" />
       <Property Id="a8b688ac-e536-4487-8420-2f63821a2728" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
+      <Property Id="b1afd8d6-b825-4937-b597-40861b5012cc" name="Telefono" label="Telefono : String" kind="Persistent" fieldName="telefono" />
+      <Property Id="e900ef94-2405-4269-af0e-ac11426edd7b" name="CorreoElectronico" label="CorreoElectronico : String" kind="Persistent" fieldName="correoElectronico" />
       <navigationalProperties>
         <classHasNavigationalProperties Id="eb7dc113-8805-4ff2-a094-8e8932ce30ff">
           <NavigationalProperty Id="a4e908df-6967-4af6-b785-fab42b38473b" name="Proyectos" type="IList&lt;Proyecto&gt;" label="Proyectos : IList&lt;Proyecto&gt;" nullable="true" kind="Persistent" fieldName="proyectos" isDependent="false" isManaged="false" />
@@ -1041,24 +1087,50 @@
       <Property Id="c30f68f6-b6ee-44c4-87b7-bac609395869" name="Detalle" label="Detalle : String" kind="Persistent" fieldName="detalle" />
       <Property Id="e230c4e7-4761-400b-8551-cc164df41529" name="Fecha" type="DateTime" label="Fecha : DateTime" nullable="true" kind="Persistent" fieldName="fecha" />
       <Property Id="2445f27c-d7e0-4866-a5d2-a6ef845277b2" name="IdProyecto" type="Int32" label="IdProyecto : Int32" kind="Persistent" fieldName="idProyecto" />
+      <Property Id="d9188c25-0d48-414b-abcb-6936ec3d00e4" name="IdOrganismo" type="Int32" label="IdOrganismo : Int32" kind="Persistent" fieldName="idOrganismo" />
       <AssociationTargets>
-        <Association Id="6a59f8e0-7083-4db1-a474-fe8bbffc5e11" SourceMultiplicity="One" name="ActuacionHasProyecto">
+        <Association Id="8fc0487c-70d8-447d-b87d-ae69d3d3acb6" SourceMultiplicity="One" name="ActuacionHasProyecto">
           <DomainClassMoniker name="/ModeloDeDominio/Proyecto" />
           <targetNavigationalProperty>
-            <associationDefinesTargetProperty Id="9687e90a-7ec9-4203-a972-e5a94a8d31ff">
+            <associationDefinesTargetProperty Id="ae81bd55-a4ec-4672-b263-28303ff1176a">
               <NavigationalPropertyMoniker name="/ModeloDeDominio/Proyecto/Actuacions" />
             </associationDefinesTargetProperty>
           </targetNavigationalProperty>
           <sourceNavigationalProperty>
-            <associationDefinesSourceProperty Id="9189089d-38e2-4ac1-be5c-4f2fa54cf84a">
+            <associationDefinesSourceProperty Id="b2620778-6abb-491a-8c23-f80b879fc228">
               <NavigationalPropertyMoniker name="/ModeloDeDominio/Actuacion/Proyecto" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="6c639838-c11e-412c-8fb4-e2eee61074ce" SourceMultiplicity="One" name="ActuacionHasOrganismo">
+          <DomainClassMoniker name="/ModeloDeDominio/Organismo" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="f3e328d2-c77e-4ac9-9faa-8321c58e5f5f">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Organismo/Actuacions" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="9e0f05e0-a8e2-4e03-88fb-33b08cb62fa5">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Actuacion/Organismo" />
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
       </AssociationTargets>
       <navigationalProperties>
-        <classHasNavigationalProperties Id="ced3c742-61e6-469e-ac34-961e6904a360">
-          <NavigationalProperty Id="9ee8602d-b5f0-4ad2-a4e6-3551d3497267" name="Proyecto" type="Proyecto" label="Proyecto : Proyecto" nullable="true" kind="Persistent" fieldName="proyecto" isDependent="false" isManaged="false" />
+        <classHasNavigationalProperties Id="0cb8157a-9e24-4a58-b695-7c06f7ac9e87">
+          <NavigationalProperty Id="f0a8a928-c8ef-4a25-a294-9116271d4a02" name="Proyecto" type="Proyecto" label="Proyecto : Proyecto" nullable="true" kind="Persistent" fieldName="proyecto" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="e84e578c-bd86-4f92-a636-168991c20ee5">
+          <NavigationalProperty Id="e191379d-aba8-469a-adf2-f355d41147a2" name="Organismo" type="Organismo" label="Organismo : Organismo" nullable="true" kind="Persistent" fieldName="organismo" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="3ab36912-6b3d-46a4-b4d7-8b342be5d811" name="Organismo" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdOrganismo">
+      <Property Id="49bcfc8e-23ba-4fec-bdd7-59a9bcddbde0" name="IdOrganismo" type="Int32" label="IdOrganismo : Int32" kind="Persistent" identity="true" fieldName="idOrganismo" />
+      <Property Id="d18847bd-c86c-4924-971c-4a82b449111a" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="13fbf0b2-5003-4f02-ad99-684a4ba8a59a">
+          <NavigationalProperty Id="0e661dcf-69c8-4de1-ac01-bf0b94d6b5af" name="Actuacions" type="IList&lt;Actuacion&gt;" label="Actuacions : IList&lt;Actuacion&gt;" nullable="true" kind="Persistent" fieldName="actuacions" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -1080,6 +1152,7 @@
         <entitySetProperty name="Empresas" namespace="CapaDominio" type="Empresa" label="Empresas : IQueryable&lt;CapaDominio.Empresa&gt;" />
         <entitySetProperty name="Auditoria" namespace="CapaDominio" type="Auditorium" label="Auditoria : IQueryable&lt;CapaDominio.Auditorium&gt;" />
         <entitySetProperty name="Actuacions" namespace="CapaDominio" type="Actuacion" label="Actuacions : IQueryable&lt;CapaDominio.Actuacion&gt;" />
+        <entitySetProperty name="Organismos" namespace="CapaDominio" type="Organismo" label="Organismos : IQueryable&lt;CapaDominio.Organismo&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>

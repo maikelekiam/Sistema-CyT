@@ -59,7 +59,6 @@
                     </asp:DropDownList>
                 </div>
 
-
                 <%--AGREGAR ACA EL MODAL PARA EL NUEVO ORGANISMO--%>
                 <div class="form-group">
                     <div class="col-md-2">
@@ -76,22 +75,36 @@
                                     <h4 class="modal-title" id="modalLabelOrganismo">Nuevo Organismo</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="col-md-8">
-                                        <asp:TextBox ID="txtOrganismoModalNombre" runat="server" CssClass="form-control"></asp:TextBox><br />
+                                    <div class="form-group">
+                                        <asp:Label ID="lbl01" runat="server" Text="NOMBRE" CssClass="col-md-4 control-label"></asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtOrganismoNombreModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                        <br />
+                                        <br />
+                                        <asp:Label ID="lbl02" runat="server" Text="TELEFONO" CssClass="col-md-4 control-label"></asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtOrganismoTelefonoModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                        <br />
+                                        <br />
+                                        <asp:Label ID="lbl03" runat="server" Text="CORREO ELECTRONICO" CssClass="col-md-4 control-label"></asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtOrganismoCorreoElectronicoModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                        <br />
+                                        <br />
                                     </div>
-                                    <br />
-                                </div>
-                                <div class="modal-footer">
-                                    <asp:Button runat="server" ID="btnModalOrganismoSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
-                                    <asp:Button runat="server" ID="btnModalOrganismoGuardar" Text="GUARDAR" CssClass="btn btn-success" />
+                                    <div class="modal-footer">
+                                        <asp:Button runat="server" ID="btnModalOrganismoSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
+                                        <asp:Button runat="server" ID="btnModalOrganismoGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalOrganismoGuardar_Click" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
             <!--DETALLE DE LA ACTUACION-->
             <div class="form-group">
                 <asp:Label ID="lblDetalle" runat="server" Text="DETALLE" CssClass="col-md-2 control-label"></asp:Label>
@@ -102,13 +115,57 @@
             <!--BOTONES GUARDAR + CANCELAR -->
             <div class="form-group">
                 <div class="col-md-2 col-md-offset-2">
-                    <asp:Button ID="btnGuardarActuacion" runat="server" Text="Guardar Actuacion" CssClass="btn btn-success form-control" OnClick="btnGuardarActuacion_Click"/>
+                    <asp:Button ID="btnGuardarActuacion" runat="server" Text="Guardar Actuacion" CssClass="btn btn-success form-control" OnClick="btnGuardarActuacion_Click" />
                 </div>
                 <div class="col-md-2">
                     <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-danger form-control" OnClick="btnCancelar_Click" />
                 </div>
             </div>
         </asp:Panel>
+
+
+        <!--GRILLA CON LAS ACTUACIONES-->
+        <asp:Label ID="lblGrillaActuaciones" runat="server" Text="GRILLA DE ACTUACIONES">
+                <h4>GRILLA DE ACTUACIONES</h4>
+        </asp:Label>
+        <div class="form-group">
+            <div class="col-md-9 col-md-offset-1">
+                <asp:GridView ID="dgvActuaciones" runat="server" AutoGenerateColumns="false"
+                    CssClass="table table-hover table-striped" BorderWidth="2px"
+                    GridLines="Both">
+                    <Columns>
+                        <asp:BoundField HeaderText="idA" DataField="idActuacion" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100" />
+                        <%--<asp:BoundField HeaderText="idP" DataField="idProyecto" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100" />--%>
+
+                        <asp:TemplateField HeaderText="Proyecto" HeaderStyle-BackColor="#cccccc">
+                            <ItemTemplate>
+                                <asp:Label ID="Label2" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Proyecto.Nombre") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                        <asp:BoundField HeaderText="Fecha" DataField="fecha"
+                            DataFormatString="{0:d}" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="50" HeaderStyle-Width="200" />
+
+                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Detalle" DataField="detalle"
+                            ItemStyle-HorizontalAlign="Justify" ItemStyle-Width="400" HeaderStyle-Width="200" />
+
+
+                        <asp:TemplateField HeaderText="Organismo" HeaderStyle-BackColor="#cccccc">
+                            <ItemTemplate>
+                                <%# Convert.ToString(DataBinder.Eval(Container, "DataItem.Organismo.Nombre")) %>
+                                <%--<asp:Label ID="Label3" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.Organismo") %>'></asp:Label>--%>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+
+
+                        <%--<asp:ButtonField Text="Editar" CommandName="select" HeaderStyle-BackColor="#cccccc" />--%>
+                        <%--<asp:ButtonField Text="Borrar" CommandName="delete" HeaderStyle-BackColor="#cccccc" />--%>
+                    </Columns>
+                </asp:GridView>
+            </div>
+        </div>
+
 
 
 

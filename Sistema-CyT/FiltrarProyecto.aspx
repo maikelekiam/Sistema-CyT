@@ -5,7 +5,7 @@
         <asp:Panel ID="PanelSuperior" CssClass="panel panel-warning" runat="server">
 
             <div class="panel-heading">
-                <h3>Filtrar PROYECTOS</h3>
+                <h3>Buscar PROYECTO</h3>
             </div>
             <br />
             <div class="form-group">

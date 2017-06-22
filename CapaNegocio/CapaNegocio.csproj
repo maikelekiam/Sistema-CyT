@@ -44,6 +44,7 @@
     <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2015.1.225.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActuacionNego.cs" />
     <Compile Include="ConvocatoriaNego.cs" />
     <Compile Include="EmpresaNego.cs" />
     <Compile Include="EtapaNego.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="ListaConvocatoriaModalidadNego.cs" />
     <Compile Include="LocalidadNego.cs" />
     <Compile Include="ModalidadNego.cs" />
+    <Compile Include="OrganismoNego.cs" />
     <Compile Include="OrigenNego.cs" />
     <Compile Include="PersonaNego.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

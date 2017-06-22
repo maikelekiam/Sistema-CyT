@@ -162,6 +162,14 @@ namespace CapaDominio
 			}
 		}
 		
+		public IQueryable<Organismo> Organismos 
+		{
+			get
+			{
+				return this.GetAll<Organismo>();
+			}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -236,6 +244,10 @@ namespace CapaDominio
 			get;
 		}
 		IQueryable<Actuacion> Actuacions
+		{
+			get;
+		}
+		IQueryable<Organismo> Organismos
 		{
 			get;
 		}

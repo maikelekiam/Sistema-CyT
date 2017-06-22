@@ -22,60 +22,8 @@ using CapaDominio;
 
 namespace CapaDominio	
 {
-	public partial class Actuacion
+	public partial class Organismo
 	{
-		private int idActuacion;
-		public virtual int IdActuacion
-		{
-			get
-			{
-				return this.idActuacion;
-			}
-			set
-			{
-				this.idActuacion = value;
-			}
-		}
-		
-		private int idProyecto;
-		public virtual int IdProyecto
-		{
-			get
-			{
-				return this.idProyecto;
-			}
-			set
-			{
-				this.idProyecto = value;
-			}
-		}
-		
-		private DateTime? fecha;
-		public virtual DateTime? Fecha
-		{
-			get
-			{
-				return this.fecha;
-			}
-			set
-			{
-				this.fecha = value;
-			}
-		}
-		
-		private string detalle;
-		public virtual string Detalle
-		{
-			get
-			{
-				return this.detalle;
-			}
-			set
-			{
-				this.detalle = value;
-			}
-		}
-		
 		private int idOrganismo;
 		public virtual int IdOrganismo
 		{
@@ -89,29 +37,25 @@ namespace CapaDominio
 			}
 		}
 		
-		private Proyecto proyecto;
-		public virtual Proyecto Proyecto
+		private string nombre;
+		public virtual string Nombre
 		{
 			get
 			{
-				return this.proyecto;
+				return this.nombre;
 			}
 			set
 			{
-				this.proyecto = value;
+				this.nombre = value;
 			}
 		}
 		
-		private Organismo organismo;
-		public virtual Organismo Organismo
+		private IList<Actuacion> actuacions = new List<Actuacion>();
+		public virtual IList<Actuacion> Actuacions
 		{
 			get
 			{
-				return this.organismo;
-			}
-			set
-			{
-				this.organismo = value;
+				return this.actuacions;
 			}
 		}
 		
