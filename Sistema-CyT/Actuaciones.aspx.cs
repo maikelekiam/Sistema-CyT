@@ -36,11 +36,25 @@ namespace Sistema_CyT
             if (PanelNuevaActuacion.Visible == true)
             {
                 PanelNuevaActuacion.Visible = false;
+                
             }
             else if (PanelNuevaActuacion.Visible == false)
             {
                 PanelNuevaActuacion.Visible = true;
+                btnAgregarActuacion.Visible = false;
             }
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            PanelNuevaActuacion.Visible = false;
+            btnAgregarActuacion.Visible = true;
+        }
+
+        protected void btnGuardarActuacion_Click(object sender, EventArgs e)
+        {
+            PanelNuevaActuacion.Visible = false;
+            btnAgregarActuacion.Visible = true;
         }
     }
 }
