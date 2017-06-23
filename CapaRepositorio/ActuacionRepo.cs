@@ -24,9 +24,9 @@ namespace CapaRepositorio
         {
             using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
             {
-                IEnumerable<Actuacion> result = modeloDeDominio.Actuacions.Where(c => c.IdProyecto == id).OrderBy(c => c.IdOrganismo).ToList();
+                IEnumerable<Actuacion> result = modeloDeDominio.Actuacions.Where(c => c.IdProyecto == id).OrderBy(c => c.Fecha).ToList();
 
-                return modeloDeDominio.CreateDetachedCopy(result);
+                return result;
             }
         }
 
@@ -52,5 +52,14 @@ namespace CapaRepositorio
                 modeloDeDominio.SaveChanges();
             }
         }
+        public Actuacion ObtenerActuacion(int id)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                Actuacion actuacion = modeloDeDominio.Actuacions.Where(c => c.IdActuacion == id).FirstOrDefault();
+
+                return actuacion;
+            }
+        }       
     }
 }

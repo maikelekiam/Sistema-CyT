@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Actuaciones.aspx.cs" Inherits="Sistema_CyT.Actuaciones" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
     <div class="container">
         <asp:Panel ID="PanelProyecto" CssClass="panel panel-success" runat="server">
             <div class="panel-heading">
@@ -120,54 +119,39 @@
                 <div class="col-md-2">
                     <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-danger form-control" OnClick="btnCancelar_Click" />
                 </div>
+                <div class="col-md-2">
+                    <asp:Button ID="btnActualizarActuacion" runat="server" Text="Actualizar Actuacion" CssClass="btn btn-success form-control" OnClick="btnActualizarActuacion_Click" />
+                </div>
             </div>
         </asp:Panel>
 
-
         <!--GRILLA CON LAS ACTUACIONES-->
         <asp:Label ID="lblGrillaActuaciones" runat="server" Text="GRILLA DE ACTUACIONES">
-                <h4>GRILLA DE ACTUACIONES</h4>
+                <h4>ACTUACIONES REALIZADAS</h4>
         </asp:Label>
         <div class="form-group">
             <div class="col-md-9 col-md-offset-1">
                 <asp:GridView ID="dgvActuaciones" runat="server" AutoGenerateColumns="false"
-                    CssClass="table table-hover table-striped" BorderWidth="2px"
-                    GridLines="Both">
+                    CssClass="table table-hover table-striped" BorderWidth="2px" GridLines="Both"
+                    OnSelectedIndexChanging="dgvActuaciones_SelectedIndexChanging"
+                    OnRowDeleting="dgvActuaciones_RowDeleting">
                     <Columns>
-                        <asp:BoundField HeaderText="idA" DataField="idActuacion" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100" />
-                        <%--<asp:BoundField HeaderText="idP" DataField="idProyecto" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100" />--%>
-
-                        <asp:TemplateField HeaderText="Proyecto" HeaderStyle-BackColor="#cccccc">
-                            <ItemTemplate>
-                                <asp:Label ID="Label2" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Proyecto.Nombre") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-
+                        <asp:BoundField HeaderText="idActuacion" DataField="idActuacion" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100" />
+                        <asp:BoundField HeaderText="idP" DataField="idProyecto" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100" />
                         <asp:BoundField HeaderText="Fecha" DataField="fecha"
-                            DataFormatString="{0:d}" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="50" HeaderStyle-Width="200" />
-
-                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Detalle" DataField="detalle"
-                            ItemStyle-HorizontalAlign="Justify" ItemStyle-Width="400" HeaderStyle-Width="200" />
-
-
-                        <asp:TemplateField HeaderText="Organismo" HeaderStyle-BackColor="#cccccc">
+                            DataFormatString="{0:d}" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="50" HeaderStyle-Width="60" />
+                        <asp:TemplateField HeaderText="Organismo" HeaderStyle-BackColor="#cccccc" HeaderStyle-Width="100">
                             <ItemTemplate>
-                                <%# Convert.ToString(DataBinder.Eval(Container, "DataItem.Organismo.Nombre")) %>
-                                <%--<asp:Label ID="Label3" runat="server" Text='<%# DataBinder.Eval(Container, "DataItem.Organismo") %>'></asp:Label>--%>
+                                <asp:Label ID="lbl23" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Organismo.Nombre") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-
-
-
-                        <%--<asp:ButtonField Text="Editar" CommandName="select" HeaderStyle-BackColor="#cccccc" />--%>
-                        <%--<asp:ButtonField Text="Borrar" CommandName="delete" HeaderStyle-BackColor="#cccccc" />--%>
+                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Detalle" DataField="detalle"
+                            ItemStyle-HorizontalAlign="Justify" ItemStyle-Width="100" HeaderStyle-Width="300" />
+                        <asp:ButtonField Text="Editar" CommandName="select" HeaderStyle-BackColor="#cccccc" HeaderStyle-Width="80" />
+                        <asp:ButtonField Text="Borrar" CommandName="delete" HeaderStyle-BackColor="#cccccc" HeaderStyle-Width="80" />
                     </Columns>
                 </asp:GridView>
             </div>
         </div>
-
-
-
-
     </div>
 </asp:Content>

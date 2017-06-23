@@ -28,6 +28,7 @@ namespace Sistema_CyT
             PanelNuevaActuacion.Visible = false;
 
             LlenarGrillaActuaciones();
+            LimpiarPantalla();
         }
 
         //Muestro en el DROPDOWNLIST los ORGANISMOS
@@ -38,22 +39,21 @@ namespace Sistema_CyT
             ddlOrganismo.DataBind();
         }
 
-
-
         private void MostrarProyecto(int id)
         {
             Proyecto proyecto = proyectoNego.ObtenerProyecto(id);
 
-            lblProyecto.Text = "Proyecto: "+proyecto.Nombre.ToString();
-        
+            lblProyecto.Text = "Proyecto: " + proyecto.Nombre.ToString();
         }
 
         protected void btnAgregarActuacion_Click(object sender, EventArgs e)
         {
+            btnActualizarActuacion.Visible = false;
+            LimpiarPantalla();
+
             if (PanelNuevaActuacion.Visible == true)
             {
                 PanelNuevaActuacion.Visible = false;
-                
             }
             else if (PanelNuevaActuacion.Visible == false)
             {
@@ -66,13 +66,16 @@ namespace Sistema_CyT
         {
             PanelNuevaActuacion.Visible = false;
             btnAgregarActuacion.Visible = true;
+            PanelActuacion.Visible = true;
         }
 
         protected void btnGuardarActuacion_Click(object sender, EventArgs e)
         {
             PanelNuevaActuacion.Visible = false;
             btnAgregarActuacion.Visible = true;
+            btnActualizarActuacion.Visible = false;
             GuardarActuacion();
+            LimpiarPantalla();
         }
 
         private void GuardarActuacion()
@@ -100,17 +103,19 @@ namespace Sistema_CyT
             dgvActuaciones.DataSource = actuacionNego.MostrarActuacionSegunProyecto(FiltrarProyecto.idProyectoSeleccionado).ToList();
             dgvActuaciones.DataBind();
 
-            //dgvActuaciones.Columns[0].Visible = false;
-            //dgvActuaciones.Columns[1].Visible = false;
+            dgvActuaciones.Columns[0].Visible = false;
+            dgvActuaciones.Columns[1].Visible = false;
         }
 
         protected void btnModalOrganismoGuardar_Click(object sender, EventArgs e)
         {
+            if (txtOrganismoNombreModal.Text == "") return;
+
             Organismo organismo = new Organismo();
 
             organismo.Nombre = txtOrganismoNombreModal.Text;
-            //organismo.Telefono = txtOrganismoTelefonoModal.Text;
-            //organismo.CorreoElectronico = txtOrganismoCorreoElectronicoModal.Text;
+            organismo.Telefono = txtOrganismoTelefonoModal.Text;
+            organismo.CorreoElectronico = txtOrganismoCorreoElectronicoModal.Text;
 
             idOrganismoActual = organismoNego.GuardarOrganismo(organismo);
 
@@ -125,12 +130,54 @@ namespace Sistema_CyT
 
         protected void dgvActuaciones_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
+            btnGuardarActuacion.Visible = false;
+            btnActualizarActuacion.Visible = true;
+            PanelNuevaActuacion.Visible = true;
+            PanelActuacion.Visible = false;
 
+            GridViewRow row = dgvActuaciones.Rows[e.NewSelectedIndex];
+
+            idActuacionActual = Convert.ToInt32(row.Cells[0].Text);
+
+            Actuacion actuacion = actuacionNego.ObtenerActuacion(idActuacionActual);
+
+            txtFechaActuacion.Text = Convert.ToDateTime(actuacion.Fecha).ToShortDateString();
+            txtDetalle.Text = actuacion.Detalle.ToString();
+            ddlOrganismo.Text = Convert.ToString(organismoNego.TraerOrganismo(actuacion.IdOrganismo));
         }
 
         protected void dgvActuaciones_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
 
+        }
+
+        protected void btnActualizarActuacion_Click(object sender, EventArgs e)
+        {
+            Actuacion actuacion = new Actuacion();
+
+            actuacion.IdProyecto = FiltrarProyecto.idProyectoSeleccionado;
+            actuacion.IdOrganismo = organismoNego.TraerOrganismoIdSegunItem(ddlOrganismo.SelectedItem.ToString());
+            actuacion.Fecha = Convert.ToDateTime(txtFechaActuacion.Text);
+            actuacion.Detalle = txtDetalle.Text;
+
+            actuacion.IdActuacion = idActuacionActual;
+
+            actuacionNego.ActualizarActuacion(actuacion);
+
+            LlenarGrillaActuaciones();
+
+            PanelNuevaActuacion.Visible = false;
+            PanelActuacion.Visible = true;
+
+            btnActualizarActuacion.Visible = false;
+            LimpiarPantalla();
+        }
+
+        private void LimpiarPantalla()
+        {
+            ddlOrganismo.SelectedIndex = 0;
+            txtFechaActuacion.Text = null;
+            txtDetalle.Text = null;
         }
     }
 }

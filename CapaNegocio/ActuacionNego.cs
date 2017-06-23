@@ -31,5 +31,10 @@ namespace CapaNegocio
         {
             actuacionRepo.ActualizarActuacion(actuacion);
         }
+
+        public Actuacion ObtenerActuacion(int id)
+        {
+            return actuacionRepo.ObtenerActuacion(id);
+        }
     }
 }

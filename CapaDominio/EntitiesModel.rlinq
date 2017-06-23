@@ -505,6 +505,12 @@
         <orm:field name="nombre" property="Nombre" behavior="readwrite" uniqueId="d18847bd-c86c-4924-971c-4a82b449111a" type="System.String">
           <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         </orm:field>
+        <orm:field name="telefono" property="Telefono" behavior="readwrite" uniqueId="4a42d8cd-42b5-475a-885a-f0e86608c84b" type="System.String">
+          <orm:column name="telefono" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="correoElectronico" property="CorreoElectronico" behavior="readwrite" uniqueId="538d54bf-628f-47ce-9ede-5de037de87e2" type="System.String">
+          <orm:column name="correoElectronico" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
         <orm:field name="actuacions" property="Actuacions" behavior="readwrite" uniqueId="0e661dcf-69c8-4de1-ac01-bf0b94d6b5af" type="CapaDominio.Actuacion">
           <orm:collection element-class="CapaDominio.Actuacion" inverse-field="organismo" order-by="" uniqueId="6c639838-c11e-412c-8fb4-e2eee61074ce" />
         </orm:field>
@@ -659,6 +665,8 @@
       <orm:table name="Organismo">
         <orm:column name="idOrganismo" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="telefono" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="correoElectronico" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
       </orm:table>
       <orm:procedure name="fn_diagramobjects" is-function="true" return-type="int">
         <orm:result-sets />
@@ -1128,6 +1136,8 @@
     <DomainClass Id="3ab36912-6b3d-46a4-b4d7-8b342be5d811" name="Organismo" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdOrganismo">
       <Property Id="49bcfc8e-23ba-4fec-bdd7-59a9bcddbde0" name="IdOrganismo" type="Int32" label="IdOrganismo : Int32" kind="Persistent" identity="true" fieldName="idOrganismo" />
       <Property Id="d18847bd-c86c-4924-971c-4a82b449111a" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
+      <Property Id="4a42d8cd-42b5-475a-885a-f0e86608c84b" name="Telefono" label="Telefono : String" kind="Persistent" fieldName="telefono" />
+      <Property Id="538d54bf-628f-47ce-9ede-5de037de87e2" name="CorreoElectronico" label="CorreoElectronico : String" kind="Persistent" fieldName="correoElectronico" />
       <navigationalProperties>
         <classHasNavigationalProperties Id="13fbf0b2-5003-4f02-ad99-684a4ba8a59a">
           <NavigationalProperty Id="0e661dcf-69c8-4de1-ac01-bf0b94d6b5af" name="Actuacions" type="IList&lt;Actuacion&gt;" label="Actuacions : IList&lt;Actuacion&gt;" nullable="true" kind="Persistent" fieldName="actuacions" isDependent="false" isManaged="false" />

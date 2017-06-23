@@ -50,6 +50,32 @@ namespace CapaDominio
 			}
 		}
 		
+		private string telefono;
+		public virtual string Telefono
+		{
+			get
+			{
+				return this.telefono;
+			}
+			set
+			{
+				this.telefono = value;
+			}
+		}
+		
+		private string correoElectronico;
+		public virtual string CorreoElectronico
+		{
+			get
+			{
+				return this.correoElectronico;
+			}
+			set
+			{
+				this.correoElectronico = value;
+			}
+		}
+		
 		private IList<Actuacion> actuacions = new List<Actuacion>();
 		public virtual IList<Actuacion> Actuacions
 		{
