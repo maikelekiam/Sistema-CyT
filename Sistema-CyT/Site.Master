@@ -20,7 +20,68 @@
             <Scripts>
             </Scripts>
         </asp:ScriptManager>
-        <div class="navbar navbar-inverse navbar-fixed-top">
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/Default.aspx">Sistema CyT</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/Default.aspx">Inicio</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">SEGUIMIENTO <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a runat="server" href="~/FiltrarProyecto.aspx"><span class="glyphicon glyphicon-plus"></span>Seguimiento</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">PROYECTOS <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a runat="server" href="~/AltaProyecto.aspx"><span class="glyphicon glyphicon-plus"></span>Alta Proyecto</a></li>
+                            <li><a runat="server" href="~/EditarProyecto.aspx"><span class="glyphicon glyphicon-edit"></span>Editar Proyecto</a></li>
+                            <li class="divider"></li>
+                            <li><a runat="server" href="~/ListarProyectos.aspx"><span class="glyphicon glyphicon-list"></span>Listar Proyectos</a></li>
+                            <li><a runat="server" href="#"></a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">CONVOCATORIAS <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a runat="server" href="~/AltaConvocatoria.aspx"><span class="glyphicon glyphicon-plus"></span>Alta Convocatoria</a></li>
+                            <li><a runat="server" href="~/EditarConvocatoria.aspx"><span class="glyphicon glyphicon-edit"></span>Editar Convocatoria</a></li>
+                            <li class="divider"></li>
+                            <li><a runat="server" href="~/ListarConvocatorias.aspx"><span class="glyphicon glyphicon-list"></span>Listar Convocatorias</a></li>
+                            <li><a runat="server" href="#"></a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">FONDOS <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a runat="server" href="~/AltaFondo.aspx"><span class="glyphicon glyphicon-plus"></span>Alta Fondo</a></li>
+                            <li><a runat="server" href="~/EditarFondo.aspx"><span class="glyphicon glyphicon-edit"></span>Editar Fondo</a></li>
+                            <li class="divider"></li>
+                            <li><a runat="server" href="~/ListarFondos.aspx"><span class="glyphicon glyphicon-list"></span>Listar Fondos</a></li>
+                            <li><a runat="server" href="#"></a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a class="btn" href="/Default.aspx">SALIR <span class="glyphicon glyphicon-log-out"></span></a></li>
+                </ul>
+            </div>
+        </nav>
+
+
+
+
+
+
+
+
+
+
+
+        <%--        <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" runat="server" href="~/Default.aspx">
@@ -73,14 +134,14 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>--%>
 
         <div class="container body-content">
+            <%--<br />
             <br />
             <br />
             <br />
-            <br />
-            <br />
+            <br />--%>
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <footer>
