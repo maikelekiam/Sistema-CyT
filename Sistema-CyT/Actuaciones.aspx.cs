@@ -49,6 +49,7 @@ namespace Sistema_CyT
         protected void btnAgregarActuacion_Click(object sender, EventArgs e)
         {
             btnActualizarActuacion.Visible = false;
+            btnGuardarActuacion.Visible = true;
             LimpiarPantalla();
 
             if (PanelNuevaActuacion.Visible == true)
