@@ -94,6 +94,33 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.DropDownList ddlOrigen;
         
         /// <summary>
+        /// txtOrigenModal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOrigenModal;
+        
+        /// <summary>
+        /// btnModalOrigenSalir control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnModalOrigenSalir;
+        
+        /// <summary>
+        /// btnModalOrigenGuardar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnModalOrigenGuardar;
+        
+        /// <summary>
         /// btnActualizarFondo control.
         /// </summary>
         /// <remarks>

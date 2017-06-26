@@ -17,7 +17,7 @@ namespace Sistema_CyT
         FondoNego fondoNego = new FondoNego();
         OrigenNego origenNego = new OrigenNego();
         IEnumerable<Fondo> listaFondos;
-        static int id;
+        static int id; //
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -89,6 +89,7 @@ namespace Sistema_CyT
 
         protected void ddlActualizarFondo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //OBTENGO EL ID DEL FONDO SELECCIONADO DESDE EL DROPDOWNLIST
             id = Convert.ToInt32(ddlActualizarFondo.SelectedValue.ToString());
 
             Fondo fondo = fondoNego.ObtenerFondo(id);
@@ -96,6 +97,21 @@ namespace Sistema_CyT
             txtNombre.Text = fondo.Nombre.ToString();
             txtDecripcion.Text = fondo.Descripcion.ToString();
             ddlOrigen.Text = Convert.ToString(fondo.IdOrigen);
+        }
+
+        protected void btnModalOrigenGuardar_Click(object sender, EventArgs e)
+        {
+            Origen origen = new Origen();
+
+            origen.Nombre = txtOrigenModal.Text;
+
+            int idOrigenActual = origenNego.GuardarOrigen(origen);
+
+            ddlOrigen.Items.Clear();
+
+            LlenarListaOrigenes();
+
+            ddlOrigen.Text = Convert.ToString(idOrigenActual);
         }
     }
 }

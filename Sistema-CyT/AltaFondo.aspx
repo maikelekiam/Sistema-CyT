@@ -10,7 +10,7 @@
             <div class="form-group">
                 <br />
                 <asp:Label ID="lblNombre" runat="server" Text="NOMBRE" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
-                <div class="col-md-6 col-xs-12 ">
+                <div class="col-md-6 col-xs-12">
                     <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="1"></asp:TextBox><br />
                 </div>
             </div>
@@ -18,7 +18,7 @@
             <!-- DESCRIPCION DEL FONDO -->
             <div class="form-group">
                 <asp:Label ID="lblDescripcion" runat="server" Text="DESCRIPCION" CssClass="col-md-2 control-label"> </asp:Label>
-                <div class="col-md-6 ">
+                <div class="col-md-6 col-xs-12">
                     <asp:TextBox ID="txtDecripcion" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox><br />
                 </div>
             </div>
@@ -26,9 +26,8 @@
             <!-- ORIGEN DEL FONDO -->
             <div class="form-group">
                 <asp:Label ID="lblOrigen" runat="server" Text="ORIGEN" CssClass="col-md-2 control-label"> </asp:Label>
-                <div class="col-md-4 ">
+                <div class="col-md-4">
                     <asp:DropDownList ID="ddlOrigen" runat="server"
-                        Width="280"
                         BackColor="WhiteSmoke"
                         ForeColor="#000066"
                         Font-Bold="false"
@@ -56,14 +55,15 @@
                                     <h4 class="modal-title" id="modalLabelOrigen">Nuevo Origen</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="col-md-8">
-                                        <asp:TextBox ID="txtOrigenModal" runat="server" CssClass="form-control"></asp:TextBox><br />
+                                    <div class="form-group">
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtOrigenModal" runat="server" CssClass="form-control"></asp:TextBox><br />
+                                        </div>
                                     </div>
-                                    <br />
-                                </div>
-                                <div class="modal-footer">
-                                    <asp:Button runat="server" ID="btnModalOrigenSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
-                                    <asp:Button runat="server" ID="btnModalOrigenGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalOrigenGuardar_Click" />
+                                    <div class="modal-footer">
+                                        <asp:Button runat="server" ID="btnModalOrigenSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
+                                        <asp:Button runat="server" ID="btnModalOrigenGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalOrigenGuardar_Click" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -86,7 +86,7 @@
                 <h3>Lista de Fondos Activos</h3>
             </div>
             <div class="form-group">
-                <div class="col-md-9 col-md-offset-1">
+                <div class="col-md-10 col-md-offset-1">
                     <asp:GridView ID="dgvFondo" runat="server" AutoGenerateColumns="false"
                         CssClass="table table-hover table-striped" BorderWidth="2px"
                         GridLines="Both" EmptyDataText="No existen fondos registrados" ShowHeaderWhenEmpty="true">

@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EditarFondo.aspx.cs" Inherits="Sistema_CyT.EditarFondo" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
     <div class="container">
         <asp:Panel ID="PanelSuperior" CssClass="panel panel-info" runat="server">
             <div class="panel-heading">
@@ -12,15 +11,14 @@
             <div class="form-group">
                 <br />
                 <asp:Label ID="lblDdl" Font-Bold="true" runat="server" Text="&lt Seleccione FONDO &gt" CssClass="col-md-2 control-label"> </asp:Label>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <asp:DropDownList ID="ddlActualizarFondo" runat="server"
-                        Width="280"
                         BackColor="#ffff99"
                         ForeColor="#000066"
                         Font-Bold="true"
                         CssClass="form-control"
                         DataTextField="nombre"
-                        AutoPostBack="True"
+                        AutoPostBack="true"
                         AppendDataBoundItems="true"
                         OnSelectedIndexChanged="ddlActualizarFondo_SelectedIndexChanged">
                     </asp:DropDownList>
@@ -29,9 +27,9 @@
 
             <!-- NOMBRE DEL FONDO -->
             <div class="form-group">
-                <asp:Label ID="lblNombre" runat="server" Text="NOMBRE" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
-                <div class="col-md-6 col-xs-12 ">
-                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="1"></asp:TextBox><br />
+                <asp:Label ID="lblNombre" runat="server" Text="NOMBRE" CssClass="col-md-2 control-label"> </asp:Label>
+                <div class="col-md-6">
+                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="1"></asp:TextBox>
                 </div>
             </div>
 
@@ -39,24 +37,57 @@
             <div class="form-group">
                 <asp:Label ID="lblDescripcion" runat="server" Text="DESCRIPCION" CssClass="col-md-2 control-label"> </asp:Label>
                 <div class="col-md-6 ">
-                    <asp:TextBox ID="txtDecripcion" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox><br />
+                    <asp:TextBox ID="txtDecripcion" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
                 </div>
             </div>
 
             <!-- ORIGEN DEL FONDO -->
             <div class="form-group">
-                <asp:Label ID="lblOrigen" runat="server" Text="ORIGEN" CssClass="col-md-2 control-label"> </asp:Label>
-                <div class="col-md-4 ">
+                <asp:Label ID="lblOrigen" runat="server" Text="ORIGEN" CssClass="col-md-2 control-label"></asp:Label>
+                <div class="col-md-4">
                     <asp:DropDownList ID="ddlOrigen" runat="server"
-                        Width="280"
                         BackColor="WhiteSmoke"
                         ForeColor="#000066"
                         Font-Bold="false"
                         CssClass="selectpicker form-control show-tick"
                         data-live-search="true"
+                        DataTextField="nombre"
                         AutoPostBack="false"
-                        DataTextField="nombre">
+                        AppendDataBoundItems="true">
                     </asp:DropDownList>
+                </div>
+
+
+
+                <%--AGREGAR ACA EL MODAL PARA NUEVO ORIGEN--%>
+                <div class="form-group">
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalOrigen">Nuevo Origen</button>
+                    </div>
+                    <!-- MODAL EMPRESA  -->
+                    <div class="modal fade" id="modalOrigen" tabindex="-1" role="dialog" aria-labelledby="modalLabelOrigen" aria-hidden="true">
+                        <div class="modal-dialog modal-md">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title" id="modalLabelOrigen">Nuevo Origen</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtOrigenModal" runat="server" CssClass="form-control"></asp:TextBox><br />
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <asp:Button runat="server" ID="btnModalOrigenSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
+                                        <asp:Button runat="server" ID="btnModalOrigenGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalOrigenGuardar_Click" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -70,7 +101,7 @@
 
         <!-- GRILLA CON TODOS LOS FONDOS -->
         <asp:Panel ID="PanelInferior" CssClass="panel" runat="server">
-            <div class="panel-heading col-md-offset-1" style="height: 40px;padding:0">
+            <div class="panel-heading col-md-offset-1" style="height: 40px; padding: 0">
                 <h3>Lista de Fondos Activos</h3>
             </div>
             <div class="form-group">
