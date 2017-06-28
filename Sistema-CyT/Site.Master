@@ -55,7 +55,7 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class="btn" href="/Default.aspx">SALIR <span class="glyphicon glyphicon-log-out"></span></a></li>
+                    <li><a class="btn" href="/Login.aspx">SALIR <span class="glyphicon glyphicon-log-out"></span></a></li>
                 </ul>
             </div>
         </nav>

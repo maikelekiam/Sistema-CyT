@@ -515,6 +515,28 @@
           <orm:collection element-class="CapaDominio.Actuacion" inverse-field="organismo" order-by="" uniqueId="6c639838-c11e-412c-8fb4-e2eee61074ce" />
         </orm:field>
       </orm:class>
+      <orm:class name="Usuario" uniqueId="6540cc4e-8214-4950-8f81-e1406791aa31">
+        <orm:table name="Usuario" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="IdUsuario" />
+          </orm:key-generator>
+          <orm:single-field field-name="idUsuario" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="idUsuario" property="IdUsuario" behavior="readwrite" uniqueId="c424828e-ac0a-4b39-be92-d8e96b379c1f" type="System.Int32">
+          <orm:column name="idUsuario" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="usuario1" property="Usuario1" behavior="readwrite" uniqueId="3be1cf22-3a26-41bf-8997-24239f4ab95a" type="System.String">
+          <orm:column name="usuario" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="password" property="Password" behavior="readwrite" uniqueId="c01f09db-c882-4cdb-ae97-fde7d8549543" type="System.String">
+          <orm:column name="password" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="nivel" property="Nivel" behavior="readwrite" uniqueId="e5c3035a-4c12-49b7-8e36-e29cd6e11d0d" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="nivel" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+      </orm:class>
     </orm:namespace>
     <orm:schema schema="">
       <orm:table name="TipoFinanciamiento">
@@ -667,6 +689,12 @@
         <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         <orm:column name="telefono" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         <orm:column name="correoElectronico" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+      </orm:table>
+      <orm:table name="Usuario">
+        <orm:column name="idUsuario" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="usuario" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="password" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="nivel" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
       </orm:table>
       <orm:procedure name="fn_diagramobjects" is-function="true" return-type="int">
         <orm:result-sets />
@@ -1144,6 +1172,12 @@
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
+    <DomainClass Id="6540cc4e-8214-4950-8f81-e1406791aa31" name="Usuario" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdUsuario">
+      <Property Id="c424828e-ac0a-4b39-be92-d8e96b379c1f" name="IdUsuario" type="Int32" label="IdUsuario : Int32" kind="Persistent" identity="true" fieldName="idUsuario" />
+      <Property Id="e5c3035a-4c12-49b7-8e36-e29cd6e11d0d" name="Nivel" type="Int32" label="Nivel : Int32" nullable="true" kind="Persistent" fieldName="nivel" />
+      <Property Id="c01f09db-c882-4cdb-ae97-fde7d8549543" name="Password" label="Password : String" kind="Persistent" fieldName="password" />
+      <Property Id="3be1cf22-3a26-41bf-8997-24239f4ab95a" name="Usuario1" label="Usuario1 : String" kind="Persistent" fieldName="usuario1" />
+    </DomainClass>
   </Types>
   <domainContext>
     <domainModelHasDomainContext Id="70e238b7-4554-47d3-9cc0-5f762b72c806">
@@ -1163,6 +1197,7 @@
         <entitySetProperty name="Auditoria" namespace="CapaDominio" type="Auditorium" label="Auditoria : IQueryable&lt;CapaDominio.Auditorium&gt;" />
         <entitySetProperty name="Actuacions" namespace="CapaDominio" type="Actuacion" label="Actuacions : IQueryable&lt;CapaDominio.Actuacion&gt;" />
         <entitySetProperty name="Organismos" namespace="CapaDominio" type="Organismo" label="Organismos : IQueryable&lt;CapaDominio.Organismo&gt;" />
+        <entitySetProperty name="Usuarios" namespace="CapaDominio" type="Usuario" label="Usuarios : IQueryable&lt;CapaDominio.Usuario&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>

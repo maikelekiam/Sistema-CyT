@@ -57,6 +57,7 @@
     <Compile Include="ProyectoRepo.cs" />
     <Compile Include="TipoConvocatoriaRepo.cs" />
     <Compile Include="TipoFinanciamientoRepo.cs" />
+    <Compile Include="UsuarioRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CapaDominio\CapaDominio.csproj">

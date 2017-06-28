@@ -176,6 +176,7 @@
     <Content Include="ListarConvocatorias.aspx" />
     <Content Include="ListarFondos.aspx" />
     <Content Include="ListarProyectos.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="MostrarConvocatoria.aspx" />
     <Content Include="MostrarFondo.aspx" />
     <Content Include="MostrarProyecto.aspx" />
@@ -347,6 +348,13 @@
     </Compile>
     <Compile Include="ListarProyectos.aspx.designer.cs">
       <DependentUpon>ListarProyectos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="MostrarConvocatoria.aspx.cs">

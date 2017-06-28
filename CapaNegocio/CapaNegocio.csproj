@@ -59,6 +59,7 @@
     <Compile Include="ProyectoNego.cs" />
     <Compile Include="TipoConvocatoriaNego.cs" />
     <Compile Include="TipoFinanciamientoNego.cs" />
+    <Compile Include="UsuarioNego.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CapaDominio\CapaDominio.csproj">
