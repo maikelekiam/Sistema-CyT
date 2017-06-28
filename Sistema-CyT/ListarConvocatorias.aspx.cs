@@ -52,10 +52,5 @@ namespace Sistema_CyT
         {
             Response.Redirect("MostrarConvocatoria.aspx");
         }
-
-        protected void dgvConvocatoria_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
-        {
-
-        }
     }
 }

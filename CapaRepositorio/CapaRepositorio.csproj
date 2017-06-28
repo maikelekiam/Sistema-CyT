@@ -47,7 +47,6 @@
     <Compile Include="EmpresaRepo.cs" />
     <Compile Include="EtapaRepo.cs" />
     <Compile Include="FondoRepo.cs" />
-    <Compile Include="ListaConvocatoriaModalidadRepo.cs" />
     <Compile Include="LocalidadRepo.cs" />
     <Compile Include="ModalidadRepo.cs" />
     <Compile Include="OrganismoRepo.cs" />

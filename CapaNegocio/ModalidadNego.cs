@@ -26,5 +26,9 @@ namespace CapaNegocio
         {
             modalidadRepo.ActualizarModalidad(modalidad);
         }
+        public IEnumerable<Modalidad> MostrarModalidades()
+        {
+            return modalidadRepo.MostrarModalidades();
+        }
     }
 }

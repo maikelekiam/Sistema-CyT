@@ -18,7 +18,6 @@ using Telerik.OpenAccess.Metadata;
 using Telerik.OpenAccess.Data.Common;
 using Telerik.OpenAccess.Metadata.Fluent;
 using Telerik.OpenAccess.Metadata.Fluent.Advanced;
-using CapaDominio;
 
 namespace CapaDominio	
 {
@@ -60,32 +59,6 @@ namespace CapaDominio
 			set
 			{
 				this.nombre = value;
-			}
-		}
-		
-		private Convocatorium convocatorium;
-		public virtual Convocatorium Convocatorium
-		{
-			get
-			{
-				return this.convocatorium;
-			}
-			set
-			{
-				this.convocatorium = value;
-			}
-		}
-		
-		private Modalidad modalidad;
-		public virtual Modalidad Modalidad
-		{
-			get
-			{
-				return this.modalidad;
-			}
-			set
-			{
-				this.modalidad = value;
 			}
 		}
 		

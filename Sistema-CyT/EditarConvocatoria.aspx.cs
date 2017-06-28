@@ -16,12 +16,11 @@ namespace Sistema_CyT
         private TipoFinanciamientoNego tipoFinanciamientoNego = new TipoFinanciamientoNego();
         private TipoConvocatoriaNego tipoConvocatoriaNego = new TipoConvocatoriaNego();
         private ModalidadNego modalidadNego = new ModalidadNego();
-        private ListaConvocatoriaModalidadNego listaConvocatoriaModalidadNego = new ListaConvocatoriaModalidadNego();
         IEnumerable<Convocatorium> listaConvocatorias;
 
         public static int id;
         static List<Modalidad> listaConvocatoriaModalidades = new List<Modalidad>();
-        static IEnumerable<ListaConvocatoriaModalidad> lista = new List<ListaConvocatoriaModalidad>();
+        static IEnumerable<Modalidad> lista = new List<Modalidad>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -93,8 +92,6 @@ namespace Sistema_CyT
             convocatoria.IdConvocatoria = id;
 
             convocatoria.Nombre = txtNombre.Text;
-            convocatoria.Descripcion = txtDescripcion.Text;
-            convocatoria.Objetivo = txtObjetivo.Text;
             convocatoria.Anio = Int32.Parse(txtAnio.Text);
             convocatoria.IdFondo = Int32.Parse(ddlFondo.SelectedValue);
             convocatoria.IdTipoFinanciamiento = Int32.Parse(ddlTipoFinanciamiento.SelectedValue);
@@ -113,15 +110,12 @@ namespace Sistema_CyT
                 ListaConvocatoriaModalidad listaConvocatoriaModalidad = new ListaConvocatoriaModalidad();
                 listaConvocatoriaModalidad.IdConvocatoria = id;
                 listaConvocatoriaModalidad.IdModalidad = t.IdModalidad;
-                listaConvocatoriaModalidadNego.ActualizarListaConvocatoriaModalidad(listaConvocatoriaModalidad);
             }
         }
 
         private void LimpiarFormulario()
         {
             txtNombre.Text = null;
-            txtDescripcion.Text = null;
-            txtObjetivo.Text = null;
             txtAnio.Text = null;
             ddlFondo.SelectedIndex = 0;
             ddlTipoConvocatoria.SelectedIndex = 0;
@@ -150,8 +144,6 @@ namespace Sistema_CyT
 
             //RUTINAS PARA QUE EL TEXTBOX MULTILINE SE AJUSTE AUTOMATICAMENTE
             int contador = 45;
-            int c2 = 45;
-            int c3 = 45;
             int rows;
             string cadena;
             string cadcom = "qwertyuiopasdfghjklñzxcvbnm1234567890QWERTYUIOPASDFGHJKLÑZXCVBNM.,";
@@ -167,30 +159,6 @@ namespace Sistema_CyT
             rows = contador / 90;
             txtNombre.Rows = rows + 1;
             txtNombre.Text = convocatoria.Nombre.ToString();
-
-            //DESCRIPCION
-            cadena = convocatoria.Descripcion.ToString();
-            for (int i = 0; i < cadena.Length; i++)
-            {
-                if (cadcom.Contains(cadena.Substring(i, 1))) { c2++; }
-                else if (cadena.Substring(i, 1) == " ") { c2++; }
-                else if (cadena.Substring(i, 1) == "\n") { c2 = c2 + 90 - i; }
-            }
-            rows = c2 / 90;
-            txtDescripcion.Rows = rows + 1;
-            txtDescripcion.Text = convocatoria.Descripcion.ToString();
-
-            //OBJETIVO
-            cadena = convocatoria.Objetivo.ToString();
-            for (int i = 0; i < cadena.Length; i++)
-            {
-                if (cadcom.Contains(cadena.Substring(i, 1))) { c3++; }
-                else if (cadena.Substring(i, 1) == " ") { c3++; }
-                else if (cadena.Substring(i, 1) == "\n") { c3 = c3 + 90 - i; }
-            }
-            rows = c3 / 90;
-            txtObjetivo.Rows = rows + 1;
-            txtObjetivo.Text = convocatoria.Objetivo.ToString();
 
             txtAnio.Text = convocatoria.Anio.ToString();
             ddlFondo.Text = Convert.ToString(convocatoria.IdFondo);
@@ -209,19 +177,19 @@ namespace Sistema_CyT
             }
 
             //AHORA TENGO QUE TRAER UNA LISTA DE MODALIDADES SEGUN EL IdConvocatoriaActual
-            //lista = listaConvocatoriaModalidadNego.TraerModalidadSegunConvocatoria(id);
-            //dgvCM.DataSource = listaConvocatoriaModalidadNego.TraerModalidadSegunConvocatoria(id);
-            //dgvCM.DataBind();
+            lista = modalidadNego.MostrarModalidades();
+            dgvModalidades.DataSource = lista.ToList();
+            dgvModalidades.DataBind();
             //DESPUES QUITAR ESTO DE ARRIBA
 
-            foreach (ListaConvocatoriaModalidad lcm in lista)
-            {
-                Modalidad modalidad = modalidadNego.ObtenerModalidadSegunId(lcm.IdModalidad);
+            //foreach (ListaConvocatoriaModalidad lcm in lista)
+            //{
+            //    Modalidad modalidad = modalidadNego.ObtenerModalidadSegunId(lcm.IdModalidad);
 
-                listaConvocatoriaModalidades.Add(modalidad);
-            }
+            //    listaConvocatoriaModalidades.Add(modalidad);
+            //}
 
-            LlenarGrillaModalidades();
+            //LlenarGrillaModalidades();
         }
 
         protected void dgvModalidades_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)

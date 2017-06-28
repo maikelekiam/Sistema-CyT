@@ -50,32 +50,6 @@ namespace CapaDominio
 			}
 		}
 		
-		private string descripcion;
-		public virtual string Descripcion
-		{
-			get
-			{
-				return this.descripcion;
-			}
-			set
-			{
-				this.descripcion = value;
-			}
-		}
-		
-		private string objetivo;
-		public virtual string Objetivo
-		{
-			get
-			{
-				return this.objetivo;
-			}
-			set
-			{
-				this.objetivo = value;
-			}
-		}
-		
 		private int? anio;
 		public virtual int? Anio
 		{
@@ -219,21 +193,21 @@ namespace CapaDominio
 			}
 		}
 		
-		private IList<ListaConvocatoriaModalidad> listaConvocatoriaModalidads = new List<ListaConvocatoriaModalidad>();
-		public virtual IList<ListaConvocatoriaModalidad> ListaConvocatoriaModalidads
-		{
-			get
-			{
-				return this.listaConvocatoriaModalidads;
-			}
-		}
-		
 		private IList<Proyecto> proyectos = new List<Proyecto>();
 		public virtual IList<Proyecto> Proyectos
 		{
 			get
 			{
 				return this.proyectos;
+			}
+		}
+		
+		private IList<Modalidad> modalidads = new List<Modalidad>();
+		public virtual IList<Modalidad> Modalidads
+		{
+			get
+			{
+				return this.modalidads;
 			}
 		}
 		

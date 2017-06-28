@@ -14,7 +14,7 @@
                         CssClass="table table-hover table-striped" BorderWidth="2px"
                         GridLines="Both"
                         OnRowCommand="dgvConvocatoria_RowCommand"
-                        OnSelectedIndexChanging="dgvConvocatoria_SelectedIndexChanging">
+                        >
                         <Columns>
                             <asp:BoundField HeaderText="ID" DataField="idConvocatoria" ItemStyle-HorizontalAlign="Left" />
                             <asp:BoundField HeaderText="Año" DataField="anio" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100" />
@@ -34,11 +34,6 @@
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <asp:Button ID="btnMostrar" runat="server" Text="Mostrar" CssClass="form-control" BackColor="#eaeaea" />
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField>
-                                <ItemTemplate>
-                                    <asp:Button ID="btnEditar" runat="server" Text="Editar" CssClass="form-control" BackColor="#eaeaea" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

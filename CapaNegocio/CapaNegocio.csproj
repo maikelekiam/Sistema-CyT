@@ -49,7 +49,6 @@
     <Compile Include="EmpresaNego.cs" />
     <Compile Include="EtapaNego.cs" />
     <Compile Include="FondoNego.cs" />
-    <Compile Include="ListaConvocatoriaModalidadNego.cs" />
     <Compile Include="LocalidadNego.cs" />
     <Compile Include="ModalidadNego.cs" />
     <Compile Include="OrganismoNego.cs" />

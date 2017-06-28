@@ -18,8 +18,7 @@ namespace Sistema_CyT
         private ModalidadNego modalidadNego = new ModalidadNego();
         static int idConvocatoriaActual;
 
-        static List<Modalidad> listaConvocatoriaModalidades = new List<Modalidad>();
-        private ListaConvocatoriaModalidadNego listaConvocatoriaModalidadNego = new ListaConvocatoriaModalidadNego();
+        static List<Modalidad> listaModalidades = new List<Modalidad>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -84,8 +83,6 @@ namespace Sistema_CyT
 
             //PRIMERO GUARDO LA CONVOCATORIA
             convocatoria.Nombre = txtNombre.Text;
-            convocatoria.Descripcion = txtDescripcion.Text;
-            convocatoria.Objetivo = txtObjetivo.Text;
             convocatoria.Anio = Int32.Parse(txtAnio.Text);
             convocatoria.IdFondo = Int32.Parse(ddlFondo.SelectedValue);
             convocatoria.IdTipoFinanciamiento = Int32.Parse(ddlTipoFinanciamiento.SelectedValue);
@@ -106,13 +103,9 @@ namespace Sistema_CyT
             int idConvocatoria = convocatoriaNego.GuardarConvocatoria(convocatoria);
             idConvocatoriaActual = idConvocatoria;
 
-            foreach (Modalidad t in listaConvocatoriaModalidades)
-            {
-                ListaConvocatoriaModalidad listaConvocatoriaModalidad = new ListaConvocatoriaModalidad();
-                listaConvocatoriaModalidad.IdConvocatoria = idConvocatoria;
-                listaConvocatoriaModalidad.IdModalidad = t.IdModalidad;
-                listaConvocatoriaModalidadNego.GuardarListaConvocatoriaModalidad(listaConvocatoriaModalidad);
-            }
+            //FALTA EL METODO PARA GUARDAR LA LISTA DE MODALIDADES ACTUAL
+
+
         }
 
         protected void btnModalModalidadGuardar_Click(object sender, EventArgs e)
@@ -139,7 +132,7 @@ namespace Sistema_CyT
 
             modalidadNego.GuardarModalidad(item);
 
-            listaConvocatoriaModalidades.Add(item);
+            listaModalidades.Add(item);
 
             txtNombreModal.Text = null;
             txtDescripcionModal.Text = null;
@@ -153,15 +146,13 @@ namespace Sistema_CyT
 
         private void LlenarGrillaModalidades()
         {
-            dgvModalidades.DataSource = listaConvocatoriaModalidades;
+            dgvModalidades.DataSource = listaModalidades;
             dgvModalidades.DataBind();
         }
 
         private void LimpiarFormulario()
         {
             txtNombre.Text = null;
-            txtDescripcion.Text = null;
-            txtObjetivo.Text = null;
             txtAnio.Text = null;
             ddlFondo.SelectedIndex = 0;
             ddlTipoConvocatoria.SelectedIndex = 0;
@@ -169,7 +160,7 @@ namespace Sistema_CyT
             txtFechaApertura.Text = null;
             txtFechaCierre.Text = null;
             chkAbierta.Checked = false;
-            listaConvocatoriaModalidades.Clear();
+            listaModalidades.Clear();
             LlenarGrillaModalidades();
         }
     }

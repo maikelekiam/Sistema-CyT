@@ -35,5 +35,14 @@ namespace CapaRepositorio
                 modeloDeDominio.SaveChanges();
             }
         }
+        public IEnumerable<Modalidad> MostrarModalidades()
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                IEnumerable<Modalidad> result = modeloDeDominio.Modalidads.ToList();
+
+                return result;
+            }
+        }
     }
 }

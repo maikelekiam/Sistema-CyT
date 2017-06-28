@@ -50,29 +50,6 @@ namespace Sistema_CyT
             txtNombre.Rows = rows + 1;
             txtNombre.Text = convocatoria.Nombre.ToString();
 
-            //DESCRIPCION
-            cadena = convocatoria.Descripcion.ToString();
-            for (int i = 0; i < cadena.Length; i++)
-            {
-                if (cadcom.Contains(cadena.Substring(i, 1))) { c2++; }
-                else if (cadena.Substring(i, 1) == " ") { c2++; }
-                else if (cadena.Substring(i, 1) == "\n") { c2 = c2 + 90 - i; }
-            }
-            rows = c2 / 90;
-            txtDescripcion.Rows = rows + 1;
-            txtDescripcion.Text = convocatoria.Descripcion.ToString();
-
-            //OBJETIVO
-            cadena = convocatoria.Objetivo.ToString();
-            for (int i = 0; i < cadena.Length; i++)
-            {
-                if (cadcom.Contains(cadena.Substring(i, 1))) { c3++; }
-                else if (cadena.Substring(i, 1) == " ") { c3++; }
-                else if (cadena.Substring(i, 1) == "\n") { c3 = c3 + 90 - i; }
-            }
-            rows = c3 / 90;
-            txtObjetivo.Rows = rows + 1;
-            txtObjetivo.Text = convocatoria.Objetivo.ToString();
 
             txtAnio.Text = convocatoria.Anio.ToString();
             txtFondo.Text = Convert.ToString(fondoNego.ObtenerFondoString(Convert.ToInt32(convocatoria.IdFondo)));

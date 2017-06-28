@@ -89,8 +89,14 @@
         <orm:field name="plazoEjecucion" property="PlazoEjecucion" behavior="readwrite" uniqueId="85087f58-4b33-4c1b-a51c-3d68fd8c2c65" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
           <orm:column name="plazoEjecucion" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:field>
-        <orm:field name="listaConvocatoriaModalidads" property="ListaConvocatoriaModalidads" behavior="readwrite" uniqueId="aa4849d0-6606-4909-b1f7-6e35fdb2c104" type="CapaDominio.ListaConvocatoriaModalidad">
-          <orm:collection element-class="CapaDominio.ListaConvocatoriaModalidad" inverse-field="modalidad" order-by="" uniqueId="495a27b5-7e87-4b46-8aa9-84c143f7b365" />
+        <orm:field name="idConvocatoria" property="IdConvocatoria" behavior="readwrite" uniqueId="7227fdb2-fd52-45b3-8d54-4e35567a819f" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="idConvocatoria" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="convocatorium" property="Convocatorium" behavior="readwrite" uniqueId="b834fbdb-3404-4809-bbd4-b8a5474776fe" type="CapaDominio.Convocatorium">
+          <orm:reference uniqueId="417d3c3e-0b13-4720-b0a8-798a7a7d7a7b" association-name="ModalidadHasConvocatorium">
+            <orm:sharedfield name="idConvocatoria" target-class="CapaDominio.Convocatorium" target-field="idConvocatoria" />
+            <orm:constraint name="FK_Modalidad_Convocatoria" delete-action="dbdefaultrule" destination-table="Convocatoria" />
+          </orm:reference>
         </orm:field>
       </orm:class>
       <orm:class name="ListaConvocatoriaModalidad" uniqueId="d915ec6c-1530-4f4b-8efa-705289ad8e5b">
@@ -110,18 +116,6 @@
         </orm:field>
         <orm:field name="nombre" property="Nombre" behavior="readwrite" uniqueId="b662c53e-e6b6-44e5-b0e1-bab6ad62589c" type="System.String">
           <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
-        </orm:field>
-        <orm:field name="convocatorium" property="Convocatorium" behavior="readwrite" uniqueId="864c8193-c962-48ce-9c8b-260459eb4dcd" type="CapaDominio.Convocatorium">
-          <orm:reference uniqueId="ff9cd213-fd63-48ed-93c6-3f7fd6b98649" association-name="ListaConvocatoriaModalidadHasConvocatorium">
-            <orm:sharedfield name="idConvocatoria" target-class="CapaDominio.Convocatorium" target-field="idConvocatoria" />
-            <orm:constraint name="FK_ListaConvocatoriaModalidad_Convocatoria" delete-action="dbdefaultrule" destination-table="Convocatoria" />
-          </orm:reference>
-        </orm:field>
-        <orm:field name="modalidad" property="Modalidad" behavior="readwrite" uniqueId="a0300740-de04-4728-9200-ff23eebc0245" type="CapaDominio.Modalidad">
-          <orm:reference uniqueId="495a27b5-7e87-4b46-8aa9-84c143f7b365" association-name="ListaConvocatoriaModalidadHasModalidad">
-            <orm:sharedfield name="idModalidad" target-class="CapaDominio.Modalidad" target-field="idModalidad" />
-            <orm:constraint name="FK_ListaConvocatoriaModalidad_Modalidad" delete-action="dbdefaultrule" destination-table="Modalidad" />
-          </orm:reference>
         </orm:field>
       </orm:class>
       <orm:class name="Fondo" uniqueId="48762ea2-3ab9-4fef-bf46-a5c4924fec30">
@@ -173,12 +167,6 @@
         <orm:field name="nombre" property="Nombre" behavior="readwrite" uniqueId="8e90ac86-3afd-4d3c-ab7b-e8170ced99bf" type="System.String">
           <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         </orm:field>
-        <orm:field name="descripcion" property="Descripcion" behavior="readwrite" uniqueId="887bc907-ca32-43b3-bafb-b0fc7a5ae768" type="System.String">
-          <orm:column name="descripcion" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
-        </orm:field>
-        <orm:field name="objetivo" property="Objetivo" behavior="readwrite" uniqueId="7c497018-38c0-4df5-bce7-1711690878d7" type="System.String">
-          <orm:column name="objetivo" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
-        </orm:field>
         <orm:field name="anio" property="Anio" behavior="readwrite" uniqueId="cd9137e0-3db7-412b-b9d0-cace9a2fb6ee" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
           <orm:column name="anio" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:field>
@@ -221,11 +209,11 @@
             <orm:constraint name="FK_Convocatoria_TipoFinanciamiento" delete-action="dbdefaultrule" destination-table="TipoFinanciamiento" />
           </orm:reference>
         </orm:field>
-        <orm:field name="listaConvocatoriaModalidads" property="ListaConvocatoriaModalidads" behavior="readwrite" uniqueId="39e46c13-c352-486e-994f-846d56d24983" type="CapaDominio.ListaConvocatoriaModalidad">
-          <orm:collection element-class="CapaDominio.ListaConvocatoriaModalidad" inverse-field="convocatorium" order-by="" uniqueId="ff9cd213-fd63-48ed-93c6-3f7fd6b98649" />
-        </orm:field>
         <orm:field name="proyectos" property="Proyectos" behavior="readwrite" uniqueId="e1a8ffbe-7be6-4d0c-b0d7-17af21b3ae5c" type="CapaDominio.Proyecto">
           <orm:collection element-class="CapaDominio.Proyecto" inverse-field="convocatorium" order-by="" uniqueId="b28211c6-7505-4eba-90e4-9aaf9dcecc69" />
+        </orm:field>
+        <orm:field name="modalidads" property="Modalidads" behavior="readwrite" uniqueId="8c4edd64-a685-4da4-a85e-e6a025cda3bb" type="CapaDominio.Modalidad">
+          <orm:collection element-class="CapaDominio.Modalidad" inverse-field="convocatorium" order-by="" uniqueId="417d3c3e-0b13-4720-b0a8-798a7a7d7a7b" />
         </orm:field>
       </orm:class>
       <orm:class name="Proyecto" uniqueId="3600afee-5598-42c7-8ace-e0ab3c04d9af">
@@ -559,17 +547,15 @@
         <orm:column name="montoMaximoProyecto" sql-type="numeric" nullable="true" length="18" scale="0" ado-type="Numeric" />
         <orm:column name="porcentajeFinanciamiento" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="plazoEjecucion" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="idConvocatoria" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:constraint name="FK_Modalidad_Convocatoria" delete-action="dbdefaultrule" destination-table="Convocatoria">
+          <orm:column name="idConvocatoria" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
       </orm:table>
       <orm:table name="ListaConvocatoriaModalidad">
         <orm:column name="idModalidad" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
         <orm:column name="idConvocatoria" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
         <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
-        <orm:constraint name="FK_ListaConvocatoriaModalidad_Convocatoria" delete-action="dbdefaultrule" destination-table="Convocatoria">
-          <orm:column name="idConvocatoria" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
-        </orm:constraint>
-        <orm:constraint name="FK_ListaConvocatoriaModalidad_Modalidad" delete-action="dbdefaultrule" destination-table="Modalidad">
-          <orm:column name="idModalidad" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
-        </orm:constraint>
       </orm:table>
       <orm:table name="Fondo">
         <orm:column name="idFondo" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
@@ -584,8 +570,6 @@
       <orm:table name="Convocatoria">
         <orm:column name="idConvocatoria" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
-        <orm:column name="descripcion" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
-        <orm:column name="objetivo" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         <orm:column name="anio" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="idFondo" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="idTipoFinanciamiento" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
@@ -772,9 +756,25 @@
       <Property Id="c310c062-a5ca-40d1-8d1e-633665ea97c6" name="Objetivo" label="Objetivo : String" kind="Persistent" fieldName="objetivo" />
       <Property Id="85087f58-4b33-4c1b-a51c-3d68fd8c2c65" name="PlazoEjecucion" type="Int32" label="PlazoEjecucion : Int32" nullable="true" kind="Persistent" fieldName="plazoEjecucion" />
       <Property Id="4f6f2209-71c4-4424-9e91-c67c4b11492f" name="PorcentajeFinanciamiento" type="Int32" label="PorcentajeFinanciamiento : Int32" nullable="true" kind="Persistent" fieldName="porcentajeFinanciamiento" />
+      <Property Id="7227fdb2-fd52-45b3-8d54-4e35567a819f" name="IdConvocatoria" type="Int32" label="IdConvocatoria : Int32" nullable="true" kind="Persistent" fieldName="idConvocatoria" />
+      <AssociationTargets>
+        <Association Id="417d3c3e-0b13-4720-b0a8-798a7a7d7a7b" SourceMultiplicity="ZeroOne" name="ModalidadHasConvocatorium">
+          <DomainClassMoniker name="/ModeloDeDominio/Convocatorium" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="ff69c45c-fc95-4476-81ff-165cd8e20004">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Convocatorium/Modalidads" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="c3b5da90-2907-4486-ad9c-072f26aed3f2">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Modalidad/Convocatorium" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
       <navigationalProperties>
-        <classHasNavigationalProperties Id="1e289eb5-3cef-4d15-95db-356facc19851">
-          <NavigationalProperty Id="aa4849d0-6606-4909-b1f7-6e35fdb2c104" name="ListaConvocatoriaModalidads" type="IList&lt;ListaConvocatoriaModalidad&gt;" label="ListaConvocatoriaModalidads : IList&lt;ListaConvocatoriaModalidad&gt;" nullable="true" kind="Persistent" fieldName="listaConvocatoriaModalidads" isDependent="false" isManaged="false" />
+        <classHasNavigationalProperties Id="27be31c5-d8b6-4a30-842a-ab1295eaa825">
+          <NavigationalProperty Id="b834fbdb-3404-4809-bbd4-b8a5474776fe" name="Convocatorium" type="Convocatorium" label="Convocatorium : Convocatorium" nullable="true" kind="Persistent" fieldName="convocatorium" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -782,42 +782,6 @@
       <Property Id="655b6a66-2e6a-462d-88fc-c844226f3e27" name="IdConvocatoria" type="Int32" label="IdConvocatoria : Int32" kind="Persistent" identity="true" fieldName="idConvocatoria" />
       <Property Id="3934fa61-5bbc-470b-b367-1f4d516dcfe0" name="IdModalidad" type="Int32" label="IdModalidad : Int32" kind="Persistent" identity="true" fieldName="idModalidad" />
       <Property Id="b662c53e-e6b6-44e5-b0e1-bab6ad62589c" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
-      <AssociationTargets>
-        <Association Id="ff9cd213-fd63-48ed-93c6-3f7fd6b98649" SourceMultiplicity="One" name="ListaConvocatoriaModalidadHasConvocatorium">
-          <DomainClassMoniker name="/ModeloDeDominio/Convocatorium" />
-          <targetNavigationalProperty>
-            <associationDefinesTargetProperty Id="ed87dd97-f026-40ae-9e85-861971c9919e">
-              <NavigationalPropertyMoniker name="/ModeloDeDominio/Convocatorium/ListaConvocatoriaModalidads" />
-            </associationDefinesTargetProperty>
-          </targetNavigationalProperty>
-          <sourceNavigationalProperty>
-            <associationDefinesSourceProperty Id="5d5918c6-ab61-4bc5-b8a5-4b75842c3839">
-              <NavigationalPropertyMoniker name="/ModeloDeDominio/ListaConvocatoriaModalidad/Convocatorium" />
-            </associationDefinesSourceProperty>
-          </sourceNavigationalProperty>
-        </Association>
-        <Association Id="495a27b5-7e87-4b46-8aa9-84c143f7b365" SourceMultiplicity="One" name="ListaConvocatoriaModalidadHasModalidad">
-          <DomainClassMoniker name="/ModeloDeDominio/Modalidad" />
-          <targetNavigationalProperty>
-            <associationDefinesTargetProperty Id="d871117f-cec2-4803-899c-7410317e74ca">
-              <NavigationalPropertyMoniker name="/ModeloDeDominio/Modalidad/ListaConvocatoriaModalidads" />
-            </associationDefinesTargetProperty>
-          </targetNavigationalProperty>
-          <sourceNavigationalProperty>
-            <associationDefinesSourceProperty Id="31794f44-a0f7-4e46-b394-eac9c816e044">
-              <NavigationalPropertyMoniker name="/ModeloDeDominio/ListaConvocatoriaModalidad/Modalidad" />
-            </associationDefinesSourceProperty>
-          </sourceNavigationalProperty>
-        </Association>
-      </AssociationTargets>
-      <navigationalProperties>
-        <classHasNavigationalProperties Id="dd1163d4-4b83-4c9e-9e49-712746806948">
-          <NavigationalProperty Id="864c8193-c962-48ce-9c8b-260459eb4dcd" name="Convocatorium" type="Convocatorium" label="Convocatorium : Convocatorium" nullable="true" kind="Persistent" fieldName="convocatorium" isDependent="false" isManaged="false" />
-        </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="37cd5b4a-83c5-49a3-92af-0668e13798db">
-          <NavigationalProperty Id="a0300740-de04-4728-9200-ff23eebc0245" name="Modalidad" type="Modalidad" label="Modalidad : Modalidad" nullable="true" kind="Persistent" fieldName="modalidad" isDependent="false" isManaged="false" />
-        </classHasNavigationalProperties>
-      </navigationalProperties>
     </DomainClass>
     <DomainClass Id="48762ea2-3ab9-4fef-bf46-a5c4924fec30" name="Fondo" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdFondo">
       <Property Id="9fee10c9-e9f3-45cf-8f80-80d4a3540596" name="IdFondo" type="Int32" label="IdFondo : Int32" kind="Persistent" identity="true" fieldName="idFondo" />
@@ -854,14 +818,12 @@
       <Property Id="f0e566fb-b1b9-4b33-8634-a343248188fa" name="Abierta" type="Boolean" label="Abierta : Boolean" nullable="true" kind="Persistent" fieldName="abierta" />
       <Property Id="fefbe5ba-0f61-4393-8979-e51543fe186b" name="Activa" type="Boolean" label="Activa : Boolean" nullable="true" kind="Persistent" fieldName="activa" />
       <Property Id="cd9137e0-3db7-412b-b9d0-cace9a2fb6ee" name="Anio" type="Int32" label="Anio : Int32" nullable="true" kind="Persistent" fieldName="anio" />
-      <Property Id="887bc907-ca32-43b3-bafb-b0fc7a5ae768" name="Descripcion" label="Descripcion : String" kind="Persistent" fieldName="descripcion" />
       <Property Id="de45c944-6a55-40b0-99a0-152c954a399b" name="FechaApertura" type="DateTime" label="FechaApertura : DateTime" nullable="true" kind="Persistent" fieldName="fechaApertura" />
       <Property Id="d9b79207-eb00-46ed-996a-0ecd6338a2be" name="FechaCierre" type="DateTime" label="FechaCierre : DateTime" nullable="true" kind="Persistent" fieldName="fechaCierre" />
       <Property Id="25cb2a45-5d55-4031-bcaa-71bcdd61b192" name="IdFondo" type="Int32" label="IdFondo : Int32" nullable="true" kind="Persistent" fieldName="idFondo" />
       <Property Id="6707b0b8-eda2-47e9-832a-ff003198c918" name="IdTipoConvocatoria" type="Int32" label="IdTipoConvocatoria : Int32" nullable="true" kind="Persistent" fieldName="idTipoConvocatoria" />
       <Property Id="58e39035-3589-4c5c-86a3-451099f48d11" name="IdTipoFinanciamiento" type="Int32" label="IdTipoFinanciamiento : Int32" nullable="true" kind="Persistent" fieldName="idTipoFinanciamiento" />
       <Property Id="8e90ac86-3afd-4d3c-ab7b-e8170ced99bf" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
-      <Property Id="7c497018-38c0-4df5-bce7-1711690878d7" name="Objetivo" label="Objetivo : String" kind="Persistent" fieldName="objetivo" />
       <AssociationTargets>
         <Association Id="b1a133d8-bb7e-4f52-93ce-2db005e483bd" SourceMultiplicity="ZeroOne" name="ConvocatoriumHasFondo">
           <DomainClassMoniker name="/ModeloDeDominio/Fondo" />
@@ -904,9 +866,6 @@
         </Association>
       </AssociationTargets>
       <navigationalProperties>
-        <classHasNavigationalProperties Id="0f671f79-c3d6-4619-bd72-ed487680cb87">
-          <NavigationalProperty Id="39e46c13-c352-486e-994f-846d56d24983" name="ListaConvocatoriaModalidads" type="IList&lt;ListaConvocatoriaModalidad&gt;" label="ListaConvocatoriaModalidads : IList&lt;ListaConvocatoriaModalidad&gt;" nullable="true" kind="Persistent" fieldName="listaConvocatoriaModalidads" isDependent="false" isManaged="false" />
-        </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="6ed0fc8a-6f27-484f-85cd-80de513f330c">
           <NavigationalProperty Id="93ae52fd-2e9c-43e6-8ad5-8834ce0d393f" name="Fondo" type="Fondo" label="Fondo : Fondo" nullable="true" kind="Persistent" fieldName="fondo" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
@@ -918,6 +877,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="1d79a557-52bd-4dab-9cba-c5eb94efe51f">
           <NavigationalProperty Id="e1a8ffbe-7be6-4d0c-b0d7-17af21b3ae5c" name="Proyectos" type="IList&lt;Proyecto&gt;" label="Proyectos : IList&lt;Proyecto&gt;" nullable="true" kind="Persistent" fieldName="proyectos" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="cb1e8925-62c0-451a-b5b2-c64b5dd32ab2">
+          <NavigationalProperty Id="8c4edd64-a685-4da4-a85e-e6a025cda3bb" name="Modalidads" type="IList&lt;Modalidad&gt;" label="Modalidads : IList&lt;Modalidad&gt;" nullable="true" kind="Persistent" fieldName="modalidads" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>

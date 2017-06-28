@@ -35,20 +35,6 @@
                     <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
                 </div>
             </div>
-            <!--DESCRIPCION-->
-            <div class="form-group">
-                <asp:Label ID="lblDescripcion" runat="server" Text="DESCRIPCION" CssClass="col-md-2 control-label"> </asp:Label>
-                <div class="col-md-8">
-                    <asp:TextBox ID="txtDescripcion" runat="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
-                </div>
-            </div>
-            <!--OBJETIVO-->
-            <div class="form-group">
-                <asp:Label ID="lblObjetivo" runat="server" Text="OBJETIVO" CssClass="col-md-2 control-label"></asp:Label>
-                <div class="col-md-8">
-                    <asp:TextBox ID="txtObjetivo" runat="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
-                </div>
-            </div>
             <!--AÑO y FONDO-->
             <div class="form-group">
                 <asp:Label ID="lblAnio" runat="server" Text="AÑO" CssClass="col-md-2 control-label"></asp:Label>
@@ -202,17 +188,12 @@
                     </div>
                 </div>
             </div>
-
-
-
-
             <!-- BOTON ACTUALIZAR -->
             <div class="form-group">
                 <div class="col-md-2 col-md-offset-2">
                     <asp:Button ID="btnActualizarConvocatoria" runat="server" Text="Actualizar Convocatoria" CssClass="btn btn-info form-control" OnClick="btnActualizarConvocatoria_Click" />
                 </div>
             </div>
-
         </asp:Panel>
         <!--LISTA DE MODALIDADES CARGADAS-->
         <div class="panel-heading">
@@ -232,13 +213,9 @@
                         <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Monto Maximo" DataField="montoMaximoProyecto" ItemStyle-HorizontalAlign="Center" />
                         <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="% Financiamiento" DataField="porcentajeFinanciamiento" ItemStyle-HorizontalAlign="Center" />
                         <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Plazo Ejecucion" DataField="plazoEjecucion" ItemStyle-HorizontalAlign="Center" />
-
                         <asp:ButtonField Text="Editar" ButtonType="Button" CommandName="select" HeaderStyle-BackColor="#cccccc" />
-
                     </Columns>
-
                 </asp:GridView>
-
             </div>
         </div>
 

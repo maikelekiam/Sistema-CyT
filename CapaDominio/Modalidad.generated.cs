@@ -115,12 +115,29 @@ namespace CapaDominio
 			}
 		}
 		
-		private IList<ListaConvocatoriaModalidad> listaConvocatoriaModalidads = new List<ListaConvocatoriaModalidad>();
-		public virtual IList<ListaConvocatoriaModalidad> ListaConvocatoriaModalidads
+		private int? idConvocatoria;
+		public virtual int? IdConvocatoria
 		{
 			get
 			{
-				return this.listaConvocatoriaModalidads;
+				return this.idConvocatoria;
+			}
+			set
+			{
+				this.idConvocatoria = value;
+			}
+		}
+		
+		private Convocatorium convocatorium;
+		public virtual Convocatorium Convocatorium
+		{
+			get
+			{
+				return this.convocatorium;
+			}
+			set
+			{
+				this.convocatorium = value;
 			}
 		}
 		
