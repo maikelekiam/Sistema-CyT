@@ -16,11 +16,13 @@ namespace Sistema_CyT
         private TipoFinanciamientoNego tipoFinanciamientoNego = new TipoFinanciamientoNego();
         private TipoConvocatoriaNego tipoConvocatoriaNego = new TipoConvocatoriaNego();
         private ModalidadNego modalidadNego = new ModalidadNego();
+
         IEnumerable<Convocatorium> listaConvocatorias;
 
         public static int id;
-        static List<Modalidad> listaConvocatoriaModalidades = new List<Modalidad>();
-        static IEnumerable<Modalidad> lista = new List<Modalidad>();
+
+        private List<Modalidad> listaConvocatoriaModalidades = new List<Modalidad>();
+        private IEnumerable<Modalidad> listaTemporalModalidades = new List<Modalidad>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,14 +32,14 @@ namespace Sistema_CyT
                 LlenarListaFondos();
                 LlenarListaTipofinanciamiento();
                 LlenarListaTipoConvocatoria();
-                LlenarGrillaModalidades();
+                //LlenarGrillaModalidades();
                 LimpiarFormulario();
             }
         }
 
         private void CargarListaConvocatorias()
         {
-            //DESPUES HAY QUE IMPLEMENTAR UN DROPDOWN ANIDADO ENTE FONDO-CONVOCATORIA
+            //DESPUES HAY QUE IMPLEMENTAR UN DROPDOWN ANIDADO ENTRE FONDO-CONVOCATORIA
 
             listaConvocatorias = convocatoriaNego.MostrarConvocatorias();
 
@@ -65,72 +67,9 @@ namespace Sistema_CyT
             ddlTipoConvocatoria.DataBind();
         }
 
-        private void LlenarGrillaModalidades()
-        {
-            dgvModalidades.Columns[0].Visible = true;
-            dgvModalidades.Columns[1].Visible = true;
-            dgvModalidades.Columns[2].Visible = true;
-            dgvModalidades.Columns[3].Visible = true;
-            dgvModalidades.Columns[4].Visible = true;
-            dgvModalidades.Columns[5].Visible = true;
-            dgvModalidades.Columns[6].Visible = true;
-
-            dgvModalidades.DataSource = listaConvocatoriaModalidades;
-            dgvModalidades.DataBind();
-            dgvModalidades.Columns[0].Visible = false;
-        }
-
-        protected void btnActualizarConvocatoria_Click(object sender, EventArgs e)
-        {
-            ActualizarConvocatoria();
-        }
-
-        private void ActualizarConvocatoria()
-        {
-            Convocatorium convocatoria = new Convocatorium();
-
-            convocatoria.IdConvocatoria = id;
-
-            convocatoria.Nombre = txtNombre.Text;
-            convocatoria.Anio = Int32.Parse(txtAnio.Text);
-            convocatoria.IdFondo = Int32.Parse(ddlFondo.SelectedValue);
-            convocatoria.IdTipoFinanciamiento = Int32.Parse(ddlTipoFinanciamiento.SelectedValue);
-            convocatoria.IdTipoConvocatoria = Int32.Parse(ddlTipoConvocatoria.SelectedValue);
-            convocatoria.FechaApertura = Convert.ToDateTime(txtFechaApertura.Text);
-            convocatoria.FechaCierre = Convert.ToDateTime(txtFechaCierre.Text);
-
-            if (chkAbierta.Checked) { convocatoria.Abierta = true; }
-            else if (!chkAbierta.Checked) { convocatoria.Abierta = false; }
-
-            //DESPUES GUARDO LA LISTA DE MODALIDADES DE LA CONVOCATORIA ACTUAL
-            convocatoriaNego.ActualizarConvocatoria(convocatoria);
-
-            foreach (Modalidad t in listaConvocatoriaModalidades)
-            {
-                ListaConvocatoriaModalidad listaConvocatoriaModalidad = new ListaConvocatoriaModalidad();
-                listaConvocatoriaModalidad.IdConvocatoria = id;
-                listaConvocatoriaModalidad.IdModalidad = t.IdModalidad;
-            }
-        }
-
-        private void LimpiarFormulario()
-        {
-            txtNombre.Text = null;
-            txtAnio.Text = null;
-            ddlFondo.SelectedIndex = 0;
-            ddlTipoConvocatoria.SelectedIndex = 0;
-            ddlTipoFinanciamiento.SelectedIndex = 0;
-            txtFechaApertura.Text = null;
-            txtFechaCierre.Text = null;
-            chkAbierta.Checked = false;
-            listaConvocatoriaModalidades.Clear();
-            LlenarGrillaModalidades();
-        }
-
         protected void ddlActualizarConvocatoria_SelectedIndexChanged(object sender, EventArgs e)
         {
             listaConvocatoriaModalidades.Clear();
-            LlenarGrillaModalidades();
 
             id = Convert.ToInt32(ddlActualizarConvocatoria.SelectedValue.ToString());
 
@@ -158,6 +97,8 @@ namespace Sistema_CyT
             }
             rows = contador / 90;
             txtNombre.Rows = rows + 1;
+            //FIN DE LA RUTINA PARA ACOMODAR EL TEXTBOX
+
             txtNombre.Text = convocatoria.Nombre.ToString();
 
             txtAnio.Text = convocatoria.Anio.ToString();
@@ -177,9 +118,31 @@ namespace Sistema_CyT
             }
 
             //AHORA TENGO QUE TRAER UNA LISTA DE MODALIDADES SEGUN EL IdConvocatoriaActual
-            lista = modalidadNego.MostrarModalidades();
-            dgvModalidades.DataSource = lista.ToList();
+            listaTemporalModalidades = modalidadNego.TraerModalidadesSegunIdConvocatoria(id);
+
+
+
+
+
+            dgvModalidades.Columns[0].Visible = true;
+            dgvModalidades.Columns[1].Visible = true;
+            dgvModalidades.Columns[2].Visible = true;
+            dgvModalidades.Columns[3].Visible = true;
+            dgvModalidades.Columns[4].Visible = true;
+            dgvModalidades.Columns[5].Visible = true;
+            dgvModalidades.Columns[6].Visible = true;
+            dgvModalidades.Columns[7].Visible = true;
+
+            dgvModalidades.DataSource = listaTemporalModalidades;
             dgvModalidades.DataBind();
+
+            dgvModalidades.Columns[0].Visible = false;
+            dgvModalidades.Columns[7].Visible = false;
+
+
+
+
+
             //DESPUES QUITAR ESTO DE ARRIBA
 
             //foreach (ListaConvocatoriaModalidad lcm in lista)
@@ -191,6 +154,83 @@ namespace Sistema_CyT
 
             //LlenarGrillaModalidades();
         }
+
+
+
+
+
+
+
+
+        private void LlenarGrillaModalidades()
+        {
+            dgvModalidades.Columns[0].Visible = true;
+            dgvModalidades.Columns[1].Visible = true;
+            dgvModalidades.Columns[2].Visible = true;
+            dgvModalidades.Columns[3].Visible = true;
+            dgvModalidades.Columns[4].Visible = true;
+            dgvModalidades.Columns[5].Visible = true;
+            dgvModalidades.Columns[6].Visible = true;
+            dgvModalidades.Columns[7].Visible = true;
+
+            dgvModalidades.DataSource = listaTemporalModalidades;
+
+            dgvModalidades.DataBind();
+            dgvModalidades.Columns[0].Visible = false;
+            dgvModalidades.Columns[7].Visible = false;
+        }
+
+        protected void btnActualizarConvocatoria_Click(object sender, EventArgs e)
+        {
+            ActualizarConvocatoria();
+
+            listaTemporalModalidades = null;
+
+            LlenarGrillaModalidades();
+        }
+
+        private void ActualizarConvocatoria()
+        {
+            Convocatorium convocatoria = new Convocatorium();
+
+            convocatoria.IdConvocatoria = id;
+
+            convocatoria.Nombre = txtNombre.Text;
+            convocatoria.Anio = Int32.Parse(txtAnio.Text);
+            convocatoria.IdFondo = Int32.Parse(ddlFondo.SelectedValue);
+            convocatoria.IdTipoFinanciamiento = Int32.Parse(ddlTipoFinanciamiento.SelectedValue);
+            convocatoria.IdTipoConvocatoria = Int32.Parse(ddlTipoConvocatoria.SelectedValue);
+            convocatoria.FechaApertura = Convert.ToDateTime(txtFechaApertura.Text);
+            convocatoria.FechaCierre = Convert.ToDateTime(txtFechaCierre.Text);
+
+            if (chkAbierta.Checked) { convocatoria.Abierta = true; }
+            else if (!chkAbierta.Checked) { convocatoria.Abierta = false; }
+
+            convocatoriaNego.ActualizarConvocatoria(convocatoria);
+
+
+            //DESPUES GUARDO LA LISTA DE MODALIDADES DE LA CONVOCATORIA ACTUAL
+            foreach (Modalidad t in listaConvocatoriaModalidades)
+            {
+
+            }
+        }
+
+        private void LimpiarFormulario()
+        {
+            txtNombre.Text = null;
+            txtAnio.Text = null;
+            ddlFondo.SelectedIndex = 0;
+            ddlTipoConvocatoria.SelectedIndex = 0;
+            ddlTipoFinanciamiento.SelectedIndex = 0;
+            txtFechaApertura.Text = null;
+            txtFechaCierre.Text = null;
+            chkAbierta.Checked = true;
+            //listaConvocatoriaModalidades.Clear();
+            //LlenarGrillaModalidades();
+        }
+
+
 
         protected void dgvModalidades_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
