@@ -32,8 +32,6 @@ namespace Sistema_CyT
                 txtAnio.Text = "2017";
                 txtFechaApertura.Text = Convert.ToString(DateTime.Today.ToShortDateString());
                 txtFechaCierre.Text = Convert.ToString(DateTime.Today.ToShortDateString());
-
-                //PanelMostrarModalidad.Visible = false;
             }
         }
         private void LlenarListaFondos()
@@ -72,9 +70,9 @@ namespace Sistema_CyT
 
             GuardarConvocatoria();
             LimpiarFormulario();
+            listaModalidades.Clear();
 
             Response.Redirect("ListarConvocatorias.aspx");
-            
         }
 
         private void GuardarConvocatoria()
@@ -99,13 +97,27 @@ namespace Sistema_CyT
                 convocatoria.Abierta = false;
             }
 
+            convocatoria.Activa = true;
+
             //DESPUES GUARDO LA LISTA DE MODALIDADES DE LA CONVOCATORIA ACTUAL
             int idConvocatoria = convocatoriaNego.GuardarConvocatoria(convocatoria);
             idConvocatoriaActual = idConvocatoria;
 
             //FALTA EL METODO PARA GUARDAR LA LISTA DE MODALIDADES ACTUAL
+            foreach (Modalidad mo in listaModalidades)
+            {
+                Modalidad modalidad = new Modalidad();
 
+                modalidad.IdConvocatoria = idConvocatoria;
+                modalidad.Nombre = mo.Nombre;
+                modalidad.Descripcion = mo.Descripcion;
+                modalidad.Objetivo = mo.Objetivo;
+                modalidad.MontoMaximoProyecto = mo.MontoMaximoProyecto;
+                modalidad.PlazoEjecucion = mo.PlazoEjecucion;
+                modalidad.PorcentajeFinanciamiento = mo.PorcentajeFinanciamiento;
 
+                modalidadNego.GuardarModalidad(modalidad);
+            }
         }
 
         protected void btnModalModalidadGuardar_Click(object sender, EventArgs e)
@@ -130,7 +142,7 @@ namespace Sistema_CyT
             item.PorcentajeFinanciamiento = Int32.Parse(txtPorcentajeFinanciamientoModal.Text);
             item.PlazoEjecucion = Int32.Parse(txtPlazoEjecucionModal.Text);
 
-            modalidadNego.GuardarModalidad(item);
+            //modalidadNego.GuardarModalidad(item);
 
             listaModalidades.Add(item);
 
@@ -160,8 +172,8 @@ namespace Sistema_CyT
             txtFechaApertura.Text = null;
             txtFechaCierre.Text = null;
             chkAbierta.Checked = false;
-            listaModalidades.Clear();
-            LlenarGrillaModalidades();
+            //listaModalidades.Clear();
+            //LlenarGrillaModalidades();
         }
     }
 }
