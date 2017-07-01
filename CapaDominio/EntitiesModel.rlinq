@@ -99,25 +99,6 @@
           </orm:reference>
         </orm:field>
       </orm:class>
-      <orm:class name="ListaConvocatoriaModalidad" uniqueId="d915ec6c-1530-4f4b-8efa-705289ad8e5b">
-        <orm:table name="ListaConvocatoriaModalidad" />
-        <orm:identity>
-          <orm:multiple-field>
-            <orm:single-field field-name="idModalidad" />
-            <orm:single-field field-name="idConvocatoria" />
-          </orm:multiple-field>
-        </orm:identity>
-        <orm:concurrency strategy="changed" />
-        <orm:field name="idModalidad" property="IdModalidad" behavior="readwrite" uniqueId="3934fa61-5bbc-470b-b367-1f4d516dcfe0" type="System.Int32">
-          <orm:column name="idModalidad" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
-        </orm:field>
-        <orm:field name="idConvocatoria" property="IdConvocatoria" behavior="readwrite" uniqueId="655b6a66-2e6a-462d-88fc-c844226f3e27" type="System.Int32">
-          <orm:column name="idConvocatoria" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" ado-type="Int32" />
-        </orm:field>
-        <orm:field name="nombre" property="Nombre" behavior="readwrite" uniqueId="b662c53e-e6b6-44e5-b0e1-bab6ad62589c" type="System.String">
-          <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
-        </orm:field>
-      </orm:class>
       <orm:class name="Fondo" uniqueId="48762ea2-3ab9-4fef-bf46-a5c4924fec30">
         <orm:table name="Fondo" />
         <orm:identity>
@@ -778,11 +759,6 @@
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
-    <DomainClass Id="d915ec6c-1530-4f4b-8efa-705289ad8e5b" name="ListaConvocatoriaModalidad" namespace="CapaDominio" showPropertiesCompartment="true" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true">
-      <Property Id="655b6a66-2e6a-462d-88fc-c844226f3e27" name="IdConvocatoria" type="Int32" label="IdConvocatoria : Int32" kind="Persistent" identity="true" fieldName="idConvocatoria" />
-      <Property Id="3934fa61-5bbc-470b-b367-1f4d516dcfe0" name="IdModalidad" type="Int32" label="IdModalidad : Int32" kind="Persistent" identity="true" fieldName="idModalidad" />
-      <Property Id="b662c53e-e6b6-44e5-b0e1-bab6ad62589c" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
-    </DomainClass>
     <DomainClass Id="48762ea2-3ab9-4fef-bf46-a5c4924fec30" name="Fondo" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdFondo">
       <Property Id="9fee10c9-e9f3-45cf-8f80-80d4a3540596" name="IdFondo" type="Int32" label="IdFondo : Int32" kind="Persistent" identity="true" fieldName="idFondo" />
       <Property Id="fc1e2c45-b815-40df-b8b7-da7574d85761" name="Activo" type="Boolean" label="Activo : Boolean" nullable="true" kind="Persistent" fieldName="activo" />
@@ -1148,7 +1124,6 @@
         <entitySetProperty name="TipoConvocatoria" namespace="CapaDominio" type="TipoConvocatorium" label="TipoConvocatoria : IQueryable&lt;CapaDominio.TipoConvocatorium&gt;" />
         <entitySetProperty name="Origens" namespace="CapaDominio" type="Origen" label="Origens : IQueryable&lt;CapaDominio.Origen&gt;" />
         <entitySetProperty name="Modalidads" namespace="CapaDominio" type="Modalidad" label="Modalidads : IQueryable&lt;CapaDominio.Modalidad&gt;" />
-        <entitySetProperty name="ListaConvocatoriaModalidads" namespace="CapaDominio" type="ListaConvocatoriaModalidad" label="ListaConvocatoriaModalidads : IQueryable&lt;CapaDominio.ListaConvocatoriaModalidad&gt;" />
         <entitySetProperty name="Fondos" namespace="CapaDominio" type="Fondo" label="Fondos : IQueryable&lt;CapaDominio.Fondo&gt;" />
         <entitySetProperty name="Convocatoria" namespace="CapaDominio" type="Convocatorium" label="Convocatoria : IQueryable&lt;CapaDominio.Convocatorium&gt;" />
         <entitySetProperty name="Proyectos" namespace="CapaDominio" type="Proyecto" label="Proyectos : IQueryable&lt;CapaDominio.Proyecto&gt;" />

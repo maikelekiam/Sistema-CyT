@@ -18,7 +18,7 @@ namespace Sistema_CyT
         {
             if (!Page.IsPostBack)
             {
-                CargarDatosModalidad(EditarConvocatoria.id);
+                CargarDatosModalidad(EditarConvocatoria.idModalidadActual);
             }
         }
         private void CargarDatosModalidad(int id)
@@ -43,7 +43,7 @@ namespace Sistema_CyT
         {
             Modalidad item = new Modalidad();
 
-            item.IdModalidad = EditarConvocatoria.id;
+            item.IdModalidad = EditarConvocatoria.idConvocatoriaActual;
             item.Nombre = txtNombreModal.Text;
             item.Descripcion = txtDescripcionModal.Text;
             item.Objetivo = txtObjetivoModal.Text;

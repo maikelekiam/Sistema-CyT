@@ -202,9 +202,8 @@
         <div class="form-group">
             <div class="col-md-12">
                 <asp:GridView ID="dgvModalidades" runat="server" AutoGenerateColumns="false"
-                    DataKeyNames="idModalidad"
                     CssClass="table table-hover" BorderWidth="2px" EmptyDataText="No existen modalidades cargadas" ShowHeaderWhenEmpty="true"
-                    OnSelectedIndexChanging="dgvModalidades_SelectedIndexChanging">
+                    OnRowCommand="dgvModalidades_RowCommand">
                     <Columns>
                         <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="ID" DataField="idModalidad" ItemStyle-HorizontalAlign="Center" />
                         <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Center" />
@@ -213,14 +212,19 @@
                         <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Monto Maximo" DataField="montoMaximoProyecto" ItemStyle-HorizontalAlign="Center" />
                         <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="% Financiamiento" DataField="porcentajeFinanciamiento" ItemStyle-HorizontalAlign="Center" />
                         <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Plazo Ejecucion" DataField="plazoEjecucion" ItemStyle-HorizontalAlign="Center" />
-                        <asp:ButtonField Text="Editar" ButtonType="Button" CommandName="select" HeaderStyle-BackColor="#cccccc" />
+                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="ID" DataField="idConvocatoria" ItemStyle-HorizontalAlign="Center" />
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:Button ID="btnMostrar" runat="server" Text="Editar" CssClass="form-control" BackColor="#eaeaea" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
             </div>
         </div>
 
         <!--LISTA DE MODALIDADES PARA LA CONVOCATORIA ACTUAL-->
-<%--        <div class="panel-heading">
+        <%--        <div class="panel-heading">
             <h3>MODALIDADES PARA LA CONVOCATORIA ACTUAL</h3>
         </div>
         <div class="form-group">

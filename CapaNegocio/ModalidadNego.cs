@@ -30,5 +30,9 @@ namespace CapaNegocio
         {
             return modalidadRepo.MostrarModalidades();
         }
+        public IEnumerable<Modalidad> TraerModalidadesSegunIdConvocatoria(int id)
+        {
+            return modalidadRepo.TraerModalidadesSegunIdConvocatoria(id);
+        }
     }
 }

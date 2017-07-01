@@ -82,14 +82,6 @@ namespace CapaDominio
 			}
 		}
 		
-		public IQueryable<ListaConvocatoriaModalidad> ListaConvocatoriaModalidads 
-		{
-			get
-			{
-				return this.GetAll<ListaConvocatoriaModalidad>();
-			}
-		}
-		
 		public IQueryable<Fondo> Fondos 
 		{
 			get
@@ -212,10 +204,6 @@ namespace CapaDominio
 			get;
 		}
 		IQueryable<Modalidad> Modalidads
-		{
-			get;
-		}
-		IQueryable<ListaConvocatoriaModalidad> ListaConvocatoriaModalidads
 		{
 			get;
 		}

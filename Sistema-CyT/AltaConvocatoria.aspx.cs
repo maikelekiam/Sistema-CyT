@@ -16,9 +16,9 @@ namespace Sistema_CyT
         private TipoFinanciamientoNego tipoFinanciamientoNego = new TipoFinanciamientoNego();
         private TipoConvocatoriaNego tipoConvocatoriaNego = new TipoConvocatoriaNego();
         private ModalidadNego modalidadNego = new ModalidadNego();
-        static int idConvocatoriaActual;
+        public static int idConvocatoriaActual;
 
-        static List<Modalidad> listaModalidades = new List<Modalidad>();
+        public static List<Modalidad> listaModalidades = new List<Modalidad>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -69,12 +69,10 @@ namespace Sistema_CyT
             //    return;
             //}
 
-
             GuardarConvocatoria();
             LimpiarFormulario();
 
             Response.Redirect("ListarConvocatorias.aspx");
-            
         }
 
         private void GuardarConvocatoria()
@@ -100,12 +98,23 @@ namespace Sistema_CyT
             }
 
             //DESPUES GUARDO LA LISTA DE MODALIDADES DE LA CONVOCATORIA ACTUAL
-            int idConvocatoria = convocatoriaNego.GuardarConvocatoria(convocatoria);
-            idConvocatoriaActual = idConvocatoria;
+            idConvocatoriaActual = convocatoriaNego.GuardarConvocatoria(convocatoria);
 
             //FALTA EL METODO PARA GUARDAR LA LISTA DE MODALIDADES ACTUAL
+            foreach (Modalidad mo in listaModalidades)
+            {
+                Modalidad modalidad = new Modalidad();
 
+                modalidad.IdConvocatoria = idConvocatoriaActual;
+                modalidad.Nombre = mo.Nombre;
+                modalidad.Descripcion = mo.Descripcion;
+                modalidad.Objetivo = mo.Objetivo;
+                modalidad.MontoMaximoProyecto = mo.MontoMaximoProyecto;
+                modalidad.PorcentajeFinanciamiento = mo.PorcentajeFinanciamiento;
+                modalidad.PlazoEjecucion = mo.PlazoEjecucion;
 
+                modalidadNego.GuardarModalidad(modalidad);
+            }
         }
 
         protected void btnModalModalidadGuardar_Click(object sender, EventArgs e)
@@ -123,14 +132,14 @@ namespace Sistema_CyT
             //}
 
             Modalidad item = new Modalidad();
+
+            item.IdConvocatoria = idConvocatoriaActual;
             item.Nombre = txtNombreModal.Text;
             item.Descripcion = txtDescripcionModal.Text;
             item.Objetivo = txtObjetivoModal.Text;
             item.MontoMaximoProyecto = Int32.Parse(txtMontoMaximoProyectoModal.Text);
             item.PorcentajeFinanciamiento = Int32.Parse(txtPorcentajeFinanciamientoModal.Text);
             item.PlazoEjecucion = Int32.Parse(txtPlazoEjecucionModal.Text);
-
-            modalidadNego.GuardarModalidad(item);
 
             listaModalidades.Add(item);
 
