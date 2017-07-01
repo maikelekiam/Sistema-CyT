@@ -16,13 +16,13 @@ namespace Sistema_CyT
         private TipoFinanciamientoNego tipoFinanciamientoNego = new TipoFinanciamientoNego();
         private TipoConvocatoriaNego tipoConvocatoriaNego = new TipoConvocatoriaNego();
         private ModalidadNego modalidadNego = new ModalidadNego();
-        
+
         IEnumerable<Convocatorium> listaConvocatorias;
 
-        public static int idConvocatoriaActual;
-        public static int idModalidadActual;
+        public static int id;
 
-        public static IEnumerable<Modalidad> listaModalidades=new List<Modalidad>();
+        private List<Modalidad> listaConvocatoriaModalidades = new List<Modalidad>();
+        private IEnumerable<Modalidad> listaTemporalModalidades = new List<Modalidad>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,14 +32,14 @@ namespace Sistema_CyT
                 LlenarListaFondos();
                 LlenarListaTipofinanciamiento();
                 LlenarListaTipoConvocatoria();
-                LlenarGrillaModalidades();
+                //LlenarGrillaModalidades();
                 LimpiarFormulario();
             }
         }
 
         private void CargarListaConvocatorias()
         {
-            //DESPUES HAY QUE IMPLEMENTAR UN DROPDOWN ANIDADO ENTE FONDO-CONVOCATORIA
+            //DESPUES HAY QUE IMPLEMENTAR UN DROPDOWN ANIDADO ENTRE FONDO-CONVOCATORIA
 
             listaConvocatorias = convocatoriaNego.MostrarConvocatorias();
 
@@ -67,31 +67,13 @@ namespace Sistema_CyT
             ddlTipoConvocatoria.DataBind();
         }
 
-        private void LlenarGrillaModalidades()
-        {
-            dgvModalidades.Columns[0].Visible = true;
-            dgvModalidades.Columns[1].Visible = true;
-            dgvModalidades.Columns[2].Visible = true;
-            dgvModalidades.Columns[3].Visible = true;
-            dgvModalidades.Columns[4].Visible = true;
-            dgvModalidades.Columns[5].Visible = true;
-            dgvModalidades.Columns[6].Visible = true;
-            dgvModalidades.Columns[7].Visible = true;
-
-            dgvModalidades.DataSource = listaModalidades;
-            dgvModalidades.DataBind();
-
-            dgvModalidades.Columns[0].Visible = false;
-            dgvModalidades.Columns[7].Visible = false;
-        }
-
         protected void ddlActualizarConvocatoria_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listaModalidades = null;
+            listaConvocatoriaModalidades.Clear();
 
-            idConvocatoriaActual = Convert.ToInt32(ddlActualizarConvocatoria.SelectedValue.ToString());
+            id = Convert.ToInt32(ddlActualizarConvocatoria.SelectedValue.ToString());
 
-            Convocatorium convocatoria = convocatoriaNego.ObtenerConvocatoria(idConvocatoriaActual);
+            Convocatorium convocatoria = convocatoriaNego.ObtenerConvocatoria(id);
 
             if (convocatoria == null)
             {
@@ -115,12 +97,14 @@ namespace Sistema_CyT
             }
             rows = contador / 90;
             txtNombre.Rows = rows + 1;
+            //FIN DE LA RUTINA PARA ACOMODAR EL TEXTBOX
+
             txtNombre.Text = convocatoria.Nombre.ToString();
 
             txtAnio.Text = convocatoria.Anio.ToString();
             ddlFondo.Text = Convert.ToString(convocatoria.IdFondo);
-            ddlTipoFinanciamiento.Text = Convert.ToString(convocatoria.IdTipoFinanciamiento);
             ddlTipoConvocatoria.Text = Convert.ToString(convocatoria.IdTipoConvocatoria);
+            ddlTipoFinanciamiento.Text = Convert.ToString(convocatoria.IdTipoFinanciamiento);
             txtFechaApertura.Text = Convert.ToDateTime(convocatoria.FechaApertura).ToShortDateString();
             txtFechaCierre.Text = Convert.ToDateTime(convocatoria.FechaCierre).ToShortDateString();
 
@@ -134,21 +118,82 @@ namespace Sistema_CyT
             }
 
             //AHORA TENGO QUE TRAER UNA LISTA DE MODALIDADES SEGUN EL IdConvocatoriaActual
-            listaModalidades = (List<Modalidad>)modalidadNego.TraerModalidadesSegunIdConvocatoria(idConvocatoriaActual);
-            dgvModalidades.DataSource = listaModalidades.ToList();
+            listaTemporalModalidades = modalidadNego.TraerModalidadesSegunIdConvocatoria(id);
+
+
+
+
+
+            dgvModalidades.Columns[0].Visible = true;
+            dgvModalidades.Columns[1].Visible = true;
+            dgvModalidades.Columns[2].Visible = true;
+            dgvModalidades.Columns[3].Visible = true;
+            dgvModalidades.Columns[4].Visible = true;
+            dgvModalidades.Columns[5].Visible = true;
+            dgvModalidades.Columns[6].Visible = true;
+            dgvModalidades.Columns[7].Visible = true;
+
+            dgvModalidades.DataSource = listaTemporalModalidades;
             dgvModalidades.DataBind();
+
+            dgvModalidades.Columns[0].Visible = false;
+            dgvModalidades.Columns[7].Visible = false;
+
+
+
+
+
+            //DESPUES QUITAR ESTO DE ARRIBA
+
+            //foreach (ListaConvocatoriaModalidad lcm in lista)
+            //{
+            //    Modalidad modalidad = modalidadNego.ObtenerModalidadSegunId(lcm.IdModalidad);
+
+            //    listaConvocatoriaModalidades.Add(modalidad);
+            //}
+
+            //LlenarGrillaModalidades();
+        }
+
+
+
+
+
+
+
+
+        private void LlenarGrillaModalidades()
+        {
+            dgvModalidades.Columns[0].Visible = true;
+            dgvModalidades.Columns[1].Visible = true;
+            dgvModalidades.Columns[2].Visible = true;
+            dgvModalidades.Columns[3].Visible = true;
+            dgvModalidades.Columns[4].Visible = true;
+            dgvModalidades.Columns[5].Visible = true;
+            dgvModalidades.Columns[6].Visible = true;
+            dgvModalidades.Columns[7].Visible = true;
+
+            dgvModalidades.DataSource = listaTemporalModalidades;
+
+            dgvModalidades.DataBind();
+            dgvModalidades.Columns[0].Visible = false;
+            dgvModalidades.Columns[7].Visible = false;
         }
 
         protected void btnActualizarConvocatoria_Click(object sender, EventArgs e)
         {
             ActualizarConvocatoria();
+
+            listaTemporalModalidades = null;
+
+            LlenarGrillaModalidades();
         }
 
         private void ActualizarConvocatoria()
         {
             Convocatorium convocatoria = new Convocatorium();
 
-            convocatoria.IdConvocatoria = idConvocatoriaActual;
+            convocatoria.IdConvocatoria = id;
 
             convocatoria.Nombre = txtNombre.Text;
             convocatoria.Anio = Int32.Parse(txtAnio.Text);
@@ -161,24 +206,12 @@ namespace Sistema_CyT
             if (chkAbierta.Checked) { convocatoria.Abierta = true; }
             else if (!chkAbierta.Checked) { convocatoria.Abierta = false; }
 
-            //DESPUES GUARDO LA LISTA DE MODALIDADES DE LA CONVOCATORIA ACTUAL
             convocatoriaNego.ActualizarConvocatoria(convocatoria);
 
-            foreach (Modalidad mo in listaModalidades)
+
+            //DESPUES GUARDO LA LISTA DE MODALIDADES DE LA CONVOCATORIA ACTUAL
+            foreach (Modalidad t in listaConvocatoriaModalidades)
             {
-                Modalidad modalidad = new Modalidad();
-
-                modalidad.IdConvocatoria = idConvocatoriaActual;
-                modalidad.Nombre = mo.Nombre;
-                modalidad.Descripcion = mo.Descripcion;
-                modalidad.Objetivo = mo.Objetivo;
-                modalidad.MontoMaximoProyecto = mo.MontoMaximoProyecto;
-                modalidad.PorcentajeFinanciamiento = mo.PorcentajeFinanciamiento;
-                modalidad.PlazoEjecucion = mo.PlazoEjecucion;
-
-                modalidadNego.GuardarModalidad(modalidad);
-
-
 
             }
         }
@@ -192,16 +225,27 @@ namespace Sistema_CyT
             ddlTipoFinanciamiento.SelectedIndex = 0;
             txtFechaApertura.Text = null;
             txtFechaCierre.Text = null;
-            chkAbierta.Checked = false;
-            listaModalidades = null;
-            LlenarGrillaModalidades();
+            chkAbierta.Checked = true;
+            //listaConvocatoriaModalidades.Clear();
+            //LlenarGrillaModalidades();
+        }
+
+
+
+        protected void dgvModalidades_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            GridViewRow row = dgvModalidades.Rows[e.NewSelectedIndex];
+
+            id = Convert.ToInt32(row.Cells[0].Text);
+
+            Response.Redirect("EditarModalidad.aspx");
+
+            //Modalidad modalidad = modalidadNego.ObtenerModalidadSegunId(id);
         }
 
         protected void btnModalModalidadGuardar_Click(object sender, EventArgs e)
         {
             Modalidad item = new Modalidad();
-
-            item.IdConvocatoria = idConvocatoriaActual;
             item.Nombre = txtNombreModal.Text;
             item.Descripcion = txtDescripcionModal.Text;
             item.Objetivo = txtObjetivoModal.Text;
@@ -209,10 +253,9 @@ namespace Sistema_CyT
             item.PorcentajeFinanciamiento = Int32.Parse(txtPorcentajeFinanciamientoModal.Text);
             item.PlazoEjecucion = Int32.Parse(txtPlazoEjecucionModal.Text);
 
-            //modalidadNego.GuardarModalidad(item);
+            modalidadNego.GuardarModalidad(item);
 
-            ((List<Modalidad>)listaModalidades).Add(item);
-            
+            listaConvocatoriaModalidades.Add(item);
 
             txtNombreModal.Text = null;
             txtDescripcionModal.Text = null;
@@ -222,20 +265,6 @@ namespace Sistema_CyT
             txtPorcentajeFinanciamientoModal.Text = null;
 
             LlenarGrillaModalidades();
-        }
-
-        protected void dgvModalidades_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            //Obtengo el indice de la fila seleccionada con el boton MOSTRAR
-            GridViewRow row = (GridViewRow)(((Button)e.CommandSource).NamingContainer);
-            int rIndex = row.RowIndex;
-
-            //Obtengo el id de la modalidad seleccionada
-            //idModalidadActual = Convert.ToInt32(dgvModalidades.Rows[rIndex].Cells[0].Text);
-
-            lblAbierta.Text = dgvModalidades.Rows[rIndex].Cells[0].Text;
-
-            //Response.Redirect("EditarModalidad.aspx");
         }
     }
 }

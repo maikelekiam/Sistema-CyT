@@ -16,9 +16,9 @@ namespace Sistema_CyT
         private TipoFinanciamientoNego tipoFinanciamientoNego = new TipoFinanciamientoNego();
         private TipoConvocatoriaNego tipoConvocatoriaNego = new TipoConvocatoriaNego();
         private ModalidadNego modalidadNego = new ModalidadNego();
-        public static int idConvocatoriaActual;
+        static int idConvocatoriaActual;
 
-        public static List<Modalidad> listaModalidades = new List<Modalidad>();
+        static List<Modalidad> listaModalidades = new List<Modalidad>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,8 +32,6 @@ namespace Sistema_CyT
                 txtAnio.Text = "2017";
                 txtFechaApertura.Text = Convert.ToString(DateTime.Today.ToShortDateString());
                 txtFechaCierre.Text = Convert.ToString(DateTime.Today.ToShortDateString());
-
-                //PanelMostrarModalidad.Visible = false;
             }
         }
         private void LlenarListaFondos()
@@ -69,8 +67,10 @@ namespace Sistema_CyT
             //    return;
             //}
 
+
             GuardarConvocatoria();
             LimpiarFormulario();
+            listaModalidades.Clear();
 
             Response.Redirect("ListarConvocatorias.aspx");
         }
@@ -97,21 +97,24 @@ namespace Sistema_CyT
                 convocatoria.Abierta = false;
             }
 
+            convocatoria.Activa = true;
+
             //DESPUES GUARDO LA LISTA DE MODALIDADES DE LA CONVOCATORIA ACTUAL
-            idConvocatoriaActual = convocatoriaNego.GuardarConvocatoria(convocatoria);
+            int idConvocatoria = convocatoriaNego.GuardarConvocatoria(convocatoria);
+            idConvocatoriaActual = idConvocatoria;
 
             //FALTA EL METODO PARA GUARDAR LA LISTA DE MODALIDADES ACTUAL
             foreach (Modalidad mo in listaModalidades)
             {
                 Modalidad modalidad = new Modalidad();
 
-                modalidad.IdConvocatoria = idConvocatoriaActual;
+                modalidad.IdConvocatoria = idConvocatoria;
                 modalidad.Nombre = mo.Nombre;
                 modalidad.Descripcion = mo.Descripcion;
                 modalidad.Objetivo = mo.Objetivo;
                 modalidad.MontoMaximoProyecto = mo.MontoMaximoProyecto;
-                modalidad.PorcentajeFinanciamiento = mo.PorcentajeFinanciamiento;
                 modalidad.PlazoEjecucion = mo.PlazoEjecucion;
+                modalidad.PorcentajeFinanciamiento = mo.PorcentajeFinanciamiento;
 
                 modalidadNego.GuardarModalidad(modalidad);
             }
@@ -132,14 +135,14 @@ namespace Sistema_CyT
             //}
 
             Modalidad item = new Modalidad();
-
-            item.IdConvocatoria = idConvocatoriaActual;
             item.Nombre = txtNombreModal.Text;
             item.Descripcion = txtDescripcionModal.Text;
             item.Objetivo = txtObjetivoModal.Text;
             item.MontoMaximoProyecto = Int32.Parse(txtMontoMaximoProyectoModal.Text);
             item.PorcentajeFinanciamiento = Int32.Parse(txtPorcentajeFinanciamientoModal.Text);
             item.PlazoEjecucion = Int32.Parse(txtPlazoEjecucionModal.Text);
+
+            //modalidadNego.GuardarModalidad(item);
 
             listaModalidades.Add(item);
 
@@ -169,8 +172,8 @@ namespace Sistema_CyT
             txtFechaApertura.Text = null;
             txtFechaCierre.Text = null;
             chkAbierta.Checked = false;
-            listaModalidades.Clear();
-            LlenarGrillaModalidades();
+            //listaModalidades.Clear();
+            //LlenarGrillaModalidades();
         }
     }
 }
