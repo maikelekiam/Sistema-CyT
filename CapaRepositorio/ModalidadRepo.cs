@@ -51,14 +51,5 @@ namespace CapaRepositorio
                 return result;
             }
         }
-        public IEnumerable<Modalidad> TraerModalidadesSegunIdConvocatoria(int id)
-        {
-            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
-            {
-                IEnumerable<Modalidad> result = modeloDeDominio.Modalidads.Where(c => c.IdConvocatoria == id).ToList();
-
-                return result;
-            }
-        }
     }
 }

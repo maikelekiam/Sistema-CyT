@@ -19,7 +19,8 @@ namespace Sistema_CyT
 
         IEnumerable<Convocatorium> listaConvocatorias;
 
-        public static int id;
+        public static int idConvocatoriaActual;
+        public static int idModalidadActual;
 
         private List<Modalidad> listaConvocatoriaModalidades = new List<Modalidad>();
         private IEnumerable<Modalidad> listaTemporalModalidades = new List<Modalidad>();
@@ -71,9 +72,9 @@ namespace Sistema_CyT
         {
             listaConvocatoriaModalidades.Clear();
 
-            id = Convert.ToInt32(ddlActualizarConvocatoria.SelectedValue.ToString());
+            idConvocatoriaActual = Convert.ToInt32(ddlActualizarConvocatoria.SelectedValue.ToString());
 
-            Convocatorium convocatoria = convocatoriaNego.ObtenerConvocatoria(id);
+            Convocatorium convocatoria = convocatoriaNego.ObtenerConvocatoria(idConvocatoriaActual);
 
             if (convocatoria == null)
             {
@@ -118,11 +119,7 @@ namespace Sistema_CyT
             }
 
             //AHORA TENGO QUE TRAER UNA LISTA DE MODALIDADES SEGUN EL IdConvocatoriaActual
-            listaTemporalModalidades = modalidadNego.TraerModalidadesSegunIdConvocatoria(id);
-
-
-
-
+            listaTemporalModalidades = modalidadNego.TraerModalidadesSegunIdConvocatoria(idConvocatoriaActual);
 
             dgvModalidades.Columns[0].Visible = true;
             dgvModalidades.Columns[1].Visible = true;
@@ -139,28 +136,8 @@ namespace Sistema_CyT
             dgvModalidades.Columns[0].Visible = false;
             dgvModalidades.Columns[7].Visible = false;
 
-
-
-
-
-            //DESPUES QUITAR ESTO DE ARRIBA
-
-            //foreach (ListaConvocatoriaModalidad lcm in lista)
-            //{
-            //    Modalidad modalidad = modalidadNego.ObtenerModalidadSegunId(lcm.IdModalidad);
-
-            //    listaConvocatoriaModalidades.Add(modalidad);
-            //}
-
-            //LlenarGrillaModalidades();
+            LlenarGrillaModalidades(); //no borrar esta linea!!!
         }
-
-
-
-
-
-
-
 
         private void LlenarGrillaModalidades()
         {
@@ -193,7 +170,7 @@ namespace Sistema_CyT
         {
             Convocatorium convocatoria = new Convocatorium();
 
-            convocatoria.IdConvocatoria = id;
+            convocatoria.IdConvocatoria = idConvocatoriaActual;
 
             convocatoria.Nombre = txtNombre.Text;
             convocatoria.Anio = Int32.Parse(txtAnio.Text);
@@ -210,10 +187,21 @@ namespace Sistema_CyT
 
 
             //DESPUES GUARDO LA LISTA DE MODALIDADES DE LA CONVOCATORIA ACTUAL
-            foreach (Modalidad t in listaConvocatoriaModalidades)
+            foreach (Modalidad mo in listaTemporalModalidades)
             {
+                Modalidad modalidad = new Modalidad();
 
+                modalidad.IdConvocatoria = idConvocatoriaActual;
+                modalidad.Nombre = mo.Nombre;
+                modalidad.Descripcion = mo.Descripcion;
+                modalidad.Objetivo = mo.Objetivo;
+                modalidad.MontoMaximoProyecto = mo.MontoMaximoProyecto;
+                modalidad.PlazoEjecucion = mo.PlazoEjecucion;
+                modalidad.PorcentajeFinanciamiento = mo.PorcentajeFinanciamiento;
+
+                modalidadNego.ActualizarModalidad(modalidad);
             }
+            LimpiarFormulario();
         }
 
         private void LimpiarFormulario()
@@ -227,16 +215,15 @@ namespace Sistema_CyT
             txtFechaCierre.Text = null;
             chkAbierta.Checked = true;
             //listaConvocatoriaModalidades.Clear();
-            //LlenarGrillaModalidades();
+
+            LlenarGrillaModalidades(); //no borrar esta linea!!!
         }
-
-
 
         protected void dgvModalidades_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
             GridViewRow row = dgvModalidades.Rows[e.NewSelectedIndex];
 
-            id = Convert.ToInt32(row.Cells[0].Text);
+            idModalidadActual = Convert.ToInt32(row.Cells[0].Text);
 
             Response.Redirect("EditarModalidad.aspx");
 
