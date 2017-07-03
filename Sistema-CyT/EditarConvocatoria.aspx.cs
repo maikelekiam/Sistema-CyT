@@ -21,9 +21,11 @@ namespace Sistema_CyT
 
         public static int idConvocatoriaActual;
         public static int idModalidadActual;
+        public Modalidad modalidadTemporal;
 
-        private List<Modalidad> listaConvocatoriaModalidades = new List<Modalidad>();
+        //private List<Modalidad> listaConvocatoriaModalidades = new List<Modalidad>();
         private IEnumerable<Modalidad> listaTemporalModalidades = new List<Modalidad>();
+        private IEnumerable<Modalidad> segundo = new List<Modalidad>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -70,7 +72,8 @@ namespace Sistema_CyT
 
         protected void ddlActualizarConvocatoria_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listaConvocatoriaModalidades.Clear();
+            //listaConvocatoriaModalidades.Clear();
+            listaTemporalModalidades = null;
 
             idConvocatoriaActual = Convert.ToInt32(ddlActualizarConvocatoria.SelectedValue.ToString());
 
@@ -153,6 +156,7 @@ namespace Sistema_CyT
             dgvModalidades.DataSource = listaTemporalModalidades;
 
             dgvModalidades.DataBind();
+
             dgvModalidades.Columns[0].Visible = false;
             dgvModalidades.Columns[7].Visible = false;
         }
@@ -233,6 +237,8 @@ namespace Sistema_CyT
         protected void btnModalModalidadGuardar_Click(object sender, EventArgs e)
         {
             Modalidad item = new Modalidad();
+
+            item.IdConvocatoria = idConvocatoriaActual;
             item.Nombre = txtNombreModal.Text;
             item.Descripcion = txtDescripcionModal.Text;
             item.Objetivo = txtObjetivoModal.Text;
@@ -240,9 +246,7 @@ namespace Sistema_CyT
             item.PorcentajeFinanciamiento = Int32.Parse(txtPorcentajeFinanciamientoModal.Text);
             item.PlazoEjecucion = Int32.Parse(txtPlazoEjecucionModal.Text);
 
-            modalidadNego.GuardarModalidad(item);
-
-            listaConvocatoriaModalidades.Add(item);
+            //modalidadNego.GuardarModalidad(item);
 
             txtNombreModal.Text = null;
             txtDescripcionModal.Text = null;
@@ -251,7 +255,16 @@ namespace Sistema_CyT
             txtPlazoEjecucionModal.Text = null;
             txtPorcentajeFinanciamientoModal.Text = null;
 
-            LlenarGrillaModalidades();
+            segundo.Concat(new[] { item });
+
+            listaTemporalModalidades = listaTemporalModalidades.Concat(segundo);
+
+
+            dgvModalidades.DataSource = listaTemporalModalidades;
+
+            dgvModalidades.DataBind();
+
+            //LlenarGrillaModalidades();
         }
     }
 }

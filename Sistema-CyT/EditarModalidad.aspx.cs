@@ -36,13 +36,15 @@ namespace Sistema_CyT
         protected void btnModalModalidadActualizar_Click(object sender, EventArgs e)
         {
             ActualizarModalidad();
-            Response.Redirect("ListarConvocatorias.aspx");
+            Response.Redirect("EditarConvocatoria.aspx");
         }
 
         private void ActualizarModalidad()
         {
             Modalidad item = new Modalidad();
 
+            item.IdModalidad = EditarConvocatoria.idModalidadActual;
+            item.IdConvocatoria = EditarConvocatoria.idConvocatoriaActual;
             item.Nombre = txtNombreModal.Text;
             item.Descripcion = txtDescripcionModal.Text;
             item.Objetivo = txtObjetivoModal.Text;
@@ -51,13 +53,13 @@ namespace Sistema_CyT
             item.PlazoEjecucion = Int32.Parse(txtPlazoEjecucionModal.Text);
 
             modalidadNego.ActualizarModalidad(item);
-
-            Response.Redirect("ListarConvocatorias.aspx");
         }
 
         protected void btnModalModalidadSalir_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ListarConvocatorias.aspx");
+            
+            
+            Response.Redirect("EditarConvocatoria.aspx");
         }
     }
 }
