@@ -206,6 +206,8 @@ namespace Sistema_CyT
                 modalidadNego.ActualizarModalidad(modalidad);
             }
             LimpiarFormulario();
+
+            Response.Redirect("ListarConvocatorias.aspx");
         }
 
         private void LimpiarFormulario()
