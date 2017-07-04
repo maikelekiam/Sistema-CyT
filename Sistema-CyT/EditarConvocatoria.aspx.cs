@@ -23,9 +23,8 @@ namespace Sistema_CyT
         public static int idModalidadActual;
         public Modalidad modalidadTemporal;
 
-        //private List<Modalidad> listaConvocatoriaModalidades = new List<Modalidad>();
-        private IEnumerable<Modalidad> listaTemporalModalidades = new List<Modalidad>();
-        private IEnumerable<Modalidad> segundo = new List<Modalidad>();
+        public static List<Modalidad> listaTemporalModalidades = new List<Modalidad>();
+        public static List<Modalidad> listaTemporalModalidadesAgregado = new List<Modalidad>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -72,8 +71,8 @@ namespace Sistema_CyT
 
         protected void ddlActualizarConvocatoria_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //listaConvocatoriaModalidades.Clear();
-            listaTemporalModalidades = null;
+            listaTemporalModalidades.Clear();
+            listaTemporalModalidadesAgregado.Clear();
 
             idConvocatoriaActual = Convert.ToInt32(ddlActualizarConvocatoria.SelectedValue.ToString());
 
@@ -122,7 +121,7 @@ namespace Sistema_CyT
             }
 
             //AHORA TENGO QUE TRAER UNA LISTA DE MODALIDADES SEGUN EL IdConvocatoriaActual
-            listaTemporalModalidades = modalidadNego.TraerModalidadesSegunIdConvocatoria(idConvocatoriaActual);
+            listaTemporalModalidades = (List<Modalidad>)modalidadNego.TraerModalidadesSegunIdConvocatoria(idConvocatoriaActual).ToList();
 
             dgvModalidades.Columns[0].Visible = true;
             dgvModalidades.Columns[1].Visible = true;
@@ -165,9 +164,10 @@ namespace Sistema_CyT
         {
             ActualizarConvocatoria();
 
-            listaTemporalModalidades = null;
-
             LlenarGrillaModalidades();
+
+            listaTemporalModalidades.Clear();
+            listaTemporalModalidadesAgregado.Clear();
 
             Response.Redirect("ListarConvocatorias.aspx");
         }
@@ -197,6 +197,7 @@ namespace Sistema_CyT
             {
                 Modalidad modalidad = new Modalidad();
 
+                modalidad.IdModalidad = idModalidadActual;
                 modalidad.IdConvocatoria = idConvocatoriaActual;
                 modalidad.Nombre = mo.Nombre;
                 modalidad.Descripcion = mo.Descripcion;
@@ -205,8 +206,34 @@ namespace Sistema_CyT
                 modalidad.PlazoEjecucion = mo.PlazoEjecucion;
                 modalidad.PorcentajeFinanciamiento = mo.PorcentajeFinanciamiento;
 
+                
+                //ACA ESTA EL PROBLEMA, DUPLICA CUANDO ACTUALIZA!!!
+                
+                
                 modalidadNego.ActualizarModalidad(modalidad);
+
+
+
+
             }
+
+            //foreach (Modalidad mo in listaTemporalModalidadesAgregado)
+            //{
+            //    Modalidad modalidad = new Modalidad();
+
+            //    modalidad.IdConvocatoria = idConvocatoriaActual;
+            //    modalidad.Nombre = mo.Nombre;
+            //    modalidad.Descripcion = mo.Descripcion;
+            //    modalidad.Objetivo = mo.Objetivo;
+            //    modalidad.MontoMaximoProyecto = mo.MontoMaximoProyecto;
+            //    modalidad.PlazoEjecucion = mo.PlazoEjecucion;
+            //    modalidad.PorcentajeFinanciamiento = mo.PorcentajeFinanciamiento;
+
+            //    //modalidadNego.GuardarModalidad(modalidad);
+            //}
+
+
+
             LimpiarFormulario();
         }
 
@@ -257,19 +284,10 @@ namespace Sistema_CyT
             txtPlazoEjecucionModal.Text = null;
             txtPorcentajeFinanciamientoModal.Text = null;
 
-            
-            
-            
-            //ESTO HAY QUE ARREGLARLO!!!!
-            //NO TE DEJA SGREGAR UNA MODALIDAD NUEVA
-            //
-            segundo.Concat(new[] { item });
-
-            listaTemporalModalidades = listaTemporalModalidades.Concat(segundo);
-
+            listaTemporalModalidadesAgregado.Add(item);
+            listaTemporalModalidades.Add(item);
 
             dgvModalidades.DataSource = listaTemporalModalidades;
-
             dgvModalidades.DataBind();
 
             //LlenarGrillaModalidades();
