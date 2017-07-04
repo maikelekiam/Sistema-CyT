@@ -36,7 +36,8 @@ namespace Sistema_CyT
         protected void btnModalModalidadActualizar_Click(object sender, EventArgs e)
         {
             ActualizarModalidad();
-            Response.Redirect("EditarConvocatoria.aspx");
+
+            Response.Redirect("ListarConvocatorias.aspx");
         }
 
         private void ActualizarModalidad()
@@ -57,9 +58,7 @@ namespace Sistema_CyT
 
         protected void btnModalModalidadSalir_Click(object sender, EventArgs e)
         {
-            
-            
-            Response.Redirect("EditarConvocatoria.aspx");
+            Response.Redirect("ListarConvocatorias.aspx");
         }
     }
 }

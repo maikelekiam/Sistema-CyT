@@ -168,6 +168,8 @@ namespace Sistema_CyT
             listaTemporalModalidades = null;
 
             LlenarGrillaModalidades();
+
+            Response.Redirect("ListarConvocatorias.aspx");
         }
 
         private void ActualizarConvocatoria()
@@ -206,8 +208,6 @@ namespace Sistema_CyT
                 modalidadNego.ActualizarModalidad(modalidad);
             }
             LimpiarFormulario();
-
-            Response.Redirect("ListarConvocatorias.aspx");
         }
 
         private void LimpiarFormulario()
@@ -257,6 +257,12 @@ namespace Sistema_CyT
             txtPlazoEjecucionModal.Text = null;
             txtPorcentajeFinanciamientoModal.Text = null;
 
+            
+            
+            
+            //ESTO HAY QUE ARREGLARLO!!!!
+            //NO TE DEJA SGREGAR UNA MODALIDAD NUEVA
+            //
             segundo.Concat(new[] { item });
 
             listaTemporalModalidades = listaTemporalModalidades.Concat(segundo);
