@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using CapaDominio;
 using CapaNegocio;
+using System.Globalization;
 
 namespace Sistema_CyT
 {
@@ -30,8 +31,8 @@ namespace Sistema_CyT
                 LimpiarFormulario();
 
                 txtAnio.Text = "2017";
-                txtFechaApertura.Text = Convert.ToString(DateTime.Today.ToShortDateString());
-                txtFechaCierre.Text = Convert.ToString(DateTime.Today.ToShortDateString());
+                //txtFechaApertura.Text = Convert.ToString(DateTime.Today.ToShortDateString());
+                //txtFechaCierre.Text = Convert.ToString(DateTime.Today.ToShortDateString());
             }
         }
         private void LlenarListaFondos()
@@ -85,6 +86,10 @@ namespace Sistema_CyT
             convocatoria.IdFondo = Int32.Parse(ddlFondo.SelectedValue);
             convocatoria.IdTipoFinanciamiento = Int32.Parse(ddlTipoFinanciamiento.SelectedValue);
             convocatoria.IdTipoConvocatoria = Int32.Parse(ddlTipoConvocatoria.SelectedValue);
+
+            //convocatoria.FechaApertura = DateTime.ParseExact(txtFechaApertura.Text, "dd/MMM/yyyy", CultureInfo.InvariantCulture);
+            //convocatoria.FechaCierre = DateTime.ParseExact(txtFechaCierre.Text, "dd/MMM/yyyy", CultureInfo.InvariantCulture);
+
             convocatoria.FechaApertura = Convert.ToDateTime(txtFechaApertura.Text);
             convocatoria.FechaCierre = Convert.ToDateTime(txtFechaCierre.Text);
 
