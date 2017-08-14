@@ -66,7 +66,7 @@
                 <div class="col-md-3">
                     <div class="input-group date"
                         data-provide="datepicker"
-                        
+                        data-date-format="dd/mm/yyyy"
                         data-date-autoclose="true"
                         data-date-today-btn="true"
                         data-date-clear-btn="true"
@@ -81,7 +81,7 @@
                 <div class="col-md-3">
                     <div class="input-group date"
                         data-provide="datepicker"
-                        
+                        data-date-format="dd/mm/yyyy"
                         data-date-autoclose="true"
                         data-date-today-btn="true"
                         data-date-clear-btn="true"
