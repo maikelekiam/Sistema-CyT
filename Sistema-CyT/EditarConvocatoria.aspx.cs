@@ -189,6 +189,8 @@ namespace Sistema_CyT
             if (chkAbierta.Checked) { convocatoria.Abierta = true; }
             else if (!chkAbierta.Checked) { convocatoria.Abierta = false; }
 
+            convocatoria.Activa = true;
+
             convocatoriaNego.ActualizarConvocatoria(convocatoria);
 
 
@@ -197,7 +199,7 @@ namespace Sistema_CyT
             {
                 Modalidad modalidad = new Modalidad();
 
-                modalidad.IdModalidad = idModalidadActual;
+                modalidad.IdModalidad = mo.IdModalidad;
                 modalidad.IdConvocatoria = idConvocatoriaActual;
                 modalidad.Nombre = mo.Nombre;
                 modalidad.Descripcion = mo.Descripcion;
