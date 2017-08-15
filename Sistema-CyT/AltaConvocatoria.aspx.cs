@@ -140,6 +140,7 @@ namespace Sistema_CyT
             //}
 
             Modalidad item = new Modalidad();
+
             item.Nombre = txtNombreModal.Text;
             item.Descripcion = txtDescripcionModal.Text;
             item.Objetivo = txtObjetivoModal.Text;
