@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using CapaDominio;
 using CapaNegocio;
+using System.Windows.Forms;
 
 namespace Sistema_CyT
 {
@@ -189,6 +190,8 @@ namespace Sistema_CyT
             if (chkAbierta.Checked) { convocatoria.Abierta = true; }
             else if (!chkAbierta.Checked) { convocatoria.Abierta = false; }
 
+            convocatoria.Activa = true;
+
             convocatoriaNego.ActualizarConvocatoria(convocatoria);
 
 
@@ -197,7 +200,7 @@ namespace Sistema_CyT
             {
                 Modalidad modalidad = new Modalidad();
 
-                modalidad.IdModalidad = idModalidadActual;
+                modalidad.IdModalidad = mo.IdModalidad;
                 modalidad.IdConvocatoria = idConvocatoriaActual;
                 modalidad.Nombre = mo.Nombre;
                 modalidad.Descripcion = mo.Descripcion;
@@ -206,10 +209,10 @@ namespace Sistema_CyT
                 modalidad.PlazoEjecucion = mo.PlazoEjecucion;
                 modalidad.PorcentajeFinanciamiento = mo.PorcentajeFinanciamiento;
 
-                
+
                 //ACA ESTA EL PROBLEMA, DUPLICA CUANDO ACTUALIZA!!!
-                
-                
+
+
                 modalidadNego.ActualizarModalidad(modalidad);
 
 
@@ -256,9 +259,31 @@ namespace Sistema_CyT
         {
             GridViewRow row = dgvModalidades.Rows[e.NewSelectedIndex];
 
-            idModalidadActual = Convert.ToInt32(row.Cells[0].Text);
+            //idModalidadActual = Convert.ToInt32(row.Cells[0].Text);
 
-            Response.Redirect("EditarModalidad.aspx");
+            //Response.Redirect("EditarModalidad.aspx");
+
+            if (row.Cells[0].Text != "")
+            {
+                idModalidadActual = Convert.ToInt32(row.Cells[0].Text);
+
+                Response.Redirect("EditarModalidad.aspx");
+            }
+            else
+            {
+                MessageBox.Show("DEBE ACTUALIZAR LA CONVOCATORIA PARA CONTINUAR", "Advertencia", 
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                
+            }
+
+
+
+
+
+
+
+
+
 
             //Modalidad modalidad = modalidadNego.ObtenerModalidadSegunId(id);
         }
@@ -290,7 +315,6 @@ namespace Sistema_CyT
             dgvModalidades.DataSource = listaTemporalModalidades;
             dgvModalidades.DataBind();
 
-            //LlenarGrillaModalidades();
         }
     }
 }
