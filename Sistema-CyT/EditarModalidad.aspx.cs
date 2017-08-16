@@ -37,6 +37,9 @@ namespace Sistema_CyT
         {
             ActualizarModalidad();
 
+            EditarConvocatoria.listaTemporalModalidades.Clear();
+            EditarConvocatoria.listaTemporalModalidadesAgregado.Clear();
+
             Response.Redirect("ListarConvocatorias.aspx");
         }
 
