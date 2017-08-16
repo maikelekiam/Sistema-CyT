@@ -161,6 +161,7 @@
     <Content Include="AltaProyecto.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="css\bootstrap-datepicker.css" />
+    <Content Include="css\bootstrap-select.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\panel-collapsible.css" />
     <Content Include="EditarConvocatoria.aspx" />
@@ -170,6 +171,7 @@
     <Content Include="FiltrarProyecto.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="js\bootstrap-datepicker.js" />
+    <Content Include="js\bootstrap-select.js" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\jquery-1.12.3.js" />
     <Content Include="js\panel-collapsible.js" />

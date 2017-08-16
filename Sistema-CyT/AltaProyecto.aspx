@@ -29,6 +29,7 @@
                         BackColor="WhiteSmoke"
                         ForeColor="#000066"
                         CssClass="selectpicker form-control show-tick"
+                        data-live-search="true"                        
                         DataTextField="nombre"
                         AutoPostBack="False"
                         AppendDataBoundItems="true">
@@ -65,6 +66,7 @@
                         BackColor="WhiteSmoke"
                         ForeColor="#000066"
                         CssClass="selectpicker form-control show-tick"
+                        data-live-search="true"
                         DataTextField="nombre"
                         AutoPostBack="False"
                         AppendDataBoundItems="true">
@@ -130,6 +132,7 @@
                         BackColor="WhiteSmoke"
                         ForeColor="#000066"
                         CssClass="selectpicker form-control show-tick"
+                        data-live-search="true"
                         DataTextField="nombre"
                         AutoPostBack="False"
                         AppendDataBoundItems="true">
@@ -176,6 +179,7 @@
                         BackColor="WhiteSmoke"
                         ForeColor="#000066"
                         CssClass="selectpicker form-control show-tick"
+                        data-live-search="true"
                         DataTextField="nombre"
                         AutoPostBack="False"
                         AppendDataBoundItems="true">

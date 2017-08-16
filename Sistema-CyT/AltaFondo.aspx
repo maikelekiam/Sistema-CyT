@@ -32,7 +32,6 @@
                         ForeColor="#000066"
                         Font-Bold="false"
                         CssClass="selectpicker form-control show-tick"
-                        data-live-search="true"
                         DataTextField="nombre"
                         AutoPostBack="false"
                         AppendDataBoundItems="true">

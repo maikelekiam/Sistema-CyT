@@ -209,33 +209,9 @@ namespace Sistema_CyT
                 modalidad.PlazoEjecucion = mo.PlazoEjecucion;
                 modalidad.PorcentajeFinanciamiento = mo.PorcentajeFinanciamiento;
 
-
-                //ACA ESTA EL PROBLEMA, DUPLICA CUANDO ACTUALIZA!!!
-
-
                 modalidadNego.ActualizarModalidad(modalidad);
 
-
-
-
             }
-
-            //foreach (Modalidad mo in listaTemporalModalidadesAgregado)
-            //{
-            //    Modalidad modalidad = new Modalidad();
-
-            //    modalidad.IdConvocatoria = idConvocatoriaActual;
-            //    modalidad.Nombre = mo.Nombre;
-            //    modalidad.Descripcion = mo.Descripcion;
-            //    modalidad.Objetivo = mo.Objetivo;
-            //    modalidad.MontoMaximoProyecto = mo.MontoMaximoProyecto;
-            //    modalidad.PlazoEjecucion = mo.PlazoEjecucion;
-            //    modalidad.PorcentajeFinanciamiento = mo.PorcentajeFinanciamiento;
-
-            //    //modalidadNego.GuardarModalidad(modalidad);
-            //}
-
-
 
             LimpiarFormulario();
         }
@@ -271,9 +247,9 @@ namespace Sistema_CyT
             }
             else
             {
-                MessageBox.Show("DEBE ACTUALIZAR LA CONVOCATORIA PARA CONTINUAR", "Advertencia", 
+                MessageBox.Show("DEBE ACTUALIZAR LA CONVOCATORIA PARA CONTINUAR", "Advertencia",
                     MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
-                
+
             }
 
 
@@ -300,8 +276,6 @@ namespace Sistema_CyT
             item.PorcentajeFinanciamiento = Int32.Parse(txtPorcentajeFinanciamientoModal.Text);
             item.PlazoEjecucion = Int32.Parse(txtPlazoEjecucionModal.Text);
 
-            //modalidadNego.GuardarModalidad(item);
-
             txtNombreModal.Text = null;
             txtDescripcionModal.Text = null;
             txtObjetivoModal.Text = null;
@@ -314,7 +288,6 @@ namespace Sistema_CyT
 
             dgvModalidades.DataSource = listaTemporalModalidades;
             dgvModalidades.DataBind();
-
         }
     }
 }

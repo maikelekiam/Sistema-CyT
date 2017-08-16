@@ -16,7 +16,7 @@
                         BackColor="#ffff99"
                         ForeColor="#000066"
                         Font-Bold="true"
-                        CssClass="form-control"
+                        CssClass="selectpicker form-control show-tick"
                         DataTextField="nombre"
                         AutoPostBack="true"
                         AppendDataBoundItems="true"
