@@ -161,10 +161,10 @@
           <orm:column name="idTipoConvocatoria" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:field>
         <orm:field name="fechaApertura" property="FechaApertura" behavior="readwrite" uniqueId="de45c944-6a55-40b0-99a0-152c954a399b" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
-          <orm:column name="fechaApertura" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+          <orm:column name="fechaApertura" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
         </orm:field>
         <orm:field name="fechaCierre" property="FechaCierre" behavior="readwrite" uniqueId="d9b79207-eb00-46ed-996a-0ecd6338a2be" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
-          <orm:column name="fechaCierre" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+          <orm:column name="fechaCierre" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
         </orm:field>
         <orm:field name="abierta" property="Abierta" behavior="readwrite" uniqueId="f0e566fb-b1b9-4b33-8634-a343248188fa" type="System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
           <orm:column name="abierta" sql-type="bit" nullable="true" length="0" scale="0" ado-type="Bit" />
@@ -555,8 +555,8 @@
         <orm:column name="idFondo" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="idTipoFinanciamiento" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="idTipoConvocatoria" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
-        <orm:column name="fechaApertura" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
-        <orm:column name="fechaCierre" sql-type="datetime" nullable="true" length="0" scale="0" ado-type="DateTime" />
+        <orm:column name="fechaApertura" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
+        <orm:column name="fechaCierre" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
         <orm:column name="abierta" sql-type="bit" nullable="true" length="0" scale="0" ado-type="Bit" />
         <orm:column name="activa" sql-type="bit" nullable="true" length="0" scale="0" ado-type="Bit" />
         <orm:constraint name="FK_Convocatoria_Fondo" delete-action="dbdefaultrule" destination-table="Fondo">

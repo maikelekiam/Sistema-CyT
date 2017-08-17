@@ -87,11 +87,14 @@ namespace Sistema_CyT
             convocatoria.IdTipoFinanciamiento = Int32.Parse(ddlTipoFinanciamiento.SelectedValue);
             convocatoria.IdTipoConvocatoria = Int32.Parse(ddlTipoConvocatoria.SelectedValue);
 
+            convocatoria.FechaApertura = DateTime.ParseExact(txtFechaApertura.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+            convocatoria.FechaCierre = DateTime.ParseExact(txtFechaCierre.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+            
             //convocatoria.FechaApertura = DateTime.ParseExact(txtFechaApertura.Text, "dd/MMM/yyyy", CultureInfo.InvariantCulture);
             //convocatoria.FechaCierre = DateTime.ParseExact(txtFechaCierre.Text, "dd/MMM/yyyy", CultureInfo.InvariantCulture);
 
-            convocatoria.FechaApertura = Convert.ToDateTime(txtFechaApertura.Text);
-            convocatoria.FechaCierre = Convert.ToDateTime(txtFechaCierre.Text);
+            //convocatoria.FechaApertura = Convert.ToDateTime(txtFechaApertura.Text);
+            //convocatoria.FechaCierre = Convert.ToDateTime(txtFechaCierre.Text);
 
             if (chkAbierta.Checked)
             {

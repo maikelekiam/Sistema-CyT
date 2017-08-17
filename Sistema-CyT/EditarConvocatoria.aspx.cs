@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using CapaDominio;
 using CapaNegocio;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace Sistema_CyT
 {
@@ -109,8 +110,47 @@ namespace Sistema_CyT
             ddlFondo.Text = Convert.ToString(convocatoria.IdFondo);
             ddlTipoConvocatoria.Text = Convert.ToString(convocatoria.IdTipoConvocatoria);
             ddlTipoFinanciamiento.Text = Convert.ToString(convocatoria.IdTipoFinanciamiento);
-            txtFechaApertura.Text = Convert.ToDateTime(convocatoria.FechaApertura).ToShortDateString();
-            txtFechaCierre.Text = Convert.ToDateTime(convocatoria.FechaCierre).ToShortDateString();
+
+
+
+            string dia = Convert.ToString((convocatoria.FechaApertura).Value.Day);
+            string mes = Convert.ToString((convocatoria.FechaApertura).Value.Month);
+            string anio = Convert.ToString((convocatoria.FechaApertura).Value.Year);
+            string t1 = "";
+            string t2 = "";
+            if ((convocatoria.FechaApertura).Value.Day < 10)
+            {
+                t1 = "0";
+            }
+            if ((convocatoria.FechaApertura).Value.Month < 10)
+            {
+                t2 = "0";
+            }
+            txtFechaApertura.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
+
+
+            dia = Convert.ToString((convocatoria.FechaCierre).Value.Day);
+            mes = Convert.ToString((convocatoria.FechaCierre).Value.Month);
+            anio = Convert.ToString((convocatoria.FechaCierre).Value.Year);
+            t1 = "";
+            t2 = "";
+            if ((convocatoria.FechaCierre).Value.Day < 10)
+            {
+                t1 = "0";
+            }
+            if ((convocatoria.FechaCierre).Value.Month < 10)
+            {
+                t2 = "0";
+            }
+            txtFechaCierre.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
+
+
+
+
+            //txtFechaApertura.Text = Convert.ToString(convocatoria.FechaApertura);
+            //txtFechaCierre.Text = Convert.ToString(convocatoria.FechaCierre);
+            //txtFechaApertura.Text = Convert.ToDateTime(convocatoria.FechaApertura).ToShortDateString();
+            //txtFechaCierre.Text = Convert.ToDateTime(convocatoria.FechaCierre).ToShortDateString();
 
             if (convocatoria.Abierta.Value == true)
             {
@@ -184,8 +224,14 @@ namespace Sistema_CyT
             convocatoria.IdFondo = Int32.Parse(ddlFondo.SelectedValue);
             convocatoria.IdTipoFinanciamiento = Int32.Parse(ddlTipoFinanciamiento.SelectedValue);
             convocatoria.IdTipoConvocatoria = Int32.Parse(ddlTipoConvocatoria.SelectedValue);
-            convocatoria.FechaApertura = Convert.ToDateTime(txtFechaApertura.Text);
-            convocatoria.FechaCierre = Convert.ToDateTime(txtFechaCierre.Text);
+
+            convocatoria.FechaApertura = DateTime.ParseExact(txtFechaApertura.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+            convocatoria.FechaCierre = DateTime.ParseExact(txtFechaCierre.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+
+
+
+            //convocatoria.FechaApertura = Convert.ToDateTime(txtFechaApertura.Text);
+            //convocatoria.FechaCierre = Convert.ToDateTime(txtFechaCierre.Text);
 
             if (chkAbierta.Checked) { convocatoria.Abierta = true; }
             else if (!chkAbierta.Checked) { convocatoria.Abierta = false; }

@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using CapaDominio;
 using CapaNegocio;
 using System.Data;
+using System.Globalization;
 
 namespace Sistema_CyT
 {
@@ -84,7 +85,7 @@ namespace Sistema_CyT
             Actuacion actuacion = new Actuacion();
 
             actuacion.IdProyecto = FiltrarProyecto.idProyectoSeleccionado;
-            actuacion.Fecha = Convert.ToDateTime(txtFechaActuacion.Text);
+            actuacion.Fecha = DateTime.ParseExact(txtFechaActuacion.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
             actuacion.Detalle = txtDetalle.Text;
             actuacion.IdOrganismo = organismoNego.TraerOrganismoIdSegunItem(ddlOrganismo.SelectedItem.ToString());
 
