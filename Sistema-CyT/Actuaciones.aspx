@@ -139,7 +139,7 @@
                         <asp:BoundField HeaderText="idActuacion" DataField="idActuacion" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100" />
                         <asp:BoundField HeaderText="idP" DataField="idProyecto" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100" />
                         <asp:BoundField HeaderText="Fecha" DataField="fecha"
-                            DataFormatString="{0:d}" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="50" HeaderStyle-Width="60" />
+                            DataFormatString="{0:dd-MMM-yyyy}" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="50" HeaderStyle-Width="80" />
                         <asp:TemplateField HeaderText="Organismo" HeaderStyle-BackColor="#cccccc" HeaderStyle-Width="100">
                             <ItemTemplate>
                                 <asp:Label ID="lbl23" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Organismo.Nombre") %>'></asp:Label>
