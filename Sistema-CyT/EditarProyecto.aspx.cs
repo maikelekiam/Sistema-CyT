@@ -94,9 +94,14 @@ namespace Sistema_CyT
 
             txtNombre.Text = proyecto.Nombre.ToString();
             txtNumeroExp.Text = proyecto.NumeroExpediente.ToString();
+            ddlConvocatoria.Text = Convert.ToString(proyecto.IdConvocatoria);
+            txtMontoSolicitado.Text = Convert.ToString(proyecto.MontoSolicitado);
+            txtMontoContraparte.Text = Convert.ToString(proyecto.MontoContraparte);
+            txtMontoTotal.Text = Convert.ToString(proyecto.MontoTotal);
 
-
-
+            ddlContacto.Text = personaNego.TraerPersona(proyecto.IdPersona.Value);
+            ddlEmpresa.Text = empresaNego.TraerEmpresa(proyecto.IdEmpresa.Value);
+            ddlLocalidad.Text = localidadNego.TraerLocalidad(proyecto.IdLocalidad.Value);
 
 
 
