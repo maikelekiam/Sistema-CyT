@@ -13,7 +13,7 @@
                 <br />
                 <asp:Label ID="lblDdl" Font-Bold="true" runat="server" Text="&lt Seleccione Convocatoria &gt" CssClass="col-md-2 control-label"> </asp:Label>
                 <div class="col-md-8">
-                    <asp:DropDownList ID="ddlActualizarConvocatoria" runat="server"                        
+                    <asp:DropDownList ID="ddlActualizarConvocatoria" runat="server"
                         ForeColor="#000066"
                         Font-Bold="true"
                         CssClass="selectpicker form-control show-tick"
@@ -87,7 +87,6 @@
                 <div class="col-md-3">
                     <div class="input-group date"
                         data-provide="datepicker"
-                        
                         data-date-autoclose="true"
                         data-date-today-btn="true"
                         data-date-clear-btn="true"
@@ -102,7 +101,6 @@
                 <div class="col-md-3">
                     <div class="input-group date"
                         data-provide="datepicker"
-                        
                         data-date-autoclose="true"
                         data-date-today-btn="true"
                         data-date-clear-btn="true"
@@ -188,13 +186,14 @@
                     </div>
                 </div>
             </div>
-            <!-- BOTON ACTUALIZAR -->
+            <!-- BOTON ACTUALIZAR CONVOCATORIA-->
             <div class="form-group">
                 <div class="col-md-2 col-md-offset-2">
                     <asp:Button ID="btnActualizarConvocatoria" runat="server" Text="Actualizar Convocatoria" CssClass="btn btn-info form-control" OnClick="btnActualizarConvocatoria_Click" />
                 </div>
             </div>
         </asp:Panel>
+
         <!--LISTA DE MODALIDADES CARGADAS-->
         <div class="panel-heading">
             <h3>Modalidades de la Convocatoria</h3>

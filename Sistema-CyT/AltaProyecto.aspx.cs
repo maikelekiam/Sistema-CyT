@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using CapaDominio;
 using CapaNegocio;
+using System.Globalization;
 
 namespace Sistema_CyT
 {
@@ -34,13 +35,13 @@ namespace Sistema_CyT
             MostrarEmpresa(); // SIRVE PARA EL DROP DOWN LIST
             MostrarConvocatoria(); // SIRVE PARA EL DROP DOWN LIST
 
-            txtFechaInicioModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
-            txtFechaFinalModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
+            //txtFechaInicioModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
+            //txtFechaFinalModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
 
             listaEtapasTemporal.Clear();
         }
 
-        //Muestra en el DROPDOWNLIST las LOCALIDADES
+        //Muestra en el DROPDOWNLIST las CONVOCATORIAS
         private void MostrarConvocatoria()
         {
             ddlConvocatoria.DataSource = convocatoriaNego.MostrarConvocatorias().ToList();
@@ -88,19 +89,21 @@ namespace Sistema_CyT
 
         private void ModalEtapaGuardar()
         {
-            Etapa item = new Etapa();
+            Etapa etapa = new Etapa();
 
-            item.Nombre = txtNombreModal.Text;
-            item.FechaInicio = Convert.ToDateTime(txtFechaInicioModal.Text);
-            item.FechaFin = Convert.ToDateTime(txtFechaFinalModal.Text);
-            item.Duracion = Int32.Parse(txtDuracionModal.Text);
+            etapa.Nombre = txtNombreModal.Text;
+            etapa.FechaInicio = DateTime.ParseExact(txtFechaInicioModal.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+            etapa.FechaFin = DateTime.ParseExact(txtFechaFinalModal.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+            etapa.Duracion = Int32.Parse(txtDuracionModal.Text);
 
-            listaEtapasTemporal.Add(item);
+            listaEtapasTemporal.Add(etapa);
 
             txtNombreModal.Text = null;
             txtDuracionModal.Text = null;
-            txtFechaInicioModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
-            txtFechaFinalModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
+            txtFechaInicioModal.Text = null;
+            txtFechaFinalModal.Text = null;
+            //txtFechaInicioModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
+            //txtFechaFinalModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
 
             LlenarGrillaEtapas();
         }
@@ -122,19 +125,13 @@ namespace Sistema_CyT
             proyecto.MontoContraparte = Int32.Parse(txtMontoContraparte.Text);
             proyecto.MontoTotal = Int32.Parse(txtMontoTotal.Text);
 
-
             string cadena = ddlContacto.SelectedItem.ToString();
             string[] separadas;
             separadas = cadena.Split(',');
             string itemApellido = separadas[0];
             string itemNombre = separadas[1];
 
-
-
             proyecto.IdPersona = personaNego.TraerPersonaIdSegunItem(itemApellido, itemNombre);
-
-
-
             //proyecto.IdPersona = Int32.Parse(ddlContacto.SelectedValue);
             proyecto.IdEmpresa = empresaNego.TraerEmpresaIdSegunItem(ddlEmpresa.SelectedItem.ToString());
             //proyecto.IdLocalidad = Int32.Parse(ddlLocalidad.SelectedValue);
