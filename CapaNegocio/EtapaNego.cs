@@ -26,5 +26,9 @@ namespace CapaNegocio
         {
             etapaRepo.ActualizarEtapa(etapa);
         }
+        public IEnumerable<Etapa> TraerEtapasSegunIdProyecto(int id)
+        {
+            return etapaRepo.TraerEtapasSegunIdProyecto(id);
+        }
     }
 }

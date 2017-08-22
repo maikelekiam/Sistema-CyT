@@ -35,5 +35,13 @@ namespace CapaRepositorio
                 modeloDeDominio.SaveChanges();
             }
         }
+        public IEnumerable<Etapa> TraerEtapasSegunIdProyecto(int id)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                IEnumerable<Etapa> result = modeloDeDominio.Etapas.Where(c => c.IdProyecto == id).ToList();
+                return result;
+            }
+        }
     }
 }

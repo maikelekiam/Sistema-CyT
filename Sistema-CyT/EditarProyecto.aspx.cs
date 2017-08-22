@@ -80,22 +80,40 @@ namespace Sistema_CyT
             ddlContacto.DataValueField = "nombre";
             ddlContacto.DataBind();
         }
-
-
-
-
-
-
-
-
-
-
-
-
         protected void ddlActualizarProyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
+            idProyectoActual = Convert.ToInt32(ddlActualizarProyecto.SelectedValue.ToString());
+
+            Proyecto proyecto = proyectoNego.ObtenerProyecto(idProyectoActual);
+
+            if (proyecto == null)
+            {
+                //LimpiarFormulario();
+                return;
+            }
+
+            txtNombre.Text = proyecto.Nombre.ToString();
+            txtNumeroExp.Text = proyecto.NumeroExpediente.ToString();
+
+
+
+
+
+
+
 
         }
+
+
+
+
+
+
+
+
+
+
+        
 
         protected void btnModalContactoGuardar_Click(object sender, EventArgs e)
         {
@@ -111,7 +129,7 @@ namespace Sistema_CyT
         {
 
         }
-                
+
 
         protected void btnModalEtapaGuardar_Click(object sender, EventArgs e)
         {
