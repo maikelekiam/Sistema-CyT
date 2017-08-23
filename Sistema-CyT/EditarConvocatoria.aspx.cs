@@ -240,7 +240,6 @@ namespace Sistema_CyT
 
             convocatoriaNego.ActualizarConvocatoria(convocatoria);
 
-
             //DESPUES GUARDO LA LISTA DE MODALIDADES DE LA CONVOCATORIA ACTUAL
             foreach (Modalidad mo in listaTemporalModalidades)
             {
@@ -256,7 +255,6 @@ namespace Sistema_CyT
                 modalidad.PorcentajeFinanciamiento = mo.PorcentajeFinanciamiento;
 
                 modalidadNego.ActualizarModalidad(modalidad);
-
             }
 
             LimpiarFormulario();

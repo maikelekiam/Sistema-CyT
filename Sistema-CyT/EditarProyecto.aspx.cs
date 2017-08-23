@@ -22,6 +22,8 @@ namespace Sistema_CyT
         IEnumerable<Proyecto> listaProyectos;
 
         public static List<Etapa> listaTemporalEtapas = new List<Etapa>();
+        public static List<Etapa> listaTemporalEtapasAgregado = new List<Etapa>();
+
         public static int idProyectoActual;
         public static int idEtapaActual;
         public static int idEmpresaActual = 0;
@@ -142,15 +144,6 @@ namespace Sistema_CyT
             dgvEtapas.Columns[1].Visible = false;
         }
 
-
-
-
-
-
-
-
-
-
         protected void btnModalContactoGuardar_Click(object sender, EventArgs e)
         {
             Persona persona = new Persona();
@@ -207,15 +200,83 @@ namespace Sistema_CyT
             return localidadNego.TraerLocalidad(id);
         }
 
-
         protected void btnModalEtapaGuardar_Click(object sender, EventArgs e)
         {
+            Etapa item = new Etapa();
 
+            item.IdProyecto = idProyectoActual;
+            item.Nombre = txtNombreModal.Text;
+            item.Duracion = Int32.Parse(txtDuracionModal.Text);
+            item.FechaInicio = DateTime.ParseExact(txtFechaInicioModal.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+            item.FechaFin = DateTime.ParseExact(txtFechaFinalModal.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+
+            txtNombreModal.Text = null;
+            txtDuracionModal.Text = null;
+            txtFechaInicioModal.Text = null;
+            txtFechaFinalModal.Text = null;
+
+            listaTemporalEtapasAgregado.Add(item);
+            listaTemporalEtapas.Add(item);
+
+            dgvEtapas.DataSource = listaTemporalEtapas;
+            dgvEtapas.DataBind();
         }
 
         protected void btnActualizarProyecto_Click(object sender, EventArgs e)
         {
+            ActualizarProyecto();
 
+            LlenarGrillaEtapas();
+
+            listaTemporalEtapas.Clear();
+            listaTemporalEtapasAgregado.Clear();
+
+            Response.Redirect("ListarProyectos.aspx");
+        }
+
+        private void ActualizarProyecto()
+        {
+            Proyecto proyecto = new Proyecto();
+
+            proyecto.IdProyecto = idProyectoActual;
+
+            proyecto.Nombre = txtNombre.Text;
+            proyecto.NumeroExpediente = txtNumeroExp.Text;
+            proyecto.IdConvocatoria = Int32.Parse(ddlConvocatoria.SelectedValue);
+            proyecto.MontoSolicitado = Convert.ToDecimal(txtMontoSolicitado.Text);
+            proyecto.MontoContraparte = Convert.ToDecimal(txtMontoContraparte.Text);
+            proyecto.MontoTotal = Convert.ToDecimal(txtMontoTotal.Text);
+
+            string cadena = ddlContacto.SelectedItem.ToString();
+            string[] separadas;
+            separadas = cadena.Split(',');
+            string itemApellido = separadas[0];
+            string itemNombre = separadas[1];
+
+            proyecto.IdPersona = personaNego.TraerPersonaIdSegunItem(itemApellido, itemNombre);
+            //proyecto.IdPersona = Int32.Parse(ddlContacto.SelectedValue);
+            proyecto.IdEmpresa = empresaNego.TraerEmpresaIdSegunItem(ddlEmpresa.SelectedItem.ToString());
+            //proyecto.IdLocalidad = Int32.Parse(ddlLocalidad.SelectedValue);
+            proyecto.IdLocalidad = localidadNego.TraerLocalidadIdSegunItem(ddlLocalidad.SelectedItem.ToString());
+
+            proyectoNego.ActualizarProyecto(proyecto);
+
+            //DESPUES GUARDO LA LISTA DE ETAPAS DEL PROYECTO ACTUAL
+            foreach (Etapa item in listaTemporalEtapas)
+            {
+                Etapa etapa = new Etapa();
+
+                etapa.IdEtapa = item.IdEtapa;
+                etapa.IdProyecto = idProyectoActual;
+                etapa.Nombre = item.Nombre.ToString();
+                etapa.FechaInicio = Convert.ToDateTime(item.FechaInicio.ToString());
+                etapa.FechaFin = Convert.ToDateTime(item.FechaFin.ToString());
+                etapa.Duracion = Int32.Parse(item.Duracion.ToString());
+
+                etapaNego.ActualizarEtapa(etapa);
+            }
+
+            LimpiarFormulario();
         }
 
         protected void dgvEtapas_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
