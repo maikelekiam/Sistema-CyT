@@ -22,9 +22,12 @@ namespace Sistema_CyT
         IEnumerable<Proyecto> listaProyectos;
 
         public static List<Etapa> listaTemporalEtapas = new List<Etapa>();
-
         public static int idProyectoActual;
         public static int idEtapaActual;
+        public static int idEmpresaActual = 0;
+        public static int idLocalidadActual = 0;
+        public static int idPersonaActual = 0;
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -89,7 +92,7 @@ namespace Sistema_CyT
 
             if (proyecto == null)
             {
-                //LimpiarFormulario();
+                LimpiarFormulario();
                 return;
             }
 
@@ -150,17 +153,58 @@ namespace Sistema_CyT
 
         protected void btnModalContactoGuardar_Click(object sender, EventArgs e)
         {
+            Persona persona = new Persona();
 
+            persona.Nombre = txtContactoNombreModal.Text;
+            persona.Apellido = txtContactoApellidoModal.Text;
+            persona.Telefono = txtContactoTelefonoModal.Text;
+            persona.CorreoElectronico = txtContactoCorreoElectronicoModal.Text;
+
+            idPersonaActual = personaNego.GuardarPersona(persona);
+
+            ddlContacto.Items.Clear();
+            ddlContacto.Text = TraerPersona(idPersonaActual);
+            MostrarPersona();
+        }
+        private string TraerPersona(int id)
+        {
+            return personaNego.TraerPersona(id);
         }
 
         protected void btnModalEmpresaGuardar_Click(object sender, EventArgs e)
         {
+            Empresa empresa = new Empresa();
 
+            empresa.Nombre = txtEmpresaModal.Text;
+
+            idEmpresaActual = empresaNego.GuardarEmpresa(empresa);
+
+            ddlEmpresa.Items.Clear();
+            ddlEmpresa.Text = TraerEmpresa(idEmpresaActual);
+            MostrarEmpresa();
+        }
+
+        private string TraerEmpresa(int id)
+        {
+            return empresaNego.TraerEmpresa(id);
         }
 
         protected void btnModalLocalidadGuardar_Click(object sender, EventArgs e)
         {
+            Localidad localidad = new Localidad();
 
+            localidad.Nombre = txtLocalidadNombreModal.Text;
+            localidad.CodigoPostal = txtLocalidadCodigoPostalModal.Text;
+
+            idLocalidadActual = localidadNego.GuardarLocalidad(localidad);
+
+            ddlLocalidad.Items.Clear();
+            ddlLocalidad.Text = TraerLocalidad(idLocalidadActual);
+            MostrarLocalidad();
+        }
+        private string TraerLocalidad(int id)
+        {
+            return localidadNego.TraerLocalidad(id);
         }
 
 
@@ -182,11 +226,11 @@ namespace Sistema_CyT
         {
             txtNombre.Text = null;
             txtNumeroExp.Text = null;
-            ddlConvocatoria.SelectedIndex=0;
+            ddlConvocatoria.SelectedIndex = 0;
             txtMontoSolicitado.Text = null;
             txtMontoContraparte.Text = null;
             txtMontoTotal.Text = null;
-            ddlContacto.SelectedIndex=0;
+            ddlContacto.SelectedIndex = 0;
             ddlEmpresa.SelectedIndex = 0;
             ddlLocalidad.SelectedIndex = 0;
         }
