@@ -88,6 +88,9 @@ namespace Sistema_CyT
         }
         protected void ddlActualizarProyecto_SelectedIndexChanged(object sender, EventArgs e)
         {
+            listaTemporalEtapas.Clear();
+            listaTemporalEtapasAgregado.Clear();
+            
             idProyectoActual = Convert.ToInt32(ddlActualizarProyecto.SelectedValue.ToString());
 
             Proyecto proyecto = proyectoNego.ObtenerProyecto(idProyectoActual);
