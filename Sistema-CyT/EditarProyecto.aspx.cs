@@ -21,6 +21,8 @@ namespace Sistema_CyT
 
         IEnumerable<Proyecto> listaProyectos;
 
+        public static List<Etapa> listaTemporalEtapas = new List<Etapa>();
+
         public static int idProyectoActual;
         public static int idEtapaActual;
 
@@ -33,8 +35,7 @@ namespace Sistema_CyT
             MostrarPersona(); //SIRVE PARA EL DROP DOWN LIST
             MostrarEmpresa(); // SIRVE PARA EL DROP DOWN LIST
             MostrarConvocatoria(); // SIRVE PARA EL DROP DOWN LIST
-
-            //listaEtapasTemporal.Clear();
+            LimpiarFormulario();
         }
 
         private void CargarListaProyectos()
@@ -103,10 +104,39 @@ namespace Sistema_CyT
             ddlEmpresa.Text = empresaNego.TraerEmpresa(proyecto.IdEmpresa.Value);
             ddlLocalidad.Text = localidadNego.TraerLocalidad(proyecto.IdLocalidad.Value);
 
+            //AHORA TENGO QUE TRAER UNA LISTA DE ETAPAS SEGUN EL IdProyectoActual
+            listaTemporalEtapas = (List<Etapa>)etapaNego.TraerEtapasSegunIdProyecto(idProyectoActual).ToList();
 
+            dgvEtapas.Columns[0].Visible = true;
+            dgvEtapas.Columns[1].Visible = true;
+            dgvEtapas.Columns[2].Visible = true;
+            dgvEtapas.Columns[3].Visible = true;
+            dgvEtapas.Columns[4].Visible = true;
+            dgvEtapas.Columns[5].Visible = true;
 
+            dgvEtapas.DataSource = listaTemporalEtapas;
+            dgvEtapas.DataBind();
 
+            dgvEtapas.Columns[0].Visible = false;
+            dgvEtapas.Columns[1].Visible = false;
 
+            LlenarGrillaEtapas(); //no borrar esta linea!!!
+        }
+
+        private void LlenarGrillaEtapas()
+        {
+            dgvEtapas.Columns[0].Visible = true;
+            dgvEtapas.Columns[1].Visible = true;
+            dgvEtapas.Columns[2].Visible = true;
+            dgvEtapas.Columns[3].Visible = true;
+            dgvEtapas.Columns[4].Visible = true;
+            dgvEtapas.Columns[5].Visible = true;
+
+            dgvEtapas.DataSource = listaTemporalEtapas;
+            dgvEtapas.DataBind();
+
+            dgvEtapas.Columns[0].Visible = false;
+            dgvEtapas.Columns[1].Visible = false;
         }
 
 
@@ -117,8 +147,6 @@ namespace Sistema_CyT
 
 
 
-
-        
 
         protected void btnModalContactoGuardar_Click(object sender, EventArgs e)
         {
@@ -149,6 +177,18 @@ namespace Sistema_CyT
         protected void dgvEtapas_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
 
+        }
+        private void LimpiarFormulario()
+        {
+            txtNombre.Text = null;
+            txtNumeroExp.Text = null;
+            ddlConvocatoria.SelectedIndex=0;
+            txtMontoSolicitado.Text = null;
+            txtMontoContraparte.Text = null;
+            txtMontoTotal.Text = null;
+            ddlContacto.SelectedIndex=0;
+            ddlEmpresa.SelectedIndex = 0;
+            ddlLocalidad.SelectedIndex = 0;
         }
     }
 }
