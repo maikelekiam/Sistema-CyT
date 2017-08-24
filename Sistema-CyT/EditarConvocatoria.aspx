@@ -112,10 +112,18 @@
                     </div>
                 </div>
             </div>
+            <!-- ABIERTA -->
             <div class="form-group">
                 <asp:Label ID="lblAbierta" runat="server" Text="ESTA ABIERTA ?" CssClass="col-md-2 control-label "></asp:Label>
                 <div class="col-md-1">
-                    <asp:CheckBox ID="chkAbierta" runat="server" CssClass="control-label" BorderStyle="None" Checked="true" />
+                    <asp:CheckBox ID="chkAbierta" runat="server" CssClass="control-label" BorderStyle="None" />
+                </div>
+            </div>
+            <!-- ACTIVO -->
+            <div class="form-group">
+                <asp:Label ID="lblActivo" runat="server" Text="ACTIVA" CssClass="col-md-2 control-label "></asp:Label>
+                <div class="col-md-1">
+                    <asp:CheckBox ID="chkActivo" runat="server" CssClass="control-label" BorderStyle="None" />
                 </div>
             </div>
 

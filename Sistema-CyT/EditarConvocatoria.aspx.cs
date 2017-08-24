@@ -128,7 +128,6 @@ namespace Sistema_CyT
             }
             txtFechaApertura.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
 
-
             dia = Convert.ToString((convocatoria.FechaCierre).Value.Day);
             mes = Convert.ToString((convocatoria.FechaCierre).Value.Month);
             anio = Convert.ToString((convocatoria.FechaCierre).Value.Year);
@@ -144,9 +143,6 @@ namespace Sistema_CyT
             }
             txtFechaCierre.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
 
-
-
-
             //txtFechaApertura.Text = Convert.ToString(convocatoria.FechaApertura);
             //txtFechaCierre.Text = Convert.ToString(convocatoria.FechaCierre);
             //txtFechaApertura.Text = Convert.ToDateTime(convocatoria.FechaApertura).ToShortDateString();
@@ -159,6 +155,15 @@ namespace Sistema_CyT
             else if (convocatoria.Abierta.Value == false)
             {
                 chkAbierta.Checked = false;
+            }
+
+            if (convocatoria.Activa.Value == true)
+            {
+                chkActivo.Checked = true;
+            }
+            else if (convocatoria.Activa.Value == false)
+            {
+                chkActivo.Checked = false;
             }
 
             //AHORA TENGO QUE TRAER UNA LISTA DE MODALIDADES SEGUN EL IdConvocatoriaActual
@@ -228,15 +233,14 @@ namespace Sistema_CyT
             convocatoria.FechaApertura = DateTime.ParseExact(txtFechaApertura.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
             convocatoria.FechaCierre = DateTime.ParseExact(txtFechaCierre.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
 
-
+            if (chkActivo.Checked) { convocatoria.Activa = true; }
+            else if (!chkActivo.Checked) { convocatoria.Activa = false; }
 
             //convocatoria.FechaApertura = Convert.ToDateTime(txtFechaApertura.Text);
             //convocatoria.FechaCierre = Convert.ToDateTime(txtFechaCierre.Text);
 
             if (chkAbierta.Checked) { convocatoria.Abierta = true; }
             else if (!chkAbierta.Checked) { convocatoria.Abierta = false; }
-
-            convocatoria.Activa = true;
 
             convocatoriaNego.ActualizarConvocatoria(convocatoria);
 
@@ -270,6 +274,7 @@ namespace Sistema_CyT
             txtFechaApertura.Text = null;
             txtFechaCierre.Text = null;
             chkAbierta.Checked = true;
+            chkActivo.Checked = true;
             //listaConvocatoriaModalidades.Clear();
 
             LlenarGrillaModalidades(); //no borrar esta linea!!!

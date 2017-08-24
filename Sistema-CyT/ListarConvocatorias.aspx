@@ -5,7 +5,7 @@
     <div class="container">
         <asp:Panel ID="PanelSuperior" CssClass="panel panel-warning" runat="server">
             <div class="panel-heading">
-                <h3>Lista de Convocatorias Vigentes</h3>
+                <h3>Lista de Convocatorias Abiertas</h3>
             </div>
             <div class="form-group">
                 <br />

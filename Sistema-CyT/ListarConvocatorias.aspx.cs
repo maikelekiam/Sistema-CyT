@@ -31,7 +31,7 @@ namespace Sistema_CyT
             dgvConvocatoria.Columns[4].Visible = true;
             dgvConvocatoria.Columns[5].Visible = true;
 
-            dgvConvocatoria.DataSource = convocatoriaNego.MostrarConvocatorias().ToList();
+            dgvConvocatoria.DataSource = convocatoriaNego.MostrarConvocatorias().Where(c => c.Activa == true).ToList();
             dgvConvocatoria.DataBind();
 
             dgvConvocatoria.Columns[0].Visible = false;
