@@ -91,6 +91,14 @@
                 </div>
             </div>
 
+            <!-- ACTIVO -->
+            <div class="form-group">
+                <asp:Label ID="lblActivo" runat="server" Text="ACTIVO" CssClass="col-md-2 control-label "></asp:Label>
+                <div class="col-md-1">
+                    <asp:CheckBox ID="chkActivo" runat="server" CssClass="control-label" BorderStyle="None" Checked="true" />
+                </div>
+            </div>
+
             <!-- BOTON ACTUALIZAR -->
             <div class="form-group">
                 <div class="col-md-2 col-md-offset-2">

@@ -55,84 +55,32 @@
                             <li><a runat="server" href="~/ListarConvocatorias.aspx"><span class="glyphicon glyphicon-list"></span>Listar Convocatorias</a></li>
                         </ul>
                     </li>
+
+                    <!-- PARA REGISTRAR Y LOGUEAR USUARIOS -->
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
+                <asp:LoginView runat="server" ViewStateMode="Disabled">
+                    <AnonymousTemplate>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a runat="server" href="~/Account/Register">Register</a></li>
+                            <li><a runat="server" href="~/Account/Login">Log in</a></li>
+                        </ul>
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
+                            <li>
+                                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                            </li>
+                        </ul>
+                    </LoggedInTemplate>
+                </asp:LoginView>
+
+                <%--<ul class="nav navbar-nav navbar-right">
                     <li><a class="btn" href="/Login.aspx">SALIR <span class="glyphicon glyphicon-log-out"></span></a></li>
-                </ul>
+                </ul>--%>
             </div>
         </nav>
-
-
-
-
-
-
-
-
-
-
-
-        <%--        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" runat="server" href="~/Default.aspx">
-                        <h2>Sistema CyT</h2>
-                    </a>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="text-right">
-                            <div class="btn-group">
-                                <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">SEGUIMIENTO <span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                    <li><a runat="server" href="~/FiltrarProyecto.aspx"><span class="glyphicon glyphicon-plus"></span> Seguimiento</a></li>
-                                </ul>
-                            </div>
-                            <div class="btn-group">
-                                <button class="btn btn-warning dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">PROYECTOS <span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                    <li><a runat="server" href="~/AltaProyecto.aspx"><span class="glyphicon glyphicon-plus"></span> Alta Proyecto</a></li>
-                                    <li><a runat="server" href="~/EditarProyecto.aspx"><span class="glyphicon glyphicon-edit"></span> Editar Proyecto</a></li>
-                                    <li class="divider"></li>
-                                    <li><a runat="server" href="~/ListarProyectos.aspx"><span class="glyphicon glyphicon-list"></span> Listar Proyectos</a></li>
-                                    <li><a runat="server" href="#"></a></li>
-                                </ul>
-                            </div>
-                            <div class="btn-group">
-                                <button class="btn btn-success dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">CONVOCATORIAS <span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                    <li><a runat="server" href="~/AltaConvocatoria.aspx"><span class="glyphicon glyphicon-plus"></span> Alta Convocatoria</a></li>
-                                    <li><a runat="server" href="~/EditarConvocatoria.aspx"><span class="glyphicon glyphicon-edit"></span> Editar Convocatoria</a></li>
-                                    <li class="divider"></li>
-                                    <li><a runat="server" href="~/ListarConvocatorias.aspx"><span class="glyphicon glyphicon-list"></span> Listar Convocatorias</a></li>
-                                    <li><a runat="server" href="#"></a></li>
-                                </ul>
-                            </div>
-                            <div class="btn-group">
-                                <button class="btn btn-info dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">FONDOS <span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                    <li><a runat="server" href="~/AltaFondo.aspx"><span class="glyphicon glyphicon-plus"></span> Alta Fondo</a></li>
-                                    <li><a runat="server" href="~/EditarFondo.aspx"><span class="glyphicon glyphicon-edit"></span> Editar Fondo</a></li>
-                                    <li class="divider"></li>
-                                    <li><a runat="server" href="~/ListarFondos.aspx"><span class="glyphicon glyphicon-list"></span> Listar Fondos</a></li>
-                                    <li><a runat="server" href="#"></a></li>
-                                </ul>
-                            </div>
-                            <div class="btn-group">
-                                <a class="btn-danger form-control" runat="server" href="~/Default.aspx">SALIR <span class="glyphicon glyphicon-log-out"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>--%>
-
         <div class="container body-content">
-            <%--<br />
-            <br />
-            <br />
-            <br />
-            <br />--%>
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <footer>
@@ -140,13 +88,10 @@
             </footer>
         </div>
     </form>
-
     <script src="js/jquery-1.12.3.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/bootstrap-datepicker.js"></script>
     <script src="js/panel-collapsible.js"></script>
     <script src="js/bootstrap-select.js"></script>
-
-
 </body>
 </html>

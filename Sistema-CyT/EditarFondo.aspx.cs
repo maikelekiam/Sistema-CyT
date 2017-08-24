@@ -17,7 +17,7 @@ namespace Sistema_CyT
         FondoNego fondoNego = new FondoNego();
         OrigenNego origenNego = new OrigenNego();
         IEnumerable<Fondo> listaFondos;
-        static int id; //
+        static int id;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -78,7 +78,9 @@ namespace Sistema_CyT
             fondo.Nombre = txtNombre.Text;
             fondo.Descripcion = txtDecripcion.Text;
             fondo.IdOrigen = Convert.ToInt32(ddlOrigen.Text);
-            fondo.Activo = true;
+
+            if (chkActivo.Checked) { fondo.Activo = true; }
+            else if (!chkActivo.Checked) { fondo.Activo = false; }
 
             fondoNego.ActualizarFondo(fondo);
 
@@ -97,6 +99,15 @@ namespace Sistema_CyT
             txtNombre.Text = fondo.Nombre.ToString();
             txtDecripcion.Text = fondo.Descripcion.ToString();
             ddlOrigen.Text = Convert.ToString(fondo.IdOrigen);
+
+            if (fondo.Activo.Value == true)
+            {
+                chkActivo.Checked = true;
+            }
+            else if (fondo.Activo.Value == false)
+            {
+                chkActivo.Checked = false;
+            }
         }
 
         protected void btnModalOrigenGuardar_Click(object sender, EventArgs e)
