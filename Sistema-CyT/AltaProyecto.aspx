@@ -73,7 +73,7 @@
                         <asp:ListItem Value="-1">&lt;Seleccione Persona&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
-                <%--AGREGAR ACA EL MODAL PARA MOSTRAR EL DETALLE DEL CONTACTO--%>
+                <%--DETALLE DEL CONTACTO--%>
                 <div class="form-group">
                     <div class="col-md-2">
                         <button type="button" class="btn btn-md" data-toggle="modal" data-target="#modalDetalleContacto">Mostrar Contacto</button>
@@ -90,43 +90,42 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <asp:Label ID="Label3" runat="server" Text="NOMBRE" CssClass="col-md-4 control-label"></asp:Label>
+                                        <asp:Label ID="lblDetalleContactoNombreModal" runat="server" Text="NOMBRE" CssClass="col-md-4 control-label"></asp:Label>
                                         <div class="col-md-8">
-                                            <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="txtDetalleContactoNombreModal" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <asp:Label ID="Label4" runat="server" Text="APELLIDO" CssClass="col-md-4 control-label"> </asp:Label>
+                                        <asp:Label ID="lblDetalleContactoApellidoModal" runat="server" Text="APELLIDO" CssClass="col-md-4 control-label"> </asp:Label>
                                         <div class="col-md-8">
-                                            <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="txtDetalleContactoApellidoModal" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <asp:Label ID="Label5" runat="server" Text="TELEFONO" CssClass="col-md-4 control-label"></asp:Label>
+                                        <asp:Label ID="lblDetalleContactoTelefonoModal" runat="server" Text="TELEFONO" CssClass="col-md-4 control-label"></asp:Label>
                                         <div class="col-md-8">
-                                            <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="txtDetalleContactoTelefonoModal" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <asp:Label ID="Label6" runat="server" Text="CORREO ELECTRONICO" CssClass="col-md-4 control-label"></asp:Label>
+                                        <asp:Label ID="lblDetalleContactoCorreoElectronicoModal" runat="server" Text="CORREO ELECTRONICO" CssClass="col-md-4 control-label"></asp:Label>
                                         <div class="col-md-8">
-                                            <asp:TextBox ID="TextBox4" runat="server" CssClass="form-control"></asp:TextBox>
+                                            <asp:TextBox ID="txtDetalleContactoCorreoElectronicoModal" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <asp:Button runat="server" ID="Button1" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
+                                        <asp:Button runat="server" ID="btnDetalleContactoSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <%--AGREGAR ACA EL MODAL PARA EL NUEVO CONTACTO--%>
+                    <%--NUEVO CONTACTO--%>
                     <div class="form-group">
                         <div class="col-md-2">
                             <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalContacto">Nuevo Contacto</button>
                         </div>
-                        <!-- MODAL CONTACTO  -->
+                        <!-- MODAL NUEVO CONTACTO  -->
                         <div class="modal fade" id="modalContacto" tabindex="-1" role="dialog" aria-labelledby="modalLabelContacto" aria-hidden="true">
                             <div class="modal-dialog modal-md">
                                 <div class="modal-content">
@@ -188,12 +187,39 @@
                         <asp:ListItem Value="-1">&lt;Seleccione Empresa&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
-                <%--AGREGAR ACA EL MODAL PARA LA NUEVA EMPRESA--%>
+                <%--DETALLE EMPRESA--%>
                 <div class="form-group">
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalDetalleEmpresa">Mostrar Empresa</button>
+                    </div>
+                    <!-- MODAL DETALLE EMPRESA  -->
+                    <div class="modal fade" id="modalDetalleEmpresa" tabindex="-1" role="dialog" aria-labelledby="modalLabelDetalleEmpresa" aria-hidden="true">
+                        <div class="modal-dialog modal-md">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title" id="modalLabelDetalleEmpresa">DETALLE EMPRESA</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtEmpresaModal" runat="server" CssClass="form-control"></asp:TextBox><br />
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <asp:Button runat="server" ID="btnModalDetalleEmpresaSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%--NUEVA EMPRESA--%>
                     <div class="col-md-2">
                         <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalEmpresa">Nueva Empresa</button>
                     </div>
-                    <!-- MODAL EMPRESA  -->
+                    <!-- MODAL NUEVA EMPRESA  -->
                     <div class="modal fade" id="modalEmpresa" tabindex="-1" role="dialog" aria-labelledby="modalLabelEmpresa" aria-hidden="true">
                         <div class="modal-dialog modal-md">
                             <div class="modal-content">
@@ -206,7 +232,7 @@
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <div class="col-md-8">
-                                            <asp:TextBox ID="txtEmpresaModal" runat="server" CssClass="form-control"></asp:TextBox><br />
+                                            <asp:TextBox ID="TextBox5" runat="server" CssClass="form-control"></asp:TextBox><br />
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -217,6 +243,10 @@
                             </div>
                         </div>
                     </div>
+
+
+
+
                 </div>
             </div>
 

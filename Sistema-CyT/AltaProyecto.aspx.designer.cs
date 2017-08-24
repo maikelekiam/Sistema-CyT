@@ -148,85 +148,85 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.DropDownList ddlContacto;
         
         /// <summary>
-        /// Label3 control.
+        /// lblDetalleContactoNombreModal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Label lblDetalleContactoNombreModal;
         
         /// <summary>
-        /// TextBox1 control.
+        /// txtDetalleContactoNombreModal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtDetalleContactoNombreModal;
         
         /// <summary>
-        /// Label4 control.
+        /// lblDetalleContactoApellidoModal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.WebControls.Label lblDetalleContactoApellidoModal;
         
         /// <summary>
-        /// TextBox2 control.
+        /// txtDetalleContactoApellidoModal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtDetalleContactoApellidoModal;
         
         /// <summary>
-        /// Label5 control.
+        /// lblDetalleContactoTelefonoModal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label5;
+        protected global::System.Web.UI.WebControls.Label lblDetalleContactoTelefonoModal;
         
         /// <summary>
-        /// TextBox3 control.
+        /// txtDetalleContactoTelefonoModal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox txtDetalleContactoTelefonoModal;
         
         /// <summary>
-        /// Label6 control.
+        /// lblDetalleContactoCorreoElectronicoModal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label6;
+        protected global::System.Web.UI.WebControls.Label lblDetalleContactoCorreoElectronicoModal;
         
         /// <summary>
-        /// TextBox4 control.
+        /// txtDetalleContactoCorreoElectronicoModal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.TextBox txtDetalleContactoCorreoElectronicoModal;
         
         /// <summary>
-        /// Button1 control.
+        /// btnDetalleContactoSalir control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnDetalleContactoSalir;
         
         /// <summary>
         /// lbl01 control.
@@ -344,6 +344,24 @@ namespace Sistema_CyT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEmpresaModal;
+        
+        /// <summary>
+        /// btnModalDetalleEmpresaSalir control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnModalDetalleEmpresaSalir;
+        
+        /// <summary>
+        /// TextBox5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox5;
         
         /// <summary>
         /// btnModalEmpresaSalir control.
