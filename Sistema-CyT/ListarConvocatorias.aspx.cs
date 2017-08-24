@@ -80,6 +80,10 @@ namespace Sistema_CyT
             {
                 listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().Where(c => c.Abierta == false).ToList();
             }
+            else if (id == 3) //en evaluacion
+            {
+                listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().Where(c => c.Anio == 5).ToList();
+            }
 
             MostrarListaConvocatorias();
         }
