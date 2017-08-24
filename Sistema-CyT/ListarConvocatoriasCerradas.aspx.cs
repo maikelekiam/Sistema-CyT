@@ -10,7 +10,7 @@ using System.Data;
 
 namespace Sistema_CyT
 {
-    public partial class ListarConvocatorias : System.Web.UI.Page
+    public partial class ListarConvocatoriasCerradas : System.Web.UI.Page
     {
         ConvocatoriaNego convocatoriaNego = new ConvocatoriaNego();
         public static int idConvocatoriaSeleccionada;
@@ -31,7 +31,7 @@ namespace Sistema_CyT
             dgvConvocatoria.Columns[4].Visible = true;
             dgvConvocatoria.Columns[5].Visible = true;
 
-            dgvConvocatoria.DataSource = convocatoriaNego.MostrarConvocatorias().Where(c => c.Abierta == true).ToList();
+            dgvConvocatoria.DataSource = convocatoriaNego.MostrarConvocatorias().Where(c => c.Abierta == false).ToList();
             dgvConvocatoria.DataBind();
 
             dgvConvocatoria.Columns[0].Visible = false;
@@ -46,11 +46,11 @@ namespace Sistema_CyT
             //Obtengo el id de la convocatoria seleccionada
             idConvocatoriaSeleccionada = Convert.ToInt32(dgvConvocatoria.Rows[rIndex].Cells[0].Text);
 
-            MostrarConvocatoria();
+            MostrarConvocatoriasCerradas();
         }
-        private void MostrarConvocatoria()
+        private void MostrarConvocatoriasCerradas()
         {
-            Response.Redirect("MostrarConvocatoria.aspx");
+            Response.Redirect("MostrarConvocatoriasCerradas.aspx");
         }
     }
 }
