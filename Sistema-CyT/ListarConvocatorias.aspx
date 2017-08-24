@@ -5,7 +5,22 @@
     <div class="container">
         <asp:Panel ID="PanelSuperior" CssClass="panel panel-warning" runat="server">
             <div class="panel-heading">
-                <h3>Lista de Convocatorias Abiertas</h3>
+                <h3>Lista de Convocatorias</h3>
+            </div>
+            <div class="form-group">
+                <br />
+                <asp:Label ID="lblEstado" runat="server" Text="ESTADO" CssClass="col-md-2 control-label"></asp:Label>
+                <div class="col-md-4 ">
+                    <asp:DropDownList ID="ddlEstado" runat="server"
+                        BackColor="WhiteSmoke"
+                        ForeColor="#000066"
+                        Font-Bold="false"
+                        CssClass="selectpicker form-control show-tick"
+                        AutoPostBack="true"
+                        AppendDataBoundItems="true"
+                        OnSelectedIndexChanged="ddlEstado_SelectedIndexChanged">
+                    </asp:DropDownList>
+                </div>
             </div>
             <div class="form-group">
                 <br />
@@ -13,8 +28,7 @@
                     <asp:GridView ID="dgvConvocatoria" runat="server" AutoGenerateColumns="false"
                         CssClass="table table-hover table-striped" BorderWidth="2px"
                         GridLines="Both"
-                        OnRowCommand="dgvConvocatoria_RowCommand"
-                        >
+                        OnRowCommand="dgvConvocatoria_RowCommand">
                         <Columns>
                             <asp:BoundField HeaderText="ID" DataField="idConvocatoria" ItemStyle-HorizontalAlign="Left" />
                             <asp:BoundField HeaderText="AÑO" DataField="anio" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100" />

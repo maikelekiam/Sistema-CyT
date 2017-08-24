@@ -14,12 +14,21 @@ namespace Sistema_CyT
     {
         ConvocatoriaNego convocatoriaNego = new ConvocatoriaNego();
         public static int idConvocatoriaSeleccionada;
+        private List<string> listaEstados = new List<string>(new string[] { "Todas", "Abiertas", "Cerradas", "En Evaluacion" });
+        private static List<Convocatorium> listaConvocatoriasFiltradas = new List<Convocatorium>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack) return;
 
+            listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().ToList();
             MostrarListaConvocatorias();
+            LlenarListaEstados();
+        }
+        private void LlenarListaEstados()
+        {
+            ddlEstado.DataSource = listaEstados;
+            ddlEstado.DataBind();
         }
 
         private void MostrarListaConvocatorias()
@@ -31,7 +40,7 @@ namespace Sistema_CyT
             dgvConvocatoria.Columns[4].Visible = true;
             dgvConvocatoria.Columns[5].Visible = true;
 
-            dgvConvocatoria.DataSource = convocatoriaNego.MostrarConvocatorias().Where(c => c.Abierta == true).ToList();
+            dgvConvocatoria.DataSource = listaConvocatoriasFiltradas;
             dgvConvocatoria.DataBind();
 
             dgvConvocatoria.Columns[0].Visible = false;
@@ -51,6 +60,28 @@ namespace Sistema_CyT
         private void MostrarConvocatoria()
         {
             Response.Redirect("MostrarConvocatoria.aspx");
+        }
+
+        protected void ddlEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FiltrarConvocatoriasPorEstado(Convert.ToInt32(ddlEstado.SelectedIndex.ToString()));
+        }
+        private void FiltrarConvocatoriasPorEstado(int id)
+        {
+            if (id == 0) //todas
+            {
+                listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().ToList();
+            }
+            else if (id == 1) //abiertas
+            {
+                listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().Where(c => c.Abierta == true).ToList();
+            }
+            else if (id == 2) //cerradas
+            {
+                listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().Where(c => c.Abierta == false).ToList();
+            }
+
+            MostrarListaConvocatorias();
         }
     }
 }

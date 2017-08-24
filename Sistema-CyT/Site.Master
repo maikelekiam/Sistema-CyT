@@ -52,8 +52,7 @@
                             <li class="divider"></li>
                             <li><a runat="server" href="~/AltaConvocatoria.aspx"><span class="glyphicon glyphicon-plus"></span>Alta Convocatoria</a></li>
                             <li><a runat="server" href="~/EditarConvocatoria.aspx"><span class="glyphicon glyphicon-edit"></span>Editar Convocatoria</a></li>
-                            <li><a runat="server" href="~/ListarConvocatorias.aspx"><span class="glyphicon glyphicon-list"></span>Convocatorias Abiertas</a></li>
-                            <li><a runat="server" href="~/ListarConvocatoriasCerradas.aspx"><span class="glyphicon glyphicon-list"></span>Convocatorias Cerradas</a></li>
+                            <li><a runat="server" href="~/ListarConvocatorias.aspx"><span class="glyphicon glyphicon-list"></span>Lista Convocatorias</a></li>
                         </ul>
                     </li>
 

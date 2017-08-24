@@ -176,12 +176,10 @@
     <Content Include="js\jquery-1.12.3.js" />
     <Content Include="js\panel-collapsible.js" />
     <Content Include="ListarConvocatorias.aspx" />
-    <Content Include="ListarConvocatoriasCerradas.aspx" />
     <Content Include="ListarFondos.aspx" />
     <Content Include="ListarProyectos.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="MostrarConvocatoria.aspx" />
-    <Content Include="MostrarConvocatoriasCerradas.aspx" />
     <Content Include="MostrarFondo.aspx" />
     <Content Include="MostrarProyecto.aspx" />
     <Content Include="packages.config" />
@@ -339,13 +337,6 @@
     <Compile Include="ListarConvocatorias.aspx.designer.cs">
       <DependentUpon>ListarConvocatorias.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ListarConvocatoriasCerradas.aspx.cs">
-      <DependentUpon>ListarConvocatoriasCerradas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ListarConvocatoriasCerradas.aspx.designer.cs">
-      <DependentUpon>ListarConvocatoriasCerradas.aspx</DependentUpon>
-    </Compile>
     <Compile Include="ListarFondos.aspx.cs">
       <DependentUpon>ListarFondos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -374,13 +365,6 @@
     </Compile>
     <Compile Include="MostrarConvocatoria.aspx.designer.cs">
       <DependentUpon>MostrarConvocatoria.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="MostrarConvocatoriasCerradas.aspx.cs">
-      <DependentUpon>MostrarConvocatoriasCerradas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MostrarConvocatoriasCerradas.aspx.designer.cs">
-      <DependentUpon>MostrarConvocatoriasCerradas.aspx</DependentUpon>
     </Compile>
     <Compile Include="MostrarFondo.aspx.cs">
       <DependentUpon>MostrarFondo.aspx</DependentUpon>
