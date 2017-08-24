@@ -269,10 +269,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
                 </div>
             </div>
 
@@ -291,12 +287,12 @@
                         <asp:ListItem Value="-1">&lt;Seleccione Localidad&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
-                <%--AGREGAR ACA EL MODAL PARA LA NUEVA LOCALIDAD--%>
+                <%--NUEVA LOCALIDAD--%>
                 <div class="form-group">
                     <div class="col-md-2">
                         <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalLocalidad">Nueva Localidad</button>
                     </div>
-                    <!-- MODAL LOCALIDAD  -->
+                    <!-- MODAL NUEVA LOCALIDAD  -->
                     <div class="modal fade" id="modalLocalidad" tabindex="-1" role="dialog" aria-labelledby="modalLabelLocalidad" aria-hidden="true">
                         <div class="modal-dialog modal-md">
                             <div class="modal-content">

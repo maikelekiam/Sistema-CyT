@@ -168,6 +168,7 @@ namespace Sistema_CyT
 
             ddlEmpresa.Items.Clear();
             ddlEmpresa.Text = TraerEmpresa(idEmpresaActual);
+
             ListarEmpresas();
         }
 
@@ -187,6 +188,7 @@ namespace Sistema_CyT
 
             ddlLocalidad.Items.Clear();
             ddlLocalidad.Text = TraerLocalidad(idLocalidadActual);
+
             ListarLocalidades();
         }
         private string TraerLocalidad(int id)
@@ -207,6 +209,7 @@ namespace Sistema_CyT
 
             ddlContacto.Items.Clear();
             ddlContacto.Text = TraerPersona(idPersonaActual);
+
             ListarPersonas();
         }
         private string TraerPersona(int id)
