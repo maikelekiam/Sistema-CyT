@@ -30,10 +30,10 @@ namespace Sistema_CyT
         {
             if (IsPostBack) return;
 
-            MostrarLocalidad(); //SIRVE PARA EL DROP DOWN LIST
-            MostrarPersona(); //SIRVE PARA EL DROP DOWN LIST
-            MostrarEmpresa(); // SIRVE PARA EL DROP DOWN LIST
-            MostrarConvocatoria(); // SIRVE PARA EL DROP DOWN LIST
+            ListarLocalidades(); //SIRVE PARA EL DROP DOWN LIST
+            ListarPersonas(); //SIRVE PARA EL DROP DOWN LIST
+            ListarEmpresas(); // SIRVE PARA EL DROP DOWN LIST
+            DdlListarConvocatorias(); // SIRVE PARA EL DROP DOWN LIST
 
             //txtFechaInicioModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
             //txtFechaFinalModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
@@ -42,7 +42,7 @@ namespace Sistema_CyT
         }
 
         //Muestra en el DROPDOWNLIST las CONVOCATORIAS
-        private void MostrarConvocatoria()
+        private void DdlListarConvocatorias()
         {
             ddlConvocatoria.DataSource = convocatoriaNego.MostrarConvocatorias().ToList();
             ddlConvocatoria.DataValueField = "IdConvocatoria";
@@ -50,7 +50,7 @@ namespace Sistema_CyT
         }
 
         //Muestra en el DROPDOWNLIST las LOCALIDADES
-        private void MostrarLocalidad()
+        private void ListarLocalidades()
         {
             ddlLocalidad.DataSource = localidadNego.MostrarLocalidades().ToList();
             ddlLocalidad.DataValueField = "nombre";
@@ -58,7 +58,7 @@ namespace Sistema_CyT
         }
 
         //Muestra en el DROPDOWNLIST las EMPRESAS
-        private void MostrarEmpresa()
+        private void ListarEmpresas()
         {
             ddlEmpresa.DataSource = empresaNego.MostrarEmpresas().ToList();
             ddlEmpresa.DataValueField = "nombre";
@@ -66,7 +66,7 @@ namespace Sistema_CyT
         }
 
         //Muestra en el DROPDOWNLIST las PERSONAS
-        private void MostrarPersona()
+        private void ListarPersonas()
         {
             ddlContacto.DataSource = personaNego.MostrarPersonas().ToList();
             IList<Persona> nombreCompleto = personaNego.MostrarPersonas().Select(p => new Persona() { Nombre = p.Apellido + "," + p.Nombre, IdPersona = p.IdPersona }).OrderBy(c => c.IdPersona).ToList();
@@ -160,13 +160,15 @@ namespace Sistema_CyT
         {
             Empresa empresa = new Empresa();
 
-            empresa.Nombre = txtEmpresaModal.Text;
+            empresa.Nombre = txtEmpresaNombreModal.Text;
+            empresa.Telefono = txtEmpresaTelefonoModal.Text;
+            empresa.CorreoElectronico = txtEmpresaCorreoElectronicoModal.Text;
 
             idEmpresaActual = empresaNego.GuardarEmpresa(empresa);
 
             ddlEmpresa.Items.Clear();
             ddlEmpresa.Text = TraerEmpresa(idEmpresaActual);
-            MostrarEmpresa();
+            ListarEmpresas();
         }
 
         private string TraerEmpresa(int id)
@@ -185,7 +187,7 @@ namespace Sistema_CyT
 
             ddlLocalidad.Items.Clear();
             ddlLocalidad.Text = TraerLocalidad(idLocalidadActual);
-            MostrarLocalidad();
+            ListarLocalidades();
         }
         private string TraerLocalidad(int id)
         {
@@ -205,7 +207,7 @@ namespace Sistema_CyT
 
             ddlContacto.Items.Clear();
             ddlContacto.Text = TraerPersona(idPersonaActual);
-            MostrarPersona();
+            ListarPersonas();
         }
         private string TraerPersona(int id)
         {

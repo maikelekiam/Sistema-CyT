@@ -137,25 +137,25 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="form-group">
-                                            <asp:Label ID="lbl01" runat="server" Text="NOMBRE" CssClass="col-md-4 control-label"></asp:Label>
+                                            <asp:Label ID="lblContactoNombreModal" runat="server" Text="NOMBRE" CssClass="col-md-4 control-label"></asp:Label>
                                             <div class="col-md-8">
                                                 <asp:TextBox ID="txtContactoNombreModal" runat="server" CssClass="form-control"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <asp:Label ID="lbl02" runat="server" Text="APELLIDO" CssClass="col-md-4 control-label"> </asp:Label>
+                                            <asp:Label ID="lblContactoApellidoModal" runat="server" Text="APELLIDO" CssClass="col-md-4 control-label"> </asp:Label>
                                             <div class="col-md-8">
                                                 <asp:TextBox ID="txtContactoApellidoModal" runat="server" CssClass="form-control"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <asp:Label ID="lbl03" runat="server" Text="TELEFONO" CssClass="col-md-4 control-label"></asp:Label>
+                                            <asp:Label ID="lblContactoTelefonoModal" runat="server" Text="TELEFONO" CssClass="col-md-4 control-label"></asp:Label>
                                             <div class="col-md-8">
                                                 <asp:TextBox ID="txtContactoTelefonoModal" runat="server" CssClass="form-control"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <asp:Label ID="lbl04" runat="server" Text="CORREO ELECTRONICO" CssClass="col-md-4 control-label"></asp:Label>
+                                            <asp:Label ID="lblContactoCorreoElectronicoModal" runat="server" Text="CORREO ELECTRONICO" CssClass="col-md-4 control-label"></asp:Label>
                                             <div class="col-md-8">
                                                 <asp:TextBox ID="txtContactoCorreoElectronicoModal" runat="server" CssClass="form-control"></asp:TextBox>
                                             </div>
@@ -190,7 +190,7 @@
                 <%--DETALLE EMPRESA--%>
                 <div class="form-group">
                     <div class="col-md-2">
-                        <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalDetalleEmpresa">Mostrar Empresa</button>
+                        <button type="button" class="btn btn-md" data-toggle="modal" data-target="#modalDetalleEmpresa">Mostrar Empresa</button>
                     </div>
                     <!-- MODAL DETALLE EMPRESA  -->
                     <div class="modal fade" id="modalDetalleEmpresa" tabindex="-1" role="dialog" aria-labelledby="modalLabelDetalleEmpresa" aria-hidden="true">
@@ -204,8 +204,21 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
+                                        <asp:Label ID="lblDetalleEmpresaNombreModal" runat="server" Text="NOMBRE" CssClass="col-md-4 control-label"></asp:Label>
                                         <div class="col-md-8">
-                                            <asp:TextBox ID="txtEmpresaModal" runat="server" CssClass="form-control"></asp:TextBox><br />
+                                            <asp:TextBox ID="txtDetalleEmpresaNombreModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <asp:Label ID="lblDetalleEmpresaTelefonoModal" runat="server" Text="TELEFONO" CssClass="col-md-4 control-label"></asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtDetalleEmpresaTelefonoModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <asp:Label ID="lblDetalleEmpresaCorreoElectronicoModal" runat="server" Text="CORREO ELECTRONICO" CssClass="col-md-4 control-label"></asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtDetalleEmpresaCorreoElectronicoModal" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -231,8 +244,21 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
+                                        <asp:Label ID="lblEmpresaNombreModal" runat="server" Text="NOMBRE" CssClass="col-md-4 control-label"></asp:Label>
                                         <div class="col-md-8">
-                                            <asp:TextBox ID="TextBox5" runat="server" CssClass="form-control"></asp:TextBox><br />
+                                            <asp:TextBox ID="txtEmpresaNombreModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <asp:Label ID="lblEmpresaTelefonoModal" runat="server" Text="TELEFONO" CssClass="col-md-4 control-label"></asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtEmpresaTelefonoModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <asp:Label ID="lblEmpresaCorreoElectronicoModal" runat="server" Text="CORREO ELECTRONICO" CssClass="col-md-4 control-label"></asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtEmpresaCorreoElectronicoModal" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
