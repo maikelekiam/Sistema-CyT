@@ -76,7 +76,7 @@
                 <%--DETALLE DEL CONTACTO--%>
                 <div class="form-group">
                     <div class="col-md-2">
-                        <button type="button" class="btn btn-md" data-toggle="modal" data-target="#modalDetalleContacto" OnClick="btnShow_Click">Mostrar Contacto</button>
+                        <button type="button" class="btn btn-md" data-toggle="modal" data-target="#modalDetalleContacto">Mostrar Contacto</button>
                     </div>
                     <!-- MODAL DETALLE CONTACTO  -->
                     <div class="modal fade" id="modalDetalleContacto" tabindex="-1" role="dialog" aria-labelledby="modalLabelDetalleContacto" aria-hidden="true">
@@ -428,7 +428,7 @@
         </asp:Panel>
     </div>
 
-    
+
 
 
 
