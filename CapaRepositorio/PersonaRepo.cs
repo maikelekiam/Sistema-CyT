@@ -46,5 +46,16 @@ namespace CapaRepositorio
                 return result.IdPersona;
             }
         }
+        public Persona ObtenerPersona(int id)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                Persona result = modeloDeDominio.Personas.Where(c => c.IdPersona == id).FirstOrDefault();
+
+                modeloDeDominio.CreateDetachedCopy(result);
+
+                return result;
+            }
+        }
     }
 }

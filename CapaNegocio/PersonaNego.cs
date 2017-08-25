@@ -28,5 +28,9 @@ namespace CapaNegocio
         {
             return personaRepo.TraerPersonaIdSegunItem(item1, item2);
         }
+        public Persona ObtenerPersona(int id)
+        {
+            return personaRepo.ObtenerPersona(id);
+        }
     }
 }

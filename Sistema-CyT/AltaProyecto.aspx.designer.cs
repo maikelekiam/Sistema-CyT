@@ -148,6 +148,24 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.DropDownList ddlContacto;
         
         /// <summary>
+        /// UpdatePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel;
+        
+        /// <summary>
+        /// UpdateButton1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button UpdateButton1;
+        
+        /// <summary>
         /// lblDetalleContactoNombreModal control.
         /// </summary>
         /// <remarks>

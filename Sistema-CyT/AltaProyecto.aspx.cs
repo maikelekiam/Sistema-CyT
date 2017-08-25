@@ -18,6 +18,7 @@ namespace Sistema_CyT
         ConvocatoriaNego convocatoriaNego = new ConvocatoriaNego();
         EtapaNego etapaNego = new EtapaNego();
         ProyectoNego proyectoNego = new ProyectoNego();
+        static int id;
 
         static int idProyectoActual;
         static int idEmpresaActual = 0;
@@ -38,6 +39,7 @@ namespace Sistema_CyT
             //txtFechaInicioModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
             //txtFechaFinalModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
 
+            LimpiarDetalleContactoModal();
             listaEtapasTemporal.Clear();
         }
 
@@ -215,6 +217,29 @@ namespace Sistema_CyT
         private string TraerPersona(int id)
         {
             return personaNego.TraerPersona(id);
+        }
+
+        protected void UpdateButton_Click(object sender, EventArgs e)
+        {
+            Persona persona = personaNego.ObtenerPersona(idPersonaActual);
+
+            txtDetalleContactoNombreModal.Text = persona.Nombre.ToString();
+            txtDetalleContactoApellidoModal.Text = persona.Apellido.ToString();
+            txtDetalleContactoTelefonoModal.Text = persona.Telefono.ToString();
+            txtDetalleContactoCorreoElectronicoModal.Text = persona.CorreoElectronico.ToString();
+        }
+
+        protected void ddlContacto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            idPersonaActual = ddlContacto.SelectedIndex;
+        }
+
+        public void LimpiarDetalleContactoModal()
+        {
+            txtDetalleContactoNombreModal.Text = null;
+            txtDetalleContactoApellidoModal.Text = null;
+            txtDetalleContactoTelefonoModal.Text = null;
+            txtDetalleContactoCorreoElectronicoModal.Text = null;
         }
     }
 }
