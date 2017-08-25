@@ -68,7 +68,7 @@
                         CssClass="selectpicker form-control show-tick"
                         data-live-search="true"
                         DataTextField="nombre"
-                        AutoPostBack="False"
+                        AutoPostBack="false"
                         AppendDataBoundItems="true">
                         <asp:ListItem Value="-1">&lt;Seleccione Persona&gt;</asp:ListItem>
                     </asp:DropDownList>
@@ -76,7 +76,7 @@
                 <%--DETALLE DEL CONTACTO--%>
                 <div class="form-group">
                     <div class="col-md-2">
-                        <button type="button" class="btn btn-md" data-toggle="modal" data-target="#modalDetalleContacto">Mostrar Contacto</button>
+                        <button type="button" class="btn btn-md" data-toggle="modal" data-target="#modalDetalleContacto" OnClick="btnShow_Click">Mostrar Contacto</button>
                     </div>
                     <!-- MODAL DETALLE CONTACTO  -->
                     <div class="modal fade" id="modalDetalleContacto" tabindex="-1" role="dialog" aria-labelledby="modalLabelDetalleContacto" aria-hidden="true">
@@ -427,4 +427,17 @@
             </div>
         </asp:Panel>
     </div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
 </asp:Content>

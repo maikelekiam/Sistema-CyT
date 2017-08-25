@@ -216,5 +216,10 @@ namespace Sistema_CyT
         {
             return personaNego.TraerPersona(id);
         }
+
+        protected void btnShow_Click(object sender, EventArgs e)
+        {
+            txtDetalleContactoNombreModal.Text = "hello";
+        }
     }
 }
