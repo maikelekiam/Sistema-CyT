@@ -18,12 +18,11 @@ namespace Sistema_CyT
         ConvocatoriaNego convocatoriaNego = new ConvocatoriaNego();
         EtapaNego etapaNego = new EtapaNego();
         ProyectoNego proyectoNego = new ProyectoNego();
-        static int id;
 
         static int idProyectoActual;
         static int idEmpresaActual = 0;
         static int idLocalidadActual = 0;
-        static int idPersonaActual = 0;
+        static int idPersonaActual = 1;
 
         static List<Etapa> listaEtapasTemporal = new List<Etapa>();
 
