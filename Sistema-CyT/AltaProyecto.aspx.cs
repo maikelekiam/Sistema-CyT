@@ -20,8 +20,8 @@ namespace Sistema_CyT
         ProyectoNego proyectoNego = new ProyectoNego();
 
         static int idProyectoActual;
-        static int idEmpresaActual = 1;
-        static int idLocalidadActual = 1;
+        static int idEmpresaActual = 0;
+        static int idLocalidadActual = 0;
         static int idPersonaActual = 1;
 
         static List<Etapa> listaEtapasTemporal = new List<Etapa>();
