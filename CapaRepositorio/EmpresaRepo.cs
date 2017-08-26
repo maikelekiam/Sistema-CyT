@@ -48,6 +48,17 @@ namespace CapaRepositorio
                 return result.IdEmpresa;
             }
         }
+        public Empresa ObtenerEmpresa(int id)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                Empresa result = modeloDeDominio.Empresas.Where(c => c.IdEmpresa == id).FirstOrDefault();
+
+                modeloDeDominio.CreateDetachedCopy(result);
+
+                return result;
+            }
+        }
 
     }
 }

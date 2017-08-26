@@ -195,7 +195,8 @@
                         data-live-search="true"
                         DataTextField="nombre"
                         AutoPostBack="False"
-                        AppendDataBoundItems="true">
+                        AppendDataBoundItems="true"
+                        OnSelectedIndexChanged="ddlEmpresa_SelectedIndexChanged">
                         <asp:ListItem Value="-1">&lt;Seleccione Empresa&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
@@ -215,24 +216,32 @@
                                     <h4 class="modal-title" id="modalLabelDetalleEmpresa">DETALLE EMPRESA</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="form-group">
-                                        <asp:Label ID="lblDetalleEmpresaNombreModal" runat="server" Text="NOMBRE" CssClass="col-md-4 control-label"></asp:Label>
-                                        <div class="col-md-8">
-                                            <asp:TextBox ID="txtDetalleEmpresaNombreModal" runat="server" CssClass="form-control"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <asp:Label ID="lblDetalleEmpresaTelefonoModal" runat="server" Text="TELEFONO" CssClass="col-md-4 control-label"></asp:Label>
-                                        <div class="col-md-8">
-                                            <asp:TextBox ID="txtDetalleEmpresaTelefonoModal" runat="server" CssClass="form-control"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <asp:Label ID="lblDetalleEmpresaCorreoElectronicoModal" runat="server" Text="CORREO ELECTRONICO" CssClass="col-md-4 control-label"></asp:Label>
-                                        <div class="col-md-8">
-                                            <asp:TextBox ID="txtDetalleEmpresaCorreoElectronicoModal" runat="server" CssClass="form-control"></asp:TextBox>
-                                        </div>
-                                    </div>
+                                    <asp:UpdatePanel runat="server" ID="UpdatePanel1" UpdateMode="Conditional">
+                                        <Triggers>
+                                            <asp:AsyncPostBackTrigger ControlID="UpdateButton1" EventName="Click" />
+                                        </Triggers>
+                                        <ContentTemplate>
+                                            <asp:Button runat="server" ID="Button1" OnClick="UpdateButton2_Click" Text="Mostrar Datos" />
+                                            <div class="form-group">
+                                                <asp:Label ID="lblDetalleEmpresaNombreModal" runat="server" Text="NOMBRE" CssClass="col-md-4 control-label"></asp:Label>
+                                                <div class="col-md-8">
+                                                    <asp:TextBox ID="txtDetalleEmpresaNombreModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <asp:Label ID="lblDetalleEmpresaTelefonoModal" runat="server" Text="TELEFONO" CssClass="col-md-4 control-label"></asp:Label>
+                                                <div class="col-md-8">
+                                                    <asp:TextBox ID="txtDetalleEmpresaTelefonoModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <asp:Label ID="lblDetalleEmpresaCorreoElectronicoModal" runat="server" Text="CORREO ELECTRONICO" CssClass="col-md-4 control-label"></asp:Label>
+                                                <div class="col-md-8">
+                                                    <asp:TextBox ID="txtDetalleEmpresaCorreoElectronicoModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
                                     <div class="modal-footer">
                                         <asp:Button runat="server" ID="btnModalDetalleEmpresaSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
                                     </div>

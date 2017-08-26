@@ -19,9 +19,9 @@ namespace Sistema_CyT
         EtapaNego etapaNego = new EtapaNego();
         ProyectoNego proyectoNego = new ProyectoNego();
 
-        static int idProyectoActual;
-        static int idEmpresaActual = 0;
-        static int idLocalidadActual = 0;
+        static int idProyectoActual = 1;
+        static int idEmpresaActual = 1;
+        static int idLocalidadActual = 1;
         static int idPersonaActual = 1;
 
         static List<Etapa> listaEtapasTemporal = new List<Etapa>();
@@ -239,6 +239,19 @@ namespace Sistema_CyT
             txtDetalleContactoApellidoModal.Text = null;
             txtDetalleContactoTelefonoModal.Text = null;
             txtDetalleContactoCorreoElectronicoModal.Text = null;
+        }
+
+        protected void ddlEmpresa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            idEmpresaActual = ddlEmpresa.SelectedIndex;
+        }
+        protected void UpdateButton2_Click(object sender, EventArgs e)
+        {
+            Empresa empresa = empresaNego.ObtenerEmpresa(idEmpresaActual);
+
+            txtDetalleEmpresaNombreModal.Text = empresa.Nombre.ToString();
+            txtDetalleEmpresaTelefonoModal.Text = empresa.Telefono.ToString();
+            txtDetalleEmpresaCorreoElectronicoModal.Text = empresa.CorreoElectronico.ToString();
         }
     }
 }

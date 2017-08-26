@@ -28,5 +28,9 @@ namespace CapaNegocio
         {
             return empresaRepo.TraerEmpresaIdSegunItem(item);
         }
+        public Empresa ObtenerEmpresa(int id)
+        {
+            return empresaRepo.ObtenerEmpresa(id);
+        }
     }
 }
