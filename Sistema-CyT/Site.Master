@@ -58,7 +58,7 @@
 
                     <!-- PARA REGISTRAR Y LOGUEAR USUARIOS -->
                 </ul>
-                <asp:LoginView runat="server" ViewStateMode="Disabled">
+<%--                <asp:LoginView runat="server" ViewStateMode="Disabled">
                     <AnonymousTemplate>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a runat="server" href="~/Account/Register">Register</a></li>
@@ -73,11 +73,11 @@
                             </li>
                         </ul>
                     </LoggedInTemplate>
-                </asp:LoginView>
+                </asp:LoginView>--%>
 
-                <%--<ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right">
                     <li><a class="btn" href="/Login.aspx">SALIR <span class="glyphicon glyphicon-log-out"></span></a></li>
-                </ul>--%>
+                </ul>
             </div>
         </nav>
         <div class="container body-content">
