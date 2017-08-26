@@ -243,7 +243,7 @@
                                         </ContentTemplate>
                                     </asp:UpdatePanel>
                                     <div class="modal-footer">
-                                        <asp:Button runat="server" ID="btnModalDetalleEmpresaSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
+                                        <asp:Button runat="server" ID="btnModalDetalleEmpresaSalir" Text="SALIR" CssClass="btn btn-danger" data-dismiss="modal" />
                                     </div>
                                 </div>
                             </div>
