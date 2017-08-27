@@ -44,5 +44,14 @@ namespace CapaRepositorio
                 return convocatoria;
             }
         }
+        public Convocatorium ObtenerConvocatoriaSegunNombre(string nom)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                Convocatorium convocatoria = modeloDeDominio.Convocatoria.Where(c => c.Nombre == nom).FirstOrDefault();
+
+                return convocatoria;
+            }
+        }
     }
 }

@@ -30,5 +30,9 @@ namespace CapaNegocio
         {
             convocatoriaRepo.ActualizarConvocatoria(convocatoria);
         }
+        public Convocatorium ObtenerConvocatoriaSegunNombre(string nom)
+        {
+            return convocatoriaRepo.ObtenerConvocatoriaSegunNombre(nom);
+        }
     }
 }

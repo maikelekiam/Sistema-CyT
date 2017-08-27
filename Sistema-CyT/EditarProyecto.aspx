@@ -31,7 +31,7 @@
             <div class="form-group">
                 <asp:Label ID="lblNombre" runat="server" Text="NOMBRE" CssClass="col-md-2 col-xs-12 control-label"></asp:Label>
                 <div class="col-md-8 col-xs-12">
-                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="1"></asp:TextBox>
+                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
                 </div>
             </div>
             <!--EXPEDIENTE-->
