@@ -40,6 +40,24 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.DropDownList ddlEstado;
         
         /// <summary>
+        /// lblFiltroFondo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFiltroFondo;
+        
+        /// <summary>
+        /// ddlFiltroFondo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlFiltroFondo;
+        
+        /// <summary>
         /// dgvConvocatoria control.
         /// </summary>
         /// <remarks>

@@ -9,8 +9,8 @@
             </div>
             <div class="form-group">
                 <br />
-                <asp:Label ID="lblEstado" runat="server" Text="ESTADO" CssClass="col-md-2 control-label"></asp:Label>
-                <div class="col-md-4 ">
+                <asp:Label ID="lblEstado" runat="server" Text="ESTADO" CssClass="col-md-1 col-md-offset-1 control-label"></asp:Label>
+                <div class="col-md-3 ">
                     <asp:DropDownList ID="ddlEstado" runat="server"
                         BackColor="WhiteSmoke"
                         ForeColor="#000066"
@@ -19,6 +19,19 @@
                         AutoPostBack="true"
                         AppendDataBoundItems="true"
                         OnSelectedIndexChanged="ddlEstado_SelectedIndexChanged">
+                    </asp:DropDownList>
+                </div>
+                <asp:Label ID="lblFiltroFondo" runat="server" Text="FONDO" CssClass="col-md-1 col-md-offset-1 control-label"></asp:Label>
+                <div class="col-md-3">
+                    <asp:DropDownList ID="ddlFiltroFondo" runat="server"
+                        BackColor="WhiteSmoke"
+                        ForeColor="#000066"
+                        Font-Bold="false"
+                        CssClass="selectpicker form-control show-tick"
+                        DataTextField="nombre"
+                        AutoPostBack="true"
+                        AppendDataBoundItems="true"
+                        OnSelectedIndexChanged="ddlFiltroFondo_SelectedIndexChanged">
                     </asp:DropDownList>
                 </div>
             </div>

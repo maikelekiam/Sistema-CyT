@@ -13,6 +13,7 @@ namespace Sistema_CyT
     public partial class ListarConvocatorias : System.Web.UI.Page
     {
         ConvocatoriaNego convocatoriaNego = new ConvocatoriaNego();
+        FondoNego fondoNego = new FondoNego();
         public static int idConvocatoriaSeleccionada;
         private List<string> listaEstados = new List<string>(new string[] { "Todas", "Abiertas", "Cerradas", "En Evaluacion" });
         private static List<Convocatorium> listaConvocatoriasFiltradas = new List<Convocatorium>();
@@ -24,11 +25,18 @@ namespace Sistema_CyT
             listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().ToList();
             MostrarListaConvocatorias();
             LlenarListaEstados();
+            LlenarListaFiltroFondo();
         }
         private void LlenarListaEstados()
         {
             ddlEstado.DataSource = listaEstados;
             ddlEstado.DataBind();
+        }
+        private void LlenarListaFiltroFondo()
+        {
+            ddlFiltroFondo.DataSource = fondoNego.MostrarFondos().ToList();
+            ddlFiltroFondo.DataValueField = "idFondo";
+            ddlFiltroFondo.DataBind();
         }
 
         private void MostrarListaConvocatorias()
@@ -86,6 +94,25 @@ namespace Sistema_CyT
             }
 
             MostrarListaConvocatorias();
+        }
+
+        protected void ddlFiltroFondo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FiltrarConvocatoriasPorFondo(fondoNego.ObtenerFondoSegunNombre(ddlFiltroFondo.SelectedItem.ToString()).IdFondo);
+        }
+        private void FiltrarConvocatoriasPorFondo(int id)
+        {
+            dgvConvocatoria.Columns[0].Visible = true;
+            dgvConvocatoria.Columns[1].Visible = true;
+            dgvConvocatoria.Columns[2].Visible = true;
+            dgvConvocatoria.Columns[3].Visible = true;
+            dgvConvocatoria.Columns[4].Visible = true;
+            dgvConvocatoria.Columns[5].Visible = true;
+
+            dgvConvocatoria.DataSource = convocatoriaNego.MostrarConvocatorias().Where(c => c.IdFondo == id).ToList();
+            dgvConvocatoria.DataBind();
+
+            dgvConvocatoria.Columns[0].Visible = false;
         }
     }
 }
