@@ -61,6 +61,22 @@
                     <asp:TextBox ID="txtMontoTotal" Text="0" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
+            <!--ESTADO-->
+            <div class="form-group">
+                <asp:Label ID="lblTipoEstado" runat="server" Text="ESTADO" CssClass="col-md-2 control-label"></asp:Label>
+                <div class="col-md-4">
+                    <asp:DropDownList ID="ddlTipoEstado" runat="server"
+                        BackColor="WhiteSmoke"
+                        ForeColor="#000066"
+                        CssClass="selectpicker form-control show-tick"
+                        data-live-search="true"
+                        DataTextField="nombre"
+                        AutoPostBack="False"
+                        AppendDataBoundItems="true">
+                        <asp:ListItem Value="-1">&lt;Seleccione Estado&gt;</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+            </div>
             <!--CONTACTO-->
             <div class="form-group">
                 <asp:Label ID="lblContacto" runat="server" Text="CONTACTO" CssClass="col-md-2 control-label"></asp:Label>

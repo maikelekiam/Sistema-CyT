@@ -14,8 +14,11 @@ namespace Sistema_CyT
     {
         ProyectoNego proyectoNego = new ProyectoNego();
         ConvocatoriaNego convocatoriaNego = new ConvocatoriaNego();
-        private List<string> listaEstados = new List<string>(new string[] { "Todos", "En Ejecucion", "Finalizado" });
-        public static int idProyectoSeleccionado;
+        private List<string> listaEstados = new List<string>(new string[] { "Todos", "En Ejecucion", "Finalizado","Dado de Baja" });
+        
+        public static int idProyectoSeleccionado=1;
+        public static int idConvocatoriaSeleccionada=1;
+        public static int idEstadoSeleccionado = 1;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,7 +26,7 @@ namespace Sistema_CyT
 
             MostrarListaProyectos();
             LlenarListaEstados();
-            LlenarListaFiltroConvocatoria();
+            LlenarListaConvocatorias();
 
         }
         private void LlenarListaEstados()
@@ -31,11 +34,11 @@ namespace Sistema_CyT
             ddlEstado.DataSource = listaEstados;
             ddlEstado.DataBind();
         }
-        private void LlenarListaFiltroConvocatoria()
+        private void LlenarListaConvocatorias()
         {
-            ddlFiltroConvocatoria.DataSource = convocatoriaNego.MostrarConvocatorias().ToList();
-            ddlFiltroConvocatoria.DataValueField = "idConvocatoria";
-            ddlFiltroConvocatoria.DataBind();
+            ddlConvocatoria.DataSource = convocatoriaNego.MostrarConvocatorias().ToList();
+            ddlConvocatoria.DataValueField = "idConvocatoria";
+            ddlConvocatoria.DataBind();
         }
 
         private void MostrarListaProyectos()
@@ -63,7 +66,7 @@ namespace Sistema_CyT
             //idProyectoSeleccionado = Convert.ToInt32(dgvProyectos.Rows[rIndex].Cells[0].Text);
 
             lblEstado.Text = dgvProyectos.Rows[rIndex].Cells[0].Text;
-            lblFiltroConvocatoria.Text = dgvProyectos.Rows[rIndex].Cells[1].Text;
+            ddlConvocatoria.Text = dgvProyectos.Rows[rIndex].Cells[1].Text;
             
 
             //MostrarProyecto();
@@ -73,28 +76,39 @@ namespace Sistema_CyT
             //Response.Redirect("MostrarFondo.aspx");
         }
 
-        protected void ddlEstado_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        
 
+        //protected void ddlEstado_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+
+        //}
+
+        //protected void ddlFiltroConvocatoria_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    FiltrarProyectosPorConvocatoria(convocatoriaNego.ObtenerConvocatoriaSegunNombre(ddlFiltroConvocatoria.SelectedItem.ToString()).IdConvocatoria);
+        //}
+        //private void FiltrarProyectosPorConvocatoria(int id)
+        //{
+        //    //dgvProyectos.Columns[0].Visible = true;
+        //    //dgvProyectos.Columns[1].Visible = true;
+        //    //dgvProyectos.Columns[2].Visible = true;
+        //    //dgvProyectos.Columns[3].Visible = true;
+        //    //dgvProyectos.Columns[4].Visible = true;
+
+        //    dgvProyectos.DataSource = proyectoNego.MostrarProyectos().Where(c => c.IdConvocatoria == id).ToList();
+        //    dgvProyectos.DataBind();
+
+        //    dgvProyectos.Columns[0].Visible = false;
+        //    //dgvProyectos.Columns[4].Visible = false;
+        //}
+
+        protected void btnFiltrarProyectos_Click(object sender, EventArgs e)
+        {
+            FiltrarProyectos();
         }
-
-        protected void ddlFiltroConvocatoria_SelectedIndexChanged(object sender, EventArgs e)
+        private void FiltrarProyectos()
         {
-            FiltrarProyectosPorConvocatoria(convocatoriaNego.ObtenerConvocatoriaSegunNombre(ddlFiltroConvocatoria.SelectedItem.ToString()).IdConvocatoria);
-        }
-        private void FiltrarProyectosPorConvocatoria(int id)
-        {
-            //dgvProyectos.Columns[0].Visible = true;
-            //dgvProyectos.Columns[1].Visible = true;
-            //dgvProyectos.Columns[2].Visible = true;
-            //dgvProyectos.Columns[3].Visible = true;
-            //dgvProyectos.Columns[4].Visible = true;
 
-            dgvProyectos.DataSource = proyectoNego.MostrarProyectos().Where(c => c.IdConvocatoria == id).ToList();
-            dgvProyectos.DataBind();
-
-            dgvProyectos.Columns[0].Visible = false;
-            //dgvProyectos.Columns[4].Visible = false;
         }
     }
 }

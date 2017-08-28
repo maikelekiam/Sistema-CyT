@@ -154,6 +154,19 @@ namespace CapaDominio
 			}
 		}
 		
+		private int? idTipoEstado;
+		public virtual int? IdTipoEstado
+		{
+			get
+			{
+				return this.idTipoEstado;
+			}
+			set
+			{
+				this.idTipoEstado = value;
+			}
+		}
+		
 		private Persona persona;
 		public virtual Persona Persona
 		{
@@ -203,6 +216,19 @@ namespace CapaDominio
 			set
 			{
 				this.convocatorium = value;
+			}
+		}
+		
+		private TipoEstado tipoEstado;
+		public virtual TipoEstado TipoEstado
+		{
+			get
+			{
+				return this.tipoEstado;
+			}
+			set
+			{
+				this.tipoEstado = value;
 			}
 		}
 		

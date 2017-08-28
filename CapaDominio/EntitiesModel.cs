@@ -170,6 +170,14 @@ namespace CapaDominio
 			}
 		}
 		
+		public IQueryable<TipoEstado> TipoEstados 
+		{
+			get
+			{
+				return this.GetAll<TipoEstado>();
+			}
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -248,6 +256,10 @@ namespace CapaDominio
 			get;
 		}
 		IQueryable<Usuario> Usuarios
+		{
+			get;
+		}
+		IQueryable<TipoEstado> TipoEstados
 		{
 			get;
 		}

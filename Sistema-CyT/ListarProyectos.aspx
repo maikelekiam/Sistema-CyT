@@ -9,23 +9,9 @@
             </div>
             <div class="form-group">
                 <br />
-                <asp:Label ID="lblEstado" runat="server" Text="ESTADO" CssClass="col-md-1 col-md-offset-1 control-label"></asp:Label>
-                <div class="col-md-3 ">
-                    <asp:DropDownList ID="ddlEstado" runat="server"
-                        BackColor="WhiteSmoke"
-                        ForeColor="#000066"
-                        Font-Bold="false"
-                        CssClass="selectpicker form-control show-tick"
-                        AutoPostBack="true"
-                        AppendDataBoundItems="true"
-                        OnSelectedIndexChanged="ddlEstado_SelectedIndexChanged">
-                    </asp:DropDownList>
-                </div>
-            </div>
-            <div class="form-group">
-                <asp:Label ID="lblFiltroConvocatoria" runat="server" Text="CONVOCATORIA" CssClass="col-md-2 control-label"></asp:Label>
+                <asp:Label ID="lblConvocatoria" runat="server" Text="CONVOCATORIA" CssClass="col-md-2 control-label"></asp:Label>
                 <div class="col-md-8">
-                    <asp:DropDownList ID="ddlFiltroConvocatoria" runat="server"
+                    <asp:DropDownList ID="ddlConvocatoria" runat="server"
                         BackColor="WhiteSmoke"
                         ForeColor="#000066"
                         Width="100%"
@@ -34,10 +20,24 @@
                         data-live-search="true"
                         DataTextField="nombre"
                         AutoPostBack="true"
-                        AppendDataBoundItems="true"
-                        OnSelectedIndexChanged="ddlFiltroConvocatoria_SelectedIndexChanged">
+                        AppendDataBoundItems="true">
+                        <asp:ListItem Value="-1">&lt;Seleccione Convocatoria&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
+            </div>
+            <div class="form-group">
+                <asp:Label ID="lblEstado" runat="server" Text="ESTADO" CssClass="col-md-1 col-md-offset-1 control-label"></asp:Label>
+                <div class="col-md-3 ">
+                    <asp:DropDownList ID="ddlEstado" runat="server"
+                        BackColor="WhiteSmoke"
+                        ForeColor="#000066"
+                        Font-Bold="false"
+                        CssClass="selectpicker form-control show-tick"
+                        AutoPostBack="true"
+                        AppendDataBoundItems="true">
+                    </asp:DropDownList>
+                </div>
+                <asp:Button runat="server" ID="btnFiltrarProyectos" Text="FILTRAR" CssClass="btn btn-success col-md-offset-1" OnClick="btnFiltrarProyectos_Click" />
             </div>
             <div class="form-group">
                 <br />

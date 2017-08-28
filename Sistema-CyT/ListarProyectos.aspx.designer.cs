@@ -22,6 +22,24 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.Panel PanelSuperior;
         
         /// <summary>
+        /// lblConvocatoria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblConvocatoria;
+        
+        /// <summary>
+        /// ddlConvocatoria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlConvocatoria;
+        
+        /// <summary>
         /// lblEstado control.
         /// </summary>
         /// <remarks>
@@ -40,22 +58,13 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.DropDownList ddlEstado;
         
         /// <summary>
-        /// lblFiltroConvocatoria control.
+        /// btnFiltrarProyectos control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFiltroConvocatoria;
-        
-        /// <summary>
-        /// ddlFiltroConvocatoria control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFiltroConvocatoria;
+        protected global::System.Web.UI.WebControls.Button btnFiltrarProyectos;
         
         /// <summary>
         /// dgvProyectos control.

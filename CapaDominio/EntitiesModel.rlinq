@@ -236,6 +236,9 @@
         <orm:field name="idLocalidad" property="IdLocalidad" behavior="readwrite" uniqueId="50aa310d-4b95-49fe-bfae-fa9511f576f1" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
           <orm:column name="idLocalidad" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:field>
+        <orm:field name="idTipoEstado" property="IdTipoEstado" behavior="readwrite" uniqueId="8cb0b0fb-c0e8-47d8-9f00-07b1fb882b2d" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="idTipoEstado" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
         <orm:field name="persona" property="Persona" behavior="readwrite" uniqueId="63b4264e-45fc-45c9-a1a9-adafc3383de5" type="CapaDominio.Persona">
           <orm:reference uniqueId="037b8bdf-1765-4b8a-a3fa-6c7b16c33639" association-name="ProyectoHasPersona">
             <orm:sharedfield name="idPersona" target-class="CapaDominio.Persona" target-field="idPersona" />
@@ -268,6 +271,12 @@
         </orm:field>
         <orm:field name="actuacions" property="Actuacions" behavior="readwrite" uniqueId="b6c25e6f-9e22-4bc3-abad-ae9c63999cd6" type="CapaDominio.Actuacion">
           <orm:collection element-class="CapaDominio.Actuacion" inverse-field="proyecto" order-by="" uniqueId="8fc0487c-70d8-447d-b87d-ae69d3d3acb6" />
+        </orm:field>
+        <orm:field name="tipoEstado" property="TipoEstado" behavior="readwrite" uniqueId="90fbc939-35ba-4b61-a9ba-4617e9c0b199" type="CapaDominio.TipoEstado">
+          <orm:reference uniqueId="64ee3dcf-f9b2-4740-91d6-458b82d55bb6" association-name="ProyectoHasTipoEstado">
+            <orm:sharedfield name="idTipoEstado" target-class="CapaDominio.TipoEstado" target-field="idTipoEstado" />
+            <orm:constraint name="FK_Proyecto_TipoEstado" delete-action="dbdefaultrule" destination-table="TipoEstado" />
+          </orm:reference>
         </orm:field>
       </orm:class>
       <orm:class name="Persona" uniqueId="09aa65c0-8782-4ae3-84b5-42cb426036fb">
@@ -506,6 +515,25 @@
           <orm:column name="nivel" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:field>
       </orm:class>
+      <orm:class name="TipoEstado" uniqueId="e79e5356-bb3e-41fc-83c7-f6dc6e386cf6">
+        <orm:table name="TipoEstado" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="IdTipoEstado" />
+          </orm:key-generator>
+          <orm:single-field field-name="idTipoEstado" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="idTipoEstado" property="IdTipoEstado" behavior="readwrite" uniqueId="6dd37f2d-8198-404e-b41a-4fae7e1e74e4" type="System.Int32">
+          <orm:column name="idTipoEstado" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="nombre" property="Nombre" behavior="readwrite" uniqueId="f2d1c099-ece8-4b85-95c0-8f28214d0291" type="System.String">
+          <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="proyectos" property="Proyectos" behavior="readwrite" uniqueId="5c5c9c53-9dac-4d3c-92e5-dbad72923d32" type="CapaDominio.Proyecto">
+          <orm:collection element-class="CapaDominio.Proyecto" inverse-field="tipoEstado" order-by="" uniqueId="64ee3dcf-f9b2-4740-91d6-458b82d55bb6" />
+        </orm:field>
+      </orm:class>
     </orm:namespace>
     <orm:schema schema="">
       <orm:table name="TipoFinanciamiento">
@@ -580,6 +608,7 @@
         <orm:column name="idPersona" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="idEmpresa" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="idLocalidad" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="idTipoEstado" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:constraint name="FK_Proyecto_Persona" delete-action="dbdefaultrule" destination-table="Persona">
           <orm:column name="idPersona" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:constraint>
@@ -591,6 +620,9 @@
         </orm:constraint>
         <orm:constraint name="FK_Proyecto_Convocatoria" delete-action="dbdefaultrule" destination-table="Convocatoria">
           <orm:column name="idConvocatoria" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+        <orm:constraint name="FK_Proyecto_TipoEstado" delete-action="dbdefaultrule" destination-table="TipoEstado">
+          <orm:column name="idTipoEstado" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:constraint>
       </orm:table>
       <orm:table name="Persona">
@@ -660,6 +692,10 @@
         <orm:column name="usuario" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
         <orm:column name="password" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
         <orm:column name="nivel" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+      </orm:table>
+      <orm:table name="TipoEstado">
+        <orm:column name="idTipoEstado" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
       </orm:table>
       <orm:procedure name="fn_diagramobjects" is-function="true" return-type="int">
         <orm:result-sets />
@@ -870,6 +906,7 @@
       <Property Id="1bfa8471-b8b5-47a2-9b45-b71fa81f26f0" name="MontoTotal" type="Decimal" label="MontoTotal : Decimal" nullable="true" kind="Persistent" fieldName="montoTotal" />
       <Property Id="374f0177-a4fe-4120-ad56-48dd4de05726" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
       <Property Id="52477f52-0bed-447d-a889-84c2a711adc4" name="NumeroExpediente" label="NumeroExpediente : String" kind="Persistent" fieldName="numeroExpediente" />
+      <Property Id="8cb0b0fb-c0e8-47d8-9f00-07b1fb882b2d" name="IdTipoEstado" type="Int32" label="IdTipoEstado : Int32" nullable="true" kind="Persistent" fieldName="idTipoEstado" />
       <AssociationTargets>
         <Association Id="037b8bdf-1765-4b8a-a3fa-6c7b16c33639" SourceMultiplicity="ZeroOne" name="ProyectoHasPersona">
           <DomainClassMoniker name="/ModeloDeDominio/Persona" />
@@ -923,6 +960,19 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
+        <Association Id="64ee3dcf-f9b2-4740-91d6-458b82d55bb6" SourceMultiplicity="ZeroOne" name="ProyectoHasTipoEstado">
+          <DomainClassMoniker name="/ModeloDeDominio/TipoEstado" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="74e42eac-f9c4-4d7f-a0f1-b5ef142718ff">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/TipoEstado/Proyectos" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="44b58ee7-b615-410f-904a-b0142a65a928">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Proyecto/TipoEstado" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
       </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="3e9beb79-dd63-4f00-a328-0b21e0ba6102">
@@ -945,6 +995,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="dc4115f6-d39b-4763-bcfa-c331957e8a55">
           <NavigationalProperty Id="b6c25e6f-9e22-4bc3-abad-ae9c63999cd6" name="Actuacions" type="IList&lt;Actuacion&gt;" label="Actuacions : IList&lt;Actuacion&gt;" nullable="true" kind="Persistent" fieldName="actuacions" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="57443aea-3fd2-44ca-af65-cbc025b9aa44">
+          <NavigationalProperty Id="90fbc939-35ba-4b61-a9ba-4617e9c0b199" name="TipoEstado" type="TipoEstado" label="TipoEstado : TipoEstado" nullable="true" kind="Persistent" fieldName="tipoEstado" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -1116,6 +1169,15 @@
       <Property Id="c01f09db-c882-4cdb-ae97-fde7d8549543" name="Password" label="Password : String" kind="Persistent" fieldName="password" />
       <Property Id="3be1cf22-3a26-41bf-8997-24239f4ab95a" name="Usuario1" label="Usuario1 : String" kind="Persistent" fieldName="usuario1" />
     </DomainClass>
+    <DomainClass Id="e79e5356-bb3e-41fc-83c7-f6dc6e386cf6" name="TipoEstado" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdTipoEstado">
+      <Property Id="6dd37f2d-8198-404e-b41a-4fae7e1e74e4" name="IdTipoEstado" type="Int32" label="IdTipoEstado : Int32" kind="Persistent" identity="true" fieldName="idTipoEstado" />
+      <Property Id="f2d1c099-ece8-4b85-95c0-8f28214d0291" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="c9c986d9-4739-4555-a2d0-269eccc5da13">
+          <NavigationalProperty Id="5c5c9c53-9dac-4d3c-92e5-dbad72923d32" name="Proyectos" type="IList&lt;Proyecto&gt;" label="Proyectos : IList&lt;Proyecto&gt;" nullable="true" kind="Persistent" fieldName="proyectos" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
   </Types>
   <domainContext>
     <domainModelHasDomainContext Id="70e238b7-4554-47d3-9cc0-5f762b72c806">
@@ -1135,6 +1197,7 @@
         <entitySetProperty name="Actuacions" namespace="CapaDominio" type="Actuacion" label="Actuacions : IQueryable&lt;CapaDominio.Actuacion&gt;" />
         <entitySetProperty name="Organismos" namespace="CapaDominio" type="Organismo" label="Organismos : IQueryable&lt;CapaDominio.Organismo&gt;" />
         <entitySetProperty name="Usuarios" namespace="CapaDominio" type="Usuario" label="Usuarios : IQueryable&lt;CapaDominio.Usuario&gt;" />
+        <entitySetProperty name="TipoEstados" namespace="CapaDominio" type="TipoEstado" label="TipoEstados : IQueryable&lt;CapaDominio.TipoEstado&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>

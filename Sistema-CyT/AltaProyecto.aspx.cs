@@ -18,11 +18,13 @@ namespace Sistema_CyT
         ConvocatoriaNego convocatoriaNego = new ConvocatoriaNego();
         EtapaNego etapaNego = new EtapaNego();
         ProyectoNego proyectoNego = new ProyectoNego();
+        TipoEstadoNego tipoEstadoNego = new TipoEstadoNego();
 
         static int idProyectoActual = 1;
         static int idEmpresaActual = 1;
         static int idLocalidadActual = 1;
         static int idPersonaActual = 1;
+        static int idTipoEstado = 1;
 
         static List<Etapa> listaEtapasTemporal = new List<Etapa>();
 
@@ -30,10 +32,11 @@ namespace Sistema_CyT
         {
             if (IsPostBack) return;
 
-            ListarLocalidades(); //SIRVE PARA EL DROP DOWN LIST
-            ListarPersonas(); //SIRVE PARA EL DROP DOWN LIST
-            ListarEmpresas(); // SIRVE PARA EL DROP DOWN LIST
-            DdlListarConvocatorias(); // SIRVE PARA EL DROP DOWN LIST
+            LlenarListaLocalidades(); //SIRVE PARA EL DROP DOWN LIST
+            LlenarListaPersonas(); //SIRVE PARA EL DROP DOWN LIST
+            LlenarListaEmpresas(); // SIRVE PARA EL DROP DOWN LIST
+            LlenarListaTipoEstados(); // SIRVE PARA EL DROP DOWN LIST
+            LlenarListarConvocatorias(); // SIRVE PARA EL DROP DOWN LIST
 
             //txtFechaInicioModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
             //txtFechaFinalModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
@@ -43,7 +46,7 @@ namespace Sistema_CyT
         }
 
         //Muestra en el DROPDOWNLIST las CONVOCATORIAS
-        private void DdlListarConvocatorias()
+        private void LlenarListarConvocatorias()
         {
             ddlConvocatoria.DataSource = convocatoriaNego.MostrarConvocatorias().ToList();
             ddlConvocatoria.DataValueField = "IdConvocatoria";
@@ -51,15 +54,23 @@ namespace Sistema_CyT
         }
 
         //Muestra en el DROPDOWNLIST las LOCALIDADES
-        private void ListarLocalidades()
+        private void LlenarListaLocalidades()
         {
             ddlLocalidad.DataSource = localidadNego.MostrarLocalidades().ToList();
             ddlLocalidad.DataValueField = "nombre";
             ddlLocalidad.DataBind();
         }
 
+        //Muestra en el DROPDOWNLIST los Tipos de Estado
+        private void LlenarListaTipoEstados()
+        {
+            ddlTipoEstado.DataSource = tipoEstadoNego.MostrarTipoEstados().ToList();
+            ddlTipoEstado.DataValueField = "nombre";
+            ddlTipoEstado.DataBind();
+        }
+
         //Muestra en el DROPDOWNLIST las EMPRESAS
-        private void ListarEmpresas()
+        private void LlenarListaEmpresas()
         {
             ddlEmpresa.DataSource = empresaNego.MostrarEmpresas().ToList();
             ddlEmpresa.DataValueField = "nombre";
@@ -67,7 +78,7 @@ namespace Sistema_CyT
         }
 
         //Muestra en el DROPDOWNLIST las PERSONAS
-        private void ListarPersonas()
+        private void LlenarListaPersonas()
         {
             ddlContacto.DataSource = personaNego.MostrarPersonas().ToList();
             IList<Persona> nombreCompleto = personaNego.MostrarPersonas().Select(p => new Persona() { Nombre = p.Apellido + "," + p.Nombre, IdPersona = p.IdPersona }).OrderBy(c => c.IdPersona).ToList();
@@ -170,7 +181,7 @@ namespace Sistema_CyT
             ddlEmpresa.Items.Clear();
             ddlEmpresa.Text = TraerEmpresa(idEmpresaActual);
 
-            ListarEmpresas();
+            LlenarListaEmpresas();
         }
 
         private string TraerEmpresa(int id)
@@ -190,7 +201,7 @@ namespace Sistema_CyT
             ddlLocalidad.Items.Clear();
             ddlLocalidad.Text = TraerLocalidad(idLocalidadActual);
 
-            ListarLocalidades();
+            LlenarListaLocalidades();
         }
         private string TraerLocalidad(int id)
         {
@@ -211,7 +222,7 @@ namespace Sistema_CyT
             ddlContacto.Items.Clear();
             ddlContacto.Text = TraerPersona(idPersonaActual);
 
-            ListarPersonas();
+            LlenarListaPersonas();
         }
         private string TraerPersona(int id)
         {
