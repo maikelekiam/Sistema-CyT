@@ -18,6 +18,9 @@ namespace Sistema_CyT
         private List<string> listaEstados = new List<string>(new string[] { "Todas", "Abiertas", "Cerradas", "En Evaluacion" });
         private static List<Convocatorium> listaConvocatoriasFiltradas = new List<Convocatorium>();
 
+        public static int idFondoSeleccionado = 1;
+        public static int idEstadoActual = 1;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack) return;
@@ -70,49 +73,47 @@ namespace Sistema_CyT
             Response.Redirect("MostrarConvocatoria.aspx");
         }
 
-        protected void ddlEstado_SelectedIndexChanged(object sender, EventArgs e)
+        protected void btnFiltrarConvocatorias_Click(object sender, EventArgs e)
         {
-            FiltrarConvocatoriasPorEstado(Convert.ToInt32(ddlEstado.SelectedIndex.ToString()));
+            FiltrarConvocatorias();
         }
-        private void FiltrarConvocatoriasPorEstado(int id)
+        public void FiltrarConvocatorias()
         {
-            if (id == 0) //todas
-            {
-                listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().ToList();
-            }
-            else if (id == 1) //abiertas
-            {
-                listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().Where(c => c.Abierta == true).ToList();
-            }
-            else if (id == 2) //cerradas
-            {
-                listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().Where(c => c.Abierta == false).ToList();
-            }
-            else if (id == 3) //en evaluacion
-            {
-                listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().Where(c => c.Anio == 5).ToList();
-            }
+            idEstadoActual = Convert.ToInt32(ddlEstado.SelectedIndex.ToString());
 
-            MostrarListaConvocatorias();
-        }
+            if (Convert.ToInt32(ddlFiltroFondo.SelectedValue) != -1)
+            {
+                idFondoSeleccionado = fondoNego.ObtenerFondoSegunNombre(ddlFiltroFondo.SelectedItem.ToString()).IdFondo;
 
-        protected void ddlFiltroFondo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            FiltrarConvocatoriasPorFondo(fondoNego.ObtenerFondoSegunNombre(ddlFiltroFondo.SelectedItem.ToString()).IdFondo);
-        }
-        private void FiltrarConvocatoriasPorFondo(int id)
-        {
-            dgvConvocatoria.Columns[0].Visible = true;
-            dgvConvocatoria.Columns[1].Visible = true;
-            dgvConvocatoria.Columns[2].Visible = true;
-            dgvConvocatoria.Columns[3].Visible = true;
-            dgvConvocatoria.Columns[4].Visible = true;
-            dgvConvocatoria.Columns[5].Visible = true;
+                if (idEstadoActual == 0) //todas
+                {
+                    listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().Where(c => c.IdFondo == idFondoSeleccionado).ToList();
+                }
+                else if (idEstadoActual == 1) //abiertas
+                {
+                    listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().Where(c => (c.Abierta == true && c.IdFondo == idFondoSeleccionado)).ToList();
+                }
+                else if (idEstadoActual == 2) //cerradas
+                {
+                    listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().Where(c => (c.Abierta == false && c.IdFondo == idFondoSeleccionado)).ToList();
+                }
+                else if (idEstadoActual == 3) //en evaluacion
+                {
+                    listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().Where(c => (c.Anio == 5 && c.IdFondo == idFondoSeleccionado)).ToList();
+                }
 
-            dgvConvocatoria.DataSource = convocatoriaNego.MostrarConvocatorias().Where(c => c.IdFondo == id).ToList();
-            dgvConvocatoria.DataBind();
+                dgvConvocatoria.Columns[0].Visible = true;
+                dgvConvocatoria.Columns[1].Visible = true;
+                dgvConvocatoria.Columns[2].Visible = true;
+                dgvConvocatoria.Columns[3].Visible = true;
+                dgvConvocatoria.Columns[4].Visible = true;
+                dgvConvocatoria.Columns[5].Visible = true;
 
-            dgvConvocatoria.Columns[0].Visible = false;
+                dgvConvocatoria.DataSource = listaConvocatoriasFiltradas;
+                dgvConvocatoria.DataBind();
+
+                dgvConvocatoria.Columns[0].Visible = false;
+            }
         }
     }
 }
