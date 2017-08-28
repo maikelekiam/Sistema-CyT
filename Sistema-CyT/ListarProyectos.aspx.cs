@@ -60,9 +60,13 @@ namespace Sistema_CyT
             int rIndex = row.RowIndex;
 
             //Obtengo el id del proyecto seleccionado
-            idProyectoSeleccionado = Convert.ToInt32(dgvProyectos.Rows[rIndex].Cells[0].Text);
+            //idProyectoSeleccionado = Convert.ToInt32(dgvProyectos.Rows[rIndex].Cells[0].Text);
 
-            MostrarProyecto();
+            lblEstado.Text = dgvProyectos.Rows[rIndex].Cells[0].Text;
+            lblFiltroConvocatoria.Text = dgvProyectos.Rows[rIndex].Cells[1].Text;
+            
+
+            //MostrarProyecto();
         }
         private void MostrarProyecto()
         {
