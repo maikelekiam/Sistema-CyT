@@ -19,7 +19,7 @@
                         CssClass="selectpicker form-control show-tick"
                         data-live-search="true"
                         DataTextField="nombre"
-                        AutoPostBack="true"
+                        AutoPostBack="false"
                         AppendDataBoundItems="true">
                         <asp:ListItem Value="-1">&lt;Seleccione Convocatoria&gt;</asp:ListItem>
                     </asp:DropDownList>
@@ -33,8 +33,11 @@
                         ForeColor="#000066"
                         Font-Bold="false"
                         CssClass="selectpicker form-control show-tick"
-                        AutoPostBack="true"
+                        data-live-search="true"
+                        DataTextField="nombre"
+                        AutoPostBack="false"
                         AppendDataBoundItems="true">
+                        <asp:ListItem Value="-1">&lt;Seleccione Estado&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
                 <asp:Button runat="server" ID="btnFiltrarProyectos" Text="FILTRAR" CssClass="btn btn-success col-md-offset-1" OnClick="btnFiltrarProyectos_Click" />

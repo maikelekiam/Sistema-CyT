@@ -17,5 +17,14 @@ namespace CapaRepositorio
                 return modeloDeDominio.CreateDetachedCopy(result);
             }
         }
+        public TipoEstado ObtenerTipoEstadoSegunNombre(string nom)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                TipoEstado tipoEstado = modeloDeDominio.TipoEstados.Where(c => c.Nombre == nom).FirstOrDefault();
+
+                return tipoEstado;
+            }
+        }
     }
 }

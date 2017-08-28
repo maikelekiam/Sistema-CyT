@@ -14,7 +14,9 @@ namespace Sistema_CyT
     {
         ProyectoNego proyectoNego = new ProyectoNego();
         ConvocatoriaNego convocatoriaNego = new ConvocatoriaNego();
-        private List<string> listaEstados = new List<string>(new string[] { "Todos", "En Ejecucion", "Finalizado","Dado de Baja" });
+        TipoEstadoNego tipoEstadoNego = new TipoEstadoNego();
+
+        private static List<Proyecto> listaProyectosFiltrados = new List<Proyecto>();
         
         public static int idProyectoSeleccionado=1;
         public static int idConvocatoriaSeleccionada=1;
@@ -31,7 +33,8 @@ namespace Sistema_CyT
         }
         private void LlenarListaEstados()
         {
-            ddlEstado.DataSource = listaEstados;
+            ddlEstado.DataSource = tipoEstadoNego.MostrarTipoEstados().ToList();
+            ddlEstado.DataValueField = "idTipoEstado";
             ddlEstado.DataBind();
         }
         private void LlenarListaConvocatorias()
@@ -108,7 +111,26 @@ namespace Sistema_CyT
         }
         private void FiltrarProyectos()
         {
+            if ((Convert.ToInt32(ddlEstado.SelectedValue) != -1) && (Convert.ToInt32(ddlConvocatoria.SelectedValue) != -1))
+            {
+                idConvocatoriaSeleccionada = convocatoriaNego.ObtenerConvocatoriaSegunNombre(ddlConvocatoria.SelectedItem.ToString()).IdConvocatoria;
 
+                idEstadoSeleccionado = tipoEstadoNego.ObtenerTipoEstadoSegunNombre(ddlEstado.SelectedItem.ToString()).IdTipoEstado;
+
+                listaProyectosFiltrados = proyectoNego.MostrarProyectos().Where(c => c.IdTipoEstado == idEstadoSeleccionado).Where(c=>c.IdConvocatoria == idConvocatoriaSeleccionada).ToList();
+                
+                //dgvProyectos.Columns[0].Visible = true;
+                //dgvProyectos.Columns[1].Visible = true;
+                //dgvProyectos.Columns[2].Visible = true;
+                //dgvProyectos.Columns[3].Visible = true;
+                //dgvProyectos.Columns[4].Visible = true;
+
+                dgvProyectos.DataSource = listaProyectosFiltrados;
+                dgvProyectos.DataBind();
+
+                dgvProyectos.Columns[0].Visible = false;
+                //dgvProyectos.Columns[4].Visible = false;
+            }
         }
     }
 }

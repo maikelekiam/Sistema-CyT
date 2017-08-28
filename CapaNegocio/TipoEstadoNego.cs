@@ -17,5 +17,9 @@ namespace CapaNegocio
         {
             return tipoEstadoRepo.MostrarTipoEstados();
         }
+        public TipoEstado ObtenerTipoEstadoSegunNombre(string nom)
+        {
+            return tipoEstadoRepo.ObtenerTipoEstadoSegunNombre(nom);
+        }
     }
 }
