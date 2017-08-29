@@ -32,8 +32,7 @@
                         BackColor="WhiteSmoke"
                         ForeColor="#000066"
                         Font-Bold="false"
-                        CssClass="selectpicker form-control show-tick"
-                        data-live-search="true"
+                        CssClass="selectpicker form-control"
                         DataTextField="nombre"
                         AutoPostBack="false"
                         AppendDataBoundItems="true">
@@ -44,7 +43,7 @@
             </div>
             <div class="form-group">
                 <br />
-                <div class="col-md-9 col-md-offset-1">
+                <div class="col-md-11 col-md-offset-1">
                     <asp:GridView ID="dgvProyectos" runat="server" AutoGenerateColumns="false"
                         CssClass="table table-hover table-striped" BorderWidth="2px"
                         GridLines="Both"
@@ -52,7 +51,7 @@
                         <Columns>
                             <asp:BoundField HeaderText="ID" DataField="idProyecto" ItemStyle-HorizontalAlign="Left" />
                             <asp:BoundField HeaderText="Nombre del Proyecto" DataField="nombre" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="400" />
-                            <asp:TemplateField HeaderText="Localidad" HeaderStyle-HorizontalAlign="Left" HeaderStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="250">
+                            <asp:TemplateField HeaderText="Localidad" HeaderStyle-HorizontalAlign="Left" HeaderStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="200">
                                 <ItemTemplate>
                                     <asp:Label ID="lbl10" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Localidad.Nombre") %>'></asp:Label>
                                 </ItemTemplate>
@@ -62,9 +61,14 @@
                                     <asp:Label ID="lbl11" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Convocatorium.Anio") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Estado" HeaderStyle-HorizontalAlign="Left" HeaderStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="120">
+                                <ItemTemplate>
+                                    <asp:Label ID="lbl12" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "TipoEstado.Nombre") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:TemplateField>
                                 <ItemTemplate>
-                                    <asp:Button ID="btnMostrar" runat="server" Text="Mostrar" CssClass="form-control" BackColor="#eaeaea" />
+                                    <asp:Button ID="btnMostrar" runat="server" Text="Mostrar" CssClass="form-control" BackColor="#eaeaea" Width="90" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

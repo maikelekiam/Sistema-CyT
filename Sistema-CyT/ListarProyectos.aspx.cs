@@ -17,9 +17,9 @@ namespace Sistema_CyT
         TipoEstadoNego tipoEstadoNego = new TipoEstadoNego();
 
         private static List<Proyecto> listaProyectosFiltrados = new List<Proyecto>();
-        
-        public static int idProyectoSeleccionado=1;
-        public static int idConvocatoriaSeleccionada=1;
+
+        public static int idProyectoSeleccionado = 1;
+        public static int idConvocatoriaSeleccionada = 1;
         public static int idEstadoSeleccionado = 1;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -29,7 +29,6 @@ namespace Sistema_CyT
             MostrarListaProyectos();
             LlenarListaEstados();
             LlenarListaConvocatorias();
-
         }
         private void LlenarListaEstados()
         {
@@ -70,7 +69,7 @@ namespace Sistema_CyT
 
             lblEstado.Text = dgvProyectos.Rows[rIndex].Cells[0].Text;
             ddlConvocatoria.Text = dgvProyectos.Rows[rIndex].Cells[1].Text;
-            
+
 
             //MostrarProyecto();
         }
@@ -78,32 +77,6 @@ namespace Sistema_CyT
         {
             //Response.Redirect("MostrarFondo.aspx");
         }
-
-        
-
-        //protected void ddlEstado_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //protected void ddlFiltroConvocatoria_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    FiltrarProyectosPorConvocatoria(convocatoriaNego.ObtenerConvocatoriaSegunNombre(ddlFiltroConvocatoria.SelectedItem.ToString()).IdConvocatoria);
-        //}
-        //private void FiltrarProyectosPorConvocatoria(int id)
-        //{
-        //    //dgvProyectos.Columns[0].Visible = true;
-        //    //dgvProyectos.Columns[1].Visible = true;
-        //    //dgvProyectos.Columns[2].Visible = true;
-        //    //dgvProyectos.Columns[3].Visible = true;
-        //    //dgvProyectos.Columns[4].Visible = true;
-
-        //    dgvProyectos.DataSource = proyectoNego.MostrarProyectos().Where(c => c.IdConvocatoria == id).ToList();
-        //    dgvProyectos.DataBind();
-
-        //    dgvProyectos.Columns[0].Visible = false;
-        //    //dgvProyectos.Columns[4].Visible = false;
-        //}
 
         protected void btnFiltrarProyectos_Click(object sender, EventArgs e)
         {
@@ -117,8 +90,17 @@ namespace Sistema_CyT
 
                 idEstadoSeleccionado = tipoEstadoNego.ObtenerTipoEstadoSegunNombre(ddlEstado.SelectedItem.ToString()).IdTipoEstado;
 
-                listaProyectosFiltrados = proyectoNego.MostrarProyectos().Where(c => c.IdTipoEstado == idEstadoSeleccionado).Where(c=>c.IdConvocatoria == idConvocatoriaSeleccionada).ToList();
-                
+                int idEstadoTodos = tipoEstadoNego.ObtenerTipoEstadoSegunNombre("Todos").IdTipoEstado;
+
+                if (idEstadoSeleccionado == idEstadoTodos) //si selecciona la opcion TODOS
+                {
+                    listaProyectosFiltrados = proyectoNego.MostrarProyectos().Where(c => c.IdConvocatoria == idConvocatoriaSeleccionada).ToList();
+                }
+                else
+                {
+                    listaProyectosFiltrados = proyectoNego.MostrarProyectos().Where(c => c.IdTipoEstado == idEstadoSeleccionado).Where(c => c.IdConvocatoria == idConvocatoriaSeleccionada).ToList();
+                }
+
                 //dgvProyectos.Columns[0].Visible = true;
                 //dgvProyectos.Columns[1].Visible = true;
                 //dgvProyectos.Columns[2].Visible = true;

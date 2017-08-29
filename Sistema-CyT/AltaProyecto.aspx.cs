@@ -144,10 +144,9 @@ namespace Sistema_CyT
             string itemNombre = separadas[1];
 
             proyecto.IdPersona = personaNego.TraerPersonaIdSegunItem(itemApellido, itemNombre);
-            //proyecto.IdPersona = Int32.Parse(ddlContacto.SelectedValue);
             proyecto.IdEmpresa = empresaNego.TraerEmpresaIdSegunItem(ddlEmpresa.SelectedItem.ToString());
-            //proyecto.IdLocalidad = Int32.Parse(ddlLocalidad.SelectedValue);
             proyecto.IdLocalidad = localidadNego.TraerLocalidadIdSegunItem(ddlLocalidad.SelectedItem.ToString());
+            proyecto.IdTipoEstado = tipoEstadoNego.TraerTipoEstadoIdSegunItem(ddlTipoEstado.SelectedItem.ToString());
 
             int idProyecto = proyectoNego.GuardarProyecto(proyecto);
 

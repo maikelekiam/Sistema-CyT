@@ -26,5 +26,27 @@ namespace CapaRepositorio
                 return tipoEstado;
             }
         }
+        public string TraerTipoEstado(int id)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                TipoEstado result = modeloDeDominio.TipoEstados.Where(c => c.IdTipoEstado == id).FirstOrDefault();
+
+                modeloDeDominio.CreateDetachedCopy(result);
+
+                return result.Nombre;
+            }
+        }
+        public int TraerTipoEstadoIdSegunItem(string item)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                TipoEstado result = modeloDeDominio.TipoEstados.Where(c => c.Nombre == item).FirstOrDefault();
+
+                modeloDeDominio.CreateDetachedCopy(result);
+
+                return result.IdTipoEstado;
+            }
+        }
     }
 }

@@ -18,6 +18,7 @@ namespace Sistema_CyT
         ConvocatoriaNego convocatoriaNego = new ConvocatoriaNego();
         EtapaNego etapaNego = new EtapaNego();
         ProyectoNego proyectoNego = new ProyectoNego();
+        TipoEstadoNego tipoEstadoNego = new TipoEstadoNego();
 
         IEnumerable<Proyecto> listaProyectos;
 
@@ -40,6 +41,7 @@ namespace Sistema_CyT
             MostrarPersona(); //SIRVE PARA EL DROP DOWN LIST
             MostrarEmpresa(); // SIRVE PARA EL DROP DOWN LIST
             MostrarConvocatoria(); // SIRVE PARA EL DROP DOWN LIST
+            LlenarListaTipoEstados(); // SIRVE PARA EL DROP DOWN LIST
             LimpiarFormulario();
         }
 
@@ -51,6 +53,14 @@ namespace Sistema_CyT
             ddlActualizarProyecto.DataTextField = "nombre";
             ddlActualizarProyecto.DataValueField = "idProyecto";
             ddlActualizarProyecto.DataBind();
+        }
+
+        //Muestra en el DROPDOWNLIST los Tipos de Estado
+        private void LlenarListaTipoEstados()
+        {
+            ddlTipoEstado.DataSource = tipoEstadoNego.MostrarTipoEstados().ToList();
+            ddlTipoEstado.DataValueField = "nombre";
+            ddlTipoEstado.DataBind();
         }
 
         //Muestra en el DROPDOWNLIST las CONVOCATORIAS
@@ -111,6 +121,7 @@ namespace Sistema_CyT
             ddlContacto.Text = personaNego.TraerPersona(proyecto.IdPersona.Value);
             ddlEmpresa.Text = empresaNego.TraerEmpresa(proyecto.IdEmpresa.Value);
             ddlLocalidad.Text = localidadNego.TraerLocalidad(proyecto.IdLocalidad.Value);
+            ddlTipoEstado.Text = tipoEstadoNego.TraerTipoEstado(proyecto.IdTipoEstado.Value);
 
             //AHORA TENGO QUE TRAER UNA LISTA DE ETAPAS SEGUN EL IdProyectoActual
             listaTemporalEtapas = (List<Etapa>)etapaNego.TraerEtapasSegunIdProyecto(idProyectoActual).ToList();
@@ -257,10 +268,9 @@ namespace Sistema_CyT
             string itemNombre = separadas[1];
 
             proyecto.IdPersona = personaNego.TraerPersonaIdSegunItem(itemApellido, itemNombre);
-            //proyecto.IdPersona = Int32.Parse(ddlContacto.SelectedValue);
             proyecto.IdEmpresa = empresaNego.TraerEmpresaIdSegunItem(ddlEmpresa.SelectedItem.ToString());
-            //proyecto.IdLocalidad = Int32.Parse(ddlLocalidad.SelectedValue);
             proyecto.IdLocalidad = localidadNego.TraerLocalidadIdSegunItem(ddlLocalidad.SelectedItem.ToString());
+            proyecto.IdTipoEstado = tipoEstadoNego.TraerTipoEstadoIdSegunItem(ddlTipoEstado.SelectedItem.ToString());
 
             proyectoNego.ActualizarProyecto(proyecto);
 
@@ -297,6 +307,7 @@ namespace Sistema_CyT
             ddlContacto.SelectedIndex = 0;
             ddlEmpresa.SelectedIndex = 0;
             ddlLocalidad.SelectedIndex = 0;
+            ddlTipoEstado.SelectedIndex = 0;
         }
     }
 }
