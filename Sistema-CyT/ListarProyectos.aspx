@@ -24,6 +24,9 @@
                         <asp:ListItem Value="-1">&lt;Seleccione Convocatoria&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
+                <div class="col-md-2">
+                    <asp:Button runat="server" ID="btnFiltrarConvocatoriaTodos" Text="TODOS" CssClass="btn btn-primary" OnClick="btnFiltrarConvocatoriaTodos_Click" />
+                </div>
             </div>
             <div class="form-group">
                 <asp:Label ID="lblEstado" runat="server" Text="ESTADO" CssClass="col-md-1 col-md-offset-1 control-label"></asp:Label>
@@ -39,11 +42,14 @@
                         <asp:ListItem Value="-1">&lt;Seleccione Estado&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
-                <asp:Button runat="server" ID="btnFiltrarProyectos" Text="FILTRAR" CssClass="btn btn-success col-md-offset-1" OnClick="btnFiltrarProyectos_Click" />
+                
+                <asp:Button runat="server" ID="btnFiltrarTodos" Text="TODOS" CssClass="btn btn-primary" OnClick="btnFiltrarTodos_Click" />
+
             </div>
+            <asp:Button runat="server" ID="btnFiltrarProyectos" Text="FILTRAR POR CONVOCATORIA Y POR ESTADO" CssClass="btn btn-success col-md-offset-1" OnClick="btnFiltrarProyectos_Click" />
             <div class="form-group">
                 <br />
-                <div class="col-md-11 col-md-offset-1">
+                <div class="col-md-12">
                     <asp:GridView ID="dgvProyectos" runat="server" AutoGenerateColumns="false"
                         CssClass="table table-hover table-striped" BorderWidth="2px"
                         GridLines="Both"
@@ -66,9 +72,9 @@
                                     <asp:Label ID="lbl12" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "TipoEstado.Nombre") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField>
+                            <asp:TemplateField HeaderStyle-Width="120">
                                 <ItemTemplate>
-                                    <asp:Button ID="btnMostrar" runat="server" Text="Mostrar" CssClass="form-control" BackColor="#eaeaea" Width="90" />
+                                    <asp:Button ID="btnMostrar" runat="server" Text="Mostrar" CssClass="form-control" BackColor="#eaeaea" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

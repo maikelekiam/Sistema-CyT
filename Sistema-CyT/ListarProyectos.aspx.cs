@@ -90,16 +90,7 @@ namespace Sistema_CyT
 
                 idEstadoSeleccionado = tipoEstadoNego.ObtenerTipoEstadoSegunNombre(ddlEstado.SelectedItem.ToString()).IdTipoEstado;
 
-                int idEstadoTodos = tipoEstadoNego.ObtenerTipoEstadoSegunNombre("Todos").IdTipoEstado;
-
-                if (idEstadoSeleccionado == idEstadoTodos) //si selecciona la opcion TODOS
-                {
-                    listaProyectosFiltrados = proyectoNego.MostrarProyectos().Where(c => c.IdConvocatoria == idConvocatoriaSeleccionada).ToList();
-                }
-                else
-                {
-                    listaProyectosFiltrados = proyectoNego.MostrarProyectos().Where(c => c.IdTipoEstado == idEstadoSeleccionado).Where(c => c.IdConvocatoria == idConvocatoriaSeleccionada).ToList();
-                }
+                listaProyectosFiltrados = proyectoNego.MostrarProyectos().Where(c => c.IdTipoEstado == idEstadoSeleccionado).Where(c => c.IdConvocatoria == idConvocatoriaSeleccionada).ToList();
 
                 //dgvProyectos.Columns[0].Visible = true;
                 //dgvProyectos.Columns[1].Visible = true;
@@ -108,6 +99,46 @@ namespace Sistema_CyT
                 //dgvProyectos.Columns[4].Visible = true;
 
                 dgvProyectos.DataSource = listaProyectosFiltrados;
+                dgvProyectos.DataBind();
+
+                dgvProyectos.Columns[0].Visible = false;
+                //dgvProyectos.Columns[4].Visible = false;
+            }
+        }
+
+        protected void btnFiltrarTodos_Click(object sender, EventArgs e)
+        {
+            if ((Convert.ToInt32(ddlEstado.SelectedValue) != -1))
+            {
+                idEstadoSeleccionado = tipoEstadoNego.ObtenerTipoEstadoSegunNombre(ddlEstado.SelectedItem.ToString()).IdTipoEstado;
+
+                //dgvProyectos.Columns[0].Visible = true;
+                //dgvProyectos.Columns[1].Visible = true;
+                //dgvProyectos.Columns[2].Visible = true;
+                //dgvProyectos.Columns[3].Visible = true;
+                //dgvProyectos.Columns[4].Visible = true;
+
+                dgvProyectos.DataSource = proyectoNego.MostrarProyectos().Where(c => c.IdTipoEstado == idEstadoSeleccionado).ToList();
+                dgvProyectos.DataBind();
+
+                dgvProyectos.Columns[0].Visible = false;
+                //dgvProyectos.Columns[4].Visible = false;
+            }
+        }
+
+        protected void btnFiltrarConvocatoriaTodos_Click(object sender, EventArgs e)
+        {
+            if ((Convert.ToInt32(ddlConvocatoria.SelectedValue) != -1))
+            {
+                idConvocatoriaSeleccionada = convocatoriaNego.ObtenerConvocatoriaSegunNombre(ddlConvocatoria.SelectedItem.ToString()).IdConvocatoria;
+
+                //dgvProyectos.Columns[0].Visible = true;
+                //dgvProyectos.Columns[1].Visible = true;
+                //dgvProyectos.Columns[2].Visible = true;
+                //dgvProyectos.Columns[3].Visible = true;
+                //dgvProyectos.Columns[4].Visible = true;
+
+                dgvProyectos.DataSource = proyectoNego.MostrarProyectos().Where(c => c.IdConvocatoria == idConvocatoriaSeleccionada).ToList();
                 dgvProyectos.DataBind();
 
                 dgvProyectos.Columns[0].Visible = false;

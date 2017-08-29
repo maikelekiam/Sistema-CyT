@@ -115,5 +115,22 @@ namespace Sistema_CyT
                 dgvConvocatoria.Columns[0].Visible = false;
             }
         }
+
+        protected void btnFiltrarConvocatoriasAbiertas_Click(object sender, EventArgs e)
+        {
+            //Response.Redirect("ListarConvocatorias.aspx");
+
+            dgvConvocatoria.Columns[0].Visible = true;
+            dgvConvocatoria.Columns[1].Visible = true;
+            dgvConvocatoria.Columns[2].Visible = true;
+            dgvConvocatoria.Columns[3].Visible = true;
+            dgvConvocatoria.Columns[4].Visible = true;
+            dgvConvocatoria.Columns[5].Visible = true;
+
+            dgvConvocatoria.DataSource = convocatoriaNego.MostrarConvocatorias().Where(c => c.Abierta == true).ToList();
+            dgvConvocatoria.DataBind();
+
+            dgvConvocatoria.Columns[0].Visible = false;
+        }
     }
 }

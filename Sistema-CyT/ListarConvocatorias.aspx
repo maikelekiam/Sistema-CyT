@@ -34,7 +34,7 @@
                     </asp:DropDownList>
                 </div>
                 <asp:Button runat="server" ID="btnFiltrarConvocatorias" Text="FILTRAR" CssClass="btn btn-success" OnClick="btnFiltrarConvocatorias_Click" />
-
+                <asp:Button runat="server" ID="btnFiltrarConvocatoriasAbiertas" Text="ABIERTAS" CssClass="btn btn-primary" OnClick="btnFiltrarConvocatoriasAbiertas_Click" />
             </div>
             <div class="form-group">
                 <br />
