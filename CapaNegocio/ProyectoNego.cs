@@ -38,5 +38,9 @@ namespace CapaNegocio
         {
             return proyectoRepo.ObtenerProyectoString(id);
         }
+        public IEnumerable<pr02ResultSet0> ListarChoiceProyectos(int id)
+        {
+            return proyectoRepo.ListarChoiceProyectos(id);
+        }
     }
 }

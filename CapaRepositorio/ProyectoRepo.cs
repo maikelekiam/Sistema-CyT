@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CapaDominio;
+using Telerik.OpenAccess.Data.Common;
+using System.Data;
 
 namespace CapaRepositorio
 {
@@ -67,6 +69,21 @@ namespace CapaRepositorio
                 Proyecto result = modeloDeDominio.Proyectos.Where(c => c.IdProyecto == id).FirstOrDefault();
 
                 return result.Nombre.ToString();
+            }
+        }
+        public IEnumerable<pr02ResultSet0> ListarChoiceProyectos(int id)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                System.Data.Common.DbParameter prParameter = new OAParameter
+                {
+                    ParameterName = "@id",
+                    Value = id
+                };
+
+                IEnumerable<pr02ResultSet0> result = modeloDeDominio.ExecuteQuery<pr02ResultSet0>("pr02", CommandType.StoredProcedure, prParameter);
+
+                return result;
             }
         }
     }

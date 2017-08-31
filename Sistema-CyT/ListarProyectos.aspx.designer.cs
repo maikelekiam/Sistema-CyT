@@ -22,6 +22,24 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.Panel PanelSuperior;
         
         /// <summary>
+        /// lblFondoChoice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFondoChoice;
+        
+        /// <summary>
+        /// ddlFondoChoice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlFondoChoice;
+        
+        /// <summary>
         /// lblConvocatoria control.
         /// </summary>
         /// <remarks>
@@ -38,15 +56,6 @@ namespace Sistema_CyT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlConvocatoria;
-        
-        /// <summary>
-        /// btnFiltrarConvocatoriaTodos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFiltrarConvocatoriaTodos;
         
         /// <summary>
         /// lblEstado control.
@@ -74,15 +83,6 @@ namespace Sistema_CyT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnFiltrarTodos;
-        
-        /// <summary>
-        /// btnFiltrarProyectos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFiltrarProyectos;
         
         /// <summary>
         /// dgvProyectos control.

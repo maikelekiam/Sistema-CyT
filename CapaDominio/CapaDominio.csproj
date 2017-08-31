@@ -85,6 +85,9 @@
     <Compile Include="pr01ResultSet0.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>
     </Compile>
+    <Compile Include="pr02ResultSet0.generated.cs">
+      <DependentUpon>EntitiesModel.rlinq</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proyecto.generated.cs">
       <DependentUpon>EntitiesModel.rlinq</DependentUpon>

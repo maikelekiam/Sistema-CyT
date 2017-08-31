@@ -704,6 +704,10 @@
         <orm:procedure-parameter name="id" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" mode="in" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" />
         <orm:result-sets />
       </orm:procedure>
+      <orm:procedure name="pr02">
+        <orm:procedure-parameter name="id" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" mode="in" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" />
+        <orm:result-sets />
+      </orm:procedure>
     </orm:schema>
     <orm:relational-naming-settings>
       <orm:source-strategy>Property</orm:source-strategy>
@@ -1215,6 +1219,15 @@
         </domainMethodReturnShape>
       </domainMethod>
     </domainModelHasDomainMethods>
+    <domainModelHasDomainMethods Id="d2c48bac-c9f1-42e5-8a46-506fdb16809f">
+      <domainMethod name="pr02" storedProcedureName="'pr02'" generateReturnValueOverload="true">
+        <domainMethodReturnShape>
+          <domainMethodReferencesDomainMethodReturnShape Id="a26745eb-3adc-4795-87c6-a716a92b88bd">
+            <domainMethodReturnShapeMoniker name="/ModeloDeDominio/pr02ResultSet0" />
+          </domainMethodReferencesDomainMethodReturnShape>
+        </domainMethodReturnShape>
+      </domainMethod>
+    </domainModelHasDomainMethods>
   </domainMethods>
   <domainMethodReturnShapes>
     <domainModelHasDomainMethodReturnShapes Id="0b29d92b-9703-4578-b518-7bdd5ab5c34e">
@@ -1229,6 +1242,22 @@
         <Property Id="1bab377b-4beb-45d7-9bb2-778e69bc0b35" name="fechaCierre" type="System.DateTime" label="fechaCierre : System.DateTime" nullable="true" fieldName="_fechaCierre" />
         <Property Id="60ca8435-89a7-422c-b985-25661d3cb2c6" name="abierta" type="System.Boolean" label="abierta : System.Boolean" nullable="true" fieldName="_abierta" />
         <Property Id="56ddde0f-9311-40e5-9c53-298f92392c72" name="activa" type="System.Boolean" label="activa : System.Boolean" nullable="true" fieldName="_activa" />
+      </domainMethodReturnShape>
+    </domainModelHasDomainMethodReturnShapes>
+    <domainModelHasDomainMethodReturnShapes Id="42d44bc0-4f8e-4430-a16f-033f17932168">
+      <domainMethodReturnShape name="pr02ResultSet0" namespace="CapaDominio" showPropertiesCompartment="true" domainMethodType="CustomShape">
+        <Property Id="b46ded4f-c858-4167-9e2c-a5effd693153" name="idProyecto" type="System.Int32" label="idProyecto : System.Int32" fieldName="_idProyecto" />
+        <Property Id="9eb3053f-d35c-47af-b300-dd948907788d" name="idConvocatoria" type="System.Int32" label="idConvocatoria : System.Int32" fieldName="_idConvocatoria" />
+        <Property Id="caa9a749-ed0a-4c84-bcc9-68b4e7793735" name="nombre" type="System.String" label="nombre : System.String" nullable="true" fieldName="_nombre" />
+        <Property Id="9fdffe6f-165c-410e-8c5c-fa8e50e8a07d" name="numeroExpediente" type="System.String" label="numeroExpediente : System.String" nullable="true" fieldName="_numeroExpediente" />
+        <Property Id="d7b761bb-34a0-4156-9c9a-b43591f5a087" name="montoSolicitado" type="System.Decimal" label="montoSolicitado : System.Decimal" nullable="true" fieldName="_montoSolicitado" />
+        <Property Id="b97fb7e8-24d8-48b1-a1ef-175cacfb5c4d" name="montoContraparte" type="System.Decimal" label="montoContraparte : System.Decimal" nullable="true" fieldName="_montoContraparte" />
+        <Property Id="dd09e4a2-bdb0-4346-b731-a9746abb304e" name="montoTotal" type="System.Decimal" label="montoTotal : System.Decimal" nullable="true" fieldName="_montoTotal" />
+        <Property Id="e9595c3d-25ad-44e0-aa76-4760b83a2016" name="idPersona" type="System.Int32" label="idPersona : System.Int32" nullable="true" fieldName="_idPersona" />
+        <Property Id="f5390e20-5757-4d21-b1ec-e0da94bc27e2" name="idEmpresa" type="System.Int32" label="idEmpresa : System.Int32" nullable="true" fieldName="_idEmpresa" />
+        <Property Id="1957c93b-3bfb-46ae-8c6b-e812983662de" name="localidad" type="System.String" label="localidad : System.String" nullable="true" fieldName="_localidad" />
+        <Property Id="476ef9c4-11c9-48ea-a28a-f2bd25ae53d6" name="tipoEstado" type="System.String" label="tipoEstado : System.String" nullable="true" fieldName="_tipoEstado" />
+        <Property Id="6f6ea1f9-2265-4185-a649-b0bc1cfe431f" name="año" type="System.Int32" label="año : System.Int32" nullable="true" fieldName="_año" />
       </domainMethodReturnShape>
     </domainModelHasDomainMethodReturnShapes>
   </domainMethodReturnShapes>

@@ -49,8 +49,6 @@ namespace Sistema_CyT
         }
         private void CargarListaConvocatorias()
         {
-            //DESPUES HAY QUE IMPLEMENTAR UN DROPDOWN ANIDADO ENTRE FONDO-CONVOCATORIA
-
             listaConvocatorias = convocatoriaNego.MostrarConvocatorias();
 
             ddlActualizarConvocatoria.DataSource = listaConvocatorias.ToList();
