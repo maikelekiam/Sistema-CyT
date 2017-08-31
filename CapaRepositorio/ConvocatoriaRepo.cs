@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CapaDominio;
+using Telerik.OpenAccess.Data.Common;
+using System.Data;
 
 namespace CapaRepositorio
 {
@@ -22,7 +24,7 @@ namespace CapaRepositorio
         {
             using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
             {
-                IEnumerable<Convocatorium> result = modeloDeDominio.Convocatoria.OrderByDescending(c=>c.Anio).ToList();
+                IEnumerable<Convocatorium> result = modeloDeDominio.Convocatoria.OrderByDescending(c => c.Anio).ToList();
                 return result;
             }
         }
@@ -51,6 +53,21 @@ namespace CapaRepositorio
                 Convocatorium convocatoria = modeloDeDominio.Convocatoria.Where(c => c.Nombre == nom).FirstOrDefault();
 
                 return convocatoria;
+            }
+        }
+        public IEnumerable<pr01ResultSet0> ListarChoiceConvocatorias(int id)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                System.Data.Common.DbParameter prParameter = new OAParameter
+                {
+                    ParameterName = "@id",
+                    Value = id
+                };
+
+                IEnumerable<pr01ResultSet0> result = modeloDeDominio.ExecuteQuery<pr01ResultSet0>("pr01", CommandType.StoredProcedure, prParameter);
+
+                return result;
             }
         }
     }

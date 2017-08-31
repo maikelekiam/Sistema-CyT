@@ -263,6 +263,12 @@
             <orm:constraint name="FK_Proyecto_Convocatoria" delete-action="dbdefaultrule" destination-table="Convocatoria" />
           </orm:reference>
         </orm:field>
+        <orm:field name="tipoEstado" property="TipoEstado" behavior="readwrite" uniqueId="90fbc939-35ba-4b61-a9ba-4617e9c0b199" type="CapaDominio.TipoEstado">
+          <orm:reference uniqueId="64ee3dcf-f9b2-4740-91d6-458b82d55bb6" association-name="ProyectoHasTipoEstado">
+            <orm:sharedfield name="idTipoEstado" target-class="CapaDominio.TipoEstado" target-field="idTipoEstado" />
+            <orm:constraint name="FK_Proyecto_TipoEstado" delete-action="dbdefaultrule" destination-table="TipoEstado" />
+          </orm:reference>
+        </orm:field>
         <orm:field name="etapas" property="Etapas" behavior="readwrite" uniqueId="0955161a-cd59-43c8-b240-26e5498c997b" type="CapaDominio.Etapa">
           <orm:collection element-class="CapaDominio.Etapa" inverse-field="proyecto" order-by="" uniqueId="86abcfcf-a6ca-4102-8f29-8fec87c18d31" />
         </orm:field>
@@ -271,12 +277,6 @@
         </orm:field>
         <orm:field name="actuacions" property="Actuacions" behavior="readwrite" uniqueId="b6c25e6f-9e22-4bc3-abad-ae9c63999cd6" type="CapaDominio.Actuacion">
           <orm:collection element-class="CapaDominio.Actuacion" inverse-field="proyecto" order-by="" uniqueId="8fc0487c-70d8-447d-b87d-ae69d3d3acb6" />
-        </orm:field>
-        <orm:field name="tipoEstado" property="TipoEstado" behavior="readwrite" uniqueId="90fbc939-35ba-4b61-a9ba-4617e9c0b199" type="CapaDominio.TipoEstado">
-          <orm:reference uniqueId="64ee3dcf-f9b2-4740-91d6-458b82d55bb6" association-name="ProyectoHasTipoEstado">
-            <orm:sharedfield name="idTipoEstado" target-class="CapaDominio.TipoEstado" target-field="idTipoEstado" />
-            <orm:constraint name="FK_Proyecto_TipoEstado" delete-action="dbdefaultrule" destination-table="TipoEstado" />
-          </orm:reference>
         </orm:field>
       </orm:class>
       <orm:class name="Persona" uniqueId="09aa65c0-8782-4ae3-84b5-42cb426036fb">
@@ -698,6 +698,10 @@
         <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
       </orm:table>
       <orm:procedure name="fn_diagramobjects" is-function="true" return-type="int">
+        <orm:result-sets />
+      </orm:procedure>
+      <orm:procedure name="pr01">
+        <orm:procedure-parameter name="id" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" mode="in" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" />
         <orm:result-sets />
       </orm:procedure>
     </orm:schema>
@@ -1201,4 +1205,31 @@
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>
+  <domainMethods>
+    <domainModelHasDomainMethods Id="27fb1a13-a815-48b4-a08d-11389cb0ae0c">
+      <domainMethod name="pr01" storedProcedureName="'pr01'" generateReturnValueOverload="true">
+        <domainMethodReturnShape>
+          <domainMethodReferencesDomainMethodReturnShape Id="c4d6907f-9208-405f-a147-25d9069283f4">
+            <domainMethodReturnShapeMoniker name="/ModeloDeDominio/pr01ResultSet0" />
+          </domainMethodReferencesDomainMethodReturnShape>
+        </domainMethodReturnShape>
+      </domainMethod>
+    </domainModelHasDomainMethods>
+  </domainMethods>
+  <domainMethodReturnShapes>
+    <domainModelHasDomainMethodReturnShapes Id="0b29d92b-9703-4578-b518-7bdd5ab5c34e">
+      <domainMethodReturnShape name="pr01ResultSet0" namespace="CapaDominio" showPropertiesCompartment="true" domainMethodType="CustomShape">
+        <Property Id="a7d263da-bbd0-45de-a2a5-5f75e55fd4dc" name="idConvocatoria" type="System.Int32" label="idConvocatoria : System.Int32" fieldName="_idConvocatoria" />
+        <Property Id="b3fdc61f-fd0e-4a15-9209-c63e2d15776e" name="nombre" type="System.String" label="nombre : System.String" nullable="true" fieldName="_nombre" />
+        <Property Id="b20162d7-0c2e-4a1b-8b77-31bf81445d81" name="anio" type="System.Int32" label="anio : System.Int32" nullable="true" fieldName="_anio" />
+        <Property Id="10394192-ee56-4a12-90cd-15e3aa42e028" name="idFondo" type="System.Int32" label="idFondo : System.Int32" nullable="true" fieldName="_idFondo" />
+        <Property Id="b4145b47-cfe6-4164-9834-3e53aa09b32d" name="idTipoFinanciamiento" type="System.Int32" label="idTipoFinanciamiento : System.Int32" nullable="true" fieldName="_idTipoFinanciamiento" />
+        <Property Id="f25bf6b0-90d2-4621-af45-f2a080b494ee" name="idTipoConvocatoria" type="System.Int32" label="idTipoConvocatoria : System.Int32" nullable="true" fieldName="_idTipoConvocatoria" />
+        <Property Id="e2fc2757-5432-46e4-9430-d4aea3e6c589" name="fechaApertura" type="System.DateTime" label="fechaApertura : System.DateTime" nullable="true" fieldName="_fechaApertura" />
+        <Property Id="1bab377b-4beb-45d7-9bb2-778e69bc0b35" name="fechaCierre" type="System.DateTime" label="fechaCierre : System.DateTime" nullable="true" fieldName="_fechaCierre" />
+        <Property Id="60ca8435-89a7-422c-b985-25661d3cb2c6" name="abierta" type="System.Boolean" label="abierta : System.Boolean" nullable="true" fieldName="_abierta" />
+        <Property Id="56ddde0f-9311-40e5-9c53-298f92392c72" name="activa" type="System.Boolean" label="activa : System.Boolean" nullable="true" fieldName="_activa" />
+      </domainMethodReturnShape>
+    </domainModelHasDomainMethodReturnShapes>
+  </domainMethodReturnShapes>
 </DomainModel>

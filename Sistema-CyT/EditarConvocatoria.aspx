@@ -7,11 +7,27 @@
             <div class="panel-heading">
                 <h3>Formulario EDITAR Convocatoria</h3>
             </div>
-
-            <!-- LISTA CON LAS CONVOCATORIAS EN LA BASE DE DATOS -->
+            <!-- LISTA CON LOS FONDOS EN LA BASE DE DATOS -->
             <div class="form-group">
                 <br />
-                <asp:Label ID="lblDdl" Font-Bold="true" runat="server" Text="&lt Seleccione Convocatoria &gt" CssClass="col-md-2 control-label"> </asp:Label>
+                <asp:Label ID="lblFondoChoice" Font-Bold="true" runat="server" Text="&lt Filtro Fondo &gt" CssClass="col-md-2 control-label"> </asp:Label>
+                <div class="col-md-8">
+                    <asp:DropDownList ID="ddlFondoChoice" runat="server"
+                        ForeColor="#000066"
+                        Font-Bold="true"
+                        CssClass="selectpicker form-control show-tick"
+                        data-live-search="true"
+                        DataTextField="nombre"
+                        AutoPostBack="True"
+                        AppendDataBoundItems="true"
+                        OnSelectedIndexChanged="ddlFondoChoice_SelectedIndexChanged">
+                        <asp:ListItem Value="-1">&lt;Seleccione Fondo&gt;</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+            </div>
+            <!-- LISTA CON LAS CONVOCATORIAS EN LA BASE DE DATOS -->
+            <div class="form-group">
+                <asp:Label ID="lblDdl" Font-Bold="true" runat="server" Text="&lt Filtro Convocatoria &gt" CssClass="col-md-2 control-label"> </asp:Label>
                 <div class="col-md-8">
                     <asp:DropDownList ID="ddlActualizarConvocatoria" runat="server"
                         ForeColor="#000066"
@@ -20,7 +36,7 @@
                         data-live-search="true"
                         DataTextField="nombre"
                         AutoPostBack="True"
-                        AppendDataBoundItems="true"
+                        AppendDataBoundItems="false"
                         OnSelectedIndexChanged="ddlActualizarConvocatoria_SelectedIndexChanged">
                         <asp:ListItem Value="-1">&lt;Seleccione Convocatoria&gt;</asp:ListItem>
                     </asp:DropDownList>

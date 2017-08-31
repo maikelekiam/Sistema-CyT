@@ -178,6 +178,39 @@ namespace CapaDominio
 			}
 		}
 		
+		public IEnumerable<pr01ResultSet0> Pr01(int? id)
+		{
+			int returnValue;
+			return Pr01(id, out returnValue);
+		}
+		
+		public IEnumerable<pr01ResultSet0> Pr01(int? id, out int returnValue)
+		{
+			OAParameter parameterReturnValue = new OAParameter();
+		    parameterReturnValue.Direction = ParameterDirection.ReturnValue;
+		    parameterReturnValue.ParameterName = "parameterReturnValue";
+		
+			OAParameter parameterId = new OAParameter();
+			parameterId.ParameterName = "id";
+			if(id.HasValue)
+			{
+				parameterId.Value = id.Value;
+			}
+			else
+			{
+				parameterId.DbType = DbType.Int32;
+				parameterId.Value = DBNull.Value;
+			}
+
+			IEnumerable<pr01ResultSet0> queryResult = this.ExecuteQuery<pr01ResultSet0>("[dbo].[pr01]", CommandType.StoredProcedure, parameterId, parameterReturnValue);
+		
+			returnValue = parameterReturnValue.Value == DBNull.Value 
+				? -1
+				: (int)parameterReturnValue.Value;
+		
+			return queryResult;
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -263,6 +296,8 @@ namespace CapaDominio
 		{
 			get;
 		}
+		IEnumerable<pr01ResultSet0> Pr01(int? id);
+		IEnumerable<pr01ResultSet0> Pr01(int? id, out int returnValue);
 	}
 }
 #pragma warning restore 1591

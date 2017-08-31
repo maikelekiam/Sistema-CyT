@@ -34,5 +34,9 @@ namespace CapaNegocio
         {
             return convocatoriaRepo.ObtenerConvocatoriaSegunNombre(nom);
         }
+        public IEnumerable<pr01ResultSet0> ListarChoiceConvocatorias(int id)
+        {
+            return convocatoriaRepo.ListarChoiceConvocatorias(id);
+        } 
     }
 }
