@@ -101,7 +101,7 @@ namespace Sistema_CyT
             }
             else
             {
-                
+                // Mostrar aviso de completar todos los datos
             }
         }
 

@@ -50,22 +50,6 @@ namespace Sistema_CyT
             ddlConvocatoria.DataBind();
         }
 
-        protected void dgvProyectos_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            //FALTA IMPLEMENTAR!!!
-
-            //Obtengo el indice de la fila seleccionada con el boton MOSTRAR
-            GridViewRow row = (GridViewRow)(((Button)e.CommandSource).NamingContainer);
-            int rIndex = row.RowIndex;
-
-            //Obtengo el id del proyecto seleccionado
-            //idProyectoSeleccionado = Convert.ToInt32(dgvProyectos.Rows[rIndex].Cells[0].Text);
-
-            lblEstado.Text = dgvProyectos.Rows[rIndex].Cells[0].Text;
-            ddlConvocatoria.Text = dgvProyectos.Rows[rIndex].Cells[1].Text;
-
-            //MostrarProyecto();
-        }
         private void MostrarProyecto()
         {
             //Response.Redirect("MostrarFondo.aspx");
@@ -107,14 +91,29 @@ namespace Sistema_CyT
 
                 idConvocatoriaSeleccionada = Convert.ToInt32(ddlConvocatoria.SelectedValue.ToString());
 
+                dgvProyectos.Columns[0].Visible = true;
+                dgvProyectos.Columns[1].Visible = true;
+                dgvProyectos.Columns[2].Visible = true;
+                dgvProyectos.Columns[3].Visible = true;
+                dgvProyectos.Columns[4].Visible = true;
+
                 dgvProyectos.DataSource = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).Where(c => c.tipoEstado == ddlEstado.SelectedItem.ToString()).ToList();
                 dgvProyectos.DataBind();
+
+                dgvProyectos.Columns[0].Visible = false;
             }
         }
 
         protected void ddlFondoChoice_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LlenarChoiceConvocatorias(Convert.ToInt32(ddlFondoChoice.SelectedValue));
+            if (ddlFondoChoice.SelectedValue != "-1")
+            {
+                LlenarChoiceConvocatorias(Convert.ToInt32(ddlFondoChoice.SelectedValue));
+            }
+            else
+            {
+                Response.Redirect("ListarProyectos.aspx");
+            }
         }
         private void LlenarChoiceConvocatorias(int id)
         {
@@ -126,8 +125,18 @@ namespace Sistema_CyT
             if ((Convert.ToInt32(ddlConvocatoria.SelectedValue) != -1))
             {
                 idConvocatoriaSeleccionada = Convert.ToInt32(ddlConvocatoria.SelectedValue.ToString());
+
+               
+                dgvProyectos.Columns[0].Visible = true;
+                dgvProyectos.Columns[1].Visible = true;
+                dgvProyectos.Columns[2].Visible = true;
+                dgvProyectos.Columns[3].Visible = true;
+                dgvProyectos.Columns[4].Visible = true;
+                
+                
                 dgvProyectos.DataSource = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).ToList();
                 dgvProyectos.DataBind();
+                
                 dgvProyectos.Columns[0].Visible = false;
             }
         }
@@ -143,7 +152,31 @@ namespace Sistema_CyT
             dgvProyectos.DataSource = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).ToList();
             dgvProyectos.DataBind();
 
-            dgvProyectos.Columns[0].Visible = false;
+            //dgvProyectos.Columns[0].Visible = false;
+        }
+
+        protected void dgvProyectos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            GridViewRow row = this.dgvProyectos.SelectedRow;
+
+            lblEstado.Text= row.Cells[0].Text;
+
+
+
+
+
+
+
+            //Accessing BoundField Column
+
+
+            //idProyectoSeleccionado = Convert.ToInt32(dgvProyectos.SelectedRow.Cells[0].Text);
+
+
+
+
+            //Response.Redirect("MostrarProyecto.aspx");
         }
     }
 }

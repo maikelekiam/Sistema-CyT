@@ -66,9 +66,9 @@
                     <asp:GridView ID="dgvProyectos" runat="server" AutoGenerateColumns="false"
                         CssClass="table table-hover table-striped" BorderWidth="2px"
                         GridLines="Both"
-                        OnRowCommand="dgvProyectos_RowCommand">
+                        OnSelectedIndexChanged="dgvProyectos_SelectedIndexChanged">
                         <Columns>
-                            <asp:BoundField HeaderText="ID" DataField="idProyecto" ItemStyle-HorizontalAlign="Left" />
+                            <asp:BoundField HeaderText ="ID" DataField="idProyecto" ItemStyle-HorizontalAlign="Left" />
                             <asp:BoundField HeaderText="Nombre del Proyecto" DataField="nombre" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="400" />
                             <asp:BoundField HeaderText="Localidad" DataField="localidad" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="200" />
                             <asp:BoundField HeaderText="Estado" DataField="tipoEstado" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="150" />
@@ -94,11 +94,12 @@
                             </asp:TemplateField>
                                 
                             --%>
-                            <asp:TemplateField HeaderStyle-Width="120">
+                            <asp:ButtonField Text="Detalles" CommandName="Select" ItemStyle-Width="100" />
+                            <%--<asp:TemplateField HeaderStyle-Width="120">
                                 <ItemTemplate>
                                     <asp:Button ID="btnMostrar" runat="server" Text="Mostrar" CssClass="form-control" BackColor="#eaeaea" />
                                 </ItemTemplate>
-                            </asp:TemplateField>
+                            </asp:TemplateField>--%>
                         </Columns>
                     </asp:GridView>
                 </div>
