@@ -89,9 +89,20 @@ namespace Sistema_CyT
 
         protected void btnGuardarProyecto_Click(object sender, EventArgs e)
         {
-            GuardarProyecto();
+            if (ddlEmpresa.SelectedValue != "-1" 
+                && ddlLocalidad.SelectedValue != "-1" 
+                && ddlTipoEstado.SelectedValue != "-1"
+                && ddlContacto.SelectedValue!="-1"
+                && ddlConvocatoria.SelectedValue!="-1")
+            {
+                GuardarProyecto();
 
-            Response.Redirect("ListarProyectos.aspx");
+                Response.Redirect("ListarProyectos.aspx");
+            }
+            else
+            {
+                
+            }
         }
 
         protected void btnModalEtapaGuardar_Click(object sender, EventArgs e)

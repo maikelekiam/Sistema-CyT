@@ -123,8 +123,6 @@ namespace Sistema_CyT
             ddlConvocatoria.DataValueField = "idConvocatoria";
             ddlConvocatoria.DataBind();
 
-            lblEstado.Text = ddlConvocatoria.SelectedValue;
-
             if ((Convert.ToInt32(ddlConvocatoria.SelectedValue) != -1))
             {
                 idConvocatoriaSeleccionada = Convert.ToInt32(ddlConvocatoria.SelectedValue.ToString());
