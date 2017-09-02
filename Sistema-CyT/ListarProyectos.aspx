@@ -57,9 +57,9 @@
                         <asp:ListItem Value="-1">&lt;Seleccione Estado&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
-                <asp:Button runat="server" ID="btnFiltrarTodos" Text="TODOS" CssClass="btn btn-info" OnClick="btnFiltrarTodos_Click" />
+                <asp:Button runat="server" ID="btnFiltrar" Text="Filtrar" CssClass="btn btn-success" OnClick="btnFiltrar_Click" />
+                <asp:Button runat="server" ID="btnTodos" Text="TODOS" CssClass="btn btn-primary" OnClick="btnTodos_Click" />
             </div>
-            <%--<asp:Button runat="server" ID="btnFiltrarProyectos" Text="FILTRAR POR CONVOCATORIA Y POR ESTADO" CssClass="btn btn-success col-md-offset-1" OnClick="btnFiltrarProyectos_Click" />--%>
             <div class="form-group">
                 <br />
                 <div class="col-md-12">
@@ -73,33 +73,7 @@
                             <asp:BoundField HeaderText="Localidad" DataField="localidad" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="200" />
                             <asp:BoundField HeaderText="Estado" DataField="tipoEstado" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="150" />
                             <asp:BoundField HeaderText="Año" DataField="año" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="100" />
-
-
-                            <%--
-
-                            <asp:TemplateField HeaderText="Localidad" HeaderStyle-HorizontalAlign="Left" HeaderStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="200">
-                                <ItemTemplate>
-                                    <asp:Label ID="lbl10" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "localidad") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Año" HeaderStyle-HorizontalAlign="Left" HeaderStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="100">
-                                <ItemTemplate>
-                                    <asp:Label ID="lbl11" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Convocatorium.Anio") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Estado" HeaderStyle-HorizontalAlign="Left" HeaderStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="120">
-                                <ItemTemplate>
-                                    <asp:Label ID="lbl12" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "TipoEstado.Nombre") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                                
-                            --%>
                             <asp:ButtonField Text="Detalles" CommandName="Select" ItemStyle-Width="100" />
-                            <%--<asp:TemplateField HeaderStyle-Width="120">
-                                <ItemTemplate>
-                                    <asp:Button ID="btnMostrar" runat="server" Text="Mostrar" CssClass="form-control" BackColor="#eaeaea" />
-                                </ItemTemplate>
-                            </asp:TemplateField>--%>
                         </Columns>
                     </asp:GridView>
                 </div>
