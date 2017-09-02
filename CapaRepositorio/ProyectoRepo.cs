@@ -25,7 +25,7 @@ namespace CapaRepositorio
         {
             using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
             {
-                IEnumerable<Proyecto> result = modeloDeDominio.Proyectos.OrderByDescending(c=>c.Convocatorium.Anio).ToList();
+                IEnumerable<Proyecto> result = modeloDeDominio.Proyectos.OrderByDescending(c => c.Convocatorium.Anio).ToList();
                 return result;
             }
         }
@@ -84,6 +84,15 @@ namespace CapaRepositorio
                 IEnumerable<pr02ResultSet0> result = modeloDeDominio.ExecuteQuery<pr02ResultSet0>("pr02", CommandType.StoredProcedure, prParameter);
 
                 return result;
+            }
+        }
+        public Proyecto ObtenerProyectoSegunNombreYConvocatoria(int id, string nom)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                Proyecto proyecto = modeloDeDominio.Proyectos.Where(c => c.NumeroExpediente == nom && c.IdConvocatoria == id).FirstOrDefault();
+
+                return proyecto;
             }
         }
     }

@@ -166,16 +166,16 @@ namespace CapaDominio
 			}
 		}
 		
-		private int? _año;
-		public virtual int? año
+		private int? _anio;
+		public virtual int? anio
 		{
 			get
 			{
-				return this._año;
+				return this._anio;
 			}
 			set
 			{
-				this._año = value;
+				this._anio = value;
 			}
 		}
 		

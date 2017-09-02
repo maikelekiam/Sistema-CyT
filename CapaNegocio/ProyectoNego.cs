@@ -42,5 +42,9 @@ namespace CapaNegocio
         {
             return proyectoRepo.ListarChoiceProyectos(id);
         }
+        public Proyecto ObtenerProyectoSegunNombreYConvocatoria(int id, string nom)
+        {
+            return proyectoRepo.ObtenerProyectoSegunNombreYConvocatoria(id, nom);
+        }
     }
 }

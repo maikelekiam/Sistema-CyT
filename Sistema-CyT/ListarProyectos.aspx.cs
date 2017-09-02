@@ -23,7 +23,7 @@ namespace Sistema_CyT
         public static int idProyectoSeleccionado = 1;
         public static int idConvocatoriaSeleccionada = 1;
         public static int idEstadoSeleccionado = 1;
-        public static string nombreProyectoSeleccionado = null;
+        public static string numeroExpedienteProyectoSeleccionado = null;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -68,7 +68,7 @@ namespace Sistema_CyT
                 dgvProyectos.DataSource = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).Where(c => c.tipoEstado == ddlEstado.SelectedItem.ToString()).ToList();
                 dgvProyectos.DataBind();
 
-                dgvProyectos.Columns[0].Visible = false;
+                //dgvProyectos.Columns[0].Visible = false;
             }
         }
 
@@ -96,13 +96,13 @@ namespace Sistema_CyT
 
                 dgvProyectos.DataSource = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).ToList();
                 dgvProyectos.DataBind();
-                dgvProyectos.Columns[0].Visible = false;
+                //dgvProyectos.Columns[0].Visible = false;
             }
             else
             {
                 dgvProyectos.DataSource = listaProyectosFiltrados.ToList();
                 dgvProyectos.DataBind();
-                dgvProyectos.Columns[0].Visible = false;
+                //dgvProyectos.Columns[0].Visible = false;
             }
         }
 
@@ -112,14 +112,14 @@ namespace Sistema_CyT
 
             dgvProyectos.DataSource = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).ToList();
             dgvProyectos.DataBind();
-            dgvProyectos.Columns[0].Visible = false;
+            //dgvProyectos.Columns[0].Visible = false;
         }
 
         protected void dgvProyectos_SelectedIndexChanged(object sender, EventArgs e)
         {
             GridViewRow row = this.dgvProyectos.SelectedRow;
 
-            nombreProyectoSeleccionado = row.Cells[1].Text;
+            numeroExpedienteProyectoSeleccionado = row.Cells[0].Text;
 
             Response.Redirect("MostrarProyecto.aspx");
         }
@@ -139,7 +139,7 @@ namespace Sistema_CyT
                 dgvProyectos.DataSource = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).ToList();
                 dgvProyectos.DataBind();
 
-                dgvProyectos.Columns[0].Visible = false;
+                //dgvProyectos.Columns[0].Visible = false;
             }
             ddlEstado.Text = "-1";
         }
