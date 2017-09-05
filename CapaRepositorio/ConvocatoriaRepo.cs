@@ -24,7 +24,7 @@ namespace CapaRepositorio
         {
             using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
             {
-                IEnumerable<Convocatorium> result = modeloDeDominio.Convocatoria.OrderByDescending(c => c.Anio).ToList();
+                IEnumerable<Convocatorium> result = modeloDeDominio.Convocatoria.OrderByDescending(c => c.Nombre).ToList();
                 return result;
             }
         }

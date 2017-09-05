@@ -37,7 +37,7 @@ namespace Sistema_CyT
             dgvFondo.Columns[3].Visible = true;
             dgvFondo.Columns[4].Visible = true;
 
-            dgvFondo.DataSource = fondoNego.MostrarFondos().ToList();
+            dgvFondo.DataSource = fondoNego.MostrarFondos().OrderBy(c => c.Nombre).ToList();
             dgvFondo.DataBind();
 
             dgvFondo.Columns[0].Visible = false;
@@ -55,7 +55,7 @@ namespace Sistema_CyT
         {
             listaFondos = fondoNego.MostrarFondos();
 
-            ddlActualizarFondo.DataSource = listaFondos.ToList();
+            ddlActualizarFondo.DataSource = listaFondos.OrderBy(c => c.Nombre).ToList();
             ddlActualizarFondo.DataTextField = "nombre";
             ddlActualizarFondo.DataValueField = "idFondo";
             ddlActualizarFondo.DataBind();

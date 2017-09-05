@@ -66,7 +66,7 @@ namespace Sistema_CyT
         //Muestra en el DROPDOWNLIST las CONVOCATORIAS
         private void MostrarConvocatoria()
         {
-            ddlConvocatoria.DataSource = convocatoriaNego.MostrarConvocatorias().ToList();
+            ddlConvocatoria.DataSource = convocatoriaNego.MostrarConvocatorias().OrderBy(c => c.Nombre).ToList();
             ddlConvocatoria.DataValueField = "IdConvocatoria";
             ddlConvocatoria.DataBind();
         }
@@ -82,7 +82,7 @@ namespace Sistema_CyT
         //Muestra en el DROPDOWNLIST las EMPRESAS
         private void MostrarEmpresa()
         {
-            ddlEmpresa.DataSource = empresaNego.MostrarEmpresas().ToList();
+            ddlEmpresa.DataSource = empresaNego.MostrarEmpresas().OrderBy(c => c.Nombre).ToList();
             ddlEmpresa.DataValueField = "nombre";
             ddlEmpresa.DataBind();
         }

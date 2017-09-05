@@ -37,7 +37,7 @@ namespace Sistema_CyT
         }
         private void LlenarListaFondos()
         {
-            ddlFondo.DataSource = fondoNego.MostrarFondos().ToList();
+            ddlFondo.DataSource = fondoNego.MostrarFondos().OrderBy(c => c.Nombre).ToList();
             ddlFondo.DataValueField = "idFondo";
             ddlFondo.DataBind();
         }

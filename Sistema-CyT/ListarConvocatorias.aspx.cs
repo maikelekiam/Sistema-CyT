@@ -25,7 +25,7 @@ namespace Sistema_CyT
         {
             if (IsPostBack) return;
 
-            listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().ToList();
+            listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().OrderBy(c => c.Nombre).ToList();
             MostrarListaConvocatorias();
             LlenarListaEstados();
             LlenarListaFiltroFondo();
@@ -37,7 +37,7 @@ namespace Sistema_CyT
         }
         private void LlenarListaFiltroFondo()
         {
-            ddlFiltroFondo.DataSource = fondoNego.MostrarFondos().ToList();
+            ddlFiltroFondo.DataSource = fondoNego.MostrarFondos().OrderBy(c => c.Nombre).ToList();
             ddlFiltroFondo.DataValueField = "idFondo";
             ddlFiltroFondo.DataBind();
         }
@@ -87,19 +87,19 @@ namespace Sistema_CyT
 
                 if (idEstadoActual == 0) //todas
                 {
-                    listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().Where(c => c.IdFondo == idFondoSeleccionado).ToList();
+                    listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().Where(c => c.IdFondo == idFondoSeleccionado).OrderBy(c => c.Nombre).ToList();
                 }
                 else if (idEstadoActual == 1) //abiertas
                 {
-                    listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().Where(c => (c.Abierta == true && c.IdFondo == idFondoSeleccionado)).ToList();
+                    listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().Where(c => (c.Abierta == true && c.IdFondo == idFondoSeleccionado)).OrderBy(c => c.Nombre).ToList();
                 }
                 else if (idEstadoActual == 2) //cerradas
                 {
-                    listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().Where(c => (c.Abierta == false && c.IdFondo == idFondoSeleccionado)).ToList();
+                    listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().Where(c => (c.Abierta == false && c.IdFondo == idFondoSeleccionado)).OrderBy(c => c.Nombre).ToList();
                 }
                 else if (idEstadoActual == 3) //en evaluacion
                 {
-                    listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().Where(c => (c.Anio == 5 && c.IdFondo == idFondoSeleccionado)).ToList();
+                    listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().Where(c => (c.Anio == 5 && c.IdFondo == idFondoSeleccionado)).OrderBy(c => c.Nombre).ToList();
                 }
 
                 dgvConvocatoria.Columns[0].Visible = true;
@@ -127,7 +127,7 @@ namespace Sistema_CyT
             dgvConvocatoria.Columns[4].Visible = true;
             dgvConvocatoria.Columns[5].Visible = true;
 
-            dgvConvocatoria.DataSource = convocatoriaNego.MostrarConvocatorias().Where(c => c.Abierta == true).ToList();
+            dgvConvocatoria.DataSource = convocatoriaNego.MostrarConvocatorias().Where(c => c.Abierta == true).OrderBy(c => c.Nombre).ToList();
             dgvConvocatoria.DataBind();
 
             dgvConvocatoria.Columns[0].Visible = false;

@@ -43,13 +43,13 @@ namespace Sistema_CyT
         }
         private void LlenarListaFondoChoice()
         {
-            ddlFondoChoice.DataSource = fondoNego.MostrarFondos().ToList();
+            ddlFondoChoice.DataSource = fondoNego.MostrarFondos().OrderBy(c => c.Nombre).ToList();
             ddlFondoChoice.DataValueField = "idFondo";
             ddlFondoChoice.DataBind();
         }
         private void CargarListaConvocatorias()
         {
-            listaConvocatorias = convocatoriaNego.MostrarConvocatorias();
+            listaConvocatorias = convocatoriaNego.MostrarConvocatorias().ToList();
 
             ddlActualizarConvocatoria.DataSource = listaConvocatorias.ToList();
             ddlActualizarConvocatoria.DataTextField = "nombre";
@@ -58,7 +58,7 @@ namespace Sistema_CyT
         }
         private void LlenarListaFondos()
         {
-            ddlFondo.DataSource = fondoNego.MostrarFondos().ToList();
+            ddlFondo.DataSource = fondoNego.MostrarFondos().OrderBy(c => c.Nombre).ToList();
             ddlFondo.DataValueField = "idFondo";
             ddlFondo.DataBind();
         }
@@ -70,7 +70,7 @@ namespace Sistema_CyT
         }
         private void LlenarListaTipoConvocatoria()
         {
-            ddlTipoConvocatoria.DataSource = tipoConvocatoriaNego.MostrarTipoConvocatorias().ToList();
+            ddlTipoConvocatoria.DataSource = tipoConvocatoriaNego.MostrarTipoConvocatorias().OrderBy(c => c.Nombre).ToList();
             ddlTipoConvocatoria.DataValueField = "idTipoConvocatoria";
             ddlTipoConvocatoria.DataBind();
         }
@@ -468,7 +468,7 @@ namespace Sistema_CyT
         }
         private void LlenarChoiceConvocatorias(int id)
         {
-            ddlActualizarConvocatoria.DataSource = convocatoriaNego.ListarChoiceConvocatorias(id);
+            ddlActualizarConvocatoria.DataSource = convocatoriaNego.ListarChoiceConvocatorias(id).OrderBy(c => c.nombre).ToList(); ;
             ddlActualizarConvocatoria.DataTextField = "nombre";
             ddlActualizarConvocatoria.DataValueField = "idConvocatoria";
             ddlActualizarConvocatoria.DataBind();

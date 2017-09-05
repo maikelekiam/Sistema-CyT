@@ -36,7 +36,7 @@ namespace Sistema_CyT
             LlenarListaPersonas(); //SIRVE PARA EL DROP DOWN LIST
             LlenarListaEmpresas(); // SIRVE PARA EL DROP DOWN LIST
             LlenarListaTipoEstados(); // SIRVE PARA EL DROP DOWN LIST
-            LlenarListarConvocatorias(); // SIRVE PARA EL DROP DOWN LIST
+            LlenarListaConvocatorias(); // SIRVE PARA EL DROP DOWN LIST
 
             //txtFechaInicioModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
             //txtFechaFinalModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
@@ -46,9 +46,9 @@ namespace Sistema_CyT
         }
 
         //Muestra en el DROPDOWNLIST las CONVOCATORIAS
-        private void LlenarListarConvocatorias()
+        private void LlenarListaConvocatorias()
         {
-            ddlConvocatoria.DataSource = convocatoriaNego.MostrarConvocatorias().ToList();
+            ddlConvocatoria.DataSource = convocatoriaNego.MostrarConvocatorias().OrderBy(c=>c.Nombre).ToList();
             ddlConvocatoria.DataValueField = "IdConvocatoria";
             ddlConvocatoria.DataBind();
         }
@@ -72,7 +72,7 @@ namespace Sistema_CyT
         //Muestra en el DROPDOWNLIST las EMPRESAS
         private void LlenarListaEmpresas()
         {
-            ddlEmpresa.DataSource = empresaNego.MostrarEmpresas().ToList();
+            ddlEmpresa.DataSource = empresaNego.MostrarEmpresas().OrderBy(c => c.Nombre).ToList();
             ddlEmpresa.DataValueField = "nombre";
             ddlEmpresa.DataBind();
         }
@@ -80,7 +80,7 @@ namespace Sistema_CyT
         //Muestra en el DROPDOWNLIST las PERSONAS
         private void LlenarListaPersonas()
         {
-            ddlContacto.DataSource = personaNego.MostrarPersonas().ToList();
+            ddlContacto.DataSource = personaNego.MostrarPersonas().OrderBy(c => c.Nombre).ToList();
             IList<Persona> nombreCompleto = personaNego.MostrarPersonas().Select(p => new Persona() { Nombre = p.Apellido + "," + p.Nombre, IdPersona = p.IdPersona }).OrderBy(c => c.IdPersona).ToList();
             ddlContacto.DataSource = nombreCompleto;
             ddlContacto.DataValueField = "nombre";

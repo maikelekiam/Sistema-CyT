@@ -30,7 +30,7 @@ namespace Sistema_CyT
             dgvFondos.Columns[3].Visible = true;
             dgvFondos.Columns[4].Visible = true;
 
-            dgvFondos.DataSource = fondoNego.MostrarFondos().ToList();
+            dgvFondos.DataSource = fondoNego.MostrarFondos().OrderBy(c => c.Nombre).ToList();
             dgvFondos.DataBind();
 
             dgvFondos.Columns[0].Visible = false;
