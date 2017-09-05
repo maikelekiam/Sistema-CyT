@@ -24,7 +24,7 @@ namespace Sistema_CyT
         static int idEmpresaActual = 1;
         static int idLocalidadActual = 1;
         static int idPersonaActual = 1;
-        static int idTipoEstado = 1;
+        //static int idTipoEstado = 1;
 
         static List<Etapa> listaEtapasTemporal = new List<Etapa>();
 
@@ -89,11 +89,11 @@ namespace Sistema_CyT
 
         protected void btnGuardarProyecto_Click(object sender, EventArgs e)
         {
-            if (ddlEmpresa.SelectedValue != "-1" 
-                && ddlLocalidad.SelectedValue != "-1" 
+            if (
+                ddlLocalidad.SelectedValue != "-1"
                 && ddlTipoEstado.SelectedValue != "-1"
-                && ddlContacto.SelectedValue!="-1"
-                && ddlConvocatoria.SelectedValue!="-1")
+                && ddlContacto.SelectedValue != "-1"
+                && ddlConvocatoria.SelectedValue != "-1")
             {
                 GuardarProyecto();
 
@@ -155,7 +155,16 @@ namespace Sistema_CyT
             string itemNombre = separadas[1];
 
             proyecto.IdPersona = personaNego.TraerPersonaIdSegunItem(itemApellido, itemNombre);
-            proyecto.IdEmpresa = empresaNego.TraerEmpresaIdSegunItem(ddlEmpresa.SelectedItem.ToString());
+
+            if (ddlEmpresa.SelectedValue == "-1")
+            {
+                proyecto.IdEmpresa = null;
+            }
+            else
+            {
+                proyecto.IdEmpresa = empresaNego.TraerEmpresaIdSegunItem(ddlEmpresa.SelectedItem.ToString());
+            }
+
             proyecto.IdLocalidad = localidadNego.TraerLocalidadIdSegunItem(ddlLocalidad.SelectedItem.ToString());
             proyecto.IdTipoEstado = tipoEstadoNego.TraerTipoEstadoIdSegunItem(ddlTipoEstado.SelectedItem.ToString());
 

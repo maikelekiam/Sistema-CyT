@@ -100,7 +100,7 @@ namespace Sistema_CyT
         {
             listaTemporalEtapas.Clear();
             listaTemporalEtapasAgregado.Clear();
-            
+
             idProyectoActual = Convert.ToInt32(ddlActualizarProyecto.SelectedValue.ToString());
 
             Proyecto proyecto = proyectoNego.ObtenerProyecto(idProyectoActual);
@@ -119,7 +119,16 @@ namespace Sistema_CyT
             txtMontoTotal.Text = Convert.ToString(proyecto.MontoTotal);
 
             ddlContacto.Text = personaNego.TraerPersona(proyecto.IdPersona.Value);
-            ddlEmpresa.Text = empresaNego.TraerEmpresa(proyecto.IdEmpresa.Value);
+
+            if (proyecto.IdEmpresa == null)
+            {
+                ddlEmpresa.Text = "-1";
+            }
+            else
+            {
+                ddlEmpresa.Text = empresaNego.TraerEmpresa(proyecto.IdEmpresa.Value);
+            }
+
             ddlLocalidad.Text = localidadNego.TraerLocalidad(proyecto.IdLocalidad.Value);
             ddlTipoEstado.Text = tipoEstadoNego.TraerTipoEstado(proyecto.IdTipoEstado.Value);
 
@@ -268,7 +277,17 @@ namespace Sistema_CyT
             string itemNombre = separadas[1];
 
             proyecto.IdPersona = personaNego.TraerPersonaIdSegunItem(itemApellido, itemNombre);
-            proyecto.IdEmpresa = empresaNego.TraerEmpresaIdSegunItem(ddlEmpresa.SelectedItem.ToString());
+
+            if (ddlEmpresa.SelectedValue == "-1")
+            {
+                proyecto.IdEmpresa = null;
+            }
+            else
+            {
+                proyecto.IdEmpresa = empresaNego.TraerEmpresaIdSegunItem(ddlEmpresa.SelectedItem.ToString());
+            }
+
+            //proyecto.IdEmpresa = empresaNego.TraerEmpresaIdSegunItem(ddlEmpresa.SelectedItem.ToString());
             proyecto.IdLocalidad = localidadNego.TraerLocalidadIdSegunItem(ddlLocalidad.SelectedItem.ToString());
             proyecto.IdTipoEstado = tipoEstadoNego.TraerTipoEstadoIdSegunItem(ddlTipoEstado.SelectedItem.ToString());
 

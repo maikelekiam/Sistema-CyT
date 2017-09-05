@@ -98,15 +98,6 @@ namespace CapaDominio
 			}
 		}
 		
-		private IList<Auditorium> auditoria = new List<Auditorium>();
-		public virtual IList<Auditorium> Auditoria
-		{
-			get
-			{
-				return this.auditoria;
-			}
-		}
-		
 	}
 }
 #pragma warning restore 1591

@@ -22,34 +22,8 @@ using CapaDominio;
 
 namespace CapaDominio	
 {
-	public partial class Auditorium
+	public partial class TipoAuditorium
 	{
-		private int idAuditoria;
-		public virtual int IdAuditoria
-		{
-			get
-			{
-				return this.idAuditoria;
-			}
-			set
-			{
-				this.idAuditoria = value;
-			}
-		}
-		
-		private int idProyecto;
-		public virtual int IdProyecto
-		{
-			get
-			{
-				return this.idProyecto;
-			}
-			set
-			{
-				this.idProyecto = value;
-			}
-		}
-		
 		private int idTipoAuditoria;
 		public virtual int IdTipoAuditoria
 		{
@@ -63,55 +37,25 @@ namespace CapaDominio
 			}
 		}
 		
-		private DateTime fecha;
-		public virtual DateTime Fecha
+		private string nombre;
+		public virtual string Nombre
 		{
 			get
 			{
-				return this.fecha;
+				return this.nombre;
 			}
 			set
 			{
-				this.fecha = value;
+				this.nombre = value;
 			}
 		}
 		
-		private string detalle;
-		public virtual string Detalle
+		private IList<Auditorium> auditoria = new List<Auditorium>();
+		public virtual IList<Auditorium> Auditoria
 		{
 			get
 			{
-				return this.detalle;
-			}
-			set
-			{
-				this.detalle = value;
-			}
-		}
-		
-		private Proyecto proyecto;
-		public virtual Proyecto Proyecto
-		{
-			get
-			{
-				return this.proyecto;
-			}
-			set
-			{
-				this.proyecto = value;
-			}
-		}
-		
-		private TipoAuditorium tipoAuditorium;
-		public virtual TipoAuditorium TipoAuditorium
-		{
-			get
-			{
-				return this.tipoAuditorium;
-			}
-			set
-			{
-				this.tipoAuditorium = value;
+				return this.auditoria;
 			}
 		}
 		

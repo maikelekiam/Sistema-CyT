@@ -306,9 +306,6 @@
         <orm:field name="proyectos" property="Proyectos" behavior="readwrite" uniqueId="2cce58d9-1996-4782-a956-0d020016bf3c" type="CapaDominio.Proyecto">
           <orm:collection element-class="CapaDominio.Proyecto" inverse-field="persona" order-by="" uniqueId="037b8bdf-1765-4b8a-a3fa-6c7b16c33639" />
         </orm:field>
-        <orm:field name="auditoria" property="Auditoria" behavior="readwrite" uniqueId="4b4e9234-5098-41ce-a6b5-c30f26dc3bc7" type="CapaDominio.Auditorium">
-          <orm:collection element-class="CapaDominio.Auditorium" inverse-field="persona" order-by="" uniqueId="e474a4e1-c7ef-4302-abba-2e09a06fd884" />
-        </orm:field>
       </orm:class>
       <orm:class name="Localidad" uniqueId="d7d57f1a-a764-4d3e-ae3d-98f833826098">
         <orm:table name="Localidad" />
@@ -409,14 +406,11 @@
         <orm:field name="idTipoAuditoria" property="IdTipoAuditoria" behavior="readwrite" uniqueId="12dce3d5-dfc1-468f-b65d-e3ebbbe251bd" type="System.Int32">
           <orm:column name="idTipoAuditoria" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
         </orm:field>
-        <orm:field name="fecha" property="Fecha" behavior="readwrite" uniqueId="6efb3c0f-e072-4d61-bdfa-46a608e24195" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
-          <orm:column name="fecha" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
-        </orm:field>
-        <orm:field name="idPersona" property="IdPersona" behavior="readwrite" uniqueId="3f5b5330-4422-41e2-9855-e06cbf8ccbf5" type="System.Int32">
-          <orm:column name="idPersona" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        <orm:field name="fecha" property="Fecha" behavior="readwrite" uniqueId="6efb3c0f-e072-4d61-bdfa-46a608e24195" type="System.DateTime">
+          <orm:column name="fecha" sql-type="date" nullable="false" length="0" scale="0" ado-type="Date" />
         </orm:field>
         <orm:field name="detalle" property="Detalle" behavior="readwrite" uniqueId="c56305d2-8004-45e7-b75b-788a2065a294" type="System.String">
-          <orm:column name="detalle" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+          <orm:column name="detalle" sql-type="varchar(max)" nullable="false" length="0" scale="0" ado-type="StringInfiniteLength" />
         </orm:field>
         <orm:field name="proyecto" property="Proyecto" behavior="readwrite" uniqueId="621745dd-d188-4a09-b59e-a32c8ad567ee" type="CapaDominio.Proyecto">
           <orm:reference uniqueId="368d6ead-45de-47e3-9208-56b218106456" association-name="AuditoriumHasProyecto">
@@ -424,10 +418,10 @@
             <orm:constraint name="FK_Auditoria_Proyecto" delete-action="dbdefaultrule" destination-table="Proyecto" />
           </orm:reference>
         </orm:field>
-        <orm:field name="persona" property="Persona" behavior="readwrite" uniqueId="87a21fa7-477b-46f9-9083-8f8b0d5a22e0" type="CapaDominio.Persona">
-          <orm:reference uniqueId="e474a4e1-c7ef-4302-abba-2e09a06fd884" association-name="AuditoriumHasPersona">
-            <orm:sharedfield name="idPersona" target-class="CapaDominio.Persona" target-field="idPersona" />
-            <orm:constraint name="FK_Auditoria_Persona" delete-action="dbdefaultrule" destination-table="Persona" />
+        <orm:field name="tipoAuditorium" property="TipoAuditorium" behavior="readwrite" uniqueId="621bd280-fd67-4771-bd7d-ca73787e36ab" type="CapaDominio.TipoAuditorium">
+          <orm:reference uniqueId="a6094826-54e7-4f6e-b8ba-9f404a31f403" association-name="AuditoriumHasTipoAuditorium">
+            <orm:sharedfield name="idTipoAuditoria" target-class="CapaDominio.TipoAuditorium" target-field="idTipoAuditoria" />
+            <orm:constraint name="FK_Auditoria_TipoAuditoria" delete-action="dbdefaultrule" destination-table="TipoAuditoria" />
           </orm:reference>
         </orm:field>
       </orm:class>
@@ -532,6 +526,25 @@
         </orm:field>
         <orm:field name="proyectos" property="Proyectos" behavior="readwrite" uniqueId="5c5c9c53-9dac-4d3c-92e5-dbad72923d32" type="CapaDominio.Proyecto">
           <orm:collection element-class="CapaDominio.Proyecto" inverse-field="tipoEstado" order-by="" uniqueId="64ee3dcf-f9b2-4740-91d6-458b82d55bb6" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="TipoAuditorium" uniqueId="70510c4c-2147-4602-b20f-38ca4e9a45a9">
+        <orm:table name="TipoAuditoria" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="IdTipoAuditoria" />
+          </orm:key-generator>
+          <orm:single-field field-name="idTipoAuditoria" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="idTipoAuditoria" property="IdTipoAuditoria" behavior="readwrite" uniqueId="0207ac4a-706b-43d1-8569-b0635d160394" type="System.Int32">
+          <orm:column name="idTipoAuditoria" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="nombre" property="Nombre" behavior="readwrite" uniqueId="98dc1fb2-b1de-4906-a0d2-f1ede32c345c" type="System.String">
+          <orm:column name="nombre" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="auditoria" property="Auditoria" behavior="readwrite" uniqueId="2ae39213-c970-430d-a1bd-4c6968f660d7" type="CapaDominio.Auditorium">
+          <orm:collection element-class="CapaDominio.Auditorium" inverse-field="tipoAuditorium" order-by="" uniqueId="a6094826-54e7-4f6e-b8ba-9f404a31f403" />
         </orm:field>
       </orm:class>
     </orm:namespace>
@@ -658,14 +671,13 @@
         <orm:column name="idAuditoria" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="idProyecto" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
         <orm:column name="idTipoAuditoria" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
-        <orm:column name="fecha" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
-        <orm:column name="idPersona" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
-        <orm:column name="detalle" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="fecha" sql-type="date" nullable="false" length="0" scale="0" ado-type="Date" />
+        <orm:column name="detalle" sql-type="varchar(max)" nullable="false" length="0" scale="0" ado-type="StringInfiniteLength" />
         <orm:constraint name="FK_Auditoria_Proyecto" delete-action="dbdefaultrule" destination-table="Proyecto">
           <orm:column name="idProyecto" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
         </orm:constraint>
-        <orm:constraint name="FK_Auditoria_Persona" delete-action="dbdefaultrule" destination-table="Persona">
-          <orm:column name="idPersona" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        <orm:constraint name="FK_Auditoria_TipoAuditoria" delete-action="dbdefaultrule" destination-table="TipoAuditoria">
+          <orm:column name="idTipoAuditoria" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
         </orm:constraint>
       </orm:table>
       <orm:table name="Actuacion">
@@ -696,6 +708,10 @@
       <orm:table name="TipoEstado">
         <orm:column name="idTipoEstado" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+      </orm:table>
+      <orm:table name="TipoAuditoria">
+        <orm:column name="idTipoAuditoria" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="nombre" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
       </orm:table>
       <orm:procedure name="fn_diagramobjects" is-function="true" return-type="int">
         <orm:result-sets />
@@ -1019,9 +1035,6 @@
         <classHasNavigationalProperties Id="80454e5e-47fd-44e7-8940-b39540b158a8">
           <NavigationalProperty Id="2cce58d9-1996-4782-a956-0d020016bf3c" name="Proyectos" type="IList&lt;Proyecto&gt;" label="Proyectos : IList&lt;Proyecto&gt;" nullable="true" kind="Persistent" fieldName="proyectos" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="d1815540-f900-4e51-a3e3-d7cb19bb1710">
-          <NavigationalProperty Id="4b4e9234-5098-41ce-a6b5-c30f26dc3bc7" name="Auditoria" type="IList&lt;Auditorium&gt;" label="Auditoria : IList&lt;Auditorium&gt;" nullable="true" kind="Persistent" fieldName="auditoria" isDependent="false" isManaged="false" />
-        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="d7d57f1a-a764-4d3e-ae3d-98f833826098" name="Localidad" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdLocalidad">
@@ -1076,8 +1089,7 @@
     <DomainClass Id="a87e9f97-f32d-439b-bb97-98921601f1c8" name="Auditorium" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdAuditoria">
       <Property Id="93922952-f629-48bc-93cb-ada0b1233782" name="IdAuditoria" type="Int32" label="IdAuditoria : Int32" kind="Persistent" identity="true" fieldName="idAuditoria" />
       <Property Id="c56305d2-8004-45e7-b75b-788a2065a294" name="Detalle" label="Detalle : String" kind="Persistent" fieldName="detalle" />
-      <Property Id="6efb3c0f-e072-4d61-bdfa-46a608e24195" name="Fecha" type="DateTime" label="Fecha : DateTime" nullable="true" kind="Persistent" fieldName="fecha" />
-      <Property Id="3f5b5330-4422-41e2-9855-e06cbf8ccbf5" name="IdPersona" type="Int32" label="IdPersona : Int32" kind="Persistent" fieldName="idPersona" />
+      <Property Id="6efb3c0f-e072-4d61-bdfa-46a608e24195" name="Fecha" type="DateTime" label="Fecha : DateTime" kind="Persistent" fieldName="fecha" />
       <Property Id="47907b6d-72b0-4440-b936-4c7662656efb" name="IdProyecto" type="Int32" label="IdProyecto : Int32" kind="Persistent" fieldName="idProyecto" />
       <Property Id="12dce3d5-dfc1-468f-b65d-e3ebbbe251bd" name="IdTipoAuditoria" type="Int32" label="IdTipoAuditoria : Int32" kind="Persistent" fieldName="idTipoAuditoria" />
       <AssociationTargets>
@@ -1094,16 +1106,16 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
-        <Association Id="e474a4e1-c7ef-4302-abba-2e09a06fd884" SourceMultiplicity="One" name="AuditoriumHasPersona">
-          <DomainClassMoniker name="/ModeloDeDominio/Persona" />
+        <Association Id="a6094826-54e7-4f6e-b8ba-9f404a31f403" SourceMultiplicity="One" name="AuditoriumHasTipoAuditorium">
+          <DomainClassMoniker name="/ModeloDeDominio/TipoAuditorium" />
           <targetNavigationalProperty>
-            <associationDefinesTargetProperty Id="0d7375a5-4c71-4957-8550-defe49083cd8">
-              <NavigationalPropertyMoniker name="/ModeloDeDominio/Persona/Auditoria" />
+            <associationDefinesTargetProperty Id="f520cf00-8449-42fe-b81c-6dfc6287f14b">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/TipoAuditorium/Auditoria" />
             </associationDefinesTargetProperty>
           </targetNavigationalProperty>
           <sourceNavigationalProperty>
-            <associationDefinesSourceProperty Id="357c4d25-534e-41a1-8086-74325ca07fc3">
-              <NavigationalPropertyMoniker name="/ModeloDeDominio/Auditorium/Persona" />
+            <associationDefinesSourceProperty Id="3614b90c-93be-469d-86e4-96d65366cda8">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Auditorium/TipoAuditorium" />
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
@@ -1112,8 +1124,8 @@
         <classHasNavigationalProperties Id="eb2bedf9-bb75-457f-a293-7edb2559951c">
           <NavigationalProperty Id="621745dd-d188-4a09-b59e-a32c8ad567ee" name="Proyecto" type="Proyecto" label="Proyecto : Proyecto" nullable="true" kind="Persistent" fieldName="proyecto" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
-        <classHasNavigationalProperties Id="4ebdc075-8eab-48d2-8812-53aa61f67bcc">
-          <NavigationalProperty Id="87a21fa7-477b-46f9-9083-8f8b0d5a22e0" name="Persona" type="Persona" label="Persona : Persona" nullable="true" kind="Persistent" fieldName="persona" isDependent="false" isManaged="false" />
+        <classHasNavigationalProperties Id="7460d6e1-3a42-4f33-a54b-e971b3e8abcd">
+          <NavigationalProperty Id="621bd280-fd67-4771-bd7d-ca73787e36ab" name="TipoAuditorium" type="TipoAuditorium" label="TipoAuditorium : TipoAuditorium" nullable="true" kind="Persistent" fieldName="tipoAuditorium" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -1186,6 +1198,15 @@
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
+    <DomainClass Id="70510c4c-2147-4602-b20f-38ca4e9a45a9" name="TipoAuditorium" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdTipoAuditoria">
+      <Property Id="0207ac4a-706b-43d1-8569-b0635d160394" name="IdTipoAuditoria" type="Int32" label="IdTipoAuditoria : Int32" kind="Persistent" identity="true" fieldName="idTipoAuditoria" />
+      <Property Id="98dc1fb2-b1de-4906-a0d2-f1ede32c345c" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="8fa39802-f8b7-44ae-8ba2-4cc101413d4c">
+          <NavigationalProperty Id="2ae39213-c970-430d-a1bd-4c6968f660d7" name="Auditoria" type="IList&lt;Auditorium&gt;" label="Auditoria : IList&lt;Auditorium&gt;" nullable="true" kind="Persistent" fieldName="auditoria" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
   </Types>
   <domainContext>
     <domainModelHasDomainContext Id="70e238b7-4554-47d3-9cc0-5f762b72c806">
@@ -1206,6 +1227,7 @@
         <entitySetProperty name="Organismos" namespace="CapaDominio" type="Organismo" label="Organismos : IQueryable&lt;CapaDominio.Organismo&gt;" />
         <entitySetProperty name="Usuarios" namespace="CapaDominio" type="Usuario" label="Usuarios : IQueryable&lt;CapaDominio.Usuario&gt;" />
         <entitySetProperty name="TipoEstados" namespace="CapaDominio" type="TipoEstado" label="TipoEstados : IQueryable&lt;CapaDominio.TipoEstado&gt;" />
+        <entitySetProperty name="TipoAuditoria" namespace="CapaDominio" type="TipoAuditorium" label="TipoAuditoria : IQueryable&lt;CapaDominio.TipoAuditorium&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>

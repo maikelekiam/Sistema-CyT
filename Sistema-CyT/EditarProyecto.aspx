@@ -244,14 +244,12 @@
                     </div>
                 </div>
             </div>
-            <asp:Panel ID="PanelMostrarEtapas" CssClass="panel" runat="server">
-                <div class="form-group">
-                    <asp:Label ID="lblEtapa" runat="server" Text="ETAPAS" CssClass="col-md-2 control-label"> </asp:Label>
-                    <div class="col-md-4">
-                        <button id="btnAgregarEtapa" type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalEtapa">Agregar Etapa</button>
-                    </div>
+            <div class="form-group">
+                <asp:Label ID="lblEtapa" runat="server" Text="ETAPAS" CssClass="col-md-2 control-label"> </asp:Label>
+                <div class="col-md-4">
+                    <button id="btnAgregarEtapa" type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalEtapa">Agregar Etapa</button>
                 </div>
-            </asp:Panel>
+            </div>
             <!-- MODAL AGREGAR ETAPA NUEVA -->
             <div class="modal fade" id="modalEtapa" tabindex="-1" role="dialog" aria-labelledby="modalLabelEtapa" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
