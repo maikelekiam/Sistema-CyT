@@ -47,7 +47,7 @@ namespace Sistema_CyT
 
         private void CargarListaProyectos()
         {
-            listaProyectos = proyectoNego.MostrarProyectos();
+            listaProyectos = proyectoNego.MostrarProyectos().OrderBy(c=>c.Nombre).ToList();
 
             ddlActualizarProyecto.DataSource = listaProyectos.ToList();
             ddlActualizarProyecto.DataTextField = "nombre";

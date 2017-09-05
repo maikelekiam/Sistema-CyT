@@ -72,7 +72,7 @@ namespace Sistema_CyT
         //Muestra en el DROPDOWNLIST las EMPRESAS
         private void LlenarListaEmpresas()
         {
-            ddlEmpresa.DataSource = empresaNego.MostrarEmpresas().OrderBy(c => c.Nombre).ToList();
+            ddlEmpresa.DataSource = empresaNego.MostrarEmpresas().ToList();
             ddlEmpresa.DataValueField = "nombre";
             ddlEmpresa.DataBind();
         }
