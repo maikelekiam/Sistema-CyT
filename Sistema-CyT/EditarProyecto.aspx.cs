@@ -15,6 +15,7 @@ namespace Sistema_CyT
         LocalidadNego localidadNego = new LocalidadNego();
         PersonaNego personaNego = new PersonaNego();
         EmpresaNego empresaNego = new EmpresaNego();
+        FondoNego fondoNego = new FondoNego();
         ConvocatoriaNego convocatoriaNego = new ConvocatoriaNego();
         EtapaNego etapaNego = new EtapaNego();
         ProyectoNego proyectoNego = new ProyectoNego();
@@ -43,6 +44,13 @@ namespace Sistema_CyT
             MostrarConvocatoria(); // SIRVE PARA EL DROP DOWN LIST
             LlenarListaTipoEstados(); // SIRVE PARA EL DROP DOWN LIST
             LimpiarFormulario();
+            LlenarListaFondoChoice();
+        }
+        private void LlenarListaFondoChoice()
+        {
+            ddlFondoChoice.DataSource = fondoNego.MostrarFondos().ToList();
+            ddlFondoChoice.DataValueField = "idFondo";
+            ddlFondoChoice.DataBind();
         }
 
         private void CargarListaProyectos()
@@ -327,6 +335,41 @@ namespace Sistema_CyT
             ddlEmpresa.SelectedIndex = 0;
             ddlLocalidad.SelectedIndex = 0;
             ddlTipoEstado.SelectedIndex = 0;
+        }
+
+        protected void ddlFondoChoice_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlFondoChoice.SelectedValue != "-1")
+            {
+                LlenarChoiceConvocatorias(Convert.ToInt32(ddlFondoChoice.SelectedValue));
+            }
+            else
+            {
+                //Response.Redirect("ListarProyectos.aspx");
+            }
+        }
+
+        private void LlenarChoiceConvocatorias(int id)
+        {
+            ddlConvocatoriaChoice.DataSource = convocatoriaNego.ListarChoiceConvocatorias(id);
+            ddlConvocatoriaChoice.DataTextField = "nombre";
+            ddlConvocatoriaChoice.DataValueField = "idConvocatoria";
+            ddlConvocatoriaChoice.DataBind();
+
+            //if (ddlConvocatoria.SelectedValue != "-1" && ddlConvocatoria.SelectedValue != "")
+            //{
+            //    idConvocatoriaSeleccionada = Convert.ToInt32(ddlConvocatoria.SelectedValue.ToString());
+
+            //    dgvProyectos.DataSource = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).ToList();
+            //    dgvProyectos.DataBind();
+            //    //dgvProyectos.Columns[0].Visible = false;
+            //}
+            //else
+            //{
+            //    dgvProyectos.DataSource = listaProyectosFiltrados.ToList();
+            //    dgvProyectos.DataBind();
+            //    //dgvProyectos.Columns[0].Visible = false;
+            //}
         }
     }
 }

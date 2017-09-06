@@ -12,13 +12,13 @@ namespace Sistema_CyT
 {
     public partial class ListarProyectos : System.Web.UI.Page
     {
-        private ProyectoNego proyectoNego = new ProyectoNego();
-        private ConvocatoriaNego convocatoriaNego = new ConvocatoriaNego();
-        private TipoEstadoNego tipoEstadoNego = new TipoEstadoNego();
-        private FondoNego fondoNego = new FondoNego();
+        ProyectoNego proyectoNego = new ProyectoNego();
+        ConvocatoriaNego convocatoriaNego = new ConvocatoriaNego();
+        TipoEstadoNego tipoEstadoNego = new TipoEstadoNego();
+        FondoNego fondoNego = new FondoNego();
 
-        private List<pr02ResultSet0> listaProyectosFiltrados = new List<pr02ResultSet0>();
-        private List<pr02ResultSet0> listaChoiceProyectos = new List<pr02ResultSet0>();
+        List<pr02ResultSet0> listaProyectosFiltrados = new List<pr02ResultSet0>();
+        List<pr02ResultSet0> listaChoiceProyectos = new List<pr02ResultSet0>();
 
         public static int idProyectoSeleccionado = 1;
         public static int idConvocatoriaSeleccionada = 1;

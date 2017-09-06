@@ -7,6 +7,48 @@
                 <h3>Formulario EDITAR Proyecto</h3>
             </div>
 
+            <!-- LISTA CON LOS FONDOS EN LA BASE DE DATOS -->
+            <div class="form-group">
+                <br />
+                <asp:Label ID="lblFondoChoice" Font-Bold="true" runat="server" Text="&lt Filtro Fondo &gt" CssClass="col-md-2 control-label"> </asp:Label>
+                <div class="col-md-8">
+                    <asp:DropDownList ID="ddlFondoChoice" runat="server"
+                        ForeColor="#000066"
+                        Font-Bold="true"
+                        CssClass="selectpicker form-control show-tick"
+                        data-live-search="true"
+                        DataTextField="nombre"
+                        AutoPostBack="True"
+                        AppendDataBoundItems="true"
+                        OnSelectedIndexChanged="ddlFondoChoice_SelectedIndexChanged">
+                        <asp:ListItem Value="-1">&lt;Seleccione Fondo&gt;</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+            </div>
+            <div class="form-group">
+                <asp:Label ID="Label3" Font-Bold="true" runat="server" Text="&lt Filtro Convocatoria &gt" CssClass="col-md-2 control-label"></asp:Label>
+                <div class="col-md-8">
+                    <asp:DropDownList ID="ddlConvocatoriaChoice" runat="server"
+                        BackColor="WhiteSmoke"
+                        ForeColor="#000066"
+                        Width="100%"
+                        Font-Bold="false"
+                        CssClass="selectpicker form-control show-tick"
+                        data-live-search="true"
+                        DataTextField="nombre"
+                        AutoPostBack="true"
+                        AppendDataBoundItems="false"
+                        >
+                        <asp:ListItem Value="-1">&lt;Seleccione Convocatoria&gt;</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+            </div>
+
+
+
+
+
+
             <!-- LISTA CON LOS PROYECTOS EN LA BASE DE DATOS -->
             <div class="form-group">
                 <br />
