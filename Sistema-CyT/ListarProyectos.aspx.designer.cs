@@ -58,6 +58,15 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.DropDownList ddlConvocatoria;
         
         /// <summary>
+        /// btnTodos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnTodos;
+        
+        /// <summary>
         /// lblEstado control.
         /// </summary>
         /// <remarks>
@@ -83,15 +92,6 @@ namespace Sistema_CyT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnFiltrar;
-        
-        /// <summary>
-        /// btnTodos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnTodos;
         
         /// <summary>
         /// dgvProyectos control.

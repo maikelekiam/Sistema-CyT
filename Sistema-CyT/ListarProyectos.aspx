@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="container">
-        <asp:Panel ID="PanelSuperior" CssClass="panel panel-warning" runat="server">
+        <asp:Panel ID="PanelSuperior" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
                 <h3>Lista de PROYECTOS</h3>
             </div>
@@ -25,6 +25,7 @@
                     </asp:DropDownList>
                 </div>
             </div>
+            <!-- LISTA CON LAS CONVOCATORIAS EN LA BASE DE DATOS -->
             <div class="form-group">
                 <asp:Label ID="lblConvocatoria" Font-Bold="true" runat="server" Text="&lt Filtro Convocatoria &gt" CssClass="col-md-2 control-label"></asp:Label>
                 <div class="col-md-8">
@@ -42,6 +43,7 @@
                         <asp:ListItem Value="-1">&lt;Seleccione Convocatoria&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
+                <asp:Button runat="server" ID="btnTodos" Text="Filtrar TODOS" CssClass="btn btn-success" OnClick="btnTodos_Click" />
             </div>
             <div class="form-group">
                 <asp:Label ID="lblEstado" runat="server" Font-Bold="true" Text="&lt Filtro Estado &gt" CssClass="col-md-2 control-label"></asp:Label>
@@ -58,7 +60,7 @@
                     </asp:DropDownList>
                 </div>
                 <asp:Button runat="server" ID="btnFiltrar" Text="Filtrar" CssClass="btn btn-success" OnClick="btnFiltrar_Click" />
-                <asp:Button runat="server" ID="btnTodos" Text="TODOS" CssClass="btn btn-primary" OnClick="btnTodos_Click" />
+                <%--<asp:Button runat="server" ID="btn2" Text="TODOS" CssClass="btn btn-primary" OnClick="btnTodos_Click" />--%>
             </div>
             <div class="form-group">
                 <br />
@@ -68,7 +70,7 @@
                         GridLines="Both"
                         OnSelectedIndexChanged="dgvProyectos_SelectedIndexChanged">
                         <Columns>
-<%--                            <asp:BoundField HeaderText="ID" DataField="idProyecto" ItemStyle-HorizontalAlign="Left" />--%>
+                            <%--                            <asp:BoundField HeaderText="ID" DataField="idProyecto" ItemStyle-HorizontalAlign="Left" />--%>
                             <asp:BoundField HeaderText="Expediente" DataField="numeroExpediente" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="150" />
                             <asp:BoundField HeaderText="Nombre del Proyecto" DataField="nombre" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="400" />
                             <asp:BoundField HeaderText="Localidad" DataField="localidad" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="200" />

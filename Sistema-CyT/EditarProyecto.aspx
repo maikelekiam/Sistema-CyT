@@ -2,15 +2,22 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
-        <asp:Panel ID="PanelSuperior" CssClass="panel panel-info" runat="server">
+        <asp:Panel ID="PanelSuperior" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
                 <h3>Formulario EDITAR Proyecto</h3>
             </div>
-
             <!-- LISTA CON LOS FONDOS EN LA BASE DE DATOS -->
             <div class="form-group">
                 <br />
-                <asp:Label ID="lblFondoChoice" Font-Bold="true" runat="server" Text="&lt Filtro Fondo &gt" CssClass="col-md-2 control-label"> </asp:Label>
+
+
+                <div class="col-md-2">
+                    <asp:TextBox ID="txtFiltroFondo" runat="server" CssClass="form-control AlineadoDerecha" Font-Bold="true" ReadOnly="true"        >< Filtro Fondo ></asp:TextBox>
+                </div>
+
+
+
+                <%--<asp:Label ID="lblFondoChoice" Font-Bold="true" Height="34" BackColor="LightGray" BorderColor="Brown" runat="server" Text="&lt Filtro Fondo &gt" CssClass="col-md-2 control-label"> </asp:Label>--%>
                 <div class="col-md-8">
                     <asp:DropDownList ID="ddlFondoChoice" runat="server"
                         ForeColor="#000066"
@@ -25,8 +32,14 @@
                     </asp:DropDownList>
                 </div>
             </div>
+            <!-- LISTA CON LAS CONVOCATORIAS EN LA BASE DE DATOS -->
             <div class="form-group">
-                <asp:Label ID="Label3" Font-Bold="true" runat="server" Text="&lt Filtro Convocatoria &gt" CssClass="col-md-2 control-label"></asp:Label>
+
+                <div class="col-md-2">
+                    <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control AlineadoDerecha" Font-Bold="true" ReadOnly="true"        >< Filtro Convocatoria ></asp:TextBox>
+                </div>
+
+                <%--<asp:Label ID="lblConvocatoriaChoice" Font-Bold="true" runat="server" Text="&lt Filtro Convocatoria &gt" CssClass="col-md-2 control-label"></asp:Label>--%>
                 <div class="col-md-8">
                     <asp:DropDownList ID="ddlConvocatoriaChoice" runat="server"
                         BackColor="WhiteSmoke"
@@ -38,42 +51,41 @@
                         DataTextField="nombre"
                         AutoPostBack="true"
                         AppendDataBoundItems="false"
-                        >
+                        OnSelectedIndexChanged="ddlConvocatoriaChoice_SelectedIndexChanged">
                         <asp:ListItem Value="-1">&lt;Seleccione Convocatoria&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
             </div>
-
-
-
-
-
-
             <!-- LISTA CON LOS PROYECTOS EN LA BASE DE DATOS -->
             <div class="form-group">
-                <br />
-                <asp:Label ID="lblProyectos" Font-Bold="true" runat="server" Text="&lt Seleccione Proyecto &gt" CssClass="col-md-2 control-label"> </asp:Label>
+                <div class="col-md-2">
+                    <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control AlineadoDerecha" Font-Bold="true" ReadOnly="true"        >< Filtro Convocatoria ></asp:TextBox>
+                </div>
+
+                <%--<asp:Label ID="lblProyectos" Font-Bold="true" runat="server" Text="&lt Seleccione Proyecto &gt" CssClass="col-md-2 control-label"> </asp:Label>--%>
                 <div class="col-md-8">
-                    <asp:DropDownList ID="ddlActualizarProyecto" runat="server"
+                    <asp:DropDownList ID="ddlProyectoChoice" runat="server"
                         ForeColor="#000066"
                         Font-Bold="true"
                         CssClass="selectpicker form-control show-tick"
                         data-live-search="true"
                         DataTextField="nombre"
                         AutoPostBack="True"
-                        AppendDataBoundItems="true"
-                        OnSelectedIndexChanged="ddlActualizarProyecto_SelectedIndexChanged">
+                        AppendDataBoundItems="false"
+                        OnSelectedIndexChanged="ddlProyectoChoice_SelectedIndexChanged">
                         <asp:ListItem Value="-1">&lt;Seleccione Proyecto&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
             </div>
+        </asp:Panel>
 
+        <asp:Panel ID="PanelInferior" CssClass="panel panel-info" runat="server">
             <!--NOMBRE-->
             <br />
             <div class="form-group">
                 <asp:Label ID="lblNombre" runat="server" Text="NOMBRE" CssClass="col-md-2 col-xs-12 control-label"></asp:Label>
                 <div class="col-md-8 col-xs-12">
-                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
+                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2" BackColor="WhiteSmoke" Font-Bold="true"></asp:TextBox>
                 </div>
             </div>
             <!--EXPEDIENTE-->

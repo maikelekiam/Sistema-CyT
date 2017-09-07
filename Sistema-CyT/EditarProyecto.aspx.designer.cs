@@ -22,13 +22,13 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.Panel PanelSuperior;
         
         /// <summary>
-        /// lblFondoChoice control.
+        /// txtFiltroFondo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFondoChoice;
+        protected global::System.Web.UI.WebControls.TextBox txtFiltroFondo;
         
         /// <summary>
         /// ddlFondoChoice control.
@@ -40,13 +40,13 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.DropDownList ddlFondoChoice;
         
         /// <summary>
-        /// Label3 control.
+        /// TextBox1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
         
         /// <summary>
         /// ddlConvocatoriaChoice control.
@@ -58,22 +58,31 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.DropDownList ddlConvocatoriaChoice;
         
         /// <summary>
-        /// lblProyectos control.
+        /// TextBox2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblProyectos;
+        protected global::System.Web.UI.WebControls.TextBox TextBox2;
         
         /// <summary>
-        /// ddlActualizarProyecto control.
+        /// ddlProyectoChoice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlActualizarProyecto;
+        protected global::System.Web.UI.WebControls.DropDownList ddlProyectoChoice;
+        
+        /// <summary>
+        /// PanelInferior control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelInferior;
         
         /// <summary>
         /// lblNombre control.

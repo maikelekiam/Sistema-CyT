@@ -163,6 +163,7 @@
     <Content Include="css\bootstrap-datepicker.css" />
     <Content Include="css\bootstrap-select.css" />
     <Content Include="css\bootstrap.css" />
+    <Content Include="css\estilo-textbox.css" />
     <Content Include="css\panel-collapsible.css" />
     <Content Include="EditarConvocatoria.aspx" />
     <Content Include="EditarFondo.aspx" />
