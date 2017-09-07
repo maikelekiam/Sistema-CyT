@@ -40,13 +40,13 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.DropDownList ddlFondoChoice;
         
         /// <summary>
-        /// TextBox1 control.
+        /// txtFiltroConvocatoria control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtFiltroConvocatoria;
         
         /// <summary>
         /// ddlConvocatoriaChoice control.
@@ -58,13 +58,13 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.DropDownList ddlConvocatoriaChoice;
         
         /// <summary>
-        /// TextBox2 control.
+        /// txtFiltroProyecto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtFiltroProyecto;
         
         /// <summary>
         /// ddlProyectoChoice control.

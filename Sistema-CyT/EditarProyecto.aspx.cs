@@ -34,14 +34,12 @@ namespace Sistema_CyT
         public static int idLocalidadActual = 0;
         public static int idPersonaActual = 0;
         public static int idConvocatoriaSeleccionada = 1;
-
-
+        public static int idFondoSeleccionado = 1;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack) return;
-            
-            //CargarListaProyectos();
+
             MostrarLocalidad(); //SIRVE PARA EL DROP DOWN LIST
             MostrarPersona(); //SIRVE PARA EL DROP DOWN LIST
             MostrarEmpresa(); // SIRVE PARA EL DROP DOWN LIST
@@ -55,16 +53,6 @@ namespace Sistema_CyT
             ddlFondoChoice.DataSource = fondoNego.MostrarFondos().ToList();
             ddlFondoChoice.DataValueField = "idFondo";
             ddlFondoChoice.DataBind();
-        }
-
-        private void CargarListaProyectos()
-        {
-            listaProyectos = proyectoNego.MostrarProyectos().OrderBy(c => c.Nombre).ToList();
-
-            ddlProyectoChoice.DataSource = listaProyectos.ToList();
-            ddlProyectoChoice.DataTextField = "nombre";
-            ddlProyectoChoice.DataValueField = "idProyecto";
-            ddlProyectoChoice.DataBind();
         }
 
         //Muestra en el DROPDOWNLIST los Tipos de Estado
@@ -108,6 +96,7 @@ namespace Sistema_CyT
             ddlContacto.DataValueField = "nombre";
             ddlContacto.DataBind();
         }
+
         protected void ddlProyectoChoice_SelectedIndexChanged(object sender, EventArgs e)
         {
             listaTemporalEtapas.Clear();
@@ -325,7 +314,7 @@ namespace Sistema_CyT
 
         protected void dgvEtapas_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
-
+            //falta implementar...
         }
         private void LimpiarFormulario()
         {
@@ -343,9 +332,13 @@ namespace Sistema_CyT
 
         protected void ddlFondoChoice_SelectedIndexChanged(object sender, EventArgs e)
         {
+            LimpiarFormulario();
+            
             if (ddlFondoChoice.SelectedValue != "-1")
             {
-                LlenarChoiceConvocatorias(Convert.ToInt32(ddlFondoChoice.SelectedValue));
+                idFondoSeleccionado = Convert.ToInt32(ddlFondoChoice.SelectedValue);
+
+                LlenarChoiceConvocatorias(idFondoSeleccionado);
             }
             else
             {
@@ -360,21 +353,96 @@ namespace Sistema_CyT
             ddlConvocatoriaChoice.DataValueField = "idConvocatoria";
             ddlConvocatoriaChoice.DataBind();
 
-            if (ddlConvocatoriaChoice.SelectedValue != "-1" && ddlConvocatoriaChoice.SelectedValue != "")
+            if (ddlConvocatoriaChoice.SelectedValue != "")
             {
-                idConvocatoriaSeleccionada = Convert.ToInt32(ddlConvocatoriaChoice.SelectedValue.ToString());
+                idConvocatoriaSeleccionada = Convert.ToInt32(ddlConvocatoriaChoice.SelectedValue);
 
                 ddlProyectoChoice.DataSource = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).ToList();
                 ddlProyectoChoice.DataTextField = "nombre";
                 ddlProyectoChoice.DataValueField = "idProyecto";
                 ddlProyectoChoice.DataBind();
 
-
                 //aca habria que cargar el 1er proyecto filtrado automaticamente
                 listaTemporalEtapas.Clear();
                 listaTemporalEtapasAgregado.Clear();
 
-                idProyectoActual = Convert.ToInt32(ddlProyectoChoice.SelectedValue.ToString());
+                //1ro hay que averiguar si existe al menos 1 proyecto o la lista viene vacia
+                if (ddlProyectoChoice.SelectedValue != "")
+                {
+                    idProyectoActual = Convert.ToInt32(ddlProyectoChoice.SelectedValue);
+
+                    Proyecto proyecto = proyectoNego.ObtenerProyecto(idProyectoActual);
+
+                    if (proyecto == null)
+                    {
+                        LimpiarFormulario();
+                        return;
+                    }
+
+                    txtNombre.Text = proyecto.Nombre.ToString();
+                    txtNumeroExp.Text = proyecto.NumeroExpediente.ToString();
+                    ddlConvocatoria.Text = Convert.ToString(proyecto.IdConvocatoria);
+                    txtMontoSolicitado.Text = Convert.ToString(proyecto.MontoSolicitado);
+                    txtMontoContraparte.Text = Convert.ToString(proyecto.MontoContraparte);
+                    txtMontoTotal.Text = Convert.ToString(proyecto.MontoTotal);
+
+                    ddlContacto.Text = personaNego.TraerPersona(proyecto.IdPersona.Value);
+
+                    if (proyecto.IdEmpresa == null)
+                    {
+                        ddlEmpresa.Text = "-1";
+                    }
+                    else
+                    {
+                        ddlEmpresa.Text = empresaNego.TraerEmpresa(proyecto.IdEmpresa.Value);
+                    }
+
+                    ddlLocalidad.Text = localidadNego.TraerLocalidad(proyecto.IdLocalidad.Value);
+                    ddlTipoEstado.Text = tipoEstadoNego.TraerTipoEstado(proyecto.IdTipoEstado.Value);
+
+                    //AHORA TENGO QUE TRAER UNA LISTA DE ETAPAS SEGUN EL IdProyectoActual
+                    listaTemporalEtapas = (List<Etapa>)etapaNego.TraerEtapasSegunIdProyecto(idProyectoActual).ToList();
+
+                    dgvEtapas.Columns[0].Visible = true;
+                    dgvEtapas.Columns[1].Visible = true;
+                    dgvEtapas.Columns[2].Visible = true;
+                    dgvEtapas.Columns[3].Visible = true;
+                    dgvEtapas.Columns[4].Visible = true;
+                    dgvEtapas.Columns[5].Visible = true;
+
+                    dgvEtapas.DataSource = listaTemporalEtapas;
+                    dgvEtapas.DataBind();
+
+                    dgvEtapas.Columns[0].Visible = false;
+                    dgvEtapas.Columns[1].Visible = false;
+
+                    LlenarGrillaEtapas(); //no borrar esta linea!!!
+
+                    //fin rutina para cargar el 1er proyecto
+                }
+                else
+                {
+                    LimpiarFormulario();
+                }
+            }
+            else
+            {
+                ddlProyectoChoice.DataSource = listaProyectosFiltrados.ToList();
+                ddlProyectoChoice.DataBind();
+            }
+        }
+
+        protected void ddlConvocatoriaChoice_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            idConvocatoriaSeleccionada = Convert.ToInt32(ddlConvocatoriaChoice.SelectedValue.ToString());
+
+            ddlProyectoChoice.DataSource = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).ToList();
+            ddlProyectoChoice.DataBind();
+
+            //aca habria que cargar el 1er proyecto
+            if (ddlProyectoChoice.SelectedValue != "")
+            {
+                idProyectoActual = Convert.ToInt32(ddlProyectoChoice.SelectedValue);
 
                 Proyecto proyecto = proyectoNego.ObtenerProyecto(idProyectoActual);
 
@@ -423,34 +491,12 @@ namespace Sistema_CyT
 
                 LlenarGrillaEtapas(); //no borrar esta linea!!!
 
-
                 //fin rutina para cargar el 1er proyecto
-
-
-
-
-
-
             }
             else
             {
-                ddlProyectoChoice.DataSource = listaProyectosFiltrados.ToList();
-                ddlProyectoChoice.DataBind();
+                LimpiarFormulario();
             }
-        }
-
-        protected void ddlConvocatoriaChoice_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            idConvocatoriaSeleccionada = Convert.ToInt32(ddlConvocatoriaChoice.SelectedValue.ToString());
-
-            ddlProyectoChoice.DataSource = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).ToList();
-            ddlProyectoChoice.DataBind();
-
-
-
-
-
-
         }
     }
 }

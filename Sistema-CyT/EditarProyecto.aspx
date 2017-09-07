@@ -9,14 +9,9 @@
             <!-- LISTA CON LOS FONDOS EN LA BASE DE DATOS -->
             <div class="form-group">
                 <br />
-
-
                 <div class="col-md-2">
-                    <asp:TextBox ID="txtFiltroFondo" runat="server" CssClass="form-control AlineadoDerecha" Font-Bold="true" ReadOnly="true"        >< Filtro Fondo ></asp:TextBox>
+                    <asp:TextBox ID="txtFiltroFondo" runat="server" CssClass="form-control AlineadoDerecha" Font-Bold="true" ReadOnly="true">< Filtro Fondo ></asp:TextBox>
                 </div>
-
-
-
                 <%--<asp:Label ID="lblFondoChoice" Font-Bold="true" Height="34" BackColor="LightGray" BorderColor="Brown" runat="server" Text="&lt Filtro Fondo &gt" CssClass="col-md-2 control-label"> </asp:Label>--%>
                 <div class="col-md-8">
                     <asp:DropDownList ID="ddlFondoChoice" runat="server"
@@ -34,11 +29,9 @@
             </div>
             <!-- LISTA CON LAS CONVOCATORIAS EN LA BASE DE DATOS -->
             <div class="form-group">
-
                 <div class="col-md-2">
-                    <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control AlineadoDerecha" Font-Bold="true" ReadOnly="true"        >< Filtro Convocatoria ></asp:TextBox>
+                    <asp:TextBox ID="txtFiltroConvocatoria" runat="server" CssClass="form-control AlineadoDerecha" Font-Bold="true" ReadOnly="true">< Filtro Convocatoria ></asp:TextBox>
                 </div>
-
                 <%--<asp:Label ID="lblConvocatoriaChoice" Font-Bold="true" runat="server" Text="&lt Filtro Convocatoria &gt" CssClass="col-md-2 control-label"></asp:Label>--%>
                 <div class="col-md-8">
                     <asp:DropDownList ID="ddlConvocatoriaChoice" runat="server"
@@ -59,9 +52,8 @@
             <!-- LISTA CON LOS PROYECTOS EN LA BASE DE DATOS -->
             <div class="form-group">
                 <div class="col-md-2">
-                    <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control AlineadoDerecha" Font-Bold="true" ReadOnly="true"        >< Filtro Convocatoria ></asp:TextBox>
+                    <asp:TextBox ID="txtFiltroProyecto" runat="server" CssClass="form-control AlineadoDerecha" Font-Bold="true" ReadOnly="true">< Filtro Proyecto ></asp:TextBox>
                 </div>
-
                 <%--<asp:Label ID="lblProyectos" Font-Bold="true" runat="server" Text="&lt Seleccione Proyecto &gt" CssClass="col-md-2 control-label"> </asp:Label>--%>
                 <div class="col-md-8">
                     <asp:DropDownList ID="ddlProyectoChoice" runat="server"
