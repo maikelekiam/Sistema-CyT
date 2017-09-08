@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
-        <asp:Panel ID="PanelSuperior" CssClass="panel panel-warning" runat="server">
+        <asp:Panel ID="PanelSuperior" CssClass="panel panel-info" runat="server">
 
             <div class="panel-heading">
                 <h3>Buscar PROYECTO</h3>

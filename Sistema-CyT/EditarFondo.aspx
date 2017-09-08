@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
-        <asp:Panel ID="PanelSuperior" CssClass="panel panel-info" runat="server">
+        <asp:Panel ID="PanelSuperior" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
                 <h3>Formulario EDITAR Fondo</h3>
             </div>
