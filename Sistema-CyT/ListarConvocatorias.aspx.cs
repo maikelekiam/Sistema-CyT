@@ -132,5 +132,10 @@ namespace Sistema_CyT
 
             dgvConvocatoria.Columns[0].Visible = false;
         }
+
+        protected void btnFiltrarConvocatoriasTodas_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ListarConvocatorias.aspx");
+        }
     }
 }

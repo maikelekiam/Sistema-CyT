@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="container">
-        <asp:Panel ID="Panel1" CssClass="panel panel-warning" runat="server">
+        <asp:Panel ID="Panel1" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
                 <h3>Datos del FONDO</h3>
             </div>

@@ -23,11 +23,14 @@ namespace Sistema_CyT
         {
 
             string nom = ListarProyectos.numeroExpedienteProyectoSeleccionado;
-            lblNombreProyecto.Text = nom;
 
             Proyecto proyecto = proyectoNego.ObtenerProyectoSegunNombreYConvocatoria(ListarProyectos.idConvocatoriaSeleccionada, ListarProyectos.numeroExpedienteProyectoSeleccionado);
 
-            lblNombreProyecto.Text = "Proyecto: " + proyecto.Nombre.ToString();
+            //lblNombreProyecto.Text = "Proyecto: " + proyecto.Nombre.ToString();
+            lblNombreProyecto.Text = proyecto.Nombre.ToString().ToUpper();
+
+
+
         }
     }
 }

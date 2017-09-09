@@ -249,13 +249,16 @@ namespace Sistema_CyT
         protected void btnActualizarProyecto_Click(object sender, EventArgs e)
         {
             ActualizarProyecto();
+            ListarProyectos.numeroExpedienteProyectoSeleccionado = txtNumeroExp.Text;
+            ListarProyectos.idConvocatoriaSeleccionada = Convert.ToInt32(ddlConvocatoria.Text);
+            LimpiarFormulario();
 
             LlenarGrillaEtapas();
 
             listaTemporalEtapas.Clear();
             listaTemporalEtapasAgregado.Clear();
 
-            Response.Redirect("ListarProyectos.aspx");
+            Response.Redirect("MostrarProyecto.aspx");
         }
 
         private void ActualizarProyecto()
@@ -309,7 +312,7 @@ namespace Sistema_CyT
                 etapaNego.ActualizarEtapa(etapa);
             }
 
-            LimpiarFormulario();
+            //LimpiarFormulario();
         }
 
         protected void dgvEtapas_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
@@ -333,7 +336,7 @@ namespace Sistema_CyT
         protected void ddlFondoChoice_SelectedIndexChanged(object sender, EventArgs e)
         {
             LimpiarFormulario();
-            
+
             if (ddlFondoChoice.SelectedValue != "-1")
             {
                 idFondoSeleccionado = Convert.ToInt32(ddlFondoChoice.SelectedValue);
