@@ -29,17 +29,14 @@
                         <asp:TextBox ID="txtFondo" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                 </div>
-                <!--TIPO DE CONVOCATORIA-->
+                <!--TIPO DE CONVOCATORIA y TIPO DE FINANCIAMIENTO-->
                 <div class="form-group">
-                    <asp:Label ID="lblTipoConvocatoria" runat="server" Text="TIPO DE CONVOCATORIA" CssClass="col-md-2 control-label"></asp:Label>
-                    <div class="col-md-8">
+                    <asp:Label ID="lblTipoConvocatoria" runat="server" Text="CONVOCATORIA" CssClass="col-md-2 control-label"></asp:Label>
+                    <div class="col-md-4">
                         <asp:TextBox ID="txtTipoConvocatoria" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
-                </div>
-                <!--TIPO DE FINANCIAMIENTO-->
-                <div class="form-group">
-                    <asp:Label ID="lblTipoFinanciamiento" runat="server" Text="TIPO DE FINANCIAMIENTO" CssClass="col-md-2 control-label"></asp:Label>
-                    <div class="col-md-8">
+                    <asp:Label ID="lblTipoFinanciamiento" runat="server" Text="TIPO" CssClass="col-md-2 control-label"></asp:Label>
+                    <div class="col-md-4">
                         <asp:TextBox ID="txtTipoFinanciamiento" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                 </div>
@@ -77,8 +74,8 @@
                             <Columns>
                                 <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="IdM" DataField="idModalidad" ItemStyle-HorizontalAlign="Center" />
                                 <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Center" />
-                                <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Descripcion" DataField="descripcion" ItemStyle-HorizontalAlign="Left" HeaderStyle-HorizontalAlign="Right" />
-                                <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Objetivo" DataField="objetivo" ItemStyle-HorizontalAlign="Left" />
+                                <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Descripcion" DataField="descripcion" ItemStyle-HorizontalAlign="Justify" HeaderStyle-HorizontalAlign="Right" />
+                                <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Objetivo" DataField="objetivo" ItemStyle-HorizontalAlign="Justify" />
                                 <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Monto Maximo" DataField="montoMaximoProyecto" ItemStyle-HorizontalAlign="Center" />
                                 <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="% Fin" DataField="porcentajeFinanciamiento" ItemStyle-HorizontalAlign="Center" />
                                 <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Plazo Ejecucion" DataField="plazoEjecucion" ItemStyle-HorizontalAlign="Center" />
