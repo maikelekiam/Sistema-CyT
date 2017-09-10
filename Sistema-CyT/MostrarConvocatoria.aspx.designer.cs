@@ -13,13 +13,13 @@ namespace Sistema_CyT {
     public partial class MostrarConvocatoria {
         
         /// <summary>
-        /// Panel1 control.
+        /// panelSuperior control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::System.Web.UI.WebControls.Panel panelSuperior;
         
         /// <summary>
         /// lblNombre control.
@@ -164,5 +164,23 @@ namespace Sistema_CyT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAbierta;
+        
+        /// <summary>
+        /// panelInferior control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel panelInferior;
+        
+        /// <summary>
+        /// dgvModalidades control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView dgvModalidades;
     }
 }

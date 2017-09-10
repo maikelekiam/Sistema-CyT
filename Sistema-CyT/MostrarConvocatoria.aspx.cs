@@ -17,6 +17,8 @@ namespace Sistema_CyT
         private TipoConvocatoriaNego tipoConvocatoriaNego = new TipoConvocatoriaNego();
         private ModalidadNego modalidadNego = new ModalidadNego();
 
+        public static List<Modalidad> listaTemporalModalidades = new List<Modalidad>();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack) return;
@@ -66,6 +68,26 @@ namespace Sistema_CyT
             {
                 txtAbierta.Text = "CERRADA";
             }
+
+            //AHORA TENGO QUE TRAER UNA LISTA DE MODALIDADES SEGUN EL IdConvocatoriaActual
+            listaTemporalModalidades = (List<Modalidad>)modalidadNego.TraerModalidadesSegunIdConvocatoria(ListarConvocatorias.idConvocatoriaSeleccionada).ToList();
+
+            dgvModalidades.Columns[0].Visible = true;
+            dgvModalidades.Columns[1].Visible = true;
+            dgvModalidades.Columns[2].Visible = true;
+            dgvModalidades.Columns[3].Visible = true;
+            dgvModalidades.Columns[4].Visible = true;
+            dgvModalidades.Columns[5].Visible = true;
+            dgvModalidades.Columns[6].Visible = true;
+            dgvModalidades.Columns[7].Visible = true;
+
+            dgvModalidades.DataSource = listaTemporalModalidades;
+            dgvModalidades.DataBind();
+
+            dgvModalidades.Columns[0].Visible = false;
+            dgvModalidades.Columns[7].Visible = false;
+
+            //LlenarGrillaModalidades(); //no borrar esta linea!!!
         }
     }
 }
