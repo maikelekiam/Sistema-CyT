@@ -62,6 +62,7 @@ namespace Sistema_CyT
         {
             ddlTipoEstadoEtapa.DataSource = tipoEstadoEtapaNego.MostrarTipoEstadoEtapas().ToList();
             ddlTipoEstadoEtapa.DataValueField = "nombre";
+            ddlTipoEstadoEtapa.DataValueField = "idTipoEstadoEtapa";
             ddlTipoEstadoEtapa.DataBind();
         }
         //Muestra en el DROPDOWNLIST los Tipos de Estado
@@ -151,6 +152,7 @@ namespace Sistema_CyT
             dgvEtapas.Columns[3].Visible = true;
             dgvEtapas.Columns[4].Visible = true;
             dgvEtapas.Columns[5].Visible = true;
+            dgvEtapas.Columns[6].Visible = true;
 
             dgvEtapas.DataSource = listaTemporalEtapas;
             dgvEtapas.DataBind();
@@ -169,6 +171,7 @@ namespace Sistema_CyT
             dgvEtapas.Columns[3].Visible = true;
             dgvEtapas.Columns[4].Visible = true;
             dgvEtapas.Columns[5].Visible = true;
+            dgvEtapas.Columns[6].Visible = true;
 
             dgvEtapas.DataSource = listaTemporalEtapas;
             dgvEtapas.DataBind();
@@ -238,14 +241,37 @@ namespace Sistema_CyT
             Etapa item = new Etapa();
 
             item.IdProyecto = idProyectoActual;
-            item.Nombre = txtNombreModal.Text;
 
+            item.Nombre = txtNombreModal.Text;
             item.FechaInicio = DateTime.ParseExact(txtFechaInicioModal.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
             item.FechaFin = DateTime.ParseExact(txtFechaFinalModal.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+            item.IdTipoEstadoEtapa = Convert.ToInt32(ddlTipoEstadoEtapa.SelectedValue);
+
+            if (chkRendicion.Checked)
+            {
+                item.Rendicion = true;
+            }
+            else if (!chkRendicion.Checked)
+            {
+                item.Rendicion = false;
+            }
+
+            if (chkInforme.Checked)
+            {
+                item.Informe = true;
+            }
+            else if (!chkInforme.Checked)
+            {
+                item.Informe = false;
+            }
+
 
             txtNombreModal.Text = null;
             txtFechaInicioModal.Text = null;
             txtFechaFinalModal.Text = null;
+            chkInforme.Text = null;
+            chkRendicion.Text = null;
+            ddlTipoEstadoEtapa.Text = null;
 
             listaTemporalEtapasAgregado.Add(item);
             listaTemporalEtapas.Add(item);
@@ -315,6 +341,25 @@ namespace Sistema_CyT
                 etapa.Nombre = item.Nombre.ToString();
                 etapa.FechaInicio = Convert.ToDateTime(item.FechaInicio.ToString());
                 etapa.FechaFin = Convert.ToDateTime(item.FechaFin.ToString());
+                etapa.IdTipoEstadoEtapa = item.IdTipoEstadoEtapa;
+
+                if (chkRendicion.Checked)
+                {
+                    etapa.Rendicion = true;
+                }
+                else if (!chkRendicion.Checked)
+                {
+                    etapa.Rendicion = false;
+                }
+
+                if (chkInforme.Checked)
+                {
+                    etapa.Informe = true;
+                }
+                else if (!chkInforme.Checked)
+                {
+                    etapa.Informe = false;
+                }
 
                 etapaNego.ActualizarEtapa(etapa);
             }
@@ -419,6 +464,7 @@ namespace Sistema_CyT
                     dgvEtapas.Columns[3].Visible = true;
                     dgvEtapas.Columns[4].Visible = true;
                     dgvEtapas.Columns[5].Visible = true;
+                    dgvEtapas.Columns[6].Visible = true;
 
                     dgvEtapas.DataSource = listaTemporalEtapas;
                     dgvEtapas.DataBind();
@@ -492,6 +538,7 @@ namespace Sistema_CyT
                 dgvEtapas.Columns[3].Visible = true;
                 dgvEtapas.Columns[4].Visible = true;
                 dgvEtapas.Columns[5].Visible = true;
+                dgvEtapas.Columns[6].Visible = true;
 
                 dgvEtapas.DataSource = listaTemporalEtapas;
                 dgvEtapas.DataBind();
