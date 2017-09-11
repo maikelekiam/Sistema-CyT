@@ -21,6 +21,7 @@ namespace Sistema_CyT
         EtapaNego etapaNego = new EtapaNego();
         ProyectoNego proyectoNego = new ProyectoNego();
         TipoEstadoNego tipoEstadoNego = new TipoEstadoNego();
+        TipoEstadoEtapaNego tipoEstadoEtapaNego = new TipoEstadoEtapaNego();
 
         IEnumerable<Proyecto> listaProyectos;
 
@@ -45,6 +46,7 @@ namespace Sistema_CyT
             MostrarEmpresa(); // SIRVE PARA EL DROP DOWN LIST
             MostrarConvocatoria(); // SIRVE PARA EL DROP DOWN LIST
             LlenarListaTipoEstados(); // SIRVE PARA EL DROP DOWN LIST
+            LlenarListaTipoEstadoEtapas(); // SIRVE PARA EL DROP DOWN LIST
             LimpiarFormulario();
             LlenarListaFondoChoice();
         }
@@ -55,6 +57,13 @@ namespace Sistema_CyT
             ddlFondoChoice.DataBind();
         }
 
+        //Muestra en el DROPDOWNLIST los Tipos de Estado de la Etapa
+        private void LlenarListaTipoEstadoEtapas()
+        {
+            ddlTipoEstadoEtapa.DataSource = tipoEstadoEtapaNego.MostrarTipoEstadoEtapas().ToList();
+            ddlTipoEstadoEtapa.DataValueField = "nombre";
+            ddlTipoEstadoEtapa.DataBind();
+        }
         //Muestra en el DROPDOWNLIST los Tipos de Estado
         private void LlenarListaTipoEstados()
         {
@@ -230,12 +239,11 @@ namespace Sistema_CyT
 
             item.IdProyecto = idProyectoActual;
             item.Nombre = txtNombreModal.Text;
-            item.Duracion = Int32.Parse(txtDuracionModal.Text);
+
             item.FechaInicio = DateTime.ParseExact(txtFechaInicioModal.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
             item.FechaFin = DateTime.ParseExact(txtFechaFinalModal.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
 
             txtNombreModal.Text = null;
-            txtDuracionModal.Text = null;
             txtFechaInicioModal.Text = null;
             txtFechaFinalModal.Text = null;
 
@@ -307,7 +315,6 @@ namespace Sistema_CyT
                 etapa.Nombre = item.Nombre.ToString();
                 etapa.FechaInicio = Convert.ToDateTime(item.FechaInicio.ToString());
                 etapa.FechaFin = Convert.ToDateTime(item.FechaFin.ToString());
-                etapa.Duracion = Int32.Parse(item.Duracion.ToString());
 
                 etapaNego.ActualizarEtapa(etapa);
             }

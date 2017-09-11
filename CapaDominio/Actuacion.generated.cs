@@ -89,19 +89,6 @@ namespace CapaDominio
 			}
 		}
 		
-		private Proyecto proyecto;
-		public virtual Proyecto Proyecto
-		{
-			get
-			{
-				return this.proyecto;
-			}
-			set
-			{
-				this.proyecto = value;
-			}
-		}
-		
 		private Organismo organismo;
 		public virtual Organismo Organismo
 		{
@@ -112,6 +99,19 @@ namespace CapaDominio
 			set
 			{
 				this.organismo = value;
+			}
+		}
+		
+		private Proyecto proyecto;
+		public virtual Proyecto Proyecto
+		{
+			get
+			{
+				return this.proyecto;
+			}
+			set
+			{
+				this.proyecto = value;
 			}
 		}
 		

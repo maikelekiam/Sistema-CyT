@@ -652,22 +652,22 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.TextBox txtNombreModal;
         
         /// <summary>
-        /// lblDuracionModal control.
+        /// lblTipoEstadoEtapa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDuracionModal;
+        protected global::System.Web.UI.WebControls.Label lblTipoEstadoEtapa;
         
         /// <summary>
-        /// txtDuracionModal control.
+        /// ddlTipoEstadoEtapa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDuracionModal;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoEstadoEtapa;
         
         /// <summary>
         /// lblFechaInicioModal control.
@@ -704,6 +704,42 @@ namespace Sistema_CyT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFechaFinalModal;
+        
+        /// <summary>
+        /// lblRendicion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRendicion;
+        
+        /// <summary>
+        /// chkRendicion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkRendicion;
+        
+        /// <summary>
+        /// lblInforme control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblInforme;
+        
+        /// <summary>
+        /// chkInforme control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkInforme;
         
         /// <summary>
         /// btnModalEtapaSalir control.

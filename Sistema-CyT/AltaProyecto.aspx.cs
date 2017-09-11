@@ -19,6 +19,7 @@ namespace Sistema_CyT
         EtapaNego etapaNego = new EtapaNego();
         ProyectoNego proyectoNego = new ProyectoNego();
         TipoEstadoNego tipoEstadoNego = new TipoEstadoNego();
+        TipoEstadoEtapaNego tipoEstadoEtapaNego = new TipoEstadoEtapaNego();
 
         static int idProyectoActual = 1;
         static int idEmpresaActual = 1;
@@ -37,12 +38,21 @@ namespace Sistema_CyT
             LlenarListaEmpresas(); // SIRVE PARA EL DROP DOWN LIST
             LlenarListaTipoEstados(); // SIRVE PARA EL DROP DOWN LIST
             LlenarListaConvocatorias(); // SIRVE PARA EL DROP DOWN LIST
+            LlenarListaTipoEstadoEtapas(); // SIRVE PARA EL DROP DOWN LIST
 
             //txtFechaInicioModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
             //txtFechaFinalModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
 
             LimpiarDetalleContactoModal();
             listaEtapasTemporal.Clear();
+        }
+        //Muestra en el DROPDOWNLIST los Tipos de Estado de la Etapa
+        private void LlenarListaTipoEstadoEtapas()
+        {
+            ddlTipoEstadoEtapa.DataSource = tipoEstadoEtapaNego.MostrarTipoEstadoEtapas().ToList();
+            ddlTipoEstadoEtapa.DataValueField = "nombre";
+            ddlTipoEstadoEtapa.DataValueField = "idTipoEstadoEtapa";
+            ddlTipoEstadoEtapa.DataBind();
         }
 
         //Muestra en el DROPDOWNLIST las CONVOCATORIAS
@@ -117,14 +127,39 @@ namespace Sistema_CyT
             etapa.Nombre = txtNombreModal.Text;
             etapa.FechaInicio = DateTime.ParseExact(txtFechaInicioModal.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
             etapa.FechaFin = DateTime.ParseExact(txtFechaFinalModal.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
-            etapa.Duracion = Int32.Parse(txtDuracionModal.Text);
+
+            etapa.IdTipoEstadoEtapa = Convert.ToInt32(ddlTipoEstadoEtapa.SelectedValue);
+
+            if (chkRendicion.Checked)
+            {
+                etapa.Rendicion = true;
+            }
+            else if (!chkRendicion.Checked)
+            {
+                etapa.Rendicion = false;
+            }
+
+            if (chkInforme.Checked)
+            {
+                etapa.Informe = true;
+            }
+            else if (!chkInforme.Checked)
+            {
+                etapa.Informe = false;
+            }
 
             listaEtapasTemporal.Add(etapa);
 
             txtNombreModal.Text = null;
-            txtDuracionModal.Text = null;
             txtFechaInicioModal.Text = null;
             txtFechaFinalModal.Text = null;
+
+            chkInforme.Text = null;
+            chkRendicion.Text = null;
+            ddlTipoEstadoEtapa.Text = null;
+
+
+
             //txtFechaInicioModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
             //txtFechaFinalModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
 
@@ -181,7 +216,26 @@ namespace Sistema_CyT
                 etapa.Nombre = item.Nombre.ToString();
                 etapa.FechaInicio = Convert.ToDateTime(item.FechaInicio.ToString());
                 etapa.FechaFin = Convert.ToDateTime(item.FechaFin.ToString());
-                etapa.Duracion = Int32.Parse(item.Duracion.ToString());
+
+                etapa.IdTipoEstadoEtapa = Int32.Parse(ddlTipoEstadoEtapa.SelectedValue);
+
+                if (chkRendicion.Checked)
+                {
+                    etapa.Rendicion = true;
+                }
+                else if (!chkRendicion.Checked)
+                {
+                    etapa.Rendicion = false;
+                }
+
+                if (chkInforme.Checked)
+                {
+                    etapa.Informe = true;
+                }
+                else if (!chkInforme.Checked)
+                {
+                    etapa.Informe = false;
+                }
 
                 etapaNego.GuardarEtapa(etapa);
             }

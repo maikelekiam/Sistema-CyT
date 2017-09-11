@@ -22,31 +22,18 @@ using CapaDominio;
 
 namespace CapaDominio	
 {
-	public partial class Etapa
+	public partial class Desembolso
 	{
-		private int idEtapa;
-		public virtual int IdEtapa
+		private int idDesembolso;
+		public virtual int IdDesembolso
 		{
 			get
 			{
-				return this.idEtapa;
+				return this.idDesembolso;
 			}
 			set
 			{
-				this.idEtapa = value;
-			}
-		}
-		
-		private int idProyecto;
-		public virtual int IdProyecto
-		{
-			get
-			{
-				return this.idProyecto;
-			}
-			set
-			{
-				this.idProyecto = value;
+				this.idDesembolso = value;
 			}
 		}
 		
@@ -63,68 +50,68 @@ namespace CapaDominio
 			}
 		}
 		
-		private DateTime? fechaInicio;
-		public virtual DateTime? FechaInicio
+		private DateTime fechaDesembolso;
+		public virtual DateTime FechaDesembolso
 		{
 			get
 			{
-				return this.fechaInicio;
+				return this.fechaDesembolso;
 			}
 			set
 			{
-				this.fechaInicio = value;
+				this.fechaDesembolso = value;
 			}
 		}
 		
-		private DateTime? fechaFin;
-		public virtual DateTime? FechaFin
+		private decimal montoDesembolso;
+		public virtual decimal MontoDesembolso
 		{
 			get
 			{
-				return this.fechaFin;
+				return this.montoDesembolso;
 			}
 			set
 			{
-				this.fechaFin = value;
+				this.montoDesembolso = value;
 			}
 		}
 		
-		private int? idTipoEstadoEtapa;
-		public virtual int? IdTipoEstadoEtapa
+		private int idProyecto;
+		public virtual int IdProyecto
 		{
 			get
 			{
-				return this.idTipoEstadoEtapa;
+				return this.idProyecto;
 			}
 			set
 			{
-				this.idTipoEstadoEtapa = value;
+				this.idProyecto = value;
 			}
 		}
 		
-		private bool? rendicion;
-		public virtual bool? Rendicion
+		private int idEtapa;
+		public virtual int IdEtapa
 		{
 			get
 			{
-				return this.rendicion;
+				return this.idEtapa;
 			}
 			set
 			{
-				this.rendicion = value;
+				this.idEtapa = value;
 			}
 		}
 		
-		private bool? informe;
-		public virtual bool? Informe
+		private Etapa etapa;
+		public virtual Etapa Etapa
 		{
 			get
 			{
-				return this.informe;
+				return this.etapa;
 			}
 			set
 			{
-				this.informe = value;
+				this.etapa = value;
 			}
 		}
 		
@@ -138,28 +125,6 @@ namespace CapaDominio
 			set
 			{
 				this.proyecto = value;
-			}
-		}
-		
-		private TipoEstadoEtapa tipoEstadoEtapa;
-		public virtual TipoEstadoEtapa TipoEstadoEtapa
-		{
-			get
-			{
-				return this.tipoEstadoEtapa;
-			}
-			set
-			{
-				this.tipoEstadoEtapa = value;
-			}
-		}
-		
-		private IList<Desembolso> desembolsos = new List<Desembolso>();
-		public virtual IList<Desembolso> Desembolsos
-		{
-			get
-			{
-				return this.desembolsos;
 			}
 		}
 		

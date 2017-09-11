@@ -50,11 +50,35 @@ namespace CapaDominio
 			:base(connection, backendConfiguration, metadataSource)
 		{ }
 			
+		public IQueryable<Usuario> Usuarios 
+		{
+			get
+			{
+				return this.GetAll<Usuario>();
+			}
+		}
+		
 		public IQueryable<TipoFinanciamiento> TipoFinanciamientos 
 		{
 			get
 			{
 				return this.GetAll<TipoFinanciamiento>();
+			}
+		}
+		
+		public IQueryable<TipoEstadoEtapa> TipoEstadoEtapas 
+		{
+			get
+			{
+				return this.GetAll<TipoEstadoEtapa>();
+			}
+		}
+		
+		public IQueryable<TipoEstado> TipoEstados 
+		{
+			get
+			{
+				return this.GetAll<TipoEstado>();
 			}
 		}
 		
@@ -66,35 +90,11 @@ namespace CapaDominio
 			}
 		}
 		
-		public IQueryable<Origen> Origens 
+		public IQueryable<TipoAuditorium> TipoAuditoria 
 		{
 			get
 			{
-				return this.GetAll<Origen>();
-			}
-		}
-		
-		public IQueryable<Modalidad> Modalidads 
-		{
-			get
-			{
-				return this.GetAll<Modalidad>();
-			}
-		}
-		
-		public IQueryable<Fondo> Fondos 
-		{
-			get
-			{
-				return this.GetAll<Fondo>();
-			}
-		}
-		
-		public IQueryable<Convocatorium> Convocatoria 
-		{
-			get
-			{
-				return this.GetAll<Convocatorium>();
+				return this.GetAll<TipoAuditorium>();
 			}
 		}
 		
@@ -114,11 +114,43 @@ namespace CapaDominio
 			}
 		}
 		
+		public IQueryable<Origen> Origens 
+		{
+			get
+			{
+				return this.GetAll<Origen>();
+			}
+		}
+		
+		public IQueryable<Organismo> Organismos 
+		{
+			get
+			{
+				return this.GetAll<Organismo>();
+			}
+		}
+		
+		public IQueryable<Modalidad> Modalidads 
+		{
+			get
+			{
+				return this.GetAll<Modalidad>();
+			}
+		}
+		
 		public IQueryable<Localidad> Localidads 
 		{
 			get
 			{
 				return this.GetAll<Localidad>();
+			}
+		}
+		
+		public IQueryable<Fondo> Fondos 
+		{
+			get
+			{
+				return this.GetAll<Fondo>();
 			}
 		}
 		
@@ -138,6 +170,22 @@ namespace CapaDominio
 			}
 		}
 		
+		public IQueryable<Desembolso> Desembolsos 
+		{
+			get
+			{
+				return this.GetAll<Desembolso>();
+			}
+		}
+		
+		public IQueryable<Convocatorium> Convocatoria 
+		{
+			get
+			{
+				return this.GetAll<Convocatorium>();
+			}
+		}
+		
 		public IQueryable<Auditorium> Auditoria 
 		{
 			get
@@ -151,30 +199,6 @@ namespace CapaDominio
 			get
 			{
 				return this.GetAll<Actuacion>();
-			}
-		}
-		
-		public IQueryable<Organismo> Organismos 
-		{
-			get
-			{
-				return this.GetAll<Organismo>();
-			}
-		}
-		
-		public IQueryable<Usuario> Usuarios 
-		{
-			get
-			{
-				return this.GetAll<Usuario>();
-			}
-		}
-		
-		public IQueryable<TipoEstado> TipoEstados 
-		{
-			get
-			{
-				return this.GetAll<TipoEstado>();
 			}
 		}
 		
@@ -265,7 +289,19 @@ namespace CapaDominio
 	
 	public interface IModeloDeDominioUnitOfWork : IUnitOfWork
 	{
+		IQueryable<Usuario> Usuarios
+		{
+			get;
+		}
 		IQueryable<TipoFinanciamiento> TipoFinanciamientos
+		{
+			get;
+		}
+		IQueryable<TipoEstadoEtapa> TipoEstadoEtapas
+		{
+			get;
+		}
+		IQueryable<TipoEstado> TipoEstados
 		{
 			get;
 		}
@@ -273,19 +309,7 @@ namespace CapaDominio
 		{
 			get;
 		}
-		IQueryable<Origen> Origens
-		{
-			get;
-		}
-		IQueryable<Modalidad> Modalidads
-		{
-			get;
-		}
-		IQueryable<Fondo> Fondos
-		{
-			get;
-		}
-		IQueryable<Convocatorium> Convocatoria
+		IQueryable<TipoAuditorium> TipoAuditoria
 		{
 			get;
 		}
@@ -297,7 +321,23 @@ namespace CapaDominio
 		{
 			get;
 		}
+		IQueryable<Origen> Origens
+		{
+			get;
+		}
+		IQueryable<Organismo> Organismos
+		{
+			get;
+		}
+		IQueryable<Modalidad> Modalidads
+		{
+			get;
+		}
 		IQueryable<Localidad> Localidads
+		{
+			get;
+		}
+		IQueryable<Fondo> Fondos
 		{
 			get;
 		}
@@ -309,23 +349,19 @@ namespace CapaDominio
 		{
 			get;
 		}
+		IQueryable<Desembolso> Desembolsos
+		{
+			get;
+		}
+		IQueryable<Convocatorium> Convocatoria
+		{
+			get;
+		}
 		IQueryable<Auditorium> Auditoria
 		{
 			get;
 		}
 		IQueryable<Actuacion> Actuacions
-		{
-			get;
-		}
-		IQueryable<Organismo> Organismos
-		{
-			get;
-		}
-		IQueryable<Usuario> Usuarios
-		{
-			get;
-		}
-		IQueryable<TipoEstado> TipoEstados
 		{
 			get;
 		}

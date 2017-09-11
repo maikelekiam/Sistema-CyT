@@ -167,29 +167,16 @@ namespace CapaDominio
 			}
 		}
 		
-		private Persona persona;
-		public virtual Persona Persona
+		private Convocatorium convocatorium;
+		public virtual Convocatorium Convocatorium
 		{
 			get
 			{
-				return this.persona;
+				return this.convocatorium;
 			}
 			set
 			{
-				this.persona = value;
-			}
-		}
-		
-		private Localidad localidad;
-		public virtual Localidad Localidad
-		{
-			get
-			{
-				return this.localidad;
-			}
-			set
-			{
-				this.localidad = value;
+				this.convocatorium = value;
 			}
 		}
 		
@@ -206,16 +193,29 @@ namespace CapaDominio
 			}
 		}
 		
-		private Convocatorium convocatorium;
-		public virtual Convocatorium Convocatorium
+		private Localidad localidad;
+		public virtual Localidad Localidad
 		{
 			get
 			{
-				return this.convocatorium;
+				return this.localidad;
 			}
 			set
 			{
-				this.convocatorium = value;
+				this.localidad = value;
+			}
+		}
+		
+		private Persona persona;
+		public virtual Persona Persona
+		{
+			get
+			{
+				return this.persona;
+			}
+			set
+			{
+				this.persona = value;
 			}
 		}
 		
@@ -238,6 +238,15 @@ namespace CapaDominio
 			get
 			{
 				return this.etapas;
+			}
+		}
+		
+		private IList<Desembolso> desembolsos = new List<Desembolso>();
+		public virtual IList<Desembolso> Desembolsos
+		{
+			get
+			{
+				return this.desembolsos;
 			}
 		}
 		

@@ -58,7 +58,7 @@
                     <asp:TextBox ID="txtMontoTotal" Text="0" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
-            
+
             <!--CONTACTO-->
             <div class="form-group">
                 <asp:Label ID="lblContacto" runat="server" Text="CONTACTO" CssClass="col-md-2 control-label"></asp:Label>
@@ -376,9 +376,15 @@
                         CssClass="table table-hover" BorderWidth="2px" EmptyDataText="No existen etapas cargadas" ShowHeaderWhenEmpty="true">
                         <Columns>
                             <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="250" />
-                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Duracion" DataField="duracion" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="100" />
                             <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Inicio" DataFormatString="{0:dd-MM-yyyy}" DataField="fechaInicio" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100" />
                             <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Fin" DataFormatString="{0:dd-MM-yyyy}" DataField="fechaFin" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100" />
+                            <asp:TemplateField HeaderStyle-BackColor="#cccccc" HeaderText="Rendicion" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100">
+                                <ItemTemplate><%# (Boolean.Parse(Eval("Rendicion").ToString())) ? "Si" : "No" %></ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderStyle-BackColor="#cccccc" HeaderText="Informe Tecnico" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100">
+                                <ItemTemplate><%# (Boolean.Parse(Eval("Informe").ToString())) ? "Si" : "No" %></ItemTemplate>
+                            </asp:TemplateField>
+
                         </Columns>
                     </asp:GridView>
                 </div>
@@ -409,11 +415,20 @@
                                     <asp:TextBox ID="txtNombreModal" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
-                            <!--DURACION-->
+                            <!--ESTADO DE LA ETAPA-->
                             <div class="form-group">
-                                <asp:Label ID="lblDuracionModal" runat="server" Text="DURACION" CssClass="col-md-2 control-label"> </asp:Label>
+                                <asp:Label ID="lblTipoEstadoEtapa" runat="server" Text="ESTADO" CssClass="col-md-2 control-label"></asp:Label>
                                 <div class="col-md-4">
-                                    <asp:TextBox ID="txtDuracionModal" runat="server" CssClass="form-control" placeholder="meses"></asp:TextBox>
+                                    <asp:DropDownList ID="ddlTipoEstadoEtapa" runat="server"
+                                        BackColor="WhiteSmoke"
+                                        ForeColor="#000066"
+                                        CssClass="selectpicker form-control show-tick"
+                                        data-live-search="true"
+                                        DataTextField="nombre"
+                                        AutoPostBack="False"
+                                        AppendDataBoundItems="true">
+                                        <asp:ListItem Value="-1">&lt;Seleccione Estado&gt;</asp:ListItem>
+                                    </asp:DropDownList>
                                 </div>
                             </div>
                             <!--FECHA DE INICIO-->
@@ -452,6 +467,20 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- RENDICION -->
+                            <div class="form-group">
+                                <asp:Label ID="lblRendicion" runat="server" Text="PRESENTO RENDICION ?" CssClass="col-md-3 control-label "></asp:Label>
+                                <div class="col-md-1">
+                                    <asp:CheckBox ID="chkRendicion" runat="server" CssClass="control-label" BorderStyle="None" />
+                                </div>
+                            </div>
+                            <!-- INFORME -->
+                            <div class="form-group">
+                                <asp:Label ID="lblInforme" runat="server" Text="PRESENTO INFORME ?" CssClass="col-md-3 control-label "></asp:Label>
+                                <div class="col-md-1">
+                                    <asp:CheckBox ID="chkInforme" runat="server" CssClass="control-label" BorderStyle="None" />
+                                </div>
+                            </div>
                             <div class="modal-footer">
                                 <asp:Button runat="server" ID="btnModalEtapaSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
                                 <asp:Button runat="server" ID="btnModalEtapaGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalEtapaGuardar_Click" />
@@ -462,17 +491,4 @@
             </div>
         </asp:Panel>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 </asp:Content>
