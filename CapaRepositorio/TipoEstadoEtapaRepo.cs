@@ -17,5 +17,16 @@ namespace CapaRepositorio
                 return modeloDeDominio.CreateDetachedCopy(result);
             }
         }
+        public int TraerTipoEstadoEtapaIdSegunItem(string item)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                TipoEstadoEtapa result = modeloDeDominio.TipoEstadoEtapas.Where(c => c.Nombre == item).FirstOrDefault();
+
+                modeloDeDominio.CreateDetachedCopy(result);
+
+                return result.IdTipoEstadoEtapa;
+            }
+        }
     }
 }

@@ -127,7 +127,6 @@ namespace Sistema_CyT
             etapa.Nombre = txtNombreModal.Text;
             etapa.FechaInicio = DateTime.ParseExact(txtFechaInicioModal.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
             etapa.FechaFin = DateTime.ParseExact(txtFechaFinalModal.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
-
             etapa.IdTipoEstadoEtapa = Convert.ToInt32(ddlTipoEstadoEtapa.SelectedValue);
 
             if (chkRendicion.Checked)
@@ -217,7 +216,8 @@ namespace Sistema_CyT
                 etapa.FechaInicio = Convert.ToDateTime(item.FechaInicio.ToString());
                 etapa.FechaFin = Convert.ToDateTime(item.FechaFin.ToString());
 
-                etapa.IdTipoEstadoEtapa = Int32.Parse(ddlTipoEstadoEtapa.SelectedValue);
+                //etapa.IdTipoEstadoEtapa = tipoEstadoEtapaNego.TraerTipoEstadoEtapaIdSegunItem(ddlTipoEstadoEtapa.SelectedItem.ToString());
+                etapa.IdTipoEstadoEtapa = item.IdTipoEstadoEtapa;
 
                 if (chkRendicion.Checked)
                 {
