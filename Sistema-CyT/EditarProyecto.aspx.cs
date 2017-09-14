@@ -367,10 +367,7 @@ namespace Sistema_CyT
             //LimpiarFormulario();
         }
 
-        protected void dgvEtapas_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
-        {
-            //falta implementar...
-        }
+        
         private void LimpiarFormulario()
         {
             txtNombre.Text = null;
@@ -554,6 +551,10 @@ namespace Sistema_CyT
             {
                 LimpiarFormulario();
             }
+        }
+        protected void dgvEtapas_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            //falta implementar...
         }
     }
 }

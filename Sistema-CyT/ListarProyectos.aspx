@@ -59,7 +59,15 @@
                         <asp:ListItem Value="-1">&lt;Seleccione Estado&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
-                <asp:Button runat="server" ID="btnFiltrar" Text="Filtrar" CssClass="btn btn-success" OnClick="btnFiltrar_Click" />
+                <div class="col-md-1 ">
+                    <asp:Button runat="server" ID="btnFiltrar" Text="Filtrar" CssClass="btn btn-success" OnClick="btnFiltrar_Click" />
+                </div>
+                <div class="form-group">
+                        <asp:Label ID="lblCantidadProyectosSumatoria" Font-Bold="true" runat="server" Text="" CssClass="col-md-3 control-label"></asp:Label>
+                    </div>
+                </div>
+
+
                 <%--<asp:Button runat="server" ID="btn2" Text="TODOS" CssClass="btn btn-primary" OnClick="btnTodos_Click" />--%>
             </div>
             <div class="form-group">

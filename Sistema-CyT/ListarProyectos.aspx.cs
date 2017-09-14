@@ -25,6 +25,8 @@ namespace Sistema_CyT
         public static int idEstadoSeleccionado = 1;
         public static string numeroExpedienteProyectoSeleccionado = null;
 
+        int cantidadProyectosSumatoria = 0;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack) return;
@@ -68,6 +70,9 @@ namespace Sistema_CyT
                 dgvProyectos.DataSource = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).Where(c => c.tipoEstado == ddlEstado.SelectedItem.ToString()).ToList();
                 dgvProyectos.DataBind();
 
+                cantidadProyectosSumatoria = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).Where(c => c.tipoEstado == ddlEstado.SelectedItem.ToString()).Count();
+                lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
+
                 //dgvProyectos.Columns[0].Visible = false;
             }
         }
@@ -96,12 +101,19 @@ namespace Sistema_CyT
 
                 dgvProyectos.DataSource = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).ToList();
                 dgvProyectos.DataBind();
+
+                cantidadProyectosSumatoria = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).Count();
+                lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
+
                 //dgvProyectos.Columns[0].Visible = false;
             }
             else
             {
                 dgvProyectos.DataSource = listaProyectosFiltrados.ToList();
                 dgvProyectos.DataBind();
+
+                cantidadProyectosSumatoria = listaProyectosFiltrados.Count();
+                lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
                 //dgvProyectos.Columns[0].Visible = false;
             }
         }
@@ -112,6 +124,10 @@ namespace Sistema_CyT
 
             dgvProyectos.DataSource = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).ToList();
             dgvProyectos.DataBind();
+
+            cantidadProyectosSumatoria = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).Count();
+            lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
+
             //dgvProyectos.Columns[0].Visible = false;
         }
 
@@ -140,6 +156,9 @@ namespace Sistema_CyT
                 dgvProyectos.DataBind();
 
                 //dgvProyectos.Columns[0].Visible = false;
+
+                cantidadProyectosSumatoria = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).Count();
+                lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
             }
             ddlEstado.Text = "-1";
         }

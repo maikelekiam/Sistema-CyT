@@ -16,15 +16,11 @@
 
 </head>
 <body>
-
     <form runat="server" class="form-horizontal form-control">
         <asp:ScriptManager EnablePageMethods="true" runat="server">
             <Scripts>
             </Scripts>
         </asp:ScriptManager>
-
-
-
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -41,7 +37,6 @@
                             <li class="divider"></li>
                             <li><a runat="server" href="~/FiltrarProyecto.aspx"><span class="glyphicon glyphicon-plus"></span>Seguimiento</a></li>
                         </ul>
-
                     </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">CONVOCATORIAS <span class="caret"></span></a>
@@ -58,7 +53,7 @@
 
                     <!-- PARA REGISTRAR Y LOGUEAR USUARIOS -->
                 </ul>
-<%--                <asp:LoginView runat="server" ViewStateMode="Disabled">
+                <%--                <asp:LoginView runat="server" ViewStateMode="Disabled">
                     <AnonymousTemplate>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a runat="server" href="~/Account/Register">Register</a></li>
