@@ -63,13 +63,13 @@
                     <asp:Button runat="server" ID="btnFiltrar" Text="Filtrar" CssClass="btn btn-success" OnClick="btnFiltrar_Click" />
                 </div>
                 <div class="form-group">
-                        <asp:Label ID="lblCantidadProyectosSumatoria" Font-Bold="true" runat="server" Text="" CssClass="col-md-3 control-label"></asp:Label>
-                    </div>
+                    <asp:Label ID="lblCantidadProyectosSumatoria" Font-Bold="true" runat="server" Text="" CssClass="col-md-3 control-label"></asp:Label>
                 </div>
-
-
-                <%--<asp:Button runat="server" ID="btn2" Text="TODOS" CssClass="btn btn-primary" OnClick="btnTodos_Click" />--%>
             </div>
+
+
+            <%--<asp:Button runat="server" ID="btn2" Text="TODOS" CssClass="btn btn-primary" OnClick="btnTodos_Click" />--%>
+
             <div class="form-group">
                 <br />
                 <div class="col-md-12">

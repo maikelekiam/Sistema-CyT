@@ -167,6 +167,32 @@ namespace CapaDominio
 			}
 		}
 		
+		private string observaciones;
+		public virtual string Observaciones
+		{
+			get
+			{
+				return this.observaciones;
+			}
+			set
+			{
+				this.observaciones = value;
+			}
+		}
+		
+		private string descripcion;
+		public virtual string Descripcion
+		{
+			get
+			{
+				return this.descripcion;
+			}
+			set
+			{
+				this.descripcion = value;
+			}
+		}
+		
 		private Convocatorium convocatorium;
 		public virtual Convocatorium Convocatorium
 		{

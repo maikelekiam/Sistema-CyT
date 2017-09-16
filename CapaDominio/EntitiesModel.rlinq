@@ -161,6 +161,12 @@
         <orm:field name="idTipoEstado" property="IdTipoEstado" behavior="readwrite" uniqueId="08cee429-d85d-4bb8-acff-2be705beed59" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
           <orm:column name="idTipoEstado" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:field>
+        <orm:field name="observaciones" property="Observaciones" behavior="readwrite" uniqueId="22b8294e-3912-42ea-bf97-e57f1a67c5e9" type="System.String">
+          <orm:column name="observaciones" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="descripcion" property="Descripcion" behavior="readwrite" uniqueId="767e6d6c-010d-4122-afc4-7346f349c742" type="System.String">
+          <orm:column name="descripcion" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
         <orm:field name="convocatorium" property="Convocatorium" behavior="readwrite" uniqueId="ded61963-b825-47d3-b3a8-8eedd9c5c626" type="CapaDominio.Convocatorium">
           <orm:reference uniqueId="ac9f32d1-ae59-4558-9884-5f26b54fd0a4" association-name="ProyectoHasConvocatorium">
             <orm:sharedfield name="idConvocatoria" target-class="CapaDominio.Convocatorium" target-field="idConvocatoria" />
@@ -361,6 +367,15 @@
         </orm:field>
         <orm:field name="activo" property="Activo" behavior="readwrite" uniqueId="31d11fb8-0e7b-42e3-90ae-b6107afb1b77" type="System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
           <orm:column name="activo" sql-type="bit" nullable="true" length="0" scale="0" ado-type="Bit" />
+        </orm:field>
+        <orm:field name="telefono" property="Telefono" behavior="readwrite" uniqueId="1e95d9db-d759-45a1-a657-ebadc8d3d734" type="System.String">
+          <orm:column name="telefono" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="direccion" property="Direccion" behavior="readwrite" uniqueId="a82ed645-77f4-499d-b6d6-ab2cc7e45828" type="System.String">
+          <orm:column name="direccion" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="contacto" property="Contacto" behavior="readwrite" uniqueId="cc8b6984-ae19-40f0-be4a-c5d1096c116c" type="System.String">
+          <orm:column name="contacto" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         </orm:field>
         <orm:field name="origen" property="Origen" behavior="readwrite" uniqueId="13c862ea-18e7-4f59-bf98-66249584c32f" type="CapaDominio.Origen">
           <orm:reference uniqueId="4cace7fe-644e-427e-9404-228df80ecb99" association-name="FondoHasOrigen">
@@ -664,6 +679,8 @@
         <orm:column name="idEmpresa" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="idLocalidad" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="idTipoEstado" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="observaciones" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="descripcion" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         <orm:constraint name="FK_Proyecto_Convocatoria" delete-action="dbdefaultrule" destination-table="Convocatoria">
           <orm:column name="idConvocatoria" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
         </orm:constraint>
@@ -721,6 +738,9 @@
         <orm:column name="descripcion" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         <orm:column name="idOrigen" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="activo" sql-type="bit" nullable="true" length="0" scale="0" ado-type="Bit" />
+        <orm:column name="telefono" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="direccion" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="contacto" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         <orm:constraint name="FK_Fondo_Origen" delete-action="dbdefaultrule" destination-table="Origen">
           <orm:column name="idOrigen" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:constraint>
@@ -827,7 +847,7 @@
   </orm:orm>
   <ModelSettings xmlns="">
     <AppConfigConnectionPropertyName>Conn</AppConfigConnectionPropertyName>
-    <AppConfigConnectionString>Data Source=COPADE_077\SQLEXPRESS;Initial Catalog=sistemacyt;Integrated Security=True</AppConfigConnectionString>
+    <AppConfigConnectionString>data source=COPADE_077\SQLEXPRESS;initial catalog=sistemacyt;integrated security=True</AppConfigConnectionString>
     <InitialCatalog>sistemacyt</InitialCatalog>
     <NamingSettings>
       <ClassRules>
@@ -918,6 +938,8 @@
       <Property Id="437260a3-784b-41cd-a845-ba217fdf7ee8" name="MontoTotal" type="Decimal" label="MontoTotal : Decimal" nullable="true" kind="Persistent" fieldName="montoTotal" />
       <Property Id="0143e0d3-c43b-40dd-9039-579e14a920ae" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
       <Property Id="9724c60c-44ab-4797-950e-2a3fc0a98a91" name="NumeroExpediente" label="NumeroExpediente : String" kind="Persistent" fieldName="numeroExpediente" />
+      <Property Id="22b8294e-3912-42ea-bf97-e57f1a67c5e9" name="Observaciones" label="Observaciones : String" kind="Persistent" fieldName="observaciones" />
+      <Property Id="767e6d6c-010d-4122-afc4-7346f349c742" name="Descripcion" label="Descripcion : String" kind="Persistent" fieldName="descripcion" />
       <AssociationTargets>
         <Association Id="ac9f32d1-ae59-4558-9884-5f26b54fd0a4" SourceMultiplicity="One" name="ProyectoHasConvocatorium">
           <DomainClassMoniker name="/ModeloDeDominio/Convocatorium" />
@@ -1093,6 +1115,9 @@
       <Property Id="9287a8ed-4a58-4642-aa75-ef171725d3a5" name="Descripcion" label="Descripcion : String" kind="Persistent" fieldName="descripcion" />
       <Property Id="3c6497e8-8090-472c-abcf-3977f12ba5ae" name="IdOrigen" type="Int32" label="IdOrigen : Int32" nullable="true" kind="Persistent" fieldName="idOrigen" />
       <Property Id="34366ea0-85ce-4995-8fac-bec824609c48" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
+      <Property Id="1e95d9db-d759-45a1-a657-ebadc8d3d734" name="Telefono" label="Telefono : String" kind="Persistent" fieldName="telefono" />
+      <Property Id="a82ed645-77f4-499d-b6d6-ab2cc7e45828" name="Direccion" label="Direccion : String" kind="Persistent" fieldName="direccion" />
+      <Property Id="cc8b6984-ae19-40f0-be4a-c5d1096c116c" name="Contacto" label="Contacto : String" kind="Persistent" fieldName="contacto" />
       <AssociationTargets>
         <Association Id="4cace7fe-644e-427e-9404-228df80ecb99" SourceMultiplicity="ZeroOne" name="FondoHasOrigen">
           <DomainClassMoniker name="/ModeloDeDominio/Origen" />

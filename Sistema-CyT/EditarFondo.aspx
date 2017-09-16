@@ -90,7 +90,27 @@
                     </div>
                 </div>
             </div>
-
+            <!-- TELEFONO -->
+            <div class="form-group">
+                <asp:Label ID="lblTelefono" runat="server" Text="TELEFONO" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
+                <div class="col-md-6 col-xs-12">
+                    <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control"></asp:TextBox><br />
+                </div>
+            </div>
+            <!-- DIRECCION -->
+            <div class="form-group">
+                <asp:Label ID="lblDireccion" runat="server" Text="DIRECCION" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
+                <div class="col-md-6 col-xs-12">
+                    <asp:TextBox ID="txtDireccion" runat="server" CssClass="form-control"></asp:TextBox><br />
+                </div>
+            </div>
+            <!-- CONTACTO -->
+            <div class="form-group">
+                <asp:Label ID="lblContacto" runat="server" Text="CONTACTO" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
+                <div class="col-md-6 col-xs-12">
+                    <asp:TextBox ID="txtContacto" runat="server" CssClass="form-control"></asp:TextBox><br />
+                </div>
+            </div>
             <!-- ACTIVO -->
             <div class="form-group">
                 <asp:Label ID="lblActivo" runat="server" Text="ACTIVO" CssClass="col-md-2 control-label "></asp:Label>

@@ -181,6 +181,8 @@ namespace Sistema_CyT
             proyecto.MontoSolicitado = Int32.Parse(txtMontoSolicitado.Text);
             proyecto.MontoContraparte = Int32.Parse(txtMontoContraparte.Text);
             proyecto.MontoTotal = Int32.Parse(txtMontoTotal.Text);
+            proyecto.Descripcion = txtDescripcion.Text;
+            proyecto.Observaciones = txtObservaciones.Text;
 
             string cadena = ddlContacto.SelectedItem.ToString();
             string[] separadas;

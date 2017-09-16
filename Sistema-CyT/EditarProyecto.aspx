@@ -82,7 +82,7 @@
             </div>
             <!--EXPEDIENTE-->
             <div class="form-group">
-                <asp:Label ID="lblNumeroExp" runat="server" Text="EXPEDIENTE" CssClass="col-md-2 col-xs-12 control-label"> </asp:Label>
+                <asp:Label ID="lblNumeroExp" runat="server" Text="EXPEDIENTE / N°CONVENIO" CssClass="col-md-2 col-xs-12 control-label"> </asp:Label>
                 <div class="col-md-4 col-xs-12">
                     <asp:TextBox ID="txtNumeroExp" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
@@ -402,6 +402,20 @@
                         AppendDataBoundItems="true">
                         <asp:ListItem Value="-1">&lt;Seleccione Estado&gt;</asp:ListItem>
                     </asp:DropDownList>
+                </div>
+            </div>
+            <!--BREVE DESCRIPCION-->
+            <div class="form-group">
+                <asp:Label ID="lblDescripcion" runat="server" Text="BREVE DESCRIPCION" CssClass="col-md-2 col-xs-12 control-label"> </asp:Label>
+                <div class="col-md-8 col-xs-12">
+                    <asp:TextBox ID="txtDescripcion" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
+                </div>
+            </div>
+            <!--OBSERVACIONES-->
+            <div class="form-group">
+                <asp:Label ID="lblObservaciones" runat="server" Text="OBSERVACIONES" CssClass="col-md-2 col-xs-12 control-label"> </asp:Label>
+                <div class="col-md-8 col-xs-12">
+                    <asp:TextBox ID="txtObservaciones" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="1"></asp:TextBox>
                 </div>
             </div>
             <!--BOTON ACTUALIZAR PROYECTO-->

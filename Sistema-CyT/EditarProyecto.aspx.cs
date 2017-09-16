@@ -128,6 +128,8 @@ namespace Sistema_CyT
             txtMontoSolicitado.Text = Convert.ToString(proyecto.MontoSolicitado);
             txtMontoContraparte.Text = Convert.ToString(proyecto.MontoContraparte);
             txtMontoTotal.Text = Convert.ToString(proyecto.MontoTotal);
+            txtDescripcion.Text = proyecto.Descripcion.ToString();
+            txtObservaciones.Text = proyecto.Observaciones.ToString();
 
             ddlContacto.Text = personaNego.TraerPersona(proyecto.IdPersona.Value);
 
@@ -307,6 +309,8 @@ namespace Sistema_CyT
             proyecto.MontoSolicitado = Convert.ToDecimal(txtMontoSolicitado.Text);
             proyecto.MontoContraparte = Convert.ToDecimal(txtMontoContraparte.Text);
             proyecto.MontoTotal = Convert.ToDecimal(txtMontoTotal.Text);
+            proyecto.Descripcion = txtDescripcion.Text;
+            proyecto.Observaciones = txtObservaciones.Text;
 
             string cadena = ddlContacto.SelectedItem.ToString();
             string[] separadas;
@@ -376,6 +380,8 @@ namespace Sistema_CyT
             txtMontoSolicitado.Text = null;
             txtMontoContraparte.Text = null;
             txtMontoTotal.Text = null;
+            txtDescripcion.Text = null;
+            txtObservaciones.Text = null;
             ddlContacto.SelectedIndex = 0;
             ddlEmpresa.SelectedIndex = 0;
             ddlLocalidad.SelectedIndex = 0;
@@ -437,6 +443,8 @@ namespace Sistema_CyT
                     txtMontoSolicitado.Text = Convert.ToString(proyecto.MontoSolicitado);
                     txtMontoContraparte.Text = Convert.ToString(proyecto.MontoContraparte);
                     txtMontoTotal.Text = Convert.ToString(proyecto.MontoTotal);
+                    txtDescripcion.Text = proyecto.Descripcion.ToString();
+                    txtObservaciones.Text = proyecto.Observaciones.ToString();
 
                     ddlContacto.Text = personaNego.TraerPersona(proyecto.IdPersona.Value);
 
@@ -511,6 +519,8 @@ namespace Sistema_CyT
                 txtMontoSolicitado.Text = Convert.ToString(proyecto.MontoSolicitado);
                 txtMontoContraparte.Text = Convert.ToString(proyecto.MontoContraparte);
                 txtMontoTotal.Text = Convert.ToString(proyecto.MontoTotal);
+                txtDescripcion.Text = proyecto.Descripcion.ToString();
+                txtObservaciones.Text = proyecto.Observaciones.ToString();
 
                 ddlContacto.Text = personaNego.TraerPersona(proyecto.IdPersona.Value);
 

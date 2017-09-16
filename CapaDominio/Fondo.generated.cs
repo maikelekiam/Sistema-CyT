@@ -89,6 +89,45 @@ namespace CapaDominio
 			}
 		}
 		
+		private string telefono;
+		public virtual string Telefono
+		{
+			get
+			{
+				return this.telefono;
+			}
+			set
+			{
+				this.telefono = value;
+			}
+		}
+		
+		private string direccion;
+		public virtual string Direccion
+		{
+			get
+			{
+				return this.direccion;
+			}
+			set
+			{
+				this.direccion = value;
+			}
+		}
+		
+		private string contacto;
+		public virtual string Contacto
+		{
+			get
+			{
+				return this.contacto;
+			}
+			set
+			{
+				this.contacto = value;
+			}
+		}
+		
 		private Origen origen;
 		public virtual Origen Origen
 		{
