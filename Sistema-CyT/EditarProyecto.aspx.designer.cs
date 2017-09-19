@@ -121,6 +121,24 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.TextBox txtNumeroExp;
         
         /// <summary>
+        /// lblTipoProyecto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTipoProyecto;
+        
+        /// <summary>
+        /// ddlTipoProyecto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoProyecto;
+        
+        /// <summary>
         /// lblConvocatoria control.
         /// </summary>
         /// <remarks>

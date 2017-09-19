@@ -20,12 +20,12 @@ namespace Sistema_CyT
         ProyectoNego proyectoNego = new ProyectoNego();
         TipoEstadoNego tipoEstadoNego = new TipoEstadoNego();
         TipoEstadoEtapaNego tipoEstadoEtapaNego = new TipoEstadoEtapaNego();
+        TipoProyectoNego tipoProyectoNego = new TipoProyectoNego();
 
         static int idProyectoActual = 1;
         static int idEmpresaActual = 1;
         static int idLocalidadActual = 1;
         static int idPersonaActual = 1;
-        //static int idTipoEstado = 1;
 
         static List<Etapa> listaEtapasTemporal = new List<Etapa>();
 
@@ -39,6 +39,7 @@ namespace Sistema_CyT
             LlenarListaTipoEstados(); // SIRVE PARA EL DROP DOWN LIST
             LlenarListaConvocatorias(); // SIRVE PARA EL DROP DOWN LIST
             LlenarListaTipoEstadoEtapas(); // SIRVE PARA EL DROP DOWN LIST
+            LlenarListaTipoProyectos(); // SIRVE PARA EL DROP DOWN LIST
 
             //txtFechaInicioModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
             //txtFechaFinalModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
@@ -69,6 +70,12 @@ namespace Sistema_CyT
             ddlLocalidad.DataSource = localidadNego.MostrarLocalidades().ToList();
             ddlLocalidad.DataValueField = "nombre";
             ddlLocalidad.DataBind();
+        }
+        private void LlenarListaTipoProyectos()
+        {
+            ddlTipoProyecto.DataSource = tipoProyectoNego.MostrarTipoProyectos().ToList();
+            ddlTipoProyecto.DataValueField = "nombre";
+            ddlTipoProyecto.DataBind();
         }
 
         //Muestra en el DROPDOWNLIST los Tipos de Estado
@@ -103,7 +110,8 @@ namespace Sistema_CyT
                 ddlLocalidad.SelectedValue != "-1"
                 && ddlTipoEstado.SelectedValue != "-1"
                 && ddlContacto.SelectedValue != "-1"
-                && ddlConvocatoria.SelectedValue != "-1")
+                && ddlConvocatoria.SelectedValue != "-1"
+                && ddlTipoProyecto.SelectedValue != "-1")
             {
                 GuardarProyecto();
 
@@ -203,6 +211,8 @@ namespace Sistema_CyT
 
             proyecto.IdLocalidad = localidadNego.TraerLocalidadIdSegunItem(ddlLocalidad.SelectedItem.ToString());
             proyecto.IdTipoEstado = tipoEstadoNego.TraerTipoEstadoIdSegunItem(ddlTipoEstado.SelectedItem.ToString());
+            proyecto.IdTipoProyecto = tipoProyectoNego.TraerTipoProyectoIdSegunItem(ddlTipoProyecto.SelectedItem.ToString());
+
 
             int idProyecto = proyectoNego.GuardarProyecto(proyecto);
 

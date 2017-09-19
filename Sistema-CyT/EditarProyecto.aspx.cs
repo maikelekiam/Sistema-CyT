@@ -22,8 +22,9 @@ namespace Sistema_CyT
         ProyectoNego proyectoNego = new ProyectoNego();
         TipoEstadoNego tipoEstadoNego = new TipoEstadoNego();
         TipoEstadoEtapaNego tipoEstadoEtapaNego = new TipoEstadoEtapaNego();
+        TipoProyectoNego tipoProyectoNego = new TipoProyectoNego();
 
-        IEnumerable<Proyecto> listaProyectos;
+        //IEnumerable<Proyecto> listaProyectos;
 
         public static List<Etapa> listaTemporalEtapas = new List<Etapa>();
         public static List<Etapa> listaTemporalEtapasAgregado = new List<Etapa>();
@@ -49,6 +50,13 @@ namespace Sistema_CyT
             LlenarListaTipoEstadoEtapas(); // SIRVE PARA EL DROP DOWN LIST
             LimpiarFormulario();
             LlenarListaFondoChoice();
+            LlenarListaTipoProyectos(); // SIRVE PARA EL DROP DOWN LIST
+        }
+        private void LlenarListaTipoProyectos()
+        {
+            ddlTipoProyecto.DataSource = tipoProyectoNego.MostrarTipoProyectos().ToList();
+            ddlTipoProyecto.DataValueField = "nombre";
+            ddlTipoProyecto.DataBind();
         }
         private void LlenarListaFondoChoice()
         {
@@ -144,6 +152,7 @@ namespace Sistema_CyT
 
             ddlLocalidad.Text = localidadNego.TraerLocalidad(proyecto.IdLocalidad.Value);
             ddlTipoEstado.Text = tipoEstadoNego.TraerTipoEstado(proyecto.IdTipoEstado.Value);
+            ddlTipoProyecto.Text = tipoProyectoNego.TraerTipoProyecto(proyecto.IdTipoProyecto.Value);
 
             //AHORA TENGO QUE TRAER UNA LISTA DE ETAPAS SEGUN EL IdProyectoActual
             listaTemporalEtapas = (List<Etapa>)etapaNego.TraerEtapasSegunIdProyecto(idProyectoActual).ToList();
@@ -284,17 +293,29 @@ namespace Sistema_CyT
 
         protected void btnActualizarProyecto_Click(object sender, EventArgs e)
         {
-            ActualizarProyecto();
-            ListarProyectos.numeroExpedienteProyectoSeleccionado = txtNumeroExp.Text;
-            ListarProyectos.idConvocatoriaSeleccionada = Convert.ToInt32(ddlConvocatoria.Text);
-            LimpiarFormulario();
+            if (
+                ddlLocalidad.SelectedValue != "-1"
+                && ddlTipoEstado.SelectedValue != "-1"
+                && ddlContacto.SelectedValue != "-1"
+                && ddlConvocatoria.SelectedValue != "-1"
+                && ddlTipoProyecto.SelectedValue != "-1")
+            {
+                ActualizarProyecto();
+                ListarProyectos.numeroExpedienteProyectoSeleccionado = txtNumeroExp.Text;
+                ListarProyectos.idConvocatoriaSeleccionada = Convert.ToInt32(ddlConvocatoria.Text);
+                LimpiarFormulario();
 
-            LlenarGrillaEtapas();
+                LlenarGrillaEtapas();
 
-            listaTemporalEtapas.Clear();
-            listaTemporalEtapasAgregado.Clear();
+                listaTemporalEtapas.Clear();
+                listaTemporalEtapasAgregado.Clear();
 
-            Response.Redirect("MostrarProyecto.aspx");
+                Response.Redirect("MostrarProyecto.aspx");
+            }
+            else
+            {
+                // Mostrar aviso de completar todos los datos
+            }
         }
 
         private void ActualizarProyecto()
@@ -332,6 +353,7 @@ namespace Sistema_CyT
             //proyecto.IdEmpresa = empresaNego.TraerEmpresaIdSegunItem(ddlEmpresa.SelectedItem.ToString());
             proyecto.IdLocalidad = localidadNego.TraerLocalidadIdSegunItem(ddlLocalidad.SelectedItem.ToString());
             proyecto.IdTipoEstado = tipoEstadoNego.TraerTipoEstadoIdSegunItem(ddlTipoEstado.SelectedItem.ToString());
+            proyecto.IdTipoProyecto = tipoProyectoNego.TraerTipoProyectoIdSegunItem(ddlTipoProyecto.SelectedItem.ToString());
 
             proyectoNego.ActualizarProyecto(proyecto);
 
@@ -459,6 +481,7 @@ namespace Sistema_CyT
 
                     ddlLocalidad.Text = localidadNego.TraerLocalidad(proyecto.IdLocalidad.Value);
                     ddlTipoEstado.Text = tipoEstadoNego.TraerTipoEstado(proyecto.IdTipoEstado.Value);
+                    ddlTipoProyecto.Text = tipoProyectoNego.TraerTipoProyecto(proyecto.IdTipoProyecto.Value);
 
                     //AHORA TENGO QUE TRAER UNA LISTA DE ETAPAS SEGUN EL IdProyectoActual
                     listaTemporalEtapas = (List<Etapa>)etapaNego.TraerEtapasSegunIdProyecto(idProyectoActual).ToList();
@@ -535,6 +558,7 @@ namespace Sistema_CyT
 
                 ddlLocalidad.Text = localidadNego.TraerLocalidad(proyecto.IdLocalidad.Value);
                 ddlTipoEstado.Text = tipoEstadoNego.TraerTipoEstado(proyecto.IdTipoEstado.Value);
+                ddlTipoProyecto.Text = tipoProyectoNego.TraerTipoProyecto(proyecto.IdTipoProyecto.Value);
 
                 //AHORA TENGO QUE TRAER UNA LISTA DE ETAPAS SEGUN EL IdProyectoActual
                 listaTemporalEtapas = (List<Etapa>)etapaNego.TraerEtapasSegunIdProyecto(idProyectoActual).ToList();

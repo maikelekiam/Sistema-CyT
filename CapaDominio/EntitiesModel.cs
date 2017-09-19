@@ -202,6 +202,14 @@ namespace CapaDominio
 			}
 		}
 		
+		public IQueryable<TipoProyecto> TipoProyectos 
+		{
+			get
+			{
+				return this.GetAll<TipoProyecto>();
+			}
+		}
+		
 		public IEnumerable<pr01ResultSet0> Pr01(int? id)
 		{
 			int returnValue;
@@ -362,6 +370,10 @@ namespace CapaDominio
 			get;
 		}
 		IQueryable<Actuacion> Actuacions
+		{
+			get;
+		}
+		IQueryable<TipoProyecto> TipoProyectos
 		{
 			get;
 		}

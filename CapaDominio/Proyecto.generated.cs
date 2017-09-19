@@ -193,6 +193,19 @@ namespace CapaDominio
 			}
 		}
 		
+		private int? idTipoProyecto;
+		public virtual int? IdTipoProyecto
+		{
+			get
+			{
+				return this.idTipoProyecto;
+			}
+			set
+			{
+				this.idTipoProyecto = value;
+			}
+		}
+		
 		private Convocatorium convocatorium;
 		public virtual Convocatorium Convocatorium
 		{
@@ -255,6 +268,19 @@ namespace CapaDominio
 			set
 			{
 				this.tipoEstado = value;
+			}
+		}
+		
+		private TipoProyecto tipoProyecto;
+		public virtual TipoProyecto TipoProyecto
+		{
+			get
+			{
+				return this.tipoProyecto;
+			}
+			set
+			{
+				this.tipoProyecto = value;
 			}
 		}
 		

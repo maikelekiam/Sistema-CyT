@@ -21,6 +21,21 @@
                     <asp:TextBox ID="txtNumeroExp" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
+            <div class="form-group">
+                <asp:Label ID="lblTipoProyecto" runat="server" Text="TIPO PROYECTO" CssClass="col-md-2 col-xs-12 control-label"> </asp:Label>
+                <div class="col-md-4 col-xs-12">
+                    <asp:DropDownList ID="ddlTipoProyecto" runat="server"
+                        BackColor="WhiteSmoke"
+                        ForeColor="#000066"
+                        CssClass="selectpicker form-control show-tick"
+                        data-live-search="true"
+                        DataTextField="nombre"
+                        AutoPostBack="False"
+                        AppendDataBoundItems="true">
+                        <asp:ListItem Value="-1">&lt;Seleccione Tipo&gt;</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+            </div>
             <!--CONVOCATORIA-->
             <div class="form-group">
                 <asp:Label ID="lblConvocatoria" runat="server" Text="CONVOCATORIA" CssClass="col-md-2 col-xs-12 control-label"></asp:Label>

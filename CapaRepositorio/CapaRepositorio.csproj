@@ -58,6 +58,7 @@
     <Compile Include="TipoEstadoEtapaRepo.cs" />
     <Compile Include="TipoEstadoRepo.cs" />
     <Compile Include="TipoFinanciamientoRepo.cs" />
+    <Compile Include="TipoProyectoRepo.cs" />
     <Compile Include="UsuarioRepo.cs" />
   </ItemGroup>
   <ItemGroup>

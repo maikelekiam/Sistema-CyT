@@ -116,7 +116,8 @@ namespace Sistema_CyT
             ddlTipoFinanciamiento.Text = Convert.ToString(convocatoria.IdTipoFinanciamiento);
 
 
-
+            //****INICIO RUTINA PARA TRABAJAR CON FORMATO FECHA
+            //FECHA APERTURA
             string dia = Convert.ToString((convocatoria.FechaApertura).Value.Day);
             string mes = Convert.ToString((convocatoria.FechaApertura).Value.Month);
             string anio = Convert.ToString((convocatoria.FechaApertura).Value.Year);
@@ -131,7 +132,7 @@ namespace Sistema_CyT
                 t2 = "0";
             }
             txtFechaApertura.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
-
+            //FECHA CIERRE
             dia = Convert.ToString((convocatoria.FechaCierre).Value.Day);
             mes = Convert.ToString((convocatoria.FechaCierre).Value.Month);
             anio = Convert.ToString((convocatoria.FechaCierre).Value.Year);
@@ -146,6 +147,7 @@ namespace Sistema_CyT
                 t2 = "0";
             }
             txtFechaCierre.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
+            //****FIN RUTINA FORMATO DE FECHA
 
             //txtFechaApertura.Text = Convert.ToString(convocatoria.FechaApertura);
             //txtFechaCierre.Text = Convert.ToString(convocatoria.FechaCierre);
