@@ -153,6 +153,19 @@ namespace CapaDominio
 			}
 		}
 		
+		private string _tipoProyecto;
+		public virtual string tipoProyecto
+		{
+			get
+			{
+				return this._tipoProyecto;
+			}
+			set
+			{
+				this._tipoProyecto = value;
+			}
+		}
+		
 		private string _tipoEstado;
 		public virtual string tipoEstado
 		{

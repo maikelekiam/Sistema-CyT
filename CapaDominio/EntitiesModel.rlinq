@@ -200,6 +200,12 @@
             <orm:constraint name="FK_Proyecto_TipoEstado" delete-action="dbdefaultrule" destination-table="TipoEstado" />
           </orm:reference>
         </orm:field>
+        <orm:field name="tipoProyecto" property="TipoProyecto" behavior="readwrite" uniqueId="7c88a1d0-740b-4d32-97e2-eea5a26e6012" type="CapaDominio.TipoProyecto">
+          <orm:reference uniqueId="18b49336-47ba-4924-82dd-e8202b1983c3" association-name="ProyectoHasTipoProyecto">
+            <orm:sharedfield name="idTipoProyecto" target-class="CapaDominio.TipoProyecto" target-field="idTipoProyecto" />
+            <orm:constraint name="FK_Proyecto_TipoProyecto" delete-action="dbdefaultrule" destination-table="TipoProyecto" />
+          </orm:reference>
+        </orm:field>
         <orm:field name="etapas" property="Etapas" behavior="readwrite" uniqueId="7c51234a-e7a8-40e4-8d60-77672d0069ff" type="CapaDominio.Etapa">
           <orm:collection element-class="CapaDominio.Etapa" inverse-field="proyecto" order-by="" uniqueId="94a40b12-c3da-4c54-91af-b91e84035f2c" />
         </orm:field>
@@ -211,12 +217,6 @@
         </orm:field>
         <orm:field name="actuacions" property="Actuacions" behavior="readwrite" uniqueId="5af5987f-6615-4166-87d1-18fc6753df20" type="CapaDominio.Actuacion">
           <orm:collection element-class="CapaDominio.Actuacion" inverse-field="proyecto" order-by="" uniqueId="fddab350-64fc-46c5-b19e-046011436d5b" />
-        </orm:field>
-        <orm:field name="tipoProyecto" property="TipoProyecto" behavior="readwrite" uniqueId="7c88a1d0-740b-4d32-97e2-eea5a26e6012" type="CapaDominio.TipoProyecto">
-          <orm:reference uniqueId="18b49336-47ba-4924-82dd-e8202b1983c3" association-name="ProyectoHasTipoProyecto">
-            <orm:sharedfield name="idTipoProyecto" target-class="CapaDominio.TipoProyecto" target-field="idTipoProyecto" />
-            <orm:constraint name="FK_Proyecto_TipoProyecto" delete-action="dbdefaultrule" destination-table="TipoProyecto" />
-          </orm:reference>
         </orm:field>
       </orm:class>
       <orm:class name="Persona" uniqueId="1fc19e9a-77a4-4794-b62b-d8196b56a617">
@@ -1504,7 +1504,7 @@
     <domainModelHasDomainMethods Id="0fa5766c-901f-4e2d-b1c3-d7d5a54e1c46">
       <domainMethod name="pr02" storedProcedureName="'pr02'" generateReturnValueOverload="true">
         <domainMethodReturnShape>
-          <domainMethodReferencesDomainMethodReturnShape Id="c69b2c2d-7e5d-40a5-bd55-b0b0bdbbe80c">
+          <domainMethodReferencesDomainMethodReturnShape Id="1ce05793-b4dd-4e5e-8bf8-582ef5e1224f">
             <domainMethodReturnShapeMoniker name="/ModeloDeDominio/pr02ResultSet0" />
           </domainMethodReferencesDomainMethodReturnShape>
         </domainMethodReturnShape>
@@ -1526,20 +1526,21 @@
         <Property Id="b7e2e8d4-719b-4386-adfe-3c93e092dc9f" name="activa" type="System.Boolean" label="activa : System.Boolean" nullable="true" fieldName="_activa" />
       </domainMethodReturnShape>
     </domainModelHasDomainMethodReturnShapes>
-    <domainModelHasDomainMethodReturnShapes Id="6d0c2321-4788-44ec-a1a1-40aeac74b5fc">
+    <domainModelHasDomainMethodReturnShapes Id="6a4e8cc6-a538-4e77-9203-8fe38c889d96">
       <domainMethodReturnShape name="pr02ResultSet0" namespace="CapaDominio" showPropertiesCompartment="true" domainMethodType="CustomShape">
-        <Property Id="2fdc458f-fa4c-4e5b-a51b-3c135f4206ef" name="idProyecto" type="System.Int32" label="idProyecto : System.Int32" fieldName="_idProyecto" />
-        <Property Id="18629430-eb6e-46cb-a63b-9937ff5d011d" name="idConvocatoria" type="System.Int32" label="idConvocatoria : System.Int32" fieldName="_idConvocatoria" />
-        <Property Id="2b3f1d0a-539d-4410-9d4c-9688c53a3952" name="nombre" type="System.String" label="nombre : System.String" nullable="true" fieldName="_nombre" />
-        <Property Id="766f161b-8f1f-43ca-b3a6-742424c31557" name="numeroExpediente" type="System.String" label="numeroExpediente : System.String" nullable="true" fieldName="_numeroExpediente" />
-        <Property Id="cd030219-dc50-441f-86c4-e9b46e15ef2d" name="montoSolicitado" type="System.Decimal" label="montoSolicitado : System.Decimal" nullable="true" fieldName="_montoSolicitado" />
-        <Property Id="37e170bf-b3fa-47b3-bc5a-cfac2c1f568f" name="montoContraparte" type="System.Decimal" label="montoContraparte : System.Decimal" nullable="true" fieldName="_montoContraparte" />
-        <Property Id="0b791879-d60f-4542-917b-09b60fb583ea" name="montoTotal" type="System.Decimal" label="montoTotal : System.Decimal" nullable="true" fieldName="_montoTotal" />
-        <Property Id="21160af1-0958-43dc-bd26-80f73e6878f0" name="idPersona" type="System.Int32" label="idPersona : System.Int32" nullable="true" fieldName="_idPersona" />
-        <Property Id="8b6fd0e9-caae-465e-90cc-cd896bcaa4e2" name="idEmpresa" type="System.Int32" label="idEmpresa : System.Int32" nullable="true" fieldName="_idEmpresa" />
-        <Property Id="02c12787-5bc2-4d08-a7d6-952112e93dc3" name="localidad" type="System.String" label="localidad : System.String" nullable="true" fieldName="_localidad" />
-        <Property Id="a7db23c2-08a6-48e1-8b5e-e3446bab649f" name="tipoEstado" type="System.String" label="tipoEstado : System.String" nullable="true" fieldName="_tipoEstado" />
-        <Property Id="c634cb50-cb56-4fb4-a104-b1779aa06691" name="anio" type="System.Int32" label="anio : System.Int32" nullable="true" fieldName="_anio" />
+        <Property Id="0a43a3b4-baaf-46dc-9d44-d331046230e2" name="idProyecto" type="System.Int32" label="idProyecto : System.Int32" fieldName="_idProyecto" />
+        <Property Id="a2b6c4f2-b2cf-4443-832e-0a57385b0bc8" name="idConvocatoria" type="System.Int32" label="idConvocatoria : System.Int32" fieldName="_idConvocatoria" />
+        <Property Id="797497d3-d9f4-4340-8587-bdeb43d25fcb" name="nombre" type="System.String" label="nombre : System.String" nullable="true" fieldName="_nombre" />
+        <Property Id="3f09056a-c986-4965-bc89-6129c1cff0e1" name="numeroExpediente" type="System.String" label="numeroExpediente : System.String" nullable="true" fieldName="_numeroExpediente" />
+        <Property Id="e3d9f284-d7e4-4b66-af58-de35b138baca" name="montoSolicitado" type="System.Decimal" label="montoSolicitado : System.Decimal" nullable="true" fieldName="_montoSolicitado" />
+        <Property Id="24cd9b09-903d-444c-a780-853a7f6cd3b1" name="montoContraparte" type="System.Decimal" label="montoContraparte : System.Decimal" nullable="true" fieldName="_montoContraparte" />
+        <Property Id="98cf77f9-63a5-4f44-b1e5-4a747fe6dabd" name="montoTotal" type="System.Decimal" label="montoTotal : System.Decimal" nullable="true" fieldName="_montoTotal" />
+        <Property Id="bdf03ae9-7da6-4763-9a2f-708b2c006a4b" name="idPersona" type="System.Int32" label="idPersona : System.Int32" nullable="true" fieldName="_idPersona" />
+        <Property Id="3f390ecc-32dc-463b-a7cc-fc78a7cdc4a1" name="idEmpresa" type="System.Int32" label="idEmpresa : System.Int32" nullable="true" fieldName="_idEmpresa" />
+        <Property Id="f721d050-6835-4bd3-9e1f-d47b80c58f57" name="localidad" type="System.String" label="localidad : System.String" nullable="true" fieldName="_localidad" />
+        <Property Id="ffa2eb76-773b-45d8-82a8-37f6b36a42d0" name="tipoProyecto" type="System.String" label="tipoProyecto : System.String" nullable="true" fieldName="_tipoProyecto" />
+        <Property Id="5515a668-e483-48a4-a92e-fd6047e10f1c" name="tipoEstado" type="System.String" label="tipoEstado : System.String" nullable="true" fieldName="_tipoEstado" />
+        <Property Id="c10d6c87-717a-45d3-ac18-751cf2f83247" name="anio" type="System.Int32" label="anio : System.Int32" nullable="true" fieldName="_anio" />
       </domainMethodReturnShape>
     </domainModelHasDomainMethodReturnShapes>
   </domainMethodReturnShapes>

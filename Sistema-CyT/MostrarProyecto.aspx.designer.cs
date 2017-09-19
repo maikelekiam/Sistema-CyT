@@ -67,6 +67,24 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.TextBox txtConvocatoria;
         
         /// <summary>
+        /// lblTipoProyecto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTipoProyecto;
+        
+        /// <summary>
+        /// txtTipoProyecto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTipoProyecto;
+        
+        /// <summary>
         /// lblMontoSolicitado control.
         /// </summary>
         /// <remarks>

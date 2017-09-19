@@ -39,5 +39,14 @@ namespace CapaRepositorio
                 return result.Nombre;
             }
         }
+        public TipoProyecto ObtenerTipoProyecto(int id)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                TipoProyecto tipoProyecto = modeloDeDominio.TipoProyectos.Where(c => c.IdTipoProyecto == id).FirstOrDefault();
+
+                return tipoProyecto;
+            }
+        }
     }
 }

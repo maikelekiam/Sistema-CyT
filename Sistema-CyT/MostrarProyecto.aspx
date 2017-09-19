@@ -23,6 +23,13 @@
                         <asp:TextBox ID="txtConvocatoria" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                 </div>
+                <!--TIPO DE PROYECTO-->
+                <div class="form-group">
+                    <asp:Label ID="lblTipoProyecto" runat="server" Text="TIPO" CssClass="col-md-2 col-xs-12 control-label"></asp:Label>
+                    <div class="col-md-4">
+                        <asp:TextBox ID="txtTipoProyecto" runat="server" CssClass="form-control"></asp:TextBox>
+                    </div>
+                </div>
                 <!--MONTO SOLICITADO-->
                 <div class="form-group">
                     <asp:Label ID="lblMontoSolicitado" runat="server" Text="MONTO SOLICITADO" CssClass="col-md-2 control-label"> </asp:Label>

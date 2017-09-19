@@ -24,5 +24,9 @@ namespace CapaNegocio
         {
             return tipoProyectoRepo.TraerTipoProyecto(id);
         }
+        public TipoProyecto ObtenerTipoProyecto(int id)
+        {
+            return tipoProyectoRepo.ObtenerTipoProyecto(id);
+        }
     }
 }

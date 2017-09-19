@@ -14,6 +14,7 @@ namespace Sistema_CyT
         ProyectoNego proyectoNego = new ProyectoNego();
         ConvocatoriaNego convocatoriaNego = new ConvocatoriaNego();
         EtapaNego etapaNego = new EtapaNego();
+        TipoProyectoNego tipoProyectoNego = new TipoProyectoNego();
 
         public static List<Etapa> listaTemporalEtapas = new List<Etapa>();
         public static int idProyectoSeleccionado;
@@ -36,14 +37,15 @@ namespace Sistema_CyT
             //lblNombreProyecto.Text = "Proyecto: " + proyecto.Nombre.ToString();
             lblNombreProyecto.Text = proyecto.Nombre.ToString().ToUpper();
 
-            txtConvocatoria.Text = convocatoriaNego.ObtenerConvocatoria(proyecto.IdConvocatoria).Nombre;
+            txtConvocatoria.Text = convocatoriaNego.ObtenerConvocatoria(Convert.ToInt32(proyecto.IdConvocatoria)).Nombre;
             txtNumeroExp.Text = proyecto.NumeroExpediente.ToString();
             txtMontoSolicitado.Text = Convert.ToString(proyecto.MontoSolicitado);
             txtMontoContraparte.Text = Convert.ToString(proyecto.MontoContraparte);
             txtMontoTotal.Text = Convert.ToString(proyecto.MontoTotal);
             txtDescripcion.Text = proyecto.Descripcion.ToString();
             txtObservaciones.Text = proyecto.Observaciones.ToString();
-
+            txtTipoProyecto.Text = tipoProyectoNego.ObtenerTipoProyecto(Convert.ToInt32(proyecto.IdTipoProyecto)).Nombre;
+            //txtTipoProyecto.Text = tipoProyectoNego.ObtenerTipoProyecto(proyecto.IdTipoProyecto).Nombre;
 
 
             //AHORA TENGO QUE TRAER UNA LISTA DE ETAPAS SEGUN EL IdProyectoActual
