@@ -95,5 +95,14 @@ namespace CapaRepositorio
                 return proyecto;
             }
         }
+        public Proyecto ObtenerProyectoSegunNumeroExpediente(string numExp)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                Proyecto proyecto = modeloDeDominio.Proyectos.Where(c => c.NumeroExpediente == numExp).FirstOrDefault();
+
+                return proyecto;
+            }
+        }
     }
 }

@@ -31,6 +31,9 @@ namespace Sistema_CyT
             txtNombre.Text = fondo.Nombre;
             txtDescripcion.Text = fondo.Descripcion;
             txtOrigen.Text = origenNego.TraerOrigenSegunIdFondo(Convert.ToInt32(fondo.IdOrigen));
+            txtTelefono.Text = fondo.Telefono;
+            txtDireccion.Text = fondo.Direccion;
+            txtContacto.Text = fondo.Contacto;
         }
     }
 }

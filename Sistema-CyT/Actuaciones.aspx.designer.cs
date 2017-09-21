@@ -166,6 +166,51 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.Button btnModalOrganismoGuardar;
         
         /// <summary>
+        /// lblViaComunicacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblViaComunicacion;
+        
+        /// <summary>
+        /// ddlViaComunicacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlViaComunicacion;
+        
+        /// <summary>
+        /// txtViaComunicacionModal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtViaComunicacionModal;
+        
+        /// <summary>
+        /// btnModalViaComunicacionSalir control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnModalViaComunicacionSalir;
+        
+        /// <summary>
+        /// btnModalViaComunicacionGuardar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnModalViaComunicacionGuardar;
+        
+        /// <summary>
         /// lblDetalle control.
         /// </summary>
         /// <remarks>

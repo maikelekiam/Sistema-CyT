@@ -16,9 +16,11 @@ namespace Sistema_CyT
         ProyectoNego proyectoNego = new ProyectoNego();
         ActuacionNego actuacionNego = new ActuacionNego();
         OrganismoNego organismoNego = new OrganismoNego();
+        ViaComunicacionNego viaComunicacionNego = new ViaComunicacionNego();
 
         public static int idActuacionActual;
         public static int idOrganismoActual;
+        public static int idViaComunicacionActual = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,6 +29,7 @@ namespace Sistema_CyT
             MostrarProyecto(FiltrarProyecto.idProyectoSeleccionado);
             MostrarOrganismo();
             PanelNuevaActuacion.Visible = false;
+            MostrarViaComunicacion(); //SIRVE PARA CARGAR DATOS EN EL DROPDOWNLIST
 
             LlenarGrillaActuaciones();
             LimpiarPantalla();
@@ -44,7 +47,7 @@ namespace Sistema_CyT
         {
             Proyecto proyecto = proyectoNego.ObtenerProyecto(id);
 
-            lblProyecto.Text = "Proyecto: " + proyecto.Nombre.ToString();
+            lblProyecto.Text = proyecto.Nombre.ToString().ToUpper();
         }
 
         protected void btnAgregarActuacion_Click(object sender, EventArgs e)
@@ -88,6 +91,7 @@ namespace Sistema_CyT
             actuacion.Fecha = DateTime.ParseExact(txtFechaActuacion.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
             actuacion.Detalle = txtDetalle.Text;
             actuacion.IdOrganismo = organismoNego.TraerOrganismoIdSegunItem(ddlOrganismo.SelectedItem.ToString());
+            actuacion.IdViaComunicacion = viaComunicacionNego.TraerViaComunicacionIdSegunItem(ddlViaComunicacion.SelectedItem.ToString());
 
             idActuacionActual = actuacionNego.GuardarActuacion(actuacion);
 
@@ -101,6 +105,7 @@ namespace Sistema_CyT
             dgvActuaciones.Columns[2].Visible = true;
             dgvActuaciones.Columns[3].Visible = true;
             dgvActuaciones.Columns[4].Visible = true;
+            dgvActuaciones.Columns[5].Visible = true;
 
             dgvActuaciones.DataSource = actuacionNego.MostrarActuacionSegunProyecto(FiltrarProyecto.idProyectoSeleccionado).ToList();
             dgvActuaciones.DataBind();
@@ -145,7 +150,7 @@ namespace Sistema_CyT
 
             txtFechaActuacion.Text = Convert.ToDateTime(actuacion.Fecha).ToShortDateString();
             txtDetalle.Text = actuacion.Detalle.ToString();
-            ddlOrganismo.Text = Convert.ToString(organismoNego.TraerOrganismo(actuacion.IdOrganismo));
+            ddlOrganismo.Text = Convert.ToString(organismoNego.TraerOrganismo(Convert.ToInt32(actuacion.IdOrganismo)));
         }
 
         protected void dgvActuaciones_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -180,6 +185,30 @@ namespace Sistema_CyT
             ddlOrganismo.SelectedIndex = 0;
             txtFechaActuacion.Text = null;
             txtDetalle.Text = null;
+        }
+
+        protected void btnModalViaComunicacionGuardar_Click(object sender, EventArgs e)
+        {
+            ViaComunicacion viaComunicacion = new ViaComunicacion();
+
+            viaComunicacion.Nombre = txtViaComunicacionModal.Text;
+
+            idViaComunicacionActual = viaComunicacionNego.GuardarViaComunicacion(viaComunicacion);
+
+            ddlViaComunicacion.Items.Clear();
+            ddlViaComunicacion.Text = TraerViaComunicacion(idViaComunicacionActual);
+            MostrarViaComunicacion();
+        }
+        //Muestro en el DROPDOWNLIST las VIAS DE COMUNICACION
+        private void MostrarViaComunicacion()
+        {
+            ddlViaComunicacion.DataSource = viaComunicacionNego.MostrarViaComunicacion().ToList();
+            ddlViaComunicacion.DataValueField = "nombre";
+            ddlViaComunicacion.DataBind();
+        }
+        private string TraerViaComunicacion(int id)
+        {
+            return viaComunicacionNego.TraerViaComunicacion(id);
         }
     }
 }

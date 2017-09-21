@@ -76,8 +76,8 @@ namespace CapaDominio
 			}
 		}
 		
-		private int idOrganismo;
-		public virtual int IdOrganismo
+		private int? idOrganismo;
+		public virtual int? IdOrganismo
 		{
 			get
 			{
@@ -86,6 +86,19 @@ namespace CapaDominio
 			set
 			{
 				this.idOrganismo = value;
+			}
+		}
+		
+		private int? idViaComunicacion;
+		public virtual int? IdViaComunicacion
+		{
+			get
+			{
+				return this.idViaComunicacion;
+			}
+			set
+			{
+				this.idViaComunicacion = value;
 			}
 		}
 		
@@ -112,6 +125,19 @@ namespace CapaDominio
 			set
 			{
 				this.proyecto = value;
+			}
+		}
+		
+		private ViaComunicacion viaComunicacion;
+		public virtual ViaComunicacion ViaComunicacion
+		{
+			get
+			{
+				return this.viaComunicacion;
+			}
+			set
+			{
+				this.viaComunicacion = value;
 			}
 		}
 		

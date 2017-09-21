@@ -40,22 +40,22 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.DropDownList ddlFondo;
         
         /// <summary>
-        /// lblAnio control.
+        /// lblConvocatoria control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAnio;
+        protected global::System.Web.UI.WebControls.Label lblConvocatoria;
         
         /// <summary>
-        /// ddlAnio control.
+        /// ddlConvocatoria control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlAnio;
+        protected global::System.Web.UI.WebControls.DropDownList ddlConvocatoria;
         
         /// <summary>
         /// dgvProyectos control.

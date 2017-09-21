@@ -16,8 +16,14 @@ namespace Sistema_CyT
         private FondoNego fondoNego = new FondoNego();
         private ConvocatoriaNego convocatoriaNego = new ConvocatoriaNego();
         public static int idProyectoSeleccionado;
-        private List<string> listaAnios = new List<string>(new string[] { "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006" });
         private List<Proyecto> listaProyectos = new List<Proyecto>();
+
+        List<pr02ResultSet0> listaProyectosFiltrados = new List<pr02ResultSet0>();
+        List<pr02ResultSet0> listaChoiceProyectos = new List<pr02ResultSet0>();
+
+        public static int idConvocatoriaSeleccionada = 1;
+        public static int idEstadoSeleccionado = 1;
+        public static string numeroExpedienteProyectoSeleccionado = null;
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -25,7 +31,6 @@ namespace Sistema_CyT
             if (IsPostBack) return;
             
             LlenarListaFondos();
-            LlenarListaAnios();
             MostrarListaProyectos();
             //listaProyectos.Clear();
         }
@@ -35,67 +40,102 @@ namespace Sistema_CyT
             ddlFondo.DataValueField = "idFondo";
             ddlFondo.DataBind();
         }
-        private void LlenarListaAnios()
-        {
-            ddlAnio.DataSource = listaAnios;
-            ddlAnio.DataBind();
-        }
-
         private void MostrarListaProyectos()
         {
-            //dgvProyectos.Columns[0].Visible = true;
-            //dgvProyectos.Columns[1].Visible = true;
-            //dgvProyectos.Columns[2].Visible = true;
-            //dgvProyectos.Columns[3].Visible = true;
-            //dgvProyectos.Columns[4].Visible = true;
-
-            dgvProyectos.DataSource = proyectoNego.MostrarProyectos().ToList();
-            dgvProyectos.DataBind();
-
-            dgvProyectos.Columns[0].Visible = false;
-            //dgvProyectos.Columns[4].Visible = false;
         }
 
         protected void ddlFondo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FiltrarProyectosPorFondo(Convert.ToInt32(ddlFondo.SelectedValue.ToString()));
-        }
-        private void FiltrarProyectosPorFondo(int id)
-        {
-            //TRAER UNA LISTA DE CONVOCATORIAS QUE PERTENECEN AL idProyecto
-            List<Convocatorium> listaConvocatorias = convocatoriaNego.MostrarConvocatorias().Where(c => c.IdFondo == id).ToList();
-
-            //TRAER UNA LISTA DE PROYECTOS QUE PERTENECEN A listaConvocatorias
-            foreach (Convocatorium conv in listaConvocatorias)
+            if (ddlFondo.SelectedValue != "-1")
             {
-                foreach (Proyecto proy in proyectoNego.MostrarProyectos().ToList())
-                {
-                    if (proy.IdConvocatoria == conv.IdConvocatoria)
-                    {
-                        listaProyectos.Add(proy);
-                    }
-                }
+                LlenarChoiceConvocatorias(Convert.ToInt32(ddlFondo.SelectedValue));
             }
-
-
-            dgvProyectos.Columns[0].Visible = true;
-            dgvProyectos.Columns[1].Visible = true;
-            dgvProyectos.Columns[2].Visible = true;
-            //dgvProyectos.Columns[3].Visible = true;
-            dgvProyectos.DataSource = listaProyectos.ToList();
-            dgvProyectos.DataBind();
-            dgvProyectos.Columns[0].Visible = false;
+            else
+            {
+                Response.Redirect("FiltrarProyecto.aspx");
+            }
         }
+
+        private void LlenarChoiceConvocatorias(int id)
+        {
+            ddlConvocatoria.DataSource = convocatoriaNego.ListarChoiceConvocatorias(id);
+            ddlConvocatoria.DataTextField = "nombre";
+            ddlConvocatoria.DataValueField = "idConvocatoria";
+            ddlConvocatoria.DataBind();
+
+            if (ddlConvocatoria.SelectedValue != "-1" && ddlConvocatoria.SelectedValue != "")
+            {
+                idConvocatoriaSeleccionada = Convert.ToInt32(ddlConvocatoria.SelectedValue.ToString());
+
+                dgvProyectos.DataSource = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).ToList();
+                dgvProyectos.DataBind();
+            }
+            else
+            {
+                dgvProyectos.DataSource = listaProyectosFiltrados.ToList();
+                dgvProyectos.DataBind();
+            }
+        }
+        //private void FiltrarProyectosPorFondo(int id)
+        //{
+        //    //TRAER UNA LISTA DE CONVOCATORIAS QUE PERTENECEN AL idProyecto
+        //    List<Convocatorium> listaConvocatorias = convocatoriaNego.MostrarConvocatorias().Where(c => c.IdFondo == id).ToList();
+
+        //    //TRAER UNA LISTA DE PROYECTOS QUE PERTENECEN A listaConvocatorias
+        //    foreach (Convocatorium conv in listaConvocatorias)
+        //    {
+        //        foreach (Proyecto proy in proyectoNego.MostrarProyectos().ToList())
+        //        {
+        //            if (proy.IdConvocatoria == conv.IdConvocatoria)
+        //            {
+        //                listaProyectos.Add(proy);
+        //            }
+        //        }
+        //    }
+
+
+        //    dgvProyectos.Columns[0].Visible = true;
+        //    dgvProyectos.Columns[1].Visible = true;
+        //    dgvProyectos.Columns[2].Visible = true;
+        //    //dgvProyectos.Columns[3].Visible = true;
+        //    dgvProyectos.DataSource = listaProyectos.ToList();
+        //    dgvProyectos.DataBind();
+        //    dgvProyectos.Columns[0].Visible = false;
+        //}
 
         protected void dgvProyectos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Accessing BoundField Column
-            idProyectoSeleccionado = Convert.ToInt32(dgvProyectos.SelectedRow.Cells[0].Text);
+            GridViewRow row = this.dgvProyectos.SelectedRow;
 
-            //Accessing TemplateField Column controls
-            string conv = (dgvProyectos.SelectedRow.FindControl("lblConvocatoria") as Label).Text;
+            numeroExpedienteProyectoSeleccionado = row.Cells[0].Text;
+
+            idProyectoSeleccionado = proyectoNego.ObtenerProyectoSegunNumeroExpediente(numeroExpedienteProyectoSeleccionado).IdProyecto;
 
             Response.Redirect("Actuaciones.aspx");
+
+
+
+
+
+
+
+            ////Accessing BoundField Column
+            //idProyectoSeleccionado = Convert.ToInt32(dgvProyectos.SelectedRow.Cells[0].Text);
+
+            ////Accessing TemplateField Column controls
+            //string conv = (dgvProyectos.SelectedRow.FindControl("lblConvocatoria") as Label).Text;
+
+            //Response.Redirect("Actuaciones.aspx");
+        }
+
+        protected void ddlConvocatoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            idConvocatoriaSeleccionada = Convert.ToInt32(ddlConvocatoria.SelectedValue.ToString());
+
+            dgvProyectos.DataSource = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).ToList();
+            dgvProyectos.DataBind();
+
+            //dgvProyectos.Columns[0].Visible = false;
         }
                               
     }

@@ -137,6 +137,8 @@ namespace Sistema_CyT
 
             numeroExpedienteProyectoSeleccionado = row.Cells[0].Text;
 
+
+
             Response.Redirect("MostrarProyecto.aspx");
         }
 

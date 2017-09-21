@@ -210,6 +210,14 @@ namespace CapaDominio
 			}
 		}
 		
+		public IQueryable<ViaComunicacion> ViaComunicacions 
+		{
+			get
+			{
+				return this.GetAll<ViaComunicacion>();
+			}
+		}
+		
 		public IEnumerable<pr01ResultSet0> Pr01(int? id)
 		{
 			int returnValue;
@@ -374,6 +382,10 @@ namespace CapaDominio
 			get;
 		}
 		IQueryable<TipoProyecto> TipoProyectos
+		{
+			get;
+		}
+		IQueryable<ViaComunicacion> ViaComunicacions
 		{
 			get;
 		}

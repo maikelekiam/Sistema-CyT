@@ -2,10 +2,10 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
-        <asp:Panel ID="PanelProyecto" CssClass="panel panel-success" runat="server">
+        <asp:Panel ID="PanelProyecto" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
                 <br />
-                <asp:Label ID="lblProyecto" Style="text-align: left; font-size: large;" Font-Bold="true" runat="server" CssClass="col-md-12 control-label"></asp:Label>
+                <asp:Label ID="lblProyecto" Style="text-align: justify;" Font-Bold="true" runat="server" CssClass="col-md-12 control-label"></asp:Label>
                 <br />
             </div>
         </asp:Panel>
@@ -27,7 +27,6 @@
                     <div class="col-md-4">
                         <div class="input-group date"
                             data-provide="datepicker"
-                            
                             data-date-autoclose="true"
                             data-date-today-btn="true"
                             data-date-clear-btn="true"
@@ -104,6 +103,58 @@
                     </div>
                 </div>
             </div>
+
+            <!--VIA DE COMUNICACION + OPCION PARA AGREGAR NUEVA VIA DE COMUNICACION-->
+            <div class="form-group">
+                <asp:Label ID="lblViaComunicacion" runat="server" Text="VIA DE COMUNICACION" CssClass="col-md-2 control-label"> </asp:Label>
+                <div class="col-md-4 ">
+                    <asp:DropDownList ID="ddlViaComunicacion" runat="server"
+                        BackColor="WhiteSmoke"
+                        ForeColor="#000066"
+                        Font-Bold="false"
+                        CssClass="selectpicker form-control show-tick"
+                        data-live-search="true"
+                        DataTextField="nombre"
+                        AutoPostBack="false"
+                        AppendDataBoundItems="true">
+                        <asp:ListItem Value="-1">&lt;Seleccione Via Comunicacion&gt;</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+
+
+                <%--AGREGAR ACA EL MODAL PARA LA NUEVA VIA DE COMUNICACION--%>
+                <div class="form-group">
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalViaComunicacion">Nueva Via de Comunicacion</button>
+                    </div>
+                    <!-- MODAL VIA DE COMUNICACION  -->
+                    <div class="modal fade" id="modalViaComunicacion" tabindex="-1" role="dialog" aria-labelledby="modalLabelViaComunicacion" aria-hidden="true">
+                        <div class="modal-dialog modal-md">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title" id="modalLabelViaComunicacion">Nueva Via de Comunicacion</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="col-md-8">
+                                        <asp:TextBox ID="txtViaComunicacionModal" runat="server" CssClass="form-control"
+                                            onkeypress="return validarSoloLetras(event);"></asp:TextBox><br />
+                                    </div>
+                                    <br />
+                                </div>
+                                <div class="modal-footer">
+                                    <asp:Button runat="server" ID="btnModalViaComunicacionSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
+                                    <asp:Button runat="server" ID="btnModalViaComunicacionGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalViaComunicacionGuardar_Click" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <!--DETALLE DE LA ACTUACION-->
             <div class="form-group">
                 <asp:Label ID="lblDetalle" runat="server" Text="DETALLE" CssClass="col-md-2 control-label"></asp:Label>
@@ -130,7 +181,7 @@
                 <h4>ACTUACIONES REALIZADAS</h4>
         </asp:Label>
         <div class="form-group">
-            <div class="col-md-9 col-md-offset-1">
+            <div class="col-md-12">
                 <asp:GridView ID="dgvActuaciones" runat="server" AutoGenerateColumns="false"
                     CssClass="table table-hover table-striped" BorderWidth="2px" GridLines="Both"
                     OnSelectedIndexChanging="dgvActuaciones_SelectedIndexChanging"
@@ -139,10 +190,15 @@
                         <asp:BoundField HeaderText="idActuacion" DataField="idActuacion" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100" />
                         <asp:BoundField HeaderText="idP" DataField="idProyecto" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100" />
                         <asp:BoundField HeaderText="Fecha" DataField="fecha"
-                            DataFormatString="{0:dd-MMM-yyyy}" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="50" HeaderStyle-Width="80" />
+                            DataFormatString="{0:dd-MMM-yyyy}" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="100" HeaderStyle-Width="100" />
                         <asp:TemplateField HeaderText="Organismo" HeaderStyle-BackColor="#cccccc" HeaderStyle-Width="100">
                             <ItemTemplate>
                                 <asp:Label ID="lbl23" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Organismo.Nombre") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Via" HeaderStyle-BackColor="#cccccc" HeaderStyle-Width="100">
+                            <ItemTemplate>
+                                <asp:Label ID="lblViaComunicacion" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ViaComunicacion.Nombre") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Detalle" DataField="detalle"
