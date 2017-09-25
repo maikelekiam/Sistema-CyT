@@ -37,7 +37,128 @@
                     </div>
                 </div>
             </div>
-
+            <!--CONTACTO-->
+            <div class="form-group">
+                <asp:Label ID="lblContacto" runat="server" Text="CONTACTO" CssClass="col-md-2 control-label"></asp:Label>
+                <div class="col-md-4">
+                    <asp:DropDownList ID="ddlContacto" runat="server"
+                        BackColor="WhiteSmoke"
+                        ForeColor="#000066"
+                        CssClass="selectpicker form-control show-tick"
+                        data-live-search="true"
+                        DataTextField="nombre"
+                        AutoPostBack="false"
+                        AppendDataBoundItems="true"
+                        OnSelectedIndexChanged="ddlContacto_SelectedIndexChanged">
+                        <asp:ListItem Value="-1">&lt;Seleccione Persona&gt;</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+                <%--DETALLE DEL CONTACTO--%>
+                <div class="form-group">
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-md" data-toggle="modal" data-target="#modalDetalleContacto">Mostrar Contacto</button>
+                    </div>
+                    <!-- MODAL DETALLE CONTACTO  -->
+                    <div class="modal fade" id="modalDetalleContacto" tabindex="-1" role="dialog" aria-labelledby="modalLabelDetalleContacto" aria-hidden="true">
+                        <div class="modal-dialog modal-md">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title" id="modalLabelDetalleContacto">DETALLE CONTACTO</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <asp:UpdatePanel runat="server" ID="UpdatePanel" UpdateMode="Conditional">
+                                        <Triggers>
+                                            <asp:AsyncPostBackTrigger ControlID="UpdateButton1" EventName="Click" />
+                                        </Triggers>
+                                        <ContentTemplate>
+                                            <asp:Button runat="server" ID="UpdateButton1" OnClick="UpdateButton_Click" Text="Mostrar Datos" />
+                                            <div class="form-group">
+                                                <asp:Label ID="lblDetalleContactoNombreModal" runat="server" Text="NOMBRE" CssClass="col-md-4 control-label"></asp:Label>
+                                                <div class="col-md-8">
+                                                    <asp:TextBox ID="txtDetalleContactoNombreModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <asp:Label ID="lblDetalleContactoApellidoModal" runat="server" Text="APELLIDO" CssClass="col-md-4 control-label"> </asp:Label>
+                                                <div class="col-md-8">
+                                                    <asp:TextBox ID="txtDetalleContactoApellidoModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <asp:Label ID="lblDetalleContactoTelefonoModal" runat="server" Text="TELEFONO" CssClass="col-md-4 control-label"></asp:Label>
+                                                <div class="col-md-8">
+                                                    <asp:TextBox ID="txtDetalleContactoTelefonoModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <asp:Label ID="lblDetalleContactoCorreoElectronicoModal" runat="server" Text="CORREO ELECTRONICO" CssClass="col-md-4 control-label"></asp:Label>
+                                                <div class="col-md-8">
+                                                    <asp:TextBox ID="txtDetalleContactoCorreoElectronicoModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                    <div class="modal-footer">
+                                        <asp:Button runat="server" ID="btnDetalleContactoSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%--NUEVO CONTACTO--%>
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalContacto">Nuevo Contacto</button>
+                        </div>
+                        <!-- MODAL NUEVO CONTACTO  -->
+                        <div class="modal fade" id="modalContacto" tabindex="-1" role="dialog" aria-labelledby="modalLabelContacto" aria-hidden="true">
+                            <div class="modal-dialog modal-md">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <h4 class="modal-title" id="modalLabelContacto">Nuevo Contacto</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <asp:Label ID="lblContactoNombreModal" runat="server" Text="NOMBRE" CssClass="col-md-4 control-label"></asp:Label>
+                                            <div class="col-md-8">
+                                                <asp:TextBox ID="txtContactoNombreModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <asp:Label ID="lblContactoApellidoModal" runat="server" Text="APELLIDO" CssClass="col-md-4 control-label"> </asp:Label>
+                                            <div class="col-md-8">
+                                                <asp:TextBox ID="txtContactoApellidoModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <asp:Label ID="lblContactoTelefonoModal" runat="server" Text="TELEFONO" CssClass="col-md-4 control-label"></asp:Label>
+                                            <div class="col-md-8">
+                                                <asp:TextBox ID="txtContactoTelefonoModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <asp:Label ID="lblContactoCorreoElectronicoModal" runat="server" Text="CORREO ELECTRONICO" CssClass="col-md-4 control-label"></asp:Label>
+                                            <div class="col-md-8">
+                                                <asp:TextBox ID="txtContactoCorreoElectronicoModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <asp:Button runat="server" ID="btnModalContactoSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
+                                            <asp:Button runat="server" ID="btnModalContactoGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalContactoGuardar_Click" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!--ORGANISMO + OPCION PARA AGREGAR NUEVO ORGANISMO-->
             <div class="form-group">
                 <asp:Label ID="lblOrganismo" runat="server" Text="ORGANISMO" CssClass="col-md-2 control-label"> </asp:Label>
@@ -182,19 +303,28 @@
             <div class="col-md-12">
                 <asp:GridView ID="dgvActuaciones" runat="server" AutoGenerateColumns="false"
                     CssClass="table table-hover table-striped" BorderWidth="2px" GridLines="Both"
-                    OnSelectedIndexChanging="dgvActuaciones_SelectedIndexChanging"
-                    OnRowDeleting="dgvActuaciones_RowDeleting">
+                    OnSelectedIndexChanging="dgvActuaciones_SelectedIndexChanging">
                     <Columns>
                         <asp:BoundField HeaderText="idActuacion" DataField="idActuacion" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100" />
                         <asp:BoundField HeaderText="idP" DataField="idProyecto" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100" />
                         <asp:BoundField HeaderText="Fecha" DataField="fecha"
-                            DataFormatString="{0:dd-MMM-yyyy}" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="100" HeaderStyle-Width="100" />
-                        <asp:TemplateField HeaderText="Organismo" HeaderStyle-BackColor="#cccccc" HeaderStyle-Width="100">
+                            DataFormatString="{0:dd-MMM-yyyy}" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="80" HeaderStyle-Width="80" />
+                        <asp:TemplateField HeaderText="Nombre" HeaderStyle-BackColor="#cccccc" HeaderStyle-Width="80">
+                            <ItemTemplate>
+                                <asp:Label ID="lblNombre" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Persona.Nombre") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Apellido" HeaderStyle-BackColor="#cccccc" HeaderStyle-Width="80">
+                            <ItemTemplate>
+                                <asp:Label ID="lblApellido" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Persona.Apellido") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Organismo" HeaderStyle-BackColor="#cccccc" HeaderStyle-Width="80">
                             <ItemTemplate>
                                 <asp:Label ID="lbl23" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Organismo.Nombre") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Via" HeaderStyle-BackColor="#cccccc" HeaderStyle-Width="100">
+                        <asp:TemplateField HeaderText="Via" HeaderStyle-BackColor="#cccccc" HeaderStyle-Width="80">
                             <ItemTemplate>
                                 <asp:Label ID="lblViaComunicacion" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "ViaComunicacion.Nombre") %>'></asp:Label>
                             </ItemTemplate>
@@ -202,7 +332,6 @@
                         <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Detalle" DataField="detalle"
                             ItemStyle-HorizontalAlign="Justify" ItemStyle-Width="100" HeaderStyle-Width="300" />
                         <asp:ButtonField Text="Editar" CommandName="select" HeaderStyle-BackColor="#cccccc" HeaderStyle-Width="80" />
-                        <asp:ButtonField Text="Borrar" CommandName="delete" HeaderStyle-BackColor="#cccccc" HeaderStyle-Width="80" />
                     </Columns>
                 </asp:GridView>
             </div>

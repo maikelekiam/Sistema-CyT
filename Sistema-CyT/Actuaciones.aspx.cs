@@ -17,10 +17,12 @@ namespace Sistema_CyT
         ActuacionNego actuacionNego = new ActuacionNego();
         OrganismoNego organismoNego = new OrganismoNego();
         ViaComunicacionNego viaComunicacionNego = new ViaComunicacionNego();
+        PersonaNego personaNego = new PersonaNego();
 
         public static int idActuacionActual;
         public static int idOrganismoActual;
-        public static int idViaComunicacionActual = 0;
+        public static int idViaComunicacionActual; // = 0;
+        public static int idPersonaActual;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,9 +32,22 @@ namespace Sistema_CyT
             MostrarOrganismo();
             PanelNuevaActuacion.Visible = false;
             MostrarViaComunicacion(); //SIRVE PARA CARGAR DATOS EN EL DROPDOWNLIST
+            LlenarListaPersonas(); //SIRVE PARA EL DROP DOWN LIST
 
             LlenarGrillaActuaciones();
             LimpiarPantalla();
+        }
+        private void LlenarListaPersonas()
+        {
+            ddlContacto.DataSource = personaNego.MostrarPersonas().OrderBy(c => c.Nombre).ToList();
+            IList<Persona> nombreCompleto = personaNego.MostrarPersonas().Select(p => new Persona() { Nombre = p.Apellido + "," + p.Nombre, IdPersona = p.IdPersona }).OrderBy(c => c.IdPersona).ToList();
+            ddlContacto.DataSource = nombreCompleto;
+            ddlContacto.DataValueField = "nombre";
+            ddlContacto.DataBind();
+        }
+        protected void ddlContacto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            idPersonaActual = ddlContacto.SelectedIndex;
         }
 
         //Muestro en el DROPDOWNLIST los ORGANISMOS
@@ -90,11 +105,28 @@ namespace Sistema_CyT
             actuacion.IdProyecto = FiltrarProyecto.idProyectoSeleccionado;
             actuacion.Fecha = DateTime.ParseExact(txtFechaActuacion.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
             actuacion.Detalle = txtDetalle.Text;
-            actuacion.IdOrganismo = organismoNego.TraerOrganismoIdSegunItem(ddlOrganismo.SelectedItem.ToString());
+            //actuacion.IdOrganismo = organismoNego.TraerOrganismoIdSegunItem(ddlOrganismo.SelectedItem.ToString());
             actuacion.IdViaComunicacion = viaComunicacionNego.TraerViaComunicacionIdSegunItem(ddlViaComunicacion.SelectedItem.ToString());
-            actuacion.IdPersona = proyectoNego.ObtenerProyecto(FiltrarProyecto.idProyectoSeleccionado).IdPersona;
+            //actuacion.IdPersona = proyectoNego.ObtenerProyecto(FiltrarProyecto.idProyectoSeleccionado).IdPersona;
+
+            string cadena = ddlContacto.SelectedItem.ToString();
+            string[] separadas;
+            separadas = cadena.Split(',');
+            string itemApellido = separadas[0];
+            string itemNombre = separadas[1];
+
+            actuacion.IdPersona = personaNego.TraerPersonaIdSegunItem(itemApellido, itemNombre);
 
 
+
+            if (ddlOrganismo.SelectedValue == "-1")
+            {
+                actuacion.IdOrganismo = null;
+            }
+            else
+            {
+                actuacion.IdOrganismo = organismoNego.TraerOrganismoIdSegunItem(ddlOrganismo.SelectedItem.ToString());
+            }
 
             idActuacionActual = actuacionNego.GuardarActuacion(actuacion);
 
@@ -114,14 +146,14 @@ namespace Sistema_CyT
 
             dgvActuaciones.DataSource = dt;
 
-            
+
 
             //dgvActuaciones.DataSource = actuacionNego.MostrarActuacionSegunProyecto(FiltrarProyecto.idProyectoSeleccionado).ToList();
             //hay que agregar una columna con el nombre completo
 
             //dgvActuaciones.Columns.Add("NombreCompleto")
 
-            
+
             dgvActuaciones.DataBind();
 
             dgvActuaciones.Columns[0].Visible = false;
@@ -162,37 +194,116 @@ namespace Sistema_CyT
 
             Actuacion actuacion = actuacionNego.ObtenerActuacion(idActuacionActual);
 
-            txtFechaActuacion.Text = Convert.ToDateTime(actuacion.Fecha).ToShortDateString();
-            txtDetalle.Text = actuacion.Detalle.ToString();
-            ddlOrganismo.Text = Convert.ToString(organismoNego.TraerOrganismo(Convert.ToInt32(actuacion.IdOrganismo)));
-        }
+            //txtFechaActuacion.Text = Convert.ToDateTime(actuacion.Fecha).ToShortDateString();
 
-        protected void dgvActuaciones_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-            //FALTA IMPLEMENTAR
+
+            //****INICIO RUTINA PARA TRABAJAR CON FORMATO FECHA
+            //FECHA APERTURA
+            string dia = Convert.ToString((actuacion.Fecha).Value.Day);
+            string mes = Convert.ToString((actuacion.Fecha).Value.Month);
+            string anio = Convert.ToString((actuacion.Fecha).Value.Year);
+            string t1 = "";
+            string t2 = "";
+            if ((actuacion.Fecha).Value.Day < 10)
+            {
+                t1 = "0";
+            }
+            if ((actuacion.Fecha).Value.Month < 10)
+            {
+                t2 = "0";
+            }
+            txtFechaActuacion.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
+
+
+
+
+
+            txtDetalle.Text = actuacion.Detalle.ToString();
+
+            ddlContacto.Text = personaNego.TraerPersona(actuacion.IdPersona.Value);
+
+
+            //ddlOrganismo.Text = Convert.ToString(organismoNego.TraerOrganismo(Convert.ToInt32(actuacion.IdOrganismo)));
+
+            if (actuacion.IdOrganismo == null)
+            {
+                ddlOrganismo.Text = "-1";
+            }
+            else
+            {
+                ddlOrganismo.Text = organismoNego.TraerOrganismo(Convert.ToInt32(actuacion.IdOrganismo));
+            }
+
+            ddlViaComunicacion.Text = viaComunicacionNego.TraerViaComunicacion(Convert.ToInt32(actuacion.IdViaComunicacion));
+
         }
 
         protected void btnActualizarActuacion_Click(object sender, EventArgs e)
         {
-            Actuacion actuacion = new Actuacion();
+            if (
+                ddlViaComunicacion.SelectedValue != "-1"
+                && ddlContacto.SelectedValue != "-1"
+                )
+            {
+                Actuacion actuacion = new Actuacion();
 
-            actuacion.IdProyecto = FiltrarProyecto.idProyectoSeleccionado;
-            actuacion.IdOrganismo = organismoNego.TraerOrganismoIdSegunItem(ddlOrganismo.SelectedItem.ToString());
-            actuacion.Fecha = Convert.ToDateTime(txtFechaActuacion.Text);
-            actuacion.Detalle = txtDetalle.Text;
-            actuacion.IdViaComunicacion = viaComunicacionNego.TraerViaComunicacionIdSegunItem(ddlViaComunicacion.SelectedItem.ToString());
+                actuacion.IdProyecto = FiltrarProyecto.idProyectoSeleccionado;
+                //actuacion.IdOrganismo = organismoNego.TraerOrganismoIdSegunItem(ddlOrganismo.SelectedItem.ToString());
 
-            actuacion.IdActuacion = idActuacionActual;
 
-            actuacionNego.ActualizarActuacion(actuacion);
 
-            LlenarGrillaActuaciones();
 
-            PanelNuevaActuacion.Visible = false;
-            PanelActuacion.Visible = true;
+                
 
-            btnActualizarActuacion.Visible = false;
-            LimpiarPantalla();
+
+
+
+
+
+
+
+                actuacion.Fecha = DateTime.ParseExact(txtFechaActuacion.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+
+
+
+                actuacion.Detalle = txtDetalle.Text;
+                actuacion.IdViaComunicacion = viaComunicacionNego.TraerViaComunicacionIdSegunItem(ddlViaComunicacion.SelectedItem.ToString());
+
+                string cadena = ddlContacto.SelectedItem.ToString();
+                string[] separadas;
+                separadas = cadena.Split(',');
+                string itemApellido = separadas[0];
+                string itemNombre = separadas[1];
+
+                actuacion.IdPersona = personaNego.TraerPersonaIdSegunItem(itemApellido, itemNombre);
+
+
+                if (ddlOrganismo.SelectedValue == "-1")
+                {
+                    actuacion.IdOrganismo = null;
+                }
+                else
+                {
+                    actuacion.IdOrganismo = organismoNego.TraerOrganismoIdSegunItem(ddlOrganismo.SelectedItem.ToString());
+                }
+
+                actuacion.IdActuacion = idActuacionActual;
+
+                actuacionNego.ActualizarActuacion(actuacion);
+
+                LlenarGrillaActuaciones();
+
+                PanelNuevaActuacion.Visible = false;
+                PanelActuacion.Visible = true;
+
+                btnActualizarActuacion.Visible = false;
+                LimpiarPantalla();
+
+            }
+            else
+            {
+                // Mostrar aviso de completar todos los datos
+            }
         }
 
         private void LimpiarPantalla()
@@ -224,6 +335,35 @@ namespace Sistema_CyT
         private string TraerViaComunicacion(int id)
         {
             return viaComunicacionNego.TraerViaComunicacion(id);
+        }
+        protected void UpdateButton_Click(object sender, EventArgs e)
+        {
+            Persona persona = personaNego.ObtenerPersona(idPersonaActual);
+
+            txtDetalleContactoNombreModal.Text = persona.Nombre.ToString();
+            txtDetalleContactoApellidoModal.Text = persona.Apellido.ToString();
+            txtDetalleContactoTelefonoModal.Text = persona.Telefono.ToString();
+            txtDetalleContactoCorreoElectronicoModal.Text = persona.CorreoElectronico.ToString();
+        }
+        private string TraerPersona(int id)
+        {
+            return personaNego.TraerPersona(id);
+        }
+        protected void btnModalContactoGuardar_Click(object sender, EventArgs e)
+        {
+            Persona persona = new Persona();
+
+            persona.Nombre = txtContactoNombreModal.Text;
+            persona.Apellido = txtContactoApellidoModal.Text;
+            persona.Telefono = txtContactoTelefonoModal.Text;
+            persona.CorreoElectronico = txtContactoCorreoElectronicoModal.Text;
+
+            idPersonaActual = personaNego.GuardarPersona(persona);
+
+            ddlContacto.Items.Clear();
+            ddlContacto.Text = TraerPersona(idPersonaActual);
+
+            LlenarListaPersonas();
         }
     }
 }
