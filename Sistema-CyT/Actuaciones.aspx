@@ -9,7 +9,6 @@
                 <br />
             </div>
         </asp:Panel>
-
         <asp:Panel ID="PanelActuacion" CssClass="panel" runat="server">
             <!-- BOTON AGREGAR ACTUACION -->
             <div class="form-group">
@@ -18,7 +17,6 @@
                 </div>
             </div>
         </asp:Panel>
-
         <asp:Panel ID="PanelNuevaActuacion" CssClass="panel panel-success" runat="server">
             <div class="panel-body">
                 <!--FECHA DE LA ACTUACION-->

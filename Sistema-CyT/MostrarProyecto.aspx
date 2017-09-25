@@ -9,6 +9,13 @@
                 <br />
             </div>
             <div class="panel-body">
+                <!--CONTACTO-->
+                <div class="form-group">
+                    <asp:Label ID="lblContacto" runat="server" Text="CONTACTO" CssClass="col-md-2 control-label"> </asp:Label>
+                    <div class="col-md-6">
+                        <asp:TextBox ID="txtContacto" runat="server" CssClass="form-control"></asp:TextBox>
+                    </div>
+                </div>
                 <!--EXPEDIENTE-->
                 <div class="form-group">
                     <asp:Label ID="lblNumeroExp" runat="server" Text="EXPEDIENTE / N°CONVENIO" CssClass="col-md-2 control-label"> </asp:Label>

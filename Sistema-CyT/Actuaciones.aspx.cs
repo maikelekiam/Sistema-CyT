@@ -92,6 +92,9 @@ namespace Sistema_CyT
             actuacion.Detalle = txtDetalle.Text;
             actuacion.IdOrganismo = organismoNego.TraerOrganismoIdSegunItem(ddlOrganismo.SelectedItem.ToString());
             actuacion.IdViaComunicacion = viaComunicacionNego.TraerViaComunicacionIdSegunItem(ddlViaComunicacion.SelectedItem.ToString());
+            actuacion.IdPersona = proyectoNego.ObtenerProyecto(FiltrarProyecto.idProyectoSeleccionado).IdPersona;
+
+
 
             idActuacionActual = actuacionNego.GuardarActuacion(actuacion);
 
@@ -107,7 +110,18 @@ namespace Sistema_CyT
             dgvActuaciones.Columns[4].Visible = true;
             dgvActuaciones.Columns[5].Visible = true;
 
-            dgvActuaciones.DataSource = actuacionNego.MostrarActuacionSegunProyecto(FiltrarProyecto.idProyectoSeleccionado).ToList();
+            IEnumerable<Actuacion> dt = actuacionNego.MostrarActuacionSegunProyecto(FiltrarProyecto.idProyectoSeleccionado).ToList();
+
+            dgvActuaciones.DataSource = dt;
+
+            
+
+            //dgvActuaciones.DataSource = actuacionNego.MostrarActuacionSegunProyecto(FiltrarProyecto.idProyectoSeleccionado).ToList();
+            //hay que agregar una columna con el nombre completo
+
+            //dgvActuaciones.Columns.Add("NombreCompleto")
+
+            
             dgvActuaciones.DataBind();
 
             dgvActuaciones.Columns[0].Visible = false;
@@ -155,7 +169,7 @@ namespace Sistema_CyT
 
         protected void dgvActuaciones_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-
+            //FALTA IMPLEMENTAR
         }
 
         protected void btnActualizarActuacion_Click(object sender, EventArgs e)
@@ -166,6 +180,7 @@ namespace Sistema_CyT
             actuacion.IdOrganismo = organismoNego.TraerOrganismoIdSegunItem(ddlOrganismo.SelectedItem.ToString());
             actuacion.Fecha = Convert.ToDateTime(txtFechaActuacion.Text);
             actuacion.Detalle = txtDetalle.Text;
+            actuacion.IdViaComunicacion = viaComunicacionNego.TraerViaComunicacionIdSegunItem(ddlViaComunicacion.SelectedItem.ToString());
 
             actuacion.IdActuacion = idActuacionActual;
 

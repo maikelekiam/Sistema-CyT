@@ -15,6 +15,7 @@ namespace Sistema_CyT
         ConvocatoriaNego convocatoriaNego = new ConvocatoriaNego();
         EtapaNego etapaNego = new EtapaNego();
         TipoProyectoNego tipoProyectoNego = new TipoProyectoNego();
+        PersonaNego personaNego = new PersonaNego();
 
         public static List<Etapa> listaTemporalEtapas = new List<Etapa>();
         public static int idProyectoSeleccionado;
@@ -45,6 +46,10 @@ namespace Sistema_CyT
             txtDescripcion.Text = proyecto.Descripcion.ToString();
             txtObservaciones.Text = proyecto.Observaciones.ToString();
             txtTipoProyecto.Text = tipoProyectoNego.ObtenerTipoProyecto(Convert.ToInt32(proyecto.IdTipoProyecto)).Nombre;
+
+            txtContacto.Text = personaNego.ObtenerPersona(Convert.ToInt32(proyecto.IdPersona)).Nombre + " " + personaNego.ObtenerPersona(Convert.ToInt32(proyecto.IdPersona)).Apellido;
+
+            //txtContacto.Text = personaNego.TraerPersona(Convert.ToInt32(proyecto.IdPersona)).ToString();
             //txtTipoProyecto.Text = tipoProyectoNego.ObtenerTipoProyecto(proyecto.IdTipoProyecto).Nombre;
 
 

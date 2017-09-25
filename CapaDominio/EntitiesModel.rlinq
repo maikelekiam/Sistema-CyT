@@ -246,6 +246,9 @@
         <orm:field name="proyectos" property="Proyectos" behavior="readwrite" uniqueId="f4156755-c6fe-4c53-a6d9-0a27749cb703" type="CapaDominio.Proyecto">
           <orm:collection element-class="CapaDominio.Proyecto" inverse-field="persona" order-by="" uniqueId="e4a213f6-6e95-466c-897c-89565980c03d" />
         </orm:field>
+        <orm:field name="actuacions" property="Actuacions" behavior="readwrite" uniqueId="2ab1136e-9c33-403a-b776-a73ad35735a5" type="CapaDominio.Actuacion">
+          <orm:collection element-class="CapaDominio.Actuacion" inverse-field="persona" order-by="" uniqueId="23205a27-453b-4aa5-b205-035c976bbd82" />
+        </orm:field>
       </orm:class>
       <orm:class name="Origen" uniqueId="6d7b7763-a635-4aae-9c10-55a9d2ecab1f">
         <orm:table name="Origen" />
@@ -638,6 +641,9 @@
         <orm:field name="idViaComunicacion" property="IdViaComunicacion" behavior="readwrite" uniqueId="42ab9513-e230-47dd-b491-d15ab2874ea1" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
           <orm:column name="idViaComunicacion" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:field>
+        <orm:field name="idPersona" property="IdPersona" behavior="readwrite" uniqueId="3a48354e-211c-4c27-9b3e-2399f0d19bbc" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="idPersona" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
         <orm:field name="organismo" property="Organismo" behavior="readwrite" uniqueId="2f72bd52-c8b1-4173-9ec8-05094c038799" type="CapaDominio.Organismo">
           <orm:reference uniqueId="7dce04e2-8f64-4871-a1be-9000b5c5ebdd" association-name="ActuacionHasOrganismo">
             <orm:sharedfield name="idOrganismo" target-class="CapaDominio.Organismo" target-field="idOrganismo" />
@@ -654,6 +660,12 @@
           <orm:reference uniqueId="53306848-48e0-4703-a3cc-6c3a542b8502" association-name="ActuacionHasViaComunicacion">
             <orm:sharedfield name="idViaComunicacion" target-class="CapaDominio.ViaComunicacion" target-field="idViaComunicacion" />
             <orm:constraint name="FK_Actuacion_ViaComunicacion" delete-action="dbdefaultrule" destination-table="ViaComunicacion" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="persona" property="Persona" behavior="readwrite" uniqueId="5b6d3b80-ba61-473c-8c70-c7b3744c8169" type="CapaDominio.Persona">
+          <orm:reference uniqueId="23205a27-453b-4aa5-b205-035c976bbd82" association-name="ActuacionHasPersona">
+            <orm:sharedfield name="idPersona" target-class="CapaDominio.Persona" target-field="idPersona" />
+            <orm:constraint name="FK_Actuacion_Persona" delete-action="dbdefaultrule" destination-table="Persona" />
           </orm:reference>
         </orm:field>
       </orm:class>
@@ -882,6 +894,7 @@
         <orm:column name="detalle" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         <orm:column name="idOrganismo" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:column name="idViaComunicacion" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="idPersona" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:constraint name="FK_Actuacion_Organismo" delete-action="dbdefaultrule" destination-table="Organismo">
           <orm:column name="idOrganismo" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:constraint>
@@ -890,6 +903,9 @@
         </orm:constraint>
         <orm:constraint name="FK_Actuacion_ViaComunicacion" delete-action="dbdefaultrule" destination-table="ViaComunicacion">
           <orm:column name="idViaComunicacion" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+        <orm:constraint name="FK_Actuacion_Persona" delete-action="dbdefaultrule" destination-table="Persona">
+          <orm:column name="idPersona" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:constraint>
       </orm:table>
       <orm:table name="TipoProyecto">
@@ -1135,6 +1151,9 @@
       <navigationalProperties>
         <classHasNavigationalProperties Id="9891a200-a2e2-4d97-a774-9c865d94af06">
           <NavigationalProperty Id="f4156755-c6fe-4c53-a6d9-0a27749cb703" name="Proyectos" type="IList&lt;Proyecto&gt;" label="Proyectos : IList&lt;Proyecto&gt;" nullable="true" kind="Persistent" fieldName="proyectos" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="22924202-7c34-44cb-a098-258e18f759a0">
+          <NavigationalProperty Id="2ab1136e-9c33-403a-b776-a73ad35735a5" name="Actuacions" type="IList&lt;Actuacion&gt;" label="Actuacions : IList&lt;Actuacion&gt;" nullable="true" kind="Persistent" fieldName="actuacions" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -1455,6 +1474,7 @@
       <Property Id="ce30de96-00a3-442c-a778-55cb93af310f" name="IdOrganismo" type="Int32" label="IdOrganismo : Int32" nullable="true" kind="Persistent" fieldName="idOrganismo" />
       <Property Id="8f5f5d6d-b659-4c4d-bfd7-cdaf70d94723" name="IdProyecto" type="Int32" label="IdProyecto : Int32" kind="Persistent" fieldName="idProyecto" />
       <Property Id="42ab9513-e230-47dd-b491-d15ab2874ea1" name="IdViaComunicacion" type="Int32" label="IdViaComunicacion : Int32" nullable="true" kind="Persistent" fieldName="idViaComunicacion" />
+      <Property Id="3a48354e-211c-4c27-9b3e-2399f0d19bbc" name="IdPersona" type="Int32" label="IdPersona : Int32" nullable="true" kind="Persistent" fieldName="idPersona" />
       <AssociationTargets>
         <Association Id="7dce04e2-8f64-4871-a1be-9000b5c5ebdd" SourceMultiplicity="One" name="ActuacionHasOrganismo">
           <DomainClassMoniker name="/ModeloDeDominio/Organismo" />
@@ -1495,6 +1515,19 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
+        <Association Id="23205a27-453b-4aa5-b205-035c976bbd82" SourceMultiplicity="ZeroOne" name="ActuacionHasPersona">
+          <DomainClassMoniker name="/ModeloDeDominio/Persona" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="97893d57-3e3b-4ba7-bf9f-c100471f41a6">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Persona/Actuacions" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="abbeb5f8-700a-43b4-9bf8-a6cc61147dfb">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Actuacion/Persona" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
       </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="644c453f-6424-43cf-b4e9-db9d006a09bd">
@@ -1505,6 +1538,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="0446b21a-b6b8-452f-b7d7-95efa0778bb1">
           <NavigationalProperty Id="419c61c3-3837-4e08-bc68-6ae2faf8223f" name="ViaComunicacion" type="ViaComunicacion" label="ViaComunicacion : ViaComunicacion" nullable="true" kind="Persistent" fieldName="viaComunicacion" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="547475e3-d3c5-4180-9627-4295f051b24a">
+          <NavigationalProperty Id="5b6d3b80-ba61-473c-8c70-c7b3744c8169" name="Persona" type="Persona" label="Persona : Persona" nullable="true" kind="Persistent" fieldName="persona" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
