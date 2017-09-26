@@ -194,6 +194,7 @@
     <Content Include="Login.aspx" />
     <Content Include="MostrarConvocatoria.aspx" />
     <Content Include="MostrarFondo.aspx" />
+    <Content Include="MostrarPersona.aspx" />
     <Content Include="MostrarProyecto.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -469,6 +470,13 @@
     </Compile>
     <Compile Include="MostrarFondo.aspx.designer.cs">
       <DependentUpon>MostrarFondo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MostrarPersona.aspx.cs">
+      <DependentUpon>MostrarPersona.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MostrarPersona.aspx.designer.cs">
+      <DependentUpon>MostrarPersona.aspx</DependentUpon>
     </Compile>
     <Compile Include="MostrarProyecto.aspx.cs">
       <DependentUpon>MostrarProyecto.aspx</DependentUpon>

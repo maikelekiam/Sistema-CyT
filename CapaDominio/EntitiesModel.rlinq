@@ -243,6 +243,21 @@
         <orm:field name="correoElectronico" property="CorreoElectronico" behavior="readwrite" uniqueId="d7f766c6-f67b-4b26-8459-43202b4227dc" type="System.String">
           <orm:column name="correoElectronico" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         </orm:field>
+        <orm:field name="tipoDocumento" property="TipoDocumento" behavior="readwrite" uniqueId="5d36b4d7-2eff-4a69-8829-8d579c64f8f1" type="System.String">
+          <orm:column name="tipoDocumento" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
+        <orm:field name="observaciones" property="Observaciones" behavior="readwrite" uniqueId="b850d175-3cc9-412b-b099-2fc69bc00605" type="System.String">
+          <orm:column name="observaciones" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="localidad" property="Localidad" behavior="readwrite" uniqueId="466f9edb-df48-4f80-882e-f04ba223a774" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="localidad" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="domicilio" property="Domicilio" behavior="readwrite" uniqueId="7fe8454d-c695-48f1-adfd-dd294dedeb63" type="System.String">
+          <orm:column name="domicilio" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="documento" property="Documento" behavior="readwrite" uniqueId="c84b83a7-850c-4149-9e23-a34a7eac970a" type="System.String">
+          <orm:column name="documento" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
+        </orm:field>
         <orm:field name="proyectos" property="Proyectos" behavior="readwrite" uniqueId="f4156755-c6fe-4c53-a6d9-0a27749cb703" type="CapaDominio.Proyecto">
           <orm:collection element-class="CapaDominio.Proyecto" inverse-field="persona" order-by="" uniqueId="e4a213f6-6e95-466c-897c-89565980c03d" />
         </orm:field>
@@ -775,6 +790,11 @@
         <orm:column name="apellido" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         <orm:column name="telefono" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         <orm:column name="correoElectronico" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="tipoDocumento" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="observaciones" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="localidad" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="domicilio" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="documento" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
       </orm:table>
       <orm:table name="Origen">
         <orm:column name="idOrigen" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
@@ -1148,6 +1168,11 @@
       <Property Id="d7f766c6-f67b-4b26-8459-43202b4227dc" name="CorreoElectronico" label="CorreoElectronico : String" kind="Persistent" fieldName="correoElectronico" />
       <Property Id="fdb195bd-6d66-4396-bccf-de15ba47aaa3" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
       <Property Id="a66d32c2-3a2d-460e-8f1e-3b414e7919f7" name="Telefono" label="Telefono : String" kind="Persistent" fieldName="telefono" />
+      <Property Id="5d36b4d7-2eff-4a69-8829-8d579c64f8f1" name="TipoDocumento" label="TipoDocumento : String" kind="Persistent" fieldName="tipoDocumento" />
+      <Property Id="b850d175-3cc9-412b-b099-2fc69bc00605" name="Observaciones" label="Observaciones : String" kind="Persistent" fieldName="observaciones" />
+      <Property Id="466f9edb-df48-4f80-882e-f04ba223a774" name="Localidad" type="Int32" label="Localidad : Int32" nullable="true" kind="Persistent" fieldName="localidad" />
+      <Property Id="7fe8454d-c695-48f1-adfd-dd294dedeb63" name="Domicilio" label="Domicilio : String" kind="Persistent" fieldName="domicilio" />
+      <Property Id="c84b83a7-850c-4149-9e23-a34a7eac970a" name="Documento" label="Documento : String" kind="Persistent" fieldName="documento" />
       <navigationalProperties>
         <classHasNavigationalProperties Id="9891a200-a2e2-4d97-a774-9c865d94af06">
           <NavigationalProperty Id="f4156755-c6fe-4c53-a6d9-0a27749cb703" name="Proyectos" type="IList&lt;Proyecto&gt;" label="Proyectos : IList&lt;Proyecto&gt;" nullable="true" kind="Persistent" fieldName="proyectos" isDependent="false" isManaged="false" />

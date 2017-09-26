@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CapaDominio;
 using CapaRepositorio;
+using System.Data;
 
 namespace CapaNegocio
 {
@@ -31,6 +32,14 @@ namespace CapaNegocio
         public Persona ObtenerPersona(int id)
         {
             return personaRepo.ObtenerPersona(id);
+        }
+        public List<Persona> MostrarPersonasDt()
+        {
+            return personaRepo.MostrarPersonasDt();
+        }
+        public void ActualizarPersona(Persona persona)
+        {
+            personaRepo.ActualizarPersona(persona);
         }
     }
 }

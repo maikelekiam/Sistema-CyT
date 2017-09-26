@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CapaDominio;
+using System.Data;
 
 namespace CapaRepositorio
 {
@@ -55,6 +56,26 @@ namespace CapaRepositorio
                 modeloDeDominio.CreateDetachedCopy(result);
 
                 return result;
+            }
+        }
+        // METODO LISTAR PERSONAS
+        public List<Persona> MostrarPersonasDt()
+        {
+            List<Persona> datosLista;
+
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                IEnumerable<Persona> listaDePersonas = modeloDeDominio.Personas.ToList();
+                datosLista = (List<Persona>)listaDePersonas;
+            }
+            return datosLista;
+        }
+        public void ActualizarPersona(Persona persona)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                modeloDeDominio.AttachCopy(persona);
+                modeloDeDominio.SaveChanges();
             }
         }
     }

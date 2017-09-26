@@ -89,6 +89,71 @@ namespace CapaDominio
 			}
 		}
 		
+		private string tipoDocumento;
+		public virtual string TipoDocumento
+		{
+			get
+			{
+				return this.tipoDocumento;
+			}
+			set
+			{
+				this.tipoDocumento = value;
+			}
+		}
+		
+		private string observaciones;
+		public virtual string Observaciones
+		{
+			get
+			{
+				return this.observaciones;
+			}
+			set
+			{
+				this.observaciones = value;
+			}
+		}
+		
+		private int? localidad;
+		public virtual int? Localidad
+		{
+			get
+			{
+				return this.localidad;
+			}
+			set
+			{
+				this.localidad = value;
+			}
+		}
+		
+		private string domicilio;
+		public virtual string Domicilio
+		{
+			get
+			{
+				return this.domicilio;
+			}
+			set
+			{
+				this.domicilio = value;
+			}
+		}
+		
+		private string documento;
+		public virtual string Documento
+		{
+			get
+			{
+				return this.documento;
+			}
+			set
+			{
+				this.documento = value;
+			}
+		}
+		
 		private IList<Proyecto> proyectos = new List<Proyecto>();
 		public virtual IList<Proyecto> Proyectos
 		{
