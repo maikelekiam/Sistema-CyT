@@ -157,8 +157,12 @@
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Actuaciones.aspx" />
     <Content Include="AltaConvocatoria.aspx" />
+    <Content Include="AltaEmpresa.aspx" />
     <Content Include="AltaFondo.aspx" />
+    <Content Include="AltaOrganismo.aspx" />
+    <Content Include="AltaPersona.aspx" />
     <Content Include="AltaProyecto.aspx" />
+    <Content Include="AltaUdt.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="css\bootstrap-datepicker.css" />
     <Content Include="css\bootstrap-select.css" />
@@ -166,9 +170,13 @@
     <Content Include="css\estilo-textbox.css" />
     <Content Include="css\panel-collapsible.css" />
     <Content Include="EditarConvocatoria.aspx" />
+    <Content Include="EditarEmpresa.aspx" />
     <Content Include="EditarFondo.aspx" />
     <Content Include="EditarModalidad.aspx" />
+    <Content Include="EditarOrganismo.aspx" />
+    <Content Include="EditarPersona.aspx" />
     <Content Include="EditarProyecto.aspx" />
+    <Content Include="EditarUdt.aspx" />
     <Content Include="FiltrarProyecto.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="js\bootstrap-datepicker.js" />
@@ -177,8 +185,12 @@
     <Content Include="js\jquery-1.12.3.js" />
     <Content Include="js\panel-collapsible.js" />
     <Content Include="ListarConvocatorias.aspx" />
+    <Content Include="ListarEmpresas.aspx" />
     <Content Include="ListarFondos.aspx" />
+    <Content Include="ListarOrganismos.aspx" />
+    <Content Include="ListarPersonas.aspx" />
     <Content Include="ListarProyectos.aspx" />
+    <Content Include="ListarUdts.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="MostrarConvocatoria.aspx" />
     <Content Include="MostrarFondo.aspx" />
@@ -248,7 +260,6 @@
     <Compile Include="Actuaciones.aspx.designer.cs">
       <DependentUpon>Actuaciones.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AltaContacto.cs" />
     <Compile Include="AltaConvocatoria.aspx.cs">
       <DependentUpon>AltaConvocatoria.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -256,7 +267,13 @@
     <Compile Include="AltaConvocatoria.aspx.designer.cs">
       <DependentUpon>AltaConvocatoria.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AltaEmpresa.cs" />
+    <Compile Include="AltaEmpresa.aspx.cs">
+      <DependentUpon>AltaEmpresa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AltaEmpresa.aspx.designer.cs">
+      <DependentUpon>AltaEmpresa.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AltaFondo.aspx.cs">
       <DependentUpon>AltaFondo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -264,7 +281,20 @@
     <Compile Include="AltaFondo.aspx.designer.cs">
       <DependentUpon>AltaFondo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AltaOrganismo.cs" />
+    <Compile Include="AltaOrganismo.aspx.cs">
+      <DependentUpon>AltaOrganismo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AltaOrganismo.aspx.designer.cs">
+      <DependentUpon>AltaOrganismo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AltaPersona.aspx.cs">
+      <DependentUpon>AltaPersona.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AltaPersona.aspx.designer.cs">
+      <DependentUpon>AltaPersona.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AltaProyecto.aspx.cs">
       <DependentUpon>AltaProyecto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -272,7 +302,13 @@
     <Compile Include="AltaProyecto.aspx.designer.cs">
       <DependentUpon>AltaProyecto.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AltaUdt.cs" />
+    <Compile Include="AltaUdt.aspx.cs">
+      <DependentUpon>AltaUdt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AltaUdt.aspx.designer.cs">
+      <DependentUpon>AltaUdt.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -297,7 +333,6 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EditarContacto.cs" />
     <Compile Include="EditarConvocatoria.aspx.cs">
       <DependentUpon>EditarConvocatoria.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -305,7 +340,13 @@
     <Compile Include="EditarConvocatoria.aspx.designer.cs">
       <DependentUpon>EditarConvocatoria.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EditarEmpresa.cs" />
+    <Compile Include="EditarEmpresa.aspx.cs">
+      <DependentUpon>EditarEmpresa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditarEmpresa.aspx.designer.cs">
+      <DependentUpon>EditarEmpresa.aspx</DependentUpon>
+    </Compile>
     <Compile Include="EditarFondo.aspx.cs">
       <DependentUpon>EditarFondo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -320,7 +361,20 @@
     <Compile Include="EditarModalidad.aspx.designer.cs">
       <DependentUpon>EditarModalidad.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EditarOrganismo.cs" />
+    <Compile Include="EditarOrganismo.aspx.cs">
+      <DependentUpon>EditarOrganismo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditarOrganismo.aspx.designer.cs">
+      <DependentUpon>EditarOrganismo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditarPersona.aspx.cs">
+      <DependentUpon>EditarPersona.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditarPersona.aspx.designer.cs">
+      <DependentUpon>EditarPersona.aspx</DependentUpon>
+    </Compile>
     <Compile Include="EditarProyecto.aspx.cs">
       <DependentUpon>EditarProyecto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -328,7 +382,13 @@
     <Compile Include="EditarProyecto.aspx.designer.cs">
       <DependentUpon>EditarProyecto.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EditarUdt.cs" />
+    <Compile Include="EditarUdt.aspx.cs">
+      <DependentUpon>EditarUdt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditarUdt.aspx.designer.cs">
+      <DependentUpon>EditarUdt.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FiltrarProyecto.aspx.cs">
       <DependentUpon>FiltrarProyecto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -339,7 +399,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="ListarContactos.cs" />
     <Compile Include="ListarConvocatorias.aspx.cs">
       <DependentUpon>ListarConvocatorias.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -347,7 +406,13 @@
     <Compile Include="ListarConvocatorias.aspx.designer.cs">
       <DependentUpon>ListarConvocatorias.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ListarEmpresas.cs" />
+    <Compile Include="ListarEmpresas.aspx.cs">
+      <DependentUpon>ListarEmpresas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListarEmpresas.aspx.designer.cs">
+      <DependentUpon>ListarEmpresas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ListarFondos.aspx.cs">
       <DependentUpon>ListarFondos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -355,7 +420,20 @@
     <Compile Include="ListarFondos.aspx.designer.cs">
       <DependentUpon>ListarFondos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ListarOrganismos.cs" />
+    <Compile Include="ListarOrganismos.aspx.cs">
+      <DependentUpon>ListarOrganismos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListarOrganismos.aspx.designer.cs">
+      <DependentUpon>ListarOrganismos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListarPersonas.aspx.cs">
+      <DependentUpon>ListarPersonas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListarPersonas.aspx.designer.cs">
+      <DependentUpon>ListarPersonas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ListarProyectos.aspx.cs">
       <DependentUpon>ListarProyectos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -363,7 +441,13 @@
     <Compile Include="ListarProyectos.aspx.designer.cs">
       <DependentUpon>ListarProyectos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ListarUdts.cs" />
+    <Compile Include="ListarUdts.aspx.cs">
+      <DependentUpon>ListarUdts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListarUdts.aspx.designer.cs">
+      <DependentUpon>ListarUdts.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
