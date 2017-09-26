@@ -58,7 +58,7 @@ namespace Sistema_CyT
 
         private void LlenarChoiceConvocatorias(int id)
         {
-            ddlConvocatoria.DataSource = convocatoriaNego.ListarChoiceConvocatorias(id);
+            ddlConvocatoria.DataSource = convocatoriaNego.ListarChoiceConvocatorias(id).OrderByDescending(c => c.anio);
             ddlConvocatoria.DataTextField = "nombre";
             ddlConvocatoria.DataValueField = "idConvocatoria";
             ddlConvocatoria.DataBind();

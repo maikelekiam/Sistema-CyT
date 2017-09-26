@@ -78,6 +78,9 @@ namespace Sistema_CyT
             fondo.Nombre = txtNombre.Text;
             fondo.Descripcion = txtDecripcion.Text;
             fondo.IdOrigen = Convert.ToInt32(ddlOrigen.Text);
+            fondo.Telefono = txtTelefono.Text;
+            fondo.Direccion = txtDireccion.Text;
+            fondo.Contacto = txtContacto.Text;
 
             if (chkActivo.Checked) { fondo.Activo = true; }
             else if (!chkActivo.Checked) { fondo.Activo = false; }
@@ -86,6 +89,10 @@ namespace Sistema_CyT
 
             txtNombre.Text = "";
             txtDecripcion.Text = "";
+            txtTelefono.Text = "";
+            txtDireccion.Text = "";
+            txtContacto.Text = "";
+
             LlenarGrillaFondos();
         }
 
@@ -99,6 +106,9 @@ namespace Sistema_CyT
             txtNombre.Text = fondo.Nombre.ToString();
             txtDecripcion.Text = fondo.Descripcion.ToString();
             ddlOrigen.Text = Convert.ToString(fondo.IdOrigen);
+            txtTelefono.Text = fondo.Telefono.ToString();
+            txtDireccion.Text = fondo.Direccion.ToString();
+            txtContacto.Text = fondo.Contacto.ToString();
 
             if (fondo.Activo.Value == true)
             {

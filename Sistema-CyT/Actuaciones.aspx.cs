@@ -117,8 +117,6 @@ namespace Sistema_CyT
 
             actuacion.IdPersona = personaNego.TraerPersonaIdSegunItem(itemApellido, itemNombre);
 
-
-
             if (ddlOrganismo.SelectedValue == "-1")
             {
                 actuacion.IdOrganismo = null;
@@ -142,18 +140,7 @@ namespace Sistema_CyT
             dgvActuaciones.Columns[4].Visible = true;
             dgvActuaciones.Columns[5].Visible = true;
 
-            IEnumerable<Actuacion> dt = actuacionNego.MostrarActuacionSegunProyecto(FiltrarProyecto.idProyectoSeleccionado).ToList();
-
-            dgvActuaciones.DataSource = dt;
-
-
-
-            //dgvActuaciones.DataSource = actuacionNego.MostrarActuacionSegunProyecto(FiltrarProyecto.idProyectoSeleccionado).ToList();
-            //hay que agregar una columna con el nombre completo
-
-            //dgvActuaciones.Columns.Add("NombreCompleto")
-
-
+            dgvActuaciones.DataSource = actuacionNego.MostrarActuacionSegunProyecto(FiltrarProyecto.idProyectoSeleccionado).ToList();
             dgvActuaciones.DataBind();
 
             dgvActuaciones.Columns[0].Visible = false;
@@ -194,9 +181,6 @@ namespace Sistema_CyT
 
             Actuacion actuacion = actuacionNego.ObtenerActuacion(idActuacionActual);
 
-            //txtFechaActuacion.Text = Convert.ToDateTime(actuacion.Fecha).ToShortDateString();
-
-
             //****INICIO RUTINA PARA TRABAJAR CON FORMATO FECHA
             //FECHA APERTURA
             string dia = Convert.ToString((actuacion.Fecha).Value.Day);
@@ -213,17 +197,10 @@ namespace Sistema_CyT
                 t2 = "0";
             }
             txtFechaActuacion.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
-
-
-
-
+            //****FIN RUTINA PARA TRABAJAR CON FORMATO FECHA
 
             txtDetalle.Text = actuacion.Detalle.ToString();
-
             ddlContacto.Text = personaNego.TraerPersona(actuacion.IdPersona.Value);
-
-
-            //ddlOrganismo.Text = Convert.ToString(organismoNego.TraerOrganismo(Convert.ToInt32(actuacion.IdOrganismo)));
 
             if (actuacion.IdOrganismo == null)
             {
@@ -235,7 +212,6 @@ namespace Sistema_CyT
             }
 
             ddlViaComunicacion.Text = viaComunicacionNego.TraerViaComunicacion(Convert.ToInt32(actuacion.IdViaComunicacion));
-
         }
 
         protected void btnActualizarActuacion_Click(object sender, EventArgs e)
@@ -248,24 +224,7 @@ namespace Sistema_CyT
                 Actuacion actuacion = new Actuacion();
 
                 actuacion.IdProyecto = FiltrarProyecto.idProyectoSeleccionado;
-                //actuacion.IdOrganismo = organismoNego.TraerOrganismoIdSegunItem(ddlOrganismo.SelectedItem.ToString());
-
-
-
-
-                
-
-
-
-
-
-
-
-
                 actuacion.Fecha = DateTime.ParseExact(txtFechaActuacion.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
-
-
-
                 actuacion.Detalle = txtDetalle.Text;
                 actuacion.IdViaComunicacion = viaComunicacionNego.TraerViaComunicacionIdSegunItem(ddlViaComunicacion.SelectedItem.ToString());
 
@@ -298,7 +257,6 @@ namespace Sistema_CyT
 
                 btnActualizarActuacion.Visible = false;
                 LimpiarPantalla();
-
             }
             else
             {

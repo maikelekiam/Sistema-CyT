@@ -64,6 +64,9 @@ namespace Sistema_CyT
             fondo.Descripcion = txtDecripcion.Text;
             fondo.IdOrigen = origenNego.TraerOrigenIdSegunItem(ddlOrigen.SelectedItem.ToString());
             fondo.Activo = true;
+            fondo.Telefono = txtTelefono.Text;
+            fondo.Direccion = txtDireccion.Text;
+            fondo.Contacto = txtContacto.Text;
 
             fondoNego.GuardarFondo(fondo);
 
