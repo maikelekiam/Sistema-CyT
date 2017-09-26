@@ -29,6 +29,22 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/Default.aspx">Inicio</a></li>
                     <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">CONTACTOS <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a runat="server" href="~/AltaContacto.aspx"><span class="glyphicon glyphicon-plus"></span>Alta Contacto</a></li>
+                            <li><a runat="server" href="~/EditarContacto.aspx"><span class="glyphicon glyphicon-edit"></span>Editar Contacto</a></li>
+                            <li><a runat="server" href="~/ListarContactos.aspx"><span class="glyphicon glyphicon-list"></span>Listar Contactos</a></li>
+                            <li class="divider"></li>
+                            <li><a runat="server" href="~/AltaEmpresa.aspx"><span class="glyphicon glyphicon-plus"></span>Alta Empresa</a></li>
+                            <li><a runat="server" href="~/EditarEmpresa.aspx"><span class="glyphicon glyphicon-edit"></span>Editar Empresa</a></li>
+                            <li><a runat="server" href="~/ListarEmpresas.aspx"><span class="glyphicon glyphicon-list"></span>Listar Empresas</a></li>
+                            <li class="divider"></li>
+                            <li><a runat="server" href="~/AltaOrganismo.aspx"><span class="glyphicon glyphicon-plus"></span>Alta Organismo</a></li>
+                            <li><a runat="server" href="~/EditarOrganismo.aspx"><span class="glyphicon glyphicon-edit"></span>Editar Organismo</a></li>
+                            <li><a runat="server" href="~/ListarOrganismos.aspx"><span class="glyphicon glyphicon-list"></span>Listar Organismos</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">PROYECTOS <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a runat="server" href="~/AltaProyecto.aspx"><span class="glyphicon glyphicon-plus"></span>Alta Proyecto</a></li>
