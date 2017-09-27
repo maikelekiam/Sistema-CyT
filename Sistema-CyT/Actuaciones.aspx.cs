@@ -34,8 +34,17 @@ namespace Sistema_CyT
             MostrarViaComunicacion(); //SIRVE PARA CARGAR DATOS EN EL DROPDOWNLIST
             LlenarListaPersonas(); //SIRVE PARA EL DROP DOWN LIST
 
+            MostrarPersonaActual(); //MUESTRA EL CONTACTO DEL PROYECTO
+
             LlenarGrillaActuaciones();
             LimpiarPantalla();
+        }
+
+        private void MostrarPersonaActual()
+        {
+            Proyecto proyecto = proyectoNego.ObtenerProyecto(FiltrarProyecto.idProyectoSeleccionado);
+
+            ddlContacto.Text = personaNego.TraerPersona(proyecto.IdPersona.Value);
         }
         private void LlenarListaPersonas()
         {
@@ -91,11 +100,19 @@ namespace Sistema_CyT
 
         protected void btnGuardarActuacion_Click(object sender, EventArgs e)
         {
-            PanelNuevaActuacion.Visible = false;
-            btnAgregarActuacion.Visible = true;
-            btnActualizarActuacion.Visible = false;
-            GuardarActuacion();
-            LimpiarPantalla();
+            if (ddlViaComunicacion.SelectedValue != "-1" && ddlContacto.SelectedValue != "-1" && txtFechaActuacion.Text!="") //agregar tambien para la fecha que no sea vacia o null
+            {
+                PanelNuevaActuacion.Visible = false;
+                btnAgregarActuacion.Visible = true;
+                btnActualizarActuacion.Visible = false;
+
+                GuardarActuacion();
+                LimpiarPantalla();
+            }
+            else
+            {
+                //FALTA IMPLEMENTAR
+            }
         }
 
         private void GuardarActuacion()
@@ -219,6 +236,7 @@ namespace Sistema_CyT
             if (
                 ddlViaComunicacion.SelectedValue != "-1"
                 && ddlContacto.SelectedValue != "-1"
+                && txtFechaActuacion.Text != ""
                 )
             {
                 Actuacion actuacion = new Actuacion();
