@@ -13,6 +13,9 @@ namespace Sistema_CyT
     {
         PersonaNego personaNego = new PersonaNego();
         LocalidadNego localidadNego = new LocalidadNego();
+
+        public static int idPersonaSeleccionada;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack) return;
@@ -31,6 +34,15 @@ namespace Sistema_CyT
         protected void dgvPersona_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
+        }
+
+        protected void dgvPersona_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow row = this.dgvPersona.SelectedRow;
+
+            idPersonaSeleccionada = Convert.ToInt32(row.Cells[0].Text);
+
+            Response.Redirect("ActuacionPersona.aspx");
         }
     }
 }

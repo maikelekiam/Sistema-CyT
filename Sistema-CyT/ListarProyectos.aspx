@@ -89,7 +89,7 @@
                             
                             <asp:BoundField HeaderText="Estado" DataField="tipoEstado" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="150" />
                             <asp:BoundField HeaderText="Año" DataField="anio" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="60" />
-                            <asp:ButtonField Text="Detalles" CommandName="Select" ItemStyle-Width="60" />
+                            <asp:ButtonField Text="Detalle" CommandName="Select" ItemStyle-Width="60" />
                         </Columns>
                     </asp:GridView>
                 </div>

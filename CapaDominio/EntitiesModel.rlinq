@@ -264,6 +264,9 @@
         <orm:field name="actuacions" property="Actuacions" behavior="readwrite" uniqueId="2ab1136e-9c33-403a-b776-a73ad35735a5" type="CapaDominio.Actuacion">
           <orm:collection element-class="CapaDominio.Actuacion" inverse-field="persona" order-by="" uniqueId="23205a27-453b-4aa5-b205-035c976bbd82" />
         </orm:field>
+        <orm:field name="actuacionPersonas" property="ActuacionPersonas" behavior="readwrite" uniqueId="717209d6-e637-423f-bf73-d8fca82d4e23" type="CapaDominio.ActuacionPersona">
+          <orm:collection element-class="CapaDominio.ActuacionPersona" inverse-field="persona" order-by="" uniqueId="85638616-a5c3-46d3-8f64-3316addd1eb5" />
+        </orm:field>
       </orm:class>
       <orm:class name="Origen" uniqueId="6d7b7763-a635-4aae-9c10-55a9d2ecab1f">
         <orm:table name="Origen" />
@@ -722,6 +725,37 @@
           <orm:collection element-class="CapaDominio.Actuacion" inverse-field="viaComunicacion" order-by="" uniqueId="53306848-48e0-4703-a3cc-6c3a542b8502" />
         </orm:field>
       </orm:class>
+      <orm:class name="ActuacionPersona" uniqueId="3f959fb9-fa4c-4abd-b361-205a2cedf2e6">
+        <orm:table name="ActuacionPersona" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="IdActuacionPersona" />
+          </orm:key-generator>
+          <orm:single-field field-name="idActuacionPersona" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="idActuacionPersona" property="IdActuacionPersona" behavior="readwrite" uniqueId="733a771b-b4c5-4646-942e-5e538f380274" type="System.Int32">
+          <orm:column name="idActuacionPersona" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="fecha" property="Fecha" behavior="readwrite" uniqueId="7e46edde-325f-4d81-a6f9-c6be8150d192" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="fecha" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
+        </orm:field>
+        <orm:field name="detalle" property="Detalle" behavior="readwrite" uniqueId="7a7523a5-5ddc-4814-9839-47aeadc702ec" type="System.String">
+          <orm:column name="detalle" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="idViaComunicacion" property="IdViaComunicacion" behavior="readwrite" uniqueId="ba27519f-0995-4511-bce5-8b0d2dc65cf3" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="idViaComunicacion" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="idPersona" property="IdPersona" behavior="readwrite" uniqueId="c8deb9ef-3edd-42ba-ae28-1a9df89f3afe" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="idPersona" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="persona" property="Persona" behavior="readwrite" uniqueId="eb4d6530-541e-4e43-9d75-dbcd73bd222e" type="CapaDominio.Persona">
+          <orm:reference uniqueId="85638616-a5c3-46d3-8f64-3316addd1eb5" association-name="ActuacionPersonaHasPersona">
+            <orm:sharedfield name="idPersona" target-class="CapaDominio.Persona" target-field="idPersona" />
+            <orm:constraint name="FK_ActuacionPersona_Persona" delete-action="dbdefaultrule" destination-table="Persona" />
+          </orm:reference>
+        </orm:field>
+      </orm:class>
     </orm:namespace>
     <orm:schema schema="">
       <orm:table name="Usuario">
@@ -935,6 +969,16 @@
       <orm:table name="ViaComunicacion">
         <orm:column name="idViaComunicacion" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         <orm:column name="nombre" sql-type="varchar(max)" nullable="false" length="0" scale="0" ado-type="StringInfiniteLength" />
+      </orm:table>
+      <orm:table name="ActuacionPersona">
+        <orm:column name="idActuacionPersona" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="fecha" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
+        <orm:column name="detalle" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="idViaComunicacion" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="idPersona" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:constraint name="FK_ActuacionPersona_Persona" delete-action="dbdefaultrule" destination-table="Persona">
+          <orm:column name="idPersona" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
       </orm:table>
       <orm:procedure name="pr02">
         <orm:procedure-parameter name="id" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" mode="in" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" />
@@ -1179,6 +1223,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="22924202-7c34-44cb-a098-258e18f759a0">
           <NavigationalProperty Id="2ab1136e-9c33-403a-b776-a73ad35735a5" name="Actuacions" type="IList&lt;Actuacion&gt;" label="Actuacions : IList&lt;Actuacion&gt;" nullable="true" kind="Persistent" fieldName="actuacions" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="c4062995-b813-49ac-9664-7f450ac940cb">
+          <NavigationalProperty Id="717209d6-e637-423f-bf73-d8fca82d4e23" name="ActuacionPersonas" type="IList&lt;ActuacionPersona&gt;" label="ActuacionPersonas : IList&lt;ActuacionPersona&gt;" nullable="true" kind="Persistent" fieldName="actuacionPersonas" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -1587,6 +1634,33 @@
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
+    <DomainClass Id="3f959fb9-fa4c-4abd-b361-205a2cedf2e6" name="ActuacionPersona" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdActuacionPersona">
+      <Property Id="733a771b-b4c5-4646-942e-5e538f380274" name="IdActuacionPersona" type="Int32" label="IdActuacionPersona : Int32" kind="Persistent" identity="true" fieldName="idActuacionPersona" />
+      <Property Id="7a7523a5-5ddc-4814-9839-47aeadc702ec" name="Detalle" label="Detalle : String" kind="Persistent" fieldName="detalle" />
+      <Property Id="7e46edde-325f-4d81-a6f9-c6be8150d192" name="Fecha" type="DateTime" label="Fecha : DateTime" nullable="true" kind="Persistent" fieldName="fecha" />
+      <Property Id="c8deb9ef-3edd-42ba-ae28-1a9df89f3afe" name="IdPersona" type="Int32" label="IdPersona : Int32" nullable="true" kind="Persistent" fieldName="idPersona" />
+      <Property Id="ba27519f-0995-4511-bce5-8b0d2dc65cf3" name="IdViaComunicacion" type="Int32" label="IdViaComunicacion : Int32" nullable="true" kind="Persistent" fieldName="idViaComunicacion" />
+      <AssociationTargets>
+        <Association Id="85638616-a5c3-46d3-8f64-3316addd1eb5" SourceMultiplicity="ZeroOne" name="ActuacionPersonaHasPersona">
+          <DomainClassMoniker name="/ModeloDeDominio/Persona" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="5dfe864d-6265-4d02-8c54-73f82ef12bdb">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Persona/ActuacionPersonas" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="614ecbca-2732-469f-9fbc-6d077beab27e">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/ActuacionPersona/Persona" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="6792cf36-38f9-4d26-acbc-ce73997b01de">
+          <NavigationalProperty Id="eb4d6530-541e-4e43-9d75-dbcd73bd222e" name="Persona" type="Persona" label="Persona : Persona" nullable="true" kind="Persistent" fieldName="persona" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
   </Types>
   <domainContext>
     <domainModelHasDomainContext Id="308c447e-a46a-42f3-bd9a-07f5b54f1c92">
@@ -1612,6 +1686,7 @@
         <entitySetProperty name="Actuacions" namespace="CapaDominio" type="Actuacion" label="Actuacions : IQueryable&lt;CapaDominio.Actuacion&gt;" />
         <entitySetProperty name="TipoProyectos" namespace="CapaDominio" type="TipoProyecto" label="TipoProyectos : IQueryable&lt;CapaDominio.TipoProyecto&gt;" />
         <entitySetProperty name="ViaComunicacions" namespace="CapaDominio" type="ViaComunicacion" label="ViaComunicacions : IQueryable&lt;CapaDominio.ViaComunicacion&gt;" />
+        <entitySetProperty name="ActuacionPersonas" namespace="CapaDominio" type="ActuacionPersona" label="ActuacionPersonas : IQueryable&lt;CapaDominio.ActuacionPersona&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>

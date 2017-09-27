@@ -218,6 +218,14 @@ namespace CapaDominio
 			}
 		}
 		
+		public IQueryable<ActuacionPersona> ActuacionPersonas 
+		{
+			get
+			{
+				return this.GetAll<ActuacionPersona>();
+			}
+		}
+		
 		public IEnumerable<pr01ResultSet0> Pr01(int? id)
 		{
 			int returnValue;
@@ -386,6 +394,10 @@ namespace CapaDominio
 			get;
 		}
 		IQueryable<ViaComunicacion> ViaComunicacions
+		{
+			get;
+		}
+		IQueryable<ActuacionPersona> ActuacionPersonas
 		{
 			get;
 		}

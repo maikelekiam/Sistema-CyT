@@ -8,23 +8,20 @@
             </div>
             <!--GRILLA PARA MOSTRAR LAS PERSONAS EN LA BASE DE DATOS-->
             <div class="form-group">
-                <div class="col-md-9 col-md-offset-1">
+                <div class="col-md-10 col-md-offset-1">
                     <br />
                     <asp:GridView ID="dgvPersona" runat="server" AutoGenerateColumns="false"
                         CssClass="table table-hover table-striped" BorderWidth="2px"
                         GridLines="Both" EmptyDataText="No existen personas registradas" ShowHeaderWhenEmpty="true"
-                        OnRowCommand="dgvPersona_RowCommand">
+                        OnRowCommand="dgvPersona_RowCommand"
+                        OnSelectedIndexChanged="dgvPersona_SelectedIndexChanged">
                         <Columns>
                             <asp:BoundField HeaderText="ID" DataField="idPersona" ItemStyle-HorizontalAlign="Center" HeaderStyle-BackColor="#cccccc" />
                             <asp:BoundField HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Left" HeaderStyle-BackColor="#cccccc" />
                             <asp:BoundField HeaderText="Apellido" DataField="apellido" ItemStyle-HorizontalAlign="Left" HeaderStyle-BackColor="#cccccc" />
                             <asp:BoundField HeaderText="Telefono" DataField="telefono" ItemStyle-HorizontalAlign="Center" HeaderStyle-BackColor="#cccccc" />
                             <asp:BoundField HeaderText="Correo Electronico" DataField="correoElectronico" ItemStyle-HorizontalAlign="Center" HeaderStyle-BackColor="#cccccc" />
-                            <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-BackColor="#cccccc">
-                                <ItemTemplate>
-                                    <asp:Button ID="btnMostrar" runat="server" Text="Mostrar" CssClass="form-control" BackColor="#eaeaea" />
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                            <asp:ButtonField Text="Actuaciones" ItemStyle-HorizontalAlign="Center" HeaderStyle-BackColor="#cccccc" CommandName="Select" ItemStyle-Width="80" />
                         </Columns>
                     </asp:GridView>
                 </div>
