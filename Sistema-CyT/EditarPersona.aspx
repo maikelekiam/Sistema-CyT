@@ -16,10 +16,12 @@
                         ForeColor="#000066"
                         Font-Bold="true"
                         CssClass="selectpicker form-control show-tick"
+                        data-live-search="true"
                         DataTextField="nombre"
                         AutoPostBack="true"
                         AppendDataBoundItems="true"
                         OnSelectedIndexChanged="ddlPersonas_SelectedIndexChanged">
+                        <asp:ListItem Value="-1">&lt;Seleccione Persona&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
             </div>

@@ -64,7 +64,10 @@ namespace Sistema_CyT
             persona.Domicilio = txtDomicilio.Text;
             persona.Observaciones = txtObservaciones.Text;
 
-            persona.Localidad = localidadNego.TraerLocalidadIdSegunItem(ddlLocalidad.SelectedItem.ToString());
+            if (ddlLocalidad.SelectedValue != "-1" )
+            {
+                persona.Localidad = localidadNego.TraerLocalidadIdSegunItem(ddlLocalidad.SelectedItem.ToString());
+            }
 
             personaNego.GuardarPersona(persona);
         }
