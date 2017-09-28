@@ -76,6 +76,58 @@ namespace CapaDominio
 			}
 		}
 		
+		private string observaciones;
+		public virtual string Observaciones
+		{
+			get
+			{
+				return this.observaciones;
+			}
+			set
+			{
+				this.observaciones = value;
+			}
+		}
+		
+		private int? idLocalidad;
+		public virtual int? IdLocalidad
+		{
+			get
+			{
+				return this.idLocalidad;
+			}
+			set
+			{
+				this.idLocalidad = value;
+			}
+		}
+		
+		private string domicilio;
+		public virtual string Domicilio
+		{
+			get
+			{
+				return this.domicilio;
+			}
+			set
+			{
+				this.domicilio = value;
+			}
+		}
+		
+		private Localidad localidad;
+		public virtual Localidad Localidad
+		{
+			get
+			{
+				return this.localidad;
+			}
+			set
+			{
+				this.localidad = value;
+			}
+		}
+		
 		private IList<Proyecto> proyectos = new List<Proyecto>();
 		public virtual IList<Proyecto> Proyectos
 		{

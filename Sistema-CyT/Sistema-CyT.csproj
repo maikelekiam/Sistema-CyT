@@ -194,6 +194,7 @@
     <Content Include="ListarUdts.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="MostrarConvocatoria.aspx" />
+    <Content Include="MostrarEmpresa.aspx" />
     <Content Include="MostrarFondo.aspx" />
     <Content Include="MostrarPersona.aspx" />
     <Content Include="MostrarProyecto.aspx" />
@@ -471,6 +472,13 @@
     </Compile>
     <Compile Include="MostrarConvocatoria.aspx.designer.cs">
       <DependentUpon>MostrarConvocatoria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MostrarEmpresa.aspx.cs">
+      <DependentUpon>MostrarEmpresa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MostrarEmpresa.aspx.designer.cs">
+      <DependentUpon>MostrarEmpresa.aspx</DependentUpon>
     </Compile>
     <Compile Include="MostrarFondo.aspx.cs">
       <DependentUpon>MostrarFondo.aspx</DependentUpon>

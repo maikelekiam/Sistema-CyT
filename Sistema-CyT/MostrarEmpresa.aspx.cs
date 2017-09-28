@@ -9,7 +9,7 @@ using CapaNegocio;
 
 namespace Sistema_CyT
 {
-    public partial class MostrarPersona : System.Web.UI.Page
+    public partial class MostrarEmpresa : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

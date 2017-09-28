@@ -373,6 +373,9 @@
         <orm:field name="proyectos" property="Proyectos" behavior="readwrite" uniqueId="1cd7174a-eb69-42ad-acdf-7264523ee440" type="CapaDominio.Proyecto">
           <orm:collection element-class="CapaDominio.Proyecto" inverse-field="localidad" order-by="" uniqueId="3074c3e8-1094-4878-a027-70455f2424e6" />
         </orm:field>
+        <orm:field name="empresas" property="Empresas" behavior="readwrite" uniqueId="5dd084cb-3abf-4dc9-a785-9c3082ba4c29" type="CapaDominio.Empresa">
+          <orm:collection element-class="CapaDominio.Empresa" inverse-field="localidad" order-by="" uniqueId="f42f49f3-6a87-4a03-a108-c5f3e2b01405" />
+        </orm:field>
       </orm:class>
       <orm:class name="Fondo" uniqueId="3abee8a8-17da-4f84-9739-cbe78201880f">
         <orm:table name="Fondo" />
@@ -487,8 +490,23 @@
         <orm:field name="correoElectronico" property="CorreoElectronico" behavior="readwrite" uniqueId="5a7970cb-5a6c-4009-980e-658e2a2a15b0" type="System.String">
           <orm:column name="correoElectronico" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         </orm:field>
+        <orm:field name="observaciones" property="Observaciones" behavior="readwrite" uniqueId="ed324d43-ef85-4e69-9593-e53b3eeae556" type="System.String">
+          <orm:column name="observaciones" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="idLocalidad" property="IdLocalidad" behavior="readwrite" uniqueId="736781ad-d200-44e8-bc1f-08a98c22e6e5" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="idLocalidad" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="domicilio" property="Domicilio" behavior="readwrite" uniqueId="061c8671-95ad-4b7b-b9cd-aef6f429d922" type="System.String">
+          <orm:column name="domicilio" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
         <orm:field name="proyectos" property="Proyectos" behavior="readwrite" uniqueId="4873375d-ba76-4bd8-b10b-2c8dbafade35" type="CapaDominio.Proyecto">
           <orm:collection element-class="CapaDominio.Proyecto" inverse-field="empresa" order-by="" uniqueId="b91d7e2d-2ea6-46e7-b7dc-9066a0b7371c" />
+        </orm:field>
+        <orm:field name="localidad" property="Localidad" behavior="readwrite" uniqueId="d71f973e-f12b-4f5b-b6e8-89db4ca09412" type="CapaDominio.Localidad">
+          <orm:reference uniqueId="f42f49f3-6a87-4a03-a108-c5f3e2b01405" association-name="EmpresaHasLocalidad">
+            <orm:sharedfield name="idLocalidad" target-class="CapaDominio.Localidad" target-field="idLocalidad" />
+            <orm:constraint name="FK_Empresa_Localidad" delete-action="dbdefaultrule" destination-table="Localidad" />
+          </orm:reference>
         </orm:field>
       </orm:class>
       <orm:class name="Desembolso" uniqueId="dbb601fe-1b2e-4707-aeca-d044c251501a">
@@ -901,6 +919,12 @@
         <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         <orm:column name="telefono" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         <orm:column name="correoElectronico" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="observaciones" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="idLocalidad" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="domicilio" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:constraint name="FK_Empresa_Localidad" delete-action="dbdefaultrule" destination-table="Localidad">
+          <orm:column name="idLocalidad" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
       </orm:table>
       <orm:table name="Desembolso">
         <orm:column name="idDesembolso" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
@@ -1299,6 +1323,9 @@
         <classHasNavigationalProperties Id="7b15753f-2a43-42a6-be20-da3bf89b481f">
           <NavigationalProperty Id="1cd7174a-eb69-42ad-acdf-7264523ee440" name="Proyectos" type="IList&lt;Proyecto&gt;" label="Proyectos : IList&lt;Proyecto&gt;" nullable="true" kind="Persistent" fieldName="proyectos" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="8768cd57-9f80-46dd-8cf0-760bb05e6b98">
+          <NavigationalProperty Id="5dd084cb-3abf-4dc9-a785-9c3082ba4c29" name="Empresas" type="IList&lt;Empresa&gt;" label="Empresas : IList&lt;Empresa&gt;" nullable="true" kind="Persistent" fieldName="empresas" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="3abee8a8-17da-4f84-9739-cbe78201880f" name="Fondo" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdFondo">
@@ -1388,9 +1415,30 @@
       <Property Id="5a7970cb-5a6c-4009-980e-658e2a2a15b0" name="CorreoElectronico" label="CorreoElectronico : String" kind="Persistent" fieldName="correoElectronico" />
       <Property Id="097b32a8-3d79-4eb6-a746-5c51543dcbb0" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
       <Property Id="173b0045-c524-4fed-8cfb-ed2c5e939fc7" name="Telefono" label="Telefono : String" kind="Persistent" fieldName="telefono" />
+      <Property Id="ed324d43-ef85-4e69-9593-e53b3eeae556" name="Observaciones" label="Observaciones : String" kind="Persistent" fieldName="observaciones" />
+      <Property Id="736781ad-d200-44e8-bc1f-08a98c22e6e5" name="IdLocalidad" type="Int32" label="IdLocalidad : Int32" nullable="true" kind="Persistent" fieldName="idLocalidad" />
+      <Property Id="061c8671-95ad-4b7b-b9cd-aef6f429d922" name="Domicilio" label="Domicilio : String" kind="Persistent" fieldName="domicilio" />
+      <AssociationTargets>
+        <Association Id="f42f49f3-6a87-4a03-a108-c5f3e2b01405" SourceMultiplicity="ZeroOne" name="EmpresaHasLocalidad">
+          <DomainClassMoniker name="/ModeloDeDominio/Localidad" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="c8bbd311-1772-43f9-98ad-cf4663d34ff3">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Localidad/Empresas" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="bfb81adf-9e03-41b0-9942-bc77d048f3d8">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Empresa/Localidad" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="86f45025-f2e8-4f89-ae24-51ef77e3f6b1">
           <NavigationalProperty Id="4873375d-ba76-4bd8-b10b-2c8dbafade35" name="Proyectos" type="IList&lt;Proyecto&gt;" label="Proyectos : IList&lt;Proyecto&gt;" nullable="true" kind="Persistent" fieldName="proyectos" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="dec4ee6d-1c3d-48e7-870b-81b3cb0f6101">
+          <NavigationalProperty Id="d71f973e-f12b-4f5b-b6e8-89db4ca09412" name="Localidad" type="Localidad" label="Localidad : Localidad" nullable="true" kind="Persistent" fieldName="localidad" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>

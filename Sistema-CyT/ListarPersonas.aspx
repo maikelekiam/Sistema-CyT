@@ -13,7 +13,6 @@
                     <asp:GridView ID="dgvPersona" runat="server" AutoGenerateColumns="false"
                         CssClass="table table-hover table-striped" BorderWidth="2px"
                         GridLines="Both" EmptyDataText="No existen personas registradas" ShowHeaderWhenEmpty="true"
-                        OnRowCommand="dgvPersona_RowCommand"
                         OnSelectedIndexChanged="dgvPersona_SelectedIndexChanged">
                         <Columns>
                             <asp:BoundField HeaderText="ID" DataField="idPersona" ItemStyle-HorizontalAlign="Center" HeaderStyle-BackColor="#cccccc" />

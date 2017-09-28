@@ -72,6 +72,15 @@ namespace CapaDominio
 			}
 		}
 		
+		private IList<Empresa> empresas = new List<Empresa>();
+		public virtual IList<Empresa> Empresas
+		{
+			get
+			{
+				return this.empresas;
+			}
+		}
+		
 	}
 }
 #pragma warning restore 1591

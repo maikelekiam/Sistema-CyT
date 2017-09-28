@@ -10,7 +10,7 @@
 namespace Sistema_CyT {
     
     
-    public partial class AltaEmpresa {
+    public partial class MostrarEmpresa {
         
         /// <summary>
         /// Panel1 control.
@@ -94,22 +94,22 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.TextBox txtDomicilio;
         
         /// <summary>
-        /// lblLocalidad control.
+        /// lblContacto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLocalidad;
+        protected global::System.Web.UI.WebControls.Label lblContacto;
         
         /// <summary>
-        /// ddlLocalidad control.
+        /// txtContacto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlLocalidad;
+        protected global::System.Web.UI.WebControls.TextBox txtContacto;
         
         /// <summary>
         /// lblObservaciones control.
@@ -128,23 +128,5 @@ namespace Sistema_CyT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtObservaciones;
-        
-        /// <summary>
-        /// btnGuardarEmpresa control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGuardarEmpresa;
-        
-        /// <summary>
-        /// dgvEmpresa control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgvEmpresa;
     }
 }

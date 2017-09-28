@@ -30,12 +30,6 @@ namespace Sistema_CyT
 
             dgvPersona.Columns[0].Visible = false;
         }
-
-        protected void dgvPersona_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-
-        }
-
         protected void dgvPersona_SelectedIndexChanged(object sender, EventArgs e)
         {
             GridViewRow row = this.dgvPersona.SelectedRow;
