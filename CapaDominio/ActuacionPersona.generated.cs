@@ -102,6 +102,19 @@ namespace CapaDominio
 			}
 		}
 		
+		private ViaComunicacion viaComunicacion;
+		public virtual ViaComunicacion ViaComunicacion
+		{
+			get
+			{
+				return this.viaComunicacion;
+			}
+			set
+			{
+				this.viaComunicacion = value;
+			}
+		}
+		
 	}
 }
 #pragma warning restore 1591

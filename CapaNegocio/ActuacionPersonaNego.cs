@@ -31,5 +31,9 @@ namespace CapaNegocio
         {
             return actuacionPersonaRepo.ObtenerActuacionPersona(id);
         }
+        public IEnumerable<ActuacionPersona> MostrarActuacionPersonaSegunPersona(int id)
+        {
+            return actuacionPersonaRepo.MostrarActuacionPersonaSegunPersona(id);
+        }
     }
 }

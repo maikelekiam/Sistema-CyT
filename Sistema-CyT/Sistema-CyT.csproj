@@ -156,7 +156,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Actuaciones.aspx" />
-    <Content Include="ActuacionPersona.aspx" />
+    <Content Include="ActuacionesPersona.aspx" />
     <Content Include="AltaConvocatoria.aspx" />
     <Content Include="AltaEmpresa.aspx" />
     <Content Include="AltaFondo.aspx" />
@@ -262,12 +262,12 @@
     <Compile Include="Actuaciones.aspx.designer.cs">
       <DependentUpon>Actuaciones.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ActuacionPersona.aspx.cs">
-      <DependentUpon>ActuacionPersona.aspx</DependentUpon>
+    <Compile Include="ActuacionesPersona.aspx.cs">
+      <DependentUpon>ActuacionesPersona.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ActuacionPersona.aspx.designer.cs">
-      <DependentUpon>ActuacionPersona.aspx</DependentUpon>
+    <Compile Include="ActuacionesPersona.aspx.designer.cs">
+      <DependentUpon>ActuacionesPersona.aspx</DependentUpon>
     </Compile>
     <Compile Include="AltaConvocatoria.aspx.cs">
       <DependentUpon>AltaConvocatoria.aspx</DependentUpon>

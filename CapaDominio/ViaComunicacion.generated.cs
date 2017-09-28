@@ -59,6 +59,15 @@ namespace CapaDominio
 			}
 		}
 		
+		private IList<ActuacionPersona> actuacionPersonas = new List<ActuacionPersona>();
+		public virtual IList<ActuacionPersona> ActuacionPersonas
+		{
+			get
+			{
+				return this.actuacionPersonas;
+			}
+		}
+		
 	}
 }
 #pragma warning restore 1591

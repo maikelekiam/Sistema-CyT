@@ -42,7 +42,7 @@ namespace Sistema_CyT
 
             idPersonaSeleccionada = Convert.ToInt32(row.Cells[0].Text);
 
-            Response.Redirect("ActuacionPersona.aspx");
+            Response.Redirect("ActuacionesPersona.aspx");
         }
     }
 }

@@ -51,5 +51,14 @@ namespace CapaRepositorio
                 return actuacionPersona;
             }
         }
+        public IEnumerable<ActuacionPersona> MostrarActuacionPersonaSegunPersona(int id)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                IEnumerable<ActuacionPersona> result = modeloDeDominio.ActuacionPersonas.Where(c => c.IdPersona == id).OrderBy(c => c.Fecha).ToList();
+
+                return result;
+            }
+        }
     }
 }
