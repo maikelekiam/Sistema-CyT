@@ -13,7 +13,7 @@
                     <asp:GridView ID="dgvFondos" runat="server" AutoGenerateColumns="false"
                         CssClass="table table-hover table-striped" BorderWidth="2px"
                         GridLines="Both"
-                        OnRowCommand="dgvFondos_RowCommand">
+                        OnRowDeleting="dgvFondos_RowDeleting">
                         <Columns>
                             <asp:BoundField HeaderText="ID" DataField="idFondo" ItemStyle-HorizontalAlign="Left" />
                             <asp:BoundField HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="200" />
@@ -24,11 +24,7 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField HeaderText="Activo" DataField="activo" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100" />
-                            <asp:TemplateField>
-                                <ItemTemplate>
-                                    <asp:Button ID="btnMostrar" runat="server" Text="Mostrar" CssClass="form-control" BackColor="#eaeaea" />
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                            <asp:ButtonField HeaderText="Detalles" CommandName="delete" ControlStyle-Width="50" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" ControlStyle-CssClass="glyphicon glyphicon-search" />
                         </Columns>
                     </asp:GridView>
                 </div>

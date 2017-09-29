@@ -72,8 +72,6 @@ namespace Sistema_CyT
 
                 cantidadProyectosSumatoria = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).Where(c => c.tipoEstado == ddlEstado.SelectedItem.ToString()).Count();
                 lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
-
-                //dgvProyectos.Columns[0].Visible = false;
             }
         }
 
@@ -104,8 +102,6 @@ namespace Sistema_CyT
 
                 cantidadProyectosSumatoria = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).Count();
                 lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
-
-                //dgvProyectos.Columns[0].Visible = false;
             }
             else
             {
@@ -114,7 +110,6 @@ namespace Sistema_CyT
 
                 cantidadProyectosSumatoria = listaProyectosFiltrados.Count();
                 lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
-                //dgvProyectos.Columns[0].Visible = false;
             }
         }
 
@@ -127,8 +122,6 @@ namespace Sistema_CyT
 
             cantidadProyectosSumatoria = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).Count();
             lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
-
-            //dgvProyectos.Columns[0].Visible = false;
         }
 
         protected void dgvProyectos_SelectedIndexChanged(object sender, EventArgs e)
@@ -136,8 +129,6 @@ namespace Sistema_CyT
             GridViewRow row = this.dgvProyectos.SelectedRow;
 
             numeroExpedienteProyectoSeleccionado = row.Cells[0].Text;
-
-
 
             Response.Redirect("MostrarProyecto.aspx");
         }

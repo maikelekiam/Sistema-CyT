@@ -37,19 +37,10 @@ namespace Sistema_CyT
             dgvFondos.Columns[4].Visible = false;
         }
 
-        protected void dgvFondos_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void dgvFondos_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            //Obtengo el indice de la fila seleccionada con el boton MOSTRAR
-            GridViewRow row = (GridViewRow)(((Button)e.CommandSource).NamingContainer);
-            int rIndex = row.RowIndex;
+            idFondoSeleccionado = Convert.ToInt32(dgvFondos.Rows[e.RowIndex].Cells[0].Text);
 
-            //Obtengo el id del fondo seleccionado
-            idFondoSeleccionado = Convert.ToInt32(dgvFondos.Rows[rIndex].Cells[0].Text);
-
-            MostrarFondo();
-        }
-        private void MostrarFondo()
-        {
             Response.Redirect("MostrarFondo.aspx");
         }
     }

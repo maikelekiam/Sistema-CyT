@@ -25,18 +25,39 @@ namespace Sistema_CyT
         //Muestra los datos de las personas en la GRILLA
         private void MostrarGrillaPersonas()
         {
-            dgvPersona.DataSource = personaNego.MostrarPersonas().ToList();
+            dgvPersona.DataSource = personaNego.MostrarPersonas().ToList().OrderBy(c => c.Apellido);
             dgvPersona.DataBind();
 
             dgvPersona.Columns[0].Visible = false;
         }
-        protected void dgvPersona_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            GridViewRow row = this.dgvPersona.SelectedRow;
 
-            idPersonaSeleccionada = Convert.ToInt32(row.Cells[0].Text);
+
+        //protected void dgvPersona_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    GridViewRow row = this.dgvPersona.SelectedRow;
+
+        //    idPersonaSeleccionada = Convert.ToInt32(row.Cells[0].Text);
+
+        //    Response.Redirect("ActuacionesPersona.aspx");
+        //}
+
+        protected void dgvPersona_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            idPersonaSeleccionada = Convert.ToInt32(dgvPersona.Rows[e.NewSelectedIndex].Cells[0].Text);
+
+            lblFondo.Text = dgvPersona.Rows[e.NewSelectedIndex].Cells[0].Text;
 
             Response.Redirect("ActuacionesPersona.aspx");
+
+        }
+
+        protected void dgvPersona_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            idPersonaSeleccionada = Convert.ToInt32(dgvPersona.Rows[e.RowIndex].Cells[0].Text);
+
+            lblFondo.Text = dgvPersona.Rows[e.RowIndex].Cells[0].Text;
+
+            Response.Redirect("MostrarPersona.aspx");
         }
     }
 }

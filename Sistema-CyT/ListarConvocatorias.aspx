@@ -43,7 +43,7 @@
                     <asp:GridView ID="dgvConvocatoria" runat="server" AutoGenerateColumns="false"
                         CssClass="table table-hover table-striped" BorderWidth="2px"
                         GridLines="Both"
-                        OnRowCommand="dgvConvocatoria_RowCommand">
+                        OnRowDeleting="dgvConvocatoria_RowDeleting">
                         <Columns>
                             <asp:BoundField HeaderText="ID" DataField="idConvocatoria" ItemStyle-HorizontalAlign="Left" />
                             <asp:BoundField HeaderText="AÑO" DataField="anio" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="100" />
@@ -60,11 +60,7 @@
                             </asp:TemplateField>
                             <asp:BoundField HeaderText="APERTURA" DataFormatString="{0:dd-MMM-yyyy}" DataField="fechaApertura" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="250" />
                             <asp:BoundField HeaderText="CIERRE" DataFormatString="{0:dd-MMM-yyyy}" DataField="fechaCierre" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="250" />
-                            <asp:TemplateField>
-                                <ItemTemplate>
-                                    <asp:Button ID="btnMostrar" runat="server" Text="Mostrar" CssClass="form-control" BackColor="#eaeaea" />
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                            <asp:ButtonField HeaderText="Detalles" CommandName="delete" ControlStyle-Width="50" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" ControlStyle-CssClass="glyphicon glyphicon-search" />
                         </Columns>
                     </asp:GridView>
                 </div>

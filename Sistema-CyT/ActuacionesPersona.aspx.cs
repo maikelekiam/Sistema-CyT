@@ -79,6 +79,7 @@ namespace Sistema_CyT
         {
             txtFechaActuacion.Text = null;
             txtDetalle.Text = null;
+            ddlViaComunicacion.Text = null;
         }
 
         protected void btnAgregarActuacion_Click(object sender, EventArgs e)

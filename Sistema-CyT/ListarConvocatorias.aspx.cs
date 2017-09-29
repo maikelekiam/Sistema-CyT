@@ -57,22 +57,6 @@ namespace Sistema_CyT
             dgvConvocatoria.Columns[0].Visible = false;
         }
 
-        protected void dgvConvocatoria_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            //Obtengo el indice de la fila seleccionada con el boton MOSTRAR
-            GridViewRow row = (GridViewRow)(((Button)e.CommandSource).NamingContainer);
-            int rIndex = row.RowIndex;
-
-            //Obtengo el id de la convocatoria seleccionada
-            idConvocatoriaSeleccionada = Convert.ToInt32(dgvConvocatoria.Rows[rIndex].Cells[0].Text);
-
-            MostrarConvocatoria();
-        }
-        private void MostrarConvocatoria()
-        {
-            Response.Redirect("MostrarConvocatoria.aspx");
-        }
-
         protected void btnFiltrarConvocatorias_Click(object sender, EventArgs e)
         {
             FiltrarConvocatorias();
@@ -136,6 +120,13 @@ namespace Sistema_CyT
         protected void btnFiltrarConvocatoriasTodas_Click(object sender, EventArgs e)
         {
             Response.Redirect("ListarConvocatorias.aspx");
+        }
+
+        protected void dgvConvocatoria_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            idConvocatoriaSeleccionada = Convert.ToInt32(dgvConvocatoria.Rows[e.RowIndex].Cells[0].Text);
+
+            Response.Redirect("MostrarConvocatoria.aspx");
         }
     }
 }

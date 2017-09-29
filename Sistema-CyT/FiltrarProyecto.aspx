@@ -73,57 +73,14 @@
                         <Columns>
                             <asp:BoundField HeaderText="Expediente" DataField="numeroExpediente" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="150" />
                             <asp:BoundField HeaderText="Nombre del Proyecto" DataField="nombre" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="400" />
-
-
                             <asp:BoundField HeaderText="Tipo" DataField="tipoProyecto" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="200" />
-
-                            <%--<asp:BoundField HeaderText="Localidad" DataField="localidad" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="200" />--%>
-
-
                             <asp:BoundField HeaderText="Estado" DataField="tipoEstado" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="120" />
                             <asp:BoundField HeaderText="Año" DataField="anio" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="60" />
-
-                            <asp:ButtonField Text="Actuaciones" CommandName="Select" ItemStyle-Width="150" />
+                            <asp:ButtonField HeaderText="Actuaciones" HeaderStyle-Width="30" CommandName="select" ControlStyle-Width="30" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" ControlStyle-CssClass="glyphicon glyphicon-list" />
                         </Columns>
                     </asp:GridView>
                 </div>
             </div>
-
-
-
-
-
-
-
-
-            <%--<div class="form-group">
-                <div class="col-md-9 col-md-offset-1">
-                    <asp:GridView ID="dgvProyectos" runat="server" AutoGenerateColumns="false"
-                        CssClass="table table-hover table-striped" BorderWidth="2px"
-                        GridLines="Both"
-                        OnSelectedIndexChanged="dgvProyectos_SelectedIndexChanged">
-                        <Columns>
-                            <asp:BoundField HeaderText="ID" DataField="idProyecto" ItemStyle-HorizontalAlign="Left" />
-                            <asp:BoundField HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="300" />
-                            <asp:TemplateField HeaderText="Convocatoria" HeaderStyle-HorizontalAlign="Left" HeaderStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="300">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblConvocatoria" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Convocatorium.Nombre") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:ButtonField Text="Actuaciones" CommandName="Select" ItemStyle-Width="150" />
-                        </Columns>
-                    </asp:GridView>
-                </div>
-            </div>--%>
-
-            <%--<div class="form-group">
-                <div class="col-md-9 col-md-offset-1">
-                    <asp:GridView ID="dgvConvocatorias" runat="server" AutoGenerateColumns="true"
-                        CssClass="table table-hover table-striped" BorderWidth="2px"
-                        GridLines="Both">
-                    </asp:GridView>
-                </div>
-            </div>--%>
         </asp:Panel>
     </div>
 </asp:Content>

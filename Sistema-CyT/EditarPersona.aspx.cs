@@ -16,9 +16,6 @@ namespace Sistema_CyT
         PersonaNego personaNego = new PersonaNego();
         LocalidadNego localidadNego = new LocalidadNego();
 
-        List<Persona> datos;
-        DataTable datosDataTable;
-
         static int id;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -56,6 +53,7 @@ namespace Sistema_CyT
             persona.Telefono = txtTelefono.Text;
             persona.CorreoElectronico = txtCorreoElectronico.Text;
             persona.Observaciones = txtObservaciones.Text;
+            persona.Domicilio = txtDomicilio.Text;
 
             if (ddlLocalidad.SelectedValue != "-1")
             {
@@ -81,6 +79,7 @@ namespace Sistema_CyT
                 txtTelefono.Text = persona.Telefono;
                 txtCorreoElectronico.Text = persona.CorreoElectronico;
                 txtObservaciones.Text = persona.Observaciones;
+                txtDomicilio.Text = persona.Domicilio;
 
                 if (persona.Localidad > 0)
                 {
@@ -100,36 +99,17 @@ namespace Sistema_CyT
                 txtTelefono.Text = "";
                 txtCorreoElectronico.Text = "";
                 txtObservaciones.Text = "";
-                ddlLocalidad.Text = "-1";                
+                ddlLocalidad.Text = "-1";
             }
         }
 
         public void LlenarListaPersonas()
         {
-            datos = personaNego.MostrarPersonasDt();
-            datosDataTable = ConvertirListaToDataTable(datos);
-            datosDataTable.Columns.Add("nombre_completo", typeof(string), "nombre + ' ' + apellido");
-
-            ddlPersonas.DataSource = datosDataTable;
-            //listaPersonas = personaNego.MostrarPersonas().ToList();
-            //ddlPersonas.DataSource = listaPersonas.OrderBy(c => c.Nombre).ToList();
-            ddlPersonas.DataTextField = "nombre_completo";
+            ddlPersonas.DataSource = personaNego.MostrarPersonas().ToList();
+            IList<Persona> nombreCompleto = personaNego.MostrarPersonas().Select(p => new Persona() { Nombre = p.Apellido + "," + p.Nombre, IdPersona = p.IdPersona }).OrderBy(c => c.IdPersona).ToList();
+            ddlPersonas.DataSource = nombreCompleto;
             ddlPersonas.DataValueField = "idPersona";
             ddlPersonas.DataBind();
-        }
-        // METODO LO SAQUE DE INTERNET SIRVE PARA CONVERTIR UNA LISTA EN UN DATATABLE
-        private DataTable ConvertirListaToDataTable(IList<Persona> data)
-        {
-            PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(typeof(Persona));
-            DataTable table = new DataTable();
-            foreach (PropertyDescriptor prop in properties) table.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
-            foreach (Persona item in data)
-            {
-                DataRow row = table.NewRow();
-                foreach (PropertyDescriptor prop in properties) row[prop.Name] = prop.GetValue(item) ?? DBNull.Value;
-                table.Rows.Add(row);
-            }
-            return table;
         }
     }
 }

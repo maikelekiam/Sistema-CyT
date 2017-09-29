@@ -65,31 +65,20 @@
                     <asp:Label ID="lblCantidadProyectosSumatoria" Font-Bold="true" runat="server" Text="" CssClass="col-md-3 control-label"></asp:Label>
                 </div>
             </div>
-
-
-            <%--<asp:Button runat="server" ID="btn2" Text="TODOS" CssClass="btn btn-primary" OnClick="btnTodos_Click" />--%>
-
             <div class="form-group">
                 <br />
-                <div class="col-md-12">
+                <div class="col-md-12 col-md-offset-0">
                     <asp:GridView ID="dgvProyectos" runat="server" AutoGenerateColumns="false"
                         CssClass="table table-hover table-striped" BorderWidth="2px"
                         GridLines="Both"
                         OnSelectedIndexChanged="dgvProyectos_SelectedIndexChanged">
                         <Columns>
-                            <%--                            <asp:BoundField HeaderText="ID" DataField="idProyecto" ItemStyle-HorizontalAlign="Left" />--%>
                             <asp:BoundField HeaderText="Expediente" DataField="numeroExpediente" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="150" />
                             <asp:BoundField HeaderText="Nombre del Proyecto" DataField="nombre" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="400" />
-                            
-                            
                             <asp:BoundField HeaderText="Tipo" DataField="tipoProyecto" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="200" />
-
-                            <%--<asp:BoundField HeaderText="Localidad" DataField="localidad" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="200" />--%>
-                            
-                            
                             <asp:BoundField HeaderText="Estado" DataField="tipoEstado" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="150" />
                             <asp:BoundField HeaderText="Año" DataField="anio" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="60" />
-                            <asp:ButtonField Text="Detalle" CommandName="Select" ItemStyle-Width="60" />
+                            <asp:ButtonField HeaderStyle-Width="30" HeaderText="Detalles" CommandName="select" ControlStyle-Width="30" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" ControlStyle-CssClass="glyphicon glyphicon-search" />
                         </Columns>
                     </asp:GridView>
                 </div>

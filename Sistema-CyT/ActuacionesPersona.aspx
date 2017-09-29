@@ -13,7 +13,7 @@
             <!-- BOTON AGREGAR ACTUACION -->
             <div class="form-group">
                 <div class="col-md-2">
-                    <asp:Button ID="btnAgregarActuacion" runat="server" Text="Agregar Actuacion" CssClass="btn btn-info form-control" OnClick="btnAgregarActuacion_Click"/>
+                    <asp:Button ID="btnAgregarActuacion" runat="server" Text="Agregar Actuacion" CssClass="btn btn-info form-control" OnClick="btnAgregarActuacion_Click" />
                 </div>
             </div>
         </asp:Panel>
@@ -99,7 +99,7 @@
                     <asp:Button ID="btnGuardarActuacion" runat="server" Text="Guardar Actuacion" CssClass="btn btn-success form-control" OnClick="btnGuardarActuacion_Click" />
                 </div>
                 <div class="col-md-2">
-                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-danger form-control" OnClick="btnCancelar_Click"/>
+                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-danger form-control" OnClick="btnCancelar_Click" />
                 </div>
                 <div class="col-md-2">
                     <asp:Button ID="btnActualizarActuacion" runat="server" Text="Actualizar Actuacion" CssClass="btn btn-success form-control" OnClick="btnActualizarActuacion_Click" />
