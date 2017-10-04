@@ -32,6 +32,7 @@ namespace Sistema_CyT
         {
             if (!Page.IsPostBack)
             {
+                idConvocatoriaActual = 0;
                 //CargarListaConvocatorias();
                 LlenarListaFondos();
                 LlenarListaFondoChoice();
@@ -78,6 +79,7 @@ namespace Sistema_CyT
         protected void ddlActualizarConvocatoria_SelectedIndexChanged(object sender, EventArgs e)
         {
             listaTemporalModalidades.Clear();
+
             listaTemporalModalidadesAgregado.Clear();
 
             idConvocatoriaActual = Convert.ToInt32(ddlActualizarConvocatoria.SelectedValue.ToString());
@@ -214,14 +216,20 @@ namespace Sistema_CyT
 
         protected void btnActualizarConvocatoria_Click(object sender, EventArgs e)
         {
-            ActualizarConvocatoria();
+            if (idConvocatoriaActual != 0)
+            {
+                ActualizarConvocatoria();
+                LlenarGrillaModalidades();
 
-            LlenarGrillaModalidades();
+                listaTemporalModalidades.Clear();
+                listaTemporalModalidadesAgregado.Clear();
 
-            listaTemporalModalidades.Clear();
-            listaTemporalModalidadesAgregado.Clear();
-
-            Response.Redirect("ListarConvocatorias.aspx");
+                Response.Redirect("ListarConvocatorias.aspx");
+            }
+            else
+            {
+                Response.Redirect("EditarConvocatoria.aspx");
+            }
         }
 
         private void ActualizarConvocatoria()
