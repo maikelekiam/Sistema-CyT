@@ -59,6 +59,14 @@ namespace CapaRepositorio
                 return result;
             }
         }
+        public void ActualizarEmpresa(Empresa empresa)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                modeloDeDominio.AttachCopy(empresa);
+                modeloDeDominio.SaveChanges();
+            }
+        }
 
     }
 }

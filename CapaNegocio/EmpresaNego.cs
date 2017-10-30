@@ -32,5 +32,9 @@ namespace CapaNegocio
         {
             return empresaRepo.ObtenerEmpresa(id);
         }
+        public void ActualizarEmpresa(Empresa empresa)
+        {
+            empresaRepo.ActualizarEmpresa(empresa);
+        }
     }
 }
