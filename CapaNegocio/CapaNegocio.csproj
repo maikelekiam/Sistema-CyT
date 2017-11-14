@@ -62,6 +62,7 @@
     <Compile Include="TipoEstadoNego.cs" />
     <Compile Include="TipoFinanciamientoNego.cs" />
     <Compile Include="TipoProyectoNego.cs" />
+    <Compile Include="UdtUvtNego.cs" />
     <Compile Include="UsuarioNego.cs" />
     <Compile Include="ViaComunicacionNego.cs" />
   </ItemGroup>

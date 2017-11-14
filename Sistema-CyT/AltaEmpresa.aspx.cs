@@ -28,7 +28,7 @@ namespace Sistema_CyT
             ddlLocalidad.DataValueField = "nombre";
             ddlLocalidad.DataBind();
         }
-        //Muestra los datos de las personas en la GRILLA
+        //Muestra los datos de las empresas en la GRILLA
         private void ListarEmpresas()
         {
             dgvEmpresa.DataSource = empresaNego.MostrarEmpresas().ToList();
