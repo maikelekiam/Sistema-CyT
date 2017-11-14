@@ -226,6 +226,14 @@ namespace CapaDominio
 			}
 		}
 		
+		public IQueryable<UdtUvt> UdtUvts 
+		{
+			get
+			{
+				return this.GetAll<UdtUvt>();
+			}
+		}
+		
 		public IEnumerable<pr01ResultSet0> Pr01(int? id)
 		{
 			int returnValue;
@@ -398,6 +406,10 @@ namespace CapaDominio
 			get;
 		}
 		IQueryable<ActuacionPersona> ActuacionPersonas
+		{
+			get;
+		}
+		IQueryable<UdtUvt> UdtUvts
 		{
 			get;
 		}

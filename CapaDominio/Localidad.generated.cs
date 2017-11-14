@@ -81,6 +81,24 @@ namespace CapaDominio
 			}
 		}
 		
+		private IList<Organismo> organismos = new List<Organismo>();
+		public virtual IList<Organismo> Organismos
+		{
+			get
+			{
+				return this.organismos;
+			}
+		}
+		
+		private IList<UdtUvt> udtUvts = new List<UdtUvt>();
+		public virtual IList<UdtUvt> UdtUvts
+		{
+			get
+			{
+				return this.udtUvts;
+			}
+		}
+		
 	}
 }
 #pragma warning restore 1591

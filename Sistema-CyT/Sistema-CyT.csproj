@@ -163,7 +163,7 @@
     <Content Include="AltaOrganismo.aspx" />
     <Content Include="AltaPersona.aspx" />
     <Content Include="AltaProyecto.aspx" />
-    <Content Include="AltaUdt.aspx" />
+    <Content Include="AltaUdtUvt.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="css\bootstrap-datepicker.css" />
     <Content Include="css\bootstrap-select.css" />
@@ -177,7 +177,7 @@
     <Content Include="EditarOrganismo.aspx" />
     <Content Include="EditarPersona.aspx" />
     <Content Include="EditarProyecto.aspx" />
-    <Content Include="EditarUdt.aspx" />
+    <Content Include="EditarUdtUvt.aspx" />
     <Content Include="FiltrarProyecto.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="js\bootstrap-datepicker.js" />
@@ -191,7 +191,7 @@
     <Content Include="ListarOrganismos.aspx" />
     <Content Include="ListarPersonas.aspx" />
     <Content Include="ListarProyectos.aspx" />
-    <Content Include="ListarUdts.aspx" />
+    <Content Include="ListarUdtUvts.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="MostrarConvocatoria.aspx" />
     <Content Include="MostrarEmpresa.aspx" />
@@ -312,12 +312,12 @@
     <Compile Include="AltaProyecto.aspx.designer.cs">
       <DependentUpon>AltaProyecto.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AltaUdt.aspx.cs">
-      <DependentUpon>AltaUdt.aspx</DependentUpon>
+    <Compile Include="AltaUdtUvt.aspx.cs">
+      <DependentUpon>AltaUdtUvt.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AltaUdt.aspx.designer.cs">
-      <DependentUpon>AltaUdt.aspx</DependentUpon>
+    <Compile Include="AltaUdtUvt.aspx.designer.cs">
+      <DependentUpon>AltaUdtUvt.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
@@ -392,12 +392,12 @@
     <Compile Include="EditarProyecto.aspx.designer.cs">
       <DependentUpon>EditarProyecto.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EditarUdt.aspx.cs">
-      <DependentUpon>EditarUdt.aspx</DependentUpon>
+    <Compile Include="EditarUdtUvt.aspx.cs">
+      <DependentUpon>EditarUdtUvt.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="EditarUdt.aspx.designer.cs">
-      <DependentUpon>EditarUdt.aspx</DependentUpon>
+    <Compile Include="EditarUdtUvt.aspx.designer.cs">
+      <DependentUpon>EditarUdtUvt.aspx</DependentUpon>
     </Compile>
     <Compile Include="FiltrarProyecto.aspx.cs">
       <DependentUpon>FiltrarProyecto.aspx</DependentUpon>
@@ -451,12 +451,12 @@
     <Compile Include="ListarProyectos.aspx.designer.cs">
       <DependentUpon>ListarProyectos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ListarUdts.aspx.cs">
-      <DependentUpon>ListarUdts.aspx</DependentUpon>
+    <Compile Include="ListarUdtUvts.aspx.cs">
+      <DependentUpon>ListarUdtUvts.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ListarUdts.aspx.designer.cs">
-      <DependentUpon>ListarUdts.aspx</DependentUpon>
+    <Compile Include="ListarUdtUvts.aspx.designer.cs">
+      <DependentUpon>ListarUdtUvts.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

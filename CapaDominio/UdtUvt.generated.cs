@@ -22,18 +22,18 @@ using CapaDominio;
 
 namespace CapaDominio	
 {
-	public partial class Organismo
+	public partial class UdtUvt
 	{
-		private int idOrganismo;
-		public virtual int IdOrganismo
+		private int idUdtUvt;
+		public virtual int IdUdtUvt
 		{
 			get
 			{
-				return this.idOrganismo;
+				return this.idUdtUvt;
 			}
 			set
 			{
-				this.idOrganismo = value;
+				this.idUdtUvt = value;
 			}
 		}
 		
@@ -47,6 +47,45 @@ namespace CapaDominio
 			set
 			{
 				this.nombre = value;
+			}
+		}
+		
+		private string tipo;
+		public virtual string Tipo
+		{
+			get
+			{
+				return this.tipo;
+			}
+			set
+			{
+				this.tipo = value;
+			}
+		}
+		
+		private int? referenteTecnico;
+		public virtual int? ReferenteTecnico
+		{
+			get
+			{
+				return this.referenteTecnico;
+			}
+			set
+			{
+				this.referenteTecnico = value;
+			}
+		}
+		
+		private int? directorGerente;
+		public virtual int? DirectorGerente
+		{
+			get
+			{
+				return this.directorGerente;
+			}
+			set
+			{
+				this.directorGerente = value;
 			}
 		}
 		
@@ -76,16 +115,16 @@ namespace CapaDominio
 			}
 		}
 		
-		private string observaciones;
-		public virtual string Observaciones
+		private string domicilio;
+		public virtual string Domicilio
 		{
 			get
 			{
-				return this.observaciones;
+				return this.domicilio;
 			}
 			set
 			{
-				this.observaciones = value;
+				this.domicilio = value;
 			}
 		}
 		
@@ -102,16 +141,42 @@ namespace CapaDominio
 			}
 		}
 		
-		private string domicilio;
-		public virtual string Domicilio
+		private string observaciones;
+		public virtual string Observaciones
 		{
 			get
 			{
-				return this.domicilio;
+				return this.observaciones;
 			}
 			set
 			{
-				this.domicilio = value;
+				this.observaciones = value;
+			}
+		}
+		
+		private Persona persona;
+		public virtual Persona Persona
+		{
+			get
+			{
+				return this.persona;
+			}
+			set
+			{
+				this.persona = value;
+			}
+		}
+		
+		private Persona persona1;
+		public virtual Persona Persona1
+		{
+			get
+			{
+				return this.persona1;
+			}
+			set
+			{
+				this.persona1 = value;
 			}
 		}
 		
@@ -125,15 +190,6 @@ namespace CapaDominio
 			set
 			{
 				this.localidad = value;
-			}
-		}
-		
-		private IList<Actuacion> actuacions = new List<Actuacion>();
-		public virtual IList<Actuacion> Actuacions
-		{
-			get
-			{
-				return this.actuacions;
 			}
 		}
 		

@@ -181,6 +181,24 @@ namespace CapaDominio
 			}
 		}
 		
+		private IList<UdtUvt> udtUvts = new List<UdtUvt>();
+		public virtual IList<UdtUvt> UdtUvts
+		{
+			get
+			{
+				return this.udtUvts;
+			}
+		}
+		
+		private IList<UdtUvt> udtUvts1 = new List<UdtUvt>();
+		public virtual IList<UdtUvt> UdtUvts1
+		{
+			get
+			{
+				return this.udtUvts1;
+			}
+		}
+		
 	}
 }
 #pragma warning restore 1591

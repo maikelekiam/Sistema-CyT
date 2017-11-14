@@ -13,5 +13,16 @@ namespace Sistema_CyT
         {
 
         }
+
+
+        protected void btnGuardarOrganismo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void dgvOrganismo_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+        }
     }
 }

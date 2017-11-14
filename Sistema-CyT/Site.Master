@@ -43,9 +43,9 @@
                             <li><a runat="server" href="~/EditarOrganismo.aspx"><span class="glyphicon glyphicon-edit"></span>Editar Organismo</a></li>
                             <li><a runat="server" href="~/ListarOrganismos.aspx"><span class="glyphicon glyphicon-list"></span>Listar Organismos</a></li>
                             <li class="divider"></li>
-                            <li><a runat="server" href="~/AltaUdt.aspx"><span class="glyphicon glyphicon-plus"></span>Alta UDT</a></li>
-                            <li><a runat="server" href="~/EditarUdt.aspx"><span class="glyphicon glyphicon-edit"></span>Editar UDT</a></li>
-                            <li><a runat="server" href="~/ListarUdts.aspx"><span class="glyphicon glyphicon-list"></span>Listar UDTs</a></li>
+                            <li><a runat="server" href="~/AltaUdtUvt.aspx"><span class="glyphicon glyphicon-plus"></span>Alta UDT/UVT</a></li>
+                            <li><a runat="server" href="~/EditarUdtUvt.aspx"><span class="glyphicon glyphicon-edit"></span>Editar UDT/UVT</a></li>
+                            <li><a runat="server" href="~/ListarUdtUvts.aspx"><span class="glyphicon glyphicon-list"></span>Listar UDT/UVTs</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">

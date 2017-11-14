@@ -10,7 +10,7 @@
 namespace Sistema_CyT {
     
     
-    public partial class AltaOrganismo {
+    public partial class AltaUdt {
         
         /// <summary>
         /// Panel1 control.
@@ -20,6 +20,24 @@ namespace Sistema_CyT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel Panel1;
+        
+        /// <summary>
+        /// lblTipo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTipo;
+        
+        /// <summary>
+        /// ddlTipo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipo;
         
         /// <summary>
         /// lblNombre control.
@@ -38,6 +56,42 @@ namespace Sistema_CyT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNombre;
+        
+        /// <summary>
+        /// lblReferenteTecnico control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblReferenteTecnico;
+        
+        /// <summary>
+        /// ddlReferenteTecnico control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlReferenteTecnico;
+        
+        /// <summary>
+        /// lblDirectorGerente control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDirectorGerente;
+        
+        /// <summary>
+        /// ddlDirectorGerente control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlDirectorGerente;
         
         /// <summary>
         /// lblTelefono control.
@@ -130,21 +184,21 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.TextBox txtObservaciones;
         
         /// <summary>
-        /// btnGuardarOrganismo control.
+        /// btnGuardarUdtUvt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGuardarOrganismo;
+        protected global::System.Web.UI.WebControls.Button btnGuardarUdtUvt;
         
         /// <summary>
-        /// dgvOrganismo control.
+        /// dgvUdtUvt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgvOrganismo;
+        protected global::System.Web.UI.WebControls.GridView dgvUdtUvt;
     }
 }
