@@ -12,9 +12,9 @@ namespace CapaNegocio
     {
         EtapaCofecytRepo etapaCofecytRepo = new EtapaCofecytRepo();
 
-        public void GuardarEtapaCofecyt(EtapaCofecyt etapaCofecyt)
+        public int GuardarEtapaCofecyt(EtapaCofecyt etapaCofecyt)
         {
-            etapaCofecytRepo.GuardarEtapaCofecyt(etapaCofecyt);
+            return etapaCofecytRepo.GuardarEtapaCofecyt(etapaCofecyt);
         }
 
         public EtapaCofecyt ObtenerEtapaCofecytSegunId(int id)

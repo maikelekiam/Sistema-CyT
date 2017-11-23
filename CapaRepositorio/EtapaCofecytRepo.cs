@@ -9,13 +9,14 @@ namespace CapaRepositorio
 {
     public class EtapaCofecytRepo
     {
-        public void GuardarEtapaCofecyt(EtapaCofecyt etapaCofecyt)
+        public int GuardarEtapaCofecyt(EtapaCofecyt etapaCofecyt)
         {
             using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
             {
                 modeloDeDominio.Add(etapaCofecyt);
                 modeloDeDominio.SaveChanges();
             }
+            return etapaCofecyt.IdEtapaCofecyt;
         }
 
         public EtapaCofecyt ObtenerEtapaCofecytSegunId(int id)

@@ -12,7 +12,10 @@ namespace CapaNegocio
     {
         ActividadCofecytRepo actividadCofecytRepo = new ActividadCofecytRepo();
 
-
+        public void GuardarActividadCofecyt(ActividadCofecyt actividadCofecyt)
+        {
+            actividadCofecytRepo.GuardarActividadCofecyt(actividadCofecyt);
+        }
 
 
     }

@@ -9,5 +9,13 @@ namespace CapaRepositorio
 {
     public class ActividadCofecytRepo
     {
+        public void GuardarActividadCofecyt(ActividadCofecyt actividadCofecyt)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                modeloDeDominio.Add(actividadCofecyt);
+                modeloDeDominio.SaveChanges();
+            }
+        }
     }
 }
