@@ -57,5 +57,16 @@ namespace CapaRepositorio
                 modeloDeDominio.SaveChanges();
             }
         }
+        public int TraerUdtUvtIdSegunItem(string item)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                UdtUvt result = modeloDeDominio.UdtUvts.Where(c => c.Nombre == item).FirstOrDefault();
+
+                modeloDeDominio.CreateDetachedCopy(result);
+
+                return result.IdUdtUvt;
+            }
+        }
     }
 }

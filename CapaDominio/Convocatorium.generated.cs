@@ -211,6 +211,15 @@ namespace CapaDominio
 			}
 		}
 		
+		private IList<ProyectoCofecyt> proyectoCofecyts = new List<ProyectoCofecyt>();
+		public virtual IList<ProyectoCofecyt> ProyectoCofecyts
+		{
+			get
+			{
+				return this.proyectoCofecyts;
+			}
+		}
+		
 	}
 }
 #pragma warning restore 1591

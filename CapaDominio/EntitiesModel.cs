@@ -234,6 +234,54 @@ namespace CapaDominio
 			}
 		}
 		
+		public IQueryable<TipoEstadoCofecyt> TipoEstadoCofecyts 
+		{
+			get
+			{
+				return this.GetAll<TipoEstadoCofecyt>();
+			}
+		}
+		
+		public IQueryable<ProyectoCofecyt> ProyectoCofecyts 
+		{
+			get
+			{
+				return this.GetAll<ProyectoCofecyt>();
+			}
+		}
+		
+		public IQueryable<Tematica> Tematicas 
+		{
+			get
+			{
+				return this.GetAll<Tematica>();
+			}
+		}
+		
+		public IQueryable<Sector> Sectors 
+		{
+			get
+			{
+				return this.GetAll<Sector>();
+			}
+		}
+		
+		public IQueryable<EtapaCofecyt> EtapaCofecyts 
+		{
+			get
+			{
+				return this.GetAll<EtapaCofecyt>();
+			}
+		}
+		
+		public IQueryable<ActividadCofecyt> ActividadCofecyts 
+		{
+			get
+			{
+				return this.GetAll<ActividadCofecyt>();
+			}
+		}
+		
 		public IEnumerable<pr01ResultSet0> Pr01(int? id)
 		{
 			int returnValue;
@@ -410,6 +458,30 @@ namespace CapaDominio
 			get;
 		}
 		IQueryable<UdtUvt> UdtUvts
+		{
+			get;
+		}
+		IQueryable<TipoEstadoCofecyt> TipoEstadoCofecyts
+		{
+			get;
+		}
+		IQueryable<ProyectoCofecyt> ProyectoCofecyts
+		{
+			get;
+		}
+		IQueryable<Tematica> Tematicas
+		{
+			get;
+		}
+		IQueryable<Sector> Sectors
+		{
+			get;
+		}
+		IQueryable<EtapaCofecyt> EtapaCofecyts
+		{
+			get;
+		}
+		IQueryable<ActividadCofecyt> ActividadCofecyts
 		{
 			get;
 		}

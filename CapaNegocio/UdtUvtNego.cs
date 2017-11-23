@@ -32,5 +32,9 @@ namespace CapaNegocio
         {
             udtUvtRepo.ActualizarUdtUvt(udtUvt);
         }
+        public int TraerUdtUvtIdSegunItem(string item)
+        {
+            return udtUvtRepo.TraerUdtUvtIdSegunItem(item);
+        }
     }
 }

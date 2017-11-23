@@ -56,10 +56,13 @@
           <orm:column name="idTipoEstadoEtapa" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         </orm:field>
         <orm:field name="nombre" property="Nombre" behavior="readwrite" uniqueId="d324503b-5235-4e0c-aac6-949c3b1211cc" type="System.String">
-          <orm:column name="nombre" sql-type="varchar" nullable="false" length="50" scale="0" ado-type="StringVariableLength" />
+          <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         </orm:field>
         <orm:field name="etapas" property="Etapas" behavior="readwrite" uniqueId="2f1b080f-0e3c-40c1-9cd2-8d4a3773269a" type="CapaDominio.Etapa">
           <orm:collection element-class="CapaDominio.Etapa" inverse-field="tipoEstadoEtapa" order-by="" uniqueId="d9f42132-271b-4afb-950e-c9e4231aad75" />
+        </orm:field>
+        <orm:field name="etapaCofecyts" property="EtapaCofecyts" behavior="readwrite" uniqueId="07d91e45-6f9b-4430-9fd0-22bc83aa8238" type="CapaDominio.EtapaCofecyt">
+          <orm:collection element-class="CapaDominio.EtapaCofecyt" inverse-field="tipoEstadoEtapa" order-by="" uniqueId="e0e3d321-7385-4d11-8505-4d59eed142d2" />
         </orm:field>
       </orm:class>
       <orm:class name="TipoEstado" uniqueId="72dab8d9-691f-40ae-9b01-256a799c309f">
@@ -273,6 +276,12 @@
         <orm:field name="udtUvts1" property="UdtUvts1" behavior="readwrite" uniqueId="34685672-fb58-4c06-ad17-357b4fdd243b" type="CapaDominio.UdtUvt">
           <orm:collection element-class="CapaDominio.UdtUvt" inverse-field="persona1" order-by="" uniqueId="05e53903-46c3-4a23-bf79-9144e8554c64" />
         </orm:field>
+        <orm:field name="proyectoCofecyts" property="ProyectoCofecyts" behavior="readwrite" uniqueId="13b70ef1-e1b0-4963-8079-5ab37c788194" type="CapaDominio.ProyectoCofecyt">
+          <orm:collection element-class="CapaDominio.ProyectoCofecyt" inverse-field="persona" order-by="" uniqueId="d6e26065-c67a-4a8e-8628-ea1568ee1eb8" />
+        </orm:field>
+        <orm:field name="proyectoCofecyts1" property="ProyectoCofecyts1" behavior="readwrite" uniqueId="7da81f6f-b526-43d3-bd61-876c59f42b98" type="CapaDominio.ProyectoCofecyt">
+          <orm:collection element-class="CapaDominio.ProyectoCofecyt" inverse-field="persona1" order-by="" uniqueId="46175d37-6778-4a96-852d-f0e2d61094ac" />
+        </orm:field>
       </orm:class>
       <orm:class name="Origen" uniqueId="6d7b7763-a635-4aae-9c10-55a9d2ecab1f">
         <orm:table name="Origen" />
@@ -323,14 +332,14 @@
         <orm:field name="domicilio" property="Domicilio" behavior="readwrite" uniqueId="7576206c-ff5e-48b3-939d-e6f6af8bd3a5" type="System.String">
           <orm:column name="domicilio" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         </orm:field>
-        <orm:field name="actuacions" property="Actuacions" behavior="readwrite" uniqueId="87ea82d7-1977-400a-ba3c-9422042a9126" type="CapaDominio.Actuacion">
-          <orm:collection element-class="CapaDominio.Actuacion" inverse-field="organismo" order-by="" uniqueId="7dce04e2-8f64-4871-a1be-9000b5c5ebdd" />
-        </orm:field>
         <orm:field name="localidad" property="Localidad" behavior="readwrite" uniqueId="aced0c70-6d20-4823-aab8-a45c1532f0d1" type="CapaDominio.Localidad">
           <orm:reference uniqueId="7471ce00-a42e-49ac-8b0c-62f8db0c215b" association-name="OrganismoHasLocalidad">
             <orm:sharedfield name="idLocalidad" target-class="CapaDominio.Localidad" target-field="idLocalidad" />
             <orm:constraint name="FK_Organismo_Localidad" delete-action="dbdefaultrule" destination-table="Localidad" />
           </orm:reference>
+        </orm:field>
+        <orm:field name="actuacions" property="Actuacions" behavior="readwrite" uniqueId="87ea82d7-1977-400a-ba3c-9422042a9126" type="CapaDominio.Actuacion">
+          <orm:collection element-class="CapaDominio.Actuacion" inverse-field="organismo" order-by="" uniqueId="7dce04e2-8f64-4871-a1be-9000b5c5ebdd" />
         </orm:field>
       </orm:class>
       <orm:class name="Modalidad" uniqueId="08e74d1f-e903-4540-bd38-f23d8ace3021">
@@ -402,6 +411,9 @@
         </orm:field>
         <orm:field name="udtUvts" property="UdtUvts" behavior="readwrite" uniqueId="465bb278-92b6-49a0-a000-d2803287052d" type="CapaDominio.UdtUvt">
           <orm:collection element-class="CapaDominio.UdtUvt" inverse-field="localidad" order-by="" uniqueId="5c3ac0b1-fd7f-4a99-b002-4ef3004774d7" />
+        </orm:field>
+        <orm:field name="proyectoCofecyts" property="ProyectoCofecyts" behavior="readwrite" uniqueId="af340d42-5ce6-4f95-add1-39e60d08a559" type="CapaDominio.ProyectoCofecyt">
+          <orm:collection element-class="CapaDominio.ProyectoCofecyt" inverse-field="localidad" order-by="" uniqueId="2b59e1fe-009b-4fdb-bc93-755ecbb71c0b" />
         </orm:field>
       </orm:class>
       <orm:class name="Fondo" uniqueId="3abee8a8-17da-4f84-9739-cbe78201880f">
@@ -639,6 +651,9 @@
         <orm:field name="modalidads" property="Modalidads" behavior="readwrite" uniqueId="8b4378f2-39bc-41eb-b995-1113ca298d25" type="CapaDominio.Modalidad">
           <orm:collection element-class="CapaDominio.Modalidad" inverse-field="convocatorium" order-by="" uniqueId="34c4f324-efb3-4511-adfe-4d403fae5a2a" />
         </orm:field>
+        <orm:field name="proyectoCofecyts" property="ProyectoCofecyts" behavior="readwrite" uniqueId="2b79b3c4-e4eb-4b2f-89cb-661a9dbc0d54" type="CapaDominio.ProyectoCofecyt">
+          <orm:collection element-class="CapaDominio.ProyectoCofecyt" inverse-field="convocatorium" order-by="" uniqueId="3876f788-b055-4abb-b25c-7915eeb314bf" />
+        </orm:field>
       </orm:class>
       <orm:class name="Auditorium" uniqueId="7397b8dc-fd49-46e4-a45d-842dfc4db67c">
         <orm:table name="Auditoria" />
@@ -867,6 +882,315 @@
             <orm:constraint name="FK_UdtUvt_Localidad" delete-action="dbdefaultrule" destination-table="Localidad" />
           </orm:reference>
         </orm:field>
+        <orm:field name="proyectoCofecyts" property="ProyectoCofecyts" behavior="readwrite" uniqueId="06bf33dc-1424-4906-b5bd-e1042abf5651" type="CapaDominio.ProyectoCofecyt">
+          <orm:collection element-class="CapaDominio.ProyectoCofecyt" inverse-field="udtUvt" order-by="" uniqueId="d0716b3a-758e-4952-8c6b-ccd6c9641df5" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="TipoEstadoCofecyt" uniqueId="39e23f85-e878-4a1a-95ad-aa42851be72b">
+        <orm:table name="TipoEstadoCofecyt" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="IdTipoEstadoCofecyt" />
+          </orm:key-generator>
+          <orm:single-field field-name="idTipoEstadoCofecyt" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="idTipoEstadoCofecyt" property="IdTipoEstadoCofecyt" behavior="readwrite" uniqueId="9b021cd3-7e65-47dd-9758-33df10d140ce" type="System.Int32">
+          <orm:column name="idTipoEstadoCofecyt" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="nombre" property="Nombre" behavior="readwrite" uniqueId="628015ca-6a92-4eb0-9652-9ec7b4ea2da2" type="System.String">
+          <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="proyectoCofecyts" property="ProyectoCofecyts" behavior="readwrite" uniqueId="60ae0280-87d1-4a24-98d3-bb35a40bfe7c" type="CapaDominio.ProyectoCofecyt">
+          <orm:collection element-class="CapaDominio.ProyectoCofecyt" inverse-field="tipoEstadoCofecyt" order-by="" uniqueId="04b3ed6d-abb7-47cd-a11f-014e182621f7" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="ProyectoCofecyt" uniqueId="c2f4e574-add3-4eec-bd26-6b6f70f2bbd0">
+        <orm:table name="ProyectoCofecyt" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="IdProyectoCofecyt" />
+          </orm:key-generator>
+          <orm:single-field field-name="idProyectoCofecyt" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="idProyectoCofecyt" property="IdProyectoCofecyt" behavior="readwrite" uniqueId="6cee2d68-bc49-48c5-b608-9bbdc3be1188" type="System.Int32">
+          <orm:column name="idProyectoCofecyt" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="numeroConvenio" property="NumeroConvenio" behavior="readwrite" uniqueId="494d9dd1-8046-4c8b-bc36-b47639692c10" type="System.String">
+          <orm:column name="numeroConvenio" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="numeroExpedienteDga" property="NumeroExpedienteDga" behavior="readwrite" uniqueId="1bfd5a12-a53f-4bc9-a2ed-637838651a32" type="System.String">
+          <orm:column name="numeroExpedienteDga" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="idUdtUvt" property="IdUdtUvt" behavior="readwrite" uniqueId="74ac67c6-feff-4f41-8a61-1a4ee14d2110" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="idUdtUvt" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="idDirector" property="IdDirector" behavior="readwrite" uniqueId="051d46f4-1e99-4272-848e-2541e817bf44" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="idDirector" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="fechaPresentacion" property="FechaPresentacion" behavior="readwrite" uniqueId="faee99fe-336c-4f12-8ed5-569a0be51f16" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="fechaPresentacion" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
+        </orm:field>
+        <orm:field name="ultimaEvaluacionTecnica" property="UltimaEvaluacionTecnica" behavior="readwrite" uniqueId="44977f76-97a0-4b69-b4e9-a56bc462381f" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="ultimaEvaluacionTecnica" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
+        </orm:field>
+        <orm:field name="fechaFinalizacion" property="FechaFinalizacion" behavior="readwrite" uniqueId="170f5605-10d6-410a-9124-74b695c51405" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="fechaFinalizacion" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
+        </orm:field>
+        <orm:field name="duracionEstimada" property="DuracionEstimada" behavior="readwrite" uniqueId="c98ba20f-7a97-4a3f-8832-492e24e828da" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="duracionEstimada" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="duracionEstimadaIfaa" property="DuracionEstimadaIfaa" behavior="readwrite" uniqueId="de2d5af3-d935-4029-80b2-efd9f0055a30" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="duracionEstimadaIfaa" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="beneficiarios" property="Beneficiarios" behavior="readwrite" uniqueId="80026f23-1282-45dd-ba7f-ad2e321e43fb" type="System.String">
+          <orm:column name="beneficiarios" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="entidadesIntervinientes" property="EntidadesIntervinientes" behavior="readwrite" uniqueId="3b175c0c-d6a2-4baf-8baf-9ac3c9b0ced6" type="System.String">
+          <orm:column name="entidadesIntervinientes" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="idTipoEstadoCofecyt" property="IdTipoEstadoCofecyt" behavior="readwrite" uniqueId="128ecc49-631f-45bb-af2b-e375d500ca01" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="idTipoEstadoCofecyt" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="idContactoBeneficiario" property="IdContactoBeneficiario" behavior="readwrite" uniqueId="96eee326-d608-44fe-b33a-2f55750a8212" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="idContactoBeneficiario" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="montoSolicitadoCofecyt" property="MontoSolicitadoCofecyt" behavior="readwrite" uniqueId="724c4e94-1aeb-495d-8b15-a28322021b62" type="System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="montoSolicitadoCofecyt" sql-type="numeric" nullable="true" length="18" scale="2" ado-type="Numeric" />
+        </orm:field>
+        <orm:field name="montoContraparteCofecyt" property="MontoContraparteCofecyt" behavior="readwrite" uniqueId="60033599-0323-4837-b127-0699b6a9eec7" type="System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="montoContraparteCofecyt" sql-type="numeric" nullable="true" length="18" scale="2" ado-type="Numeric" />
+        </orm:field>
+        <orm:field name="montoTotalCofecyt" property="MontoTotalCofecyt" behavior="readwrite" uniqueId="edb34641-3db0-4dea-bfd6-215a29229316" type="System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="montoTotalCofecyt" sql-type="numeric" nullable="true" length="18" scale="2" ado-type="Numeric" />
+        </orm:field>
+        <orm:field name="montoTotalDgaCofecyt" property="MontoTotalDgaCofecyt" behavior="readwrite" uniqueId="2fa4727d-30c1-4df5-8084-b4b1b9d053ef" type="System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="montoTotalDgaCofecyt" sql-type="numeric" nullable="true" length="18" scale="2" ado-type="Numeric" />
+        </orm:field>
+        <orm:field name="montoDevolucionCofecyt" property="MontoDevolucionCofecyt" behavior="readwrite" uniqueId="d1089332-6ec7-4d70-8975-b485edafef5a" type="System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="montoDevolucionCofecyt" sql-type="numeric" nullable="true" length="18" scale="2" ado-type="Numeric" />
+        </orm:field>
+        <orm:field name="montoRescindidoCofecyt" property="MontoRescindidoCofecyt" behavior="readwrite" uniqueId="d45894b6-6ea5-42d1-98d0-e22476554f83" type="System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="montoRescindidoCofecyt" sql-type="numeric" nullable="true" length="18" scale="2" ado-type="Numeric" />
+        </orm:field>
+        <orm:field name="titulo" property="Titulo" behavior="readwrite" uniqueId="06288a78-6616-4642-930f-aa4f238455c8" type="System.String">
+          <orm:column name="titulo" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="observaciones" property="Observaciones" behavior="readwrite" uniqueId="111ace25-2896-4dc2-adb7-80e7a3fb0e60" type="System.String">
+          <orm:column name="observaciones" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="objetivos" property="Objetivos" behavior="readwrite" uniqueId="49ca2756-018c-469d-bc98-034af51570ae" type="System.String">
+          <orm:column name="objetivos" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="numeroEspedienteCopade" property="NumeroEspedienteCopade" behavior="readwrite" uniqueId="eb2e41a1-abbf-4594-a32c-0e89b567617e" type="System.String">
+          <orm:column name="numeroEspedienteCopade" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="idTematica" property="IdTematica" behavior="readwrite" uniqueId="40e987f3-23d5-4d2a-96aa-83df46bd57a4" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="idTematica" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="idSector" property="IdSector" behavior="readwrite" uniqueId="ea52e975-239f-4bb1-85aa-cf8c77b293c6" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="idSector" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="idLocalidad" property="IdLocalidad" behavior="readwrite" uniqueId="ecabc42a-28a8-4604-ae51-edfe67293384" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="idLocalidad" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="idConvocatoria" property="IdConvocatoria" behavior="readwrite" uniqueId="fbc77ec6-4311-4351-820b-7e6f4f17b5b3" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="idConvocatoria" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="destinatarios" property="Destinatarios" behavior="readwrite" uniqueId="22e2b6dc-2260-455d-8fd5-79086e7759d0" type="System.String">
+          <orm:column name="destinatarios" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="descripcion" property="Descripcion" behavior="readwrite" uniqueId="605684d4-56a4-49de-93b0-17ee19f15d6e" type="System.String">
+          <orm:column name="descripcion" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="udtUvt" property="UdtUvt" behavior="readwrite" uniqueId="92641916-c64c-4de5-a454-6b66f8846e6b" type="CapaDominio.UdtUvt">
+          <orm:reference uniqueId="d0716b3a-758e-4952-8c6b-ccd6c9641df5" association-name="ProyectoCofecytHasUdtUvt">
+            <orm:sharedfield name="idUdtUvt" target-class="CapaDominio.UdtUvt" target-field="idUdtUvt" />
+            <orm:constraint name="FK_ProyectoCofecyt_UdtUvt" delete-action="dbdefaultrule" destination-table="UdtUvt" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="tipoEstadoCofecyt" property="TipoEstadoCofecyt" behavior="readwrite" uniqueId="026f16c3-1413-4a5b-b877-10b3454f9959" type="CapaDominio.TipoEstadoCofecyt">
+          <orm:reference uniqueId="04b3ed6d-abb7-47cd-a11f-014e182621f7" association-name="ProyectoCofecytHasTipoEstadoCofecyt">
+            <orm:sharedfield name="idTipoEstadoCofecyt" target-class="CapaDominio.TipoEstadoCofecyt" target-field="idTipoEstadoCofecyt" />
+            <orm:constraint name="FK_ProyectoCofecyt_TipoEstadoCofecyt" delete-action="dbdefaultrule" destination-table="TipoEstadoCofecyt" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="persona" property="Persona" behavior="readwrite" uniqueId="dfe7860b-9b6a-4716-a59a-3ec5844d4b84" type="CapaDominio.Persona">
+          <orm:reference uniqueId="d6e26065-c67a-4a8e-8628-ea1568ee1eb8" association-name="ProyectoCofecytHasPersona">
+            <orm:sharedfield name="idContactoBeneficiario" target-class="CapaDominio.Persona" target-field="idPersona" />
+            <orm:constraint name="FK_ProyectoCofecyt_Persona1" delete-action="dbdefaultrule" destination-table="Persona" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="persona1" property="Persona1" behavior="readwrite" uniqueId="31dceef5-9554-46c2-bc7f-a7b85e9ce6b3" type="CapaDominio.Persona">
+          <orm:reference uniqueId="46175d37-6778-4a96-852d-f0e2d61094ac" association-name="ProyectoCofecytHasPersona1">
+            <orm:sharedfield name="idDirector" target-class="CapaDominio.Persona" target-field="idPersona" />
+            <orm:constraint name="FK_ProyectoCofecyt_Persona" delete-action="dbdefaultrule" destination-table="Persona" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="tematica" property="Tematica" behavior="readwrite" uniqueId="3be15cef-826d-4b5b-95a7-ed1de55a4115" type="CapaDominio.Tematica">
+          <orm:reference uniqueId="273fdad3-313a-40c6-8169-cdb091cebb14" association-name="ProyectoCofecytHasTematica">
+            <orm:sharedfield name="idTematica" target-class="CapaDominio.Tematica" target-field="idTematica" />
+            <orm:constraint name="FK_ProyectoCofecyt_Tematica" delete-action="dbdefaultrule" destination-table="Tematica" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="sector" property="Sector" behavior="readwrite" uniqueId="df39aa3d-4109-4df7-8e1a-8b2b72e0e4cf" type="CapaDominio.Sector">
+          <orm:reference uniqueId="b6d7b825-85df-4f5f-8ccb-072ea7a0eb97" association-name="ProyectoCofecytHasSector">
+            <orm:sharedfield name="idSector" target-class="CapaDominio.Sector" target-field="idSector" />
+            <orm:constraint name="FK_ProyectoCofecyt_Sector" delete-action="dbdefaultrule" destination-table="Sector" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="localidad" property="Localidad" behavior="readwrite" uniqueId="f61ad959-5bc6-462d-8b76-0d5a91269d56" type="CapaDominio.Localidad">
+          <orm:reference uniqueId="2b59e1fe-009b-4fdb-bc93-755ecbb71c0b" association-name="ProyectoCofecytHasLocalidad">
+            <orm:sharedfield name="idLocalidad" target-class="CapaDominio.Localidad" target-field="idLocalidad" />
+            <orm:constraint name="FK_ProyectoCofecyt_Localidad" delete-action="dbdefaultrule" destination-table="Localidad" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="convocatorium" property="Convocatorium" behavior="readwrite" uniqueId="1068461b-5916-45c5-b82e-e08e8c569034" type="CapaDominio.Convocatorium">
+          <orm:reference uniqueId="3876f788-b055-4abb-b25c-7915eeb314bf" association-name="ProyectoCofecytHasConvocatorium">
+            <orm:sharedfield name="idConvocatoria" target-class="CapaDominio.Convocatorium" target-field="idConvocatoria" />
+            <orm:constraint name="FK_ProyectoCofecyt_Convocatoria" delete-action="dbdefaultrule" destination-table="Convocatoria" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="etapaCofecyts" property="EtapaCofecyts" behavior="readwrite" uniqueId="f1c1a7fc-638d-4e97-8c71-733a7a0c544e" type="CapaDominio.EtapaCofecyt">
+          <orm:collection element-class="CapaDominio.EtapaCofecyt" inverse-field="proyectoCofecyt" order-by="" uniqueId="8f93b467-2382-4f99-9443-fff122a1d139" />
+        </orm:field>
+        <orm:field name="actividadCofecyts" property="ActividadCofecyts" behavior="readwrite" uniqueId="daf185a4-2c2d-4fe5-9adc-4da40db5fbe4" type="CapaDominio.ActividadCofecyt">
+          <orm:collection element-class="CapaDominio.ActividadCofecyt" inverse-field="proyectoCofecyt" order-by="" uniqueId="641a5433-c366-4588-86cc-b2316753991f" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="Tematica" uniqueId="a6668582-34f7-4261-a955-4700277c4d3c">
+        <orm:table name="Tematica" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="IdTematica" />
+          </orm:key-generator>
+          <orm:single-field field-name="idTematica" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="idTematica" property="IdTematica" behavior="readwrite" uniqueId="f713b5ce-be98-41ea-946e-3127a3cef562" type="System.Int32">
+          <orm:column name="idTematica" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="nombre" property="Nombre" behavior="readwrite" uniqueId="8bb1ea16-9764-40f7-b263-de95a8795438" type="System.String">
+          <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="proyectoCofecyts" property="ProyectoCofecyts" behavior="readwrite" uniqueId="b6703938-94e1-4042-89b3-9f55adeaa408" type="CapaDominio.ProyectoCofecyt">
+          <orm:collection element-class="CapaDominio.ProyectoCofecyt" inverse-field="tematica" order-by="" uniqueId="273fdad3-313a-40c6-8169-cdb091cebb14" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="Sector" uniqueId="e98746a0-9bf8-4973-a6c4-49438bb311a3">
+        <orm:table name="Sector" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="IdSector" />
+          </orm:key-generator>
+          <orm:single-field field-name="idSector" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="idSector" property="IdSector" behavior="readwrite" uniqueId="068ce22a-2f08-4bc3-84ef-f8aa137d9183" type="System.Int32">
+          <orm:column name="idSector" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="nombre" property="Nombre" behavior="readwrite" uniqueId="91d6f14c-5b44-44ae-b7cc-ed98db4cd9f2" type="System.String">
+          <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="proyectoCofecyts" property="ProyectoCofecyts" behavior="readwrite" uniqueId="48041642-ed99-4fa2-9285-2b0bebd36cdc" type="CapaDominio.ProyectoCofecyt">
+          <orm:collection element-class="CapaDominio.ProyectoCofecyt" inverse-field="sector" order-by="" uniqueId="b6d7b825-85df-4f5f-8ccb-072ea7a0eb97" />
+        </orm:field>
+      </orm:class>
+      <orm:class name="EtapaCofecyt" uniqueId="84435d21-a29f-4197-87a1-122ee1660ed0">
+        <orm:table name="EtapaCofecyt" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="IdEtapaCofecyt" />
+          </orm:key-generator>
+          <orm:single-field field-name="idEtapaCofecyt" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="idEtapaCofecyt" property="IdEtapaCofecyt" behavior="readwrite" uniqueId="44063458-10b3-4127-b154-05de924d2295" type="System.Int32">
+          <orm:column name="idEtapaCofecyt" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="idProyectoCofecyt" property="IdProyectoCofecyt" behavior="readwrite" uniqueId="703494e1-1689-47c9-a883-9bee79a35824" type="System.Int32">
+          <orm:column name="idProyectoCofecyt" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="nombre" property="Nombre" behavior="readwrite" uniqueId="74f7df37-a084-4607-aa49-f0fe9c4bb481" type="System.String">
+          <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="fechaInicio" property="FechaInicio" behavior="readwrite" uniqueId="361e8758-fe24-4a8c-85fc-cf71bd16f679" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="fechaInicio" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
+        </orm:field>
+        <orm:field name="fechaFin" property="FechaFin" behavior="readwrite" uniqueId="f2e63265-df93-42ad-a168-d107c3e2ef0c" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="fechaFin" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
+        </orm:field>
+        <orm:field name="rendicion" property="Rendicion" behavior="readwrite" uniqueId="118562b2-4b34-441d-8e23-180867a34375" type="System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="rendicion" sql-type="bit" nullable="true" length="0" scale="0" ado-type="Bit" />
+        </orm:field>
+        <orm:field name="informe" property="Informe" behavior="readwrite" uniqueId="1c98eaff-ddce-401f-8257-1daafaec4eaf" type="System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="informe" sql-type="bit" nullable="true" length="0" scale="0" ado-type="Bit" />
+        </orm:field>
+        <orm:field name="duracionSegunUvt" property="DuracionSegunUvt" behavior="readwrite" uniqueId="15901154-99ba-4ef7-b4ed-5b9f911c2247" type="System.String">
+          <orm:column name="duracionSegunUvt" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="idTipoEstadoEtapa" property="IdTipoEstadoEtapa" behavior="readwrite" uniqueId="40fe0f5c-31da-4922-86fb-b47e622e615a" type="System.Int32">
+          <orm:column name="idTipoEstadoEtapa" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="proyectoCofecyt" property="ProyectoCofecyt" behavior="readwrite" uniqueId="603db73a-fe3d-4d68-b54d-239e0726e9e0" type="CapaDominio.ProyectoCofecyt">
+          <orm:reference uniqueId="8f93b467-2382-4f99-9443-fff122a1d139" association-name="EtapaCofecytHasProyectoCofecyt">
+            <orm:sharedfield name="idProyectoCofecyt" target-class="CapaDominio.ProyectoCofecyt" target-field="idProyectoCofecyt" />
+            <orm:constraint name="FK_EtapaCofecyt_ProyectoCofecyt" delete-action="dbdefaultrule" destination-table="ProyectoCofecyt" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="actividadCofecyts" property="ActividadCofecyts" behavior="readwrite" uniqueId="62caff52-7d9c-45ef-91dd-ff2170fbe5cd" type="CapaDominio.ActividadCofecyt">
+          <orm:collection element-class="CapaDominio.ActividadCofecyt" inverse-field="etapaCofecyt" order-by="" uniqueId="5b2b4eb3-8651-4670-9f7c-6d5f6080af20" />
+        </orm:field>
+        <orm:field name="tipoEstadoEtapa" property="TipoEstadoEtapa" behavior="readwrite" uniqueId="7acc78e9-237f-419b-890c-2909c01402ed" type="CapaDominio.TipoEstadoEtapa">
+          <orm:reference uniqueId="e0e3d321-7385-4d11-8505-4d59eed142d2" association-name="EtapaCofecytHasTipoEstadoEtapa">
+            <orm:sharedfield name="idTipoEstadoEtapa" target-class="CapaDominio.TipoEstadoEtapa" target-field="idTipoEstadoEtapa" />
+            <orm:constraint name="FK_EtapaCofecyt_TipoEstadoEtapa" delete-action="dbdefaultrule" destination-table="TipoEstadoEtapa" />
+          </orm:reference>
+        </orm:field>
+      </orm:class>
+      <orm:class name="ActividadCofecyt" uniqueId="33ed0923-9a31-4bae-964a-31816a2fb47f">
+        <orm:table name="ActividadCofecyt" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="IdActividadCofecyt" />
+          </orm:key-generator>
+          <orm:single-field field-name="idActividadCofecyt" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="idActividadCofecyt" property="IdActividadCofecyt" behavior="readwrite" uniqueId="4b21049a-87b7-4b06-86db-acf02b053d81" type="System.Int32">
+          <orm:column name="idActividadCofecyt" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="idProyectoCofecyt" property="IdProyectoCofecyt" behavior="readwrite" uniqueId="48886908-0ecd-40ab-b139-4c2734fb8fa7" type="System.Int32">
+          <orm:column name="idProyectoCofecyt" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="idEtapaCofecyt" property="IdEtapaCofecyt" behavior="readwrite" uniqueId="5d693747-7b86-4488-ab91-e18d4dbeaeab" type="System.Int32">
+          <orm:column name="idEtapaCofecyt" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="nombre" property="Nombre" behavior="readwrite" uniqueId="2ca11922-f423-4bd0-9da3-0607a0b37e6d" type="System.String">
+          <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="descripcion" property="Descripcion" behavior="readwrite" uniqueId="41180cfa-eba9-4ebb-b948-56eb189f7eec" type="System.String">
+          <orm:column name="descripcion" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="resultadosEsperados" property="ResultadosEsperados" behavior="readwrite" uniqueId="8fe2fa7c-cdbd-426d-81a1-8aab933d98d9" type="System.String">
+          <orm:column name="resultadosEsperados" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="localizacion" property="Localizacion" behavior="readwrite" uniqueId="dc2c3e7f-139b-4b54-8192-647592045f62" type="System.String">
+          <orm:column name="localizacion" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="proyectoCofecyt" property="ProyectoCofecyt" behavior="readwrite" uniqueId="d0e15201-fbb6-4b49-9931-494be8c9b613" type="CapaDominio.ProyectoCofecyt">
+          <orm:reference uniqueId="641a5433-c366-4588-86cc-b2316753991f" association-name="ActividadCofecytHasProyectoCofecyt">
+            <orm:sharedfield name="idProyectoCofecyt" target-class="CapaDominio.ProyectoCofecyt" target-field="idProyectoCofecyt" />
+            <orm:constraint name="FK_ActividadCofecyt_ProyectoCofecyt" delete-action="dbdefaultrule" destination-table="ProyectoCofecyt" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="etapaCofecyt" property="EtapaCofecyt" behavior="readwrite" uniqueId="d67a25e8-a1f7-42e3-82aa-37a4b2ad1473" type="CapaDominio.EtapaCofecyt">
+          <orm:reference uniqueId="5b2b4eb3-8651-4670-9f7c-6d5f6080af20" association-name="ActividadCofecytHasEtapaCofecyt">
+            <orm:sharedfield name="idEtapaCofecyt" target-class="CapaDominio.EtapaCofecyt" target-field="idEtapaCofecyt" />
+            <orm:constraint name="FK_ActividadCofecyt_EtapaCofecyt" delete-action="dbdefaultrule" destination-table="EtapaCofecyt" />
+          </orm:reference>
+        </orm:field>
       </orm:class>
     </orm:namespace>
     <orm:schema schema="">
@@ -882,7 +1206,7 @@
       </orm:table>
       <orm:table name="TipoEstadoEtapa">
         <orm:column name="idTipoEstadoEtapa" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
-        <orm:column name="nombre" sql-type="varchar" nullable="false" length="50" scale="0" ado-type="StringVariableLength" />
+        <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
       </orm:table>
       <orm:table name="TipoEstado">
         <orm:column name="idTipoEstado" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
@@ -1128,6 +1452,106 @@
           <orm:column name="idLocalidad" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:constraint>
       </orm:table>
+      <orm:table name="TipoEstadoCofecyt">
+        <orm:column name="idTipoEstadoCofecyt" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+      </orm:table>
+      <orm:table name="ProyectoCofecyt">
+        <orm:column name="idProyectoCofecyt" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="numeroConvenio" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="numeroExpedienteDga" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="idUdtUvt" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="idDirector" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="fechaPresentacion" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
+        <orm:column name="ultimaEvaluacionTecnica" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
+        <orm:column name="fechaFinalizacion" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
+        <orm:column name="duracionEstimada" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="duracionEstimadaIfaa" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="beneficiarios" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="entidadesIntervinientes" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="idTipoEstadoCofecyt" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="idContactoBeneficiario" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="montoSolicitadoCofecyt" sql-type="numeric" nullable="true" length="18" scale="2" ado-type="Numeric" />
+        <orm:column name="montoContraparteCofecyt" sql-type="numeric" nullable="true" length="18" scale="2" ado-type="Numeric" />
+        <orm:column name="montoTotalCofecyt" sql-type="numeric" nullable="true" length="18" scale="2" ado-type="Numeric" />
+        <orm:column name="montoTotalDgaCofecyt" sql-type="numeric" nullable="true" length="18" scale="2" ado-type="Numeric" />
+        <orm:column name="montoDevolucionCofecyt" sql-type="numeric" nullable="true" length="18" scale="2" ado-type="Numeric" />
+        <orm:column name="montoRescindidoCofecyt" sql-type="numeric" nullable="true" length="18" scale="2" ado-type="Numeric" />
+        <orm:column name="titulo" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="observaciones" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="objetivos" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="numeroEspedienteCopade" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="idTematica" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="idSector" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="idLocalidad" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="idConvocatoria" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="destinatarios" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="descripcion" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:constraint name="FK_ProyectoCofecyt_UdtUvt" delete-action="dbdefaultrule" destination-table="UdtUvt">
+          <orm:column name="idUdtUvt" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+        <orm:constraint name="FK_ProyectoCofecyt_TipoEstadoCofecyt" delete-action="dbdefaultrule" destination-table="TipoEstadoCofecyt">
+          <orm:column name="idTipoEstadoCofecyt" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+        <orm:constraint name="FK_ProyectoCofecyt_Persona1" delete-action="dbdefaultrule" destination-table="Persona">
+          <orm:column name="idContactoBeneficiario" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+        <orm:constraint name="FK_ProyectoCofecyt_Persona" delete-action="dbdefaultrule" destination-table="Persona">
+          <orm:column name="idDirector" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+        <orm:constraint name="FK_ProyectoCofecyt_Tematica" delete-action="dbdefaultrule" destination-table="Tematica">
+          <orm:column name="idTematica" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+        <orm:constraint name="FK_ProyectoCofecyt_Sector" delete-action="dbdefaultrule" destination-table="Sector">
+          <orm:column name="idSector" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+        <orm:constraint name="FK_ProyectoCofecyt_Localidad" delete-action="dbdefaultrule" destination-table="Localidad">
+          <orm:column name="idLocalidad" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+        <orm:constraint name="FK_ProyectoCofecyt_Convocatoria" delete-action="dbdefaultrule" destination-table="Convocatoria">
+          <orm:column name="idConvocatoria" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="Tematica">
+        <orm:column name="idTematica" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+      </orm:table>
+      <orm:table name="Sector">
+        <orm:column name="idSector" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+      </orm:table>
+      <orm:table name="EtapaCofecyt">
+        <orm:column name="idEtapaCofecyt" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="idProyectoCofecyt" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="fechaInicio" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
+        <orm:column name="fechaFin" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
+        <orm:column name="rendicion" sql-type="bit" nullable="true" length="0" scale="0" ado-type="Bit" />
+        <orm:column name="informe" sql-type="bit" nullable="true" length="0" scale="0" ado-type="Bit" />
+        <orm:column name="duracionSegunUvt" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="idTipoEstadoEtapa" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        <orm:constraint name="FK_EtapaCofecyt_ProyectoCofecyt" delete-action="dbdefaultrule" destination-table="ProyectoCofecyt">
+          <orm:column name="idProyectoCofecyt" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+        <orm:constraint name="FK_EtapaCofecyt_TipoEstadoEtapa" delete-action="dbdefaultrule" destination-table="TipoEstadoEtapa">
+          <orm:column name="idTipoEstadoEtapa" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="ActividadCofecyt">
+        <orm:column name="idActividadCofecyt" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="idProyectoCofecyt" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="idEtapaCofecyt" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="descripcion" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="resultadosEsperados" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="localizacion" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:constraint name="FK_ActividadCofecyt_ProyectoCofecyt" delete-action="dbdefaultrule" destination-table="ProyectoCofecyt">
+          <orm:column name="idProyectoCofecyt" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+        <orm:constraint name="FK_ActividadCofecyt_EtapaCofecyt" delete-action="dbdefaultrule" destination-table="EtapaCofecyt">
+          <orm:column name="idEtapaCofecyt" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
       <orm:procedure name="pr02">
         <orm:procedure-parameter name="id" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" mode="in" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" />
         <orm:result-sets />
@@ -1196,6 +1620,9 @@
       <navigationalProperties>
         <classHasNavigationalProperties Id="59f83b95-43fe-46c5-9c59-e094e013c023">
           <NavigationalProperty Id="2f1b080f-0e3c-40c1-9cd2-8d4a3773269a" name="Etapas" type="IList&lt;Etapa&gt;" label="Etapas : IList&lt;Etapa&gt;" nullable="true" kind="Persistent" fieldName="etapas" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="7b70b155-39a5-4e62-8e87-625c760422d8">
+          <NavigationalProperty Id="07d91e45-6f9b-4430-9fd0-22bc83aa8238" name="EtapaCofecyts" type="IList&lt;EtapaCofecyt&gt;" label="EtapaCofecyts : IList&lt;EtapaCofecyt&gt;" nullable="true" kind="Persistent" fieldName="etapaCofecyts" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -1381,6 +1808,12 @@
         <classHasNavigationalProperties Id="32d7a193-a58e-4b56-9e08-c845e63d81c6">
           <NavigationalProperty Id="34685672-fb58-4c06-ad17-357b4fdd243b" name="UdtUvts1" type="IList&lt;UdtUvt&gt;" label="UdtUvts1 : IList&lt;UdtUvt&gt;" nullable="true" kind="Persistent" fieldName="udtUvts1" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="9a3975d3-1655-4b6c-a20d-4b46d9ebbc10">
+          <NavigationalProperty Id="13b70ef1-e1b0-4963-8079-5ab37c788194" name="ProyectoCofecyts" type="IList&lt;ProyectoCofecyt&gt;" label="ProyectoCofecyts : IList&lt;ProyectoCofecyt&gt;" nullable="true" kind="Persistent" fieldName="proyectoCofecyts" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="add2830c-2e6f-4888-9026-4e22cae34d46">
+          <NavigationalProperty Id="7da81f6f-b526-43d3-bd61-876c59f42b98" name="ProyectoCofecyts1" type="IList&lt;ProyectoCofecyt&gt;" label="ProyectoCofecyts1 : IList&lt;ProyectoCofecyt&gt;" nullable="true" kind="Persistent" fieldName="proyectoCofecyts1" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="6d7b7763-a635-4aae-9c10-55a9d2ecab1f" name="Origen" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdOrigen">
@@ -1470,6 +1903,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="b868c0c1-88ef-4aa3-8a1a-712bcac39157">
           <NavigationalProperty Id="465bb278-92b6-49a0-a000-d2803287052d" name="UdtUvts" type="IList&lt;UdtUvt&gt;" label="UdtUvts : IList&lt;UdtUvt&gt;" nullable="true" kind="Persistent" fieldName="udtUvts" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="a07ccc95-3ef5-44bd-97ab-66a78659ff10">
+          <NavigationalProperty Id="af340d42-5ce6-4f95-add1-39e60d08a559" name="ProyectoCofecyts" type="IList&lt;ProyectoCofecyt&gt;" label="ProyectoCofecyts : IList&lt;ProyectoCofecyt&gt;" nullable="true" kind="Persistent" fieldName="proyectoCofecyts" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -1698,6 +2134,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="4a504349-4636-4a43-81dd-e9a5986d1ccf">
           <NavigationalProperty Id="ba1f03c8-d43f-429c-8e46-1df3c266a1c6" name="TipoFinanciamiento" type="TipoFinanciamiento" label="TipoFinanciamiento : TipoFinanciamiento" nullable="true" kind="Persistent" fieldName="tipoFinanciamiento" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="2c77277b-0983-4499-8983-ae6e18e0b94e">
+          <NavigationalProperty Id="2b79b3c4-e4eb-4b2f-89cb-661a9dbc0d54" name="ProyectoCofecyts" type="IList&lt;ProyectoCofecyt&gt;" label="ProyectoCofecyts : IList&lt;ProyectoCofecyt&gt;" nullable="true" kind="Persistent" fieldName="proyectoCofecyts" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -1947,6 +2386,301 @@
         <classHasNavigationalProperties Id="bc9ef7e3-53c9-412b-b8ca-d6822dac067a">
           <NavigationalProperty Id="e973b44d-feb8-42a0-ad31-dd732f55d953" name="Localidad" type="Localidad" label="Localidad : Localidad" nullable="true" kind="Persistent" fieldName="localidad" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="bd9469da-c154-4a41-ab50-bb91588f5592">
+          <NavigationalProperty Id="06bf33dc-1424-4906-b5bd-e1042abf5651" name="ProyectoCofecyts" type="IList&lt;ProyectoCofecyt&gt;" label="ProyectoCofecyts : IList&lt;ProyectoCofecyt&gt;" nullable="true" kind="Persistent" fieldName="proyectoCofecyts" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="39e23f85-e878-4a1a-95ad-aa42851be72b" name="TipoEstadoCofecyt" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdTipoEstadoCofecyt">
+      <Property Id="9b021cd3-7e65-47dd-9758-33df10d140ce" name="IdTipoEstadoCofecyt" type="Int32" label="IdTipoEstadoCofecyt : Int32" kind="Persistent" identity="true" fieldName="idTipoEstadoCofecyt" />
+      <Property Id="628015ca-6a92-4eb0-9652-9ec7b4ea2da2" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="9ed7970c-4ab8-4151-88be-5a994345951d">
+          <NavigationalProperty Id="60ae0280-87d1-4a24-98d3-bb35a40bfe7c" name="ProyectoCofecyts" type="IList&lt;ProyectoCofecyt&gt;" label="ProyectoCofecyts : IList&lt;ProyectoCofecyt&gt;" nullable="true" kind="Persistent" fieldName="proyectoCofecyts" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="c2f4e574-add3-4eec-bd26-6b6f70f2bbd0" name="ProyectoCofecyt" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdProyectoCofecyt">
+      <Property Id="6cee2d68-bc49-48c5-b608-9bbdc3be1188" name="IdProyectoCofecyt" type="Int32" label="IdProyectoCofecyt : Int32" kind="Persistent" identity="true" fieldName="idProyectoCofecyt" />
+      <Property Id="80026f23-1282-45dd-ba7f-ad2e321e43fb" name="Beneficiarios" label="Beneficiarios : String" kind="Persistent" fieldName="beneficiarios" />
+      <Property Id="c98ba20f-7a97-4a3f-8832-492e24e828da" name="DuracionEstimada" type="Int32" label="DuracionEstimada : Int32" nullable="true" kind="Persistent" fieldName="duracionEstimada" />
+      <Property Id="de2d5af3-d935-4029-80b2-efd9f0055a30" name="DuracionEstimadaIfaa" type="Int32" label="DuracionEstimadaIfaa : Int32" nullable="true" kind="Persistent" fieldName="duracionEstimadaIfaa" />
+      <Property Id="3b175c0c-d6a2-4baf-8baf-9ac3c9b0ced6" name="EntidadesIntervinientes" label="EntidadesIntervinientes : String" kind="Persistent" fieldName="entidadesIntervinientes" />
+      <Property Id="170f5605-10d6-410a-9124-74b695c51405" name="FechaFinalizacion" type="DateTime" label="FechaFinalizacion : DateTime" nullable="true" kind="Persistent" fieldName="fechaFinalizacion" />
+      <Property Id="faee99fe-336c-4f12-8ed5-569a0be51f16" name="FechaPresentacion" type="DateTime" label="FechaPresentacion : DateTime" nullable="true" kind="Persistent" fieldName="fechaPresentacion" />
+      <Property Id="96eee326-d608-44fe-b33a-2f55750a8212" name="IdContactoBeneficiario" type="Int32" label="IdContactoBeneficiario : Int32" nullable="true" kind="Persistent" fieldName="idContactoBeneficiario" />
+      <Property Id="051d46f4-1e99-4272-848e-2541e817bf44" name="IdDirector" type="Int32" label="IdDirector : Int32" nullable="true" kind="Persistent" fieldName="idDirector" />
+      <Property Id="128ecc49-631f-45bb-af2b-e375d500ca01" name="IdTipoEstadoCofecyt" type="Int32" label="IdTipoEstadoCofecyt : Int32" nullable="true" kind="Persistent" fieldName="idTipoEstadoCofecyt" />
+      <Property Id="74ac67c6-feff-4f41-8a61-1a4ee14d2110" name="IdUdtUvt" type="Int32" label="IdUdtUvt : Int32" nullable="true" kind="Persistent" fieldName="idUdtUvt" />
+      <Property Id="60033599-0323-4837-b127-0699b6a9eec7" name="MontoContraparteCofecyt" type="Decimal" label="MontoContraparteCofecyt : Decimal" nullable="true" kind="Persistent" fieldName="montoContraparteCofecyt" />
+      <Property Id="d1089332-6ec7-4d70-8975-b485edafef5a" name="MontoDevolucionCofecyt" type="Decimal" label="MontoDevolucionCofecyt : Decimal" nullable="true" kind="Persistent" fieldName="montoDevolucionCofecyt" />
+      <Property Id="d45894b6-6ea5-42d1-98d0-e22476554f83" name="MontoRescindidoCofecyt" type="Decimal" label="MontoRescindidoCofecyt : Decimal" nullable="true" kind="Persistent" fieldName="montoRescindidoCofecyt" />
+      <Property Id="724c4e94-1aeb-495d-8b15-a28322021b62" name="MontoSolicitadoCofecyt" type="Decimal" label="MontoSolicitadoCofecyt : Decimal" nullable="true" kind="Persistent" fieldName="montoSolicitadoCofecyt" />
+      <Property Id="edb34641-3db0-4dea-bfd6-215a29229316" name="MontoTotalCofecyt" type="Decimal" label="MontoTotalCofecyt : Decimal" nullable="true" kind="Persistent" fieldName="montoTotalCofecyt" />
+      <Property Id="2fa4727d-30c1-4df5-8084-b4b1b9d053ef" name="MontoTotalDgaCofecyt" type="Decimal" label="MontoTotalDgaCofecyt : Decimal" nullable="true" kind="Persistent" fieldName="montoTotalDgaCofecyt" />
+      <Property Id="494d9dd1-8046-4c8b-bc36-b47639692c10" name="NumeroConvenio" label="NumeroConvenio : String" kind="Persistent" fieldName="numeroConvenio" />
+      <Property Id="1bfd5a12-a53f-4bc9-a2ed-637838651a32" name="NumeroExpedienteDga" label="NumeroExpedienteDga : String" kind="Persistent" fieldName="numeroExpedienteDga" />
+      <Property Id="44977f76-97a0-4b69-b4e9-a56bc462381f" name="UltimaEvaluacionTecnica" type="DateTime" label="UltimaEvaluacionTecnica : DateTime" nullable="true" kind="Persistent" fieldName="ultimaEvaluacionTecnica" />
+      <Property Id="06288a78-6616-4642-930f-aa4f238455c8" name="Titulo" label="Titulo : String" kind="Persistent" fieldName="titulo" />
+      <Property Id="111ace25-2896-4dc2-adb7-80e7a3fb0e60" name="Observaciones" label="Observaciones : String" kind="Persistent" fieldName="observaciones" />
+      <Property Id="49ca2756-018c-469d-bc98-034af51570ae" name="Objetivos" label="Objetivos : String" kind="Persistent" fieldName="objetivos" />
+      <Property Id="eb2e41a1-abbf-4594-a32c-0e89b567617e" name="NumeroEspedienteCopade" label="NumeroEspedienteCopade : String" kind="Persistent" fieldName="numeroEspedienteCopade" />
+      <Property Id="40e987f3-23d5-4d2a-96aa-83df46bd57a4" name="IdTematica" type="Int32" label="IdTematica : Int32" nullable="true" kind="Persistent" fieldName="idTematica" />
+      <Property Id="ea52e975-239f-4bb1-85aa-cf8c77b293c6" name="IdSector" type="Int32" label="IdSector : Int32" nullable="true" kind="Persistent" fieldName="idSector" />
+      <Property Id="ecabc42a-28a8-4604-ae51-edfe67293384" name="IdLocalidad" type="Int32" label="IdLocalidad : Int32" nullable="true" kind="Persistent" fieldName="idLocalidad" />
+      <Property Id="fbc77ec6-4311-4351-820b-7e6f4f17b5b3" name="IdConvocatoria" type="Int32" label="IdConvocatoria : Int32" nullable="true" kind="Persistent" fieldName="idConvocatoria" />
+      <Property Id="22e2b6dc-2260-455d-8fd5-79086e7759d0" name="Destinatarios" label="Destinatarios : String" kind="Persistent" fieldName="destinatarios" />
+      <Property Id="605684d4-56a4-49de-93b0-17ee19f15d6e" name="Descripcion" label="Descripcion : String" kind="Persistent" fieldName="descripcion" />
+      <AssociationTargets>
+        <Association Id="d0716b3a-758e-4952-8c6b-ccd6c9641df5" SourceMultiplicity="ZeroOne" name="ProyectoCofecytHasUdtUvt">
+          <DomainClassMoniker name="/ModeloDeDominio/UdtUvt" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="1287bc5d-fa14-4b38-bfbe-2898c38aa70e">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/UdtUvt/ProyectoCofecyts" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="2ab78cec-0655-465b-94ac-9d0250483ddd">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/ProyectoCofecyt/UdtUvt" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="04b3ed6d-abb7-47cd-a11f-014e182621f7" SourceMultiplicity="ZeroOne" name="ProyectoCofecytHasTipoEstadoCofecyt">
+          <DomainClassMoniker name="/ModeloDeDominio/TipoEstadoCofecyt" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="1d2173bb-3299-4815-b2e1-711a473f617d">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/TipoEstadoCofecyt/ProyectoCofecyts" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="4fcf03e5-031b-4759-8e4f-7e528b5c5c0b">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/ProyectoCofecyt/TipoEstadoCofecyt" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="d6e26065-c67a-4a8e-8628-ea1568ee1eb8" SourceMultiplicity="ZeroOne" name="ProyectoCofecytHasPersona">
+          <DomainClassMoniker name="/ModeloDeDominio/Persona" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="53c4eac1-8afc-4993-be87-2cfbb1d36ce8">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Persona/ProyectoCofecyts" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="a91990e8-66fc-44ca-9cd0-ae63c32d3b49">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/ProyectoCofecyt/Persona" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="46175d37-6778-4a96-852d-f0e2d61094ac" SourceMultiplicity="ZeroOne" name="ProyectoCofecytHasPersona1">
+          <DomainClassMoniker name="/ModeloDeDominio/Persona" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="22622671-15b5-4f4f-bf10-b80ffe0a2a25">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Persona/ProyectoCofecyts1" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="1f645119-40f5-42cf-9d76-f13926c459aa">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/ProyectoCofecyt/Persona1" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="273fdad3-313a-40c6-8169-cdb091cebb14" SourceMultiplicity="ZeroOne" name="ProyectoCofecytHasTematica">
+          <DomainClassMoniker name="/ModeloDeDominio/Tematica" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="572acd75-28a9-41fb-b863-de117b999214">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Tematica/ProyectoCofecyts" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="b24734ee-72ac-48b4-8f3c-67364127631c">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/ProyectoCofecyt/Tematica" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="b6d7b825-85df-4f5f-8ccb-072ea7a0eb97" SourceMultiplicity="ZeroOne" name="ProyectoCofecytHasSector">
+          <DomainClassMoniker name="/ModeloDeDominio/Sector" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="bb80550d-b8fc-435f-96ed-5fb74ea3f43b">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Sector/ProyectoCofecyts" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="f0ddad53-05bf-4a5b-8de0-c72e960245b2">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/ProyectoCofecyt/Sector" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="2b59e1fe-009b-4fdb-bc93-755ecbb71c0b" SourceMultiplicity="ZeroOne" name="ProyectoCofecytHasLocalidad">
+          <DomainClassMoniker name="/ModeloDeDominio/Localidad" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="b8477969-bbe3-493a-8bd7-cc4dcd0f4255">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Localidad/ProyectoCofecyts" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="b64d1c1c-7f09-4480-bc1b-07db8cc763d0">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/ProyectoCofecyt/Localidad" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="3876f788-b055-4abb-b25c-7915eeb314bf" SourceMultiplicity="ZeroOne" name="ProyectoCofecytHasConvocatorium">
+          <DomainClassMoniker name="/ModeloDeDominio/Convocatorium" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="0cc985f9-0cc5-4d20-b429-7c8f5343a5d8">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Convocatorium/ProyectoCofecyts" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="74849c71-3126-46be-a1f1-5a80f8eaa7e3">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/ProyectoCofecyt/Convocatorium" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="799203ab-f22d-43fb-9e2e-cdeff138fa56">
+          <NavigationalProperty Id="92641916-c64c-4de5-a454-6b66f8846e6b" name="UdtUvt" type="UdtUvt" label="UdtUvt : UdtUvt" nullable="true" kind="Persistent" fieldName="udtUvt" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="05af462d-896a-4df7-94dd-75e18c73a415">
+          <NavigationalProperty Id="026f16c3-1413-4a5b-b877-10b3454f9959" name="TipoEstadoCofecyt" type="TipoEstadoCofecyt" label="TipoEstadoCofecyt : TipoEstadoCofecyt" nullable="true" kind="Persistent" fieldName="tipoEstadoCofecyt" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="56f2db00-3653-4bdc-91ce-8656a4484356">
+          <NavigationalProperty Id="dfe7860b-9b6a-4716-a59a-3ec5844d4b84" name="Persona" type="Persona" label="Persona : Persona" nullable="true" kind="Persistent" fieldName="persona" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="797320c5-89d7-445a-a19f-de19818a45f3">
+          <NavigationalProperty Id="31dceef5-9554-46c2-bc7f-a7b85e9ce6b3" name="Persona1" type="Persona" label="Persona1 : Persona" nullable="true" kind="Persistent" fieldName="persona1" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="c12168ad-b898-407a-b674-37ac3288781b">
+          <NavigationalProperty Id="3be15cef-826d-4b5b-95a7-ed1de55a4115" name="Tematica" type="Tematica" label="Tematica : Tematica" nullable="true" kind="Persistent" fieldName="tematica" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="deb004c6-e3be-4406-ad80-2a21ce330060">
+          <NavigationalProperty Id="df39aa3d-4109-4df7-8e1a-8b2b72e0e4cf" name="Sector" type="Sector" label="Sector : Sector" nullable="true" kind="Persistent" fieldName="sector" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="27111fcd-cc08-4fca-a1ab-60ee6d12a029">
+          <NavigationalProperty Id="f61ad959-5bc6-462d-8b76-0d5a91269d56" name="Localidad" type="Localidad" label="Localidad : Localidad" nullable="true" kind="Persistent" fieldName="localidad" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="bc92a84c-d836-4a97-a8ee-e6b9dd3c935f">
+          <NavigationalProperty Id="1068461b-5916-45c5-b82e-e08e8c569034" name="Convocatorium" type="Convocatorium" label="Convocatorium : Convocatorium" nullable="true" kind="Persistent" fieldName="convocatorium" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="fa33f6ba-da91-41e7-8705-b5d446eba1fc">
+          <NavigationalProperty Id="f1c1a7fc-638d-4e97-8c71-733a7a0c544e" name="EtapaCofecyts" type="IList&lt;EtapaCofecyt&gt;" label="EtapaCofecyts : IList&lt;EtapaCofecyt&gt;" nullable="true" kind="Persistent" fieldName="etapaCofecyts" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="e5e11fd1-35ed-4357-806d-a30d01355123">
+          <NavigationalProperty Id="daf185a4-2c2d-4fe5-9adc-4da40db5fbe4" name="ActividadCofecyts" type="IList&lt;ActividadCofecyt&gt;" label="ActividadCofecyts : IList&lt;ActividadCofecyt&gt;" nullable="true" kind="Persistent" fieldName="actividadCofecyts" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="a6668582-34f7-4261-a955-4700277c4d3c" name="Tematica" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdTematica">
+      <Property Id="f713b5ce-be98-41ea-946e-3127a3cef562" name="IdTematica" type="Int32" label="IdTematica : Int32" kind="Persistent" identity="true" fieldName="idTematica" />
+      <Property Id="8bb1ea16-9764-40f7-b263-de95a8795438" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="ed383bf0-30cc-4166-a0b5-5c6a24d06fa1">
+          <NavigationalProperty Id="b6703938-94e1-4042-89b3-9f55adeaa408" name="ProyectoCofecyts" type="IList&lt;ProyectoCofecyt&gt;" label="ProyectoCofecyts : IList&lt;ProyectoCofecyt&gt;" nullable="true" kind="Persistent" fieldName="proyectoCofecyts" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="e98746a0-9bf8-4973-a6c4-49438bb311a3" name="Sector" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdSector">
+      <Property Id="068ce22a-2f08-4bc3-84ef-f8aa137d9183" name="IdSector" type="Int32" label="IdSector : Int32" kind="Persistent" identity="true" fieldName="idSector" />
+      <Property Id="91d6f14c-5b44-44ae-b7cc-ed98db4cd9f2" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="1f2db5f3-b763-45b7-981e-38cac899cc67">
+          <NavigationalProperty Id="48041642-ed99-4fa2-9285-2b0bebd36cdc" name="ProyectoCofecyts" type="IList&lt;ProyectoCofecyt&gt;" label="ProyectoCofecyts : IList&lt;ProyectoCofecyt&gt;" nullable="true" kind="Persistent" fieldName="proyectoCofecyts" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="84435d21-a29f-4197-87a1-122ee1660ed0" name="EtapaCofecyt" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdEtapaCofecyt">
+      <Property Id="44063458-10b3-4127-b154-05de924d2295" name="IdEtapaCofecyt" type="Int32" label="IdEtapaCofecyt : Int32" kind="Persistent" identity="true" fieldName="idEtapaCofecyt" />
+      <Property Id="f2e63265-df93-42ad-a168-d107c3e2ef0c" name="FechaFin" type="DateTime" label="FechaFin : DateTime" nullable="true" kind="Persistent" fieldName="fechaFin" />
+      <Property Id="361e8758-fe24-4a8c-85fc-cf71bd16f679" name="FechaInicio" type="DateTime" label="FechaInicio : DateTime" nullable="true" kind="Persistent" fieldName="fechaInicio" />
+      <Property Id="703494e1-1689-47c9-a883-9bee79a35824" name="IdProyectoCofecyt" type="Int32" label="IdProyectoCofecyt : Int32" kind="Persistent" fieldName="idProyectoCofecyt" />
+      <Property Id="1c98eaff-ddce-401f-8257-1daafaec4eaf" name="Informe" type="Boolean" label="Informe : Boolean" nullable="true" kind="Persistent" fieldName="informe" />
+      <Property Id="74f7df37-a084-4607-aa49-f0fe9c4bb481" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
+      <Property Id="118562b2-4b34-441d-8e23-180867a34375" name="Rendicion" type="Boolean" label="Rendicion : Boolean" nullable="true" kind="Persistent" fieldName="rendicion" />
+      <Property Id="15901154-99ba-4ef7-b4ed-5b9f911c2247" name="DuracionSegunUvt" label="DuracionSegunUvt : String" kind="Persistent" fieldName="duracionSegunUvt" />
+      <Property Id="40fe0f5c-31da-4922-86fb-b47e622e615a" name="IdTipoEstadoEtapa" type="Int32" label="IdTipoEstadoEtapa : Int32" kind="Persistent" fieldName="idTipoEstadoEtapa" />
+      <AssociationTargets>
+        <Association Id="8f93b467-2382-4f99-9443-fff122a1d139" SourceMultiplicity="One" name="EtapaCofecytHasProyectoCofecyt">
+          <DomainClassMoniker name="/ModeloDeDominio/ProyectoCofecyt" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="992f0832-c2a5-4471-ba7f-f95f0995bfde">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/ProyectoCofecyt/EtapaCofecyts" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="e007086c-cfa2-4edc-b618-ae6b7062f0ac">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/EtapaCofecyt/ProyectoCofecyt" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="e0e3d321-7385-4d11-8505-4d59eed142d2" SourceMultiplicity="One" name="EtapaCofecytHasTipoEstadoEtapa">
+          <DomainClassMoniker name="/ModeloDeDominio/TipoEstadoEtapa" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="451cf5a9-d4ce-40dd-a4fc-2f457aa03568">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/TipoEstadoEtapa/EtapaCofecyts" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="5a25c6dc-8f0f-4c36-a549-bcc70c2af76a">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/EtapaCofecyt/TipoEstadoEtapa" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="a19a321c-893c-4014-8563-00931d4cdcdd">
+          <NavigationalProperty Id="603db73a-fe3d-4d68-b54d-239e0726e9e0" name="ProyectoCofecyt" type="ProyectoCofecyt" label="ProyectoCofecyt : ProyectoCofecyt" nullable="true" kind="Persistent" fieldName="proyectoCofecyt" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="7a5b4294-ba7f-4af6-b4f2-4903856d283f">
+          <NavigationalProperty Id="62caff52-7d9c-45ef-91dd-ff2170fbe5cd" name="ActividadCofecyts" type="IList&lt;ActividadCofecyt&gt;" label="ActividadCofecyts : IList&lt;ActividadCofecyt&gt;" nullable="true" kind="Persistent" fieldName="actividadCofecyts" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="ae00e4de-2e02-4f88-9c81-2c5efefea89f">
+          <NavigationalProperty Id="7acc78e9-237f-419b-890c-2909c01402ed" name="TipoEstadoEtapa" type="TipoEstadoEtapa" label="TipoEstadoEtapa : TipoEstadoEtapa" nullable="true" kind="Persistent" fieldName="tipoEstadoEtapa" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
+    <DomainClass Id="33ed0923-9a31-4bae-964a-31816a2fb47f" name="ActividadCofecyt" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdActividadCofecyt">
+      <Property Id="4b21049a-87b7-4b06-86db-acf02b053d81" name="IdActividadCofecyt" type="Int32" label="IdActividadCofecyt : Int32" kind="Persistent" identity="true" fieldName="idActividadCofecyt" />
+      <Property Id="41180cfa-eba9-4ebb-b948-56eb189f7eec" name="Descripcion" label="Descripcion : String" kind="Persistent" fieldName="descripcion" />
+      <Property Id="5d693747-7b86-4488-ab91-e18d4dbeaeab" name="IdEtapaCofecyt" type="Int32" label="IdEtapaCofecyt : Int32" kind="Persistent" fieldName="idEtapaCofecyt" />
+      <Property Id="48886908-0ecd-40ab-b139-4c2734fb8fa7" name="IdProyectoCofecyt" type="Int32" label="IdProyectoCofecyt : Int32" kind="Persistent" fieldName="idProyectoCofecyt" />
+      <Property Id="dc2c3e7f-139b-4b54-8192-647592045f62" name="Localizacion" label="Localizacion : String" kind="Persistent" fieldName="localizacion" />
+      <Property Id="2ca11922-f423-4bd0-9da3-0607a0b37e6d" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
+      <Property Id="8fe2fa7c-cdbd-426d-81a1-8aab933d98d9" name="ResultadosEsperados" label="ResultadosEsperados : String" kind="Persistent" fieldName="resultadosEsperados" />
+      <AssociationTargets>
+        <Association Id="641a5433-c366-4588-86cc-b2316753991f" SourceMultiplicity="One" name="ActividadCofecytHasProyectoCofecyt">
+          <DomainClassMoniker name="/ModeloDeDominio/ProyectoCofecyt" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="01729e80-5b6a-4372-8a76-f9ed3a4078a4">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/ProyectoCofecyt/ActividadCofecyts" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="428ade67-b411-494c-9026-be7e37ddda23">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/ActividadCofecyt/ProyectoCofecyt" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="5b2b4eb3-8651-4670-9f7c-6d5f6080af20" SourceMultiplicity="One" name="ActividadCofecytHasEtapaCofecyt">
+          <DomainClassMoniker name="/ModeloDeDominio/EtapaCofecyt" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="02caa253-f3e8-4527-8557-5eaa3bdb0ab9">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/EtapaCofecyt/ActividadCofecyts" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="c764098a-3d41-4b73-96b8-25e8690b0dac">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/ActividadCofecyt/EtapaCofecyt" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="5b9b8997-8f37-4a4b-9438-42bca6d68857">
+          <NavigationalProperty Id="d0e15201-fbb6-4b49-9931-494be8c9b613" name="ProyectoCofecyt" type="ProyectoCofecyt" label="ProyectoCofecyt : ProyectoCofecyt" nullable="true" kind="Persistent" fieldName="proyectoCofecyt" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="4aeec6e1-f893-476f-9ce2-8faea903e037">
+          <NavigationalProperty Id="d67a25e8-a1f7-42e3-82aa-37a4b2ad1473" name="EtapaCofecyt" type="EtapaCofecyt" label="EtapaCofecyt : EtapaCofecyt" nullable="true" kind="Persistent" fieldName="etapaCofecyt" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
   </Types>
@@ -1976,6 +2710,12 @@
         <entitySetProperty name="ViaComunicacions" namespace="CapaDominio" type="ViaComunicacion" label="ViaComunicacions : IQueryable&lt;CapaDominio.ViaComunicacion&gt;" />
         <entitySetProperty name="ActuacionPersonas" namespace="CapaDominio" type="ActuacionPersona" label="ActuacionPersonas : IQueryable&lt;CapaDominio.ActuacionPersona&gt;" />
         <entitySetProperty name="UdtUvts" namespace="CapaDominio" type="UdtUvt" label="UdtUvts : IQueryable&lt;CapaDominio.UdtUvt&gt;" />
+        <entitySetProperty name="TipoEstadoCofecyts" namespace="CapaDominio" type="TipoEstadoCofecyt" label="TipoEstadoCofecyts : IQueryable&lt;CapaDominio.TipoEstadoCofecyt&gt;" />
+        <entitySetProperty name="ProyectoCofecyts" namespace="CapaDominio" type="ProyectoCofecyt" label="ProyectoCofecyts : IQueryable&lt;CapaDominio.ProyectoCofecyt&gt;" />
+        <entitySetProperty name="Tematicas" namespace="CapaDominio" type="Tematica" label="Tematicas : IQueryable&lt;CapaDominio.Tematica&gt;" />
+        <entitySetProperty name="Sectors" namespace="CapaDominio" type="Sector" label="Sectors : IQueryable&lt;CapaDominio.Sector&gt;" />
+        <entitySetProperty name="EtapaCofecyts" namespace="CapaDominio" type="EtapaCofecyt" label="EtapaCofecyts : IQueryable&lt;CapaDominio.EtapaCofecyt&gt;" />
+        <entitySetProperty name="ActividadCofecyts" namespace="CapaDominio" type="ActividadCofecyt" label="ActividadCofecyts : IQueryable&lt;CapaDominio.ActividadCofecyt&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>

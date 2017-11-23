@@ -42,10 +42,12 @@
     <Reference Include="Telerik.OpenAccess.35.Extensions, Version=2015.1.225.1, Culture=neutral, PublicKeyToken=7ce17eeaf1d59342, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActividadCofecytRepo.cs" />
     <Compile Include="ActuacionPersonaRepo.cs" />
     <Compile Include="ActuacionRepo.cs" />
     <Compile Include="ConvocatoriaRepo.cs" />
     <Compile Include="EmpresaRepo.cs" />
+    <Compile Include="EtapaCofecytRepo.cs" />
     <Compile Include="EtapaRepo.cs" />
     <Compile Include="FondoRepo.cs" />
     <Compile Include="LocalidadRepo.cs" />
@@ -54,8 +56,12 @@
     <Compile Include="OrigenRepo.cs" />
     <Compile Include="PersonaRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProyectoCofecytRepo.cs" />
     <Compile Include="ProyectoRepo.cs" />
+    <Compile Include="SectorRepo.cs" />
+    <Compile Include="TematicaRepo.cs" />
     <Compile Include="TipoConvocatoriaRepo.cs" />
+    <Compile Include="TipoEstadoCofecytRepo.cs" />
     <Compile Include="TipoEstadoEtapaRepo.cs" />
     <Compile Include="TipoEstadoRepo.cs" />
     <Compile Include="TipoFinanciamientoRepo.cs" />

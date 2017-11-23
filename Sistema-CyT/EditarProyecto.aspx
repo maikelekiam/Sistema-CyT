@@ -82,7 +82,7 @@
             </div>
             <!--EXPEDIENTE-->
             <div class="form-group">
-                <asp:Label ID="lblNumeroExp" runat="server" Text="EXPEDIENTE / N°CONVENIO" CssClass="col-md-2 col-xs-12 control-label"> </asp:Label>
+                <asp:Label ID="lblNumeroExp" runat="server" Text="N° EXPEDIENTE" CssClass="col-md-2 col-xs-12 control-label"> </asp:Label>
                 <div class="col-md-4 col-xs-12">
                     <asp:TextBox ID="txtNumeroExp" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>

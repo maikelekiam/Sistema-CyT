@@ -59,6 +59,15 @@ namespace CapaDominio
 			}
 		}
 		
+		private IList<EtapaCofecyt> etapaCofecyts = new List<EtapaCofecyt>();
+		public virtual IList<EtapaCofecyt> EtapaCofecyts
+		{
+			get
+			{
+				return this.etapaCofecyts;
+			}
+		}
+		
 	}
 }
 #pragma warning restore 1591
