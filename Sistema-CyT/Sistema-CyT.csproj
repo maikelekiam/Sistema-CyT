@@ -172,6 +172,7 @@
     <Content Include="css\panel-collapsible.css" />
     <Content Include="EditarConvocatoria.aspx" />
     <Content Include="EditarEmpresa.aspx" />
+    <Content Include="EditarEtapa.aspx" />
     <Content Include="EditarFondo.aspx" />
     <Content Include="EditarModalidad.aspx" />
     <Content Include="EditarOrganismo.aspx" />
@@ -198,6 +199,7 @@
     <Content Include="MostrarFondo.aspx" />
     <Content Include="MostrarPersona.aspx" />
     <Content Include="MostrarProyecto.aspx" />
+    <Content Include="MostrarProyectoCofecyt.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -357,6 +359,13 @@
     <Compile Include="EditarEmpresa.aspx.designer.cs">
       <DependentUpon>EditarEmpresa.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EditarEtapa.aspx.cs">
+      <DependentUpon>EditarEtapa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditarEtapa.aspx.designer.cs">
+      <DependentUpon>EditarEtapa.aspx</DependentUpon>
+    </Compile>
     <Compile Include="EditarFondo.aspx.cs">
       <DependentUpon>EditarFondo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -500,6 +509,13 @@
     </Compile>
     <Compile Include="MostrarProyecto.aspx.designer.cs">
       <DependentUpon>MostrarProyecto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MostrarProyectoCofecyt.aspx.cs">
+      <DependentUpon>MostrarProyectoCofecyt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MostrarProyectoCofecyt.aspx.designer.cs">
+      <DependentUpon>MostrarProyectoCofecyt.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">

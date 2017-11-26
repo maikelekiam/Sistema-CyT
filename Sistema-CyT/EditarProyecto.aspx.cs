@@ -23,6 +23,8 @@ namespace Sistema_CyT
         TipoEstadoNego tipoEstadoNego = new TipoEstadoNego();
         TipoEstadoEtapaNego tipoEstadoEtapaNego = new TipoEstadoEtapaNego();
         TipoProyectoNego tipoProyectoNego = new TipoProyectoNego();
+        TematicaNego tematicaNego = new TematicaNego();
+        SectorNego sectorNego = new SectorNego();
 
         //IEnumerable<Proyecto> listaProyectos;
 
@@ -51,6 +53,23 @@ namespace Sistema_CyT
             LimpiarFormulario();
             LlenarListaFondoChoice();
             LlenarListaTipoProyectos(); // SIRVE PARA EL DROP DOWN LIST
+
+            LlenarListaSectores();
+            LlenarListaTematicas();
+        }
+        //Muestra en el DROPDOWNLIST los SECTORES
+        private void LlenarListaSectores()
+        {
+            ddlSector.DataSource = sectorNego.MostrarSectores().ToList();
+            ddlSector.DataValueField = "nombre";
+            ddlSector.DataBind();
+        }
+        //Muestra en el DROPDOWNLIST las TEMATICAS
+        private void LlenarListaTematicas()
+        {
+            ddlTematica.DataSource = tematicaNego.MostrarTematicas().ToList();
+            ddlTematica.DataValueField = "nombre";
+            ddlTematica.DataBind();
         }
         private void LlenarListaTipoProyectos()
         {
@@ -393,7 +412,7 @@ namespace Sistema_CyT
             //LimpiarFormulario();
         }
 
-        
+
         private void LimpiarFormulario()
         {
             txtNombre.Text = null;
@@ -589,6 +608,41 @@ namespace Sistema_CyT
         protected void dgvEtapas_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
             //falta implementar...
+
+            GridViewRow row = dgvEtapas.Rows[e.NewSelectedIndex];
+
+            //idModalidadActual = Convert.ToInt32(row.Cells[0].Text);
+
+            //Response.Redirect("EditarModalidad.aspx");
+
+            if (row.Cells[0].Text != "")
+            {
+                idEtapaActual = Convert.ToInt32(row.Cells[0].Text);
+
+                Response.Redirect("EditarEtapa.aspx");
+            }
+            else
+            {
+                //MessageBox.Show("DEBE ACTUALIZAR LA CONVOCATORIA PARA CONTINUAR", "Advertencia",
+                //    MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+
+            }
+
+
+
+
+
+
+
+
+
+
+            //Modalidad modalidad = modalidadNego.ObtenerModalidadSegunId(id);
+
+
+
+
+
         }
     }
 }

@@ -72,24 +72,15 @@
             <div class="col-md-9 col-md-offset-1">
                 <asp:GridView ID="dgvEmpresa" runat="server" AutoGenerateColumns="false"
                     CssClass="table table-hover table-striped" BorderWidth="2px"
-                    GridLines="Both" EmptyDataText="No existen empresas registradas" ShowHeaderWhenEmpty="true"
-                    OnRowCommand="dgvEmpresa_RowCommand">
+                    GridLines="Both" EmptyDataText="No existen empresas registradas" ShowHeaderWhenEmpty="true">
                     <Columns>
                         <asp:BoundField HeaderText="ID" DataField="idEmpresa" ItemStyle-HorizontalAlign="Center" HeaderStyle-BackColor="#cccccc" />
                         <asp:BoundField HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Left" HeaderStyle-BackColor="#cccccc" />
                         <asp:BoundField HeaderText="Telefono" DataField="telefono" ItemStyle-HorizontalAlign="Center" HeaderStyle-BackColor="#cccccc" />
                         <asp:BoundField HeaderText="Correo Electronico" DataField="correoElectronico" ItemStyle-HorizontalAlign="Center" HeaderStyle-BackColor="#cccccc" />
-                        <asp:TemplateField ItemStyle-HorizontalAlign="Center" HeaderStyle-BackColor="#cccccc">
-                            <ItemTemplate>
-                                <asp:Button ID="btnMostrar" runat="server" Text="Mostrar" CssClass="form-control" BackColor="#eaeaea" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
             </div>
         </div>
     </div>
-
-
-
 </asp:Content>

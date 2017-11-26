@@ -71,5 +71,29 @@ namespace CapaRepositorio
                 return result.NumeroConvenio.ToString();
             }
         }
+        public IEnumerable<pr03ResultSet0> ListarChoiceProyectoCofecyts(int id)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                System.Data.Common.DbParameter prParameter = new OAParameter
+                {
+                    ParameterName = "@id",
+                    Value = id
+                };
+
+                IEnumerable<pr03ResultSet0> result = modeloDeDominio.ExecuteQuery<pr03ResultSet0>("pr03", CommandType.StoredProcedure, prParameter);
+
+                return result;
+            }
+        }
+        public ProyectoCofecyt ObtenerProyectoCofecytSegunNombreYConvocatoria(int id, string nom)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                ProyectoCofecyt proyectoCofecyt = modeloDeDominio.ProyectoCofecyts.Where(c => c.NumeroEspedienteCopade == nom && c.IdConvocatoria == id).FirstOrDefault();
+
+                return proyectoCofecyt;
+            }
+        }
     }
 }

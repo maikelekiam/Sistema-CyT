@@ -13,12 +13,14 @@ namespace Sistema_CyT
     public partial class ListarProyectos : System.Web.UI.Page
     {
         ProyectoNego proyectoNego = new ProyectoNego();
+        ProyectoCofecytNego proyectoCofecytNego = new ProyectoCofecytNego();
         ConvocatoriaNego convocatoriaNego = new ConvocatoriaNego();
         TipoEstadoNego tipoEstadoNego = new TipoEstadoNego();
         FondoNego fondoNego = new FondoNego();
 
         List<pr02ResultSet0> listaProyectosFiltrados = new List<pr02ResultSet0>();
         List<pr02ResultSet0> listaChoiceProyectos = new List<pr02ResultSet0>();
+        List<pr03ResultSet0> listaChoiceProyectoCofecyts = new List<pr03ResultSet0>();
 
         public static int idProyectoSeleccionado = 1;
         public static int idConvocatoriaSeleccionada = 1;
@@ -97,19 +99,52 @@ namespace Sistema_CyT
             {
                 idConvocatoriaSeleccionada = Convert.ToInt32(ddlConvocatoria.SelectedValue.ToString());
 
-                dgvProyectos.DataSource = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).ToList();
-                dgvProyectos.DataBind();
+                //Me fijo si es un proyecto simple o un proyectocofecyt
 
-                cantidadProyectosSumatoria = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).Count();
-                lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
+                if (fondoNego.ObtenerFondo(Convert.ToInt32(ddlFondoChoice.SelectedValue)).Nombre.ToUpper() == "COFECYT")
+                {
+                    dgvProyectos.Visible = false;
+                    dgvProyectoCofecyts.Visible = true;
+                    //Traer la lista de proyectos cofecyt
+                    dgvProyectoCofecyts.DataSource = proyectoCofecytNego.ListarChoiceProyectoCofecyts(idConvocatoriaSeleccionada).ToList();
+                    dgvProyectoCofecyts.DataBind();
+
+                    cantidadProyectosSumatoria = proyectoCofecytNego.ListarChoiceProyectoCofecyts(idConvocatoriaSeleccionada).Count();
+                    lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
+                }
+                else
+                {
+                    dgvProyectos.Visible = true;
+                    dgvProyectoCofecyts.Visible = false;
+                    dgvProyectos.DataSource = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).ToList();
+                    dgvProyectos.DataBind();
+
+                    cantidadProyectosSumatoria = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).Count();
+                    lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
+                }
             }
             else
             {
-                dgvProyectos.DataSource = listaProyectosFiltrados.ToList();
-                dgvProyectos.DataBind();
+                if (fondoNego.ObtenerFondo(Convert.ToInt32(ddlFondoChoice.SelectedValue)).Nombre.ToUpper() == "COFECYT")
+                {
+                    dgvProyectos.Visible = false;
+                    dgvProyectoCofecyts.Visible = true;
+                    dgvProyectoCofecyts.DataSource = proyectoCofecytNego.ListarChoiceProyectoCofecyts(idConvocatoriaSeleccionada).ToList();
+                    dgvProyectoCofecyts.DataBind();
 
-                cantidadProyectosSumatoria = listaProyectosFiltrados.Count();
-                lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
+                    cantidadProyectosSumatoria = proyectoCofecytNego.ListarChoiceProyectoCofecyts(idConvocatoriaSeleccionada).Count();
+                    lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
+                }
+                else
+                {
+                    dgvProyectos.Visible = true;
+                    dgvProyectoCofecyts.Visible = false;
+                    dgvProyectos.DataSource = listaProyectosFiltrados.ToList();
+                    dgvProyectos.DataBind();
+
+                    cantidadProyectosSumatoria = listaProyectosFiltrados.Count();
+                    lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
+                }
             }
         }
 
@@ -117,11 +152,22 @@ namespace Sistema_CyT
         {
             idConvocatoriaSeleccionada = Convert.ToInt32(ddlConvocatoria.SelectedValue.ToString());
 
-            dgvProyectos.DataSource = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).ToList();
-            dgvProyectos.DataBind();
+            if (fondoNego.ObtenerFondo(Convert.ToInt32(ddlFondoChoice.SelectedValue)).Nombre.ToUpper() == "COFECYT")
+            {
+                dgvProyectoCofecyts.DataSource = proyectoCofecytNego.ListarChoiceProyectoCofecyts(idConvocatoriaSeleccionada).ToList();
+                dgvProyectoCofecyts.DataBind();
 
-            cantidadProyectosSumatoria = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).Count();
-            lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
+                cantidadProyectosSumatoria = proyectoCofecytNego.ListarChoiceProyectoCofecyts(idConvocatoriaSeleccionada).Count();
+                lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
+            }
+            else
+            {
+                dgvProyectos.DataSource = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).ToList();
+                dgvProyectos.DataBind();
+
+                cantidadProyectosSumatoria = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).Count();
+                lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
+            }
         }
 
         protected void dgvProyectos_SelectedIndexChanged(object sender, EventArgs e)
@@ -154,6 +200,15 @@ namespace Sistema_CyT
                 lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
             }
             ddlEstado.Text = "-1";
+        }
+
+        protected void dgvProyectoCofecyts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow row = this.dgvProyectoCofecyts.SelectedRow;
+
+            numeroExpedienteProyectoSeleccionado = row.Cells[0].Text;
+
+            Response.Redirect("MostrarProyectoCofecyt.aspx");
         }
     }
 }

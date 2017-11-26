@@ -17,5 +17,13 @@ namespace CapaRepositorio
                 modeloDeDominio.SaveChanges();
             }
         }
+        public IEnumerable<ActividadCofecyt> TraerActividadCofecytsSegunIdProyecto(int id)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                IEnumerable<ActividadCofecyt> result = modeloDeDominio.ActividadCofecyts.Where(c => c.IdProyectoCofecyt == id).ToList();
+                return result;
+            }
+        }
     }
 }

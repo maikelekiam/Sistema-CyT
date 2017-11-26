@@ -348,6 +348,39 @@ namespace CapaDominio
 			return queryResult;
 		}
 		
+		public IEnumerable<pr03ResultSet0> Pr03(int? id)
+		{
+			int returnValue;
+			return Pr03(id, out returnValue);
+		}
+		
+		public IEnumerable<pr03ResultSet0> Pr03(int? id, out int returnValue)
+		{
+			OAParameter parameterReturnValue = new OAParameter();
+		    parameterReturnValue.Direction = ParameterDirection.ReturnValue;
+		    parameterReturnValue.ParameterName = "parameterReturnValue";
+		
+			OAParameter parameterId = new OAParameter();
+			parameterId.ParameterName = "id";
+			if(id.HasValue)
+			{
+				parameterId.Value = id.Value;
+			}
+			else
+			{
+				parameterId.DbType = DbType.Int32;
+				parameterId.Value = DBNull.Value;
+			}
+
+			IEnumerable<pr03ResultSet0> queryResult = this.ExecuteQuery<pr03ResultSet0>("[dbo].[pr03]", CommandType.StoredProcedure, parameterId, parameterReturnValue);
+		
+			returnValue = parameterReturnValue.Value == DBNull.Value 
+				? -1
+				: (int)parameterReturnValue.Value;
+		
+			return queryResult;
+		}
+		
 		public static BackendConfiguration GetBackendConfiguration()
 		{
 			BackendConfiguration backend = new BackendConfiguration();
@@ -489,6 +522,8 @@ namespace CapaDominio
 		IEnumerable<pr01ResultSet0> Pr01(int? id, out int returnValue);
 		IEnumerable<pr02ResultSet0> Pr02(int? id);
 		IEnumerable<pr02ResultSet0> Pr02(int? id, out int returnValue);
+		IEnumerable<pr03ResultSet0> Pr03(int? id);
+		IEnumerable<pr03ResultSet0> Pr03(int? id, out int returnValue);
 	}
 }
 #pragma warning restore 1591

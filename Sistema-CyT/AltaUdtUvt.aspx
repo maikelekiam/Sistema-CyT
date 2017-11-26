@@ -124,14 +124,12 @@
             <div class="col-md-9 col-md-offset-1">
                 <asp:GridView ID="dgvUdtUvt" runat="server" AutoGenerateColumns="false"
                     CssClass="table table-hover table-striped" BorderWidth="2px"
-                    GridLines="Both" EmptyDataText="No existen UDT/UVT registradas" ShowHeaderWhenEmpty="true"
-                    >
+                    GridLines="Both" EmptyDataText="No existen UDT/UVT registradas" ShowHeaderWhenEmpty="true">
                     <Columns>
                         <asp:BoundField HeaderText="ID" DataField="idUdtUvt" ItemStyle-HorizontalAlign="Center" HeaderStyle-BackColor="#cccccc" />
                         <asp:BoundField HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Left" HeaderStyle-BackColor="#cccccc" />
                         <asp:BoundField HeaderText="Telefono" DataField="telefono" ItemStyle-HorizontalAlign="Center" HeaderStyle-BackColor="#cccccc" />
                         <asp:BoundField HeaderText="Correo Electronico" DataField="correoElectronico" ItemStyle-HorizontalAlign="Center" HeaderStyle-BackColor="#cccccc" />
-                        
                     </Columns>
                 </asp:GridView>
             </div>

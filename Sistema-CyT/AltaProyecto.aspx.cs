@@ -80,7 +80,6 @@ namespace Sistema_CyT
             //txtFechaInicioModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
             //txtFechaFinalModal.Text = Convert.ToString(DateTime.Today.ToShortDateString());
 
-            LimpiarDetalleContactoModal();
             listaEtapasTemporal.Clear();
             listaEtapaCofecytsTemporal.Clear();
             listaActividadCofecytsTemporal.Clear();
@@ -232,6 +231,8 @@ namespace Sistema_CyT
             if (fondoNego.ObtenerFondo(Convert.ToInt32(ddlFondoChoice.SelectedValue)).Nombre.ToUpper() == "COFECYT")
             {
                 GuardarProyectoCofecyt();
+
+                Response.Redirect("ListarProyectos.aspx");
             }
             else
             {
@@ -448,41 +449,16 @@ namespace Sistema_CyT
             return personaNego.TraerPersona(id);
         }
 
-        protected void UpdateButton_Click(object sender, EventArgs e)
-        {
-            Persona persona = personaNego.ObtenerPersona(idPersonaActual);
-
-            txtDetalleContactoNombreModal.Text = persona.Nombre.ToString();
-            txtDetalleContactoApellidoModal.Text = persona.Apellido.ToString();
-            txtDetalleContactoTelefonoModal.Text = persona.Telefono.ToString();
-            txtDetalleContactoCorreoElectronicoModal.Text = persona.CorreoElectronico.ToString();
-        }
-
         protected void ddlContacto_SelectedIndexChanged(object sender, EventArgs e)
         {
             idPersonaActual = ddlContacto.SelectedIndex;
-        }
-
-        public void LimpiarDetalleContactoModal()
-        {
-            txtDetalleContactoNombreModal.Text = null;
-            txtDetalleContactoApellidoModal.Text = null;
-            txtDetalleContactoTelefonoModal.Text = null;
-            txtDetalleContactoCorreoElectronicoModal.Text = null;
         }
 
         protected void ddlEmpresa_SelectedIndexChanged(object sender, EventArgs e)
         {
             idEmpresaActual = ddlEmpresa.SelectedIndex;
         }
-        protected void UpdateButton2_Click(object sender, EventArgs e)
-        {
-            Empresa empresa = empresaNego.ObtenerEmpresa(idEmpresaActual);
-
-            txtDetalleEmpresaNombreModal.Text = empresa.Nombre.ToString();
-            txtDetalleEmpresaTelefonoModal.Text = empresa.Telefono.ToString();
-            txtDetalleEmpresaCorreoElectronicoModal.Text = empresa.CorreoElectronico.ToString();
-        }
+        
 
         protected void ddlFondoChoice_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -627,19 +603,16 @@ namespace Sistema_CyT
                 }
 
                 idEtapaCofecytUltima = etapaCofecytNego.GuardarEtapaCofecyt(etapaCofecyt);
-
-                //DESPUES GUARDO LA LISTA DE ACTIVIDADES DEL PROYECTO COFECYT ACTUAL
-                //FALTA
-
-
             }
+
+            //DESPUES GUARDO LA LISTA DE ACTIVIDADES DEL PROYECTO COFECYT ACTUAL
             foreach (ActividadCofecyt item2 in listaActividadCofecytsTemporal)
             {
                 ActividadCofecyt actividadCofecyt = new ActividadCofecyt();
 
                 actividadCofecyt.IdProyectoCofecyt = idProyectoCofecytActual;
 
-                actividadCofecyt.IdEtapaCofecyt = idEtapaCofecytUltima-listaEtapaCofecytsTemporal.Count+item2.IdEtapaCofecyt;
+                actividadCofecyt.IdEtapaCofecyt = idEtapaCofecytUltima - listaEtapaCofecytsTemporal.Count + item2.IdEtapaCofecyt;
 
                 actividadCofecyt.Nombre = item2.Nombre;
                 actividadCofecyt.Descripcion = item2.Descripcion;
@@ -706,18 +679,12 @@ namespace Sistema_CyT
             actividadCofecyt.IdEtapaCofecyt = ddlEtapaActividad.SelectedIndex + 1;
 
             listaActividadCofecytsTemporal.Add(actividadCofecyt);
-
         }
         public void LlenarGrillaActividadesCofecyt()
         {
             //Hay que transformar el nombre de etapa que es un int y pasarlo a string
 
-
-
-
-
             dgvActividadesCofecyt.DataSource = listaActividadCofecytsTemporal.ToList().OrderBy(p => p.IdEtapaCofecyt);
-
 
             dgvActividadesCofecyt.DataBind();
         }

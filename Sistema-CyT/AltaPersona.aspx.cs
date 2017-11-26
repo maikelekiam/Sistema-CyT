@@ -71,21 +71,5 @@ namespace Sistema_CyT
 
             personaNego.GuardarPersona(persona);
         }
-
-        protected void dgvPersona_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            //Obtengo el indice de la fila seleccionada con el boton MOSTRAR
-            GridViewRow row = (GridViewRow)(((Button)e.CommandSource).NamingContainer);
-            int rIndex = row.RowIndex;
-
-            //Obtengo el id de la PERSONA seleccionada
-            idPersonaSeleccionada = Convert.ToInt32(dgvPersona.Rows[rIndex].Cells[0].Text);
-
-            MostrarPersona();
-        }
-        private void MostrarPersona()
-        {
-            Response.Redirect("MostrarPersona.aspx");
-        }
     }
 }

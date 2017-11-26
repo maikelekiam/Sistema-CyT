@@ -37,6 +37,14 @@ namespace CapaNegocio
         public string ObtenerProyectoCofecytString(int id)
         {
             return proyectoCofecytRepo.ObtenerProyectoCofecytString(id);
-        }        
+        }
+        public IEnumerable<pr03ResultSet0> ListarChoiceProyectoCofecyts(int id)
+        {
+            return proyectoCofecytRepo.ListarChoiceProyectoCofecyts(id);
+        }
+        public ProyectoCofecyt ObtenerProyectoCofecytSegunNombreYConvocatoria(int id, string nom)
+        {
+            return proyectoCofecytRepo.ObtenerProyectoCofecytSegunNombreYConvocatoria(id, nom);
+        }
     }
 }

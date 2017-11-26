@@ -68,20 +68,5 @@ namespace Sistema_CyT
 
             empresaNego.GuardarEmpresa(empresa);
         }
-        protected void dgvEmpresa_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            //Obtengo el indice de la fila seleccionada con el boton MOSTRAR
-            GridViewRow row = (GridViewRow)(((Button)e.CommandSource).NamingContainer);
-            int rIndex = row.RowIndex;
-
-            //Obtengo el id de la EMPRESA seleccionada
-            idEmpresaSeleccionada = Convert.ToInt32(dgvEmpresa.Rows[rIndex].Cells[0].Text);
-
-            MostrarEmpresa();
-        }
-        private void MostrarEmpresa()
-        {
-            Response.Redirect("MostrarEmpresa.aspx");
-        }
     }
 }

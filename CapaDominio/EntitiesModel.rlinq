@@ -1139,14 +1139,14 @@
             <orm:constraint name="FK_EtapaCofecyt_ProyectoCofecyt" delete-action="dbdefaultrule" destination-table="ProyectoCofecyt" />
           </orm:reference>
         </orm:field>
-        <orm:field name="actividadCofecyts" property="ActividadCofecyts" behavior="readwrite" uniqueId="62caff52-7d9c-45ef-91dd-ff2170fbe5cd" type="CapaDominio.ActividadCofecyt">
-          <orm:collection element-class="CapaDominio.ActividadCofecyt" inverse-field="etapaCofecyt" order-by="" uniqueId="5b2b4eb3-8651-4670-9f7c-6d5f6080af20" />
-        </orm:field>
         <orm:field name="tipoEstadoEtapa" property="TipoEstadoEtapa" behavior="readwrite" uniqueId="7acc78e9-237f-419b-890c-2909c01402ed" type="CapaDominio.TipoEstadoEtapa">
           <orm:reference uniqueId="e0e3d321-7385-4d11-8505-4d59eed142d2" association-name="EtapaCofecytHasTipoEstadoEtapa">
             <orm:sharedfield name="idTipoEstadoEtapa" target-class="CapaDominio.TipoEstadoEtapa" target-field="idTipoEstadoEtapa" />
             <orm:constraint name="FK_EtapaCofecyt_TipoEstadoEtapa" delete-action="dbdefaultrule" destination-table="TipoEstadoEtapa" />
           </orm:reference>
+        </orm:field>
+        <orm:field name="actividadCofecyts" property="ActividadCofecyts" behavior="readwrite" uniqueId="62caff52-7d9c-45ef-91dd-ff2170fbe5cd" type="CapaDominio.ActividadCofecyt">
+          <orm:collection element-class="CapaDominio.ActividadCofecyt" inverse-field="etapaCofecyt" order-by="" uniqueId="5b2b4eb3-8651-4670-9f7c-6d5f6080af20" />
         </orm:field>
       </orm:class>
       <orm:class name="ActividadCofecyt" uniqueId="33ed0923-9a31-4bae-964a-31816a2fb47f">
@@ -1561,6 +1561,10 @@
         <orm:result-sets />
       </orm:procedure>
       <orm:procedure name="fn_diagramobjects" is-function="true" return-type="int">
+        <orm:result-sets />
+      </orm:procedure>
+      <orm:procedure name="pr03">
+        <orm:procedure-parameter name="id" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" mode="in" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" />
         <orm:result-sets />
       </orm:procedure>
     </orm:schema>
@@ -2738,6 +2742,15 @@
         </domainMethodReturnShape>
       </domainMethod>
     </domainModelHasDomainMethods>
+    <domainModelHasDomainMethods Id="774f758e-47e6-4837-a71e-4fc7eb4a5458">
+      <domainMethod name="pr03" storedProcedureName="'pr03'" generateReturnValueOverload="true">
+        <domainMethodReturnShape>
+          <domainMethodReferencesDomainMethodReturnShape Id="3dac4a4c-78c3-42d0-abd3-23a55e0a697e">
+            <domainMethodReturnShapeMoniker name="/ModeloDeDominio/pr03ResultSet0" />
+          </domainMethodReferencesDomainMethodReturnShape>
+        </domainMethodReturnShape>
+      </domainMethod>
+    </domainModelHasDomainMethods>
   </domainMethods>
   <domainMethodReturnShapes>
     <domainModelHasDomainMethodReturnShapes Id="cfa0d6f4-9e93-42ce-9f48-1605b440dbcf">
@@ -2769,6 +2782,42 @@
         <Property Id="ffa2eb76-773b-45d8-82a8-37f6b36a42d0" name="tipoProyecto" type="System.String" label="tipoProyecto : System.String" nullable="true" fieldName="_tipoProyecto" />
         <Property Id="5515a668-e483-48a4-a92e-fd6047e10f1c" name="tipoEstado" type="System.String" label="tipoEstado : System.String" nullable="true" fieldName="_tipoEstado" />
         <Property Id="c10d6c87-717a-45d3-ac18-751cf2f83247" name="anio" type="System.Int32" label="anio : System.Int32" nullable="true" fieldName="_anio" />
+      </domainMethodReturnShape>
+    </domainModelHasDomainMethodReturnShapes>
+    <domainModelHasDomainMethodReturnShapes Id="84c941b2-58dd-4991-8589-7578bb3ed3a0">
+      <domainMethodReturnShape name="pr03ResultSet0" namespace="CapaDominio" showPropertiesCompartment="true" domainMethodType="CustomShape">
+        <Property Id="c5d10dae-71d5-4af2-acf5-ae3037b470e7" name="idProyectoCofecyt" type="System.Int32" label="idProyectoCofecyt : System.Int32" fieldName="_idProyectoCofecyt" />
+        <Property Id="d725af94-83af-429b-92a7-03ecaef97445" name="idConvocatoria" type="System.Int32" label="idConvocatoria : System.Int32" nullable="true" fieldName="_idConvocatoria" />
+        <Property Id="2b34e6da-d069-4f96-954b-98fd2acb87eb" name="titulo" type="System.String" label="titulo : System.String" nullable="true" fieldName="_titulo" />
+        <Property Id="79d49f57-badb-401b-a4d4-cd4223b414cc" name="objetivos" type="System.String" label="objetivos : System.String" nullable="true" fieldName="_objetivos" />
+        <Property Id="c4755246-699e-4419-8912-990d916d33c3" name="descripcion" type="System.String" label="descripcion : System.String" nullable="true" fieldName="_descripcion" />
+        <Property Id="5a1020ae-aafc-4464-8c06-b28436d6bb98" name="destinatarios" type="System.String" label="destinatarios : System.String" nullable="true" fieldName="_destinatarios" />
+        <Property Id="5586058c-7be2-4798-811e-a7255fa315f6" name="localidad" type="System.String" label="localidad : System.String" nullable="true" fieldName="_localidad" />
+        <Property Id="a58d768d-529e-47db-a2b7-d0dc404cfabd" name="sector" type="System.String" label="sector : System.String" nullable="true" fieldName="_sector" />
+        <Property Id="b3768f01-87f9-4a7f-8bfa-f802a002c476" name="tematica" type="System.String" label="tematica : System.String" nullable="true" fieldName="_tematica" />
+        <Property Id="900fad91-55f1-4bfc-b13e-07bdd5529839" name="observaciones" type="System.String" label="observaciones : System.String" nullable="true" fieldName="_observaciones" />
+        <Property Id="8401049d-9702-4c2b-9713-71949ca2d3ab" name="numeroEspedienteCopade" type="System.String" label="numeroEspedienteCopade : System.String" nullable="true" fieldName="_numeroEspedienteCopade" />
+        <Property Id="7cd0c6c0-ef62-44eb-8d68-0c4ea3fb706f" name="numeroConvenio" type="System.String" label="numeroConvenio : System.String" nullable="true" fieldName="_numeroConvenio" />
+        <Property Id="e9c7fe53-c577-407f-9977-d294ff02d0c3" name="numeroExpedienteDga" type="System.String" label="numeroExpedienteDga : System.String" nullable="true" fieldName="_numeroExpedienteDga" />
+        <Property Id="546afc22-0c04-4a8c-a9de-5c8873460535" name="uvt" type="System.String" label="uvt : System.String" nullable="true" fieldName="_uvt" />
+        <Property Id="351407fc-bb19-4235-9e9c-9a20b60f357c" name="directornombre" type="System.String" label="directornombre : System.String" nullable="true" fieldName="_directornombre" />
+        <Property Id="d2313445-30c4-4987-9a8f-d35afe7b1ae2" name="directorapellido" type="System.String" label="directorapellido : System.String" nullable="true" fieldName="_directorapellido" />
+        <Property Id="d02a3c02-8fe7-4cd5-b8ce-d6bc6d5ee543" name="fechaPresentacion" type="System.DateTime" label="fechaPresentacion : System.DateTime" nullable="true" fieldName="_fechaPresentacion" />
+        <Property Id="acb842b5-5eea-402e-88a5-9ce91cd3d495" name="ultimaEvaluacionTecnica" type="System.DateTime" label="ultimaEvaluacionTecnica : System.DateTime" nullable="true" fieldName="_ultimaEvaluacionTecnica" />
+        <Property Id="2ca63479-6dd8-48de-8f81-ce1270d0cbbb" name="fechaFinalizacion" type="System.DateTime" label="fechaFinalizacion : System.DateTime" nullable="true" fieldName="_fechaFinalizacion" />
+        <Property Id="c59435d9-a1bc-44b6-a817-a4da687259d3" name="duracionEstimada" type="System.Int32" label="duracionEstimada : System.Int32" nullable="true" fieldName="_duracionEstimada" />
+        <Property Id="be80a5ae-225e-45e6-9f09-33b25b5c099a" name="duracionEstimadaIfaa" type="System.Int32" label="duracionEstimadaIfaa : System.Int32" nullable="true" fieldName="_duracionEstimadaIfaa" />
+        <Property Id="76bbeb52-49d5-4920-8d9f-ac4001e6847d" name="beneficiarios" type="System.String" label="beneficiarios : System.String" nullable="true" fieldName="_beneficiarios" />
+        <Property Id="b7812cf5-da9a-45e2-8ab6-8a76a9c8d2cf" name="entidadesIntervinientes" type="System.String" label="entidadesIntervinientes : System.String" nullable="true" fieldName="_entidadesIntervinientes" />
+        <Property Id="1facbf6f-abca-4a46-9e55-08cfd7fbfe50" name="tipoestadocofecyt" type="System.String" label="tipoestadocofecyt : System.String" nullable="true" fieldName="_tipoestadocofecyt" />
+        <Property Id="dcd53462-70f0-48f2-b2d0-565ed7f86302" name="contactobeneficiarionombre" type="System.String" label="contactobeneficiarionombre : System.String" nullable="true" fieldName="_contactobeneficiarionombre" />
+        <Property Id="f74ccf47-1ab0-4882-bfbd-8c74a0019aa2" name="contactobeneficiarioapellido" type="System.String" label="contactobeneficiarioapellido : System.String" nullable="true" fieldName="_contactobeneficiarioapellido" />
+        <Property Id="1b4e6240-00fe-4d49-8141-b07c8f2efd06" name="montoSolicitadoCofecyt" type="System.Decimal" label="montoSolicitadoCofecyt : System.Decimal" nullable="true" fieldName="_montoSolicitadoCofecyt" />
+        <Property Id="2184ce5d-3f6e-4b9c-a5fd-d7883fd8c833" name="montoContraparteCofecyt" type="System.Decimal" label="montoContraparteCofecyt : System.Decimal" nullable="true" fieldName="_montoContraparteCofecyt" />
+        <Property Id="6864fd16-2ee5-41a8-8297-8073c20ba9de" name="montoTotalCofecyt" type="System.Decimal" label="montoTotalCofecyt : System.Decimal" nullable="true" fieldName="_montoTotalCofecyt" />
+        <Property Id="1499934d-b7eb-4869-97de-bf1cf4adcaa8" name="montoTotalDgaCofecyt" type="System.Decimal" label="montoTotalDgaCofecyt : System.Decimal" nullable="true" fieldName="_montoTotalDgaCofecyt" />
+        <Property Id="4f12bc88-f1c0-435d-9725-80bea42f1890" name="montoDevolucionCofecyt" type="System.Decimal" label="montoDevolucionCofecyt : System.Decimal" nullable="true" fieldName="_montoDevolucionCofecyt" />
+        <Property Id="42e7f292-2aac-4a42-94b2-7ce270c64ebc" name="montoRescindidoCofecyt" type="System.Decimal" label="montoRescindidoCofecyt : System.Decimal" nullable="true" fieldName="_montoRescindidoCofecyt" />
       </domainMethodReturnShape>
     </domainModelHasDomainMethodReturnShapes>
   </domainMethodReturnShapes>

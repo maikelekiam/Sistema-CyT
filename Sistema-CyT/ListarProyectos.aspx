@@ -83,6 +83,26 @@
                     </asp:GridView>
                 </div>
             </div>
+            <div class="form-group">
+                <br />
+                <div class="col-md-12 col-md-offset-0">
+                    <asp:GridView ID="dgvProyectoCofecyts" runat="server" AutoGenerateColumns="false"
+                        CssClass="table table-hover table-striped" BorderWidth="2px"
+                        GridLines="Both"
+                        OnSelectedIndexChanged="dgvProyectoCofecyts_SelectedIndexChanged">
+                        <Columns>
+                            <asp:BoundField HeaderText="Expediente COPADE" DataField="numeroEspedienteCopade" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="150" />
+                            <asp:BoundField HeaderText="Numero Convenio" DataField="numeroConvenio" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="150" />
+                            <asp:BoundField HeaderText="Nombre del Proyecto" DataField="titulo" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="400" />
+                            <asp:BoundField HeaderText="Estado" DataField="tipoestadocofecyt" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="100" />
+                            
+                            
+                            
+                            <asp:ButtonField HeaderStyle-Width="30" HeaderText="Detalles" CommandName="select" ControlStyle-Width="30" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" ControlStyle-CssClass="glyphicon glyphicon-search" />
+                        </Columns>
+                    </asp:GridView>
+                </div>
+            </div>
         </asp:Panel>
     </div>
 </asp:Content>

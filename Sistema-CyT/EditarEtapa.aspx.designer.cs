@@ -10,7 +10,7 @@
 namespace Sistema_CyT {
     
     
-    public partial class ListarProyectos {
+    public partial class EditarEtapa {
         
         /// <summary>
         /// PanelSuperior control.
@@ -22,102 +22,129 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.Panel PanelSuperior;
         
         /// <summary>
-        /// lblFondoChoice control.
+        /// lblNombreModal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFondoChoice;
+        protected global::System.Web.UI.WebControls.Label lblNombreModal;
         
         /// <summary>
-        /// ddlFondoChoice control.
+        /// txtNombreModal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFondoChoice;
+        protected global::System.Web.UI.WebControls.TextBox txtNombreModal;
         
         /// <summary>
-        /// lblConvocatoria control.
+        /// lblTipoEstadoEtapa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblConvocatoria;
+        protected global::System.Web.UI.WebControls.Label lblTipoEstadoEtapa;
         
         /// <summary>
-        /// ddlConvocatoria control.
+        /// ddlTipoEstadoEtapa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlConvocatoria;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoEstadoEtapa;
         
         /// <summary>
-        /// btnTodos control.
+        /// lblFechaInicioModal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnTodos;
+        protected global::System.Web.UI.WebControls.Label lblFechaInicioModal;
         
         /// <summary>
-        /// lblEstado control.
+        /// txtFechaInicioModal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEstado;
+        protected global::System.Web.UI.WebControls.TextBox txtFechaInicioModal;
         
         /// <summary>
-        /// ddlEstado control.
+        /// lblFechaFinalModal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEstado;
+        protected global::System.Web.UI.WebControls.Label lblFechaFinalModal;
         
         /// <summary>
-        /// btnFiltrar control.
+        /// txtFechaFinalModal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFiltrar;
+        protected global::System.Web.UI.WebControls.TextBox txtFechaFinalModal;
         
         /// <summary>
-        /// lblCantidadProyectosSumatoria control.
+        /// lblRendicion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCantidadProyectosSumatoria;
+        protected global::System.Web.UI.WebControls.Label lblRendicion;
         
         /// <summary>
-        /// dgvProyectos control.
+        /// chkRendicion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgvProyectos;
+        protected global::System.Web.UI.WebControls.CheckBox chkRendicion;
         
         /// <summary>
-        /// dgvProyectoCofecyts control.
+        /// lblInforme control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgvProyectoCofecyts;
+        protected global::System.Web.UI.WebControls.Label lblInforme;
+        
+        /// <summary>
+        /// chkInforme control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkInforme;
+        
+        /// <summary>
+        /// btnModalSalir control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnModalSalir;
+        
+        /// <summary>
+        /// btnModalActualizar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnModalActualizar;
     }
 }

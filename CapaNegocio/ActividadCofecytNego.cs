@@ -16,6 +16,10 @@ namespace CapaNegocio
         {
             actividadCofecytRepo.GuardarActividadCofecyt(actividadCofecyt);
         }
+        public IEnumerable<ActividadCofecyt> TraerActividadCofecytsSegunIdProyecto(int id)
+        {
+            return actividadCofecytRepo.TraerActividadCofecytsSegunIdProyecto(id);
+        }
 
 
     }
