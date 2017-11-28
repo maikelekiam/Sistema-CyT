@@ -22,9 +22,9 @@ namespace CapaNegocio
             return etapaCofecytRepo.ObtenerEtapaCofecytSegunId(id);
         }
 
-        public void ActualizarEtapaCofecyt(EtapaCofecyt etapaCofecyt)
+        public int ActualizarEtapaCofecyt(EtapaCofecyt etapaCofecyt)
         {
-            etapaCofecytRepo.ActualizarEtapaCofecyt(etapaCofecyt);
+            return etapaCofecytRepo.ActualizarEtapaCofecyt(etapaCofecyt);
         }
         public IEnumerable<EtapaCofecyt> TraerEtapaCofecytsSegunIdProyecto(int id)
         {

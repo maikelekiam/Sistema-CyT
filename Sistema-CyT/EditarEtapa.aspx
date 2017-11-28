@@ -82,12 +82,6 @@
                 <asp:Button runat="server" ID="btnModalSalir" Text="SALIR" class="btn btn-danger" OnClick="btnModalSalir_Click" />
                 <asp:Button runat="server" ID="btnModalActualizar" Text="ACTUALIZAR" CssClass="btn btn-success" OnClick="btnModalActualizar_Click"/>
             </div>
-
-
-
-
-
-
         </asp:Panel>
     </div>
 </asp:Content>

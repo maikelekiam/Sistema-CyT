@@ -25,5 +25,13 @@ namespace CapaRepositorio
                 return result;
             }
         }
+        public void ActualizarActividadCofecyt(ActividadCofecyt actividadCofecyt)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                modeloDeDominio.AttachCopy(actividadCofecyt);
+                modeloDeDominio.SaveChanges();
+            }
+        }
     }
 }

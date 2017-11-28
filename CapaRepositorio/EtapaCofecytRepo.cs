@@ -28,13 +28,14 @@ namespace CapaRepositorio
             }
         }
 
-        public void ActualizarEtapaCofecyt(EtapaCofecyt etapaCofecyt)
+        public int ActualizarEtapaCofecyt(EtapaCofecyt etapaCofecyt)
         {
             using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
             {
                 modeloDeDominio.AttachCopy(etapaCofecyt);
                 modeloDeDominio.SaveChanges();
             }
+            return etapaCofecyt.IdEtapaCofecyt;
         }
         public IEnumerable<EtapaCofecyt> TraerEtapaCofecytsSegunIdProyecto(int id)
         {

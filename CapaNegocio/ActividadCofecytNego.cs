@@ -20,6 +20,10 @@ namespace CapaNegocio
         {
             return actividadCofecytRepo.TraerActividadCofecytsSegunIdProyecto(id);
         }
+        public void ActualizarActividadCofecyt(ActividadCofecyt actividadCofecyt)
+        {
+            actividadCofecytRepo.ActualizarActividadCofecyt(actividadCofecyt);
+        }
 
 
     }
