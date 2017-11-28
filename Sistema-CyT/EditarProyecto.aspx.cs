@@ -387,6 +387,14 @@ namespace Sistema_CyT
 
                 txtNombre.Text = proyecto.Nombre.ToString();
                 txtNumeroExp.Text = proyecto.NumeroExpediente.ToString();
+
+                txtObjetivos.Text = proyecto.Objetivos;
+                txtDestinatarios.Text = proyecto.Destinatarios;
+                ddlSector.Text = sectorNego.TraerSector(proyecto.IdSector.Value);
+                ddlTematica.Text = tematicaNego.TraerTematica(proyecto.IdTematica.Value);
+
+
+
                 ddlConvocatoria.Text = Convert.ToString(proyecto.IdConvocatoria);
                 txtMontoSolicitado.Text = Convert.ToString(proyecto.MontoSolicitado);
                 txtMontoContraparte.Text = Convert.ToString(proyecto.MontoContraparte);
@@ -591,7 +599,10 @@ namespace Sistema_CyT
                     && ddlTipoEstado.SelectedValue != "-1"
                     && ddlContacto.SelectedValue != "-1"
                     && ddlConvocatoria.SelectedValue != "-1"
-                    && ddlTipoProyecto.SelectedValue != "-1")
+                    && ddlTipoProyecto.SelectedValue != "-1"
+                    && ddlSector.SelectedValue != "-1"
+                    && ddlTematica.SelectedValue != "-1"
+                    )
                 {
                     ActualizarProyecto();
                     ListarProyectos.numeroExpedienteProyectoSeleccionado = txtNumeroExp.Text;
@@ -619,6 +630,12 @@ namespace Sistema_CyT
 
             proyecto.Nombre = txtNombre.Text;
             proyecto.NumeroExpediente = txtNumeroExp.Text;
+
+            proyecto.Destinatarios = txtDestinatarios.Text;
+            proyecto.Objetivos = txtObjetivos.Text;
+            proyecto.IdSector = sectorNego.TraerSectorIdSegunItem(ddlSector.SelectedItem.ToString());
+            proyecto.IdTematica = tematicaNego.TraerTematicaIdSegunItem(ddlTematica.SelectedItem.ToString());
+
             proyecto.IdConvocatoria = Int32.Parse(ddlConvocatoria.SelectedValue);
             proyecto.MontoSolicitado = Convert.ToDecimal(txtMontoSolicitado.Text);
             proyecto.MontoContraparte = Convert.ToDecimal(txtMontoContraparte.Text);
@@ -1046,6 +1063,13 @@ namespace Sistema_CyT
 
                         txtNombre.Text = proyecto.Nombre.ToString();
                         txtNumeroExp.Text = proyecto.NumeroExpediente.ToString();
+
+                        txtDestinatarios.Text = proyecto.Destinatarios;
+                        txtObjetivos.Text = proyecto.Objetivos;
+                        ddlSector.Text = sectorNego.TraerSector(proyecto.IdSector.Value);
+                        ddlTematica.Text = tematicaNego.TraerTematica(proyecto.IdTematica.Value);
+
+
                         ddlConvocatoria.Text = Convert.ToString(proyecto.IdConvocatoria);
                         txtMontoSolicitado.Text = Convert.ToString(proyecto.MontoSolicitado);
                         txtMontoContraparte.Text = Convert.ToString(proyecto.MontoContraparte);
@@ -1287,6 +1311,13 @@ namespace Sistema_CyT
 
                     txtNombre.Text = proyecto.Nombre.ToString();
                     txtNumeroExp.Text = proyecto.NumeroExpediente.ToString();
+
+                    txtObjetivos.Text = proyecto.Objetivos;
+                    txtDestinatarios.Text = proyecto.Destinatarios;
+                    ddlSector.Text = sectorNego.TraerSector(proyecto.IdSector.Value);
+                    ddlTematica.Text = tematicaNego.TraerTematica(proyecto.IdTematica.Value);
+
+
                     ddlConvocatoria.Text = Convert.ToString(proyecto.IdConvocatoria);
                     txtMontoSolicitado.Text = Convert.ToString(proyecto.MontoSolicitado);
                     txtMontoContraparte.Text = Convert.ToString(proyecto.MontoContraparte);

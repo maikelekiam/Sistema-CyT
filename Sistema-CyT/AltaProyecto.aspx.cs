@@ -241,7 +241,9 @@ namespace Sistema_CyT
                 && ddlTipoEstado.SelectedValue != "-1"
                 && ddlContacto.SelectedValue != "-1"
                 && ddlConvocatoria.SelectedValue != "-1"
-                && ddlTipoProyecto.SelectedValue != "-1")
+                && ddlTipoProyecto.SelectedValue != "-1"
+                && ddlSector.SelectedValue != "-1"
+                && ddlTematica.SelectedValue != "-1")
                 {
                     GuardarProyecto();
 
@@ -318,36 +320,34 @@ namespace Sistema_CyT
         {
             Proyecto proyecto = new Proyecto();
 
-            proyecto.Nombre = txtNombre.Text;
-            proyecto.NumeroExpediente = txtNumeroExp.Text;
             proyecto.IdConvocatoria = Int32.Parse(ddlConvocatoria.SelectedValue);
+            proyecto.NumeroExpediente = txtNumeroExp.Text;
+            proyecto.IdTipoProyecto = tipoProyectoNego.TraerTipoProyectoIdSegunItem(ddlTipoProyecto.SelectedItem.ToString());
+            proyecto.Nombre = txtNombre.Text;
+            proyecto.Objetivos = txtObjetivos.Text;
+            proyecto.Descripcion = txtDescripcion.Text;
+            proyecto.Destinatarios = txtDestinatarios.Text;
+            proyecto.IdLocalidad = localidadNego.TraerLocalidadIdSegunItem(ddlLocalidad.SelectedItem.ToString());
+            proyecto.IdSector = sectorNego.TraerSectorIdSegunItem(ddlSector.SelectedItem.ToString());
+            proyecto.IdTematica = tematicaNego.TraerTematicaIdSegunItem(ddlTematica.SelectedItem.ToString());
+            proyecto.Observaciones = txtObservaciones.Text;
             proyecto.MontoSolicitado = Int32.Parse(txtMontoSolicitado.Text);
             proyecto.MontoContraparte = Int32.Parse(txtMontoContraparte.Text);
             proyecto.MontoTotal = Int32.Parse(txtMontoTotal.Text);
-            proyecto.Descripcion = txtDescripcion.Text;
-            proyecto.Observaciones = txtObservaciones.Text;
 
+            //PARA EL REFERENTE
             string cadena = ddlContacto.SelectedItem.ToString();
             string[] separadas;
             separadas = cadena.Split(',');
             string itemApellido = separadas[0];
             string itemNombre = separadas[1];
-
             proyecto.IdPersona = personaNego.TraerPersonaIdSegunItem(itemApellido, itemNombre);
 
-            if (ddlEmpresa.SelectedValue == "-1")
-            {
-                proyecto.IdEmpresa = null;
-            }
-            else
-            {
-                proyecto.IdEmpresa = empresaNego.TraerEmpresaIdSegunItem(ddlEmpresa.SelectedItem.ToString());
-            }
+            //PARA EMPRESA
+            if (ddlEmpresa.SelectedValue == "-1") { proyecto.IdEmpresa = null; }
+            else { proyecto.IdEmpresa = empresaNego.TraerEmpresaIdSegunItem(ddlEmpresa.SelectedItem.ToString()); }
 
-            proyecto.IdLocalidad = localidadNego.TraerLocalidadIdSegunItem(ddlLocalidad.SelectedItem.ToString());
             proyecto.IdTipoEstado = tipoEstadoNego.TraerTipoEstadoIdSegunItem(ddlTipoEstado.SelectedItem.ToString());
-            proyecto.IdTipoProyecto = tipoProyectoNego.TraerTipoProyectoIdSegunItem(ddlTipoProyecto.SelectedItem.ToString());
-
 
             int idProyecto = proyectoNego.GuardarProyecto(proyecto);
 
@@ -458,7 +458,7 @@ namespace Sistema_CyT
         {
             idEmpresaActual = ddlEmpresa.SelectedIndex;
         }
-        
+
 
         protected void ddlFondoChoice_SelectedIndexChanged(object sender, EventArgs e)
         {

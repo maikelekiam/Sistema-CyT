@@ -173,6 +173,18 @@
         <orm:field name="idTipoProyecto" property="IdTipoProyecto" behavior="readwrite" uniqueId="fef2f96a-6a2c-45db-9853-9fcadec0e591" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
           <orm:column name="idTipoProyecto" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:field>
+        <orm:field name="objetivos" property="Objetivos" behavior="readwrite" uniqueId="178db3a0-a96d-40ca-8bf4-7b2b3bf8e875" type="System.String">
+          <orm:column name="objetivos" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="idTematica" property="IdTematica" behavior="readwrite" uniqueId="e23865e7-f032-4c57-b353-f85915b71a9a" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="idTematica" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="idSector" property="IdSector" behavior="readwrite" uniqueId="63c53966-4edf-49b4-a4ea-1b22483902b9" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="idSector" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="destinatarios" property="Destinatarios" behavior="readwrite" uniqueId="b68f8de3-4df3-4936-9ab1-12c8ca117264" type="System.String">
+          <orm:column name="destinatarios" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
         <orm:field name="convocatorium" property="Convocatorium" behavior="readwrite" uniqueId="ded61963-b825-47d3-b3a8-8eedd9c5c626" type="CapaDominio.Convocatorium">
           <orm:reference uniqueId="ac9f32d1-ae59-4558-9884-5f26b54fd0a4" association-name="ProyectoHasConvocatorium">
             <orm:sharedfield name="idConvocatoria" target-class="CapaDominio.Convocatorium" target-field="idConvocatoria" />
@@ -220,6 +232,18 @@
         </orm:field>
         <orm:field name="actuacions" property="Actuacions" behavior="readwrite" uniqueId="5af5987f-6615-4166-87d1-18fc6753df20" type="CapaDominio.Actuacion">
           <orm:collection element-class="CapaDominio.Actuacion" inverse-field="proyecto" order-by="" uniqueId="fddab350-64fc-46c5-b19e-046011436d5b" />
+        </orm:field>
+        <orm:field name="tematica" property="Tematica" behavior="readwrite" uniqueId="f3e6a155-ac4d-416d-ab4e-25733f3a622a" type="CapaDominio.Tematica">
+          <orm:reference uniqueId="8b3a6003-4f92-47f0-89a6-507083d5cb05" association-name="ProyectoHasTematica">
+            <orm:sharedfield name="idTematica" target-class="CapaDominio.Tematica" target-field="idTematica" />
+            <orm:constraint name="FK_Proyecto_Tematica" delete-action="dbdefaultrule" destination-table="Tematica" />
+          </orm:reference>
+        </orm:field>
+        <orm:field name="sector" property="Sector" behavior="readwrite" uniqueId="f2efeb7f-93aa-4773-ba5c-dc1712a34557" type="CapaDominio.Sector">
+          <orm:reference uniqueId="fac1b795-6ebb-46d9-9f66-118d1b97611b" association-name="ProyectoHasSector">
+            <orm:sharedfield name="idSector" target-class="CapaDominio.Sector" target-field="idSector" />
+            <orm:constraint name="FK_Proyecto_Sector" delete-action="dbdefaultrule" destination-table="Sector" />
+          </orm:reference>
         </orm:field>
       </orm:class>
       <orm:class name="Persona" uniqueId="1fc19e9a-77a4-4794-b62b-d8196b56a617">
@@ -1077,6 +1101,9 @@
         <orm:field name="proyectoCofecyts" property="ProyectoCofecyts" behavior="readwrite" uniqueId="b6703938-94e1-4042-89b3-9f55adeaa408" type="CapaDominio.ProyectoCofecyt">
           <orm:collection element-class="CapaDominio.ProyectoCofecyt" inverse-field="tematica" order-by="" uniqueId="273fdad3-313a-40c6-8169-cdb091cebb14" />
         </orm:field>
+        <orm:field name="proyectos" property="Proyectos" behavior="readwrite" uniqueId="0dd4c8f6-148a-49ba-9c23-ee589c70a6d6" type="CapaDominio.Proyecto">
+          <orm:collection element-class="CapaDominio.Proyecto" inverse-field="tematica" order-by="" uniqueId="8b3a6003-4f92-47f0-89a6-507083d5cb05" />
+        </orm:field>
       </orm:class>
       <orm:class name="Sector" uniqueId="e98746a0-9bf8-4973-a6c4-49438bb311a3">
         <orm:table name="Sector" />
@@ -1095,6 +1122,9 @@
         </orm:field>
         <orm:field name="proyectoCofecyts" property="ProyectoCofecyts" behavior="readwrite" uniqueId="48041642-ed99-4fa2-9285-2b0bebd36cdc" type="CapaDominio.ProyectoCofecyt">
           <orm:collection element-class="CapaDominio.ProyectoCofecyt" inverse-field="sector" order-by="" uniqueId="b6d7b825-85df-4f5f-8ccb-072ea7a0eb97" />
+        </orm:field>
+        <orm:field name="proyectos" property="Proyectos" behavior="readwrite" uniqueId="f4989f24-e1e5-45b2-ac8c-adb9d4c4e33e" type="CapaDominio.Proyecto">
+          <orm:collection element-class="CapaDominio.Proyecto" inverse-field="sector" order-by="" uniqueId="fac1b795-6ebb-46d9-9f66-118d1b97611b" />
         </orm:field>
       </orm:class>
       <orm:class name="EtapaCofecyt" uniqueId="84435d21-a29f-4197-87a1-122ee1660ed0">
@@ -1235,6 +1265,10 @@
         <orm:column name="observaciones" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         <orm:column name="descripcion" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         <orm:column name="idTipoProyecto" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="objetivos" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="idTematica" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="idSector" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="destinatarios" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         <orm:constraint name="FK_Proyecto_Convocatoria" delete-action="dbdefaultrule" destination-table="Convocatoria">
           <orm:column name="idConvocatoria" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
         </orm:constraint>
@@ -1252,6 +1286,12 @@
         </orm:constraint>
         <orm:constraint name="FK_Proyecto_TipoProyecto" delete-action="dbdefaultrule" destination-table="TipoProyecto">
           <orm:column name="idTipoProyecto" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+        <orm:constraint name="FK_Proyecto_Tematica" delete-action="dbdefaultrule" destination-table="Tematica">
+          <orm:column name="idTematica" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+        <orm:constraint name="FK_Proyecto_Sector" delete-action="dbdefaultrule" destination-table="Sector">
+          <orm:column name="idSector" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:constraint>
       </orm:table>
       <orm:table name="Persona">
@@ -1672,6 +1712,10 @@
       <Property Id="22b8294e-3912-42ea-bf97-e57f1a67c5e9" name="Observaciones" label="Observaciones : String" kind="Persistent" fieldName="observaciones" />
       <Property Id="767e6d6c-010d-4122-afc4-7346f349c742" name="Descripcion" label="Descripcion : String" kind="Persistent" fieldName="descripcion" />
       <Property Id="fef2f96a-6a2c-45db-9853-9fcadec0e591" name="IdTipoProyecto" type="Int32" label="IdTipoProyecto : Int32" nullable="true" kind="Persistent" fieldName="idTipoProyecto" />
+      <Property Id="178db3a0-a96d-40ca-8bf4-7b2b3bf8e875" name="Objetivos" label="Objetivos : String" kind="Persistent" fieldName="objetivos" />
+      <Property Id="e23865e7-f032-4c57-b353-f85915b71a9a" name="IdTematica" type="Int32" label="IdTematica : Int32" nullable="true" kind="Persistent" fieldName="idTematica" />
+      <Property Id="63c53966-4edf-49b4-a4ea-1b22483902b9" name="IdSector" type="Int32" label="IdSector : Int32" nullable="true" kind="Persistent" fieldName="idSector" />
+      <Property Id="b68f8de3-4df3-4936-9ab1-12c8ca117264" name="Destinatarios" label="Destinatarios : String" kind="Persistent" fieldName="destinatarios" />
       <AssociationTargets>
         <Association Id="ac9f32d1-ae59-4558-9884-5f26b54fd0a4" SourceMultiplicity="One" name="ProyectoHasConvocatorium">
           <DomainClassMoniker name="/ModeloDeDominio/Convocatorium" />
@@ -1751,6 +1795,32 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
+        <Association Id="8b3a6003-4f92-47f0-89a6-507083d5cb05" SourceMultiplicity="ZeroOne" name="ProyectoHasTematica">
+          <DomainClassMoniker name="/ModeloDeDominio/Tematica" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="1eca9cd8-86c9-4db0-afe2-352d5b6143e5">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Tematica/Proyectos" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="a416213e-9b39-4a39-bceb-f7461f3934a4">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Proyecto/Tematica" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+        <Association Id="fac1b795-6ebb-46d9-9f66-118d1b97611b" SourceMultiplicity="ZeroOne" name="ProyectoHasSector">
+          <DomainClassMoniker name="/ModeloDeDominio/Sector" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="7ae59279-3992-439d-8f93-c0b07bbb4cec">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Sector/Proyectos" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="6c4981df-7a09-4f69-965d-7506221b522f">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Proyecto/Sector" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
       </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="9b342528-9899-4506-9b3b-7d47ade228d5">
@@ -1782,6 +1852,12 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="cfa9df6c-cd2c-4611-a493-3c7ebb8eef16">
           <NavigationalProperty Id="7c88a1d0-740b-4d32-97e2-eea5a26e6012" name="TipoProyecto" type="TipoProyecto" label="TipoProyecto : TipoProyecto" nullable="true" kind="Persistent" fieldName="tipoProyecto" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="5539cdb1-4e61-438f-865c-512f435aa133">
+          <NavigationalProperty Id="f3e6a155-ac4d-416d-ab4e-25733f3a622a" name="Tematica" type="Tematica" label="Tematica : Tematica" nullable="true" kind="Persistent" fieldName="tematica" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="26ec8158-9d37-48ec-ba2f-5117d5386005">
+          <NavigationalProperty Id="f2efeb7f-93aa-4773-ba5c-dc1712a34557" name="Sector" type="Sector" label="Sector : Sector" nullable="true" kind="Persistent" fieldName="sector" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -2581,6 +2657,9 @@
         <classHasNavigationalProperties Id="ed383bf0-30cc-4166-a0b5-5c6a24d06fa1">
           <NavigationalProperty Id="b6703938-94e1-4042-89b3-9f55adeaa408" name="ProyectoCofecyts" type="IList&lt;ProyectoCofecyt&gt;" label="ProyectoCofecyts : IList&lt;ProyectoCofecyt&gt;" nullable="true" kind="Persistent" fieldName="proyectoCofecyts" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="a08c0b51-f48c-424c-9a4e-c9f62e6dafe8">
+          <NavigationalProperty Id="0dd4c8f6-148a-49ba-9c23-ee589c70a6d6" name="Proyectos" type="IList&lt;Proyecto&gt;" label="Proyectos : IList&lt;Proyecto&gt;" nullable="true" kind="Persistent" fieldName="proyectos" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="e98746a0-9bf8-4973-a6c4-49438bb311a3" name="Sector" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdSector">
@@ -2589,6 +2668,9 @@
       <navigationalProperties>
         <classHasNavigationalProperties Id="1f2db5f3-b763-45b7-981e-38cac899cc67">
           <NavigationalProperty Id="48041642-ed99-4fa2-9285-2b0bebd36cdc" name="ProyectoCofecyts" type="IList&lt;ProyectoCofecyt&gt;" label="ProyectoCofecyts : IList&lt;ProyectoCofecyt&gt;" nullable="true" kind="Persistent" fieldName="proyectoCofecyts" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="9efa75da-224d-40b0-bae7-8157840f39d2">
+          <NavigationalProperty Id="f4989f24-e1e5-45b2-ac8c-adb9d4c4e33e" name="Proyectos" type="IList&lt;Proyecto&gt;" label="Proyectos : IList&lt;Proyecto&gt;" nullable="true" kind="Persistent" fieldName="proyectos" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>

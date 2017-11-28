@@ -206,6 +206,58 @@ namespace CapaDominio
 			}
 		}
 		
+		private string objetivos;
+		public virtual string Objetivos
+		{
+			get
+			{
+				return this.objetivos;
+			}
+			set
+			{
+				this.objetivos = value;
+			}
+		}
+		
+		private int? idTematica;
+		public virtual int? IdTematica
+		{
+			get
+			{
+				return this.idTematica;
+			}
+			set
+			{
+				this.idTematica = value;
+			}
+		}
+		
+		private int? idSector;
+		public virtual int? IdSector
+		{
+			get
+			{
+				return this.idSector;
+			}
+			set
+			{
+				this.idSector = value;
+			}
+		}
+		
+		private string destinatarios;
+		public virtual string Destinatarios
+		{
+			get
+			{
+				return this.destinatarios;
+			}
+			set
+			{
+				this.destinatarios = value;
+			}
+		}
+		
 		private Convocatorium convocatorium;
 		public virtual Convocatorium Convocatorium
 		{
@@ -281,6 +333,32 @@ namespace CapaDominio
 			set
 			{
 				this.tipoProyecto = value;
+			}
+		}
+		
+		private Tematica tematica;
+		public virtual Tematica Tematica
+		{
+			get
+			{
+				return this.tematica;
+			}
+			set
+			{
+				this.tematica = value;
+			}
+		}
+		
+		private Sector sector;
+		public virtual Sector Sector
+		{
+			get
+			{
+				return this.sector;
+			}
+			set
+			{
+				this.sector = value;
 			}
 		}
 		
