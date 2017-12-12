@@ -427,6 +427,8 @@ namespace Sistema_CyT
 
                             dgvActividadesCofecyt.DataSource = listaActividadCofecytsTemporal;
                             dgvActividadesCofecyt.DataBind();
+
+                            LlenarListaEtapasActividad();
                         }
                     }
                     else
@@ -798,6 +800,8 @@ namespace Sistema_CyT
 
                         dgvActividadesCofecyt.DataSource = listaActividadCofecytsTemporal;
                         dgvActividadesCofecyt.DataBind();
+
+                        LlenarListaEtapasActividad();
                     }
                 }
 
@@ -1047,6 +1051,8 @@ namespace Sistema_CyT
 
                     dgvActividadesCofecyt.DataSource = listaActividadCofecytsTemporal;
                     dgvActividadesCofecyt.DataBind();
+
+                    LlenarListaEtapasActividad();
 
                     //txtTituloCofecyt.Text = proyectoCofecyt.Titulo;
                     //txtObjetivosCofecyt.Text = proyectoCofecyt.Objetivos;
@@ -1678,10 +1684,7 @@ namespace Sistema_CyT
 
                 actividadCofecyt.IdProyectoCofecyt = idProyectoCofecytActual;
 
-                //actividadCofecyt.IdEtapaCofecyt = idEtapaCofecytUltima - listaEtapaCofecytsTemporal.Count + item2.IdEtapaCofecyt;
                 actividadCofecyt.IdEtapaCofecyt = item2.IdEtapaCofecyt;
-
-
 
                 actividadCofecyt.Nombre = item2.Nombre;
                 actividadCofecyt.Descripcion = item2.Descripcion;
@@ -1761,12 +1764,83 @@ namespace Sistema_CyT
 
         protected void btnModalActividadCofecytGuardar_Click(object sender, EventArgs e)
         {
+            ModalActividadCofecytGuardar();
 
+            LlenarGrillaActividadesCofecyt();
         }
 
         protected void btnModalEtapaCofecytGuardar_Click(object sender, EventArgs e)
         {
+            ModalEtapaCofecytGuardar();
 
+            LlenarGrillaEtapasCofecyt();
+
+            LlenarListaEtapasActividad();
+        }
+        public void ModalEtapaCofecytGuardar()
+        {
+            EtapaCofecyt etapaCofecyt = new EtapaCofecyt();
+
+            etapaCofecyt.IdProyectoCofecyt = idProyectoCofecytActual;
+            etapaCofecyt.Nombre = txtNombreModalCofecyt.Text;
+            etapaCofecyt.IdTipoEstadoEtapa = tipoEstadoEtapaNego.TraerTipoEstadoEtapaIdSegunItem(ddlTipoEstadoEtapaCofecyt.SelectedItem.ToString());
+            etapaCofecyt.FechaInicio = DateTime.ParseExact(txtFechaInicioCofecyt.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+            etapaCofecyt.FechaFin = DateTime.ParseExact(txtFechaFinCofecyt.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+            etapaCofecyt.DuracionSegunUvt = txtDuracionSegunUvt.Text;
+
+            if (chkRendicionCofecyt.Checked)
+            {
+                etapaCofecyt.Rendicion = true;
+            }
+            else if (!chkRendicionCofecyt.Checked)
+            {
+                etapaCofecyt.Rendicion = false;
+            }
+
+            if (chkInformeCofecyt.Checked)
+            {
+                etapaCofecyt.Informe = true;
+            }
+            else if (!chkInformeCofecyt.Checked)
+            {
+                etapaCofecyt.Informe = false;
+            }
+
+            listaEtapaCofecytsTemporal.Add(etapaCofecyt);
+        }
+
+        public void LlenarGrillaEtapasCofecyt()
+        {
+            dgvEtapasCofecyt.DataSource = listaEtapaCofecytsTemporal.ToList();
+            dgvEtapasCofecyt.DataBind();
+        }
+        public void LlenarListaEtapasActividad() //dentro del modal actividad cofecyt
+        {
+            ddlEtapaActividad.DataSource = listaEtapaCofecytsTemporal.ToList();
+            ddlEtapaActividad.DataBind();
+        }
+
+        public void ModalActividadCofecytGuardar()
+        {
+            ActividadCofecyt actividadCofecyt = new ActividadCofecyt();
+
+            actividadCofecyt.IdProyectoCofecyt = idProyectoCofecytActual;
+            actividadCofecyt.Nombre = txtNombreActividadCofecyt.Text;
+            actividadCofecyt.Descripcion = txtDescripcionActividadCofecyt.Text;
+            actividadCofecyt.ResultadosEsperados = txtResultadosEsperadosActividadCofecyt.Text;
+            actividadCofecyt.Localizacion = txtLocalizacionActividadCofecyt.Text;
+
+            actividadCofecyt.IdEtapaCofecyt = listaEtapaCofecytsTemporal.ElementAt(ddlEtapaActividad.SelectedIndex).IdEtapaCofecyt;
+
+            listaActividadCofecytsTemporal.Add(actividadCofecyt);
+        }
+        public void LlenarGrillaActividadesCofecyt()
+        {
+            //Hay que transformar el nombre de etapa que es un int y pasarlo a string
+
+            dgvActividadesCofecyt.DataSource = listaActividadCofecytsTemporal.ToList().OrderBy(p => p.IdEtapaCofecyt);
+
+            dgvActividadesCofecyt.DataBind();
         }
     }
 }
