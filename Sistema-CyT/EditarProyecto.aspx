@@ -61,7 +61,7 @@
                         Font-Bold="true"
                         CssClass="selectpicker form-control show-tick"
                         data-live-search="true"
-                        DataTextField="nombre"
+                        
                         AutoPostBack="True"
                         AppendDataBoundItems="false"
                         OnSelectedIndexChanged="ddlProyectoChoice_SelectedIndexChanged">
@@ -911,7 +911,7 @@
                         <Columns>
                             <asp:TemplateField HeaderStyle-BackColor="#cccccc" HeaderText="Etapa" HeaderStyle-HorizontalAlign="Left" HeaderStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Center" ControlStyle-Font-Size="Small" HeaderStyle-Width="100">
                                 <ItemTemplate>
-                                    <asp:Label ID="l2" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "idEtapaCofecyt") %>'></asp:Label>
+                                    <asp:Label ID="l2" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "EtapaCofecyt.Nombre") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Actividad" DataField="nombre" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="250" />

@@ -21,7 +21,7 @@ using Telerik.OpenAccess.Metadata.Fluent.Advanced;
 
 namespace CapaDominio	
 {
-	public partial class pr03ResultSet0
+	public partial class pr03ResultSet01
 	{
 		private int _idProyectoCofecyt;
 		public virtual int idProyectoCofecyt
@@ -101,6 +101,32 @@ namespace CapaDominio
 			}
 		}
 		
+		private string _sector;
+		public virtual string sector
+		{
+			get
+			{
+				return this._sector;
+			}
+			set
+			{
+				this._sector = value;
+			}
+		}
+		
+		private string _tematica;
+		public virtual string tematica
+		{
+			get
+			{
+				return this._tematica;
+			}
+			set
+			{
+				this._tematica = value;
+			}
+		}
+		
 		private string _observaciones;
 		public virtual string observaciones
 		{
@@ -150,6 +176,45 @@ namespace CapaDominio
 			set
 			{
 				this._numeroExpedienteDga = value;
+			}
+		}
+		
+		private string _uvt;
+		public virtual string uvt
+		{
+			get
+			{
+				return this._uvt;
+			}
+			set
+			{
+				this._uvt = value;
+			}
+		}
+		
+		private string _directornombre;
+		public virtual string directornombre
+		{
+			get
+			{
+				return this._directornombre;
+			}
+			set
+			{
+				this._directornombre = value;
+			}
+		}
+		
+		private string _directorapellido;
+		public virtual string directorapellido
+		{
+			get
+			{
+				return this._directorapellido;
+			}
+			set
+			{
+				this._directorapellido = value;
 			}
 		}
 		
@@ -254,6 +319,32 @@ namespace CapaDominio
 			set
 			{
 				this._tipoestadocofecyt = value;
+			}
+		}
+		
+		private string _contactobeneficiarionombre;
+		public virtual string contactobeneficiarionombre
+		{
+			get
+			{
+				return this._contactobeneficiarionombre;
+			}
+			set
+			{
+				this._contactobeneficiarionombre = value;
+			}
+		}
+		
+		private string _contactobeneficiarioapellido;
+		public virtual string contactobeneficiarioapellido
+		{
+			get
+			{
+				return this._contactobeneficiarioapellido;
+			}
+			set
+			{
+				this._contactobeneficiarioapellido = value;
 			}
 		}
 		

@@ -11,14 +11,14 @@
             <div class="panel-body">
                 <!--CONTACTO-->
                 <div class="form-group">
-                    <asp:Label ID="lblContacto" runat="server" Text="CONTACTO" CssClass="col-md-2 control-label"> </asp:Label>
+                    <asp:Label ID="lblContacto" runat="server" Text="REFERENTE" CssClass="col-md-2 control-label"> </asp:Label>
                     <div class="col-md-6">
                         <asp:TextBox ID="txtContacto" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
                 </div>
                 <!--EXPEDIENTE-->
                 <div class="form-group">
-                    <asp:Label ID="lblNumeroExp" runat="server" Text="EXPEDIENTE / N°CONVENIO" CssClass="col-md-2 control-label"> </asp:Label>
+                    <asp:Label ID="lblNumeroExp" runat="server" Text="N°EXPEDIENTE" CssClass="col-md-2 control-label"> </asp:Label>
                     <div class="col-md-6">
                         <asp:TextBox ID="txtNumeroExp" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
@@ -72,7 +72,6 @@
                         <asp:TextBox ID="txtObservaciones" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="1"></asp:TextBox>
                     </div>
                 </div>
-                <asp:Button runat="server" ID="btnActuaciones" Text="ACTUACIONES" CssClass="btn btn-primary" OnClick="btnActuaciones_Click" />
             </div>
 
             <!--LISTA DE ETAPAS CARGADAS-->
@@ -97,8 +96,7 @@
                     </asp:GridView>
                 </div>
             </div>
-
-
+            <asp:Button runat="server" ID="btnActuaciones" Text="HISTORIAL DE ACTUACIONES" CssClass="btn btn-danger" OnClick="btnActuaciones_Click" />
         </asp:Panel>
     </div>
 </asp:Content>

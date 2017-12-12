@@ -33,7 +33,6 @@ namespace Sistema_CyT
         TipoEstadoCofecytNego tipoEstadoCofecytNego = new TipoEstadoCofecytNego();
         ActividadCofecytNego actividadCofecytNego = new ActividadCofecytNego();
 
-
         static int idProyectoActual = 1;
         static int idProyectoCofecytActual = 1;
         static int idEmpresaActual = 1;
@@ -230,20 +229,26 @@ namespace Sistema_CyT
         {
             if (fondoNego.ObtenerFondo(Convert.ToInt32(ddlFondoChoice.SelectedValue)).Nombre.ToUpper() == "COFECYT")
             {
-                GuardarProyectoCofecyt();
+                if (txtTituloCofecyt.Text != ""
+                    && txtNumeroExpedienteCopadeCofecyt.Text != ""
+                    )
+                {
+                    GuardarProyectoCofecyt();
 
-                Response.Redirect("ListarProyectos.aspx");
+                    Response.Redirect("ListarProyectos.aspx");
+                }
+                else
+                {
+                    // Mostrar aviso de completar todos los datos
+                }
             }
             else
             {
                 if (
-                ddlLocalidad.SelectedValue != "-1"
-                && ddlTipoEstado.SelectedValue != "-1"
-                && ddlContacto.SelectedValue != "-1"
-                && ddlConvocatoria.SelectedValue != "-1"
-                && ddlTipoProyecto.SelectedValue != "-1"
-                && ddlSector.SelectedValue != "-1"
-                && ddlTematica.SelectedValue != "-1")
+                    ddlConvocatoria.SelectedValue != "-1"
+                    && txtNumeroExp.Text != ""
+                    && txtNombre.Text != ""
+                    )
                 {
                     GuardarProyecto();
 
@@ -322,32 +327,53 @@ namespace Sistema_CyT
 
             proyecto.IdConvocatoria = Int32.Parse(ddlConvocatoria.SelectedValue);
             proyecto.NumeroExpediente = txtNumeroExp.Text;
-            proyecto.IdTipoProyecto = tipoProyectoNego.TraerTipoProyectoIdSegunItem(ddlTipoProyecto.SelectedItem.ToString());
             proyecto.Nombre = txtNombre.Text;
             proyecto.Objetivos = txtObjetivos.Text;
             proyecto.Descripcion = txtDescripcion.Text;
             proyecto.Destinatarios = txtDestinatarios.Text;
-            proyecto.IdLocalidad = localidadNego.TraerLocalidadIdSegunItem(ddlLocalidad.SelectedItem.ToString());
-            proyecto.IdSector = sectorNego.TraerSectorIdSegunItem(ddlSector.SelectedItem.ToString());
-            proyecto.IdTematica = tematicaNego.TraerTematicaIdSegunItem(ddlTematica.SelectedItem.ToString());
             proyecto.Observaciones = txtObservaciones.Text;
-            proyecto.MontoSolicitado = Int32.Parse(txtMontoSolicitado.Text);
-            proyecto.MontoContraparte = Int32.Parse(txtMontoContraparte.Text);
-            proyecto.MontoTotal = Int32.Parse(txtMontoTotal.Text);
+            proyecto.MontoSolicitado = Convert.ToDecimal(txtMontoSolicitado.Text);
+            //proyecto.MontoSolicitado = Int32.Parse(txtMontoSolicitado.Text);
+            proyecto.MontoContraparte = Convert.ToDecimal(txtMontoContraparte.Text);
+            proyecto.MontoTotal = Convert.ToDecimal(txtMontoTotal.Text);
 
             //PARA EL REFERENTE
-            string cadena = ddlContacto.SelectedItem.ToString();
-            string[] separadas;
-            separadas = cadena.Split(',');
-            string itemApellido = separadas[0];
-            string itemNombre = separadas[1];
-            proyecto.IdPersona = personaNego.TraerPersonaIdSegunItem(itemApellido, itemNombre);
+            if (ddlContacto.SelectedValue == "-1") { proyecto.IdPersona = null; }
+            else
+            {
+                string cadena = ddlContacto.SelectedItem.ToString();
+                string[] separadas;
+                separadas = cadena.Split(',');
+                string itemApellido = separadas[0];
+                string itemNombre = separadas[1];
+                proyecto.IdPersona = personaNego.TraerPersonaIdSegunItem(itemApellido, itemNombre);
+            }
 
             //PARA EMPRESA
             if (ddlEmpresa.SelectedValue == "-1") { proyecto.IdEmpresa = null; }
             else { proyecto.IdEmpresa = empresaNego.TraerEmpresaIdSegunItem(ddlEmpresa.SelectedItem.ToString()); }
 
-            proyecto.IdTipoEstado = tipoEstadoNego.TraerTipoEstadoIdSegunItem(ddlTipoEstado.SelectedItem.ToString());
+            //PARA SECTOR
+            if (ddlSector.SelectedValue == "-1") { proyecto.IdSector = null; }
+            else { proyecto.IdSector = sectorNego.TraerSectorIdSegunItem(ddlSector.SelectedItem.ToString()); }
+
+            //PARA TEMATICA
+            if (ddlTematica.SelectedValue == "-1") { proyecto.IdTematica = null; }
+            else { proyecto.IdTematica = tematicaNego.TraerTematicaIdSegunItem(ddlTematica.SelectedItem.ToString()); }
+
+            //PARA TIPO ESTADO
+            if (ddlTipoEstado.SelectedValue == "-1") { proyecto.IdTipoEstado = null; }
+            else { proyecto.IdTipoEstado = tipoEstadoNego.TraerTipoEstadoIdSegunItem(ddlTipoEstado.SelectedItem.ToString()); }
+
+            //PARA LOCALIDAD
+            if (ddlLocalidad.SelectedValue == "-1") { proyecto.IdLocalidad = null; }
+            else { proyecto.IdLocalidad = localidadNego.TraerLocalidadIdSegunItem(ddlLocalidad.SelectedItem.ToString()); }
+
+            //PARA TIPO PROYECTO
+            if (ddlTipoProyecto.SelectedValue == "-1") { proyecto.IdTipoProyecto = null; }
+            else { proyecto.IdTipoProyecto = tipoProyectoNego.TraerTipoProyectoIdSegunItem(ddlTipoProyecto.SelectedItem.ToString()); }
+
+
 
             int idProyecto = proyectoNego.GuardarProyecto(proyecto);
 
@@ -366,23 +392,11 @@ namespace Sistema_CyT
                 //etapa.IdTipoEstadoEtapa = tipoEstadoEtapaNego.TraerTipoEstadoEtapaIdSegunItem(ddlTipoEstadoEtapa.SelectedItem.ToString());
                 etapa.IdTipoEstadoEtapa = item.IdTipoEstadoEtapa;
 
-                if (chkRendicion.Checked)
-                {
-                    etapa.Rendicion = true;
-                }
-                else if (!chkRendicion.Checked)
-                {
-                    etapa.Rendicion = false;
-                }
+                if (chkRendicion.Checked) { etapa.Rendicion = true; }
+                else if (!chkRendicion.Checked) { etapa.Rendicion = false; }
 
-                if (chkInforme.Checked)
-                {
-                    etapa.Informe = true;
-                }
-                else if (!chkInforme.Checked)
-                {
-                    etapa.Informe = false;
-                }
+                if (chkInforme.Checked) { etapa.Informe = true; }
+                else if (!chkInforme.Checked) { etapa.Informe = false; }
 
                 etapaNego.GuardarEtapa(etapa);
             }
@@ -498,7 +512,6 @@ namespace Sistema_CyT
             ddlConvocatoria.DataBind();
         }
 
-
         protected void btnModalEtapaCofecytGuardar_Click(object sender, EventArgs e)
         {
             ModalEtapaCofecytGuardar();
@@ -524,49 +537,74 @@ namespace Sistema_CyT
             proyectoCofecyt.Objetivos = txtObjetivosCofecyt.Text;
             proyectoCofecyt.Descripcion = txtDescripcionCofecyt.Text;
             proyectoCofecyt.Destinatarios = txtDestinatariosCofecyt.Text;
-            proyectoCofecyt.IdLocalidad = localidadNego.TraerLocalidadIdSegunItem(ddlLocalidadCofecyt.SelectedItem.ToString());
-            proyectoCofecyt.IdSector = sectorNego.TraerSectorIdSegunItem(ddlSectorCofecyt.SelectedItem.ToString());
-            proyectoCofecyt.IdTematica = tematicaNego.TraerTematicaIdSegunItem(ddlTematicaCofecyt.SelectedItem.ToString());
+
             proyectoCofecyt.NumeroEspedienteCopade = txtNumeroExpedienteCopadeCofecyt.Text;
             proyectoCofecyt.NumeroConvenio = txtNumeroConvenio.Text;
             proyectoCofecyt.NumeroExpedienteDga = txtNumeroExpedienteDga.Text;
-            proyectoCofecyt.IdUdtUvt = udtUvtNego.TraerUdtUvtIdSegunItem(ddlUvt.SelectedItem.ToString());
 
-            //para DIRECTOR
-            string cadena = ddlDirector.SelectedItem.ToString();
-            string[] separadas;
-            separadas = cadena.Split(',');
-            string itemApellido = separadas[0];
-            string itemNombre = separadas[1];
-            proyectoCofecyt.IdDirector = personaNego.TraerPersonaIdSegunItem(itemApellido, itemNombre);
+            if (ddlLocalidadCofecyt.SelectedValue == "-1") { proyectoCofecyt.IdLocalidad = null; }
+            else { proyectoCofecyt.IdLocalidad = localidadNego.TraerLocalidadIdSegunItem(ddlLocalidadCofecyt.SelectedItem.ToString()); }
+
+            if (ddlSectorCofecyt.SelectedValue == "-1") { proyectoCofecyt.IdSector = null; }
+            else { proyectoCofecyt.IdSector = sectorNego.TraerSectorIdSegunItem(ddlSectorCofecyt.SelectedItem.ToString()); }
+
+            if (ddlTematicaCofecyt.SelectedValue == "-1") { proyectoCofecyt.IdTematica = null; }
+            else { proyectoCofecyt.IdTematica = tematicaNego.TraerTematicaIdSegunItem(ddlTematicaCofecyt.SelectedItem.ToString()); }
+
+            if (ddlUvt.SelectedValue == "-1") { proyectoCofecyt.UdtUvt = null; }
+            else { proyectoCofecyt.IdUdtUvt = udtUvtNego.TraerUdtUvtIdSegunItem(ddlUvt.SelectedItem.ToString()); }
+
+            if (ddlDirector.SelectedValue == "-1") { proyectoCofecyt.IdDirector = null; }
+            else
+            {
+                //para DIRECTOR
+                string cadena = ddlDirector.SelectedItem.ToString();
+                string[] separadas;
+                separadas = cadena.Split(',');
+                string itemApellido = separadas[0];
+                string itemNombre = separadas[1];
+                proyectoCofecyt.IdDirector = personaNego.TraerPersonaIdSegunItem(itemApellido, itemNombre);
+            }
+
+            if (ddlEstadoCofecyt.SelectedValue == "-1") { proyectoCofecyt.IdTipoEstadoCofecyt = null; }
+            else { proyectoCofecyt.IdTipoEstadoCofecyt = tipoEstadoCofecytNego.TraerTipoEstadoCofecytIdSegunItem(ddlEstadoCofecyt.SelectedItem.ToString()); }
+
+            //para CONTACTO BENEFICIARIO
+            if (ddlContactoBeneficiario.SelectedValue == "-1") { proyectoCofecyt.IdContactoBeneficiario = null; }
+            else
+            {
+                string cadena = ddlContactoBeneficiario.SelectedItem.ToString();
+                string[] separadas;
+                separadas = cadena.Split(',');
+                string itemApellido = separadas[0];
+                string itemNombre = separadas[1];
+                proyectoCofecyt.IdContactoBeneficiario = personaNego.TraerPersonaIdSegunItem(itemApellido, itemNombre);
+            }
 
             proyectoCofecyt.FechaPresentacion = DateTime.ParseExact(txtFechaPresentacion.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
             proyectoCofecyt.FechaFinalizacion = DateTime.ParseExact(txtFechaFinalizacion.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
             proyectoCofecyt.UltimaEvaluacionTecnica = DateTime.ParseExact(txtUltimaEvaluacionTecnica.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
 
-            proyectoCofecyt.DuracionEstimada = Int32.Parse(txtDuracionEstimada.Text);
-            proyectoCofecyt.DuracionEstimadaIfaa = Int32.Parse(txtDuracionEstimadaIfaa.Text);
+            if (txtDuracionEstimada.Text == "") { proyectoCofecyt.DuracionEstimada = null; }
+            else { proyectoCofecyt.DuracionEstimada = Convert.ToInt32(txtDuracionEstimada.Text); }
+
+            if (txtDuracionEstimadaIfaa.Text == "") { proyectoCofecyt.DuracionEstimadaIfaa = null; }
+            else { proyectoCofecyt.DuracionEstimadaIfaa = Convert.ToInt32(txtDuracionEstimadaIfaa.Text); }
+
             proyectoCofecyt.Beneficiarios = txtBeneficiarios.Text;
             proyectoCofecyt.EntidadesIntervinientes = txtEntidadesIntervinientes.Text;
-            proyectoCofecyt.IdTipoEstadoCofecyt = tipoEstadoCofecytNego.TraerTipoEstadoCofecytIdSegunItem(ddlEstadoCofecyt.SelectedItem.ToString());
 
-            //para CONTACTO BENEFICIARIO
-            cadena = ddlContactoBeneficiario.SelectedItem.ToString();
-            separadas = cadena.Split(',');
-            itemApellido = separadas[0];
-            itemNombre = separadas[1];
-            proyectoCofecyt.IdContactoBeneficiario = personaNego.TraerPersonaIdSegunItem(itemApellido, itemNombre);
 
             proyectoCofecyt.Observaciones = txtObservacionesCofecyt.Text;
 
             proyectoCofecyt.IdConvocatoria = Int32.Parse(ddlConvocatoria.SelectedValue);
 
-            proyectoCofecyt.MontoSolicitadoCofecyt = Int32.Parse(txtMontoSolicitadoCofecyt.Text);
-            proyectoCofecyt.MontoContraparteCofecyt = Int32.Parse(txtMontoContraparteCofecyt.Text);
-            proyectoCofecyt.MontoTotalCofecyt = Int32.Parse(txtMontoTotalCofecyt.Text);
-            proyectoCofecyt.MontoTotalDgaCofecyt = Int32.Parse(txtMontoTotalDgaCofecyt.Text);
-            proyectoCofecyt.MontoDevolucionCofecyt = Int32.Parse(txtMontoDevolucionCofecyt.Text);
-            proyectoCofecyt.MontoRescindidoCofecyt = Int32.Parse(txtMontoRescindidoCofecyt.Text);
+            proyectoCofecyt.MontoSolicitadoCofecyt = Convert.ToDecimal(txtMontoSolicitadoCofecyt.Text);
+            proyectoCofecyt.MontoContraparteCofecyt = Convert.ToDecimal(txtMontoContraparteCofecyt.Text);
+            proyectoCofecyt.MontoTotalCofecyt = Convert.ToDecimal(txtMontoTotalCofecyt.Text);
+            proyectoCofecyt.MontoTotalDgaCofecyt = Convert.ToDecimal(txtMontoTotalDgaCofecyt.Text);
+            proyectoCofecyt.MontoDevolucionCofecyt = Convert.ToDecimal(txtMontoDevolucionCofecyt.Text);
+            proyectoCofecyt.MontoRescindidoCofecyt = Convert.ToDecimal(txtMontoRescindidoCofecyt.Text);
 
             int idProyectoCofecyt = proyectoCofecytNego.GuardarProyectoCofecyt(proyectoCofecyt);
 
@@ -584,23 +622,11 @@ namespace Sistema_CyT
                 etapaCofecyt.IdTipoEstadoEtapa = item.IdTipoEstadoEtapa;
                 etapaCofecyt.DuracionSegunUvt = item.DuracionSegunUvt;
 
-                if (chkRendicionCofecyt.Checked)
-                {
-                    etapaCofecyt.Rendicion = true;
-                }
-                else if (!chkRendicionCofecyt.Checked)
-                {
-                    etapaCofecyt.Rendicion = false;
-                }
+                if (chkRendicionCofecyt.Checked) { etapaCofecyt.Rendicion = true; }
+                else if (!chkRendicionCofecyt.Checked) { etapaCofecyt.Rendicion = false; }
 
-                if (chkInformeCofecyt.Checked)
-                {
-                    etapaCofecyt.Informe = true;
-                }
-                else if (!chkInformeCofecyt.Checked)
-                {
-                    etapaCofecyt.Informe = false;
-                }
+                if (chkInformeCofecyt.Checked) { etapaCofecyt.Informe = true; }
+                else if (!chkInformeCofecyt.Checked) { etapaCofecyt.Informe = false; }
 
                 idEtapaCofecytUltima = etapaCofecytNego.GuardarEtapaCofecyt(etapaCofecyt);
             }

@@ -375,8 +375,8 @@ namespace CapaDominio
 			}
 		}
 		
-		private int? idConvocatoria;
-		public virtual int? IdConvocatoria
+		private int idConvocatoria;
+		public virtual int IdConvocatoria
 		{
 			get
 			{

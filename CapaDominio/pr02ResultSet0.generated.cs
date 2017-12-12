@@ -140,6 +140,32 @@ namespace CapaDominio
 			}
 		}
 		
+		private int? _idSector;
+		public virtual int? idSector
+		{
+			get
+			{
+				return this._idSector;
+			}
+			set
+			{
+				this._idSector = value;
+			}
+		}
+		
+		private int? _idTematica;
+		public virtual int? idTematica
+		{
+			get
+			{
+				return this._idTematica;
+			}
+			set
+			{
+				this._idTematica = value;
+			}
+		}
+		
 		private string _localidad;
 		public virtual string localidad
 		{

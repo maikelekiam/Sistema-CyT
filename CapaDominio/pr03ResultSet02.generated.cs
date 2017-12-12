@@ -21,7 +21,7 @@ using Telerik.OpenAccess.Metadata.Fluent.Advanced;
 
 namespace CapaDominio	
 {
-	public partial class pr03ResultSet0
+	public partial class pr03ResultSet02
 	{
 		private int _idProyectoCofecyt;
 		public virtual int idProyectoCofecyt
@@ -98,6 +98,45 @@ namespace CapaDominio
 			set
 			{
 				this._destinatarios = value;
+			}
+		}
+		
+		private string _localidad;
+		public virtual string localidad
+		{
+			get
+			{
+				return this._localidad;
+			}
+			set
+			{
+				this._localidad = value;
+			}
+		}
+		
+		private int? _idSector;
+		public virtual int? idSector
+		{
+			get
+			{
+				return this._idSector;
+			}
+			set
+			{
+				this._idSector = value;
+			}
+		}
+		
+		private int? _idTematica;
+		public virtual int? idTematica
+		{
+			get
+			{
+				return this._idTematica;
+			}
+			set
+			{
+				this._idTematica = value;
 			}
 		}
 		
@@ -244,16 +283,16 @@ namespace CapaDominio
 			}
 		}
 		
-		private string _tipoestadocofecyt;
-		public virtual string tipoestadocofecyt
+		private int? _idTipoEstadoCofecyt;
+		public virtual int? idTipoEstadoCofecyt
 		{
 			get
 			{
-				return this._tipoestadocofecyt;
+				return this._idTipoEstadoCofecyt;
 			}
 			set
 			{
-				this._tipoestadocofecyt = value;
+				this._idTipoEstadoCofecyt = value;
 			}
 		}
 		
