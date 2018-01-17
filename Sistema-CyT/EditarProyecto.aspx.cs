@@ -306,7 +306,7 @@ namespace Sistema_CyT
                     //1ro hay que averiguar si existe al menos 1 proyecto o la lista viene vacia
                     if (ddlProyectoChoice.SelectedValue != "")
                     {
-                        idProyectoCofecytActual = Convert.ToInt32(ddlProyectoChoice.SelectedValue);
+                        idProyectoCofecytActual = Convert.ToInt32(ddlProyectoChoice.SelectedValue);                                             
 
                         ProyectoCofecyt proyectoCofecyt = proyectoCofecytNego.ObtenerProyectoCofecyt(idProyectoCofecytActual);
 
@@ -582,9 +582,9 @@ namespace Sistema_CyT
                 //aca habria que cargar el 1er proyecto
                 if (ddlProyectoChoice.SelectedValue != "")
                 {
-                    idProyectoActual = Convert.ToInt32(ddlProyectoChoice.SelectedValue);
+                    idProyectoCofecytActual = Convert.ToInt32(ddlProyectoChoice.SelectedValue);                    
 
-                    ProyectoCofecyt proyectoCofecyt = proyectoCofecytNego.ObtenerProyectoCofecyt(idProyectoActual);
+                    ProyectoCofecyt proyectoCofecyt = proyectoCofecytNego.ObtenerProyectoCofecyt(idProyectoCofecytActual);
 
                     if (proyectoCofecyt == null)
                     {
@@ -930,7 +930,7 @@ namespace Sistema_CyT
 
             if (fondoNego.ObtenerFondo(Convert.ToInt32(ddlFondoChoice.SelectedValue)).Nombre.ToUpper() == "COFECYT")
             {
-                idProyectoCofecytActual = Convert.ToInt32(ddlProyectoChoice.SelectedValue.ToString());
+                idProyectoCofecytActual = Convert.ToInt32(ddlProyectoChoice.SelectedValue.ToString());                
 
                 ProyectoCofecyt proyectoCofecyt = proyectoCofecytNego.ObtenerProyectoCofecyt(idProyectoCofecytActual);
 
