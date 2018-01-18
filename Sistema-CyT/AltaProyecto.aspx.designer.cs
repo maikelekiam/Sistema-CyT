@@ -310,6 +310,24 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.Panel PanelCofecytInformacion;
         
         /// <summary>
+        /// lblNumeroExpedienteCopadeCofecyt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNumeroExpedienteCopadeCofecyt;
+        
+        /// <summary>
+        /// txtNumeroExpedienteCopadeCofecyt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNumeroExpedienteCopadeCofecyt;
+        
+        /// <summary>
         /// lblTituloCofecyt control.
         /// </summary>
         /// <remarks>
@@ -488,24 +506,6 @@ namespace Sistema_CyT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTematicaCofecyt;
-        
-        /// <summary>
-        /// lblNumeroExpedienteCopadeCofecyt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNumeroExpedienteCopadeCofecyt;
-        
-        /// <summary>
-        /// txtNumeroExpedienteCopadeCofecyt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNumeroExpedienteCopadeCofecyt;
         
         /// <summary>
         /// lblNumeroConvenio control.

@@ -48,7 +48,7 @@
             <!--EXPEDIENTE COPADE-->
             <div class="form-group">
                 <br />
-                <asp:Label ID="lblNumeroExp" runat="server" Text="N° EXPEDIENTE" CssClass="col-md-2 control-label"> </asp:Label>
+                <asp:Label ID="lblNumeroExp" runat="server" Text="ID Interno" CssClass="col-md-2 control-label"> </asp:Label>
                 <div class="col-md-3">
                     <asp:TextBox ID="txtNumeroExp" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
@@ -196,9 +196,16 @@
             <div class="panel-heading">
                 <h3>COFECyT - Informacion del Proyecto</h3>
             </div>
-            <!--TITULO/NOMBRE DEL PROYECTO-->
+            <!--EXPEDIENTE COPADE-->
             <div class="form-group">
                 <br />
+                <asp:Label ID="lblNumeroExpedienteCopadeCofecyt" runat="server" Text="ID Interno" CssClass="col-md-2 control-label"> </asp:Label>
+                <div class="col-md-4">
+                    <asp:TextBox ID="txtNumeroExpedienteCopadeCofecyt" runat="server" CssClass="form-control"></asp:TextBox>
+                </div>
+            </div>
+            <!--TITULO/NOMBRE DEL PROYECTO-->
+            <div class="form-group">
                 <asp:Label ID="lblTituloCofecyt" runat="server" Text="TITULO" CssClass="col-md-2 col-xs-12 control-label"></asp:Label>
                 <div class="col-md-8 col-xs-12">
                     <asp:TextBox ID="txtTituloCofecyt" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
@@ -311,13 +318,7 @@
                 </div>
             </div>
 
-            <!--EXPEDIENTE COPADE-->
-            <div class="form-group">
-                <asp:Label ID="lblNumeroExpedienteCopadeCofecyt" runat="server" Text="N°EXP COPADE" CssClass="col-md-2 control-label"> </asp:Label>
-                <div class="col-md-4">
-                    <asp:TextBox ID="txtNumeroExpedienteCopadeCofecyt" runat="server" CssClass="form-control"></asp:TextBox>
-                </div>
-            </div>
+
             <!--NUMERO DE CONVENIO-->
             <div class="form-group">
                 <asp:Label ID="lblNumeroConvenio" runat="server" Text="N° CONVENIO" CssClass="col-md-2 control-label"> </asp:Label>

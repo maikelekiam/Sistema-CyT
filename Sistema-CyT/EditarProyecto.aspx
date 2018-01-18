@@ -877,7 +877,7 @@
             </div>
             <!--LISTA DE ETAPAS COFECYT-->
             <div class="form-group">
-                <div class="col-md-10 col-md-offset-1">
+                <div class="col-md-12 col-md-offset-0">
                     <asp:GridView ID="dgvEtapasCofecyt" runat="server" AutoGenerateColumns="false"
                         DataKeyNames="idEtapaCofecyt"
                         CssClass="table table-hover" BorderWidth="2px" EmptyDataText="No existen etapas cargadas" ShowHeaderWhenEmpty="true">
@@ -904,7 +904,7 @@
             </div>
             <!--LISTA DE ACTIVIDADES COFECYT-->
             <div class="form-group">
-                <div class="col-md-10 col-md-offset-1">
+                <div class="col-md-12 col-md-offset-0">
                     <asp:GridView ID="dgvActividadesCofecyt" runat="server" AutoGenerateColumns="false"
                         DataKeyNames="idActividadCofecyt"
                         CssClass="table table-hover" BorderWidth="2px" EmptyDataText="No existen actividades cargadas" ShowHeaderWhenEmpty="true">
@@ -914,10 +914,10 @@
                                     <asp:Label ID="l2" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "EtapaCofecyt.Nombre") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Actividad" DataField="nombre" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="250" />
-                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Descripcion" DataField="descripcion" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="250" />
-                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Resultados Esperados" DataField="resultadosEsperados" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="250" />
-                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Localizacion" DataField="localizacion" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="250" />
+                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Actividad" DataField="nombre" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="150" />
+                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Descripcion" DataField="descripcion" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="400" />
+                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Resultados Esperados" DataField="resultadosEsperados" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="150" />
+                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Localizacion" DataField="localizacion" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="100" />
                         </Columns>
                     </asp:GridView>
                 </div>
