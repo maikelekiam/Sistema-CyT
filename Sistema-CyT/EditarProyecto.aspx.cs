@@ -49,11 +49,11 @@ namespace Sistema_CyT
 
         public static int idProyectoActual;
         public static int idEtapaActual;
-        public static int idEmpresaActual;
-        public static int idLocalidadActual;
-        public static int idPersonaActual;
-        public static int idConvocatoriaSeleccionada;
-        public static int idFondoSeleccionado;
+        public static int idEmpresaActual = 0;
+        public static int idLocalidadActual = 0;
+        public static int idPersonaActual = 0;
+        public static int idConvocatoriaSeleccionada = 1;
+        public static int idFondoSeleccionado = 1;
 
         public static int idProyectoCofecytActual;
         public static int idEtapaCofecytActual;
@@ -303,17 +303,12 @@ namespace Sistema_CyT
                     listaActividadCofecytsTemporal.Clear();
                     listaActividadCofecytsTemporalAgregado.Clear();
 
-                    dgvEtapasCofecyt.DataSource = listaEtapaCofecytsTemporal;
-                    dgvEtapasCofecyt.DataBind();
-                    dgvActividadesCofecyt.DataSource = listaActividadCofecytsTemporal;
-                    dgvActividadesCofecyt.DataBind();
-
                     //1ro hay que averiguar si existe al menos 1 proyecto o la lista viene vacia
                     if (ddlProyectoChoice.SelectedValue != "")
                     {
-                        idProyectoCofecytActual = Convert.ToInt32(ddlProyectoChoice.SelectedValue);
+                        idProyectoCofecytActual = Convert.ToInt32(ddlProyectoChoice.SelectedValue);                                             
 
-                        ProyectoCofecyt proyectoCofecyt = proyectoCofecytNego.ObtenerProyectoCofecyt(Convert.ToInt32(ddlProyectoChoice.SelectedValue));
+                        ProyectoCofecyt proyectoCofecyt = proyectoCofecytNego.ObtenerProyectoCofecyt(idProyectoCofecytActual);
 
                         if (proyectoCofecyt == null)
                         {
@@ -413,7 +408,7 @@ namespace Sistema_CyT
 
                             if (proyectoCofecyt.IdContactoBeneficiario == null) { ddlContactoBeneficiario.Text = "-1"; }
                             else { ddlContactoBeneficiario.Text = personaNego.TraerPersona(Convert.ToInt32(proyectoCofecyt.IdContactoBeneficiario)); }
-
+                            
                             txtObservacionesCofecyt.Text = proyectoCofecyt.Observaciones;
                             txtMontoSolicitadoCofecyt.Text = Convert.ToString(proyectoCofecyt.MontoSolicitadoCofecyt);
                             txtMontoContraparteCofecyt.Text = Convert.ToString(proyectoCofecyt.MontoContraparteCofecyt);
@@ -438,7 +433,7 @@ namespace Sistema_CyT
                     }
                     else
                     {
-                        //txtFiltroProyecto.Text = "SIN PROYECTOS";
+                        txtFiltroProyecto.Text = "SIN PROYECTOS";
                     }
                 }
                 else
@@ -584,21 +579,10 @@ namespace Sistema_CyT
                 ddlProyectoChoice.DataValueField = "idProyectoCofecyt";
                 ddlProyectoChoice.DataBind();
 
-                listaEtapaCofecytsTemporal.Clear();
-                listaEtapaCofecytsTemporalAgregado.Clear();
-                listaActividadCofecytsTemporal.Clear();
-                listaActividadCofecytsTemporalAgregado.Clear();
-
-                dgvEtapasCofecyt.DataSource = listaEtapaCofecytsTemporal;
-                dgvEtapasCofecyt.DataBind();
-                dgvActividadesCofecyt.DataSource = listaActividadCofecytsTemporal;
-                dgvActividadesCofecyt.DataBind();
-
                 //aca habria que cargar el 1er proyecto
                 if (ddlProyectoChoice.SelectedValue != "")
                 {
-                    idProyectoCofecytActual = Convert.ToInt32(ddlProyectoChoice.SelectedValue);
-                    idConvocatoriaSeleccionada = Convert.ToInt32(ddlConvocatoriaChoice.SelectedValue.ToString());
+                    idProyectoCofecytActual = Convert.ToInt32(ddlProyectoChoice.SelectedValue);                    
 
                     ProyectoCofecyt proyectoCofecyt = proyectoCofecytNego.ObtenerProyectoCofecyt(idProyectoCofecytActual);
 
@@ -712,6 +696,101 @@ namespace Sistema_CyT
                         txtMontoDevolucionCofecyt.Text = Convert.ToString(proyectoCofecyt.MontoDevolucionCofecyt);
                         txtMontoRescindidoCofecyt.Text = Convert.ToString(proyectoCofecyt.MontoRescindidoCofecyt);
 
+
+                        //txtTituloCofecyt.Text = proyectoCofecyt.Titulo;
+                        //txtObjetivosCofecyt.Text = proyectoCofecyt.Objetivos;
+                        //txtDescripcionCofecyt.Text = proyectoCofecyt.Descripcion;
+                        //txtDestinatariosCofecyt.Text = proyectoCofecyt.Destinatarios;
+                        //ddlLocalidadCofecyt.Text = localidadNego.TraerLocalidad(Convert.ToInt32(proyectoCofecyt.IdLocalidad));
+                        //ddlSectorCofecyt.Text = sectorNego.TraerSector(Convert.ToInt32(proyectoCofecyt.IdSector));
+                        //ddlTematicaCofecyt.Text = tematicaNego.TraerTematica(Convert.ToInt32(proyectoCofecyt.IdTematica));
+                        //txtNumeroExpedienteCopadeCofecyt.Text = proyectoCofecyt.NumeroEspedienteCopade;
+                        //txtNumeroConvenio.Text = proyectoCofecyt.NumeroConvenio;
+                        //txtNumeroExpedienteDga.Text = proyectoCofecyt.NumeroExpedienteDga;
+                        //ddlUvt.Text = udtUvtNego.TraerUdtUvt(Convert.ToInt32(proyectoCofecyt.IdUdtUvt));
+                        //ddlDirector.Text = personaNego.TraerPersona(Convert.ToInt32(proyectoCofecyt.IdDirector));
+
+                        ////****INICIO RUTINA PARA TRABAJAR CON FORMATO FECHA
+                        ////FECHA PRESENTACION
+                        //string dia = Convert.ToString((proyectoCofecyt.FechaPresentacion).Value.Day);
+                        //string mes = Convert.ToString((proyectoCofecyt.FechaPresentacion).Value.Month);
+                        //string anio = Convert.ToString((proyectoCofecyt.FechaPresentacion).Value.Year);
+                        //string t1 = "";
+                        //string t2 = "";
+                        //if ((proyectoCofecyt.FechaPresentacion).Value.Day < 10)
+                        //{
+                        //    t1 = "0";
+                        //}
+                        //if ((proyectoCofecyt.FechaPresentacion).Value.Month < 10)
+                        //{
+                        //    t2 = "0";
+                        //}
+                        //txtFechaPresentacion.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
+
+                        ////FECHA FINALIZACION
+                        //dia = Convert.ToString((proyectoCofecyt.FechaFinalizacion).Value.Day);
+                        //mes = Convert.ToString((proyectoCofecyt.FechaFinalizacion).Value.Month);
+                        //anio = Convert.ToString((proyectoCofecyt.FechaFinalizacion).Value.Year);
+                        //t1 = "";
+                        //t2 = "";
+                        //if ((proyectoCofecyt.FechaFinalizacion).Value.Day < 10)
+                        //{
+                        //    t1 = "0";
+                        //}
+                        //if ((proyectoCofecyt.FechaFinalizacion).Value.Month < 10)
+                        //{
+                        //    t2 = "0";
+                        //}
+                        //txtFechaFinalizacion.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
+
+                        ////FECHA ULTIMA EVALUACION TECNICA
+                        //dia = Convert.ToString((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Day);
+                        //mes = Convert.ToString((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Month);
+                        //anio = Convert.ToString((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Year);
+                        //t1 = "";
+                        //t2 = "";
+                        //if ((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Day < 10)
+                        //{
+                        //    t1 = "0";
+                        //}
+                        //if ((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Month < 10)
+                        //{
+                        //    t2 = "0";
+                        //}
+                        //txtUltimaEvaluacionTecnica.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
+
+                        ////****FIN RUTINA FORMATO DE FECHA
+
+
+
+
+
+
+
+                        ////txtFechaPresentacion.Text = Convert.ToDateTime(proyectoCofecyt.FechaPresentacion).ToShortDateString();
+                        ////txtFechaFinalizacion.Text = Convert.ToDateTime(proyectoCofecyt.FechaFinalizacion).ToShortDateString();
+                        ////txtUltimaEvaluacionTecnica.Text = Convert.ToDateTime(proyectoCofecyt.UltimaEvaluacionTecnica).ToShortDateString();
+                        //txtDuracionEstimada.Text = Convert.ToString(proyectoCofecyt.DuracionEstimada);
+                        //txtDuracionEstimadaIfaa.Text = Convert.ToString(proyectoCofecyt.DuracionEstimadaIfaa);
+                        //txtBeneficiarios.Text = proyectoCofecyt.Beneficiarios;
+                        //txtEntidadesIntervinientes.Text = proyectoCofecyt.EntidadesIntervinientes;
+                        ////ddlEstadoCofecyt.Text = tipoEstadoCofecytNego.TraerTipoEstadoCofecyt(Convert.ToInt32(proyectoCofecyt.IdTipoEstadoCofecyt));
+                        //ddlEstadoCofecyt.Text = Convert.ToString(proyectoCofecyt.IdTipoEstadoCofecyt);
+                        //ddlContactoBeneficiario.Text = personaNego.TraerPersona(Convert.ToInt32(proyectoCofecyt.IdContactoBeneficiario));
+                        //txtObservacionesCofecyt.Text = proyectoCofecyt.Observaciones;
+                        //txtMontoSolicitadoCofecyt.Text = Convert.ToString(proyectoCofecyt.MontoSolicitadoCofecyt);
+                        //txtMontoContraparteCofecyt.Text = Convert.ToString(proyectoCofecyt.MontoContraparteCofecyt);
+                        //txtMontoTotalCofecyt.Text = Convert.ToString(proyectoCofecyt.MontoTotalCofecyt);
+                        //txtMontoTotalDgaCofecyt.Text = Convert.ToString(proyectoCofecyt.MontoTotalDgaCofecyt);
+                        //txtMontoDevolucionCofecyt.Text = Convert.ToString(proyectoCofecyt.MontoDevolucionCofecyt);
+                        //txtMontoRescindidoCofecyt.Text = Convert.ToString(proyectoCofecyt.MontoRescindidoCofecyt);
+
+                        //AHORA TENGO QUE TRAER UNA LISTA DE ETAPAS SEGUN EL IdProyectoCofecytActual
+                        //listaEtapaCofecytsTemporal = (List<EtapaCofecyt>)etapaCofecytNego.TraerEtapaCofecytsSegunIdProyecto(idProyectoActual).ToList();
+
+                        //dgvEtapasCofecyt.DataSource = listaEtapaCofecytsTemporal;
+                        //dgvEtapasCofecyt.DataBind();
+
                         listaEtapaCofecytsTemporal = (List<EtapaCofecyt>)etapaCofecytNego.TraerEtapaCofecytsSegunIdProyecto(idProyectoCofecytActual).ToList();
 
                         dgvEtapasCofecyt.DataSource = listaEtapaCofecytsTemporal;
@@ -725,6 +804,15 @@ namespace Sistema_CyT
                         LlenarListaEtapasActividad();
                     }
                 }
+
+
+
+
+
+
+
+
+
             }
             else
             {
@@ -842,7 +930,7 @@ namespace Sistema_CyT
 
             if (fondoNego.ObtenerFondo(Convert.ToInt32(ddlFondoChoice.SelectedValue)).Nombre.ToUpper() == "COFECYT")
             {
-                idProyectoCofecytActual = Convert.ToInt32(ddlProyectoChoice.SelectedValue.ToString());
+                idProyectoCofecytActual = Convert.ToInt32(ddlProyectoChoice.SelectedValue.ToString());                
 
                 ProyectoCofecyt proyectoCofecyt = proyectoCofecytNego.ObtenerProyectoCofecyt(idProyectoCofecytActual);
 
