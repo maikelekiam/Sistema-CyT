@@ -157,6 +157,8 @@
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Actuaciones.aspx" />
     <Content Include="ActuacionesPersona.aspx" />
+    <Content Include="AgregarActividad.aspx" />
+    <Content Include="AgregarEtapa.aspx" />
     <Content Include="AltaConvocatoria.aspx" />
     <Content Include="AltaEmpresa.aspx" />
     <Content Include="AltaFondo.aspx" />
@@ -194,6 +196,8 @@
     <Content Include="ListarProyectos.aspx" />
     <Content Include="ListarUdtUvts.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="ModificarActividad.aspx" />
+    <Content Include="ModificarEtapa.aspx" />
     <Content Include="MostrarConvocatoria.aspx" />
     <Content Include="MostrarEmpresa.aspx" />
     <Content Include="MostrarFondo.aspx" />
@@ -271,6 +275,20 @@
     </Compile>
     <Compile Include="ActuacionesPersona.aspx.designer.cs">
       <DependentUpon>ActuacionesPersona.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarActividad.aspx.cs">
+      <DependentUpon>AgregarActividad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarActividad.aspx.designer.cs">
+      <DependentUpon>AgregarActividad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarEtapa.aspx.cs">
+      <DependentUpon>AgregarEtapa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarEtapa.aspx.designer.cs">
+      <DependentUpon>AgregarEtapa.aspx</DependentUpon>
     </Compile>
     <Compile Include="AltaConvocatoria.aspx.cs">
       <DependentUpon>AltaConvocatoria.aspx</DependentUpon>
@@ -475,6 +493,20 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="ModificarActividad.aspx.cs">
+      <DependentUpon>ModificarActividad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarActividad.aspx.designer.cs">
+      <DependentUpon>ModificarActividad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarEtapa.aspx.cs">
+      <DependentUpon>ModificarEtapa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarEtapa.aspx.designer.cs">
+      <DependentUpon>ModificarEtapa.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MostrarConvocatoria.aspx.cs">
       <DependentUpon>MostrarConvocatoria.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

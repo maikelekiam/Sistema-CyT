@@ -303,6 +303,11 @@ namespace Sistema_CyT
                     listaActividadCofecytsTemporal.Clear();
                     listaActividadCofecytsTemporalAgregado.Clear();
 
+                    dgvEtapasCofecyt.DataSource = listaEtapaCofecytsTemporal;
+                    dgvEtapasCofecyt.DataBind();
+                    dgvActividadesCofecyt.DataSource = listaActividadCofecytsTemporal;
+                    dgvActividadesCofecyt.DataBind();
+
                     //1ro hay que averiguar si existe al menos 1 proyecto o la lista viene vacia
                     if (ddlProyectoChoice.SelectedValue != "")
                     {

@@ -55,6 +55,12 @@
                             <li><a runat="server" href="~/EditarProyecto.aspx"><span class="glyphicon glyphicon-edit"></span>Editar Proyecto</a></li>
                             <li><a runat="server" href="~/ListarProyectos.aspx"><span class="glyphicon glyphicon-list"></span>Listar Proyectos</a></li>
                             <li class="divider"></li>
+                            <li><a runat="server" href="~/AgregarEtapa.aspx"><span class="glyphicon glyphicon-plus"></span>Agregar Etapa</a></li>
+                            <li><a runat="server" href="~/ModificarEtapa.aspx"><span class="glyphicon glyphicon-edit"></span>Modificar Etapa</a></li>
+                            <li class="divider"></li>
+                            <li><a runat="server" href="~/AgregarActividad.aspx"><span class="glyphicon glyphicon-plus"></span>Agregar Actividad</a></li>
+                            <li><a runat="server" href="~/ModificarActividad.aspx"><span class="glyphicon glyphicon-edit"></span>Modificar Actividad</a></li>
+                            <li class="divider"></li>
                             <li><a runat="server" href="~/FiltrarProyecto.aspx"><span class="glyphicon glyphicon-plus"></span>Seguimiento</a></li>
                         </ul>
                     </li>
