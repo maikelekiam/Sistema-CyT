@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using CapaDominio;
+using CapaNegocio;
 
 namespace Sistema_CyT
 {
@@ -14,4 +16,5 @@ namespace Sistema_CyT
 
         }
     }
+        
 }
