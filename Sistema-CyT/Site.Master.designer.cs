@@ -13,6 +13,42 @@ namespace Sistema_CyT {
     public partial class SiteMaster {
         
         /// <summary>
+        /// dropdownusuarios control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dropdownusuarios;
+        
+        /// <summary>
+        /// dropdownSistema control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dropdownSistema;
+        
+        /// <summary>
+        /// lbl18 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl18;
+        
+        /// <summary>
+        /// btnLogOff control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnLogOff;
+        
+        /// <summary>
         /// MainContent control.
         /// </summary>
         /// <remarks>

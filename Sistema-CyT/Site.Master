@@ -27,7 +27,7 @@
                     <a class="navbar-brand" href="/Default.aspx">Sistema CyT</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/Default.aspx">Inicio</a></li>
+                    <li class="active"><a href="/Default.aspx">INICIO</a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">CONTACTOS <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -76,6 +76,17 @@
                             <li><a runat="server" href="~/ListarConvocatorias.aspx"><span class="glyphicon glyphicon-list"></span>Lista Convocatorias</a></li>
                         </ul>
                     </li>
+                    <li class="dropdown" runat="server" id="dropdownusuarios">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">USUARIOS <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a runat="server" href="~/AltaUsuario.aspx"><span class="glyphicon glyphicon-user"></span>Alta Usuario</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" runat="server" id="dropdownSistema">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">SISTEMA <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                        </ul>
+                    </li>
 
                     <!-- PARA REGISTRAR Y LOGUEAR USUARIOS -->
                 </ul>
@@ -97,7 +108,12 @@
                 </asp:LoginView>--%>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a class="btn" href="/Login.aspx">SALIR <span class="glyphicon glyphicon-log-out"></span></a></li>
+                    <li>
+                        <asp:Label ID="lbl18" Font-Bold="true" runat="server" CssClass="control-label AlineadoIzquierda"></asp:Label>
+                        <%--<asp:Button ID="btnUsuarios" runat="server" Text="Usuarios" ForeColor="Black" OnClick="btnUsuarios_Click" />--%>
+                        <asp:Button ID="btnLogOff" CssClass="btn btn-info glyphicon-apple" runat="server" Text="Cerrar Sesion" OnClick="btnLogOff_Click" OnClientClick="return confirm('¿Desea cerrar la sesion?');" />
+                    </li>
+                    <%--<li><a class="btn" href="/Login.aspx">SALIR <span class="glyphicon glyphicon-log-out"></span></a></li>--%>
                 </ul>
             </div>
         </nav>

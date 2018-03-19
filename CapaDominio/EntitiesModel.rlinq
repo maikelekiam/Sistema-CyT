@@ -14,14 +14,17 @@
         <orm:field name="idUsuario" property="IdUsuario" behavior="readwrite" uniqueId="06b2e28f-f5aa-405b-90c2-6a351df3da63" type="System.Int32">
           <orm:column name="idUsuario" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
         </orm:field>
-        <orm:field name="usuario1" property="Usuario1" behavior="readwrite" uniqueId="50c0acee-46a3-4398-83bb-1f0ec3c28599" type="System.String">
-          <orm:column name="usuario" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
+        <orm:field name="nombre" property="Nombre" behavior="readwrite" uniqueId="a56c51fa-919a-4036-ba2a-c6ec10a80fd9" type="System.String">
+          <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         </orm:field>
-        <orm:field name="password" property="Password" behavior="readwrite" uniqueId="87c15329-af91-44cf-ba29-1d23b2d63e1f" type="System.String">
-          <orm:column name="password" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
+        <orm:field name="mail" property="Mail" behavior="readwrite" uniqueId="e17016be-cc0f-4411-a5ac-9c2f5f299452" type="System.String">
+          <orm:column name="mail" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         </orm:field>
-        <orm:field name="nivel" property="Nivel" behavior="readwrite" uniqueId="e3cc4097-c06a-4079-9b6b-0da143c5c19e" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
-          <orm:column name="nivel" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:field name="contrasenia" property="Contrasenia" behavior="readwrite" uniqueId="d77cf693-a93e-4b7b-a3df-2791697e9f81" type="System.String">
+          <orm:column name="contrasenia" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="grupo" property="Grupo" behavior="readwrite" uniqueId="b13a2b56-89f1-44a5-b50c-1455fb9a0292" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="grupo" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:field>
       </orm:class>
       <orm:class name="TipoFinanciamiento" uniqueId="b31bd8d9-af39-4755-9a4a-e43076cb30af">
@@ -1226,9 +1229,10 @@
     <orm:schema schema="">
       <orm:table name="Usuario">
         <orm:column name="idUsuario" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
-        <orm:column name="usuario" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
-        <orm:column name="password" sql-type="varchar" nullable="true" length="50" scale="0" ado-type="StringVariableLength" />
-        <orm:column name="nivel" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="nombre" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="mail" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="contrasenia" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="grupo" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
       </orm:table>
       <orm:table name="TipoFinanciamiento">
         <orm:column name="idTipoFinanciamiento" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
@@ -1645,9 +1649,10 @@
   <Types>
     <DomainClass Id="bc3540c1-c93a-433d-85c8-c66bbb4e2a36" name="Usuario" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdUsuario">
       <Property Id="06b2e28f-f5aa-405b-90c2-6a351df3da63" name="IdUsuario" type="Int32" label="IdUsuario : Int32" kind="Persistent" identity="true" fieldName="idUsuario" />
-      <Property Id="e3cc4097-c06a-4079-9b6b-0da143c5c19e" name="Nivel" type="Int32" label="Nivel : Int32" nullable="true" kind="Persistent" fieldName="nivel" />
-      <Property Id="87c15329-af91-44cf-ba29-1d23b2d63e1f" name="Password" label="Password : String" kind="Persistent" fieldName="password" />
-      <Property Id="50c0acee-46a3-4398-83bb-1f0ec3c28599" name="Usuario1" label="Usuario1 : String" kind="Persistent" fieldName="usuario1" />
+      <Property Id="a56c51fa-919a-4036-ba2a-c6ec10a80fd9" name="Nombre" label="Nombre : String" kind="Persistent" fieldName="nombre" />
+      <Property Id="e17016be-cc0f-4411-a5ac-9c2f5f299452" name="Mail" label="Mail : String" kind="Persistent" fieldName="mail" />
+      <Property Id="d77cf693-a93e-4b7b-a3df-2791697e9f81" name="Contrasenia" label="Contrasenia : String" kind="Persistent" fieldName="contrasenia" />
+      <Property Id="b13a2b56-89f1-44a5-b50c-1455fb9a0292" name="Grupo" type="Int32" label="Grupo : Int32" nullable="true" kind="Persistent" fieldName="grupo" />
     </DomainClass>
     <DomainClass Id="b31bd8d9-af39-4755-9a4a-e43076cb30af" name="TipoFinanciamiento" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdTipoFinanciamiento">
       <Property Id="dee17725-f316-4e60-b41b-46837a4dd0fc" name="IdTipoFinanciamiento" type="Int32" label="IdTipoFinanciamiento : Int32" kind="Persistent" identity="true" fieldName="idTipoFinanciamiento" />

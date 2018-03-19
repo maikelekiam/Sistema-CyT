@@ -11,7 +11,7 @@
                 <br />
                 <asp:Label ID="lblNombre" runat="server" Text="NOMBRE" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
                 <div class="col-md-6 col-xs-12">
-                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="1"></asp:TextBox><br />
+                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control tb5" TextMode="MultiLine" Rows="1"></asp:TextBox><br />
                 </div>
             </div>
 
@@ -19,7 +19,7 @@
             <div class="form-group">
                 <asp:Label ID="lblDescripcion" runat="server" Text="DESCRIPCION" CssClass="col-md-2 control-label"> </asp:Label>
                 <div class="col-md-6 col-xs-12">
-                    <asp:TextBox ID="txtDecripcion" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox><br />
+                    <asp:TextBox ID="txtDecripcion" runat="server" CssClass="form-control tb5" TextMode="MultiLine" Rows="2"></asp:TextBox><br />
                 </div>
             </div>
 
@@ -74,21 +74,21 @@
             <div class="form-group">
                 <asp:Label ID="lblTelefono" runat="server" Text="TELEFONO" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
                 <div class="col-md-6 col-xs-12">
-                    <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control"></asp:TextBox><br />
+                    <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control tb5"></asp:TextBox><br />
                 </div>
             </div>
             <!-- DIRECCION -->
             <div class="form-group">
                 <asp:Label ID="lblDireccion" runat="server" Text="DIRECCION" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
                 <div class="col-md-6 col-xs-12">
-                    <asp:TextBox ID="txtDireccion" runat="server" CssClass="form-control"></asp:TextBox><br />
+                    <asp:TextBox ID="txtDireccion" runat="server" CssClass="form-control tb5"></asp:TextBox><br />
                 </div>
             </div>
             <!-- CONTACTO -->
             <div class="form-group">
                 <asp:Label ID="lblContacto" runat="server" Text="CONTACTO" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
                 <div class="col-md-6 col-xs-12">
-                    <asp:TextBox ID="txtContacto" runat="server" CssClass="form-control"></asp:TextBox><br />
+                    <asp:TextBox ID="txtContacto" runat="server" CssClass="form-control tb5"></asp:TextBox><br />
                 </div>
             </div>
 
@@ -96,7 +96,7 @@
             <!-- BOTON GUARDAR -->
             <div class="form-group">
                 <div class="col-md-2 col-md-offset-2">
-                    <asp:Button ID="btnGuardarFondo" runat="server" Text="Guardar Fondo" CssClass="btn btn-success form-control" OnClick="btnGuardarFondo_Click" />
+                    <asp:Button ID="btnGuardarFondo" runat="server" Text="Guardar Fondo" CssClass="btn btn-success form-control boton_verde" OnClick="btnGuardarFondo_Click" />
                 </div>
             </div>
         </asp:Panel>
