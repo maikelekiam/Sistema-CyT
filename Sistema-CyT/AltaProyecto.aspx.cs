@@ -273,8 +273,8 @@ namespace Sistema_CyT
             Etapa etapa = new Etapa();
 
             etapa.Nombre = txtNombreModal.Text;
-            etapa.FechaInicio = DateTime.ParseExact(txtFechaInicioModal.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
-            etapa.FechaFin = DateTime.ParseExact(txtFechaFinalModal.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+            etapa.FechaInicio = DateTime.ParseExact(txtFechaInicioModal.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            etapa.FechaFin = DateTime.ParseExact(txtFechaFinalModal.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             etapa.IdTipoEstadoEtapa = Convert.ToInt32(ddlTipoEstadoEtapa.SelectedValue);
 
             if (chkRendicion.Checked)
@@ -480,8 +480,13 @@ namespace Sistema_CyT
             {
                 LlenarChoiceConvocatorias(Convert.ToInt32(ddlFondoChoice.SelectedValue));
 
+                
+
                 if (fondoNego.ObtenerFondo(Convert.ToInt32(ddlFondoChoice.SelectedValue)).Nombre.ToUpper() == "COFECYT")
                 {
+                    //la puse recien
+                    Response.Redirect("AltaProyectoCofecyt.aspx");
+
                     PanelInformacion.Visible = false;
                     PanelCofecytFinanciamiento.Visible = true;
                     PanelCofecytInformacion.Visible = true;
@@ -581,9 +586,9 @@ namespace Sistema_CyT
                 proyectoCofecyt.IdContactoBeneficiario = personaNego.TraerPersonaIdSegunItem(itemApellido, itemNombre);
             }
 
-            proyectoCofecyt.FechaPresentacion = DateTime.ParseExact(txtFechaPresentacion.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
-            proyectoCofecyt.FechaFinalizacion = DateTime.ParseExact(txtFechaFinalizacion.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
-            proyectoCofecyt.UltimaEvaluacionTecnica = DateTime.ParseExact(txtUltimaEvaluacionTecnica.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+            proyectoCofecyt.FechaPresentacion = DateTime.ParseExact(txtFechaPresentacion.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            proyectoCofecyt.FechaFinalizacion = DateTime.ParseExact(txtFechaFinalizacion.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            proyectoCofecyt.UltimaEvaluacionTecnica = DateTime.ParseExact(txtUltimaEvaluacionTecnica.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
             if (txtDuracionEstimada.Text == "") { proyectoCofecyt.DuracionEstimada = null; }
             else { proyectoCofecyt.DuracionEstimada = Convert.ToInt32(txtDuracionEstimada.Text); }
@@ -656,8 +661,8 @@ namespace Sistema_CyT
             etapaCofecyt.IdProyectoCofecyt = idProyectoCofecytActual;
             etapaCofecyt.Nombre = txtNombreModalCofecyt.Text;
             etapaCofecyt.IdTipoEstadoEtapa = tipoEstadoEtapaNego.TraerTipoEstadoEtapaIdSegunItem(ddlTipoEstadoEtapaCofecyt.SelectedItem.ToString());
-            etapaCofecyt.FechaInicio = DateTime.ParseExact(txtFechaInicioCofecyt.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
-            etapaCofecyt.FechaFin = DateTime.ParseExact(txtFechaFinCofecyt.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+            etapaCofecyt.FechaInicio = DateTime.ParseExact(txtFechaInicioCofecyt.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            etapaCofecyt.FechaFin = DateTime.ParseExact(txtFechaFinCofecyt.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             etapaCofecyt.DuracionSegunUvt = txtDuracionSegunUvt.Text;
 
             if (chkRendicionCofecyt.Checked)

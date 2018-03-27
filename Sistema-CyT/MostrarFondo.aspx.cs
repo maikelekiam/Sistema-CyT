@@ -14,7 +14,6 @@ namespace Sistema_CyT
         FondoNego fondoNego = new FondoNego();
         OrigenNego origenNego = new OrigenNego();
 
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack) return;

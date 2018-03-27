@@ -47,6 +47,7 @@
     <Compile Include="ActividadCofecytNego.cs" />
     <Compile Include="ActuacionNego.cs" />
     <Compile Include="ActuacionPersonaNego.cs" />
+    <Compile Include="ActuacionProyectoCofecytNego.cs" />
     <Compile Include="ConvocatoriaNego.cs" />
     <Compile Include="EmpresaNego.cs" />
     <Compile Include="EtapaCofecytNego.cs" />

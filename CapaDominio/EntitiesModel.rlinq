@@ -1085,6 +1085,9 @@
         <orm:field name="actividadCofecyts" property="ActividadCofecyts" behavior="readwrite" uniqueId="daf185a4-2c2d-4fe5-9adc-4da40db5fbe4" type="CapaDominio.ActividadCofecyt">
           <orm:collection element-class="CapaDominio.ActividadCofecyt" inverse-field="proyectoCofecyt" order-by="" uniqueId="641a5433-c366-4588-86cc-b2316753991f" />
         </orm:field>
+        <orm:field name="actuacionProyectoCofecyts" property="ActuacionProyectoCofecyts" behavior="readwrite" uniqueId="89281ecd-43db-4d6b-9425-f09e141b154d" type="CapaDominio.ActuacionProyectoCofecyt">
+          <orm:collection element-class="CapaDominio.ActuacionProyectoCofecyt" inverse-field="proyectoCofecyt" order-by="" uniqueId="f334515f-b39d-45e7-a597-0dad416239b4" />
+        </orm:field>
       </orm:class>
       <orm:class name="Tematica" uniqueId="a6668582-34f7-4261-a955-4700277c4d3c">
         <orm:table name="Tematica" />
@@ -1222,6 +1225,52 @@
           <orm:reference uniqueId="5b2b4eb3-8651-4670-9f7c-6d5f6080af20" association-name="ActividadCofecytHasEtapaCofecyt">
             <orm:sharedfield name="idEtapaCofecyt" target-class="CapaDominio.EtapaCofecyt" target-field="idEtapaCofecyt" />
             <orm:constraint name="FK_ActividadCofecyt_EtapaCofecyt" delete-action="dbdefaultrule" destination-table="EtapaCofecyt" />
+          </orm:reference>
+        </orm:field>
+      </orm:class>
+      <orm:class name="ActuacionProyectoCofecyt" uniqueId="985e652a-7986-4463-beb0-7f5b389a7c44">
+        <orm:table name="ActuacionProyectoCofecyt" />
+        <orm:identity>
+          <orm:key-generator name="autoinc">
+            <orm:key-generator-member property-name="IdActuacionProyectoCofecyt" />
+          </orm:key-generator>
+          <orm:single-field field-name="idActuacionProyectoCofecyt" />
+        </orm:identity>
+        <orm:concurrency strategy="changed" />
+        <orm:field name="idActuacionProyectoCofecyt" property="IdActuacionProyectoCofecyt" behavior="readwrite" uniqueId="fa1e9b88-fb65-485e-a083-a6591d9d09cf" type="System.Int32">
+          <orm:column name="idActuacionProyectoCofecyt" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="idProyectoCofecyt" property="IdProyectoCofecyt" behavior="readwrite" uniqueId="bc640b9e-f4cd-4538-9cd7-ca00b4010418" type="System.Int32">
+          <orm:column name="idProyectoCofecyt" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
+        <orm:field name="fechaActuacion" property="FechaActuacion" behavior="readwrite" uniqueId="971b75cf-9e8f-4418-a417-1c0bbec3e235" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="fechaActuacion" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
+        </orm:field>
+        <orm:field name="detalle" property="Detalle" behavior="readwrite" uniqueId="1f5d76d3-cf46-4740-81e4-13ae712b4c49" type="System.String">
+          <orm:column name="detalle" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="pendiente" property="Pendiente" behavior="readwrite" uniqueId="ff9a94a1-3d89-4e0e-991c-203c46c05e90" type="System.String">
+          <orm:column name="pendiente" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="responsable" property="Responsable" behavior="readwrite" uniqueId="59f51e1a-de8f-4e46-b4ae-a59bf4a4de47" type="System.String">
+          <orm:column name="responsable" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="agente" property="Agente" behavior="readwrite" uniqueId="7d4dd9de-e2af-48b6-9b7a-62f687d8d188" type="System.String">
+          <orm:column name="agente" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="fechaLimite" property="FechaLimite" behavior="readwrite" uniqueId="5a2f65ab-2c46-4fcc-938b-1738f70a4765" type="System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="fechaLimite" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
+        </orm:field>
+        <orm:field name="observaciones" property="Observaciones" behavior="readwrite" uniqueId="6c9df478-56c5-486a-9d14-37bdf05c945d" type="System.String">
+          <orm:column name="observaciones" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="documentacionAnexada" property="DocumentacionAnexada" behavior="readwrite" uniqueId="62193eaa-c7f9-42fa-880e-33b426b208b5" type="System.String">
+          <orm:column name="documentacionAnexada" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        </orm:field>
+        <orm:field name="proyectoCofecyt" property="ProyectoCofecyt" behavior="readwrite" uniqueId="c3d05dd1-698f-4121-837a-dd6aa97f3c0a" type="CapaDominio.ProyectoCofecyt">
+          <orm:reference uniqueId="f334515f-b39d-45e7-a597-0dad416239b4" association-name="ActuacionProyectoCofecytHasProyectoCofecyt">
+            <orm:sharedfield name="idProyectoCofecyt" target-class="CapaDominio.ProyectoCofecyt" target-field="idProyectoCofecyt" />
+            <orm:constraint name="FK_ActuacionProyectoCofecyt_ProyectoCofecyt" delete-action="dbdefaultrule" destination-table="ProyectoCofecyt" />
           </orm:reference>
         </orm:field>
       </orm:class>
@@ -1594,6 +1643,21 @@
         </orm:constraint>
         <orm:constraint name="FK_ActividadCofecyt_EtapaCofecyt" delete-action="dbdefaultrule" destination-table="EtapaCofecyt">
           <orm:column name="idEtapaCofecyt" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+      </orm:table>
+      <orm:table name="ActuacionProyectoCofecyt">
+        <orm:column name="idActuacionProyectoCofecyt" sql-type="int" nullable="false" length="0" scale="0" primary-key="true" backend-calculated="true" ado-type="Int32" />
+        <orm:column name="idProyectoCofecyt" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        <orm:column name="fechaActuacion" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
+        <orm:column name="detalle" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="pendiente" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="responsable" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="agente" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="fechaLimite" sql-type="date" nullable="true" length="0" scale="0" ado-type="Date" />
+        <orm:column name="observaciones" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="documentacionAnexada" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:constraint name="FK_ActuacionProyectoCofecyt_ProyectoCofecyt" delete-action="dbdefaultrule" destination-table="ProyectoCofecyt">
+          <orm:column name="idProyectoCofecyt" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
         </orm:constraint>
       </orm:table>
       <orm:procedure name="pr02">
@@ -2653,6 +2717,9 @@
         <classHasNavigationalProperties Id="e5e11fd1-35ed-4357-806d-a30d01355123">
           <NavigationalProperty Id="daf185a4-2c2d-4fe5-9adc-4da40db5fbe4" name="ActividadCofecyts" type="IList&lt;ActividadCofecyt&gt;" label="ActividadCofecyts : IList&lt;ActividadCofecyt&gt;" nullable="true" kind="Persistent" fieldName="actividadCofecyts" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="cc22b0e5-a37f-4820-8d6f-4c6bbeb43e8f">
+          <NavigationalProperty Id="89281ecd-43db-4d6b-9425-f09e141b154d" name="ActuacionProyectoCofecyts" type="IList&lt;ActuacionProyectoCofecyt&gt;" label="ActuacionProyectoCofecyts : IList&lt;ActuacionProyectoCofecyt&gt;" nullable="true" kind="Persistent" fieldName="actuacionProyectoCofecyts" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
     <DomainClass Id="a6668582-34f7-4261-a955-4700277c4d3c" name="Tematica" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdTematica">
@@ -2774,6 +2841,38 @@
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
+    <DomainClass Id="985e652a-7986-4463-beb0-7f5b389a7c44" name="ActuacionProyectoCofecyt" namespace="CapaDominio" showPropertiesCompartment="true" identityMechanism="DatabaseServerCalculated" concurrencyMode="Changed" showNavigationCompartment="true" showImplementationCompartment="true" identityMechanismMember="IdActuacionProyectoCofecyt">
+      <Property Id="fa1e9b88-fb65-485e-a083-a6591d9d09cf" name="IdActuacionProyectoCofecyt" type="Int32" label="IdActuacionProyectoCofecyt : Int32" kind="Persistent" identity="true" fieldName="idActuacionProyectoCofecyt" />
+      <Property Id="7d4dd9de-e2af-48b6-9b7a-62f687d8d188" name="Agente" label="Agente : String" kind="Persistent" fieldName="agente" />
+      <Property Id="1f5d76d3-cf46-4740-81e4-13ae712b4c49" name="Detalle" label="Detalle : String" kind="Persistent" fieldName="detalle" />
+      <Property Id="62193eaa-c7f9-42fa-880e-33b426b208b5" name="DocumentacionAnexada" label="DocumentacionAnexada : String" kind="Persistent" fieldName="documentacionAnexada" />
+      <Property Id="971b75cf-9e8f-4418-a417-1c0bbec3e235" name="FechaActuacion" type="DateTime" label="FechaActuacion : DateTime" nullable="true" kind="Persistent" fieldName="fechaActuacion" />
+      <Property Id="5a2f65ab-2c46-4fcc-938b-1738f70a4765" name="FechaLimite" type="DateTime" label="FechaLimite : DateTime" nullable="true" kind="Persistent" fieldName="fechaLimite" />
+      <Property Id="bc640b9e-f4cd-4538-9cd7-ca00b4010418" name="IdProyectoCofecyt" type="Int32" label="IdProyectoCofecyt : Int32" kind="Persistent" fieldName="idProyectoCofecyt" />
+      <Property Id="6c9df478-56c5-486a-9d14-37bdf05c945d" name="Observaciones" label="Observaciones : String" kind="Persistent" fieldName="observaciones" />
+      <Property Id="ff9a94a1-3d89-4e0e-991c-203c46c05e90" name="Pendiente" label="Pendiente : String" kind="Persistent" fieldName="pendiente" />
+      <Property Id="59f51e1a-de8f-4e46-b4ae-a59bf4a4de47" name="Responsable" label="Responsable : String" kind="Persistent" fieldName="responsable" />
+      <AssociationTargets>
+        <Association Id="f334515f-b39d-45e7-a597-0dad416239b4" SourceMultiplicity="One" name="ActuacionProyectoCofecytHasProyectoCofecyt">
+          <DomainClassMoniker name="/ModeloDeDominio/ProyectoCofecyt" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="83532bd3-1ab7-4695-8cc0-da1986fd2885">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/ProyectoCofecyt/ActuacionProyectoCofecyts" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="54504eb9-a06e-4fe4-b825-90b29fa1ac7f">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/ActuacionProyectoCofecyt/ProyectoCofecyt" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
+      </AssociationTargets>
+      <navigationalProperties>
+        <classHasNavigationalProperties Id="abbeaabe-369f-41b6-8fee-1a783c28bc14">
+          <NavigationalProperty Id="c3d05dd1-698f-4121-837a-dd6aa97f3c0a" name="ProyectoCofecyt" type="ProyectoCofecyt" label="ProyectoCofecyt : ProyectoCofecyt" nullable="true" kind="Persistent" fieldName="proyectoCofecyt" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+      </navigationalProperties>
+    </DomainClass>
   </Types>
   <domainContext>
     <domainModelHasDomainContext Id="308c447e-a46a-42f3-bd9a-07f5b54f1c92">
@@ -2807,6 +2906,7 @@
         <entitySetProperty name="Sectors" namespace="CapaDominio" type="Sector" label="Sectors : IQueryable&lt;CapaDominio.Sector&gt;" />
         <entitySetProperty name="EtapaCofecyts" namespace="CapaDominio" type="EtapaCofecyt" label="EtapaCofecyts : IQueryable&lt;CapaDominio.EtapaCofecyt&gt;" />
         <entitySetProperty name="ActividadCofecyts" namespace="CapaDominio" type="ActividadCofecyt" label="ActividadCofecyts : IQueryable&lt;CapaDominio.ActividadCofecyt&gt;" />
+        <entitySetProperty name="ActuacionProyectoCofecyts" namespace="CapaDominio" type="ActuacionProyectoCofecyt" label="ActuacionProyectoCofecyts : IQueryable&lt;CapaDominio.ActuacionProyectoCofecyt&gt;" />
       </domainContainer>
     </domainModelHasDomainContext>
   </domainContext>

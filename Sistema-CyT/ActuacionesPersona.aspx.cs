@@ -125,7 +125,7 @@ namespace Sistema_CyT
             {
                 ActuacionPersona actuacionPersona = new ActuacionPersona();
 
-                actuacionPersona.Fecha = DateTime.ParseExact(txtFechaActuacion.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                actuacionPersona.Fecha = DateTime.ParseExact(txtFechaActuacion.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 actuacionPersona.Detalle = txtDetalle.Text;
                 actuacionPersona.IdViaComunicacion = viaComunicacionNego.TraerViaComunicacionIdSegunItem(ddlViaComunicacion.SelectedItem.ToString());
                 
@@ -161,7 +161,7 @@ namespace Sistema_CyT
         {
             ActuacionPersona actuacionPersona = new ActuacionPersona();
 
-            actuacionPersona.Fecha = DateTime.ParseExact(txtFechaActuacion.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+            actuacionPersona.Fecha = DateTime.ParseExact(txtFechaActuacion.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             actuacionPersona.Detalle = txtDetalle.Text;
             actuacionPersona.IdViaComunicacion = viaComunicacionNego.TraerViaComunicacionIdSegunItem(ddlViaComunicacion.SelectedItem.ToString());
             actuacionPersona.IdPersona = idPersonaActual;
@@ -184,23 +184,26 @@ namespace Sistema_CyT
 
             ActuacionPersona actuacionPersona = actuacionPersonaNego.ObtenerActuacionPersona(idActuacionActual);
 
-            //****INICIO RUTINA PARA TRABAJAR CON FORMATO FECHA
-            //FECHA APERTURA
-            string dia = Convert.ToString((actuacionPersona.Fecha).Value.Day);
-            string mes = Convert.ToString((actuacionPersona.Fecha).Value.Month);
-            string anio = Convert.ToString((actuacionPersona.Fecha).Value.Year);
-            string t1 = "";
-            string t2 = "";
-            if ((actuacionPersona.Fecha).Value.Day < 10)
-            {
-                t1 = "0";
-            }
-            if ((actuacionPersona.Fecha).Value.Month < 10)
-            {
-                t2 = "0";
-            }
-            txtFechaActuacion.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
-            //****FIN RUTINA PARA TRABAJAR CON FORMATO FECHA
+            ////****INICIO RUTINA PARA TRABAJAR CON FORMATO FECHA
+            ////FECHA APERTURA
+            //string dia = Convert.ToString((actuacionPersona.Fecha).Value.Day);
+            //string mes = Convert.ToString((actuacionPersona.Fecha).Value.Month);
+            //string anio = Convert.ToString((actuacionPersona.Fecha).Value.Year);
+            //string t1 = "";
+            //string t2 = "";
+            //if ((actuacionPersona.Fecha).Value.Day < 10)
+            //{
+            //    t1 = "0";
+            //}
+            //if ((actuacionPersona.Fecha).Value.Month < 10)
+            //{
+            //    t2 = "0";
+            //}
+            //txtFechaActuacion.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
+            ////****FIN RUTINA PARA TRABAJAR CON FORMATO FECHA
+
+            if (actuacionPersona.Fecha == null) { txtFechaActuacion.Text = ""; }
+            else { txtFechaActuacion.Text = Convert.ToDateTime(actuacionPersona.Fecha).ToShortDateString(); };
 
             txtDetalle.Text = actuacionPersona.Detalle.ToString();
 

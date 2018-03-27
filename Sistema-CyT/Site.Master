@@ -21,6 +21,8 @@
             <Scripts>
             </Scripts>
         </asp:ScriptManager>
+
+
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -28,6 +30,49 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/Default.aspx">INICIO</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">COFECYT <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a runat="server" href="~/AltaProyectoCofecyt.aspx"><span class="glyphicon glyphicon-plus"></span>Nuevo Proyecto</a></li>
+                            <li><a runat="server" href="~/EditarProyectoCofecyt.aspx"><span class="glyphicon glyphicon-edit"></span>Editar Proyecto</a></li>
+                            <li><a runat="server" href="~/ListarProyectosCofecyt.aspx"><span class="glyphicon glyphicon-list"></span>Listar Proyectos</a></li>
+                            <li class="divider"></li>
+                            <li><a runat="server" href="~/AgregarEtapaCofecyt.aspx"><span class="glyphicon glyphicon-plus"></span>Agregar Etapa</a></li>
+                            <li><a runat="server" href="~/ModificarEtapaCofecyt.aspx"><span class="glyphicon glyphicon-edit"></span>Modificar Etapa</a></li>
+                            <li class="divider"></li>
+                            <li><a runat="server" href="~/AgregarActividadCofecyt.aspx"><span class="glyphicon glyphicon-plus"></span>Agregar Actividad</a></li>
+                            <li><a runat="server" href="~/ModificarActividadCofecyt.aspx"><span class="glyphicon glyphicon-edit"></span>Modificar Actividad</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">PROYECTOS <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a runat="server" href="~/AltaProyecto.aspx"><span class="glyphicon glyphicon-plus"></span>Alta Proyecto</a></li>
+                            <li><a runat="server" href="~/EditarProyecto.aspx"><span class="glyphicon glyphicon-edit"></span>Editar Proyecto</a></li>
+                            <li><a runat="server" href="~/ListarProyectos.aspx"><span class="glyphicon glyphicon-list"></span>Listar Proyectos</a></li>
+                            <li class="divider"></li>
+                            <li><a runat="server" href="~/AgregarEtapa.aspx"><span class="glyphicon glyphicon-plus"></span>Agregar Etapa</a></li>
+                            <li><a runat="server" href="~/ModificarEtapa.aspx"><span class="glyphicon glyphicon-edit"></span>Modificar Etapa</a></li>
+                            <li class="divider"></li>
+                            <li><a runat="server" href="~/AgregarActividad.aspx"><span class="glyphicon glyphicon-plus"></span>Agregar Actividad</a></li>
+                            <li><a runat="server" href="~/ModificarActividad.aspx"><span class="glyphicon glyphicon-edit"></span>Modificar Actividad</a></li>
+                            <li class="divider"></li>
+                            <li><a runat="server" href="~/FiltrarProyecto.aspx"><span class="glyphicon glyphicon-plus"></span>Seguimiento</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">CONVOCATORIAS <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a runat="server" href="~/AltaFondo.aspx"><span class="glyphicon glyphicon-plus"></span>Alta Fondo</a></li>
+                            <li><a runat="server" href="~/EditarFondo.aspx"><span class="glyphicon glyphicon-edit"></span>Editar Fondo</a></li>
+                            <li><a runat="server" href="~/ListarFondos.aspx"><span class="glyphicon glyphicon-list"></span>Listar Fondos</a></li>
+                            <li class="divider"></li>
+                            <li><a runat="server" href="~/AltaConvocatoria.aspx"><span class="glyphicon glyphicon-plus"></span>Alta Convocatoria</a></li>
+                            <li><a runat="server" href="~/EditarConvocatoria.aspx"><span class="glyphicon glyphicon-edit"></span>Editar Convocatoria</a></li>
+                            <li><a runat="server" href="~/ListarConvocatorias.aspx"><span class="glyphicon glyphicon-list"></span>Lista Convocatorias</a></li>
+                        </ul>
+                    </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">CONTACTOS <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -48,34 +93,6 @@
                             <li><a runat="server" href="~/ListarUdtUvts.aspx"><span class="glyphicon glyphicon-list"></span>Listar UDT/UVTs</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">PROYECTOS <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a runat="server" href="~/AltaProyecto.aspx"><span class="glyphicon glyphicon-plus"></span>Alta Proyecto</a></li>
-                            <li><a runat="server" href="~/EditarProyecto.aspx"><span class="glyphicon glyphicon-edit"></span>Editar Proyecto</a></li>
-                            <li><a runat="server" href="~/ListarProyectos.aspx"><span class="glyphicon glyphicon-list"></span>Listar Proyectos</a></li>
-                            <li class="divider"></li>
-                            <li><a runat="server" href="~/AgregarEtapa.aspx"><span class="glyphicon glyphicon-plus"></span>Agregar Etapa</a></li>
-                            <li><a runat="server" href="~/ModificarEtapa.aspx"><span class="glyphicon glyphicon-edit"></span>Modificar Etapa</a></li>
-                            <li class="divider"></li>
-                            <li><a runat="server" href="~/AgregarActividad.aspx"><span class="glyphicon glyphicon-plus"></span>Agregar Actividad</a></li>
-                            <li><a runat="server" href="~/ModificarActividad.aspx"><span class="glyphicon glyphicon-edit"></span>Modificar Actividad</a></li>
-                            <li class="divider"></li>
-                            <li><a runat="server" href="~/FiltrarProyecto.aspx"><span class="glyphicon glyphicon-plus"></span>Seguimiento</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">CONVOCATORIAS <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a runat="server" href="~/AltaFondo.aspx"><span class="glyphicon glyphicon-plus"></span>Alta Fondo</a></li>
-                            <li><a runat="server" href="~/EditarFondo.aspx"><span class="glyphicon glyphicon-edit"></span>Editar Fondo</a></li>
-                            <li><a runat="server" href="~/ListarFondos.aspx"><span class="glyphicon glyphicon-list"></span>Listar Fondos</a></li>
-                            <li class="divider"></li>
-                            <li><a runat="server" href="~/AltaConvocatoria.aspx"><span class="glyphicon glyphicon-plus"></span>Alta Convocatoria</a></li>
-                            <li><a runat="server" href="~/EditarConvocatoria.aspx"><span class="glyphicon glyphicon-edit"></span>Editar Convocatoria</a></li>
-                            <li><a runat="server" href="~/ListarConvocatorias.aspx"><span class="glyphicon glyphicon-list"></span>Lista Convocatorias</a></li>
-                        </ul>
-                    </li>
                     <li class="dropdown" runat="server" id="dropdownusuarios">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">USUARIOS <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -85,33 +102,19 @@
                     <li class="dropdown" runat="server" id="dropdownSistema">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">SISTEMA <span class="caret"></span></a>
                         <ul class="dropdown-menu">
+                            <li><a runat="server" href="~/Contenidos.aspx"><span class="glyphicon glyphicon-credit-card"></span>Contenidos</a></li>
+
                         </ul>
                     </li>
 
                     <!-- PARA REGISTRAR Y LOGUEAR USUARIOS -->
                 </ul>
-                <%--                <asp:LoginView runat="server" ViewStateMode="Disabled">
-                    <AnonymousTemplate>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a runat="server" href="~/Account/Register">Register</a></li>
-                            <li><a runat="server" href="~/Account/Login">Log in</a></li>
-                        </ul>
-                    </AnonymousTemplate>
-                    <LoggedInTemplate>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
-                            <li>
-                                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
-                            </li>
-                        </ul>
-                    </LoggedInTemplate>
-                </asp:LoginView>--%>
 
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <asp:Label ID="lbl18" Font-Bold="true" runat="server" CssClass="control-label AlineadoIzquierda"></asp:Label>
                         <%--<asp:Button ID="btnUsuarios" runat="server" Text="Usuarios" ForeColor="Black" OnClick="btnUsuarios_Click" />--%>
-                        <asp:Button ID="btnLogOff" CssClass="btn btn-info glyphicon-apple" runat="server" Text="Cerrar Sesion" OnClick="btnLogOff_Click" OnClientClick="return confirm('¿Desea cerrar la sesion?');" />
+                        <asp:Button ID="btnLogOff" CssClass="btn btn-info" runat="server" Text="Cerrar Sesion" OnClick="btnLogOff_Click" OnClientClick="return confirm('¿Desea cerrar la sesion?');" />
                     </li>
                     <%--<li><a class="btn" href="/Login.aspx">SALIR <span class="glyphicon glyphicon-log-out"></span></a></li>--%>
                 </ul>
@@ -128,6 +131,63 @@
             </footer>
         </div>
     </form>
+
+    <script>
+        function validarSoloNumeros(e) {
+            tecla = (document.all) ? e.keyCode : e.which;
+            if (tecla == 8) return true;
+            patron = /\d/;
+            return patron.test(String.fromCharCode(tecla));
+        }
+    </script>
+    <script>
+        function validarSoloLetras(e) {
+            tecla = (document.all) ? e.keyCode : e.which;
+            if (tecla == 8) return true;
+            patron = /[A-Za-zñÑ-áéíóúÁÉÍÓÚ\s\t-]/;
+            te = String.fromCharCode(tecla);
+            return patron.test(te);
+        }
+    </script>
+    <script>
+        function validarSoloLetrasYNumeros(e) {
+            tecla = (document.all) ? e.keyCode : e.which;
+            if (tecla == 8) return true;
+            //patron = /\w/; // Acepta números y letras
+            patron = /[A-Za-zñÑ-áéíóúÁÉÍÓÚ\s\t\d-]/;
+            te = String.fromCharCode(tecla);
+            return patron.test(te);
+        }
+    </script>
+    <script>
+        function validarSoloNumerosYGuion(e) {
+            tecla = (document.all) ? e.keyCode : e.which;
+            if (tecla == 8) return true;
+            patron = /[\d-/]/;
+            te = String.fromCharCode(tecla);
+            return patron.test(te);
+        }
+    </script>
+    <script>
+        function validarEmail(e) {
+            tecla = (document.all) ? e.keyCode : e.which;
+            if (tecla == 8) return true;
+            patron = /[A-Za-zñÑ-áéíóúÁÉÍÓÚ\s\t\d-@.]/;
+            te = String.fromCharCode(tecla);
+            return patron.test(te);
+        }
+    </script>
+    <script>
+        function validarTelefonos(e) {
+            tecla = (document.all) ? e.keyCode : e.which;
+            if (tecla == 8) return true;
+            patron = /[\d-()\s]/;
+            te = String.fromCharCode(tecla);
+            return patron.test(te);
+        }
+    </script>
+
+
     <script src="js/jquery-1.12.3.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/bootstrap-datepicker.js"></script>

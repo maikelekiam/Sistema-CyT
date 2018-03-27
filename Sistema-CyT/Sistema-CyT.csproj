@@ -157,6 +157,7 @@
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Actuaciones.aspx" />
     <Content Include="ActuacionesPersona.aspx" />
+    <Content Include="ActuacionesProyectoCofecyt.aspx" />
     <Content Include="AgregarActividad.aspx" />
     <Content Include="AgregarEtapa.aspx" />
     <Content Include="AltaConvocatoria.aspx" />
@@ -165,14 +166,21 @@
     <Content Include="AltaOrganismo.aspx" />
     <Content Include="AltaPersona.aspx" />
     <Content Include="AltaProyecto.aspx" />
+    <Content Include="AltaProyectoCofecyt.aspx" />
     <Content Include="AltaUdtUvt.aspx" />
     <Content Include="AltaUsuario.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="Contenidos.aspx" />
     <Content Include="css\bootstrap-datepicker.css" />
     <Content Include="css\bootstrap-select.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\estilo-textbox.css" />
+    <Content Include="css\font-awesome.css" />
+    <Content Include="css\owl.carousel.css" />
+    <Content Include="css\owl.transitions.css" />
     <Content Include="css\panel-collapsible.css" />
+    <Content Include="css\responsive.css" />
+    <Content Include="css\stylesheet.css" />
     <Content Include="EditarConvocatoria.aspx" />
     <Content Include="EditarEmpresa.aspx" />
     <Content Include="EditarEtapa.aspx" />
@@ -187,7 +195,11 @@
     <Content Include="js\bootstrap-datepicker.js" />
     <Content Include="js\bootstrap-select.js" />
     <Content Include="js\bootstrap.js" />
+    <Content Include="js\custom.js" />
     <Content Include="js\jquery-1.12.3.js" />
+    <Content Include="js\jquery.dcjqaccordion.js" />
+    <Content Include="js\jquery.easing-1.3.min.js" />
+    <Content Include="js\owl.carousel.js" />
     <Content Include="js\panel-collapsible.js" />
     <Content Include="ListarConvocatorias.aspx" />
     <Content Include="ListarEmpresas.aspx" />
@@ -195,10 +207,12 @@
     <Content Include="ListarOrganismos.aspx" />
     <Content Include="ListarPersonas.aspx" />
     <Content Include="ListarProyectos.aspx" />
+    <Content Include="ListarProyectosCofecyt.aspx" />
     <Content Include="ListarUdtUvts.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="ModificarActividad.aspx" />
     <Content Include="ModificarEtapa.aspx" />
+    <Content Include="MostrarActuacionProyectoCofecyt.aspx" />
     <Content Include="MostrarConvocatoria.aspx" />
     <Content Include="MostrarEmpresa.aspx" />
     <Content Include="MostrarFondo.aspx" />
@@ -277,6 +291,13 @@
     <Compile Include="ActuacionesPersona.aspx.designer.cs">
       <DependentUpon>ActuacionesPersona.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ActuacionesProyectoCofecyt.aspx.cs">
+      <DependentUpon>ActuacionesProyectoCofecyt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ActuacionesProyectoCofecyt.aspx.designer.cs">
+      <DependentUpon>ActuacionesProyectoCofecyt.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AgregarActividad.aspx.cs">
       <DependentUpon>AgregarActividad.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -333,6 +354,13 @@
     <Compile Include="AltaProyecto.aspx.designer.cs">
       <DependentUpon>AltaProyecto.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AltaProyectoCofecyt.aspx.cs">
+      <DependentUpon>AltaProyectoCofecyt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AltaProyectoCofecyt.aspx.designer.cs">
+      <DependentUpon>AltaProyectoCofecyt.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AltaUdtUvt.aspx.cs">
       <DependentUpon>AltaUdtUvt.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -363,6 +391,13 @@
     </Compile>
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contenidos.aspx.cs">
+      <DependentUpon>Contenidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contenidos.aspx.designer.cs">
+      <DependentUpon>Contenidos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -486,6 +521,13 @@
     <Compile Include="ListarProyectos.aspx.designer.cs">
       <DependentUpon>ListarProyectos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ListarProyectosCofecyt.aspx.cs">
+      <DependentUpon>ListarProyectosCofecyt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListarProyectosCofecyt.aspx.designer.cs">
+      <DependentUpon>ListarProyectosCofecyt.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ListarUdtUvts.aspx.cs">
       <DependentUpon>ListarUdtUvts.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -514,6 +556,13 @@
     </Compile>
     <Compile Include="ModificarEtapa.aspx.designer.cs">
       <DependentUpon>ModificarEtapa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MostrarActuacionProyectoCofecyt.aspx.cs">
+      <DependentUpon>MostrarActuacionProyectoCofecyt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MostrarActuacionProyectoCofecyt.aspx.designer.cs">
+      <DependentUpon>MostrarActuacionProyectoCofecyt.aspx</DependentUpon>
     </Compile>
     <Compile Include="MostrarConvocatoria.aspx.cs">
       <DependentUpon>MostrarConvocatoria.aspx</DependentUpon>

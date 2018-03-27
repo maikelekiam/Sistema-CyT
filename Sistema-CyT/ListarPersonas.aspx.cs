@@ -59,5 +59,6 @@ namespace Sistema_CyT
 
             Response.Redirect("MostrarPersona.aspx");
         }
+
     }
 }

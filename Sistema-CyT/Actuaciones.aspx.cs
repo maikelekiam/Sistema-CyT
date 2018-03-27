@@ -120,7 +120,7 @@ namespace Sistema_CyT
             Actuacion actuacion = new Actuacion();
 
             actuacion.IdProyecto = FiltrarProyecto.idProyectoSeleccionado;
-            actuacion.Fecha = DateTime.ParseExact(txtFechaActuacion.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+            actuacion.Fecha = DateTime.ParseExact(txtFechaActuacion.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             actuacion.Detalle = txtDetalle.Text;
             //actuacion.IdOrganismo = organismoNego.TraerOrganismoIdSegunItem(ddlOrganismo.SelectedItem.ToString());
             actuacion.IdViaComunicacion = viaComunicacionNego.TraerViaComunicacionIdSegunItem(ddlViaComunicacion.SelectedItem.ToString());
@@ -198,23 +198,26 @@ namespace Sistema_CyT
 
             Actuacion actuacion = actuacionNego.ObtenerActuacion(idActuacionActual);
 
-            //****INICIO RUTINA PARA TRABAJAR CON FORMATO FECHA
-            //FECHA APERTURA
-            string dia = Convert.ToString((actuacion.Fecha).Value.Day);
-            string mes = Convert.ToString((actuacion.Fecha).Value.Month);
-            string anio = Convert.ToString((actuacion.Fecha).Value.Year);
-            string t1 = "";
-            string t2 = "";
-            if ((actuacion.Fecha).Value.Day < 10)
-            {
-                t1 = "0";
-            }
-            if ((actuacion.Fecha).Value.Month < 10)
-            {
-                t2 = "0";
-            }
-            txtFechaActuacion.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
-            //****FIN RUTINA PARA TRABAJAR CON FORMATO FECHA
+            ////****INICIO RUTINA PARA TRABAJAR CON FORMATO FECHA
+            ////FECHA APERTURA
+            //string dia = Convert.ToString((actuacion.Fecha).Value.Day);
+            //string mes = Convert.ToString((actuacion.Fecha).Value.Month);
+            //string anio = Convert.ToString((actuacion.Fecha).Value.Year);
+            //string t1 = "";
+            //string t2 = "";
+            //if ((actuacion.Fecha).Value.Day < 10)
+            //{
+            //    t1 = "0";
+            //}
+            //if ((actuacion.Fecha).Value.Month < 10)
+            //{
+            //    t2 = "0";
+            //}
+            //txtFechaActuacion.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
+            ////****FIN RUTINA PARA TRABAJAR CON FORMATO FECHA
+
+            if (actuacion.Fecha == null) { txtFechaActuacion.Text = ""; }
+            else { txtFechaActuacion.Text = Convert.ToDateTime(actuacion.Fecha).ToShortDateString(); };
 
             txtDetalle.Text = actuacion.Detalle.ToString();
             ddlContacto.Text = personaNego.TraerPersona(actuacion.IdPersona.Value);

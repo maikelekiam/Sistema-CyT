@@ -311,7 +311,7 @@ namespace Sistema_CyT
                     //1ro hay que averiguar si existe al menos 1 proyecto o la lista viene vacia
                     if (ddlProyectoChoice.SelectedValue != "")
                     {
-                        idProyectoCofecytActual = Convert.ToInt32(ddlProyectoChoice.SelectedValue);                                             
+                        idProyectoCofecytActual = Convert.ToInt32(ddlProyectoChoice.SelectedValue);
 
                         ProyectoCofecyt proyectoCofecyt = proyectoCofecytNego.ObtenerProyectoCofecyt(idProyectoCofecytActual);
 
@@ -347,56 +347,67 @@ namespace Sistema_CyT
                             else { ddlDirector.Text = personaNego.TraerPersona(Convert.ToInt32(proyectoCofecyt.IdDirector)); }
 
 
-                            //****INICIO RUTINA PARA TRABAJAR CON FORMATO FECHA
-                            //FECHA PRESENTACION
-                            string dia = Convert.ToString((proyectoCofecyt.FechaPresentacion).Value.Day);
-                            string mes = Convert.ToString((proyectoCofecyt.FechaPresentacion).Value.Month);
-                            string anio = Convert.ToString((proyectoCofecyt.FechaPresentacion).Value.Year);
-                            string t1 = "";
-                            string t2 = "";
-                            if ((proyectoCofecyt.FechaPresentacion).Value.Day < 10)
-                            {
-                                t1 = "0";
-                            }
-                            if ((proyectoCofecyt.FechaPresentacion).Value.Month < 10)
-                            {
-                                t2 = "0";
-                            }
-                            txtFechaPresentacion.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
+                            ////****INICIO RUTINA PARA TRABAJAR CON FORMATO FECHA
+                            ////FECHA PRESENTACION
+                            //string dia = Convert.ToString((proyectoCofecyt.FechaPresentacion).Value.Day);
+                            //string mes = Convert.ToString((proyectoCofecyt.FechaPresentacion).Value.Month);
+                            //string anio = Convert.ToString((proyectoCofecyt.FechaPresentacion).Value.Year);
+                            //string t1 = "";
+                            //string t2 = "";
+                            //if ((proyectoCofecyt.FechaPresentacion).Value.Day < 10)
+                            //{
+                            //    t1 = "0";
+                            //}
+                            //if ((proyectoCofecyt.FechaPresentacion).Value.Month < 10)
+                            //{
+                            //    t2 = "0";
+                            //}
+                            //txtFechaPresentacion.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
 
-                            //FECHA FINALIZACION
-                            dia = Convert.ToString((proyectoCofecyt.FechaFinalizacion).Value.Day);
-                            mes = Convert.ToString((proyectoCofecyt.FechaFinalizacion).Value.Month);
-                            anio = Convert.ToString((proyectoCofecyt.FechaFinalizacion).Value.Year);
-                            t1 = "";
-                            t2 = "";
-                            if ((proyectoCofecyt.FechaFinalizacion).Value.Day < 10)
-                            {
-                                t1 = "0";
-                            }
-                            if ((proyectoCofecyt.FechaFinalizacion).Value.Month < 10)
-                            {
-                                t2 = "0";
-                            }
-                            txtFechaFinalizacion.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
+                            ////FECHA FINALIZACION
+                            //dia = Convert.ToString((proyectoCofecyt.FechaFinalizacion).Value.Day);
+                            //mes = Convert.ToString((proyectoCofecyt.FechaFinalizacion).Value.Month);
+                            //anio = Convert.ToString((proyectoCofecyt.FechaFinalizacion).Value.Year);
+                            //t1 = "";
+                            //t2 = "";
+                            //if ((proyectoCofecyt.FechaFinalizacion).Value.Day < 10)
+                            //{
+                            //    t1 = "0";
+                            //}
+                            //if ((proyectoCofecyt.FechaFinalizacion).Value.Month < 10)
+                            //{
+                            //    t2 = "0";
+                            //}
+                            //txtFechaFinalizacion.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
 
-                            //FECHA ULTIMA EVALUACION TECNICA
-                            dia = Convert.ToString((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Day);
-                            mes = Convert.ToString((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Month);
-                            anio = Convert.ToString((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Year);
-                            t1 = "";
-                            t2 = "";
-                            if ((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Day < 10)
-                            {
-                                t1 = "0";
-                            }
-                            if ((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Month < 10)
-                            {
-                                t2 = "0";
-                            }
-                            txtUltimaEvaluacionTecnica.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
+                            ////FECHA ULTIMA EVALUACION TECNICA
+                            //dia = Convert.ToString((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Day);
+                            //mes = Convert.ToString((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Month);
+                            //anio = Convert.ToString((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Year);
+                            //t1 = "";
+                            //t2 = "";
+                            //if ((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Day < 10)
+                            //{
+                            //    t1 = "0";
+                            //}
+                            //if ((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Month < 10)
+                            //{
+                            //    t2 = "0";
+                            //}
+                            //txtUltimaEvaluacionTecnica.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
 
-                            //****FIN RUTINA FORMATO DE FECHA
+                            ////****FIN RUTINA FORMATO DE FECHA
+
+                            if (proyectoCofecyt.FechaPresentacion == null) { txtFechaPresentacion.Text = ""; }
+                            else { txtFechaPresentacion.Text = Convert.ToDateTime(proyectoCofecyt.FechaPresentacion).ToShortDateString(); };
+
+                            if (proyectoCofecyt.FechaFinalizacion == null) { txtFechaFinalizacion.Text = ""; }
+                            else { txtFechaFinalizacion.Text = Convert.ToDateTime(proyectoCofecyt.FechaFinalizacion).ToShortDateString(); };
+
+                            if (proyectoCofecyt.UltimaEvaluacionTecnica == null) { txtUltimaEvaluacionTecnica.Text = ""; }
+                            else { txtUltimaEvaluacionTecnica.Text = Convert.ToDateTime(proyectoCofecyt.UltimaEvaluacionTecnica).ToShortDateString(); };
+
+
 
 
                             //txtFechaPresentacion.Text = Convert.ToDateTime(proyectoCofecyt.FechaPresentacion).ToShortDateString();
@@ -413,7 +424,7 @@ namespace Sistema_CyT
 
                             if (proyectoCofecyt.IdContactoBeneficiario == null) { ddlContactoBeneficiario.Text = "-1"; }
                             else { ddlContactoBeneficiario.Text = personaNego.TraerPersona(Convert.ToInt32(proyectoCofecyt.IdContactoBeneficiario)); }
-                            
+
                             txtObservacionesCofecyt.Text = proyectoCofecyt.Observaciones;
                             txtMontoSolicitadoCofecyt.Text = Convert.ToString(proyectoCofecyt.MontoSolicitadoCofecyt);
                             txtMontoContraparteCofecyt.Text = Convert.ToString(proyectoCofecyt.MontoContraparteCofecyt);
@@ -587,7 +598,7 @@ namespace Sistema_CyT
                 //aca habria que cargar el 1er proyecto
                 if (ddlProyectoChoice.SelectedValue != "")
                 {
-                    idProyectoCofecytActual = Convert.ToInt32(ddlProyectoChoice.SelectedValue);                    
+                    idProyectoCofecytActual = Convert.ToInt32(ddlProyectoChoice.SelectedValue);
 
                     ProyectoCofecyt proyectoCofecyt = proyectoCofecytNego.ObtenerProyectoCofecyt(idProyectoCofecytActual);
 
@@ -628,59 +639,72 @@ namespace Sistema_CyT
 
                         //****INICIO RUTINA PARA TRABAJAR CON FORMATO FECHA
                         //FECHA PRESENTACION
-                        string dia = Convert.ToString((proyectoCofecyt.FechaPresentacion).Value.Day);
-                        string mes = Convert.ToString((proyectoCofecyt.FechaPresentacion).Value.Month);
-                        string anio = Convert.ToString((proyectoCofecyt.FechaPresentacion).Value.Year);
-                        string t1 = "";
-                        string t2 = "";
-                        if ((proyectoCofecyt.FechaPresentacion).Value.Day < 10)
-                        {
-                            t1 = "0";
-                        }
-                        if ((proyectoCofecyt.FechaPresentacion).Value.Month < 10)
-                        {
-                            t2 = "0";
-                        }
-                        txtFechaPresentacion.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
+                        //string dia = Convert.ToString((proyectoCofecyt.FechaPresentacion).Value.Day);
+                        //string mes = Convert.ToString((proyectoCofecyt.FechaPresentacion).Value.Month);
+                        //string anio = Convert.ToString((proyectoCofecyt.FechaPresentacion).Value.Year);
+                        //string t1 = "";
+                        //string t2 = "";
+                        //if ((proyectoCofecyt.FechaPresentacion).Value.Day < 10)
+                        //{
+                        //    t1 = "0";
+                        //}
+                        //if ((proyectoCofecyt.FechaPresentacion).Value.Month < 10)
+                        //{
+                        //    t2 = "0";
+                        //}
+                        //txtFechaPresentacion.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
 
                         //FECHA FINALIZACION
-                        dia = Convert.ToString((proyectoCofecyt.FechaFinalizacion).Value.Day);
-                        mes = Convert.ToString((proyectoCofecyt.FechaFinalizacion).Value.Month);
-                        anio = Convert.ToString((proyectoCofecyt.FechaFinalizacion).Value.Year);
-                        t1 = "";
-                        t2 = "";
-                        if ((proyectoCofecyt.FechaFinalizacion).Value.Day < 10)
-                        {
-                            t1 = "0";
-                        }
-                        if ((proyectoCofecyt.FechaFinalizacion).Value.Month < 10)
-                        {
-                            t2 = "0";
-                        }
-                        txtFechaFinalizacion.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
+                        //dia = Convert.ToString((proyectoCofecyt.FechaFinalizacion).Value.Day);
+                        //mes = Convert.ToString((proyectoCofecyt.FechaFinalizacion).Value.Month);
+                        //anio = Convert.ToString((proyectoCofecyt.FechaFinalizacion).Value.Year);
+                        //t1 = "";
+                        //t2 = "";
+                        //if ((proyectoCofecyt.FechaFinalizacion).Value.Day < 10)
+                        //{
+                        //    t1 = "0";
+                        //}
+                        //if ((proyectoCofecyt.FechaFinalizacion).Value.Month < 10)
+                        //{
+                        //    t2 = "0";
+                        //}
+                        //txtFechaFinalizacion.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
 
                         //FECHA ULTIMA EVALUACION TECNICA
-                        dia = Convert.ToString((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Day);
-                        mes = Convert.ToString((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Month);
-                        anio = Convert.ToString((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Year);
-                        t1 = "";
-                        t2 = "";
-                        if ((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Day < 10)
-                        {
-                            t1 = "0";
-                        }
-                        if ((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Month < 10)
-                        {
-                            t2 = "0";
-                        }
-                        txtUltimaEvaluacionTecnica.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
+                        //dia = Convert.ToString((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Day);
+                        //mes = Convert.ToString((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Month);
+                        //anio = Convert.ToString((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Year);
+                        //t1 = "";
+                        //t2 = "";
+                        //if ((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Day < 10)
+                        //{
+                        //    t1 = "0";
+                        //}
+                        //if ((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Month < 10)
+                        //{
+                        //    t2 = "0";
+                        //}
+                        //txtUltimaEvaluacionTecnica.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
 
                         //****FIN RUTINA FORMATO DE FECHA
 
 
+                        if (proyectoCofecyt.FechaPresentacion == null) { txtFechaPresentacion.Text = ""; }
+                        else { txtFechaPresentacion.Text = Convert.ToDateTime(proyectoCofecyt.FechaPresentacion).ToShortDateString(); };
+
+                        if (proyectoCofecyt.FechaFinalizacion == null) { txtFechaFinalizacion.Text = ""; }
+                        else { txtFechaFinalizacion.Text = Convert.ToDateTime(proyectoCofecyt.FechaFinalizacion).ToShortDateString(); };
+
+                        if (proyectoCofecyt.UltimaEvaluacionTecnica == null) { txtUltimaEvaluacionTecnica.Text = ""; }
+                        else { txtUltimaEvaluacionTecnica.Text = Convert.ToDateTime(proyectoCofecyt.UltimaEvaluacionTecnica).ToShortDateString(); };
+
                         //txtFechaPresentacion.Text = Convert.ToDateTime(proyectoCofecyt.FechaPresentacion).ToShortDateString();
                         //txtFechaFinalizacion.Text = Convert.ToDateTime(proyectoCofecyt.FechaFinalizacion).ToShortDateString();
                         //txtUltimaEvaluacionTecnica.Text = Convert.ToDateTime(proyectoCofecyt.UltimaEvaluacionTecnica).ToShortDateString();
+
+
+
+
                         txtDuracionEstimada.Text = Convert.ToString(proyectoCofecyt.DuracionEstimada);
                         txtDuracionEstimadaIfaa.Text = Convert.ToString(proyectoCofecyt.DuracionEstimadaIfaa);
                         txtBeneficiarios.Text = proyectoCofecyt.Beneficiarios;
@@ -935,7 +959,7 @@ namespace Sistema_CyT
 
             if (fondoNego.ObtenerFondo(Convert.ToInt32(ddlFondoChoice.SelectedValue)).Nombre.ToUpper() == "COFECYT")
             {
-                idProyectoCofecytActual = Convert.ToInt32(ddlProyectoChoice.SelectedValue.ToString());                
+                idProyectoCofecytActual = Convert.ToInt32(ddlProyectoChoice.SelectedValue.ToString());
 
                 ProyectoCofecyt proyectoCofecyt = proyectoCofecytNego.ObtenerProyectoCofecyt(idProyectoCofecytActual);
 
@@ -971,56 +995,67 @@ namespace Sistema_CyT
                     else { ddlDirector.Text = personaNego.TraerPersona(Convert.ToInt32(proyectoCofecyt.IdDirector)); }
 
 
-                    //****INICIO RUTINA PARA TRABAJAR CON FORMATO FECHA
-                    //FECHA PRESENTACION
-                    string dia = Convert.ToString((proyectoCofecyt.FechaPresentacion).Value.Day);
-                    string mes = Convert.ToString((proyectoCofecyt.FechaPresentacion).Value.Month);
-                    string anio = Convert.ToString((proyectoCofecyt.FechaPresentacion).Value.Year);
-                    string t1 = "";
-                    string t2 = "";
-                    if ((proyectoCofecyt.FechaPresentacion).Value.Day < 10)
-                    {
-                        t1 = "0";
-                    }
-                    if ((proyectoCofecyt.FechaPresentacion).Value.Month < 10)
-                    {
-                        t2 = "0";
-                    }
-                    txtFechaPresentacion.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
+                    ////****INICIO RUTINA PARA TRABAJAR CON FORMATO FECHA
+                    ////FECHA PRESENTACION
+                    //string dia = Convert.ToString((proyectoCofecyt.FechaPresentacion).Value.Day);
+                    //string mes = Convert.ToString((proyectoCofecyt.FechaPresentacion).Value.Month);
+                    //string anio = Convert.ToString((proyectoCofecyt.FechaPresentacion).Value.Year);
+                    //string t1 = "";
+                    //string t2 = "";
+                    //if ((proyectoCofecyt.FechaPresentacion).Value.Day < 10)
+                    //{
+                    //    t1 = "0";
+                    //}
+                    //if ((proyectoCofecyt.FechaPresentacion).Value.Month < 10)
+                    //{
+                    //    t2 = "0";
+                    //}
+                    //txtFechaPresentacion.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
 
-                    //FECHA FINALIZACION
-                    dia = Convert.ToString((proyectoCofecyt.FechaFinalizacion).Value.Day);
-                    mes = Convert.ToString((proyectoCofecyt.FechaFinalizacion).Value.Month);
-                    anio = Convert.ToString((proyectoCofecyt.FechaFinalizacion).Value.Year);
-                    t1 = "";
-                    t2 = "";
-                    if ((proyectoCofecyt.FechaFinalizacion).Value.Day < 10)
-                    {
-                        t1 = "0";
-                    }
-                    if ((proyectoCofecyt.FechaFinalizacion).Value.Month < 10)
-                    {
-                        t2 = "0";
-                    }
-                    txtFechaFinalizacion.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
+                    ////FECHA FINALIZACION
+                    //dia = Convert.ToString((proyectoCofecyt.FechaFinalizacion).Value.Day);
+                    //mes = Convert.ToString((proyectoCofecyt.FechaFinalizacion).Value.Month);
+                    //anio = Convert.ToString((proyectoCofecyt.FechaFinalizacion).Value.Year);
+                    //t1 = "";
+                    //t2 = "";
+                    //if ((proyectoCofecyt.FechaFinalizacion).Value.Day < 10)
+                    //{
+                    //    t1 = "0";
+                    //}
+                    //if ((proyectoCofecyt.FechaFinalizacion).Value.Month < 10)
+                    //{
+                    //    t2 = "0";
+                    //}
+                    //txtFechaFinalizacion.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
 
-                    //FECHA ULTIMA EVALUACION TECNICA
-                    dia = Convert.ToString((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Day);
-                    mes = Convert.ToString((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Month);
-                    anio = Convert.ToString((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Year);
-                    t1 = "";
-                    t2 = "";
-                    if ((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Day < 10)
-                    {
-                        t1 = "0";
-                    }
-                    if ((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Month < 10)
-                    {
-                        t2 = "0";
-                    }
-                    txtUltimaEvaluacionTecnica.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
+                    ////FECHA ULTIMA EVALUACION TECNICA
+                    //dia = Convert.ToString((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Day);
+                    //mes = Convert.ToString((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Month);
+                    //anio = Convert.ToString((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Year);
+                    //t1 = "";
+                    //t2 = "";
+                    //if ((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Day < 10)
+                    //{
+                    //    t1 = "0";
+                    //}
+                    //if ((proyectoCofecyt.UltimaEvaluacionTecnica).Value.Month < 10)
+                    //{
+                    //    t2 = "0";
+                    //}
+                    //txtUltimaEvaluacionTecnica.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
 
-                    //****FIN RUTINA FORMATO DE FECHA
+                    ////****FIN RUTINA FORMATO DE FECHA
+
+                    if (proyectoCofecyt.FechaPresentacion == null) { txtFechaPresentacion.Text = ""; }
+                    else { txtFechaPresentacion.Text = Convert.ToDateTime(proyectoCofecyt.FechaPresentacion).ToShortDateString(); };
+
+                    if (proyectoCofecyt.FechaFinalizacion == null) { txtFechaFinalizacion.Text = ""; }
+                    else { txtFechaFinalizacion.Text = Convert.ToDateTime(proyectoCofecyt.FechaFinalizacion).ToShortDateString(); };
+
+                    if (proyectoCofecyt.UltimaEvaluacionTecnica == null) { txtUltimaEvaluacionTecnica.Text = ""; }
+                    else { txtUltimaEvaluacionTecnica.Text = Convert.ToDateTime(proyectoCofecyt.UltimaEvaluacionTecnica).ToShortDateString(); };
+
+
 
 
                     //txtFechaPresentacion.Text = Convert.ToDateTime(proyectoCofecyt.FechaPresentacion).ToShortDateString();
@@ -1345,8 +1380,8 @@ namespace Sistema_CyT
             item.IdProyecto = idProyectoActual;
 
             item.Nombre = txtNombreModal.Text;
-            item.FechaInicio = DateTime.ParseExact(txtFechaInicioModal.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
-            item.FechaFin = DateTime.ParseExact(txtFechaFinalModal.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+            item.FechaInicio = DateTime.ParseExact(txtFechaInicioModal.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            item.FechaFin = DateTime.ParseExact(txtFechaFinalModal.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             item.IdTipoEstadoEtapa = Convert.ToInt32(ddlTipoEstadoEtapa.SelectedValue);
 
             if (chkRendicion.Checked)
@@ -1618,9 +1653,21 @@ namespace Sistema_CyT
             proyectoCofecyt.NumeroConvenio = txtNumeroConvenio.Text;
             proyectoCofecyt.NumeroExpedienteDga = txtNumeroExpedienteDga.Text;
 
-            proyectoCofecyt.FechaPresentacion = DateTime.ParseExact(txtFechaPresentacion.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
-            proyectoCofecyt.FechaFinalizacion = DateTime.ParseExact(txtFechaFinalizacion.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
-            proyectoCofecyt.UltimaEvaluacionTecnica = DateTime.ParseExact(txtUltimaEvaluacionTecnica.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+
+            if (txtFechaPresentacion.Text == "") { proyectoCofecyt.FechaPresentacion = null; }
+            else { proyectoCofecyt.FechaPresentacion = DateTime.ParseExact(txtFechaPresentacion.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture); }
+
+            if (txtFechaFinalizacion.Text == "") { proyectoCofecyt.FechaFinalizacion = null; }
+            else { proyectoCofecyt.FechaFinalizacion = DateTime.ParseExact(txtFechaFinalizacion.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture); };
+
+            if (txtUltimaEvaluacionTecnica.Text == "") { proyectoCofecyt.UltimaEvaluacionTecnica = null; }
+            else { proyectoCofecyt.UltimaEvaluacionTecnica = DateTime.ParseExact(txtUltimaEvaluacionTecnica.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture); };
+
+            
+            
+            //proyectoCofecyt.FechaPresentacion = DateTime.ParseExact(txtFechaPresentacion.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            //proyectoCofecyt.FechaFinalizacion = DateTime.ParseExact(txtFechaFinalizacion.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            //proyectoCofecyt.UltimaEvaluacionTecnica = DateTime.ParseExact(txtUltimaEvaluacionTecnica.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
 
             if (txtDuracionEstimada.Text == "") { proyectoCofecyt.DuracionEstimada = null; }
@@ -1789,8 +1836,8 @@ namespace Sistema_CyT
             etapaCofecyt.IdProyectoCofecyt = idProyectoCofecytActual;
             etapaCofecyt.Nombre = txtNombreModalCofecyt.Text;
             etapaCofecyt.IdTipoEstadoEtapa = tipoEstadoEtapaNego.TraerTipoEstadoEtapaIdSegunItem(ddlTipoEstadoEtapaCofecyt.SelectedItem.ToString());
-            etapaCofecyt.FechaInicio = DateTime.ParseExact(txtFechaInicioCofecyt.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
-            etapaCofecyt.FechaFin = DateTime.ParseExact(txtFechaFinCofecyt.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+            etapaCofecyt.FechaInicio = DateTime.ParseExact(txtFechaInicioCofecyt.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            etapaCofecyt.FechaFin = DateTime.ParseExact(txtFechaFinCofecyt.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             etapaCofecyt.DuracionSegunUvt = txtDuracionSegunUvt.Text;
 
             if (chkRendicionCofecyt.Checked)

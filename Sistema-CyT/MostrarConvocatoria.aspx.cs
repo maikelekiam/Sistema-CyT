@@ -32,24 +32,24 @@ namespace Sistema_CyT
 
             convocatoria = convocatoriaNego.ObtenerConvocatoria(ListarConvocatorias.idConvocatoriaSeleccionada);
 
-            //RUTINAS PARA QUE EL TEXTBOX MULTILINE SE AJUSTE AUTOMATICAMENTE
-            int contador = 45;
-            int c2 = 45;
-            int c3 = 45;
-            int rows;
-            string cadena;
-            string cadcom = "qwertyuiopasdfghjklñzxcvbnm1234567890QWERTYUIOPASDFGHJKLÑZXCVBNM.,";
+            ////RUTINAS PARA QUE EL TEXTBOX MULTILINE SE AJUSTE AUTOMATICAMENTE
+            //int contador = 45;
+            //int c2 = 45;
+            //int c3 = 45;
+            //int rows;
+            //string cadena;
+            //string cadcom = "qwertyuiopasdfghjklñzxcvbnm1234567890QWERTYUIOPASDFGHJKLÑZXCVBNM.,";
 
-            //NOMBRE
-            cadena = convocatoria.Nombre.ToString();
-            for (int i = 0; i < cadena.Length; i++)
-            {
-                if (cadcom.Contains(cadena.Substring(i, 1))) { contador++; }
-                else if (cadena.Substring(i, 1) == " ") { contador++; }
-                else if (cadena.Substring(i, 1) == "\n") { contador = contador + 90 - i; }
-            }
-            rows = contador / 90;
-            txtNombre.Rows = rows + 1;
+            ////NOMBRE
+            //cadena = convocatoria.Nombre.ToString();
+            //for (int i = 0; i < cadena.Length; i++)
+            //{
+            //    if (cadcom.Contains(cadena.Substring(i, 1))) { contador++; }
+            //    else if (cadena.Substring(i, 1) == " ") { contador++; }
+            //    else if (cadena.Substring(i, 1) == "\n") { contador = contador + 90 - i; }
+            //}
+            //rows = contador / 90;
+            //txtNombre.Rows = rows + 1;
             txtNombre.Text = convocatoria.Nombre.ToString();
 
 

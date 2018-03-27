@@ -30,9 +30,9 @@ namespace Sistema_CyT
                 LlenarListaTipoConvocatoria();
                 LimpiarFormulario();
 
-                txtAnio.Text = "2017";
-                //txtFechaApertura.Text = Convert.ToString(DateTime.Today.ToShortDateString());
-                //txtFechaCierre.Text = Convert.ToString(DateTime.Today.ToShortDateString());
+                txtAnio.Text = Convert.ToString(DateTime.Now.Year);
+                txtFechaApertura.Text = Convert.ToString(DateTime.Today.ToShortDateString());
+                txtFechaCierre.Text = Convert.ToString(DateTime.Today.ToShortDateString());
             }
         }
         private void LlenarListaFondos()
@@ -87,8 +87,8 @@ namespace Sistema_CyT
             convocatoria.IdTipoFinanciamiento = Int32.Parse(ddlTipoFinanciamiento.SelectedValue);
             convocatoria.IdTipoConvocatoria = Int32.Parse(ddlTipoConvocatoria.SelectedValue);
 
-            convocatoria.FechaApertura = DateTime.ParseExact(txtFechaApertura.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
-            convocatoria.FechaCierre = DateTime.ParseExact(txtFechaCierre.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+            convocatoria.FechaApertura = DateTime.ParseExact(txtFechaApertura.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            convocatoria.FechaCierre = DateTime.ParseExact(txtFechaCierre.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             
             //convocatoria.FechaApertura = DateTime.ParseExact(txtFechaApertura.Text, "dd/MMM/yyyy", CultureInfo.InvariantCulture);
             //convocatoria.FechaCierre = DateTime.ParseExact(txtFechaCierre.Text, "dd/MMM/yyyy", CultureInfo.InvariantCulture);

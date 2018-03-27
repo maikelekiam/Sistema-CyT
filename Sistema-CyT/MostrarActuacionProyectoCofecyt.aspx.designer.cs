@@ -10,177 +10,168 @@
 namespace Sistema_CyT {
     
     
-    public partial class MostrarConvocatoria {
+    public partial class MostrarActuacionProyectoCofecyt {
         
         /// <summary>
-        /// panelSuperior control.
+        /// Panel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panelSuperior;
+        protected global::System.Web.UI.WebControls.Panel Panel1;
         
         /// <summary>
-        /// lblNombre control.
+        /// blbl01 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNombre;
+        protected global::System.Web.UI.WebControls.Label blbl01;
         
         /// <summary>
-        /// txtNombre control.
+        /// txtFechaActuacion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtNombre;
+        protected global::System.Web.UI.WebControls.Label txtFechaActuacion;
         
         /// <summary>
-        /// lblAnio control.
+        /// lbl02 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAnio;
+        protected global::System.Web.UI.WebControls.Label lbl02;
         
         /// <summary>
-        /// txtAnio control.
+        /// txtDetalle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtAnio;
+        protected global::System.Web.UI.WebControls.Label txtDetalle;
         
         /// <summary>
-        /// lblFonfo control.
+        /// lbl03 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFonfo;
+        protected global::System.Web.UI.WebControls.Label lbl03;
         
         /// <summary>
-        /// txtFondo control.
+        /// txtPendiente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtFondo;
+        protected global::System.Web.UI.WebControls.Label txtPendiente;
         
         /// <summary>
-        /// lblTipoConvocatoria control.
+        /// lbl04 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTipoConvocatoria;
+        protected global::System.Web.UI.WebControls.Label lbl04;
         
         /// <summary>
-        /// txtTipoConvocatoria control.
+        /// txtResponsable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtTipoConvocatoria;
+        protected global::System.Web.UI.WebControls.Label txtResponsable;
         
         /// <summary>
-        /// lblTipoFinanciamiento control.
+        /// lbl05 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTipoFinanciamiento;
+        protected global::System.Web.UI.WebControls.Label lbl05;
         
         /// <summary>
-        /// txtTipoFinanciamiento control.
+        /// txtAgente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtTipoFinanciamiento;
+        protected global::System.Web.UI.WebControls.Label txtAgente;
         
         /// <summary>
-        /// lblFechaApertura control.
+        /// lbl06 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFechaApertura;
+        protected global::System.Web.UI.WebControls.Label lbl06;
         
         /// <summary>
-        /// txtFechaApertura control.
+        /// txtFechaLimite control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtFechaApertura;
+        protected global::System.Web.UI.WebControls.Label txtFechaLimite;
         
         /// <summary>
-        /// lblFechaCierre control.
+        /// lbl07 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFechaCierre;
+        protected global::System.Web.UI.WebControls.Label lbl07;
         
         /// <summary>
-        /// txtFechaCierre control.
+        /// txtObservaciones control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtFechaCierre;
+        protected global::System.Web.UI.WebControls.Label txtObservaciones;
         
         /// <summary>
-        /// lblAbierta control.
+        /// lbl08 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAbierta;
+        protected global::System.Web.UI.WebControls.Label lbl08;
         
         /// <summary>
-        /// txtAbierta control.
+        /// txtDocumentacionAnexada control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtAbierta;
+        protected global::System.Web.UI.WebControls.Label txtDocumentacionAnexada;
         
         /// <summary>
-        /// panelInferior control.
+        /// btnVolver control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panelInferior;
-        
-        /// <summary>
-        /// dgvModalidades control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgvModalidades;
+        protected global::System.Web.UI.WebControls.Button btnVolver;
     }
 }

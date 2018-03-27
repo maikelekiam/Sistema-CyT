@@ -103,6 +103,8 @@ namespace Sistema_CyT
 
                 if (fondoNego.ObtenerFondo(Convert.ToInt32(ddlFondoChoice.SelectedValue)).Nombre.ToUpper() == "COFECYT")
                 {
+                    Response.Redirect("ListarProyectosCofecyt.aspx");
+
                     dgvProyectos.Visible = false;
                     dgvProyectoCofecyts.Visible = true;
                     //Traer la lista de proyectos cofecyt

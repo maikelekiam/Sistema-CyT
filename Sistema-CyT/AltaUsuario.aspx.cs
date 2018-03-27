@@ -37,13 +37,13 @@ namespace Sistema_CyT
         }
         public void MostrarListas()
         {
-            ddlUsuarios.DataSource = usuarioNego.MostrarUsuarios().ToList();
+            ddlUsuarios.DataSource = usuarioNego.MostrarUsuarios().ToList().OrderBy(c=>c.Nombre);
             ddlUsuarios.DataValueField = "idUsuario";
             ddlUsuarios.DataBind();
         }
         public void MostrarGrillaUsuarios()
         {
-            dgvUsuario.DataSource = usuarioNego.MostrarUsuarios().ToList();
+            dgvUsuario.DataSource = usuarioNego.MostrarUsuarios().ToList().OrderBy(c => c.Nombre);
             dgvUsuario.DataBind();
         }
 

@@ -120,41 +120,41 @@ namespace Sistema_CyT
 
             //****INICIO RUTINA PARA TRABAJAR CON FORMATO FECHA
             //FECHA APERTURA
-            string dia = Convert.ToString((convocatoria.FechaApertura).Value.Day);
-            string mes = Convert.ToString((convocatoria.FechaApertura).Value.Month);
-            string anio = Convert.ToString((convocatoria.FechaApertura).Value.Year);
-            string t1 = "";
-            string t2 = "";
-            if ((convocatoria.FechaApertura).Value.Day < 10)
-            {
-                t1 = "0";
-            }
-            if ((convocatoria.FechaApertura).Value.Month < 10)
-            {
-                t2 = "0";
-            }
-            txtFechaApertura.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
+            //string dia = Convert.ToString((convocatoria.FechaApertura).Value.Day);
+            //string mes = Convert.ToString((convocatoria.FechaApertura).Value.Month);
+            //string anio = Convert.ToString((convocatoria.FechaApertura).Value.Year);
+            //string t1 = "";
+            //string t2 = "";
+            //if ((convocatoria.FechaApertura).Value.Day < 10)
+            //{
+            //    t1 = "0";
+            //}
+            //if ((convocatoria.FechaApertura).Value.Month < 10)
+            //{
+            //    t2 = "0";
+            //}
+            //txtFechaApertura.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
             //FECHA CIERRE
-            dia = Convert.ToString((convocatoria.FechaCierre).Value.Day);
-            mes = Convert.ToString((convocatoria.FechaCierre).Value.Month);
-            anio = Convert.ToString((convocatoria.FechaCierre).Value.Year);
-            t1 = "";
-            t2 = "";
-            if ((convocatoria.FechaCierre).Value.Day < 10)
-            {
-                t1 = "0";
-            }
-            if ((convocatoria.FechaCierre).Value.Month < 10)
-            {
-                t2 = "0";
-            }
-            txtFechaCierre.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
+            //dia = Convert.ToString((convocatoria.FechaCierre).Value.Day);
+            //mes = Convert.ToString((convocatoria.FechaCierre).Value.Month);
+            //anio = Convert.ToString((convocatoria.FechaCierre).Value.Year);
+            //t1 = "";
+            //t2 = "";
+            //if ((convocatoria.FechaCierre).Value.Day < 10)
+            //{
+            //    t1 = "0";
+            //}
+            //if ((convocatoria.FechaCierre).Value.Month < 10)
+            //{
+            //    t2 = "0";
+            //}
+            //txtFechaCierre.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
             //****FIN RUTINA FORMATO DE FECHA
 
             //txtFechaApertura.Text = Convert.ToString(convocatoria.FechaApertura);
             //txtFechaCierre.Text = Convert.ToString(convocatoria.FechaCierre);
-            //txtFechaApertura.Text = Convert.ToDateTime(convocatoria.FechaApertura).ToShortDateString();
-            //txtFechaCierre.Text = Convert.ToDateTime(convocatoria.FechaCierre).ToShortDateString();
+            txtFechaApertura.Text = Convert.ToDateTime(convocatoria.FechaApertura).ToShortDateString();
+            txtFechaCierre.Text = Convert.ToDateTime(convocatoria.FechaCierre).ToShortDateString();
 
             if (convocatoria.Abierta.Value == true)
             {
@@ -224,7 +224,7 @@ namespace Sistema_CyT
                 listaTemporalModalidades.Clear();
                 listaTemporalModalidadesAgregado.Clear();
 
-                Response.Redirect("ListarConvocatorias.aspx");
+                Response.Redirect("Default.aspx");
             }
             else
             {
@@ -244,8 +244,8 @@ namespace Sistema_CyT
             convocatoria.IdTipoFinanciamiento = Int32.Parse(ddlTipoFinanciamiento.SelectedValue);
             convocatoria.IdTipoConvocatoria = Int32.Parse(ddlTipoConvocatoria.SelectedValue);
 
-            convocatoria.FechaApertura = DateTime.ParseExact(txtFechaApertura.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
-            convocatoria.FechaCierre = DateTime.ParseExact(txtFechaCierre.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+            convocatoria.FechaApertura = DateTime.ParseExact(txtFechaApertura.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            convocatoria.FechaCierre = DateTime.ParseExact(txtFechaCierre.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
             if (chkActivo.Checked) { convocatoria.Activa = true; }
             else if (!chkActivo.Checked) { convocatoria.Activa = false; }
@@ -402,40 +402,40 @@ namespace Sistema_CyT
 
 
 
-                string dia = Convert.ToString((convocatoria.FechaApertura).Value.Day);
-                string mes = Convert.ToString((convocatoria.FechaApertura).Value.Month);
-                string anio = Convert.ToString((convocatoria.FechaApertura).Value.Year);
-                string t1 = "";
-                string t2 = "";
-                if ((convocatoria.FechaApertura).Value.Day < 10)
-                {
-                    t1 = "0";
-                }
-                if ((convocatoria.FechaApertura).Value.Month < 10)
-                {
-                    t2 = "0";
-                }
-                txtFechaApertura.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
+                //string dia = Convert.ToString((convocatoria.FechaApertura).Value.Day);
+                //string mes = Convert.ToString((convocatoria.FechaApertura).Value.Month);
+                //string anio = Convert.ToString((convocatoria.FechaApertura).Value.Year);
+                //string t1 = "";
+                //string t2 = "";
+                //if ((convocatoria.FechaApertura).Value.Day < 10)
+                //{
+                //    t1 = "0";
+                //}
+                //if ((convocatoria.FechaApertura).Value.Month < 10)
+                //{
+                //    t2 = "0";
+                //}
+                //txtFechaApertura.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
 
-                dia = Convert.ToString((convocatoria.FechaCierre).Value.Day);
-                mes = Convert.ToString((convocatoria.FechaCierre).Value.Month);
-                anio = Convert.ToString((convocatoria.FechaCierre).Value.Year);
-                t1 = "";
-                t2 = "";
-                if ((convocatoria.FechaCierre).Value.Day < 10)
-                {
-                    t1 = "0";
-                }
-                if ((convocatoria.FechaCierre).Value.Month < 10)
-                {
-                    t2 = "0";
-                }
-                txtFechaCierre.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
+                //dia = Convert.ToString((convocatoria.FechaCierre).Value.Day);
+                //mes = Convert.ToString((convocatoria.FechaCierre).Value.Month);
+                //anio = Convert.ToString((convocatoria.FechaCierre).Value.Year);
+                //t1 = "";
+                //t2 = "";
+                //if ((convocatoria.FechaCierre).Value.Day < 10)
+                //{
+                //    t1 = "0";
+                //}
+                //if ((convocatoria.FechaCierre).Value.Month < 10)
+                //{
+                //    t2 = "0";
+                //}
+                //txtFechaCierre.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
 
                 //txtFechaApertura.Text = Convert.ToString(convocatoria.FechaApertura);
                 //txtFechaCierre.Text = Convert.ToString(convocatoria.FechaCierre);
-                //txtFechaApertura.Text = Convert.ToDateTime(convocatoria.FechaApertura).ToShortDateString();
-                //txtFechaCierre.Text = Convert.ToDateTime(convocatoria.FechaCierre).ToShortDateString();
+                txtFechaApertura.Text = Convert.ToDateTime(convocatoria.FechaApertura).ToShortDateString();
+                txtFechaCierre.Text = Convert.ToDateTime(convocatoria.FechaCierre).ToShortDateString();
 
                 if (convocatoria.Abierta.Value == true)
                 {
