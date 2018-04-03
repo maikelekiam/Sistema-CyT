@@ -40,7 +40,7 @@ namespace Sistema_CyT
             EditarConvocatoria.listaTemporalModalidades.Clear();
             EditarConvocatoria.listaTemporalModalidadesAgregado.Clear();
 
-            Response.Redirect("Default.aspx");
+            Response.Redirect("EditarConvocatoria.aspx");
         }
 
         private void ActualizarModalidad()
@@ -61,7 +61,7 @@ namespace Sistema_CyT
 
         protected void btnModalModalidadSalir_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ListarConvocatorias.aspx");
+            Response.Redirect("EditarConvocatoria.aspx");
         }
     }
 }

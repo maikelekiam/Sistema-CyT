@@ -95,5 +95,23 @@ namespace CapaRepositorio
                 return proyectoCofecyt;
             }
         }
+        public ProyectoCofecyt ObtenerProyectoCofecyt(string cod)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                ProyectoCofecyt proyectoCofecyt = modeloDeDominio.ProyectoCofecyts.Where(c => c.NumeroEspedienteCopade == cod).FirstOrDefault();
+
+                return proyectoCofecyt;
+            }
+        }
+        public int TraerIdSegunCodigo(string cod)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                ProyectoCofecyt proyectoCofecyt = modeloDeDominio.ProyectoCofecyts.Where(c => c.NumeroEspedienteCopade == cod).FirstOrDefault();
+
+                return proyectoCofecyt.IdProyectoCofecyt;
+            }
+        }
     }
 }

@@ -248,6 +248,9 @@ namespace Sistema_CyT
                     ddlConvocatoria.SelectedValue != "-1"
                     && txtNumeroExp.Text != ""
                     && txtNombre.Text != ""
+                    && ddlLocalidad.SelectedValue != "-1"
+                    && ddlTipoEstado.SelectedValue != "-1"
+                    && ddlTipoProyecto.SelectedValue != "-1"
                     )
                 {
                     GuardarProyecto();
@@ -256,7 +259,8 @@ namespace Sistema_CyT
                 }
                 else
                 {
-                    // Mostrar aviso de completar todos los datos
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Correct", "alert('Complete los campos: NOMBRE, EXPEDIENTE, LOCALIDAD, TIPO DE PROYECTO, ESTADO  .')", true);
+
                 }
             }
         }

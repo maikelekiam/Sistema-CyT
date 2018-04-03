@@ -17,6 +17,7 @@ namespace Sistema_CyT
 
         public static int idProyectoCofecytSeleccionado = 1;
         public static int idConvocatoriaSeleccionada = 1;
+        public static string numeroExpedienteProyectoSeleccionado = null;
 
         protected void Page_Load(object sender, EventArgs e)
         {

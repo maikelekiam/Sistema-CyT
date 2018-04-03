@@ -13,7 +13,7 @@
             <!-- BOTON AGREGAR ACTUACION -->
             <div class="form-group">
                 <div class="col-md-2">
-                    <asp:Button ID="btnAgregarActuacion" runat="server" Text="Agregar Actuacion" CssClass="btn btn-info form-control" OnClick="btnAgregarActuacion_Click" />
+                    <asp:Button ID="btnAgregarActuacion" runat="server" Text="Agregar Actuacion" Width="180" CssClass="btn boton_azul" OnClick="btnAgregarActuacion_Click" />
                 </div>
             </div>
         </asp:Panel>
@@ -56,7 +56,7 @@
                 <%--AGREGAR ACA EL MODAL PARA LA NUEVA VIA DE COMUNICACION--%>
                 <div class="form-group">
                     <div class="col-md-2">
-                        <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalViaComunicacion">Nueva Via de Comunicacion</button>
+                        <button type="button" class="btn boton_azul" style="width: 250px;" data-toggle="modal" data-target="#modalViaComunicacion">Nueva Via de Comunicacion</button>
                     </div>
                     <!-- MODAL VIA DE COMUNICACION  -->
                     <div class="modal fade" id="modalViaComunicacion" tabindex="-1" role="dialog" aria-labelledby="modalLabelViaComunicacion" aria-hidden="true">
@@ -76,8 +76,8 @@
                                     <br />
                                 </div>
                                 <div class="modal-footer">
-                                    <asp:Button runat="server" ID="btnModalViaComunicacionSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
-                                    <asp:Button runat="server" ID="btnModalViaComunicacionGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalViaComunicacionGuardar_Click" />
+                                    <asp:Button runat="server" ID="btnModalViaComunicacionSalir" Text="SALIR" class="btn boton_rojo" Width="150" data-dismiss="modal" />
+                                    <asp:Button runat="server" ID="btnModalViaComunicacionGuardar" Text="GUARDAR" CssClass="btn boton_verde" Width="150" OnClick="btnModalViaComunicacionGuardar_Click" />
                                 </div>
                             </div>
                         </div>
@@ -96,13 +96,13 @@
             <!--BOTONES GUARDAR + CANCELAR -->
             <div class="form-group">
                 <div class="col-md-2 col-md-offset-2">
-                    <asp:Button ID="btnGuardarActuacion" runat="server" Text="Guardar Actuacion" CssClass="btn btn-success form-control" OnClick="btnGuardarActuacion_Click" />
+                    <asp:Button ID="btnGuardarActuacion" runat="server" Text="Guardar Actuacion" Width="180" CssClass="btn boton_verde form-control" OnClick="btnGuardarActuacion_Click" />
                 </div>
                 <div class="col-md-2">
-                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-danger form-control" OnClick="btnCancelar_Click" />
+                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn boton_rojo form-control" OnClick="btnCancelar_Click" />
                 </div>
                 <div class="col-md-2">
-                    <asp:Button ID="btnActualizarActuacion" runat="server" Text="Actualizar Actuacion" CssClass="btn btn-success form-control" OnClick="btnActualizarActuacion_Click" />
+                    <asp:Button ID="btnActualizarActuacion" runat="server" Text="Actualizar Actuacion" Width="180" CssClass="btn boton_verde form-control" OnClick="btnActualizarActuacion_Click" />
                 </div>
             </div>
         </asp:Panel>

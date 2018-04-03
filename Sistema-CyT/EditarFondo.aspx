@@ -62,7 +62,7 @@
                 <%--AGREGAR ACA EL MODAL PARA NUEVO ORIGEN--%>
                 <div class="form-group">
                     <div class="col-md-2">
-                        <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalOrigen">Nuevo Origen</button>
+                        <button type="button" class="btn boton_azul" data-toggle="modal" data-target="#modalOrigen">Nuevo Origen</button>
                     </div>
                     <!-- MODAL EMPRESA  -->
                     <div class="modal fade" id="modalOrigen" tabindex="-1" role="dialog" aria-labelledby="modalLabelOrigen" aria-hidden="true">
@@ -122,7 +122,7 @@
             <!-- BOTON ACTUALIZAR -->
             <div class="form-group">
                 <div class="col-md-2 col-md-offset-2">
-                    <asp:Button ID="btnActualizarFondo" runat="server" Text="Actualizar Fondo" CssClass="btn form-control boton_rojo" OnClick="btnActualizarFondo_Click" />
+                    <asp:Button ID="btnActualizarFondo" runat="server" Text="Actualizar Fondo" CssClass="btn form-control boton_verde" OnClick="btnActualizarFondo_Click" />
                 </div>
             </div>
         </asp:Panel>

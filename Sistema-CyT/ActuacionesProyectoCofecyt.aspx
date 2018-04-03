@@ -14,7 +14,7 @@
             <!-- BOTON AGREGAR ACTUACION -->
             <div class="form-group">
                 <div class="col-md-2">
-                    <asp:Button ID="btnAgregarActuacionProyectoCofecyt" runat="server" Text="Agregar Actuacion" CssClass="btn boton_azul" OnClick="btnAgregarActuacionProyectoCofecyt_Click" />
+                    <asp:Button ID="btnAgregarActuacionProyectoCofecyt" runat="server" Text="Agregar Actuacion" Width="180" CssClass="btn boton_azul" OnClick="btnAgregarActuacionProyectoCofecyt_Click" />
                 </div>
             </div>
         </asp:Panel>
@@ -101,13 +101,13 @@
             <!--BOTONES GUARDAR + CANCELAR -->
             <div class="form-group">
                 <div class="col-md-2 col-md-offset-2">
-                    <asp:Button ID="btnGuardarActuacion" runat="server" Text="Guardar Actuacion" CssClass="btn boton_verde" OnClick="btnGuardarActuacion_Click" />
+                    <asp:Button ID="btnGuardarActuacion" runat="server" Text="Guardar Actuacion"  Width="180" CssClass="btn boton_verde" OnClick="btnGuardarActuacion_Click" />
                 </div>
                 <div class="col-md-2">
-                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn boton_rojo" Width="120" OnClick="btnCancelar_Click" />
+                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn boton_rojo" Width="180" OnClick="btnCancelar_Click" />
                 </div>
                 <div class="col-md-2">
-                    <asp:Button ID="btnActualizarActuacion" runat="server" Text="Actualizar Actuacion" CssClass="btn boton_verde" OnClick="btnActualizarActuacion_Click" />
+                    <asp:Button ID="btnActualizarActuacion" runat="server" Text="Actualizar Actuacion"  Width="180" CssClass="btn boton_verde" OnClick="btnActualizarActuacion_Click" />
                 </div>
             </div>
         </asp:Panel>
@@ -120,7 +120,8 @@
             <div class="col-md-12">
                 <asp:GridView ID="dgvActuaciones" runat="server" AutoGenerateColumns="false"
                     CssClass="table table-hover table-striped" BorderWidth="2px" GridLines="Both"
-                    OnSelectedIndexChanging="dgvActuaciones_SelectedIndexChanging">
+                    OnSelectedIndexChanging="dgvActuaciones_SelectedIndexChanging"
+                    OnRowDeleting="dgvActuaciones_RowDeleting">
                     <Columns>
                         <asp:BoundField HeaderText="idActuacion" DataField="idActuacionProyectoCofecyt" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="50" />
                         <asp:BoundField HeaderText="idP" DataField="idProyectoCofecyt" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="50" />
@@ -139,7 +140,7 @@
 
 
                         <asp:ButtonField HeaderText="Mostrar" CommandName="select" HeaderStyle-BackColor="#cccccc" ControlStyle-Width="50" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" ControlStyle-CssClass="glyphicon glyphicon-search" HeaderStyle-Width="50" />
-                        <%--<asp:ButtonField HeaderText="Detalles" CommandName="delete" HeaderStyle-BackColor="#cccccc" ControlStyle-Width="50" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" ControlStyle-CssClass="glyphicon glyphicon-search" HeaderStyle-Width="50" />--%>
+                        <asp:ButtonField HeaderText="Editar" CommandName="delete" HeaderStyle-BackColor="#cccccc" ControlStyle-Width="50" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" ControlStyle-CssClass="glyphicon glyphicon-edit" HeaderStyle-Width="50" />
                     </Columns>
                 </asp:GridView>
             </div>

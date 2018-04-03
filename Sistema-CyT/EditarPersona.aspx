@@ -106,7 +106,7 @@
             <!-- BOTON ACTUALIZAR -->
             <div class="form-group">
                 <div class="col-md-2 col-md-offset-2">
-                    <asp:Button ID="btnActualizarPersona" runat="server" Text="Actualizar Persona" CssClass="btn btn-success form-control" OnClick="btnActualizarPersona_Click" />
+                    <asp:Button ID="btnActualizarPersona" runat="server" Text="Actualizar Persona" Width="150" CssClass="btn boton_verde form-control" OnClick="btnActualizarPersona_Click" />
                 </div>
             </div>
         </asp:Panel>

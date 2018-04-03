@@ -54,6 +54,10 @@ namespace Sistema_CyT
                 LlenarGrillaFondos();
                 Response.Redirect("ListarFondos.aspx");
             }
+            else
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Correct", "alert('Debe completar Nombre y Descripcion.')", true);
+            }
         }
 
         private void GuardarFondo()

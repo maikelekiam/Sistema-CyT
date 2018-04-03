@@ -4,7 +4,7 @@
     <div class="container">
         <asp:Panel ID="PanelSuperior" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <h3>Lista de EMPRESAS</h3>
+                <h4>EMPRESAS</h4>
                 <asp:Label ID="lblEmpresa" Font-Bold="true" runat="server" CssClass="col-md-2 control-label"> </asp:Label>
 
             </div>

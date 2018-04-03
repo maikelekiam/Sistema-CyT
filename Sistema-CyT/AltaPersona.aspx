@@ -4,7 +4,7 @@
     <div class="container">
         <asp:Panel ID="Panel1" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <h3>Formulario de ALTA Persona</h3>
+                <h4>Nueva Persona</h4>
             </div>
             <!--NOMBRE-->
             <br />
@@ -87,12 +87,13 @@
             <!-- BOTON GUARDAR -->
             <div class="form-group">
                 <div class="col-md-2 col-md-offset-2">
-                    <asp:Button ID="btnGuardarPersona" runat="server" Text="Guardar Persona" CssClass="btn btn-success form-control" OnClick="btnGuardarPersona_Click" />
+                    <asp:Button ID="btnGuardarPersona" runat="server" Text="Guardar Persona" CssClass="btn boton_verde form-control" OnClick="btnGuardarPersona_Click" />
                 </div>
             </div>
         </asp:Panel>
         <!--GRILLA PARA MOSTRAR LAS PERSONAS EN LA BASE DE DATOS-->
-        <h4>GRILLA DE PERSONAS</h4>
+        <br />
+        <%--<h4>GRILLA DE PERSONAS</h4>--%>
         <div class="form-group">
             <div class="col-md-9 col-md-offset-1">
                 <asp:GridView ID="dgvPersona" runat="server" AutoGenerateColumns="false"

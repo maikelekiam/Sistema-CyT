@@ -5,7 +5,7 @@
     <div class="container">
         <asp:Panel ID="Panel1" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <h3>Formulario de ALTA UDT/UVT</h3>
+                <h4>Nueva UDT / UVT</h4>
             </div>
             <!--TIPO-->
             <br />
@@ -22,7 +22,8 @@
                         AppendDataBoundItems="true">
                         <asp:ListItem Value="-1">&lt;Seleccione Tipo&gt;</asp:ListItem>
                         <asp:ListItem Value="0">UDT</asp:ListItem>
-                        <asp:ListItem Value="2">UVT</asp:ListItem>
+                        <asp:ListItem Value="1">UVT</asp:ListItem>
+                        <asp:ListItem Value="2">UDT / UVT</asp:ListItem>
                     </asp:DropDownList>
                 </div>
             </div>
@@ -114,12 +115,13 @@
             <!-- BOTON GUARDAR -->
             <div class="form-group">
                 <div class="col-md-2 col-md-offset-2">
-                    <asp:Button ID="btnGuardarUdtUvt" runat="server" Text="Guardar" CssClass="btn btn-success form-control" OnClick="btnGuardarUdtUvt_Click" />
+                    <asp:Button ID="btnGuardarUdtUvt" runat="server" Text="Guardar" Width="180" CssClass="btn boton_verde form-control" OnClick="btnGuardarUdtUvt_Click" />
                 </div>
             </div>
         </asp:Panel>
         <!--GRILLA PARA MOSTRAR LAS UDT/UVT EN LA BASE DE DATOS-->
-        <h4>GRILLA DE UDT/UVT</h4>
+        <%--<h4>GRILLA DE UDT/UVT</h4>--%>
+        <br />
         <div class="form-group">
             <div class="col-md-9 col-md-offset-1">
                 <asp:GridView ID="dgvUdtUvt" runat="server" AutoGenerateColumns="false"

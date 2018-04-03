@@ -1,41 +1,63 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AltaProyectoCofecyt.aspx.cs" Inherits="Sistema_CyT.AltaProyectoCofecyt" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EditarProyectoCofecyt.aspx.cs" Inherits="Sistema_CyT.EditarProyectoCofecyt" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
-        
-        <!--PANEL COFECYT - Informacion del Proyecto-->
-        <asp:Panel ID="PanelCofecytInformacion" CssClass="panel panel-info" runat="server">
+        <asp:Panel ID="PanelSuperior" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <h3>COFECyT - Nuevo Proyecto</h3>
+                <h3>Formulario EDITAR Proyecto</h3>
             </div>
             <!-- LISTA CON LAS CONVOCATORIAS EN LA BASE DE DATOS -->
             <div class="form-group">
                 <br />
-                <asp:Label ID="lblConvocatoria" Font-Bold="true" runat="server" Text="Convocatoria" CssClass="col-md-2 control-label"></asp:Label>
+                <div class="col-md-2">
+                    <asp:TextBox ID="txtFiltroConvocatoria" runat="server" CssClass="form-control AlineadoDerecha" Font-Bold="true" ReadOnly="true">< Filtro Convocatoria ></asp:TextBox>
+                </div>
+                <%--<asp:Label ID="lblConvocatoriaChoice" Font-Bold="true" runat="server" Text="&lt Filtro Convocatoria &gt" CssClass="col-md-2 control-label"></asp:Label>--%>
                 <div class="col-md-8">
-                    <asp:DropDownList ID="ddlConvocatoria" runat="server"
+                    <asp:DropDownList ID="ddlConvocatoriaChoice" runat="server"
                         BackColor="WhiteSmoke"
                         ForeColor="#000066"
                         Width="100%"
                         Font-Bold="false"
                         CssClass="selectpicker form-control show-tick"
                         data-live-search="true"
-                        DataTextField="nombre"
-                        AutoPostBack="false"
-                        AppendDataBoundItems="false">
+                        AutoPostBack="true"
+                        AppendDataBoundItems="true"
+                        OnSelectedIndexChanged="ddlConvocatoriaChoice_SelectedIndexChanged">
                         <asp:ListItem Value="-1">&lt;Seleccione Convocatoria&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
             </div>
-            <!--EXPEDIENTE COPADE-->
+            <!-- LISTA CON LOS PROYECTOS EN LA BASE DE DATOS -->
             <div class="form-group">
-                <asp:Label ID="lblNumeroExpedienteCopadeCofecyt" runat="server" Text="ID Interno" CssClass="col-md-2 control-label"> </asp:Label>
-                <div class="col-md-4">
-                    <asp:TextBox ID="txtNumeroExpedienteCopadeCofecyt" runat="server" CssClass="form-control"></asp:TextBox>
+                <div class="col-md-2">
+                    <asp:TextBox ID="txtFiltroProyecto" runat="server" CssClass="form-control AlineadoDerecha" Font-Bold="true" ReadOnly="true">< Filtro Proyecto ></asp:TextBox>
                 </div>
+                <%--<asp:Label ID="lblProyectos" Font-Bold="true" runat="server" Text="&lt Seleccione Proyecto &gt" CssClass="col-md-2 control-label"> </asp:Label>--%>
+                <div class="col-md-8">
+                    <asp:DropDownList ID="ddlProyectoChoice" runat="server"
+                        ForeColor="#000066"
+                        Font-Bold="true"
+                        CssClass="selectpicker form-control show-tick"
+                        data-live-search="true"
+                        AutoPostBack="True"
+                        AppendDataBoundItems="false"
+                        OnSelectedIndexChanged="ddlProyectoChoice_SelectedIndexChanged">
+                        <asp:ListItem Value="-1">&lt;Seleccione Proyecto&gt;</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+            </div>
+        </asp:Panel>
+
+
+        <!--PANEL COFECYT - Informacion del Proyecto-->
+        <asp:Panel ID="PanelCofecytInformacion" CssClass="panel panel-info" runat="server">
+            <div class="panel-heading">
+                <h3>COFECyT - Informacion del Proyecto</h3>
             </div>
             <!--TITULO/NOMBRE DEL PROYECTO-->
             <div class="form-group">
+                <br />
                 <asp:Label ID="lblTituloCofecyt" runat="server" Text="TITULO" CssClass="col-md-2 col-xs-12 control-label"></asp:Label>
                 <div class="col-md-8 col-xs-12">
                     <asp:TextBox ID="txtTituloCofecyt" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
@@ -107,7 +129,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <asp:Button runat="server" ID="Button2" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
-                                        <asp:Button runat="server" ID="Button3" Text="GUARDAR" CssClass="btn btn-success" />
+                                        <asp:Button runat="server" ID="Button3" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalLocalidadGuardar_Click" />
                                     </div>
                                 </div>
                             </div>
@@ -148,7 +170,13 @@
                 </div>
             </div>
 
-
+            <!--EXPEDIENTE COPADE-->
+            <div class="form-group">
+                <asp:Label ID="lblNumeroExpedienteCopadeCofecyt" runat="server" Text="N°EXP COPADE" CssClass="col-md-2 control-label"> </asp:Label>
+                <div class="col-md-4">
+                    <asp:TextBox ID="txtNumeroExpedienteCopadeCofecyt" runat="server" CssClass="form-control"></asp:TextBox>
+                </div>
+            </div>
             <!--NUMERO DE CONVENIO-->
             <div class="form-group">
                 <asp:Label ID="lblNumeroConvenio" runat="server" Text="N° CONVENIO" CssClass="col-md-2 control-label"> </asp:Label>
@@ -314,8 +342,6 @@
                 </div>
             </div>
         </asp:Panel>
-
-
         <!--PANEL DEL COFECYT - FINANCIAMIENTO-->
         <asp:Panel ID="PanelCofecytFinanciamiento" CssClass="panel panel-info" runat="server">
             <div class="panel-heading">
@@ -366,237 +392,14 @@
             </div>
         </asp:Panel>
 
-        <asp:Panel ID="PanelMostrarEtapasCofecyt" CssClass="panel panel-info" runat="server">
-            <div class="panel-heading">
-                <h3>Etapas del Proyecto</h3>
-            </div>
-            <div class="form-group">
-                <br />
-                <asp:Label ID="lblEtapaCofecyt" runat="server" Text="ETAPAS" CssClass="col-md-2 control-label"> </asp:Label>
-                <div class="col-md-4">
-                    <button id="btnAgregarEtapaCofecyt" type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalEtapaCofecyt">Agregar Etapa</button>
-                </div>
-            </div>
-            <div class="form-group">
-                <asp:Label ID="lblActividadCofecyt" runat="server" Text="ACTIVIDADES" CssClass="col-md-2 control-label"> </asp:Label>
-                <div class="col-md-4">
-                    <button id="btnAgregarActividadCofecyt" type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalActividadCofecyt">Agregar Actividad</button>
-                </div>
-            </div>
-            <!--LISTA DE ETAPAS COFECYT-->
-            <div class="form-group">
-                <div class="col-md-10 col-md-offset-1">
-                    <asp:GridView ID="dgvEtapasCofecyt" runat="server" AutoGenerateColumns="false"
-                        DataKeyNames="idEtapaCofecyt"
-                        CssClass="table table-hover" BorderWidth="2px" EmptyDataText="No existen etapas cargadas" ShowHeaderWhenEmpty="true">
-                        <Columns>
-                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Etapa" DataField="nombre" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="250" />
-                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Inicio" DataFormatString="{0:dd-MMM-yyyy}" DataField="fechaInicio" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100" />
-                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Fin" DataFormatString="{0:dd-MMM-yyyy}" DataField="fechaFin" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100" />
 
-                            <asp:TemplateField HeaderStyle-BackColor="#cccccc" HeaderText="Rendicion" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100">
-                                <ItemTemplate><%# (Boolean.Parse(Eval("Rendicion").ToString())) ? "Si" : "No" %></ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderStyle-BackColor="#cccccc" HeaderText="Informe Tecnico" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100">
-                                <ItemTemplate><%# (Boolean.Parse(Eval("Informe").ToString())) ? "Si" : "No" %></ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Duracion (UVT)" DataField="duracionSegunUvt" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="100" />
-                            <asp:TemplateField HeaderStyle-BackColor="#cccccc" HeaderText="Estado" HeaderStyle-HorizontalAlign="Left" HeaderStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="100">
-                                <ItemTemplate>
-                                    <asp:Label ID="Label1" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "TipoEstadoEtapa.Nombre") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                        </Columns>
-                    </asp:GridView>
-                </div>
-            </div>
-            <!--LISTA DE ACTIVIDADES COFECYT-->
-            <div class="form-group">
-                <div class="col-md-10 col-md-offset-1">
-                    <asp:GridView ID="dgvActividadesCofecyt" runat="server" AutoGenerateColumns="false"
-                        DataKeyNames="idActividadCofecyt"
-                        CssClass="table table-hover" BorderWidth="2px" EmptyDataText="No existen actividades cargadas" ShowHeaderWhenEmpty="true">
-                        <Columns>
-                            <asp:TemplateField HeaderStyle-BackColor="#cccccc" HeaderText="Etapa" HeaderStyle-HorizontalAlign="Left" HeaderStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Center" ControlStyle-Font-Size="Small" HeaderStyle-Width="100">
-                                <ItemTemplate>
-                                    <asp:Label ID="l2" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "idEtapaCofecyt") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Actividad" DataField="nombre" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="250" />
-                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Descripcion" DataField="descripcion" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="250" />
-                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Resultados Esperados" DataField="resultadosEsperados" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="250" />
-                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Localizacion" DataField="localizacion" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="250" />
-                        </Columns>
-                    </asp:GridView>
-                </div>
-            </div>
-            <!-- MODAL AGREGAR ETAPA NUEVA -->
-            <div class="modal fade" id="modalEtapaCofecyt" tabindex="-1" role="dialog" aria-labelledby="modalLabelEtapaCofecyt" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <h4 class="modal-title" id="modalLabelEtapaCofecyt">AGREGAR ETAPA</h4>
-                        </div>
-                        <!-- CUERPO DEL MODAL -->
-                        <div class="modal-body">
-                            <!--NOMBRE-->
-                            <div class="form-group">
-                                <asp:Label ID="lblNombreModalCofecyt" runat="server" Text="NOMBRE" CssClass="col-md-2 control-label"> </asp:Label>
-                                <div class="col-md-8">
-                                    <asp:TextBox ID="txtNombreModalCofecyt" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                            </div>
-                            <!--ESTADO DE LA ETAPA-->
-                            <div class="form-group">
-                                <asp:Label ID="lblTipoEstadoEtapaCofecyt" runat="server" Text="ESTADO" CssClass="col-md-2 control-label"></asp:Label>
-                                <div class="col-md-4">
-                                    <asp:DropDownList ID="ddlTipoEstadoEtapaCofecyt" runat="server"
-                                        BackColor="WhiteSmoke"
-                                        ForeColor="#000066"
-                                        CssClass="selectpicker form-control show-tick"
-                                        data-live-search="true"
-                                        DataTextField="nombre"
-                                        AutoPostBack="False"
-                                        AppendDataBoundItems="true">
-                                        <asp:ListItem Value="-1">&lt;Seleccione Estado&gt;</asp:ListItem>
-                                    </asp:DropDownList>
-                                </div>
-                            </div>
-                            <!--FECHA DE INICIO-->
-                            <div class="form-group">
-                                <asp:Label ID="lblFechaInicioCofecyt" runat="server" Text="FECHA INICIO" CssClass="col-md-2 control-label"> </asp:Label>
-                                <div class="col-md-4">
-                                    <div class="input-group date"
-                                        data-provide="datepicker"
-                                        data-date-autoclose="true"
-                                        data-date-today-btn="true"
-                                        data-date-clear-btn="true"
-                                        data-date-today-highlight="true">
-                                        <asp:TextBox CssClass="form-control" runat="server" ID="txtFechaInicioCofecyt"></asp:TextBox>
-                                        <div class="input-group-addon">
-                                            <span class="glyphicon glyphicon-th"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--FECHA FINAL-->
-                            <div class="form-group">
-                                <asp:Label ID="lblFechaFinCofecyt" runat="server" Text="FECHA FINAL" CssClass="col-md-2 control-label"> </asp:Label>
-                                <div class="col-md-4">
-                                    <div class="input-group date"
-                                        data-provide="datepicker"
-                                        data-date-autoclose="true"
-                                        data-date-today-btn="true"
-                                        data-date-clear-btn="true"
-                                        data-date-today-highlight="true">
-                                        <asp:TextBox CssClass="form-control" runat="server" ID="txtFechaFinCofecyt"></asp:TextBox>
-                                        <div class="input-group-addon">
-                                            <span class="glyphicon glyphicon-th"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- RENDICION -->
-                            <div class="form-group">
-                                <asp:Label ID="lblRendicionCofecyt" runat="server" Text="PRESENTO RENDICION ?" CssClass="col-md-3 control-label "></asp:Label>
-                                <div class="col-md-1">
-                                    <asp:CheckBox ID="chkRendicionCofecyt" runat="server" CssClass="control-label" BorderStyle="None" />
-                                </div>
-                            </div>
-                            <!-- INFORME -->
-                            <div class="form-group">
-                                <asp:Label ID="lblInformeCofecyt" runat="server" Text="PRESENTO INFORME ?" CssClass="col-md-3 control-label "></asp:Label>
-                                <div class="col-md-1">
-                                    <asp:CheckBox ID="chkInformeCofecyt" runat="server" CssClass="control-label" BorderStyle="None" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <asp:Label ID="lblDuracionSegunUvt" runat="server" Text="DURACION SEGUN UVT" CssClass="col-md-3 control-label"> </asp:Label>
-                                <div class="col-md-3">
-                                    <asp:TextBox ID="txtDuracionSegunUvt" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <asp:Button runat="server" ID="btnModalEtapaCofecytSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
-                                <asp:Button runat="server" ID="btnModalEtapaCofecytGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalEtapaCofecytGuardar_Click" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- MODAL AGREGAR ACTIVIDAD NUEVA -->
-            <div class="modal fade" id="modalActividadCofecyt" tabindex="-1" role="dialog" aria-labelledby="modalLabelActividadCofecyt" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <h4 class="modal-title" id="modalLabelActividadCofecyt">AGREGAR ACTIVIDAD</h4>
-                        </div>
-                        <!-- CUERPO DEL MODAL -->
-                        <div class="modal-body">
-                            <!--NOMBRE DE LA ETAPA-->
-                            <div class="form-group">
-                                <asp:Label ID="lblEtapaActividad" runat="server" Text="ETAPA" CssClass="col-md-3 control-label"></asp:Label>
-                                <div class="col-md-6">
-                                    <asp:DropDownList ID="ddlEtapaActividad" runat="server"
-                                        BackColor="WhiteSmoke"
-                                        ForeColor="#000066"
-                                        CssClass="selectpicker form-control show-tick"
-                                        data-live-search="true"
-                                        DataTextField="nombre"
-                                        AutoPostBack="False"
-                                        AppendDataBoundItems="False">
-                                        <asp:ListItem Value="-1">&lt;Seleccione Etapa&gt;</asp:ListItem>
-                                    </asp:DropDownList>
-                                </div>
-                            </div>
-                            <!--NOMBRE-->
-                            <div class="form-group">
-                                <asp:Label ID="lblNombreActividadCofecyt" runat="server" Text="NOMBRE" CssClass="col-md-3 control-label"> </asp:Label>
-                                <div class="col-md-8">
-                                    <asp:TextBox ID="txtNombreActividadCofecyt" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                            </div>
-                            <!--BREVE DESCRIPCION-->
-                            <div class="form-group">
-                                <asp:Label ID="lblDescripcionActividadCofecyt" runat="server" Text="BREVE DESCRIPCION" CssClass="col-md-3 control-label"> </asp:Label>
-                                <div class="col-md-8">
-                                    <asp:TextBox ID="txtDescripcionActividadCofecyt" TextMode="MultiLine" Rows="2" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                            </div>
-                            <!--RESULTADOS ESPERADOS-->
-                            <div class="form-group">
-                                <asp:Label ID="lblResultadosEsperadosActividadCofecyt" runat="server" Text="RESULTADOS ESPERADOS" CssClass="col-md-3 control-label"> </asp:Label>
-                                <div class="col-md-8">
-                                    <asp:TextBox ID="txtResultadosEsperadosActividadCofecyt" TextMode="MultiLine" Rows="2" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                            </div>
-                            <!--LOCALIZACION-->
-                            <div class="form-group">
-                                <asp:Label ID="lblLocalizacionActividadCofecyt" runat="server" Text="LOCALIZACION" CssClass="col-md-3 control-label"> </asp:Label>
-                                <div class="col-md-8">
-                                    <asp:TextBox ID="txtLocalizacionActividadCofecyt" TextMode="MultiLine" Rows="1" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <asp:Button runat="server" ID="btnModalActividadCofecytSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
-                                <asp:Button runat="server" ID="btnModalActividadCofecytGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalActividadCofecytGuardar_Click" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </asp:Panel>
-        <!--BOTON GUARDAR PROYECTO  -->
+
+        <!--BOTON ACTUALIZAR PROYECTO-->
         <div class="form-group">
             <div class="col-md-2 col-md-offset-2">
-                <asp:Button ID="btnGuardarProyecto" runat="server" Text="Guardar Proyecto" CssClass="btn btn-success form-control" OnClick="btnGuardarProyecto_Click" />
+                <asp:Button ID="btnActualizarProyecto" runat="server" Text="Actualizar Proyecto" CssClass="btn btn-success form-control" OnClick="btnActualizarProyecto_Click" />
             </div>
         </div>
+
     </div>
 </asp:Content>

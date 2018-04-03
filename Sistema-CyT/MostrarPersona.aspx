@@ -5,71 +5,53 @@
     <div class="container">
         <asp:Panel ID="Panel1" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <h3>Datos de la PERSONA</h3>
+                <h4>Informacion</h4>
             </div>
             <!-- NOMBRE -->
             <br />
             <div class="form-group">
-                <asp:Label ID="lblNombre" runat="server" Text="NOMBRE" CssClass="col-md-2 control-label"></asp:Label>
-                <div class="col-md-4">
-                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-                </div>
+                <asp:Label ID="lblNombre" runat="server" Text="NOMBRE" CssClass="col-md-2 lblalider"></asp:Label>
+                <asp:Label ID="txtNombre" runat="server" CssClass="col-md-6 lblaliizq" Font-Bold="true"></asp:Label>
             </div>
             <!-- APELLIDO -->
             <div class="form-group">
-                <asp:Label ID="lblApellido" runat="server" Text="APELLIDO" CssClass="col-md-2 control-label"></asp:Label>
-                <div class="col-md-4">
-                    <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-                </div>
+                <asp:Label ID="lblApellido" runat="server" Text="APELLIDO" CssClass="col-md-2 lblalider"></asp:Label>
+                <asp:Label ID="txtApellido" runat="server" CssClass="col-md-6 lblaliizq" Font-Bold="true"></asp:Label>
             </div>
             <!-- TELEFONO -->
             <div class="form-group">
-                <asp:Label ID="lblTelefono" runat="server" Text="TELEFONO" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
-                <div class="col-md-6 col-xs-12">
-                    <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox><br />
-                </div>
+                <asp:Label ID="lblTelefono" runat="server" Text="TELEFONO" CssClass="col-md-2 col-xs-6 lblalider"> </asp:Label>
+                <asp:Label ID="txtTelefono" runat="server" CssClass="col-md-6 lblaliizq" Font-Bold="true"></asp:Label><br />
             </div>
             <!-- CORREO ELECTRONICO -->
             <div class="form-group">
-                <asp:Label ID="lblCorreoElectronico" runat="server" Text="CORREO ELECTRONICO" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
-                <div class="col-md-6 col-xs-12">
-                    <asp:TextBox ID="txtCorreoElectronico" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox><br />
-                </div>
+                <asp:Label ID="lblCorreoElectronico" runat="server" Text="CORREO ELECTRONICO" CssClass="col-md-2 col-xs-6 lblalider"> </asp:Label>
+                <asp:Label ID="txtCorreoElectronico" runat="server" CssClass="col-md-6 lblaliizq" Font-Bold="true"></asp:Label><br />
             </div>
             <!-- TIPO DOCUMENTO -->
             <div class="form-group">
-                <asp:Label ID="lblTipoDocumento" runat="server" Text="TIPO" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
-                <div class="col-md-6 col-xs-12">
-                    <asp:TextBox ID="txtTipoDocumento" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox><br />
-                </div>
+                <asp:Label ID="lblTipoDocumento" runat="server" Text="TIPO" CssClass="col-md-2 col-xs-6 lblalider"> </asp:Label>
+                <asp:Label ID="txtTipoDocumento" runat="server" CssClass="col-md-6 lblaliizq" Font-Bold="true"></asp:Label><br />
             </div>
             <!-- DOCUMENTO -->
             <div class="form-group">
-                <asp:Label ID="lblDocumento" runat="server" Text="DOCUMENTO" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
-                <div class="col-md-6 col-xs-12">
-                    <asp:TextBox ID="txtDocumento" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox><br />
-                </div>
+                <asp:Label ID="lblDocumento" runat="server" Text="DOCUMENTO" CssClass="col-md-2 col-xs-6 lblalider"> </asp:Label>
+                <asp:Label ID="txtDocumento" runat="server" CssClass="col-md-6 lblaliizq" Font-Bold="true"></asp:Label><br />
             </div>
             <!-- DOMICILIO -->
             <div class="form-group">
-                <asp:Label ID="lblDomicilio" runat="server" Text="DOMICILIO" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
-                <div class="col-md-6 col-xs-12">
-                    <asp:TextBox ID="txtDomicilio" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox><br />
-                </div>
+                <asp:Label ID="lblDomicilio" runat="server" Text="DOMICILIO" CssClass="col-md-2 col-xs-6 lblalider"> </asp:Label>
+                <asp:Label ID="txtDomicilio" runat="server" CssClass="col-md-6 lblaliizq" Font-Bold="true"></asp:Label><br />
             </div>
             <!-- LOCALIDAD -->
             <div class="form-group">
-                <asp:Label ID="lblLocalidad" runat="server" Text="LOCALIDAD" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
-                <div class="col-md-6 col-xs-12">
-                    <asp:TextBox ID="txtLocalidad" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox><br />
-                </div>
+                <asp:Label ID="lblLocalidad" runat="server" Text="LOCALIDAD" CssClass="col-md-2 col-xs-6 lblalider"> </asp:Label>
+                <asp:Label ID="txtLocalidad" runat="server" CssClass="col-md-6 lblaliizq" Font-Bold="true"></asp:Label><br />
             </div>
             <!-- OBSERVACIONES -->
             <div class="form-group">
-                <asp:Label ID="lblObservaciones" runat="server" Text="OBSERVACIONES" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
-                <div class="col-md-6 col-xs-12">
-                    <asp:TextBox ID="txtObservaciones" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2" ReadOnly="true"></asp:TextBox><br />
-                </div>
+                <asp:Label ID="lblObservaciones" runat="server" Text="OBSERVACIONES" CssClass="col-md-2 col-xs-6 lblalider"> </asp:Label>
+                <asp:Label ID="txtObservaciones" runat="server" CssClass="col-md-6 lblaliizq" Font-Bold="true"></asp:Label><br />
             </div>
         </asp:Panel>
     </div>

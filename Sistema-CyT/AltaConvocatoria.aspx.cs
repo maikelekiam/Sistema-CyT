@@ -33,6 +33,10 @@ namespace Sistema_CyT
                 txtAnio.Text = Convert.ToString(DateTime.Now.Year);
                 txtFechaApertura.Text = Convert.ToString(DateTime.Today.ToShortDateString());
                 txtFechaCierre.Text = Convert.ToString(DateTime.Today.ToShortDateString());
+
+                txtFechaCierre.Visible = true;
+                lblFechaCierre.Visible = true;
+                fc.Visible = true;
             }
         }
         private void LlenarListaFondos()
@@ -68,12 +72,18 @@ namespace Sistema_CyT
             //    return;
             //}
 
+            if (txtNombre.Text != "" && txtFechaApertura != null)
+            {
+                GuardarConvocatoria();
+                LimpiarFormulario();
+                listaModalidades.Clear();
 
-            GuardarConvocatoria();
-            LimpiarFormulario();
-            listaModalidades.Clear();
-
-            Response.Redirect("ListarConvocatorias.aspx");
+                Response.Redirect("ListarConvocatorias.aspx");
+            }
+            else
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Correct", "alert('Debe completar los campos NOMBRE y FECHA APERTURA.')", true);
+            }
         }
 
         private void GuardarConvocatoria()
@@ -82,28 +92,28 @@ namespace Sistema_CyT
 
             //PRIMERO GUARDO LA CONVOCATORIA
             convocatoria.Nombre = txtNombre.Text;
-            convocatoria.Anio = Int32.Parse(txtAnio.Text);
+
+            if (txtAnio.Text == "") { convocatoria.Anio = null; }
+            else { convocatoria.Anio = Int32.Parse(txtAnio.Text); }
+
             convocatoria.IdFondo = Int32.Parse(ddlFondo.SelectedValue);
             convocatoria.IdTipoFinanciamiento = Int32.Parse(ddlTipoFinanciamiento.SelectedValue);
             convocatoria.IdTipoConvocatoria = Int32.Parse(ddlTipoConvocatoria.SelectedValue);
 
-            convocatoria.FechaApertura = DateTime.ParseExact(txtFechaApertura.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            convocatoria.FechaCierre = DateTime.ParseExact(txtFechaCierre.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            
+            if (txtFechaApertura.Text == "") { convocatoria.FechaApertura = null; }
+            else { convocatoria.FechaApertura = DateTime.ParseExact(txtFechaApertura.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture); }
+
+            if (txtFechaCierre.Text == "") { convocatoria.FechaCierre = null; }
+            else { convocatoria.FechaCierre = DateTime.ParseExact(txtFechaCierre.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture); }
+
             //convocatoria.FechaApertura = DateTime.ParseExact(txtFechaApertura.Text, "dd/MMM/yyyy", CultureInfo.InvariantCulture);
             //convocatoria.FechaCierre = DateTime.ParseExact(txtFechaCierre.Text, "dd/MMM/yyyy", CultureInfo.InvariantCulture);
 
             //convocatoria.FechaApertura = Convert.ToDateTime(txtFechaApertura.Text);
             //convocatoria.FechaCierre = Convert.ToDateTime(txtFechaCierre.Text);
 
-            if (chkAbierta.Checked)
-            {
-                convocatoria.Abierta = true;
-            }
-            else if (!chkAbierta.Checked)
-            {
-                convocatoria.Abierta = false;
-            }
+            if (chkAbierta.Checked) { convocatoria.Abierta = true; }
+            else if (!chkAbierta.Checked) { convocatoria.Abierta = false; }
 
             convocatoria.Activa = true;
 
@@ -147,9 +157,16 @@ namespace Sistema_CyT
             item.Nombre = txtNombreModal.Text;
             item.Descripcion = txtDescripcionModal.Text;
             item.Objetivo = txtObjetivoModal.Text;
-            item.MontoMaximoProyecto = Int32.Parse(txtMontoMaximoProyectoModal.Text);
-            item.PorcentajeFinanciamiento = Int32.Parse(txtPorcentajeFinanciamientoModal.Text);
-            item.PlazoEjecucion = Int32.Parse(txtPlazoEjecucionModal.Text);
+
+            if (txtMontoMaximoProyectoModal.Text == "") { item.MontoMaximoProyecto = null; }
+            else { item.MontoMaximoProyecto = Int32.Parse(txtMontoMaximoProyectoModal.Text); }
+
+            if (txtPorcentajeFinanciamientoModal.Text == "") { item.PorcentajeFinanciamiento = null; }
+            else { item.PorcentajeFinanciamiento = Int32.Parse(txtPorcentajeFinanciamientoModal.Text); }
+
+            if (txtPlazoEjecucionModal.Text == "") { item.PlazoEjecucion = null; }
+            else { item.PlazoEjecucion = Int32.Parse(txtPlazoEjecucionModal.Text); }
+
 
             //modalidadNego.GuardarModalidad(item);
 
@@ -183,6 +200,25 @@ namespace Sistema_CyT
             chkAbierta.Checked = false;
             //listaModalidades.Clear();
             //LlenarGrillaModalidades();
+        }
+
+        protected void ddlTipoConvocatoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string str = tipoConvocatoriaNego.ObtenerTipoConvocatoriaString(Convert.ToInt32(ddlTipoConvocatoria.SelectedValue));
+
+            if (str == "Ventanilla Permanente")
+            {
+                fc.Visible = false;
+                txtFechaCierre.Text = "";
+                txtFechaCierre.Visible = false;
+                lblFechaCierre.Visible = false;
+            }
+            else
+            {
+                fc.Visible = true;
+                txtFechaCierre.Visible = true;
+                lblFechaCierre.Visible = true;
+            }
         }
     }
 }

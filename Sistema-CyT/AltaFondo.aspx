@@ -4,7 +4,7 @@
     <div class="container">
         <asp:Panel ID="PanelSuperior" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <h3>Formulario ALTA Fondo</h3>
+                <h4>Nuevo Fondo</h4>
             </div>
             <!-- NOMBRE DEL FONDO -->
             <div class="form-group">
@@ -41,7 +41,7 @@
                 <%--AGREGAR ACA EL MODAL PARA NUEVO ORIGEN--%>
                 <div class="form-group">
                     <div class="col-md-2">
-                        <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalOrigen">Nuevo Origen</button>
+                        <button type="button" class="btn boton_azul" data-toggle="modal" data-target="#modalOrigen">Nuevo Origen</button>
                     </div>
                     <!-- MODAL EMPRESA  -->
                     <div class="modal fade" id="modalOrigen" tabindex="-1" role="dialog" aria-labelledby="modalLabelOrigen" aria-hidden="true">

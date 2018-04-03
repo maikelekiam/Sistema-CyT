@@ -5,7 +5,7 @@
     <div class="container">
         <asp:Panel ID="Panel1" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <h3>Formulario de ALTA Empresa</h3>
+                <h3>Nueva Empresa</h3>
             </div>
             <!--NOMBRE-->
             <br />
@@ -62,12 +62,13 @@
             <!-- BOTON GUARDAR -->
             <div class="form-group">
                 <div class="col-md-2 col-md-offset-2">
-                    <asp:Button ID="btnGuardarEmpresa" runat="server" Text="Guardar Empresa" CssClass="btn btn-success form-control" OnClick="btnGuardarEmpresa_Click" />
+                    <asp:Button ID="btnGuardarEmpresa" runat="server" Text="Guardar Empresa" Width="180" CssClass="btn boton_verde form-control" OnClick="btnGuardarEmpresa_Click" />
                 </div>
             </div>
         </asp:Panel>
         <!--GRILLA PARA MOSTRAR LAS PERSONAS EN LA BASE DE DATOS-->
-        <h4>GRILLA DE EMPRESAS</h4>
+        <br />
+        <%--<h4>GRILLA DE EMPRESAS</h4>--%>
         <div class="form-group">
             <div class="col-md-9 col-md-offset-1">
                 <asp:GridView ID="dgvEmpresa" runat="server" AutoGenerateColumns="false"
@@ -75,7 +76,7 @@
                     GridLines="Both" EmptyDataText="No existen empresas registradas" ShowHeaderWhenEmpty="true">
                     <Columns>
                         <asp:BoundField HeaderText="ID" DataField="idEmpresa" ItemStyle-HorizontalAlign="Center" HeaderStyle-BackColor="#cccccc" />
-                        <asp:BoundField HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Left" HeaderStyle-BackColor="#cccccc" />
+                        <asp:BoundField HeaderText="Empresa" DataField="nombre" ItemStyle-HorizontalAlign="Left" HeaderStyle-BackColor="#cccccc" />
                         <asp:BoundField HeaderText="Telefono" DataField="telefono" ItemStyle-HorizontalAlign="Center" HeaderStyle-BackColor="#cccccc" />
                         <asp:BoundField HeaderText="Correo Electronico" DataField="correoElectronico" ItemStyle-HorizontalAlign="Center" HeaderStyle-BackColor="#cccccc" />
                     </Columns>

@@ -92,7 +92,9 @@
                         ForeColor="#000066"
                         Font-Bold="false"
                         CssClass="selectpicker form-control show-tick"
-                        DataTextField="nombre">
+                        DataTextField="nombre"
+                        AutoPostBack="true"
+                        OnSelectedIndexChanged="ddlTipoConvocatoria_SelectedIndexChanged">
                         <asp:ListItem Value="-1">&lt;Seleccione Tipo&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
@@ -114,7 +116,7 @@
                     </div>
                 </div>
                 <asp:Label ID="lblFechaCierre" runat="server" Text="FECHA CIERRE" CssClass="col-md-2 control-label"></asp:Label>
-                <div class="col-md-3">
+                <div class="col-md-3" runat="server" id="fc">
                     <div class="input-group date"
                         data-provide="datepicker"
                         data-date-autoclose="true"
@@ -147,7 +149,7 @@
                 <div class="form-group">
                     <asp:Label ID="lblModalidad" runat="server" Text="MODALIDADES" CssClass="col-md-2 control-label"> </asp:Label>
                     <div class="col-md-4">
-                        <button id="btnAgregarModalidad" type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalModalidad">Agregar Modalidad</button>
+                        <button id="btnAgregarModalidad" type="button" class="btn boton_verde" data-toggle="modal" data-target="#modalModalidad">Agregar Modalidad</button>
                     </div>
                 </div>
             </asp:Panel>
@@ -204,8 +206,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <asp:Button runat="server" ID="btnModalModalidadSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
-                            <asp:Button runat="server" ID="btnModalModalidadGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalModalidadGuardar_Click" />
+                            <asp:Button runat="server" ID="btnModalModalidadSalir" Text="SALIR" CssClass="btn boton_rojo" Width="110" data-dismiss="modal" />
+                            <asp:Button runat="server" ID="btnModalModalidadGuardar" Text="GUARDAR" CssClass="btn boton_verde" Width="110" OnClick="btnModalModalidadGuardar_Click" />
                         </div>
                     </div>
                 </div>
@@ -213,7 +215,7 @@
             <!-- BOTON ACTUALIZAR CONVOCATORIA-->
             <div class="form-group">
                 <div class="col-md-2 col-md-offset-2">
-                    <asp:Button ID="btnActualizarConvocatoria" runat="server" Text="Actualizar Convocatoria" CssClass="btn btn-info form-control" OnClick="btnActualizarConvocatoria_Click" />
+                    <asp:Button ID="btnActualizarConvocatoria" runat="server" Text="Actualizar Convocatoria" CssClass="btn boton_azul" Width="200" OnClick="btnActualizarConvocatoria_Click" />
                 </div>
             </div>
         </asp:Panel>

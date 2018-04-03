@@ -32,9 +32,6 @@ namespace Sistema_CyT
         UdtUvtNego udtUvtNego = new UdtUvtNego();
         TipoEstadoCofecytNego tipoEstadoCofecytNego = new TipoEstadoCofecytNego();
 
-
-        //IEnumerable<Proyecto> listaProyectos;
-
         public static List<Etapa> listaTemporalEtapas = new List<Etapa>();
         public static List<Etapa> listaTemporalEtapasAgregado = new List<Etapa>();
         List<pr02ResultSet0> listaProyectosFiltrados = new List<pr02ResultSet0>();
@@ -290,6 +287,10 @@ namespace Sistema_CyT
                 //RUTINAS PARA COFECYT
                 if (fondoNego.ObtenerFondo(Convert.ToInt32(ddlFondoChoice.SelectedValue)).Nombre.ToUpper() == "COFECYT")
                 {
+                    //la puse recien
+                    Response.Redirect("EditarProyectoCofecyt.aspx");
+
+
                     ddlProyectoChoice.DataSource = proyectoCofecytNego.ListarChoiceProyectoCofecyts(idConvocatoriaSeleccionada);
                     ddlProyectoChoice.DataTextField = "titulo";
                     ddlProyectoChoice.DataValueField = "idProyectoCofecyt";
@@ -1380,8 +1381,15 @@ namespace Sistema_CyT
             item.IdProyecto = idProyectoActual;
 
             item.Nombre = txtNombreModal.Text;
-            item.FechaInicio = DateTime.ParseExact(txtFechaInicioModal.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            item.FechaFin = DateTime.ParseExact(txtFechaFinalModal.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+            if (txtFechaInicioModal.Text == "") { item.FechaInicio = null; }
+            else { item.FechaInicio = DateTime.ParseExact(txtFechaInicioModal.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture); }
+
+            if (txtFechaFinalModal.Text == "") { item.FechaFin = null; }
+            else { item.FechaFin = DateTime.ParseExact(txtFechaFinalModal.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture); }
+
+            //item.FechaInicio = DateTime.ParseExact(txtFechaInicioModal.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            //item.FechaFin = DateTime.ParseExact(txtFechaFinalModal.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             item.IdTipoEstadoEtapa = Convert.ToInt32(ddlTipoEstadoEtapa.SelectedValue);
 
             if (chkRendicion.Checked)
@@ -1570,8 +1578,16 @@ namespace Sistema_CyT
                 etapa.IdEtapa = item.IdEtapa;
                 etapa.IdProyecto = idProyectoActual;
                 etapa.Nombre = item.Nombre.ToString();
-                etapa.FechaInicio = Convert.ToDateTime(item.FechaInicio.ToString());
-                etapa.FechaFin = Convert.ToDateTime(item.FechaFin.ToString());
+
+                if (item.FechaInicio == null) { etapa.FechaInicio = null; }
+                else { etapa.FechaInicio = Convert.ToDateTime(item.FechaInicio.ToString()); }
+
+                if (item.FechaFin == null) { etapa.FechaFin = null; }
+                else { etapa.FechaFin = Convert.ToDateTime(item.FechaFin.ToString()); }
+
+                //etapa.FechaInicio = Convert.ToDateTime(item.FechaInicio.ToString());
+                //etapa.FechaFin = Convert.ToDateTime(item.FechaFin.ToString());
+
                 etapa.IdTipoEstadoEtapa = item.IdTipoEstadoEtapa;
 
                 if (chkRendicion.Checked)
@@ -1663,8 +1679,8 @@ namespace Sistema_CyT
             if (txtUltimaEvaluacionTecnica.Text == "") { proyectoCofecyt.UltimaEvaluacionTecnica = null; }
             else { proyectoCofecyt.UltimaEvaluacionTecnica = DateTime.ParseExact(txtUltimaEvaluacionTecnica.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture); };
 
-            
-            
+
+
             //proyectoCofecyt.FechaPresentacion = DateTime.ParseExact(txtFechaPresentacion.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             //proyectoCofecyt.FechaFinalizacion = DateTime.ParseExact(txtFechaFinalizacion.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             //proyectoCofecyt.UltimaEvaluacionTecnica = DateTime.ParseExact(txtUltimaEvaluacionTecnica.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
@@ -1683,12 +1699,24 @@ namespace Sistema_CyT
 
             //proyectoCofecyt.IdConvocatoria = Convert.ToInt32(ddlConvocatoriaChoice.SelectedValue);
 
-            proyectoCofecyt.MontoSolicitadoCofecyt = Convert.ToDecimal(txtMontoSolicitadoCofecyt.Text);
-            proyectoCofecyt.MontoContraparteCofecyt = Convert.ToDecimal(txtMontoContraparteCofecyt.Text);
-            proyectoCofecyt.MontoTotalCofecyt = Convert.ToDecimal(txtMontoTotalCofecyt.Text);
-            proyectoCofecyt.MontoTotalDgaCofecyt = Convert.ToDecimal(txtMontoTotalDgaCofecyt.Text);
-            proyectoCofecyt.MontoDevolucionCofecyt = Convert.ToDecimal(txtMontoDevolucionCofecyt.Text);
-            proyectoCofecyt.MontoRescindidoCofecyt = Convert.ToDecimal(txtMontoRescindidoCofecyt.Text);
+            if (txtMontoSolicitadoCofecyt.Text == "") { proyectoCofecyt.MontoSolicitadoCofecyt = null; }
+            else { proyectoCofecyt.MontoSolicitadoCofecyt = Convert.ToDecimal(txtMontoSolicitadoCofecyt.Text); }
+
+            if (txtMontoContraparteCofecyt.Text == "") { proyectoCofecyt.MontoContraparteCofecyt = null; }
+            else { proyectoCofecyt.MontoContraparteCofecyt = Convert.ToDecimal(txtMontoContraparteCofecyt.Text); }
+
+            if (txtMontoTotalCofecyt.Text == "") { proyectoCofecyt.MontoTotalCofecyt = null; }
+            else { proyectoCofecyt.MontoTotalCofecyt = Convert.ToDecimal(txtMontoTotalCofecyt.Text); }
+
+            if (txtMontoTotalDgaCofecyt.Text == "") { proyectoCofecyt.MontoTotalDgaCofecyt = null; }
+            else { proyectoCofecyt.MontoTotalDgaCofecyt = Convert.ToDecimal(txtMontoTotalDgaCofecyt.Text); }
+
+            if (txtMontoDevolucionCofecyt.Text == "") { proyectoCofecyt.MontoDevolucionCofecyt = null; }
+            else { proyectoCofecyt.MontoDevolucionCofecyt = Convert.ToDecimal(txtMontoDevolucionCofecyt.Text); }
+
+            if (txtMontoRescindidoCofecyt.Text == "") { proyectoCofecyt.MontoRescindidoCofecyt = null; }
+            else { proyectoCofecyt.MontoRescindidoCofecyt = Convert.ToDecimal(txtMontoRescindidoCofecyt.Text); }
+
 
             //Actualizo el proyecto cofecyt
             proyectoCofecytNego.ActualizarProyectoCofecyt(proyectoCofecyt);
@@ -1808,8 +1836,7 @@ namespace Sistema_CyT
             }
             else
             {
-                MessageBox.Show("DEBE ACTUALIZAR PARA CONTINUAR", "Advertencia",
-                    MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk);
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Correct", "alert('DEBE ACTUALIZAR PARA CONTINUAR.')", true);
 
             }
         }

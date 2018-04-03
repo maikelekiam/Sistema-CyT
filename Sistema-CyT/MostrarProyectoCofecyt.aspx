@@ -11,210 +11,145 @@
             <div class="panel-body">
                 <!--CONVOCATORIA-->
                 <div class="form-group">
-                    <asp:Label ID="lblConvocatoria" runat="server" Text="CONVOCATORIA" CssClass="col-md-2 col-xs-12 control-label"></asp:Label>
-                    <div class="col-md-6">
-                        <asp:TextBox ID="txtConvocatoria" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
-                </div>
-                <!--TITULO/NOMBRE DEL PROYECTO-->
-                <div class="form-group">
-                    <br />
-                    <asp:Label ID="lblTituloCofecyt" runat="server" Text="TITULO" CssClass="col-md-2 col-xs-12 control-label"></asp:Label>
-                    <div class="col-md-8 col-xs-12">
-                        <asp:TextBox ID="txtTituloCofecyt" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblConvocatoria" runat="server" Text="CONVOCATORIA" CssClass="col-md-2 lblalider"></asp:Label>
+                    <asp:Label ID="txtConvocatoria" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!--OBJETIVOS DEL PROYECTO-->
                 <div class="form-group">
-                    <asp:Label ID="lblObjetivosCofecyt" runat="server" Text="OBJETIVOS" CssClass="col-md-2 col-xs-12 control-label"> </asp:Label>
-                    <div class="col-md-8 col-xs-12">
-                        <asp:TextBox ID="txtObjetivosCofecyt" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblObjetivosCofecyt" runat="server" Text="OBJETIVOS" CssClass="col-md-2 lblalider"> </asp:Label>
+                    <asp:Label ID="txtObjetivosCofecyt" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true" ></asp:Label>
                 </div>
                 <!--BREVE DESCRIPCION-->
                 <div class="form-group">
-                    <asp:Label ID="lblDescripcionCofecyt" runat="server" Text="BREVE DESCRIPCION" CssClass="col-md-2 col-xs-12 control-label"> </asp:Label>
-                    <div class="col-md-8 col-xs-12">
-                        <asp:TextBox ID="txtDescripcionCofecyt" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblDescripcionCofecyt" runat="server" Text="BREVE DESCRIPCION" CssClass="col-md-2 lblalider"> </asp:Label>
+                    <asp:Label ID="txtDescripcionCofecyt" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true" ></asp:Label>
                 </div>
                 <!--DESTINATARIOS DEL PROYECTO-->
                 <div class="form-group">
-                    <asp:Label ID="lblDestinatariosCofecyt" runat="server" Text="DESTINATARIOS" CssClass="col-md-2 col-xs-12 control-label"> </asp:Label>
-                    <div class="col-md-8 col-xs-12">
-                        <asp:TextBox ID="txtDestinatariosCofecyt" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblDestinatariosCofecyt" runat="server" Text="DESTINATARIOS" CssClass="col-md-2 lblalider"> </asp:Label>
+                    <asp:Label ID="txtDestinatariosCofecyt" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!--LOCALIDAD-->
                 <div class="form-group">
-                    <asp:Label ID="lblLocalidadCofecyt" runat="server" Text="LOCALIDAD" CssClass="col-md-2 control-label"></asp:Label>
-                    <div class="col-md-6">
-                        <asp:TextBox ID="txtLocalidadCofecyt" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblLocalidadCofecyt" runat="server" Text="LOCALIDAD" CssClass="col-md-2 lblalider"></asp:Label>
+                    <asp:Label ID="txtLocalidadCofecyt" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!--SECTOR-->
                 <div class="form-group">
-                    <asp:Label ID="lblSectorCofecyt" runat="server" Text="SECTOR" CssClass="col-md-2 control-label"></asp:Label>
-                    <div class="col-md-6">
-                        <asp:TextBox ID="txtSectorCofecyt" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblSectorCofecyt" runat="server" Text="SECTOR" CssClass="col-md-2 lblalider"></asp:Label>
+                    <asp:Label ID="txtSectorCofecyt" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!--TEMATICA-->
                 <div class="form-group">
-                    <asp:Label ID="lblTematicaCofecyt" runat="server" Text="TEMATICA" CssClass="col-md-2 control-label"></asp:Label>
-                    <div class="col-md-6">
-                        <asp:TextBox ID="txtTematicaCofecyt" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblTematicaCofecyt" runat="server" Text="TEMATICA" CssClass="col-md-2 lblalider"></asp:Label>
+                    <asp:Label ID="txtTematicaCofecyt" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!--EXPEDIENTE COPADE-->
                 <div class="form-group">
-                    <asp:Label ID="lblNumeroExpedienteCopadeCofecyt" runat="server" Text="N°EXP COPADE" CssClass="col-md-2 control-label"> </asp:Label>
-                    <div class="col-md-4">
-                        <asp:TextBox ID="txtNumeroExpedienteCopadeCofecyt" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblNumeroExpedienteCopadeCofecyt" runat="server" Text="N°EXP COPADE" CssClass="col-md-2 lblalider"> </asp:Label>
+                    <asp:Label ID="txtNumeroExpedienteCopadeCofecyt" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!--NUMERO DE CONVENIO-->
                 <div class="form-group">
-                    <asp:Label ID="lblNumeroConvenio" runat="server" Text="N° CONVENIO" CssClass="col-md-2 control-label"> </asp:Label>
-                    <div class="col-md-4 col-xs-12">
-                        <asp:TextBox ID="txtNumeroConvenio" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblNumeroConvenio" runat="server" Text="N° CONVENIO" CssClass="col-md-2 lblalider"> </asp:Label>
+                    <asp:Label ID="txtNumeroConvenio" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!--NUMERO EXPEDIENTE DGA-->
                 <div class="form-group">
-                    <asp:Label ID="lblNumeroExpedienteDga" runat="server" Text="N° EXP DGA" CssClass="col-md-2 control-label"> </asp:Label>
-                    <div class="col-md-4 col-xs-12">
-                        <asp:TextBox ID="txtNumeroExpedienteDga" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblNumeroExpedienteDga" runat="server" Text="N° EXP DGA" CssClass="col-md-2 lblalider"> </asp:Label>
+                    <asp:Label ID="txtNumeroExpedienteDga" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!--UVT-->
                 <div class="form-group">
-                    <asp:Label ID="lblUvt" runat="server" Text="UVT" CssClass="col-md-2 control-label"></asp:Label>
-                    <div class="col-md-6 col-xs-12">
-                        <asp:TextBox ID="txtUvt" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="1"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblUvt" runat="server" Text="UVT" CssClass="col-md-2 lblalider"></asp:Label>
+                    <asp:Label ID="txtUvt" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!--DIRECTOR DEL PROYECTO-->
                 <div class="form-group">
-                    <asp:Label ID="lblDirector" runat="server" Text="DIRECTOR PROYECTO" CssClass="col-md-2 control-label"></asp:Label>
-                    <div class="col-md-4 col-xs-12">
-                        <asp:TextBox ID="txtDirector" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblDirector" runat="server" Text="DIRECTOR PROYECTO" CssClass="col-md-2 lblalider"></asp:Label>
+                    <asp:Label ID="txtDirector" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!-- FECHA DE PRESENTACION -->
                 <div class="form-group">
-                    <asp:Label ID="lblFechaPresentacion" runat="server" Text="FECHA PRESENTACION" CssClass="col-md-3 control-label"></asp:Label>
-                    <div class="col-md-4 col-xs-12">
-                        <asp:TextBox ID="txtFechaPresentacion" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblFechaPresentacion" runat="server" Text="FECHA PRESENTACION" CssClass="col-md-3 lblalider"></asp:Label>
+                    <asp:Label ID="txtFechaPresentacion" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!-- FECHA DE ULTIMA EVALUACION TECNICA -->
                 <div class="form-group">
-                    <asp:Label ID="lblUltimaEvaluacionTecnica" runat="server" Text="FECHA ULTIMA EVALUACION TECNICA" CssClass="col-md-3 control-label"></asp:Label>
-                    <div class="col-md-4 col-xs-12">
-                        <asp:TextBox ID="txtUltimaEvaluacionTecnica" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblUltimaEvaluacionTecnica" runat="server" Text="FECHA ULTIMA EVALUACION TECNICA" CssClass="col-md-3 lblalider"></asp:Label>
+                    <asp:Label ID="txtUltimaEvaluacionTecnica" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!-- FECHA DE FINALIZACION -->
                 <div class="form-group">
-                    <asp:Label ID="lblFechaFinalizacion" runat="server" Text="FECHA FINALIZACION" CssClass="col-md-3 control-label"></asp:Label>
-                    <div class="col-md-4 col-xs-12">
-                        <asp:TextBox ID="txtFechaFinalizacion" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblFechaFinalizacion" runat="server" Text="FECHA FINALIZACION" CssClass="col-md-3 lblalider"></asp:Label>
+                    <asp:Label ID="txtFechaFinalizacion" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!--DURACION DEL PROYECTO EN MESES SEGUN LO ESTIMADO-->
                 <div class="form-group">
-                    <asp:Label ID="lblDuracionEstimada" runat="server" Text="DURACION ESTIMADA" CssClass="col-md-3 control-label"> </asp:Label>
-                    <div class="col-md-4 col-xs-12">
-                        <asp:TextBox ID="txtDuracionEstimada" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblDuracionEstimada" runat="server" Text="DURACION ESTIMADA" CssClass="col-md-3 lblalider"> </asp:Label>
+                    <asp:Label ID="txtDuracionEstimada" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!--DURACION DEL PROYECTO EN MESES SEGUN IFFA-->
                 <div class="form-group">
-                    <asp:Label ID="lblDuracionEstimadaIfaa" runat="server" Text="DURACION ESTIMADA SEGUN IFAA" CssClass="col-md-3 control-label"> </asp:Label>
-                    <div class="col-md-4 col-xs-12">
-                        <asp:TextBox ID="txtDuracionEstimadaIfaa" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblDuracionEstimadaIfaa" runat="server" Text="DURACION ESTIMADA SEGUN IFAA" CssClass="col-md-3 lblalider"> </asp:Label>
+                    <asp:Label ID="txtDuracionEstimadaIfaa" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!--BENEFICIARIOS-->
                 <div class="form-group">
-                    <asp:Label ID="lblBeneficiarios" runat="server" Text="BENEFICIARIOS" CssClass="col-md-3 control-label"> </asp:Label>
-                    <div class="col-md-7">
-                        <asp:TextBox ID="txtBeneficiarios" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="1"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblBeneficiarios" runat="server" Text="BENEFICIARIOS" CssClass="col-md-3 lblalider"> </asp:Label>
+                    <asp:Label ID="txtBeneficiarios" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!--ENTIDADES INTERVINIENTES-->
                 <div class="form-group">
-                    <asp:Label ID="lblEntidadesIntervinientes" runat="server" Text="ENTIDADES INTERVINIENTES" CssClass="col-md-3 control-label"> </asp:Label>
-                    <div class="col-md-7">
-                        <asp:TextBox ID="txtEntidadesIntervinientes" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="1"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblEntidadesIntervinientes" runat="server" Text="ENTIDADES INTERVINIENTES" CssClass="col-md-3 lblalider"> </asp:Label>
+                    <asp:Label ID="txtEntidadesIntervinientes" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!--ESTADO COFECYT del Proyecto-->
                 <div class="form-group">
-                    <asp:Label ID="lblEstadoCofecyt" runat="server" Text="ESTADO DE SITUACION" CssClass="col-md-3 control-label"></asp:Label>
-                    <div class="col-md-7">
-                        <asp:TextBox ID="txtEstadoCofecyt" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblEstadoCofecyt" runat="server" Text="ESTADO DE SITUACION" CssClass="col-md-3 lblalider"></asp:Label>
+                    <asp:Label ID="txtEstadoCofecyt" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!--CONTACTO BENEFICIARIO-->
                 <div class="form-group">
-                    <asp:Label ID="lblContactoBeneficiario" runat="server" Text="CONTACTO BENEFICIARIO" CssClass="col-md-3 control-label"></asp:Label>
-                    <div class="col-md-7">
-                        <asp:TextBox ID="txtContactoBeneficiario" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblContactoBeneficiario" runat="server" Text="CONTACTO BENEFICIARIO" CssClass="col-md-3 lblalider"></asp:Label>
+                    <asp:Label ID="txtContactoBeneficiario" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!--OBSERVACIONES-->
                 <div class="form-group">
-                    <asp:Label ID="lblObservacionesCofecyt" runat="server" Text="OBSERVACIONES" CssClass="col-md-2 col-xs-12 control-label"> </asp:Label>
-                    <div class="col-md-8 col-xs-12">
-                        <asp:TextBox ID="txtObservacionesCofecyt" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="1"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblObservacionesCofecyt" runat="server" Text="OBSERVACIONES" CssClass="col-md-3 lblalider"> </asp:Label>
+                    <asp:Label ID="txtObservacionesCofecyt" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!--MONTO SOLICITADO-->
                 <div class="form-group">
-                    <br />
-                    <asp:Label ID="lblMontoSolicitadoCofecyt" runat="server" Text="MONTO SOLICITADO" CssClass="col-md-3 col-xs-12 control-label"> </asp:Label>
-                    <div class="col-md-4 col-xs-12">
-                        <asp:TextBox ID="txtMontoSolicitadoCofecyt" Text="0" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblMontoSolicitadoCofecyt" runat="server" Text="MONTO SOLICITADO" CssClass="col-md-3 lblalider"> </asp:Label>
+                    <asp:Label ID="txtMontoSolicitadoCofecyt" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!--MONTO CONTRAPARTE-->
                 <div class="form-group">
-                    <asp:Label ID="lblMontoContraparteCofecyt" runat="server" Text="MONTO CONTRAPARTE" CssClass="col-md-3 col-xs-12 control-label"> </asp:Label>
-                    <div class="col-md-4 col-xs-12">
-                        <asp:TextBox ID="txtMontoContraparteCofecyt" Text="0" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblMontoContraparteCofecyt" runat="server" Text="MONTO CONTRAPARTE" CssClass="col-md-3 lblalider"> </asp:Label>
+                    <asp:Label ID="txtMontoContraparteCofecyt" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!--MONTO TOTAL-->
                 <div class="form-group">
-                    <asp:Label ID="lblMontoTotalCofecyt" runat="server" Text="MONTO TOTAL" CssClass="col-md-3 col-xs-12 control-label"> </asp:Label>
-                    <div class="col-md-4 col-xs-12">
-                        <asp:TextBox ID="txtMontoTotalCofecyt" Text="0" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblMontoTotalCofecyt" runat="server" Text="MONTO TOTAL" CssClass="col-md-3 lblalider"> </asp:Label>
+                    <asp:Label ID="txtMontoTotalCofecyt" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!--MONTO TOTAL RENDIDO Y APROBADO (DGA)-->
                 <div class="form-group">
-                    <asp:Label ID="lblMontoTotalDgaCofecyt" runat="server" Text="MONTO TOTAL RENDIDO Y APROBADO DGA" CssClass="col-md-3 col-xs-12 control-label"> </asp:Label>
-                    <div class="col-md-4 col-xs-12">
-                        <asp:TextBox ID="txtMontoTotalDgaCofecyt" Text="0" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblMontoTotalDgaCofecyt" runat="server" Text="MONTO TOTAL RENDIDO Y APROBADO DGA" CssClass="col-md-3 lblalider"> </asp:Label>
+                    <asp:Label ID="txtMontoTotalDgaCofecyt" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!--MONTO DEVOLUCION-->
                 <div class="form-group">
-                    <asp:Label ID="lblMontoDevolucionCofecyt" runat="server" Text="DEVOLUCION" CssClass="col-md-3 col-xs-12 control-label"> </asp:Label>
-                    <div class="col-md-4 col-xs-12">
-                        <asp:TextBox ID="txtMontoDevolucionCofecyt" Text="0" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblMontoDevolucionCofecyt" runat="server" Text="DEVOLUCION" CssClass="col-md-3 lblalider"> </asp:Label>
+                    <asp:Label ID="txtMontoDevolucionCofecyt" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!--MONTO RESCINDIDO-->
                 <div class="form-group">
-                    <asp:Label ID="lblMontoRescindidoCofecyt" runat="server" Text="MONTO RESCINDIDO" CssClass="col-md-3 col-xs-12 control-label"> </asp:Label>
-                    <div class="col-md-4 col-xs-12">
-                        <asp:TextBox ID="txtMontoRescindidoCofecyt" Text="0" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
+                    <asp:Label ID="lblMontoRescindidoCofecyt" runat="server" Text="MONTO RESCINDIDO" CssClass="col-md-3 lblalider"> </asp:Label>
+                    <asp:Label ID="txtMontoRescindidoCofecyt" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
-                <asp:Button runat="server" ID="btnActuaciones" Text="MOSTRAR ACTUACIONES" CssClass="btn btn-primary" OnClick="btnActuaciones_Click" />
+                <asp:Button runat="server" ID="btnActuaciones" Width="150" Text="Actuaciones" CssClass="btn boton_azul col-md-offset-1" OnClick="btnActuaciones_Click" />
             </div>
 
             <!--LISTA DE ETAPAS COFECYT-->

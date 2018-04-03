@@ -40,14 +40,31 @@ namespace Sistema_CyT
 
             txtConvocatoria.Text = convocatoriaNego.ObtenerConvocatoria(Convert.ToInt32(proyecto.IdConvocatoria)).Nombre;
             txtNumeroExp.Text = proyecto.NumeroExpediente.ToString();
+            
+            
+            
+
+
             txtMontoSolicitado.Text = Convert.ToString(proyecto.MontoSolicitado);
             txtMontoContraparte.Text = Convert.ToString(proyecto.MontoContraparte);
             txtMontoTotal.Text = Convert.ToString(proyecto.MontoTotal);
+            
             txtDescripcion.Text = proyecto.Descripcion.ToString();
             txtObservaciones.Text = proyecto.Observaciones.ToString();
-            txtTipoProyecto.Text = tipoProyectoNego.ObtenerTipoProyecto(Convert.ToInt32(proyecto.IdTipoProyecto)).Nombre;
 
-            txtContacto.Text = personaNego.ObtenerPersona(Convert.ToInt32(proyecto.IdPersona)).Nombre + " " + personaNego.ObtenerPersona(Convert.ToInt32(proyecto.IdPersona)).Apellido;
+
+
+            if (proyecto.IdTipoProyecto == null) { txtTipoProyecto.Text = ""; }
+            else { txtTipoProyecto.Text = tipoProyectoNego.ObtenerTipoProyecto(Convert.ToInt32(proyecto.IdTipoProyecto)).Nombre; }
+
+            
+            //txtTipoProyecto.Text = tipoProyectoNego.ObtenerTipoProyecto(Convert.ToInt32(proyecto.IdTipoProyecto)).Nombre;
+
+            if (proyecto.IdPersona == null) { txtContacto.Text = ""; }
+            else { txtContacto.Text = personaNego.ObtenerPersona(Convert.ToInt32(proyecto.IdPersona)).Nombre + " " + personaNego.ObtenerPersona(Convert.ToInt32(proyecto.IdPersona)).Apellido; }
+
+            
+            //txtContacto.Text = personaNego.ObtenerPersona(Convert.ToInt32(proyecto.IdPersona)).Nombre + " " + personaNego.ObtenerPersona(Convert.ToInt32(proyecto.IdPersona)).Apellido;
 
             //txtContacto.Text = personaNego.TraerPersona(Convert.ToInt32(proyecto.IdPersona)).ToString();
             //txtTipoProyecto.Text = tipoProyectoNego.ObtenerTipoProyecto(proyecto.IdTipoProyecto).Nombre;

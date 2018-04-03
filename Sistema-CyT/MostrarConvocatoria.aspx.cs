@@ -58,7 +58,9 @@ namespace Sistema_CyT
             txtTipoConvocatoria.Text = Convert.ToString(tipoConvocatoriaNego.ObtenerTipoConvocatoriaString(Convert.ToInt32(convocatoria.IdTipoConvocatoria)));
             txtTipoFinanciamiento.Text = Convert.ToString(tipoFinanciamientoNego.ObtenerTipoFinanciamientoString(Convert.ToInt32(convocatoria.IdTipoFinanciamiento)));
             txtFechaApertura.Text = Convert.ToDateTime(convocatoria.FechaApertura).ToShortDateString();
-            txtFechaCierre.Text = Convert.ToDateTime(convocatoria.FechaCierre).ToShortDateString();
+
+            if (convocatoria.FechaCierre == null) { txtFechaCierre.Text = ""; }
+            else { txtFechaCierre.Text = Convert.ToDateTime(convocatoria.FechaCierre).ToShortDateString(); }
 
             if (convocatoria.Abierta.Value == true)
             {

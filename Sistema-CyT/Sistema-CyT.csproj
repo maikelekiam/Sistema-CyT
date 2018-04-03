@@ -189,9 +189,13 @@
     <Content Include="EditarOrganismo.aspx" />
     <Content Include="EditarPersona.aspx" />
     <Content Include="EditarProyecto.aspx" />
+    <Content Include="EditarProyectoCofecyt.aspx" />
     <Content Include="EditarUdtUvt.aspx" />
     <Content Include="FiltrarProyecto.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="imagenes\background01.jpg" />
+    <Content Include="imagenes\bg02.jpg" />
+    <Content Include="imagenes\bg03.png" />
     <Content Include="js\bootstrap-datepicker.js" />
     <Content Include="js\bootstrap-select.js" />
     <Content Include="js\bootstrap.js" />
@@ -231,6 +235,7 @@
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
+    <Content Include="files\ProyectosCofecyt.csv" />
     <None Include="Project_Readme.html" />
     <Content Include="Site.Mobile.Master" />
     <None Include="Properties\PublishProfiles\sistema-cyt.pubxml" />
@@ -461,6 +466,13 @@
     </Compile>
     <Compile Include="EditarProyecto.aspx.designer.cs">
       <DependentUpon>EditarProyecto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditarProyectoCofecyt.aspx.cs">
+      <DependentUpon>EditarProyectoCofecyt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditarProyectoCofecyt.aspx.designer.cs">
+      <DependentUpon>EditarProyectoCofecyt.aspx</DependentUpon>
     </Compile>
     <Compile Include="EditarUdtUvt.aspx.cs">
       <DependentUpon>EditarUdtUvt.aspx</DependentUpon>

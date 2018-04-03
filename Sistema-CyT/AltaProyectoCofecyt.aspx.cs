@@ -7,6 +7,10 @@ using System.Web.UI.WebControls;
 using CapaDominio;
 using CapaNegocio;
 using System.Globalization;
+using System.IO;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace Sistema_CyT
 {
@@ -217,12 +221,6 @@ namespace Sistema_CyT
             if (txtUltimaEvaluacionTecnica.Text == "") { proyectoCofecyt.UltimaEvaluacionTecnica = null; }
             else { proyectoCofecyt.UltimaEvaluacionTecnica = DateTime.ParseExact(txtUltimaEvaluacionTecnica.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture); };
 
-
-
-            //proyectoCofecyt.FechaPresentacion = DateTime.ParseExact(txtFechaPresentacion.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            //proyectoCofecyt.FechaFinalizacion = DateTime.ParseExact(txtFechaFinalizacion.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            //proyectoCofecyt.UltimaEvaluacionTecnica = DateTime.ParseExact(txtUltimaEvaluacionTecnica.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-
             if (txtDuracionEstimada.Text == "") { proyectoCofecyt.DuracionEstimada = null; }
             else { proyectoCofecyt.DuracionEstimada = Convert.ToInt32(txtDuracionEstimada.Text); }
 
@@ -232,17 +230,27 @@ namespace Sistema_CyT
             proyectoCofecyt.Beneficiarios = txtBeneficiarios.Text;
             proyectoCofecyt.EntidadesIntervinientes = txtEntidadesIntervinientes.Text;
 
-
             proyectoCofecyt.Observaciones = txtObservacionesCofecyt.Text;
 
             proyectoCofecyt.IdConvocatoria = Int32.Parse(ddlConvocatoria.SelectedValue);
 
-            proyectoCofecyt.MontoSolicitadoCofecyt = Convert.ToDecimal(txtMontoSolicitadoCofecyt.Text);
-            proyectoCofecyt.MontoContraparteCofecyt = Convert.ToDecimal(txtMontoContraparteCofecyt.Text);
-            proyectoCofecyt.MontoTotalCofecyt = Convert.ToDecimal(txtMontoTotalCofecyt.Text);
-            proyectoCofecyt.MontoTotalDgaCofecyt = Convert.ToDecimal(txtMontoTotalDgaCofecyt.Text);
-            proyectoCofecyt.MontoDevolucionCofecyt = Convert.ToDecimal(txtMontoDevolucionCofecyt.Text);
-            proyectoCofecyt.MontoRescindidoCofecyt = Convert.ToDecimal(txtMontoRescindidoCofecyt.Text);
+            if (txtMontoSolicitadoCofecyt.Text == "") { proyectoCofecyt.MontoSolicitadoCofecyt = null; }
+            else { proyectoCofecyt.MontoSolicitadoCofecyt = Convert.ToDecimal(txtMontoSolicitadoCofecyt.Text); }
+
+            if (txtMontoContraparteCofecyt.Text == "") { proyectoCofecyt.MontoContraparteCofecyt = null; }
+            else { proyectoCofecyt.MontoContraparteCofecyt = Convert.ToDecimal(txtMontoContraparteCofecyt.Text); }
+
+            if (txtMontoTotalCofecyt.Text == "") { proyectoCofecyt.MontoTotalCofecyt = null; }
+            else { proyectoCofecyt.MontoTotalCofecyt = Convert.ToDecimal(txtMontoTotalCofecyt.Text); }
+
+            if (txtMontoTotalDgaCofecyt.Text == "") { proyectoCofecyt.MontoTotalDgaCofecyt = null; }
+            else { proyectoCofecyt.MontoTotalDgaCofecyt = Convert.ToDecimal(txtMontoTotalDgaCofecyt.Text); }
+
+            if (txtMontoDevolucionCofecyt.Text == "") { proyectoCofecyt.MontoDevolucionCofecyt = null; }
+            else { proyectoCofecyt.MontoDevolucionCofecyt = Convert.ToDecimal(txtMontoDevolucionCofecyt.Text); }
+
+            if (txtMontoRescindidoCofecyt.Text == "") { proyectoCofecyt.MontoRescindidoCofecyt = null; }
+            else { proyectoCofecyt.MontoRescindidoCofecyt = Convert.ToDecimal(txtMontoRescindidoCofecyt.Text); }
 
             int idProyectoCofecyt = proyectoCofecytNego.GuardarProyectoCofecyt(proyectoCofecyt);
 
@@ -362,8 +370,10 @@ namespace Sistema_CyT
             }
             else
             {
-                // Mostrar aviso de completar todos los datos
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Correct", "alert('Debe completar el Titulo y Numero de Expediente.')", true);
             }
         }
+
+        
     }
 }

@@ -37,7 +37,7 @@ namespace Sistema_CyT {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombre;
+        protected global::System.Web.UI.WebControls.Label txtNombre;
         
         /// <summary>
         /// lblTelefono control.
@@ -55,7 +55,7 @@ namespace Sistema_CyT {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTelefono;
+        protected global::System.Web.UI.WebControls.Label txtTelefono;
         
         /// <summary>
         /// lblCorreoElectronico control.
@@ -73,7 +73,7 @@ namespace Sistema_CyT {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCorreoElectronico;
+        protected global::System.Web.UI.WebControls.Label txtCorreoElectronico;
         
         /// <summary>
         /// lblDomicilio control.
@@ -109,7 +109,7 @@ namespace Sistema_CyT {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLocalidad;
+        protected global::System.Web.UI.WebControls.Label txtLocalidad;
         
         /// <summary>
         /// lblContacto control.
@@ -127,7 +127,7 @@ namespace Sistema_CyT {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtContacto;
+        protected global::System.Web.UI.WebControls.Label txtContacto;
         
         /// <summary>
         /// lblObservaciones control.
@@ -145,6 +145,6 @@ namespace Sistema_CyT {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtObservaciones;
+        protected global::System.Web.UI.WebControls.Label txtObservaciones;
     }
 }

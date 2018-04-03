@@ -37,7 +37,7 @@ namespace Sistema_CyT {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombre;
+        protected global::System.Web.UI.WebControls.Label txtNombre;
         
         /// <summary>
         /// lblApellido control.
@@ -55,7 +55,7 @@ namespace Sistema_CyT {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtApellido;
+        protected global::System.Web.UI.WebControls.Label txtApellido;
         
         /// <summary>
         /// lblTelefono control.
@@ -73,7 +73,7 @@ namespace Sistema_CyT {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTelefono;
+        protected global::System.Web.UI.WebControls.Label txtTelefono;
         
         /// <summary>
         /// lblCorreoElectronico control.
@@ -91,7 +91,7 @@ namespace Sistema_CyT {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCorreoElectronico;
+        protected global::System.Web.UI.WebControls.Label txtCorreoElectronico;
         
         /// <summary>
         /// lblTipoDocumento control.
@@ -109,7 +109,7 @@ namespace Sistema_CyT {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTipoDocumento;
+        protected global::System.Web.UI.WebControls.Label txtTipoDocumento;
         
         /// <summary>
         /// lblDocumento control.
@@ -127,7 +127,7 @@ namespace Sistema_CyT {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDocumento;
+        protected global::System.Web.UI.WebControls.Label txtDocumento;
         
         /// <summary>
         /// lblDomicilio control.
@@ -145,7 +145,7 @@ namespace Sistema_CyT {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDomicilio;
+        protected global::System.Web.UI.WebControls.Label txtDomicilio;
         
         /// <summary>
         /// lblLocalidad control.
@@ -163,7 +163,7 @@ namespace Sistema_CyT {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLocalidad;
+        protected global::System.Web.UI.WebControls.Label txtLocalidad;
         
         /// <summary>
         /// lblObservaciones control.
@@ -181,6 +181,6 @@ namespace Sistema_CyT {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtObservaciones;
+        protected global::System.Web.UI.WebControls.Label txtObservaciones;
     }
 }

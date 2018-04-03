@@ -46,5 +46,13 @@ namespace CapaNegocio
         {
             return proyectoCofecytRepo.ObtenerProyectoCofecytSegunNombreYConvocatoria(id, nom);
         }
+        public ProyectoCofecyt ObtenerProyectoCofecyt(string cod)
+        {
+            return proyectoCofecytRepo.ObtenerProyectoCofecyt(cod);
+        }
+        public int TraerIdSegunCodigo(string cod)
+        {
+            return proyectoCofecytRepo.TraerIdSegunCodigo(cod);
+        }
     }
 }

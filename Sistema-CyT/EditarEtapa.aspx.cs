@@ -39,41 +39,47 @@ namespace Sistema_CyT
             txtNombreModal.Text = item.Nombre.ToString();
             ddlTipoEstadoEtapa.Text = Convert.ToString(item.IdTipoEstadoEtapa);
 
-            //****INICIO RUTINA PARA TRABAJAR CON FORMATO FECHA
-            //FECHA INICIO
-            string dia = Convert.ToString((item.FechaInicio).Value.Day);
-            string mes = Convert.ToString((item.FechaInicio).Value.Month);
-            string anio = Convert.ToString((item.FechaInicio).Value.Year);
-            string t1 = "";
-            string t2 = "";
-            if ((item.FechaInicio).Value.Day < 10)
-            {
-                t1 = "0";
-            }
-            if ((item.FechaInicio).Value.Month < 10)
-            {
-                t2 = "0";
-            }
-            txtFechaInicioModal.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
-            //****FIN RUTINA PARA TRABAJAR CON FORMATO FECHA
+            ////****INICIO RUTINA PARA TRABAJAR CON FORMATO FECHA
+            ////FECHA INICIO
+            //string dia = Convert.ToString((item.FechaInicio).Value.Day);
+            //string mes = Convert.ToString((item.FechaInicio).Value.Month);
+            //string anio = Convert.ToString((item.FechaInicio).Value.Year);
+            //string t1 = "";
+            //string t2 = "";
+            //if ((item.FechaInicio).Value.Day < 10)
+            //{
+            //    t1 = "0";
+            //}
+            //if ((item.FechaInicio).Value.Month < 10)
+            //{
+            //    t2 = "0";
+            //}
+            //txtFechaInicioModal.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
+            ////****FIN RUTINA PARA TRABAJAR CON FORMATO FECHA
 
-            //****INICIO RUTINA PARA TRABAJAR CON FORMATO FECHA
-            //FECHA INICIO
-            dia = Convert.ToString((item.FechaFin).Value.Day);
-            mes = Convert.ToString((item.FechaFin).Value.Month);
-            anio = Convert.ToString((item.FechaFin).Value.Year);
-            t1 = "";
-            t2 = "";
-            if ((item.FechaFin).Value.Day < 10)
-            {
-                t1 = "0";
-            }
-            if ((item.FechaFin).Value.Month < 10)
-            {
-                t2 = "0";
-            }
-            txtFechaFinalModal.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
-            //****FIN RUTINA PARA TRABAJAR CON FORMATO FECHA
+            ////****INICIO RUTINA PARA TRABAJAR CON FORMATO FECHA
+            ////FECHA INICIO
+            //dia = Convert.ToString((item.FechaFin).Value.Day);
+            //mes = Convert.ToString((item.FechaFin).Value.Month);
+            //anio = Convert.ToString((item.FechaFin).Value.Year);
+            //t1 = "";
+            //t2 = "";
+            //if ((item.FechaFin).Value.Day < 10)
+            //{
+            //    t1 = "0";
+            //}
+            //if ((item.FechaFin).Value.Month < 10)
+            //{
+            //    t2 = "0";
+            //}
+            //txtFechaFinalModal.Text = t2 + mes + "/" + t1 + dia + "/" + anio;
+            ////****FIN RUTINA PARA TRABAJAR CON FORMATO FECHA
+
+            if (txtFechaInicioModal.Text == "") { item.FechaInicio = null; }
+            else { item.FechaInicio = DateTime.ParseExact(txtFechaInicioModal.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture); }
+
+            if (txtFechaFinalModal.Text == "") { item.FechaFin = null; }
+            else { item.FechaFin = DateTime.ParseExact(txtFechaFinalModal.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture); }
 
             if (item.Rendicion.Value == true)
             {
@@ -102,8 +108,15 @@ namespace Sistema_CyT
             etapa.IdProyecto = EditarProyecto.idProyectoActual;
 
             etapa.Nombre = txtNombreModal.Text;
-            etapa.FechaInicio = DateTime.ParseExact(txtFechaInicioModal.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
-            etapa.FechaFin = DateTime.ParseExact(txtFechaFinalModal.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+
+            if (txtFechaInicioModal.Text == "") { etapa.FechaInicio = null; }
+            else { etapa.FechaInicio = DateTime.ParseExact(txtFechaInicioModal.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture); }
+
+            if (txtFechaFinalModal.Text == "") { etapa.FechaFin = null; }
+            else { etapa.FechaFin = DateTime.ParseExact(txtFechaFinalModal.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture); }
+
+            //etapa.FechaInicio = DateTime.ParseExact(txtFechaInicioModal.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+            //etapa.FechaFin = DateTime.ParseExact(txtFechaFinalModal.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
             etapa.IdTipoEstadoEtapa = Convert.ToInt32(ddlTipoEstadoEtapa.SelectedValue);
 
             if (chkRendicion.Checked)

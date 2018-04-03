@@ -4,7 +4,7 @@
     <div class="container">
         <asp:Panel ID="Panel1" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <h4>Datos del FONDO</h4>
+                <h4>Informacion</h4>
             </div>
             <br />
             <div class="form-group">
