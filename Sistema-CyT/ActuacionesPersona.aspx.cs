@@ -27,7 +27,8 @@ namespace Sistema_CyT
         {
             if (IsPostBack) return;
 
-            MostrarPersona(ListarPersonas.idPersonaSeleccionada);
+            MostrarPersona();
+
             PanelNuevaActuacion.Visible = false;
             MostrarViaComunicacion(); //SIRVE PARA CARGAR DATOS EN EL DROPDOWNLIST
 
@@ -35,11 +36,21 @@ namespace Sistema_CyT
             LimpiarPantalla();
 
         }
-        private void MostrarPersona(int id)
+        private void MostrarPersona()
         {
-            Persona persona = personaNego.ObtenerPersona(id);
-            idPersonaActual = id;
-            lblPersona.Text = persona.Nombre.ToString().ToUpper() + " " + persona.Apellido.ToString().ToUpper();
+            if (ListarPersonas.idPersonaSeleccionada != -1 && ListarPersonas.idPersonaSeleccionada != 0)
+            {
+                Persona persona = personaNego.ObtenerPersona(ListarPersonas.idPersonaSeleccionada);
+                idPersonaActual = ListarPersonas.idPersonaSeleccionada;
+                //lblPersona.Text = persona.Nombre.ToString().ToUpper() + " " + persona.Apellido.ToString().ToUpper();
+                lblPersona.Text = persona.Nombre.ToString() + " " + persona.Apellido.ToString();
+            }
+            else
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Correct", "alert('No ha seleccionado una Persona.')", true);
+                Response.Redirect("ListarPersonas.aspx");
+            }
+            
         }
         protected void btnModalViaComunicacionGuardar_Click(object sender, EventArgs e)
         {
@@ -87,6 +98,8 @@ namespace Sistema_CyT
             btnActualizarActuacion.Visible = false;
             btnGuardarActuacion.Visible = true;
             LimpiarPantalla();
+            txtFechaActuacion.Text = DateTime.Now.ToString("dd/MM/yyyy");
+
 
             if (PanelNuevaActuacion.Visible == true)
             {
@@ -112,7 +125,7 @@ namespace Sistema_CyT
             }
             else
             {
-                //FALTA IMPLEMENTAR
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Correct", "alert('Complete los campos.')", true);
             }
         }
 
@@ -128,7 +141,7 @@ namespace Sistema_CyT
                 actuacionPersona.Fecha = DateTime.ParseExact(txtFechaActuacion.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 actuacionPersona.Detalle = txtDetalle.Text;
                 actuacionPersona.IdViaComunicacion = viaComunicacionNego.TraerViaComunicacionIdSegunItem(ddlViaComunicacion.SelectedItem.ToString());
-                
+
                 actuacionPersona.IdPersona = idPersonaActual;
 
                 actuacionPersona.IdActuacionPersona = idActuacionActual;
@@ -145,7 +158,7 @@ namespace Sistema_CyT
             }
             else
             {
-                // Mostrar aviso de completar todos los datos
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Correct", "alert('Complete los campos.')", true);
             }
         }
 
@@ -156,7 +169,7 @@ namespace Sistema_CyT
             PanelActuacion.Visible = true;
         }
 
-        
+
         private void GuardarActuacion()
         {
             ActuacionPersona actuacionPersona = new ActuacionPersona();

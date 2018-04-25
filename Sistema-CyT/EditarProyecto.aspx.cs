@@ -1472,15 +1472,12 @@ namespace Sistema_CyT
             else
             {
                 if (
-                    //ddlLocalidad.SelectedValue != "-1"
-                    //&& ddlTipoEstado.SelectedValue != "-1"
-                    //&& ddlContacto.SelectedValue != "-1"
-                    ddlConvocatoria.SelectedValue != "-1"
+                    ddlLocalidad.SelectedValue != "-1"
+                    && ddlTipoEstado.SelectedValue != "-1"
+                    && ddlConvocatoria.SelectedValue != "-1"
                     && txtNumeroExp.Text != ""
                     && txtNombre.Text != ""
-                    //&& ddlTipoProyecto.SelectedValue != "-1"
-                    //&& ddlSector.SelectedValue != "-1"
-                    //&& ddlTematica.SelectedValue != "-1"
+                    && ddlTipoProyecto.SelectedValue != "-1"
                     )
                 {
                     ActualizarProyecto();
@@ -1497,7 +1494,7 @@ namespace Sistema_CyT
                 }
                 else
                 {
-                    // Mostrar aviso de completar todos los datos
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Correct", "alert('Complete los campos: NOMBRE, EXPEDIENTE, LOCALIDAD, TIPO DE PROYECTO, ESTADO  .')", true);
                 }
             }
         }
@@ -1512,9 +1509,21 @@ namespace Sistema_CyT
             proyecto.Destinatarios = txtDestinatarios.Text;
             proyecto.Objetivos = txtObjetivos.Text;
             proyecto.IdConvocatoria = Int32.Parse(ddlConvocatoria.SelectedValue);
-            proyecto.MontoSolicitado = Convert.ToDecimal(txtMontoSolicitado.Text);
-            proyecto.MontoContraparte = Convert.ToDecimal(txtMontoContraparte.Text);
-            proyecto.MontoTotal = Convert.ToDecimal(txtMontoTotal.Text);
+
+            if (txtMontoSolicitado.Text == "") { proyecto.MontoSolicitado = null; }
+            else { proyecto.MontoSolicitado = Convert.ToDecimal(txtMontoSolicitado.Text); }
+
+            if (txtMontoContraparte.Text == "") { proyecto.MontoContraparte = null; }
+            else { proyecto.MontoContraparte = Convert.ToDecimal(txtMontoContraparte.Text); }
+
+            if (txtMontoTotal.Text == "") { proyecto.MontoTotal = null; }
+            else { proyecto.MontoTotal = Convert.ToDecimal(txtMontoTotal.Text); }
+
+            //proyecto.MontoSolicitado = Convert.ToDecimal(txtMontoSolicitado.Text);
+            //proyecto.MontoContraparte = Convert.ToDecimal(txtMontoContraparte.Text);
+            //proyecto.MontoTotal = Convert.ToDecimal(txtMontoTotal.Text);
+
+
             proyecto.Descripcion = txtDescripcion.Text;
             proyecto.Observaciones = txtObservaciones.Text;
 

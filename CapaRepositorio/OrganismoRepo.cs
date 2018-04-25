@@ -48,5 +48,24 @@ namespace CapaRepositorio
                 return result.IdOrganismo;
             }
         }
+        public Organismo ObtenerOrganismo(int id)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                Organismo result = modeloDeDominio.Organismos.Where(c => c.IdOrganismo == id).FirstOrDefault();
+
+                modeloDeDominio.CreateDetachedCopy(result);
+
+                return result;
+            }
+        }
+        public void ActualizarOrganismo(Organismo organismo)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                modeloDeDominio.AttachCopy(organismo);
+                modeloDeDominio.SaveChanges();
+            }
+        }
     }
 }

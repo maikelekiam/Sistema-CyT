@@ -40,7 +40,7 @@
         <!-- BOTON GUARDAR -->
         <div class="form-group">
             <div class="col-md-2 col-md-offset-2">
-                <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn boton_verde" OnClick="btnVolver_Click" />
+                <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="boton_verde" OnClick="btnVolver_Click" />
             </div>
         </div>
 

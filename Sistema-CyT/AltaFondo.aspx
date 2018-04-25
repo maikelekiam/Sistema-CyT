@@ -1,15 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AltaFondo.aspx.cs" Inherits="Sistema_CyT.AltaFondo" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.css' rel='stylesheet' type='text/css'>
+
     <div class="container">
         <asp:Panel ID="PanelSuperior" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <h4>Nuevo Fondo</h4>
+                <h3>Nuevo Fondo</h3>
             </div>
             <!-- NOMBRE DEL FONDO -->
             <div class="form-group">
                 <br />
-                <asp:Label ID="lblNombre" runat="server" Text="NOMBRE" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
+                <asp:Label ID="lblNombre" runat="server" Text="NOMBRE" CssClass="col-md-2 AlineadoDerecha"> </asp:Label>
                 <div class="col-md-6 col-xs-12">
                     <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control tb5" TextMode="MultiLine" Rows="1"></asp:TextBox><br />
                 </div>
@@ -17,7 +20,7 @@
 
             <!-- DESCRIPCION DEL FONDO -->
             <div class="form-group">
-                <asp:Label ID="lblDescripcion" runat="server" Text="DESCRIPCION" CssClass="col-md-2 control-label"> </asp:Label>
+                <asp:Label ID="lblDescripcion" runat="server" Text="DESCRIPCION" CssClass="col-md-2 AlineadoDerecha"> </asp:Label>
                 <div class="col-md-6 col-xs-12">
                     <asp:TextBox ID="txtDecripcion" runat="server" CssClass="form-control tb5" TextMode="MultiLine" Rows="2"></asp:TextBox><br />
                 </div>
@@ -25,13 +28,11 @@
 
             <!-- ORIGEN DEL FONDO -->
             <div class="form-group">
-                <asp:Label ID="lblOrigen" runat="server" Text="ORIGEN" CssClass="col-md-2 control-label"> </asp:Label>
+                <asp:Label ID="lblOrigen" runat="server" Text="ORIGEN" CssClass="col-md-2 AlineadoDerecha"> </asp:Label>
                 <div class="col-md-4">
                     <asp:DropDownList ID="ddlOrigen" runat="server"
-                        BackColor="WhiteSmoke"
-                        ForeColor="#000066"
-                        Font-Bold="false"
                         CssClass="selectpicker form-control show-tick"
+                        data-live-search="true"
                         DataTextField="nombre"
                         AutoPostBack="false"
                         AppendDataBoundItems="true">
@@ -41,7 +42,7 @@
                 <%--AGREGAR ACA EL MODAL PARA NUEVO ORIGEN--%>
                 <div class="form-group">
                     <div class="col-md-2">
-                        <button type="button" class="btn boton_azul" data-toggle="modal" data-target="#modalOrigen">Nuevo Origen</button>
+                        <button type="button" class="boton_azul" data-toggle="modal" data-target="#modalOrigen">Nuevo Origen</button>
                     </div>
                     <!-- MODAL EMPRESA  -->
                     <div class="modal fade" id="modalOrigen" tabindex="-1" role="dialog" aria-labelledby="modalLabelOrigen" aria-hidden="true">
@@ -60,8 +61,8 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <asp:Button runat="server" ID="btnModalOrigenSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
-                                        <asp:Button runat="server" ID="btnModalOrigenGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalOrigenGuardar_Click" />
+                                        <asp:Button runat="server" ID="btnModalOrigenSalir" Text="Salir" class="boton_rojo" data-dismiss="modal" />
+                                        <asp:Button runat="server" ID="btnModalOrigenGuardar" Text="Guardar" CssClass="boton_verde" OnClick="btnModalOrigenGuardar_Click" />
                                     </div>
                                 </div>
                             </div>
@@ -72,21 +73,21 @@
             </div>
             <!-- TELEFONO -->
             <div class="form-group">
-                <asp:Label ID="lblTelefono" runat="server" Text="TELEFONO" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
-                <div class="col-md-6 col-xs-12">
+                <asp:Label ID="lblTelefono" runat="server" Text="TELEFONO" CssClass="col-md-2 AlineadoDerecha"> </asp:Label>
+                <div class="col-md-6">
                     <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control tb5"></asp:TextBox><br />
                 </div>
             </div>
             <!-- DIRECCION -->
             <div class="form-group">
-                <asp:Label ID="lblDireccion" runat="server" Text="DIRECCION" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
+                <asp:Label ID="lblDireccion" runat="server" Text="DIRECCION" CssClass="col-md-2 col-xs-6 AlineadoDerecha"> </asp:Label>
                 <div class="col-md-6 col-xs-12">
                     <asp:TextBox ID="txtDireccion" runat="server" CssClass="form-control tb5"></asp:TextBox><br />
                 </div>
             </div>
             <!-- CONTACTO -->
             <div class="form-group">
-                <asp:Label ID="lblContacto" runat="server" Text="CONTACTO" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
+                <asp:Label ID="lblContacto" runat="server" Text="CONTACTO" CssClass="col-md-2 AlineadoDerecha"> </asp:Label>
                 <div class="col-md-6 col-xs-12">
                     <asp:TextBox ID="txtContacto" runat="server" CssClass="form-control tb5"></asp:TextBox><br />
                 </div>
@@ -95,8 +96,8 @@
 
             <!-- BOTON GUARDAR -->
             <div class="form-group">
-                <div class="col-md-2 col-md-offset-2">
-                    <asp:Button ID="btnGuardarFondo" runat="server" Text="Guardar Fondo" CssClass="btn btn-success form-control boton_verde" OnClick="btnGuardarFondo_Click" />
+                <div class="col-md-3 col-md-offset-2">
+                    <asp:Button ID="btnGuardarFondo" runat="server" Text="Guardar" CssClass="boton_verde" OnClick="btnGuardarFondo_Click" />
                 </div>
             </div>
         </asp:Panel>

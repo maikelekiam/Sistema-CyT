@@ -12,7 +12,7 @@ html {
 
 body {
     margin: 0;
-    background-color: white;
+    background-color: none;
 }
 
 article,
@@ -1407,7 +1407,7 @@ body {
     line-height: 1.42857143;
     color: #333;
     /*background: url(https://images5.alphacoders.com/345/345518.jpg) center center fixed;*/
-    /*background: url('../imagenes/background01.jpg') center center fixed;*/
+    background: url('../imagenes/background01.jpg') center center fixed;
     /*background: url('../imagenes/bg02.jpg') center center fixed;*/
 }
 
@@ -6679,6 +6679,8 @@ button.list-group-item-danger {
 
 .panel-body {
     padding: 5px;
+    background-color: white;
+    /*background-color: #b0d2f7;*/
     /*background: url('../imagenes/bg02.jpg');*/
 }
 

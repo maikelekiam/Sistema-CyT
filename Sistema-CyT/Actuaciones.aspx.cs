@@ -79,6 +79,7 @@ namespace Sistema_CyT
             btnActualizarActuacion.Visible = false;
             btnGuardarActuacion.Visible = true;
             LimpiarPantalla();
+            txtFechaActuacion.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
             if (PanelNuevaActuacion.Visible == true)
             {
@@ -100,7 +101,9 @@ namespace Sistema_CyT
 
         protected void btnGuardarActuacion_Click(object sender, EventArgs e)
         {
-            if (ddlViaComunicacion.SelectedValue != "-1" && ddlContacto.SelectedValue != "-1" && txtFechaActuacion.Text!="") //agregar tambien para la fecha que no sea vacia o null
+            if (ddlViaComunicacion.SelectedValue != "-1" &&
+                ddlContacto.SelectedValue != "-1" &&
+                txtFechaActuacion.Text != "") //agregar tambien para la fecha que no sea vacia o null
             {
                 PanelNuevaActuacion.Visible = false;
                 btnAgregarActuacion.Visible = true;
@@ -111,7 +114,7 @@ namespace Sistema_CyT
             }
             else
             {
-                //FALTA IMPLEMENTAR
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Correct", "alert('Complete todos los campos.')", true);
             }
         }
 
@@ -166,19 +169,26 @@ namespace Sistema_CyT
 
         protected void btnModalOrganismoGuardar_Click(object sender, EventArgs e)
         {
-            if (txtOrganismoNombreModal.Text == "") return;
+            if (txtOrganismoNombreModal.Text != "")
+            {
+                Organismo organismo = new Organismo();
 
-            Organismo organismo = new Organismo();
+                organismo.Nombre = txtOrganismoNombreModal.Text;
+                organismo.Telefono = txtOrganismoTelefonoModal.Text;
+                organismo.CorreoElectronico = txtOrganismoCorreoElectronicoModal.Text;
 
-            organismo.Nombre = txtOrganismoNombreModal.Text;
-            organismo.Telefono = txtOrganismoTelefonoModal.Text;
-            organismo.CorreoElectronico = txtOrganismoCorreoElectronicoModal.Text;
+                idOrganismoActual = organismoNego.GuardarOrganismo(organismo);
 
-            idOrganismoActual = organismoNego.GuardarOrganismo(organismo);
+                ddlOrganismo.Items.Clear();
+                ddlOrganismo.Text = TraerOrganismo(idOrganismoActual);
 
-            ddlOrganismo.Items.Clear();
-            ddlOrganismo.Text = TraerOrganismo(idOrganismoActual);
-            MostrarOrganismo();
+                MostrarOrganismo();
+            }
+            else
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Correct", "alert('Complete el campo: NOMBRE.')", true);
+            }
+
         }
         private string TraerOrganismo(int id)
         {
@@ -245,7 +255,7 @@ namespace Sistema_CyT
                 Actuacion actuacion = new Actuacion();
 
                 actuacion.IdProyecto = FiltrarProyecto.idProyectoSeleccionado;
-                actuacion.Fecha = DateTime.ParseExact(txtFechaActuacion.Text, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                actuacion.Fecha = DateTime.ParseExact(txtFechaActuacion.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 actuacion.Detalle = txtDetalle.Text;
                 actuacion.IdViaComunicacion = viaComunicacionNego.TraerViaComunicacionIdSegunItem(ddlViaComunicacion.SelectedItem.ToString());
 
@@ -294,15 +304,24 @@ namespace Sistema_CyT
 
         protected void btnModalViaComunicacionGuardar_Click(object sender, EventArgs e)
         {
-            ViaComunicacion viaComunicacion = new ViaComunicacion();
+            if (txtViaComunicacionModal.Text != "")
+            {
+                ViaComunicacion viaComunicacion = new ViaComunicacion();
 
-            viaComunicacion.Nombre = txtViaComunicacionModal.Text;
+                viaComunicacion.Nombre = txtViaComunicacionModal.Text;
 
-            idViaComunicacionActual = viaComunicacionNego.GuardarViaComunicacion(viaComunicacion);
+                idViaComunicacionActual = viaComunicacionNego.GuardarViaComunicacion(viaComunicacion);
 
-            ddlViaComunicacion.Items.Clear();
-            ddlViaComunicacion.Text = TraerViaComunicacion(idViaComunicacionActual);
-            MostrarViaComunicacion();
+                ddlViaComunicacion.Items.Clear();
+                ddlViaComunicacion.Text = TraerViaComunicacion(idViaComunicacionActual);
+
+                MostrarViaComunicacion();
+            }
+            else
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Correct", "alert('Complete el campo: NOMBRE.')", true);
+            }
+
         }
         //Muestro en el DROPDOWNLIST las VIAS DE COMUNICACION
         private void MostrarViaComunicacion()
@@ -315,34 +334,41 @@ namespace Sistema_CyT
         {
             return viaComunicacionNego.TraerViaComunicacion(id);
         }
-        protected void UpdateButton_Click(object sender, EventArgs e)
-        {
-            Persona persona = personaNego.ObtenerPersona(idPersonaActual);
+        //protected void UpdateButton_Click(object sender, EventArgs e)
+        //{
+        //    Persona persona = personaNego.ObtenerPersona(idPersonaActual);
 
-            txtDetalleContactoNombreModal.Text = persona.Nombre.ToString();
-            txtDetalleContactoApellidoModal.Text = persona.Apellido.ToString();
-            txtDetalleContactoTelefonoModal.Text = persona.Telefono.ToString();
-            txtDetalleContactoCorreoElectronicoModal.Text = persona.CorreoElectronico.ToString();
-        }
+        //    txtDetalleContactoNombreModal.Text = persona.Nombre.ToString();
+        //    txtDetalleContactoApellidoModal.Text = persona.Apellido.ToString();
+        //    txtDetalleContactoTelefonoModal.Text = persona.Telefono.ToString();
+        //    txtDetalleContactoCorreoElectronicoModal.Text = persona.CorreoElectronico.ToString();
+        //}
         private string TraerPersona(int id)
         {
             return personaNego.TraerPersona(id);
         }
         protected void btnModalContactoGuardar_Click(object sender, EventArgs e)
         {
-            Persona persona = new Persona();
+            if (txtContactoNombreModal.Text != "" && txtContactoApellidoModal.Text != "")
+            {
+                Persona persona = new Persona();
 
-            persona.Nombre = txtContactoNombreModal.Text;
-            persona.Apellido = txtContactoApellidoModal.Text;
-            persona.Telefono = txtContactoTelefonoModal.Text;
-            persona.CorreoElectronico = txtContactoCorreoElectronicoModal.Text;
+                persona.Nombre = txtContactoNombreModal.Text;
+                persona.Apellido = txtContactoApellidoModal.Text;
+                persona.Telefono = txtContactoTelefonoModal.Text;
+                persona.CorreoElectronico = txtContactoCorreoElectronicoModal.Text;
 
-            idPersonaActual = personaNego.GuardarPersona(persona);
+                idPersonaActual = personaNego.GuardarPersona(persona);
 
-            ddlContacto.Items.Clear();
-            ddlContacto.Text = TraerPersona(idPersonaActual);
+                ddlContacto.Items.Clear();
+                ddlContacto.Text = TraerPersona(idPersonaActual);
 
-            LlenarListaPersonas();
+                LlenarListaPersonas();
+            }
+            else
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Correct", "alert('Complete los campos: NOMBRE, APELLIDO.')", true);
+            }
         }
     }
 }

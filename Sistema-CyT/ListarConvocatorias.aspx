@@ -9,7 +9,7 @@
             </div>
             <div class="form-group">
                 <br />
-                <asp:Label ID="lblEstado" runat="server" Text="ESTADO" CssClass="col-md-1 control-label"></asp:Label>
+                <asp:Label ID="lblEstado" runat="server" Text="ESTADO" CssClass="col-md-1 AlineadoDerecha"></asp:Label>
                 <div class="col-md-3 ">
                     <asp:DropDownList ID="ddlEstado" runat="server"
                         BackColor="WhiteSmoke"
@@ -20,7 +20,7 @@
                         AppendDataBoundItems="true">
                     </asp:DropDownList>
                 </div>
-                <asp:Label ID="lblFiltroFondo" runat="server" Text="FONDO" CssClass="col-md-1 control-label"></asp:Label>
+                <asp:Label ID="lblFiltroFondo" runat="server" Text="FONDO" CssClass="col-md-1 AlineadoDerecha"></asp:Label>
                 <div class="col-md-3">
                     <asp:DropDownList ID="ddlFiltroFondo" runat="server"
                         BackColor="WhiteSmoke"
@@ -33,10 +33,12 @@
                         <asp:ListItem Value="-1">&lt;Seleccione Fondo&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
-                <asp:Button runat="server" ID="btnFiltrarConvocatorias" Text="FILTRAR" CssClass="btn btn-success" OnClick="btnFiltrarConvocatorias_Click" />
-                <asp:Button runat="server" ID="btnFiltrarConvocatoriasAbiertas" Text="ABIERTAS" CssClass="btn btn-primary" OnClick="btnFiltrarConvocatoriasAbiertas_Click" />
-                <asp:Button runat="server" ID="btnFiltrarConvocatoriasTodas" Text="TODAS" CssClass="btn btn-danger" OnClick="btnFiltrarConvocatoriasTodas_Click" />
+                <asp:Button runat="server" ID="btnFiltrarConvocatorias" Text="FILTRAR" CssClass="boton_verde" OnClick="btnFiltrarConvocatorias_Click" />
+                <asp:Button runat="server" ID="btnFiltrarConvocatoriasAbiertas" Text="ABIERTAS" CssClass="boton_azul" OnClick="btnFiltrarConvocatoriasAbiertas_Click" />
             </div>
+
+            <asp:Button runat="server" ID="btnFiltrarConvocatoriasTodas" Text="TODAS" CssClass="boton_azul" OnClick="btnFiltrarConvocatoriasTodas_Click" />
+
             <div class="form-group">
                 <br />
                 <div class="col-md-12">

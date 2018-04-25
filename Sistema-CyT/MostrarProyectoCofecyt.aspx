@@ -4,8 +4,9 @@
     <div class="container">
         <asp:Panel ID="PanelProyectoCofecyt" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
+                <%--<asp:Label ID="lblNombreProyectoCofecyt" Style="text-align: justify;" Font-Bold="true" runat="server" CssClass="col-md-12 control-label"></asp:Label>--%>
+                <asp:Label ID="lblNombreProyectoCofecyt" Font-Bold="true" runat="server" CssClass="col-md-12"></asp:Label>
                 <br />
-                <asp:Label ID="lblNombreProyectoCofecyt" Style="text-align: justify;" Font-Bold="true" runat="server" CssClass="col-md-12 control-label"></asp:Label>
                 <br />
             </div>
             <div class="panel-body">
@@ -17,12 +18,12 @@
                 <!--OBJETIVOS DEL PROYECTO-->
                 <div class="form-group">
                     <asp:Label ID="lblObjetivosCofecyt" runat="server" Text="OBJETIVOS" CssClass="col-md-2 lblalider"> </asp:Label>
-                    <asp:Label ID="txtObjetivosCofecyt" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true" ></asp:Label>
+                    <asp:Label ID="txtObjetivosCofecyt" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!--BREVE DESCRIPCION-->
                 <div class="form-group">
                     <asp:Label ID="lblDescripcionCofecyt" runat="server" Text="BREVE DESCRIPCION" CssClass="col-md-2 lblalider"> </asp:Label>
-                    <asp:Label ID="txtDescripcionCofecyt" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true" ></asp:Label>
+                    <asp:Label ID="txtDescripcionCofecyt" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!--DESTINATARIOS DEL PROYECTO-->
                 <div class="form-group">
@@ -149,7 +150,7 @@
                     <asp:Label ID="lblMontoRescindidoCofecyt" runat="server" Text="MONTO RESCINDIDO" CssClass="col-md-3 lblalider"> </asp:Label>
                     <asp:Label ID="txtMontoRescindidoCofecyt" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
-                <asp:Button runat="server" ID="btnActuaciones" Width="150" Text="Actuaciones" CssClass="btn boton_azul col-md-offset-1" OnClick="btnActuaciones_Click" />
+                <asp:Button runat="server" ID="btnActuaciones" Width="200" Text="Actuaciones" CssClass="boton_azul col-md-offset-1" OnClick="btnActuaciones_Click" />
             </div>
 
             <!--LISTA DE ETAPAS COFECYT-->

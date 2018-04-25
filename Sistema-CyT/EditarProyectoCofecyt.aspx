@@ -4,14 +4,12 @@
     <div class="container">
         <asp:Panel ID="PanelSuperior" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <h3>Formulario EDITAR Proyecto</h3>
+                <h3>EDITAR Proyecto</h3>
             </div>
             <!-- LISTA CON LAS CONVOCATORIAS EN LA BASE DE DATOS -->
             <div class="form-group">
                 <br />
-                <div class="col-md-2">
-                    <asp:TextBox ID="txtFiltroConvocatoria" runat="server" CssClass="form-control AlineadoDerecha" Font-Bold="true" ReadOnly="true">< Filtro Convocatoria ></asp:TextBox>
-                </div>
+                <asp:Label ID="txtFiltroConvocatoria" runat="server" Text="Convocatoria" CssClass="col-md-2 AlineadoDerecha"></asp:Label>
                 <%--<asp:Label ID="lblConvocatoriaChoice" Font-Bold="true" runat="server" Text="&lt Filtro Convocatoria &gt" CssClass="col-md-2 control-label"></asp:Label>--%>
                 <div class="col-md-8">
                     <asp:DropDownList ID="ddlConvocatoriaChoice" runat="server"
@@ -30,10 +28,7 @@
             </div>
             <!-- LISTA CON LOS PROYECTOS EN LA BASE DE DATOS -->
             <div class="form-group">
-                <div class="col-md-2">
-                    <asp:TextBox ID="txtFiltroProyecto" runat="server" CssClass="form-control AlineadoDerecha" Font-Bold="true" ReadOnly="true">< Filtro Proyecto ></asp:TextBox>
-                </div>
-                <%--<asp:Label ID="lblProyectos" Font-Bold="true" runat="server" Text="&lt Seleccione Proyecto &gt" CssClass="col-md-2 control-label"> </asp:Label>--%>
+                <asp:Label ID="txtFiltroProyecto" runat="server" Text="Proyecto" CssClass="col-md-2 AlineadoDerecha"></asp:Label>
                 <div class="col-md-8">
                     <asp:DropDownList ID="ddlProyectoChoice" runat="server"
                         ForeColor="#000066"
@@ -51,7 +46,7 @@
 
 
         <!--PANEL COFECYT - Informacion del Proyecto-->
-        <asp:Panel ID="PanelCofecytInformacion" CssClass="panel panel-info" runat="server">
+        <asp:Panel ID="PanelCofecytInformacion" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
                 <h3>COFECyT - Informacion del Proyecto</h3>
             </div>
@@ -102,7 +97,7 @@
                 <%--NUEVA LOCALIDAD--%>
                 <div class="form-group">
                     <div class="col-md-2">
-                        <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalLocalidadCofecyt">Nueva Localidad</button>
+                        <button type="button" class="boton_azul" data-toggle="modal" data-target="#modalLocalidadCofecyt">Nueva Localidad</button>
                     </div>
                     <!-- MODAL NUEVA LOCALIDAD  -->
                     <div class="modal fade" id="modalLocalidadCofecyt" tabindex="-1" role="dialog" aria-labelledby="modalLabelLocalidadCofecyt" aria-hidden="true">
@@ -128,8 +123,8 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <asp:Button runat="server" ID="Button2" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
-                                        <asp:Button runat="server" ID="Button3" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalLocalidadGuardar_Click" />
+                                        <asp:Button runat="server" ID="Button2" Text="Salir" class="boton_rojo" data-dismiss="modal" />
+                                        <asp:Button runat="server" ID="Button3" Text="Guardar" CssClass="boton_verde" OnClick="btnModalLocalidadGuardar_Click" />
                                     </div>
                                 </div>
                             </div>
@@ -397,7 +392,7 @@
         <!--BOTON ACTUALIZAR PROYECTO-->
         <div class="form-group">
             <div class="col-md-2 col-md-offset-2">
-                <asp:Button ID="btnActualizarProyecto" runat="server" Text="Actualizar Proyecto" CssClass="btn btn-success form-control" OnClick="btnActualizarProyecto_Click" />
+                <asp:Button ID="btnActualizarProyecto" runat="server" Text="Actualizar" CssClass="boton_verde" OnClick="btnActualizarProyecto_Click" />
             </div>
         </div>
 

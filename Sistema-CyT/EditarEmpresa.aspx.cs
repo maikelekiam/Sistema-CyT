@@ -26,7 +26,6 @@ namespace Sistema_CyT
             ddlLocalidad.DataValueField = "nombre";
             ddlLocalidad.DataBind();
         }
-        //Muestra los datos de las personas en la GRILLA
         private void ListarListaEmpresas()
         {
             ddlEmpresas.DataSource = empresaNego.MostrarEmpresas().ToList();
@@ -74,6 +73,10 @@ namespace Sistema_CyT
             {
                 ActualizarEmpresa();
                 Response.Redirect("ListarEmpresas.aspx");
+            }
+            else
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Correct", "alert('Complete el campo: NOMBRE.')", true);
             }
         }
         private void ActualizarEmpresa()

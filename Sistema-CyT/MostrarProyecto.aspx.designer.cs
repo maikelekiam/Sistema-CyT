@@ -46,7 +46,7 @@ namespace Sistema_CyT {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtContacto;
+        protected global::System.Web.UI.WebControls.Label txtContacto;
         
         /// <summary>
         /// lblNumeroExp control.
@@ -64,7 +64,7 @@ namespace Sistema_CyT {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNumeroExp;
+        protected global::System.Web.UI.WebControls.Label txtNumeroExp;
         
         /// <summary>
         /// lblConvocatoria control.
@@ -82,7 +82,7 @@ namespace Sistema_CyT {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtConvocatoria;
+        protected global::System.Web.UI.WebControls.Label txtConvocatoria;
         
         /// <summary>
         /// lblTipoProyecto control.
@@ -100,7 +100,7 @@ namespace Sistema_CyT {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTipoProyecto;
+        protected global::System.Web.UI.WebControls.Label txtTipoProyecto;
         
         /// <summary>
         /// lblMontoSolicitado control.
@@ -118,7 +118,7 @@ namespace Sistema_CyT {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMontoSolicitado;
+        protected global::System.Web.UI.WebControls.Label txtMontoSolicitado;
         
         /// <summary>
         /// lblMontoContraparte control.
@@ -136,7 +136,7 @@ namespace Sistema_CyT {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMontoContraparte;
+        protected global::System.Web.UI.WebControls.Label txtMontoContraparte;
         
         /// <summary>
         /// lblMontoTotal control.
@@ -154,7 +154,7 @@ namespace Sistema_CyT {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMontoTotal;
+        protected global::System.Web.UI.WebControls.Label txtMontoTotal;
         
         /// <summary>
         /// lblDescripcion control.
@@ -172,7 +172,7 @@ namespace Sistema_CyT {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
+        protected global::System.Web.UI.WebControls.Label txtDescripcion;
         
         /// <summary>
         /// lblObservaciones control.
@@ -190,16 +190,7 @@ namespace Sistema_CyT {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtObservaciones;
-        
-        /// <summary>
-        /// btnActuaciones control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnActuaciones;
+        protected global::System.Web.UI.WebControls.Label txtObservaciones;
         
         /// <summary>
         /// dgvEtapas control.
@@ -209,5 +200,14 @@ namespace Sistema_CyT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView dgvEtapas;
+        
+        /// <summary>
+        /// btnActuaciones control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnActuaciones;
     }
 }

@@ -28,7 +28,6 @@ namespace Sistema_CyT
             ddlLocalidad.DataValueField = "nombre";
             ddlLocalidad.DataBind();
         }
-        //Muestra los datos de las empresas en la GRILLA
         private void ListarEmpresas()
         {
             dgvEmpresa.DataSource = empresaNego.MostrarEmpresas().ToList();
@@ -36,7 +35,6 @@ namespace Sistema_CyT
 
             dgvEmpresa.Columns[0].Visible = false;
         }
-
 
         protected void btnGuardarEmpresa_Click(object sender, EventArgs e)
         {
@@ -48,7 +46,7 @@ namespace Sistema_CyT
             }
             else
             {
-                //NO SE PUEDE GUARDAR LOS DATOS
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Correct", "alert('Complete el campo: NOMBRE.')", true);
             }
         }
         private void GuardarEmpresa()

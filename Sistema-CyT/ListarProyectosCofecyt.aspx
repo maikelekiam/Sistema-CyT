@@ -10,7 +10,7 @@
             <!-- LISTA CON LAS CONVOCATORIAS EN LA BASE DE DATOS -->
             <div class="form-group">
                 <br />
-                <asp:Label ID="lblConvocatoria" Font-Bold="true" runat="server" Text="&lt Filtro Convocatoria &gt" CssClass="col-md-2 control-label"></asp:Label>
+                <asp:Label ID="lblConvocatoria" runat="server" Text="" CssClass="col-md-2 AlineadoDerecha"></asp:Label>
                 <div class="col-md-8">
                     <asp:DropDownList ID="ddlConvocatoria" runat="server"
                         BackColor="WhiteSmoke"

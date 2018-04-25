@@ -82,6 +82,8 @@ namespace Sistema_CyT
             listaEtapasTemporal.Clear();
             listaEtapaCofecytsTemporal.Clear();
             listaActividadCofecytsTemporal.Clear();
+
+            btnGuardarProyecto.Visible = false;
         }
 
         //Muestra en el DROPDOWNLIST los FONDOS
@@ -336,10 +338,16 @@ namespace Sistema_CyT
             proyecto.Descripcion = txtDescripcion.Text;
             proyecto.Destinatarios = txtDestinatarios.Text;
             proyecto.Observaciones = txtObservaciones.Text;
-            proyecto.MontoSolicitado = Convert.ToDecimal(txtMontoSolicitado.Text);
-            //proyecto.MontoSolicitado = Int32.Parse(txtMontoSolicitado.Text);
-            proyecto.MontoContraparte = Convert.ToDecimal(txtMontoContraparte.Text);
-            proyecto.MontoTotal = Convert.ToDecimal(txtMontoTotal.Text);
+
+
+            if (txtMontoSolicitado.Text == "") { proyecto.MontoSolicitado = null; }
+            else { proyecto.MontoSolicitado = Convert.ToDecimal(txtMontoSolicitado.Text); }
+
+            if (txtMontoContraparte.Text == "") { proyecto.MontoContraparte = null; }
+            else { proyecto.MontoContraparte = Convert.ToDecimal(txtMontoContraparte.Text); }
+
+            if (txtMontoTotal.Text == "") { proyecto.MontoTotal = null; }
+            else { proyecto.MontoTotal = Convert.ToDecimal(txtMontoTotal.Text); }
 
             //PARA EL REFERENTE
             if (ddlContacto.SelectedValue == "-1") { proyecto.IdPersona = null; }
@@ -482,9 +490,11 @@ namespace Sistema_CyT
         {
             if (ddlFondoChoice.SelectedValue != "-1")
             {
+                btnGuardarProyecto.Visible = true;
+
                 LlenarChoiceConvocatorias(Convert.ToInt32(ddlFondoChoice.SelectedValue));
 
-                
+
 
                 if (fondoNego.ObtenerFondo(Convert.ToInt32(ddlFondoChoice.SelectedValue)).Nombre.ToUpper() == "COFECYT")
                 {

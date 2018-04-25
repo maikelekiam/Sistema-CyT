@@ -4,30 +4,29 @@
     <div class="container">
         <asp:Panel ID="Panel1" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <h4>Nueva Persona</h4>
+                <h3>Nuevo CONTACTO</h3>
             </div>
             <!--NOMBRE-->
             <br />
             <div class="form-group">
-                <asp:Label ID="lblNombre" runat="server" Text="NOMBRE" CssClass="col-md-2 control-label"></asp:Label>
+                <asp:Label ID="lblNombre" runat="server" Text="NOMBRE" CssClass="col-md-2 AlineadoDerecha"></asp:Label>
                 <div class="col-md-6">
                     <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
             <!--APELLIDO-->
             <div class="form-group">
-                <asp:Label ID="lblApellido" runat="server" Text="APELLIDO" CssClass="col-md-2 control-label"> </asp:Label>
+                <asp:Label ID="lblApellido" runat="server" Text="APELLIDO" CssClass="col-md-2 AlineadoDerecha"> </asp:Label>
                 <div class="col-md-6">
                     <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
             <!--TIPO DOCUMENTO + DNI-->
             <div class="form-group">
-                <asp:Label ID="lblTipoDocumento" runat="server" Text="TIPO" CssClass="col-md-2 control-label"></asp:Label>
-                <div class="col-md-1">
+                <asp:Label ID="lblTipoDocumento" runat="server" Text="TIPO" CssClass="col-md-2 AlineadoDerecha"></asp:Label>
+                <div class="col-md-2">
                     <asp:DropDownList ID="ddlTipoDocumento" runat="server"
                         CssClass="selectpicker form-control show-tick"
-                        data-live-search="true"
                         data-width="fit">
                         <asp:ListItem Value="DNI">DNI</asp:ListItem>
                         <asp:ListItem Value="DU">DU</asp:ListItem>
@@ -35,40 +34,40 @@
                         <asp:ListItem Value="CI">CI</asp:ListItem>
                     </asp:DropDownList>
                 </div>
-                <asp:Label ID="lblDocumento" runat="server" Text="DOCUMENTO" class="col-md-2 control-label"></asp:Label>
+                <asp:Label ID="lblDocumento" runat="server" Text="DOCUMENTO" class="col-md-1 AlineadoDerecha"></asp:Label>
                 <div class="col-md-3">
                     <asp:TextBox ID="txtDocumento" runat="server" class="form-control"></asp:TextBox>
                 </div>
             </div>
             <!--TELEFONO-->
             <div class="form-group">
-                <asp:Label ID="lblTelefono" runat="server" Text="TELEFONO" CssClass="col-md-2 control-label"></asp:Label>
+                <asp:Label ID="lblTelefono" runat="server" Text="TELEFONO" CssClass="col-md-2 AlineadoDerecha"></asp:Label>
                 <div class="col-md-6">
                     <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
             <!--CORREO ELECTRONICO-->
             <div class="form-group">
-                <asp:Label ID="lblCorreoElectronico" runat="server" Text="CORREO ELECTRONICO" CssClass="col-md-2 control-label"></asp:Label>
+                <asp:Label ID="lblCorreoElectronico" runat="server" Text="CORREO ELECTRONICO" CssClass="col-md-2 AlineadoDerecha"></asp:Label>
                 <div class="col-md-6">
                     <asp:TextBox ID="txtCorreoElectronico" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
             <!--DOMICILIO-->
             <div class="form-group">
-                <asp:Label ID="lblDomicilio" runat="server" Text="DOMICILIO" CssClass="col-md-2 control-label"></asp:Label>
+                <asp:Label ID="lblDomicilio" runat="server" Text="DOMICILIO" CssClass="col-md-2 AlineadoDerecha"></asp:Label>
                 <div class="col-md-6">
                     <asp:TextBox ID="txtDomicilio" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
             <!--LOCALIDAD-->
             <div class="form-group">
-                <asp:Label ID="lblLocalidad" runat="server" Text="LOCALIDAD" CssClass="col-md-2 control-label"></asp:Label>
+                <asp:Label ID="lblLocalidad" runat="server" Text="LOCALIDAD" CssClass="col-md-2 AlineadoDerecha"></asp:Label>
                 <div class="col-md-4">
                     <asp:DropDownList ID="ddlLocalidad" runat="server"
                         BackColor="WhiteSmoke"
                         ForeColor="#000066"
-                        CssClass="selectpicker form-control show-tick"
+                        CssClass="form-control selectpicker "
                         data-live-search="true"
                         DataTextField="nombre"
                         AutoPostBack="False"
@@ -79,7 +78,7 @@
             </div>
             <!--OBSERVACIONES-->
             <div class="form-group">
-                <asp:Label ID="lblObservaciones" runat="server" Text="OBSERVACIONES" CssClass="col-md-2 control-label"></asp:Label>
+                <asp:Label ID="lblObservaciones" runat="server" Text="OBSERVACIONES" CssClass="col-md-2 AlineadoDerecha"></asp:Label>
                 <div class="col-md-6">
                     <asp:TextBox ID="txtObservaciones" runat="server" TextMode="MultiLine" Rows="2" CssClass="form-control"></asp:TextBox>
                 </div>
@@ -87,10 +86,11 @@
             <!-- BOTON GUARDAR -->
             <div class="form-group">
                 <div class="col-md-2 col-md-offset-2">
-                    <asp:Button ID="btnGuardarPersona" runat="server" Text="Guardar Persona" CssClass="btn boton_verde form-control" OnClick="btnGuardarPersona_Click" />
+                    <asp:Button ID="btnGuardarPersona" runat="server" Text="Guardar" Width="180" CssClass="boton_verde" OnClick="btnGuardarPersona_Click"></asp:Button>
                 </div>
             </div>
         </asp:Panel>
+
         <!--GRILLA PARA MOSTRAR LAS PERSONAS EN LA BASE DE DATOS-->
         <br />
         <%--<h4>GRILLA DE PERSONAS</h4>--%>

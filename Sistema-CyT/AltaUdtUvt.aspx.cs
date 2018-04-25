@@ -16,6 +16,8 @@ namespace Sistema_CyT
         PersonaNego personaNego = new PersonaNego();
 
         public static int idUdtUvtSeleccionada;
+        public static int idReferenteTecnicoActual;
+        public static int idDirectorGerenteActual;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,7 +27,6 @@ namespace Sistema_CyT
             ListarReferenteTecnicos();
             ListarDirectorGerentes();
             LlenarListaLocalidades(); //SIRVE PARA EL DROP DOWN LIST
-
         }
         private void LlenarListaLocalidades()
         {
@@ -33,8 +34,6 @@ namespace Sistema_CyT
             ddlLocalidad.DataValueField = "nombre";
             ddlLocalidad.DataBind();
         }
-
-        //Muestra los datos de las UDT/UVTs en la GRILLA
         private void ListarUdtUvts()
         {
             dgvUdtUvt.DataSource = udtUvtNego.MostrarUdtUvts().ToList();
@@ -42,7 +41,6 @@ namespace Sistema_CyT
 
             dgvUdtUvt.Columns[0].Visible = false;
         }
-
         private void ListarReferenteTecnicos()
         {
             ddlReferenteTecnico.DataSource = personaNego.MostrarPersonas().OrderBy(c => c.Nombre).ToList();
@@ -59,12 +57,6 @@ namespace Sistema_CyT
             ddlDirectorGerente.DataValueField = "nombre";
             ddlDirectorGerente.DataBind();
         }
-
-
-
-
-
-
         protected void btnGuardarUdtUvt_Click(object sender, EventArgs e)
         {
             if (txtNombre.Text != "")
@@ -75,7 +67,7 @@ namespace Sistema_CyT
             }
             else
             {
-                //NO SE PUEDE GUARDAR LOS DATOS
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Correct", "alert('Complete el campo: NOMBRE.')", true);
             }
         }
         private void GuardarUdtUvt()
@@ -87,44 +79,104 @@ namespace Sistema_CyT
             udtUvt.CorreoElectronico = txtCorreoElectronico.Text;
             udtUvt.Domicilio = txtDomicilio.Text;
             udtUvt.Observaciones = txtObservaciones.Text;
-            //udtUvt.ReferenteTecnico = Int32.Parse(ddlReferenteTecnico.SelectedValue);
-            //udtUvt.DirectorGerente = Int32.Parse(ddlDirectorGerente.SelectedValue);
+
+            //PARA EL REFERENTE
+            if (ddlReferenteTecnico.SelectedValue == "-1")
+            {
+                udtUvt.ReferenteTecnico = null;
+            }
+            else
+            {
+                string cadena = ddlReferenteTecnico.SelectedItem.ToString();
+                string[] separadas;
+                separadas = cadena.Split(',');
+                string itemApellido = separadas[0];
+                string itemNombre = separadas[1];
+                udtUvt.ReferenteTecnico = personaNego.TraerPersonaIdSegunItem(itemApellido, itemNombre);
+            }
+
+            //PARA EL DIRECTOR / GERENTE
+            if (ddlDirectorGerente.SelectedValue == "-1")
+            {
+                udtUvt.DirectorGerente = null;
+            }
+            else
+            {
+                string cadena = ddlDirectorGerente.SelectedItem.ToString();
+                string[] separadas;
+                separadas = cadena.Split(',');
+                string itemApellido = separadas[0];
+                string itemNombre = separadas[1];
+                udtUvt.DirectorGerente = personaNego.TraerPersonaIdSegunItem(itemApellido, itemNombre);
+            }
+
             udtUvt.Tipo = ddlTipo.SelectedItem.ToString();
 
             if (ddlLocalidad.SelectedValue != "-1")
             {
                 udtUvt.IdLocalidad = localidadNego.TraerLocalidadIdSegunItem(ddlLocalidad.SelectedItem.ToString());
             }
-
-            string cadena = ddlReferenteTecnico.SelectedItem.ToString();
-            string[] separadas;
-            separadas = cadena.Split(',');
-            string itemApellido = separadas[0];
-            string itemNombre = separadas[1];
-            udtUvt.ReferenteTecnico = personaNego.TraerPersonaIdSegunItem(itemApellido, itemNombre);
-
-            cadena = ddlDirectorGerente.SelectedItem.ToString();
-            separadas = cadena.Split(',');
-            itemApellido = separadas[0];
-            itemNombre = separadas[1];
-            udtUvt.DirectorGerente = personaNego.TraerPersonaIdSegunItem(itemApellido, itemNombre);
-
             udtUvtNego.GuardarUdtUvt(udtUvt);
         }
-
-        protected void dgvUdtUvt_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-
-        }
-
         protected void ddlReferenteTecnico_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            idReferenteTecnicoActual = ddlReferenteTecnico.SelectedIndex;
         }
-
         protected void ddlDirectorGerente_SelectedIndexChanged(object sender, EventArgs e)
         {
+            idDirectorGerenteActual = ddlDirectorGerente.SelectedIndex;
+        }
+        protected void btnModalReferenteTecnicoGuardar_Click(object sender, EventArgs e)
+        {
+            if (txtReferenteTecnicoNombreModal.Text != "" && txtReferenteTecnicoApellidoModal.Text != "")
+            {
+                Persona persona = new Persona();
 
+                persona.Nombre = txtReferenteTecnicoNombreModal.Text;
+                persona.Apellido = txtReferenteTecnicoApellidoModal.Text;
+                persona.Telefono = txtReferenteTecnicoTelefonoModal.Text;
+                persona.CorreoElectronico = txtReferenteTecnicoCorreoElectronicoModal.Text;
+
+                int idPersonaActual = personaNego.GuardarPersona(persona);
+
+                ddlReferenteTecnico.Items.Clear();
+                ddlReferenteTecnico.Text = TraerPersona(idPersonaActual);
+
+                ListarReferenteTecnicos();
+                ListarDirectorGerentes();
+            }
+            else
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Correct", "alert('Complete los campos: NOMBRE, APELLIDO.')", true);
+            }
+        }
+        protected void btnModalDirectorGerenteGuardar_Click(object sender, EventArgs e)
+        {
+            if (txtDirectorGerenteNombreModal.Text != "" && txtDirectorGerenteApellidoModal.Text != "")
+            {
+                Persona persona = new Persona();
+
+                persona.Nombre = txtDirectorGerenteNombreModal.Text;
+                persona.Apellido = txtDirectorGerenteApellidoModal.Text;
+                persona.Telefono = txtDirectorGerenteTelefonoModal.Text;
+                persona.CorreoElectronico = txtDirectorGerenteCorreoElectronicoModal.Text;
+
+                int idPersonaActual = personaNego.GuardarPersona(persona);
+
+                ddlDirectorGerente.Items.Clear();
+                ddlDirectorGerente.Text = TraerPersona(idPersonaActual);
+
+                ListarDirectorGerentes();
+                ListarReferenteTecnicos();
+            }
+            else
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Correct", "alert('Complete los campos: NOMBRE, APELLIDO.')", true);
+            }
+        }
+        private string TraerPersona(int id)
+        {
+            return personaNego.TraerPersona(id);
         }
     }
 }

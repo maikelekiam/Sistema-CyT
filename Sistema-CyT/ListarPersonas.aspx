@@ -4,8 +4,8 @@
     <div class="container">
         <asp:Panel ID="PanelSuperior" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <h3>Lista de PERSONAS</h3>
-                <asp:Label ID="lblFondo" Font-Bold="true" runat="server" CssClass="col-md-2 control-label"> </asp:Label>
+                <h3>Lista de CONTACTOS</h3>
+<%--                <asp:Label ID="lblFondo" Font-Bold="true" runat="server" CssClass="col-md-2 control-label"> </asp:Label>--%>
 
             </div>
             <!--GRILLA PARA MOSTRAR LAS PERSONAS EN LA BASE DE DATOS-->

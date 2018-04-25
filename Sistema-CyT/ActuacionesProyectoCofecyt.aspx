@@ -4,9 +4,8 @@
     <div class="container">
         <asp:Panel ID="PanelProyectoCofecyt" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <br />
-                <asp:Label ID="lblProyectoCofecyt" Style="text-align: justify;" Font-Bold="true" runat="server" CssClass="col-md-12 control-label"></asp:Label>
-                <br />
+                <asp:Label ID="lblProyectoCofecyt" Font-Bold="true" runat="server" CssClass="col-md-12"></asp:Label>
+                <br /><br />
             </div>
         </asp:Panel>
 
@@ -14,7 +13,7 @@
             <!-- BOTON AGREGAR ACTUACION -->
             <div class="form-group">
                 <div class="col-md-2">
-                    <asp:Button ID="btnAgregarActuacionProyectoCofecyt" runat="server" Text="Agregar Actuacion" Width="180" CssClass="btn boton_azul" OnClick="btnAgregarActuacionProyectoCofecyt_Click" />
+                    <asp:Button ID="btnAgregarActuacionProyectoCofecyt" runat="server" Text="Agregar Actuacion" Width="180" CssClass="boton_azul" OnClick="btnAgregarActuacionProyectoCofecyt_Click" />
                 </div>
             </div>
         </asp:Panel>

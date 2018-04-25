@@ -4,8 +4,8 @@
     <div class="container">
         <asp:Panel ID="PanelProyecto" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
+                <asp:Label ID="lblProyecto" Font-Bold="true" runat="server" CssClass="col-md-12"></asp:Label>
                 <br />
-                <asp:Label ID="lblProyecto" Style="text-align: justify;" Font-Bold="true" runat="server" CssClass="col-md-12 control-label"></asp:Label>
                 <br />
             </div>
         </asp:Panel>
@@ -13,7 +13,7 @@
             <!-- BOTON AGREGAR ACTUACION -->
             <div class="form-group">
                 <div class="col-md-2">
-                    <asp:Button ID="btnAgregarActuacion" runat="server" Text="Agregar Actuacion" CssClass="btn btn-info form-control" OnClick="btnAgregarActuacion_Click" />
+                    <asp:Button ID="btnAgregarActuacion" runat="server" Text="Agregar Actuacion" CssClass="boton_azul" OnClick="btnAgregarActuacion_Click" />
                 </div>
             </div>
         </asp:Panel>
@@ -39,7 +39,7 @@
             </div>
             <!--CONTACTO-->
             <div class="form-group">
-                <asp:Label ID="lblContacto" runat="server" Text="CONTACTO" CssClass="col-md-2 control-label"></asp:Label>
+                <asp:Label ID="lblContacto" runat="server" Text="CONTACTO" CssClass="col-md-2 AlineadoDerecha"></asp:Label>
                 <div class="col-md-4">
                     <asp:DropDownList ID="ddlContacto" runat="server"
                         BackColor="WhiteSmoke"
@@ -55,11 +55,11 @@
                 </div>
                 <%--DETALLE DEL CONTACTO--%>
                 <div class="form-group">
-                    <div class="col-md-2">
+                    <%--<div class="col-md-2">
                         <button type="button" class="btn btn-md" data-toggle="modal" data-target="#modalDetalleContacto">Mostrar Contacto</button>
-                    </div>
+                    </div>--%>
                     <!-- MODAL DETALLE CONTACTO  -->
-                    <div class="modal fade" id="modalDetalleContacto" tabindex="-1" role="dialog" aria-labelledby="modalLabelDetalleContacto" aria-hidden="true">
+                    <%--<div class="modal fade" id="modalDetalleContacto" tabindex="-1" role="dialog" aria-labelledby="modalLabelDetalleContacto" aria-hidden="true">
                         <div class="modal-dialog modal-md">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -107,11 +107,11 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>--%>
                     <%--NUEVO CONTACTO--%>
                     <div class="form-group">
                         <div class="col-md-2">
-                            <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalContacto">Nuevo Contacto</button>
+                            <button type="button" class="boton_azul" data-toggle="modal" data-target="#modalContacto">Nuevo Contacto</button>
                         </div>
                         <!-- MODAL NUEVO CONTACTO  -->
                         <div class="modal fade" id="modalContacto" tabindex="-1" role="dialog" aria-labelledby="modalLabelContacto" aria-hidden="true">
@@ -149,8 +149,8 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <asp:Button runat="server" ID="btnModalContactoSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
-                                            <asp:Button runat="server" ID="btnModalContactoGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalContactoGuardar_Click" />
+                                            <asp:Button runat="server" ID="btnModalContactoSalir" Text="Salir" class="boton_rojo" data-dismiss="modal" />
+                                            <asp:Button runat="server" ID="btnModalContactoGuardar" Text="Guardar" CssClass="boton_verde" OnClick="btnModalContactoGuardar_Click" />
                                         </div>
                                     </div>
                                 </div>
@@ -161,12 +161,11 @@
             </div>
             <!--ORGANISMO + OPCION PARA AGREGAR NUEVO ORGANISMO-->
             <div class="form-group">
-                <asp:Label ID="lblOrganismo" runat="server" Text="ORGANISMO" CssClass="col-md-2 control-label"> </asp:Label>
+                <asp:Label ID="lblOrganismo" runat="server" Text="ORGANISMO" CssClass="col-md-2 AlineadoDerecha"> </asp:Label>
                 <div class="col-md-4 ">
                     <asp:DropDownList ID="ddlOrganismo" runat="server"
                         BackColor="WhiteSmoke"
                         ForeColor="#000066"
-                        Font-Bold="false"
                         CssClass="selectpicker form-control show-tick"
                         data-live-search="true"
                         DataTextField="nombre"
@@ -179,7 +178,7 @@
                 <%--AGREGAR ACA EL MODAL PARA EL NUEVO ORGANISMO--%>
                 <div class="form-group">
                     <div class="col-md-2">
-                        <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalOrganismo">Nuevo Organismo</button>
+                        <button type="button" class="boton_azul" data-toggle="modal" data-target="#modalOrganismo">Nuevo Organismo</button>
                     </div>
                     <!-- MODAL ORGANISMO  -->
                     <div class="modal fade" id="modalOrganismo" tabindex="-1" role="dialog" aria-labelledby="modalLabelOrganismo" aria-hidden="true">
@@ -193,19 +192,19 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <asp:Label ID="lbl01" runat="server" Text="NOMBRE" CssClass="col-md-4 control-label"></asp:Label>
+                                        <asp:Label ID="lbl01" runat="server" Text="NOMBRE" CssClass="col-md-4 AlineadoDerecha"></asp:Label>
                                         <div class="col-md-8">
                                             <asp:TextBox ID="txtOrganismoNombreModal" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
                                         <br />
                                         <br />
-                                        <asp:Label ID="lbl02" runat="server" Text="TELEFONO" CssClass="col-md-4 control-label"></asp:Label>
+                                        <asp:Label ID="lbl02" runat="server" Text="TELEFONO" CssClass="col-md-4 AlineadoDerecha"></asp:Label>
                                         <div class="col-md-8">
                                             <asp:TextBox ID="txtOrganismoTelefonoModal" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
                                         <br />
                                         <br />
-                                        <asp:Label ID="lbl03" runat="server" Text="CORREO ELECTRONICO" CssClass="col-md-4 control-label"></asp:Label>
+                                        <asp:Label ID="lbl03" runat="server" Text="CORREO ELECTRONICO" CssClass="col-md-4 AlineadoDerecha"></asp:Label>
                                         <div class="col-md-8">
                                             <asp:TextBox ID="txtOrganismoCorreoElectronicoModal" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
@@ -213,8 +212,8 @@
                                         <br />
                                     </div>
                                     <div class="modal-footer">
-                                        <asp:Button runat="server" ID="btnModalOrganismoSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
-                                        <asp:Button runat="server" ID="btnModalOrganismoGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalOrganismoGuardar_Click" />
+                                        <asp:Button runat="server" ID="btnModalOrganismoSalir" Text="Salir" class="boton_rojo" data-dismiss="modal" />
+                                        <asp:Button runat="server" ID="btnModalOrganismoGuardar" Text="Guardar" CssClass="boton_verde" OnClick="btnModalOrganismoGuardar_Click" />
                                     </div>
                                 </div>
                             </div>
@@ -225,14 +224,12 @@
 
             <!--VIA DE COMUNICACION + OPCION PARA AGREGAR NUEVA VIA DE COMUNICACION-->
             <div class="form-group">
-                <asp:Label ID="lblViaComunicacion" runat="server" Text="VIA DE COMUNICACION" CssClass="col-md-2 control-label"> </asp:Label>
+                <asp:Label ID="lblViaComunicacion" runat="server" Text="VIA DE COMUNICACION" CssClass="col-md-2 AlineadoDerecha"> </asp:Label>
                 <div class="col-md-4 ">
                     <asp:DropDownList ID="ddlViaComunicacion" runat="server"
                         BackColor="WhiteSmoke"
                         ForeColor="#000066"
-                        Font-Bold="false"
                         CssClass="selectpicker form-control show-tick"
-                        data-live-search="true"
                         DataTextField="nombre"
                         AutoPostBack="false"
                         AppendDataBoundItems="true">
@@ -244,7 +241,7 @@
                 <%--AGREGAR ACA EL MODAL PARA LA NUEVA VIA DE COMUNICACION--%>
                 <div class="form-group">
                     <div class="col-md-2">
-                        <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalViaComunicacion">Nueva Via de Comunicacion</button>
+                        <button type="button" class="boton_azul" style="width: 250px;" data-toggle="modal" data-target="#modalViaComunicacion">Nueva Via de Comunicacion</button>
                     </div>
                     <!-- MODAL VIA DE COMUNICACION  -->
                     <div class="modal fade" id="modalViaComunicacion" tabindex="-1" role="dialog" aria-labelledby="modalLabelViaComunicacion" aria-hidden="true">
@@ -257,15 +254,18 @@
                                     <h4 class="modal-title" id="modalLabelViaComunicacion">Nueva Via de Comunicacion</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <div class="col-md-8">
-                                        <asp:TextBox ID="txtViaComunicacionModal" runat="server" CssClass="form-control"
-                                            onkeypress="return validarSoloLetras(event);"></asp:TextBox><br />
+                                    <div class="form-group">
+                                        <asp:Label ID="Label1" runat="server" Text="NOMBRE" CssClass="col-md-4 AlineadoDerecha"></asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtViaComunicacionModal" runat="server" CssClass="form-control"></asp:TextBox><br />
+                                        </div>
+                                        <br />
+                                        <br />
                                     </div>
-                                    <br />
                                 </div>
                                 <div class="modal-footer">
-                                    <asp:Button runat="server" ID="btnModalViaComunicacionSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
-                                    <asp:Button runat="server" ID="btnModalViaComunicacionGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalViaComunicacionGuardar_Click" />
+                                    <asp:Button runat="server" ID="btnModalViaComunicacionSalir" Text="Salir" class="boton_rojo" data-dismiss="modal" />
+                                    <asp:Button runat="server" ID="btnModalViaComunicacionGuardar" Text="Guardar" CssClass="boton_verde" OnClick="btnModalViaComunicacionGuardar_Click" />
                                 </div>
                             </div>
                         </div>
@@ -276,7 +276,7 @@
 
             <!--DETALLE DE LA ACTUACION-->
             <div class="form-group">
-                <asp:Label ID="lblDetalle" runat="server" Text="DETALLE" CssClass="col-md-2 control-label"></asp:Label>
+                <asp:Label ID="lblDetalle" runat="server" Text="DETALLE" CssClass="col-md-2 AlineadoDerecha"></asp:Label>
                 <div class="col-md-6">
                     <asp:TextBox ID="txtDetalle" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="4"></asp:TextBox>
                 </div>
@@ -284,20 +284,20 @@
             <!--BOTONES GUARDAR + CANCELAR -->
             <div class="form-group">
                 <div class="col-md-2 col-md-offset-2">
-                    <asp:Button ID="btnGuardarActuacion" runat="server" Text="Guardar Actuacion" CssClass="btn btn-success form-control" OnClick="btnGuardarActuacion_Click" />
+                    <asp:Button ID="btnGuardarActuacion" runat="server" Text="Guardar Actuacion" CssClass="boton_verde" OnClick="btnGuardarActuacion_Click" />
                 </div>
                 <div class="col-md-2">
-                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-danger form-control" OnClick="btnCancelar_Click" />
+                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="boton_rojo" OnClick="btnCancelar_Click" />
                 </div>
                 <div class="col-md-2">
-                    <asp:Button ID="btnActualizarActuacion" runat="server" Text="Actualizar Actuacion" CssClass="btn btn-success form-control" OnClick="btnActualizarActuacion_Click" />
+                    <asp:Button ID="btnActualizarActuacion" runat="server" Text="Actualizar Actuacion" CssClass="boton_verde" OnClick="btnActualizarActuacion_Click" />
                 </div>
             </div>
         </asp:Panel>
 
         <!--GRILLA CON LAS ACTUACIONES-->
         <asp:Label ID="lblGrillaActuaciones" runat="server" Text="GRILLA DE ACTUACIONES">
-                <h4>ACTUACIONES REALIZADAS</h4>
+                <h3>Actuaciones Realizadas</h3>
         </asp:Label>
         <div class="form-group">
             <div class="col-md-12">

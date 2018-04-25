@@ -24,7 +24,7 @@ namespace Sistema_CyT
         {
             if (IsPostBack) return;
 
-            txtFechaActuacionProyectoCofecyt.Text = Convert.ToString(DateTime.Today.ToShortDateString());
+            
             txtFechaLimite.Text = Convert.ToString(DateTime.Today.ToShortDateString());
 
             MostrarProyectoCofecyt(ListarProyectosCofecyt.idProyectoCofecytSeleccionado);
@@ -33,6 +33,8 @@ namespace Sistema_CyT
 
             LlenarGrillaActuaciones();
             LimpiarPantalla();
+
+            txtFechaActuacionProyectoCofecyt.Text = Convert.ToString(DateTime.Today.ToShortDateString());
         }
         private void MostrarProyectoCofecyt(int id)
         {
@@ -73,6 +75,7 @@ namespace Sistema_CyT
             btnActualizarActuacion.Visible = false;
             btnGuardarActuacion.Visible = true;
             LimpiarPantalla();
+            txtFechaActuacionProyectoCofecyt.Text = Convert.ToString(DateTime.Today.ToShortDateString());
 
             if (PanelNuevaActuacionProyectoCofecyt.Visible == true)
             {

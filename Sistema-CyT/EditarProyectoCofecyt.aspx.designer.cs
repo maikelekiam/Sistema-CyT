@@ -28,7 +28,7 @@ namespace Sistema_CyT {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFiltroConvocatoria;
+        protected global::System.Web.UI.WebControls.Label txtFiltroConvocatoria;
         
         /// <summary>
         /// ddlConvocatoriaChoice control.
@@ -46,7 +46,7 @@ namespace Sistema_CyT {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFiltroProyecto;
+        protected global::System.Web.UI.WebControls.Label txtFiltroProyecto;
         
         /// <summary>
         /// ddlProyectoChoice control.

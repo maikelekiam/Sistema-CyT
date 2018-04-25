@@ -4,13 +4,13 @@
     <div class="container">
         <asp:Panel ID="PanelSuperior" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <h3>Formulario EDITAR Fondo</h3>
+                <h3>EDITAR Fondo</h3>
             </div>
 
             <!-- LISTA CON LOS FONDOS EN LA BASE DE DATOS -->
             <div class="form-group">
                 <br />
-                <asp:Label ID="lblDdl" Font-Bold="true" runat="server" Text="&lt Seleccione FONDO &gt" CssClass="col-md-2 control-label"> </asp:Label>
+                <asp:Label ID="lblDdl" Font-Bold="true" runat="server" Text="" CssClass="col-md-2 AlineadoDerecha"> </asp:Label>
                 <div class="col-md-6">
                     <asp:DropDownList ID="ddlActualizarFondo" runat="server"
                         BackColor="#ffff99"
@@ -27,7 +27,7 @@
 
             <!-- NOMBRE DEL FONDO -->
             <div class="form-group">
-                <asp:Label ID="lblNombre" runat="server" Text="NOMBRE" CssClass="col-md-2 control-label"> </asp:Label>
+                <asp:Label ID="lblNombre" runat="server" Text="NOMBRE" CssClass="col-md-2 AlineadoDerecha"> </asp:Label>
                 <div class="col-md-6">
                     <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control tb5" TextMode="MultiLine" Rows="1"></asp:TextBox>
                 </div>
@@ -35,7 +35,7 @@
 
             <!-- DESCRIPCION DEL FONDO -->
             <div class="form-group">
-                <asp:Label ID="lblDescripcion" runat="server" Text="DESCRIPCION" CssClass="col-md-2 control-label"> </asp:Label>
+                <asp:Label ID="lblDescripcion" runat="server" Text="DESCRIPCION" CssClass="col-md-2 AlineadoDerecha"> </asp:Label>
                 <div class="col-md-6 ">
                     <asp:TextBox ID="txtDecripcion" runat="server" CssClass="form-control tb5" TextMode="MultiLine" Rows="2"></asp:TextBox>
                 </div>
@@ -43,7 +43,7 @@
 
             <!-- ORIGEN DEL FONDO -->
             <div class="form-group">
-                <asp:Label ID="lblOrigen" runat="server" Text="ORIGEN" CssClass="col-md-2 control-label"></asp:Label>
+                <asp:Label ID="lblOrigen" runat="server" Text="ORIGEN" CssClass="col-md-2 AlineadoDerecha"></asp:Label>
                 <div class="col-md-4">
                     <asp:DropDownList ID="ddlOrigen" runat="server"
                         BackColor="WhiteSmoke"
@@ -62,7 +62,7 @@
                 <%--AGREGAR ACA EL MODAL PARA NUEVO ORIGEN--%>
                 <div class="form-group">
                     <div class="col-md-2">
-                        <button type="button" class="btn boton_azul" data-toggle="modal" data-target="#modalOrigen">Nuevo Origen</button>
+                        <button type="button" class="boton_azul" data-toggle="modal" data-target="#modalOrigen">Nuevo Origen</button>
                     </div>
                     <!-- MODAL EMPRESA  -->
                     <div class="modal fade" id="modalOrigen" tabindex="-1" role="dialog" aria-labelledby="modalLabelOrigen" aria-hidden="true">
@@ -81,8 +81,8 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <asp:Button runat="server" ID="btnModalOrigenSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
-                                        <asp:Button runat="server" ID="btnModalOrigenGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalOrigenGuardar_Click" />
+                                        <asp:Button runat="server" ID="btnModalOrigenSalir" Text="Salir" class="boton_rojo" data-dismiss="modal" />
+                                        <asp:Button runat="server" ID="btnModalOrigenGuardar" Text="Guardar" CssClass="boton_verde" OnClick="btnModalOrigenGuardar_Click" />
                                     </div>
                                 </div>
                             </div>
@@ -92,37 +92,37 @@
             </div>
             <!-- TELEFONO -->
             <div class="form-group">
-                <asp:Label ID="lblTelefono" runat="server" Text="TELEFONO" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
+                <asp:Label ID="lblTelefono" runat="server" Text="TELEFONO" CssClass="col-md-2 col-xs-6 AlineadoDerecha"> </asp:Label>
                 <div class="col-md-6 col-xs-12">
                     <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control tb5"></asp:TextBox><br />
                 </div>
             </div>
             <!-- DIRECCION -->
             <div class="form-group">
-                <asp:Label ID="lblDireccion" runat="server" Text="DIRECCION" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
+                <asp:Label ID="lblDireccion" runat="server" Text="DIRECCION" CssClass="col-md-2 col-xs-6 AlineadoDerecha"> </asp:Label>
                 <div class="col-md-6 col-xs-12">
                     <asp:TextBox ID="txtDireccion" runat="server" CssClass="form-control tb5"></asp:TextBox><br />
                 </div>
             </div>
             <!-- CONTACTO -->
             <div class="form-group">
-                <asp:Label ID="lblContacto" runat="server" Text="CONTACTO" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
+                <asp:Label ID="lblContacto" runat="server" Text="CONTACTO" CssClass="col-md-2 col-xs-6 AlineadoDerecha"> </asp:Label>
                 <div class="col-md-6 col-xs-12">
                     <asp:TextBox ID="txtContacto" runat="server" CssClass="form-control tb5"></asp:TextBox><br />
                 </div>
             </div>
             <!-- ACTIVO -->
             <div class="form-group">
-                <asp:Label ID="lblActivo" runat="server" Text="ACTIVO" CssClass="col-md-2 control-label "></asp:Label>
+                <asp:Label ID="lblActivo" runat="server" Text="ACTIVO" CssClass="col-md-2 AlineadoDerecha "></asp:Label>
                 <div class="col-md-1">
-                    <asp:CheckBox ID="chkActivo" runat="server" CssClass="control-label" BorderStyle="None" Checked="true" />
+                    <asp:CheckBox ID="chkActivo" runat="server" CssClass="AlineadoDerecha" BorderStyle="None" Checked="true" />
                 </div>
             </div>
 
             <!-- BOTON ACTUALIZAR -->
             <div class="form-group">
                 <div class="col-md-2 col-md-offset-2">
-                    <asp:Button ID="btnActualizarFondo" runat="server" Text="Actualizar Fondo" CssClass="btn form-control boton_verde" OnClick="btnActualizarFondo_Click" />
+                    <asp:Button ID="btnActualizarFondo" runat="server" Text="Actualizar Fondo" CssClass="boton_verde" OnClick="btnActualizarFondo_Click" />
                 </div>
             </div>
         </asp:Panel>

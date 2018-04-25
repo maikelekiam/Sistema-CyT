@@ -30,8 +30,7 @@ namespace Sistema_CyT
             txtTelefono.Text = empresa.Telefono;
             txtCorreoElectronico.Text = empresa.CorreoElectronico;
             txtObservaciones.Text = empresa.Observaciones;
-            //txtDomicilio.Text = empresa.Domicilio;
-            lbl01.Text = empresa.Domicilio;
+            txtDomicilio.Text = empresa.Domicilio;
 
             if (empresa.IdLocalidad > 0)
             {

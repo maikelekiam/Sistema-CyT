@@ -31,21 +31,11 @@ namespace Sistema_CyT
             dgvPersona.Columns[0].Visible = false;
         }
 
-
-        //protected void dgvPersona_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    GridViewRow row = this.dgvPersona.SelectedRow;
-
-        //    idPersonaSeleccionada = Convert.ToInt32(row.Cells[0].Text);
-
-        //    Response.Redirect("ActuacionesPersona.aspx");
-        //}
-
         protected void dgvPersona_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
             idPersonaSeleccionada = Convert.ToInt32(dgvPersona.Rows[e.NewSelectedIndex].Cells[0].Text);
 
-            lblFondo.Text = dgvPersona.Rows[e.NewSelectedIndex].Cells[0].Text;
+            //lblFondo.Text = dgvPersona.Rows[e.NewSelectedIndex].Cells[0].Text;
 
             Response.Redirect("ActuacionesPersona.aspx");
 
@@ -55,7 +45,7 @@ namespace Sistema_CyT
         {
             idPersonaSeleccionada = Convert.ToInt32(dgvPersona.Rows[e.RowIndex].Cells[0].Text);
 
-            lblFondo.Text = dgvPersona.Rows[e.RowIndex].Cells[0].Text;
+            //lblFondo.Text = dgvPersona.Rows[e.RowIndex].Cells[0].Text;
 
             Response.Redirect("MostrarPersona.aspx");
         }

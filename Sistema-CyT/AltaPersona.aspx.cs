@@ -48,7 +48,7 @@ namespace Sistema_CyT
             }
             else
             {
-                //NO SE PUEDE GUARDAR LOS DATOS
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Correct", "alert('Complete los campos: NOMBRE y APELLIDO.')", true);
             }
         }
         private void GuardarPersona()
@@ -64,7 +64,7 @@ namespace Sistema_CyT
             persona.Domicilio = txtDomicilio.Text;
             persona.Observaciones = txtObservaciones.Text;
 
-            if (ddlLocalidad.SelectedValue != "-1" )
+            if (ddlLocalidad.SelectedValue != "-1")
             {
                 persona.Localidad = localidadNego.TraerLocalidadIdSegunItem(ddlLocalidad.SelectedItem.ToString());
             }

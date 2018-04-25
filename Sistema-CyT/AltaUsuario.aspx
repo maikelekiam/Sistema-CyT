@@ -7,7 +7,6 @@
             <div class="panel-heading">
                 <h3>Nuevo USUARIO</h3>
             </div>
-            <!--AGREGAR EL DROPDOWNLIST-->
             <!--LISTA CON LOS USUARIOS DE LA BD-->
             <div class="form-group">
                 <br />
@@ -17,7 +16,8 @@
                         BackColor="WhiteSmoke"
                         ForeColor="#000066"
                         Font-Bold="true"
-                        CssClass="form-control"
+                        CssClass="form-control selectpicker"
+                        data-live-search="true"
                         DataTextField="nombre"
                         AutoPostBack="True"
                         AppendDataBoundItems="true"
@@ -26,7 +26,6 @@
                     </asp:DropDownList>
                 </div>
                 <div style="margin-left: auto; margin-right: auto; text-align: right;">
-
                     <div class="col-md-1 col-md-offset-1">
                         <asp:Label ID="lblIdU" runat="server" Text="ID = " CssClass="control-label"> </asp:Label>
                     </div>
@@ -40,61 +39,58 @@
             <!-- NOMBRE -->
             <div class="form-group">
                 <br />
-                <asp:Label ID="lblNombre" runat="server" Text="NOMBRE" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
+                <asp:Label ID="lblNombre" runat="server" Text="NOMBRE" CssClass="col-md-2 AlineadoDerecha"> </asp:Label>
                 <div class="col-md-6 col-xs-12">
-                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control tb5"></asp:TextBox><br />
+                    <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control t-left"></asp:TextBox><br />
                 </div>
             </div>
             <!-- CONTRASEÑA -->
             <div class="form-group">
-                <asp:Label ID="lblContrasenia" runat="server" Text="CONTRASEÑA" CssClass="col-md-2 col-xs-6 control-label "> </asp:Label>
+                <asp:Label ID="lblContrasenia" runat="server" Text="CONTRASEÑA" CssClass="col-md-2 AlineadoDerecha"> </asp:Label>
                 <div class="col-md-6 col-xs-12">
-                    <asp:TextBox ID="txtContrasenia" runat="server" CssClass="form-control tb5"></asp:TextBox><br />
+                    <asp:TextBox ID="txtContrasenia" runat="server" CssClass="form-control t-left"></asp:TextBox><br />
                 </div>
             </div>
             <!-- GRUPO -->
             <div class="form-group">
-                <asp:Label ID="lblGrupo" runat="server" Text="GRUPO" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
+                <asp:Label ID="lblGrupo" runat="server" Text="GRUPO" CssClass="col-md-2 AlineadoDerecha"> </asp:Label>
                 <div class="col-md-6 col-xs-12">
-                    <asp:TextBox ID="txtGrupo" runat="server" CssClass="form-control tb5"
+                    <asp:TextBox ID="txtGrupo" runat="server" CssClass="form-control t-left"
                         onkeypress="return validarSoloNumeros(event);" MaxLength="2"></asp:TextBox><br />
                 </div>
             </div>
             <!-- MAIL -->
             <div class="form-group">
-                <asp:Label ID="lblMail" runat="server" Text="MAIL" CssClass="col-md-2 col-xs-6 control-label"> </asp:Label>
+                <asp:Label ID="lblMail" runat="server" Text="MAIL" CssClass="col-md-2 AlineadoDerecha" > </asp:Label>
                 <div class="col-md-6 col-xs-12">
-                    <asp:TextBox ID="txtMail" runat="server" CssClass="form-control tb5"
+                    <asp:TextBox ID="txtMail" runat="server" CssClass="form-control t-left"
                         onkeypress="return validarEmail(event);"></asp:TextBox><br />
                 </div>
             </div>
             <!--BOTONES GUARDAR Y ACTUALIZAR-->
             <div class="form-group">
                 <div class="col-md-2 col-md-offset-2">
-                    <br />
-                    <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary form-control boton_verde" OnClick="btnGuardar_Click" />
+                    <asp:Button ID="btnGuardar" runat="server" Text="Guardar" Width="180" CssClass="boton_verde" OnClick="btnGuardar_Click" />
                 </div>
                 <div class="col-md-2">
-                    <br />
-                    <asp:Button ID="btnActualizar" runat="server" Text="Actualizar" CssClass="btn btn-danger form-control boton_rojo" OnClick="btnActualizar_Click" />
+                    <asp:Button ID="btnActualizar" runat="server" Text="Actualizar" Width="180" CssClass="boton_verde" OnClick="btnActualizar_Click" />
                 </div>
             </div>
             <!--GRILLA-->
             <div class="form-group">
                 <div class="col-md-9 col-md-offset-1">
                     <asp:GridView ID="dgvUsuario" runat="server" AutoGenerateColumns="false"
-                        CssClass="table table-hover table-bordered" BorderWidth="4px">
+                        CssClass="table table-hover table-striped" BorderWidth="2px"
+                        GridLines="Both" EmptyDataText="No existen usuarios registrados" ShowHeaderWhenEmpty="true">
                         <Columns>
-                            <asp:BoundField HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Center" />
-                            <asp:BoundField HeaderText="Contraseña" DataField="contrasenia" ItemStyle-HorizontalAlign="Center" />
-                            <asp:BoundField HeaderText="Grupo" DataField="grupo" ItemStyle-HorizontalAlign="Center" />
-                            <asp:BoundField HeaderText="Mail" DataField="mail" ItemStyle-HorizontalAlign="Center" />
+                            <asp:BoundField HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Left" HeaderStyle-BackColor="#cccccc" />
+                            <asp:BoundField HeaderText="Contraseña" DataField="contrasenia" ItemStyle-HorizontalAlign="Left" HeaderStyle-BackColor="#cccccc" />
+                            <asp:BoundField HeaderText="Grupo" DataField="grupo" ItemStyle-HorizontalAlign="Left" HeaderStyle-BackColor="#cccccc" />
+                            <asp:BoundField HeaderText="Mail" DataField="mail" ItemStyle-HorizontalAlign="Left" HeaderStyle-BackColor="#cccccc" />
                         </Columns>
                     </asp:GridView>
                 </div>
             </div>
         </asp:Panel>
     </div>
-
-
 </asp:Content>

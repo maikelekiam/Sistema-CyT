@@ -9,9 +9,7 @@
             <!-- LISTA CON LOS FONDOS EN LA BASE DE DATOS -->
             <div class="form-group">
                 <br />
-                <div class="col-md-2">
-                    <asp:TextBox ID="txtFiltroFondo" runat="server" CssClass="form-control AlineadoDerecha" Font-Bold="true" ReadOnly="true">< Filtro Fondo ></asp:TextBox>
-                </div>
+                    <asp:Label ID="txtFiltroFondo" runat="server" Text="" CssClass="col-md-2 AlineadoDerecha"></asp:Label>
                 <%--<asp:Label ID="lblFondoChoice" Font-Bold="true" Height="34" BackColor="LightGray" BorderColor="Brown" runat="server" Text="&lt Filtro Fondo &gt" CssClass="col-md-2 control-label"> </asp:Label>--%>
                 <div class="col-md-8">
                     <asp:DropDownList ID="ddlFondoChoice" runat="server"
@@ -30,18 +28,15 @@
             <!-- LISTA CON LAS CONVOCATORIAS EN LA BASE DE DATOS -->
             <div class="form-group">
                 <div class="col-md-2">
-                    <asp:TextBox ID="txtFiltroConvocatoria" runat="server" CssClass="form-control AlineadoDerecha" Font-Bold="true" ReadOnly="true">< Filtro Convocatoria ></asp:TextBox>
+                    <asp:TextBox ID="txtFiltroConvocatoria" runat="server" Text="" CssClass="col-md-2 AlineadoDerecha"></asp:TextBox>
                 </div>
                 <%--<asp:Label ID="lblConvocatoriaChoice" Font-Bold="true" runat="server" Text="&lt Filtro Convocatoria &gt" CssClass="col-md-2 control-label"></asp:Label>--%>
                 <div class="col-md-8">
                     <asp:DropDownList ID="ddlConvocatoriaChoice" runat="server"
                         BackColor="WhiteSmoke"
                         ForeColor="#000066"
-                        Width="100%"
-                        Font-Bold="false"
                         CssClass="selectpicker form-control show-tick"
                         data-live-search="true"
-                        
                         AutoPostBack="true"
                         AppendDataBoundItems="false"
                         OnSelectedIndexChanged="ddlConvocatoriaChoice_SelectedIndexChanged">
@@ -52,7 +47,7 @@
             <!-- LISTA CON LOS PROYECTOS EN LA BASE DE DATOS -->
             <div class="form-group">
                 <div class="col-md-2">
-                    <asp:TextBox ID="txtFiltroProyecto" runat="server" CssClass="form-control AlineadoDerecha" Font-Bold="true" ReadOnly="true">< Filtro Proyecto ></asp:TextBox>
+                    <asp:TextBox ID="txtFiltroProyecto" runat="server" Text="" CssClass="col-md-2 AlineadoDerecha"></asp:TextBox>
                 </div>
                 <%--<asp:Label ID="lblProyectos" Font-Bold="true" runat="server" Text="&lt Seleccione Proyecto &gt" CssClass="col-md-2 control-label"> </asp:Label>--%>
                 <div class="col-md-8">
@@ -61,7 +56,6 @@
                         Font-Bold="true"
                         CssClass="selectpicker form-control show-tick"
                         data-live-search="true"
-                        
                         AutoPostBack="True"
                         AppendDataBoundItems="false"
                         OnSelectedIndexChanged="ddlProyectoChoice_SelectedIndexChanged">
@@ -75,7 +69,7 @@
             <!--NOMBRE-->
             <br />
             <div class="form-group">
-                <asp:Label ID="lblNombre" runat="server" Text="TITULO" CssClass="col-md-2 col-xs-12 control-label"></asp:Label>
+                <asp:Label ID="lblNombre" runat="server" Text="TITULO" CssClass="col-md-2 AlineadoDerecha"></asp:Label>
                 <div class="col-md-8 col-xs-12">
                     <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2" BackColor="WhiteSmoke" Font-Bold="true"></asp:TextBox>
                 </div>
@@ -157,7 +151,7 @@
                 <%--AGREGAR ACA EL MODAL PARA LA NUEVA LOCALIDAD--%>
                 <div class="form-group">
                     <div class="col-md-2">
-                        <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalLocalidad">Nueva Localidad</button>
+                        <button type="button" class="boton_azul" data-toggle="modal" data-target="#modalLocalidad">Nueva Localidad</button>
                     </div>
                     <!-- MODAL LOCALIDAD  -->
                     <div class="modal fade" id="modalLocalidad" tabindex="-1" role="dialog" aria-labelledby="modalLabelLocalidad" aria-hidden="true">
@@ -183,8 +177,8 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <asp:Button runat="server" ID="btnModalLocalidadSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
-                                        <asp:Button runat="server" ID="btnModalLocalidadGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalLocalidadGuardar_Click" />
+                                        <asp:Button runat="server" ID="btnModalLocalidadSalir" Text="Salir" class="boton_rojo" data-dismiss="modal" />
+                                        <asp:Button runat="server" ID="btnModalLocalidadGuardar" Text="Guardar" CssClass="boton_verde" OnClick="btnModalLocalidadGuardar_Click" />
                                     </div>
                                 </div>
                             </div>
@@ -229,21 +223,21 @@
             <div class="form-group">
                 <asp:Label ID="lblMontoSolicitado" runat="server" Text="MONTO SOLICITADO" CssClass="col-md-2 col-xs-12 control-label"> </asp:Label>
                 <div class="col-md-4 col-xs-12">
-                    <asp:TextBox ID="txtMontoSolicitado" Text="0" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtMontoSolicitado" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
             <!--MONTO CONTRAPARTE-->
             <div class="form-group">
                 <asp:Label ID="lblMontoContraparte" runat="server" Text="MONTO CONTRAPARTE" CssClass="col-md-2 col-xs-12 control-label"> </asp:Label>
                 <div class="col-md-4 col-xs-12">
-                    <asp:TextBox ID="txtMontoContraparte" Text="0" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtMontoContraparte" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
             <!--MONTO TOTAL-->
             <div class="form-group">
                 <asp:Label ID="lblMontoTotal" runat="server" Text="MONTO TOTAL" CssClass="col-md-2 col-xs-12 control-label"> </asp:Label>
                 <div class="col-md-4 col-xs-12">
-                    <asp:TextBox ID="txtMontoTotal" Text="0" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtMontoTotal" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
             <!--CONTACTO-->
@@ -264,7 +258,7 @@
                 <%--AGREGAR ACA EL MODAL PARA EL NUEVO CONTACTO--%>
                 <div class="form-group">
                     <div class="col-md-2">
-                        <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalContacto">Nuevo Contacto</button>
+                        <button type="button" class="boton_azul" data-toggle="modal" data-target="#modalContacto">Nuevo Contacto</button>
                     </div>
                     <!-- MODAL CONTACTO  -->
                     <div class="modal fade" id="modalContacto" tabindex="-1" role="dialog" aria-labelledby="modalLabelContacto" aria-hidden="true">
@@ -302,8 +296,8 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <asp:Button runat="server" ID="btnModalContactoSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
-                                        <asp:Button runat="server" ID="btnModalContactoGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalContactoGuardar_Click" />
+                                        <asp:Button runat="server" ID="btnModalContactoSalir" Text="Salir" class="boton_rojo" data-dismiss="modal" />
+                                        <asp:Button runat="server" ID="btnModalContactoGuardar" Text="Guardar" CssClass="boton_verde" OnClick="btnModalContactoGuardar_Click" />
                                     </div>
                                 </div>
                             </div>
@@ -330,7 +324,7 @@
                 <%--AGREGAR ACA EL MODAL PARA LA NUEVA EMPRESA--%>
                 <div class="form-group">
                     <div class="col-md-2">
-                        <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalEmpresa">Nueva Empresa</button>
+                        <button type="button" class="boton_azul" data-toggle="modal" data-target="#modalEmpresa">Nueva Empresa</button>
                     </div>
                     <!-- MODAL EMPRESA  -->
                     <div class="modal fade" id="modalEmpresa" tabindex="-1" role="dialog" aria-labelledby="modalLabelEmpresa" aria-hidden="true">
@@ -349,8 +343,8 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <asp:Button runat="server" ID="btnModalEmpresaSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
-                                        <asp:Button runat="server" ID="btnModalEmpresaGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalEmpresaGuardar_Click" />
+                                        <asp:Button runat="server" ID="btnModalEmpresaSalir" Text="Salir" class="boton_rojo" data-dismiss="modal" />
+                                        <asp:Button runat="server" ID="btnModalEmpresaGuardar" Text="Guardar" CssClass="boton_verde" OnClick="btnModalEmpresaGuardar_Click" />
                                     </div>
                                 </div>
                             </div>
@@ -391,7 +385,7 @@
                 <div class="form-group">
                     <asp:Label ID="lblEtapa" runat="server" Text="ETAPAS" CssClass="col-md-2 control-label"> </asp:Label>
                     <div class="col-md-4">
-                        <button id="btnAgregarEtapa" type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#modalEtapa">Agregar Etapa</button>
+                        <button id="btnAgregarEtapa" type="button" class="boton_azul" data-toggle="modal" data-target="#modalEtapa">Agregar Etapa</button>
                     </div>
                 </div>
 
@@ -479,8 +473,8 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <asp:Button runat="server" ID="btnModalEtapaSalir" Text="SALIR" class="btn btn-danger" data-dismiss="modal" />
-                                    <asp:Button runat="server" ID="btnModalEtapaGuardar" Text="GUARDAR" CssClass="btn btn-success" OnClick="btnModalEtapaGuardar_Click" />
+                                    <asp:Button runat="server" ID="btnModalEtapaSalir" Text="Salir" class="boton_rojo" data-dismiss="modal" />
+                                    <asp:Button runat="server" ID="btnModalEtapaGuardar" Text="Guardar" CssClass="boton_verde" OnClick="btnModalEtapaGuardar_Click" />
                                 </div>
                             </div>
                         </div>
@@ -817,42 +811,42 @@
                 <br />
                 <asp:Label ID="lblMontoSolicitadoCofecyt" runat="server" Text="MONTO SOLICITADO" CssClass="col-md-3 col-xs-12 control-label"> </asp:Label>
                 <div class="col-md-4 col-xs-12">
-                    <asp:TextBox ID="txtMontoSolicitadoCofecyt" Text="0" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtMontoSolicitadoCofecyt" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
             <!--MONTO CONTRAPARTE-->
             <div class="form-group">
                 <asp:Label ID="lblMontoContraparteCofecyt" runat="server" Text="MONTO CONTRAPARTE" CssClass="col-md-3 col-xs-12 control-label"> </asp:Label>
                 <div class="col-md-4 col-xs-12">
-                    <asp:TextBox ID="txtMontoContraparteCofecyt" Text="0" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtMontoContraparteCofecyt" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
             <!--MONTO TOTAL-->
             <div class="form-group">
                 <asp:Label ID="lblMontoTotalCofecyt" runat="server" Text="MONTO TOTAL" CssClass="col-md-3 col-xs-12 control-label"> </asp:Label>
                 <div class="col-md-4 col-xs-12">
-                    <asp:TextBox ID="txtMontoTotalCofecyt" Text="0" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtMontoTotalCofecyt" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
             <!--MONTO TOTAL RENDIDO Y APROBADO (DGA)-->
             <div class="form-group">
                 <asp:Label ID="lblMontoTotalDgaCofecyt" runat="server" Text="MONTO TOTAL RENDIDO Y APROBADO DGA" CssClass="col-md-3 col-xs-12 control-label"> </asp:Label>
                 <div class="col-md-4 col-xs-12">
-                    <asp:TextBox ID="txtMontoTotalDgaCofecyt" Text="0" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtMontoTotalDgaCofecyt" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
             <!--MONTO DEVOLUCION-->
             <div class="form-group">
                 <asp:Label ID="lblMontoDevolucionCofecyt" runat="server" Text="DEVOLUCION" CssClass="col-md-3 col-xs-12 control-label"> </asp:Label>
                 <div class="col-md-4 col-xs-12">
-                    <asp:TextBox ID="txtMontoDevolucionCofecyt" Text="0" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtMontoDevolucionCofecyt" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
             <!--MONTO RESCINDIDO-->
             <div class="form-group">
                 <asp:Label ID="lblMontoRescindidoCofecyt" runat="server" Text="MONTO RESCINDIDO" CssClass="col-md-3 col-xs-12 control-label"> </asp:Label>
                 <div class="col-md-4 col-xs-12">
-                    <asp:TextBox ID="txtMontoRescindidoCofecyt" Text="0" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtMontoRescindidoCofecyt" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
         </asp:Panel>
@@ -1090,7 +1084,7 @@
         <!--BOTON ACTUALIZAR PROYECTO-->
         <div class="form-group">
             <div class="col-md-2 col-md-offset-2">
-                <asp:Button ID="btnActualizarProyecto" runat="server" Text="Actualizar Proyecto" CssClass="btn btn-success form-control" OnClick="btnActualizarProyecto_Click" />
+                <asp:Button ID="btnActualizarProyecto" runat="server" Text="Actualizar Proyecto" CssClass="boton_verde" OnClick="btnActualizarProyecto_Click" />
             </div>
         </div>
     </div>

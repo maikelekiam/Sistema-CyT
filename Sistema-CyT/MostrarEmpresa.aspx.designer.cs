@@ -85,13 +85,13 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.Label lblDomicilio;
         
         /// <summary>
-        /// lbl01 control.
+        /// txtDomicilio control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl01;
+        protected global::System.Web.UI.WebControls.Label txtDomicilio;
         
         /// <summary>
         /// lblLocalidad control.
@@ -146,5 +146,14 @@ namespace Sistema_CyT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label txtObservaciones;
+        
+        /// <summary>
+        /// Button1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
     }
 }

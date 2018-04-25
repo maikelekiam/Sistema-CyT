@@ -4,12 +4,12 @@
     <div class="container">
         <asp:Panel ID="PanelSuperior" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <h3>Lista de PROYECTOS</h3>
+                <h3>Proyectos</h3>
             </div>
             <!-- LISTA CON LOS FONDOS EN LA BASE DE DATOS -->
             <div class="form-group">
                 <br />
-                <asp:Label ID="lblFondoChoice" Font-Bold="true" runat="server" Text="&lt Filtro Fondo &gt" CssClass="col-md-2 control-label"> </asp:Label>
+                <asp:Label ID="lblFondoChoice" runat="server" Text="" CssClass="col-md-2 control-label"> </asp:Label>
                 <div class="col-md-8">
                     <asp:DropDownList ID="ddlFondoChoice" runat="server"
                         ForeColor="#000066"
@@ -26,7 +26,7 @@
             </div>
             <!-- LISTA CON LAS CONVOCATORIAS EN LA BASE DE DATOS -->
             <div class="form-group">
-                <asp:Label ID="lblConvocatoria" Font-Bold="true" runat="server" Text="&lt Filtro Convocatoria &gt" CssClass="col-md-2 control-label"></asp:Label>
+                <asp:Label ID="lblConvocatoria" runat="server" Text="" CssClass="col-md-2 control-label"></asp:Label>
                 <div class="col-md-8">
                     <asp:DropDownList ID="ddlConvocatoria" runat="server"
                         BackColor="WhiteSmoke"
@@ -42,10 +42,10 @@
                         <asp:ListItem Value="-1">&lt;Seleccione Convocatoria&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
-                <asp:Button runat="server" ID="btnTodos" Text="Filtrar TODOS" CssClass="btn boton_verde" OnClick="btnTodos_Click" />
+                <asp:Button runat="server" ID="btnTodos" Text="Filtrar TODOS" CssClass="boton_azul" OnClick="btnTodos_Click" />
             </div>
             <div class="form-group">
-                <asp:Label ID="lblEstado" runat="server" Font-Bold="true" Text="&lt Filtro Estado &gt" CssClass="col-md-2 control-label"></asp:Label>
+                <asp:Label ID="lblEstado" runat="server" Text="" CssClass="col-md-2 control-label"></asp:Label>
                 <div class="col-md-3 ">
                     <asp:DropDownList ID="ddlEstado" runat="server"
                         BackColor="WhiteSmoke"
@@ -59,7 +59,7 @@
                     </asp:DropDownList>
                 </div>
                 <div class="col-md-1 ">
-                    <asp:Button runat="server" ID="btnFiltrar" Text="Filtrar" CssClass="btn btn-success" OnClick="btnFiltrar_Click" />
+                    <asp:Button runat="server" ID="btnFiltrar" Text="Filtrar" CssClass="boton_verde" OnClick="btnFiltrar_Click" />
                 </div>
                 <div class="form-group">
                     <asp:Label ID="lblCantidadProyectosSumatoria" Font-Bold="true" runat="server" Text="" CssClass="col-md-3 control-label"></asp:Label>
