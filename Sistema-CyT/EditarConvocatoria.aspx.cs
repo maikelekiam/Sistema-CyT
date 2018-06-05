@@ -352,7 +352,7 @@ namespace Sistema_CyT
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Correct", "alert('Presione el boton Actualizar.')", true);
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Correct", "alert('Debe ACTUALIZAR la convocatoria para poder editar la modalidad.')", true);
 
 
             }
@@ -374,12 +374,23 @@ namespace Sistema_CyT
             Modalidad item = new Modalidad();
 
             item.IdConvocatoria = idConvocatoriaActual;
+
             item.Nombre = txtNombreModal.Text;
             item.Descripcion = txtDescripcionModal.Text;
             item.Objetivo = txtObjetivoModal.Text;
-            item.MontoMaximoProyecto = Int32.Parse(txtMontoMaximoProyectoModal.Text);
-            item.PorcentajeFinanciamiento = Int32.Parse(txtPorcentajeFinanciamientoModal.Text);
-            item.PlazoEjecucion = Int32.Parse(txtPlazoEjecucionModal.Text);
+
+            if (txtMontoMaximoProyectoModal.Text == "") { item.MontoMaximoProyecto = null; }
+            else { item.MontoMaximoProyecto = Int32.Parse(txtMontoMaximoProyectoModal.Text); }
+
+            if (txtPorcentajeFinanciamientoModal.Text == "") { item.PorcentajeFinanciamiento = null; }
+            else { item.PorcentajeFinanciamiento = Int32.Parse(txtPorcentajeFinanciamientoModal.Text); }
+
+            if (txtPlazoEjecucionModal.Text == "") { item.PlazoEjecucion = null; }
+            else { item.PlazoEjecucion = Int32.Parse(txtPlazoEjecucionModal.Text); }
+
+            //item.MontoMaximoProyecto = Int32.Parse(txtMontoMaximoProyectoModal.Text);
+            //item.PorcentajeFinanciamiento = Int32.Parse(txtPorcentajeFinanciamientoModal.Text);
+            //item.PlazoEjecucion = Int32.Parse(txtPlazoEjecucionModal.Text);
 
             txtNombreModal.Text = null;
             txtDescripcionModal.Text = null;

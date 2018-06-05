@@ -25,15 +25,16 @@ namespace Sistema_CyT
         public static int idProyectoSeleccionado = 1;
         public static int idConvocatoriaSeleccionada = 1;
         public static int idEstadoSeleccionado = 1;
-        public static string numeroExpedienteProyectoSeleccionado = null;
+        public static string codigoInternoProyectoSeleccionado = null;
 
-        int cantidadProyectosSumatoria = 0;
+        //int cantidadProyectosSumatoria = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack) return;
 
-            LlenarListaEstados();
+            lblPanelSuperiorTitulo.InnerText = "Proyectos";
+            //LlenarListaEstados();
             LlenarListaFondoChoice();
         }
         private void LlenarListaFondoChoice()
@@ -42,12 +43,12 @@ namespace Sistema_CyT
             ddlFondoChoice.DataValueField = "idFondo";
             ddlFondoChoice.DataBind();
         }
-        private void LlenarListaEstados()
-        {
-            ddlEstado.DataSource = tipoEstadoNego.MostrarTipoEstados().ToList();
-            ddlEstado.DataValueField = "idTipoEstado";
-            ddlEstado.DataBind();
-        }
+        //private void LlenarListaEstados()
+        //{
+        //    ddlEstado.DataSource = tipoEstadoNego.MostrarTipoEstados().ToList();
+        //    ddlEstado.DataValueField = "idTipoEstado";
+        //    ddlEstado.DataBind();
+        //}
         private void LlenarListaConvocatorias()
         {
             ddlConvocatoria.DataSource = convocatoriaNego.MostrarConvocatorias().ToList();
@@ -55,32 +56,33 @@ namespace Sistema_CyT
             ddlConvocatoria.DataBind();
         }
 
-        protected void btnFiltrar_Click(object sender, EventArgs e)
-        {
-            if ((Convert.ToInt32(ddlEstado.SelectedValue) != -1) && (ddlConvocatoria.SelectedValue != "-1") && (ddlConvocatoria.SelectedValue != ""))
-            {
-                idEstadoSeleccionado = tipoEstadoNego.ObtenerTipoEstadoSegunNombre(ddlEstado.SelectedItem.ToString()).IdTipoEstado;
+        //protected void btnFiltrar_Click(object sender, EventArgs e)
+        //{
+        //    if ((Convert.ToInt32(ddlEstado.SelectedValue) != -1) && (ddlConvocatoria.SelectedValue != "-1") && (ddlConvocatoria.SelectedValue != ""))
+        //    {
+        //        idEstadoSeleccionado = tipoEstadoNego.ObtenerTipoEstadoSegunNombre(ddlEstado.SelectedItem.ToString()).IdTipoEstado;
 
-                idConvocatoriaSeleccionada = Convert.ToInt32(ddlConvocatoria.SelectedValue.ToString());
+        //        idConvocatoriaSeleccionada = Convert.ToInt32(ddlConvocatoria.SelectedValue.ToString());
 
-                dgvProyectos.Columns[0].Visible = true;
-                dgvProyectos.Columns[1].Visible = true;
-                dgvProyectos.Columns[2].Visible = true;
-                dgvProyectos.Columns[3].Visible = true;
-                dgvProyectos.Columns[4].Visible = true;
+        //        dgvProyectos.Columns[0].Visible = true;
+        //        dgvProyectos.Columns[1].Visible = true;
+        //        dgvProyectos.Columns[2].Visible = true;
+        //        dgvProyectos.Columns[3].Visible = true;
+        //        dgvProyectos.Columns[4].Visible = true;
 
-                dgvProyectos.DataSource = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).Where(c => c.tipoEstado == ddlEstado.SelectedItem.ToString()).ToList();
-                dgvProyectos.DataBind();
+        //        dgvProyectos.DataSource = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).Where(c => c.tipoEstado == ddlEstado.SelectedItem.ToString()).ToList();
+        //        dgvProyectos.DataBind();
 
-                cantidadProyectosSumatoria = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).Where(c => c.tipoEstado == ddlEstado.SelectedItem.ToString()).Count();
-                lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
-            }
-        }
+        //        cantidadProyectosSumatoria = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).Where(c => c.tipoEstado == ddlEstado.SelectedItem.ToString()).Count();
+        //        lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
+        //    }
+        //}
 
         protected void ddlFondoChoice_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlFondoChoice.SelectedValue != "-1")
             {
+                lblPanelSuperiorTitulo.InnerText = "Proyectos: " + fondoNego.ObtenerFondo(Convert.ToInt32(ddlFondoChoice.SelectedValue)).Nombre;
                 LlenarChoiceConvocatorias(Convert.ToInt32(ddlFondoChoice.SelectedValue));
             }
             else
@@ -88,6 +90,7 @@ namespace Sistema_CyT
                 Response.Redirect("ListarProyectos.aspx");
             }
         }
+
         private void LlenarChoiceConvocatorias(int id)
         {
             ddlConvocatoria.DataSource = convocatoriaNego.ListarChoiceConvocatorias(id);
@@ -100,29 +103,23 @@ namespace Sistema_CyT
                 idConvocatoriaSeleccionada = Convert.ToInt32(ddlConvocatoria.SelectedValue.ToString());
 
                 //Me fijo si es un proyecto simple o un proyectocofecyt
-
                 if (fondoNego.ObtenerFondo(Convert.ToInt32(ddlFondoChoice.SelectedValue)).Nombre.ToUpper() == "COFECYT")
                 {
                     Response.Redirect("ListarProyectosCofecyt.aspx");
 
-                    dgvProyectos.Visible = false;
-                    dgvProyectoCofecyts.Visible = true;
-                    //Traer la lista de proyectos cofecyt
-                    dgvProyectoCofecyts.DataSource = proyectoCofecytNego.ListarChoiceProyectoCofecyts(idConvocatoriaSeleccionada).ToList();
-                    dgvProyectoCofecyts.DataBind();
+                    //dgvProyectos.Visible = false;
 
-                    cantidadProyectosSumatoria = proyectoCofecytNego.ListarChoiceProyectoCofecyts(idConvocatoriaSeleccionada).Count();
-                    lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
+                    //cantidadProyectosSumatoria = proyectoCofecytNego.ListarChoiceProyectoCofecyts(idConvocatoriaSeleccionada).Count();
+                    //lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
                 }
                 else
                 {
-                    dgvProyectos.Visible = true;
-                    dgvProyectoCofecyts.Visible = false;
+                    //dgvProyectos.Visible = true;
                     dgvProyectos.DataSource = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).ToList();
                     dgvProyectos.DataBind();
 
-                    cantidadProyectosSumatoria = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).Count();
-                    lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
+                    //cantidadProyectosSumatoria = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).Count();
+                    //lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
                 }
             }
             else
@@ -130,22 +127,18 @@ namespace Sistema_CyT
                 if (fondoNego.ObtenerFondo(Convert.ToInt32(ddlFondoChoice.SelectedValue)).Nombre.ToUpper() == "COFECYT")
                 {
                     dgvProyectos.Visible = false;
-                    dgvProyectoCofecyts.Visible = true;
-                    dgvProyectoCofecyts.DataSource = proyectoCofecytNego.ListarChoiceProyectoCofecyts(idConvocatoriaSeleccionada).ToList();
-                    dgvProyectoCofecyts.DataBind();
 
-                    cantidadProyectosSumatoria = proyectoCofecytNego.ListarChoiceProyectoCofecyts(idConvocatoriaSeleccionada).Count();
-                    lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
+                    //cantidadProyectosSumatoria = proyectoCofecytNego.ListarChoiceProyectoCofecyts(idConvocatoriaSeleccionada).Count();
+                    //lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
                 }
                 else
                 {
                     dgvProyectos.Visible = true;
-                    dgvProyectoCofecyts.Visible = false;
                     dgvProyectos.DataSource = listaProyectosFiltrados.ToList();
                     dgvProyectos.DataBind();
 
-                    cantidadProyectosSumatoria = listaProyectosFiltrados.Count();
-                    lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
+                    //cantidadProyectosSumatoria = listaProyectosFiltrados.Count();
+                    //lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
                 }
             }
         }
@@ -156,19 +149,16 @@ namespace Sistema_CyT
 
             if (fondoNego.ObtenerFondo(Convert.ToInt32(ddlFondoChoice.SelectedValue)).Nombre.ToUpper() == "COFECYT")
             {
-                dgvProyectoCofecyts.DataSource = proyectoCofecytNego.ListarChoiceProyectoCofecyts(idConvocatoriaSeleccionada).ToList();
-                dgvProyectoCofecyts.DataBind();
-
-                cantidadProyectosSumatoria = proyectoCofecytNego.ListarChoiceProyectoCofecyts(idConvocatoriaSeleccionada).Count();
-                lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
+                //cantidadProyectosSumatoria = proyectoCofecytNego.ListarChoiceProyectoCofecyts(idConvocatoriaSeleccionada).Count();
+                //lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
             }
             else
             {
                 dgvProyectos.DataSource = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).ToList();
                 dgvProyectos.DataBind();
 
-                cantidadProyectosSumatoria = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).Count();
-                lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
+                //cantidadProyectosSumatoria = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).Count();
+                //lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
             }
         }
 
@@ -176,41 +166,41 @@ namespace Sistema_CyT
         {
             GridViewRow row = this.dgvProyectos.SelectedRow;
 
-            numeroExpedienteProyectoSeleccionado = row.Cells[0].Text;
+            codigoInternoProyectoSeleccionado = row.Cells[0].Text;
 
             Response.Redirect("MostrarProyecto.aspx");
         }
 
-        protected void btnTodos_Click(object sender, EventArgs e)
-        {
-            if (ddlConvocatoria.SelectedValue != "-1" && ddlConvocatoria.SelectedValue != "")
-            {
-                idConvocatoriaSeleccionada = Convert.ToInt32(ddlConvocatoria.SelectedValue.ToString());
+        //protected void btnTodos_Click(object sender, EventArgs e)
+        //{
+        //    if (ddlConvocatoria.SelectedValue != "-1" && ddlConvocatoria.SelectedValue != "")
+        //    {
+        //        idConvocatoriaSeleccionada = Convert.ToInt32(ddlConvocatoria.SelectedValue.ToString());
 
-                dgvProyectos.Columns[0].Visible = true;
-                dgvProyectos.Columns[1].Visible = true;
-                dgvProyectos.Columns[2].Visible = true;
-                dgvProyectos.Columns[3].Visible = true;
-                dgvProyectos.Columns[4].Visible = true;
+        //        dgvProyectos.Columns[0].Visible = true;
+        //        dgvProyectos.Columns[1].Visible = true;
+        //        dgvProyectos.Columns[2].Visible = true;
+        //        dgvProyectos.Columns[3].Visible = true;
+        //        dgvProyectos.Columns[4].Visible = true;
 
-                dgvProyectos.DataSource = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).ToList();
-                dgvProyectos.DataBind();
+        //        dgvProyectos.DataSource = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).ToList();
+        //        dgvProyectos.DataBind();
 
-                //dgvProyectos.Columns[0].Visible = false;
+        //        //dgvProyectos.Columns[0].Visible = false;
 
-                cantidadProyectosSumatoria = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).Count();
-                lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
-            }
-            ddlEstado.Text = "-1";
-        }
+        //        cantidadProyectosSumatoria = proyectoNego.ListarChoiceProyectos(idConvocatoriaSeleccionada).Count();
+        //        lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
+        //    }
+        //    ddlEstado.Text = "-1";
+        //}
 
-        protected void dgvProyectoCofecyts_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            GridViewRow row = this.dgvProyectoCofecyts.SelectedRow;
+        //protected void dgvProyectoCofecyts_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    GridViewRow row = this.dgvProyectoCofecyts.SelectedRow;
 
-            numeroExpedienteProyectoSeleccionado = row.Cells[0].Text;
+        //    codigoInternoProyectoSeleccionado = row.Cells[0].Text;
 
-            Response.Redirect("MostrarProyectoCofecyt.aspx");
-        }
+        //    Response.Redirect("MostrarProyectoCofecyt.aspx");
+        //}
     }
 }

@@ -21,7 +21,7 @@ namespace Sistema_CyT
             {
                 LlenarListaTipoEstadoEtapas(); // SIRVE PARA EL DROP DOWN LIST
 
-                CargarDatosEtapa(EditarProyecto.idEtapaActual);
+                //CargarDatosEtapa(EditarProyecto.idEtapaActual);
             }
         }
         //Muestra en el DROPDOWNLIST los Tipos de Estado de la Etapa
@@ -104,7 +104,7 @@ namespace Sistema_CyT
         {
             Etapa etapa = new Etapa();
 
-            etapa.IdEtapa = EditarProyecto.idEtapaActual;
+            //etapa.IdEtapa = EditarProyecto.idEtapaActual;
             etapa.IdProyecto = EditarProyecto.idProyectoActual;
 
             etapa.Nombre = txtNombreModal.Text;

@@ -4,13 +4,23 @@
     <div class="container">
         <asp:Panel ID="PanelSuperior" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <h4>Lista de PROYECTOS</h4>
+                <h3>Proyectos de COFECyT</h3>
                 <asp:Label ID="lblFondo" Font-Bold="true" runat="server" CssClass="col-md-2 control-label"> </asp:Label>
             </div>
+            <%--<div class="form-group">
+                <br />
+                <div class="col-md-10 col-md-offset-1">
+                    <asp:Button runat="server" ID="btnDetem" Text="DETEM" CssClass="boton_naranja" />
+                    <asp:Button runat="server" ID="btnPfip" Text="PFIP" CssClass="boton_azul" />
+                    <asp:Button runat="server" ID="btnAsetur" Text="ASETUR" CssClass="boton_verde" />
+                    <asp:Button runat="server" ID="btnPfipEspro" Text="PFIP ESPRO" CssClass="boton_rojo" />
+                </div>
+            </div>--%>
+
             <!-- LISTA CON LAS CONVOCATORIAS EN LA BASE DE DATOS -->
             <div class="form-group">
                 <br />
-                <asp:Label ID="lblConvocatoria" runat="server" Text="" CssClass="col-md-2 AlineadoDerecha"></asp:Label>
+                <asp:Label ID="lblConvocatoria" runat="server" Text="CONVOCATORIA" CssClass="col-md-2 control-label"></asp:Label>
                 <div class="col-md-8">
                     <asp:DropDownList ID="ddlConvocatoria" runat="server"
                         BackColor="WhiteSmoke"
@@ -26,7 +36,7 @@
                         <asp:ListItem Value="-1">&lt;Seleccione Convocatoria&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
-<%--                <asp:Button runat="server" ID="btnTodos" Text="Filtrar TODOS" CssClass="btn boton_verde" OnClick="btnTodos_Click" />--%>
+                <%--                <asp:Button runat="server" ID="btnTodos" Text="Filtrar TODOS" CssClass="btn boton_verde" OnClick="btnTodos_Click" />--%>
             </div>
 
             <!--GRILLA -->
@@ -34,7 +44,7 @@
                 <div class="col-md-10 col-md-offset-1">
                     <asp:GridView ID="dgvProyectos" runat="server" AutoGenerateColumns="false"
                         CssClass="table table-hover table-striped" BorderWidth="2px"
-                        GridLines="Both" EmptyDataText="No existen proyectos" ShowHeaderWhenEmpty="true"
+                        GridLines="Both" EmptyDataText="No existen proyectos para esta Convocatoria" ShowHeaderWhenEmpty="true"
                         OnSelectedIndexChanging="dgvProyectos_SelectedIndexChanging"
                         OnRowDeleting="dgvProyectos_RowDeleting">
                         <Columns>
@@ -46,11 +56,11 @@
                                 </ItemTemplate>
                             </asp:TemplateField>--%>
 
-                            <asp:BoundField HeaderText="Titulo" DataField="titulo" ItemStyle-HorizontalAlign="Left" HeaderStyle-BackColor="#cccccc"/>
+                            <asp:BoundField HeaderText="Titulo" DataField="titulo" ItemStyle-HorizontalAlign="Left" HeaderStyle-BackColor="#cccccc" />
 
 
-                            <asp:ButtonField HeaderText="Actuaciones" CommandName="select" HeaderStyle-BackColor="#cccccc" ControlStyle-Width="50" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" ControlStyle-CssClass="glyphicon glyphicon-list" />
-                            <asp:ButtonField HeaderText="Detalles" CommandName="delete" HeaderStyle-BackColor="#cccccc" ControlStyle-Width="50" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" ControlStyle-CssClass="glyphicon glyphicon-search" />
+                            <asp:ButtonField HeaderText="Actuaciones" CommandName="select" HeaderStyle-BackColor="#cccccc" ControlStyle-Width="50" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" ControlStyle-CssClass="glyphicon glyphicon-list" HeaderStyle-Width="50"/>
+                            <asp:ButtonField HeaderText="Detalles" CommandName="delete" HeaderStyle-BackColor="#cccccc" ControlStyle-Width="50" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" ControlStyle-CssClass="glyphicon glyphicon-search" HeaderStyle-Width="50"/>
                         </Columns>
                     </asp:GridView>
                 </div>

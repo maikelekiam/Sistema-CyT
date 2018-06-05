@@ -4,7 +4,7 @@
     <div class="container">
         <asp:Panel ID="PanelSuperior" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <h4>Formulario EDITAR Modalidad</h4>
+                <h3>Editar Modalidad</h3>
             </div>
             <div class="form-group">
                 <br />
@@ -27,9 +27,9 @@
             </div>
             <!--PLAZO DE EJECUCION-->
             <div class="form-group">
-                <asp:Label ID="lblPlazoEjecucionModal" runat="server" Text="PLAZO EJECUCION" CssClass="col-md-3 AlineadoDerecha"> </asp:Label>
+                <asp:Label ID="lblPlazoEjecucionModal" runat="server" Text="PLAZO EJECUCION (meses)" CssClass="col-md-3 AlineadoDerecha"> </asp:Label>
                 <div class="col-md-8">
-                    <asp:TextBox ID="txtPlazoEjecucionModal" runat="server" CssClass="form-control" placeholder="meses"></asp:TextBox>
+                    <asp:TextBox ID="txtPlazoEjecucionModal" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
             <div class="form-group">

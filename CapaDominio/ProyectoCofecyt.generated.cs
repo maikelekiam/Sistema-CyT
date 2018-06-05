@@ -414,6 +414,19 @@ namespace CapaDominio
 			}
 		}
 		
+		private string codigoInterno;
+		public virtual string CodigoInterno
+		{
+			get
+			{
+				return this.codigoInterno;
+			}
+			set
+			{
+				this.codigoInterno = value;
+			}
+		}
+		
 		private UdtUvt udtUvt;
 		public virtual UdtUvt UdtUvt
 		{

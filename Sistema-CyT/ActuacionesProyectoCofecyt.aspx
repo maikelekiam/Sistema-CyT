@@ -100,13 +100,13 @@
             <!--BOTONES GUARDAR + CANCELAR -->
             <div class="form-group">
                 <div class="col-md-2 col-md-offset-2">
-                    <asp:Button ID="btnGuardarActuacion" runat="server" Text="Guardar Actuacion"  Width="180" CssClass="btn boton_verde" OnClick="btnGuardarActuacion_Click" />
+                    <asp:Button ID="btnGuardarActuacion" runat="server" Text="Guardar Actuacion"  Width="180" CssClass="boton_verde" OnClick="btnGuardarActuacion_Click" />
                 </div>
                 <div class="col-md-2">
-                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn boton_rojo" Width="180" OnClick="btnCancelar_Click" />
+                    <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="boton_rojo" Width="180" OnClick="btnCancelar_Click" />
                 </div>
                 <div class="col-md-2">
-                    <asp:Button ID="btnActualizarActuacion" runat="server" Text="Actualizar Actuacion"  Width="180" CssClass="btn boton_verde" OnClick="btnActualizarActuacion_Click" />
+                    <asp:Button ID="btnActualizarActuacion" runat="server" Text="Actualizar Actuacion"  Width="180" CssClass="boton_verde" OnClick="btnActualizarActuacion_Click" />
                 </div>
             </div>
         </asp:Panel>

@@ -22,6 +22,15 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.Panel PanelSuperior;
         
         /// <summary>
+        /// lblPanelSuperiorTitulo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblPanelSuperiorTitulo;
+        
+        /// <summary>
         /// lblFondoChoice control.
         /// </summary>
         /// <remarks>
@@ -58,51 +67,6 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.DropDownList ddlConvocatoria;
         
         /// <summary>
-        /// btnTodos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnTodos;
-        
-        /// <summary>
-        /// lblEstado control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEstado;
-        
-        /// <summary>
-        /// ddlEstado control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEstado;
-        
-        /// <summary>
-        /// btnFiltrar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFiltrar;
-        
-        /// <summary>
-        /// lblCantidadProyectosSumatoria control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCantidadProyectosSumatoria;
-        
-        /// <summary>
         /// dgvProyectos control.
         /// </summary>
         /// <remarks>
@@ -110,14 +74,5 @@ namespace Sistema_CyT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView dgvProyectos;
-        
-        /// <summary>
-        /// dgvProyectoCofecyts control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgvProyectoCofecyts;
     }
 }

@@ -61,10 +61,17 @@
             </div>
             <!-- MAIL -->
             <div class="form-group">
-                <asp:Label ID="lblMail" runat="server" Text="MAIL" CssClass="col-md-2 AlineadoDerecha" > </asp:Label>
+                <asp:Label ID="lblMail" runat="server" Text="MAIL" CssClass="col-md-2 AlineadoDerecha"> </asp:Label>
                 <div class="col-md-6 col-xs-12">
                     <asp:TextBox ID="txtMail" runat="server" CssClass="form-control t-left"
                         onkeypress="return validarEmail(event);"></asp:TextBox><br />
+                </div>
+            </div>
+            <!-- ACTIVO -->
+            <div class="form-group">
+                <asp:Label ID="lblActivo" runat="server" Text="ACTIVO" CssClass="col-md-2 AlineadoDerecha "></asp:Label>
+                <div class="col-md-1">
+                    <asp:CheckBox ID="chkActivo" runat="server" CssClass="AlineadoDerecha" BorderStyle="None" Checked="true" />
                 </div>
             </div>
             <!--BOTONES GUARDAR Y ACTUALIZAR-->
@@ -86,6 +93,9 @@
                             <asp:BoundField HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Left" HeaderStyle-BackColor="#cccccc" />
                             <asp:BoundField HeaderText="Contraseña" DataField="contrasenia" ItemStyle-HorizontalAlign="Left" HeaderStyle-BackColor="#cccccc" />
                             <asp:BoundField HeaderText="Grupo" DataField="grupo" ItemStyle-HorizontalAlign="Left" HeaderStyle-BackColor="#cccccc" />
+                            <asp:TemplateField HeaderStyle-BackColor="#cccccc" HeaderText="Activo" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100">
+                                <ItemTemplate><%# (Boolean.Parse(Eval("Activo").ToString())) ? "Si" : "No" %></ItemTemplate>
+                            </asp:TemplateField>
                             <asp:BoundField HeaderText="Mail" DataField="mail" ItemStyle-HorizontalAlign="Left" HeaderStyle-BackColor="#cccccc" />
                         </Columns>
                     </asp:GridView>

@@ -4,12 +4,12 @@
     <div class="container">
         <asp:Panel ID="PanelSuperior" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <h3>Proyectos</h3>
+                <h3 id="lblPanelSuperiorTitulo" runat="server">Listado de Proyectos</h3>
             </div>
             <!-- LISTA CON LOS FONDOS EN LA BASE DE DATOS -->
             <div class="form-group">
                 <br />
-                <asp:Label ID="lblFondoChoice" runat="server" Text="" CssClass="col-md-2 control-label"> </asp:Label>
+                <asp:Label ID="lblFondoChoice" runat="server" Text="FONDO" CssClass="col-md-2 control-label"> </asp:Label>
                 <div class="col-md-8">
                     <asp:DropDownList ID="ddlFondoChoice" runat="server"
                         ForeColor="#000066"
@@ -26,7 +26,7 @@
             </div>
             <!-- LISTA CON LAS CONVOCATORIAS EN LA BASE DE DATOS -->
             <div class="form-group">
-                <asp:Label ID="lblConvocatoria" runat="server" Text="" CssClass="col-md-2 control-label"></asp:Label>
+                <asp:Label ID="lblConvocatoria" runat="server" Text="CONVOCATORIA" CssClass="col-md-2 control-label"></asp:Label>
                 <div class="col-md-8">
                     <asp:DropDownList ID="ddlConvocatoria" runat="server"
                         BackColor="WhiteSmoke"
@@ -42,9 +42,9 @@
                         <asp:ListItem Value="-1">&lt;Seleccione Convocatoria&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
-                <asp:Button runat="server" ID="btnTodos" Text="Filtrar TODOS" CssClass="boton_azul" OnClick="btnTodos_Click" />
+                <%--                <asp:Button runat="server" ID="btnTodos" Text="Filtrar TODOS" CssClass="boton_azul" OnClick="btnTodos_Click" />--%>
             </div>
-            <div class="form-group">
+            <%--<div class="form-group">
                 <asp:Label ID="lblEstado" runat="server" Text="" CssClass="col-md-2 control-label"></asp:Label>
                 <div class="col-md-3 ">
                     <asp:DropDownList ID="ddlEstado" runat="server"
@@ -64,16 +64,16 @@
                 <div class="form-group">
                     <asp:Label ID="lblCantidadProyectosSumatoria" Font-Bold="true" runat="server" Text="" CssClass="col-md-3 control-label"></asp:Label>
                 </div>
-            </div>
+            </div>--%>
             <div class="form-group">
                 <br />
                 <div class="col-md-12 col-md-offset-0">
                     <asp:GridView ID="dgvProyectos" runat="server" AutoGenerateColumns="false"
                         CssClass="table table-hover table-striped" BorderWidth="2px"
-                        GridLines="Both"
+                        GridLines="Both" EmptyDataText="No existen Proyectos para esta Convocatoria" ShowHeaderWhenEmpty="true"
                         OnSelectedIndexChanged="dgvProyectos_SelectedIndexChanged">
                         <Columns>
-                            <asp:BoundField HeaderText="Expediente" DataField="numeroExpediente" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="150" />
+                            <asp:BoundField HeaderText="Cod Interno" DataField="codigoInterno" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="150" />
                             <asp:BoundField HeaderText="Nombre del Proyecto" DataField="nombre" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="400" />
                             <asp:BoundField HeaderText="Tipo" DataField="tipoProyecto" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="200" />
                             <asp:BoundField HeaderText="Estado" DataField="tipoEstado" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="150" />
@@ -83,7 +83,7 @@
                     </asp:GridView>
                 </div>
             </div>
-            <div class="form-group">
+            <%--<div class="form-group">
                 <br />
                 <div class="col-md-12 col-md-offset-0">
                     <asp:GridView ID="dgvProyectoCofecyts" runat="server" AutoGenerateColumns="false"
@@ -95,14 +95,14 @@
                             <asp:BoundField HeaderText="Numero Convenio" DataField="numeroConvenio" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="150" />
                             <asp:BoundField HeaderText="Nombre del Proyecto" DataField="titulo" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="400" />
                             <asp:BoundField HeaderText="Estado" DataField="tipoestadocofecyt" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="100" />
-                            
-                            
-                            
+
+
+
                             <asp:ButtonField HeaderStyle-Width="30" HeaderText="Detalles" CommandName="select" ControlStyle-Width="30" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" ControlStyle-CssClass="glyphicon glyphicon-search" />
                         </Columns>
                     </asp:GridView>
                 </div>
-            </div>
+            </div>--%>
         </asp:Panel>
     </div>
 </asp:Content>

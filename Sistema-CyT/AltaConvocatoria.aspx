@@ -4,7 +4,7 @@
     <div class="container">
         <asp:Panel ID="PanelSuperior" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <h4>Nueva Convocatoria</h4>
+                <h3>Nueva Convocatoria</h3>
             </div>
             <!--NOMBRE-->
             <br />

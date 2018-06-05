@@ -1,10 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MostrarConvocatoria.aspx.cs" Inherits="Sistema_CyT.MostrarConvocatoria" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="container">
+    <div class="container" id="nombreDiv">
         <asp:Panel ID="panelSuperior" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <h4>Datos de la CONVOCATORIA</h4>
+                <h3>Informacion de la Convocatoria</h3>
             </div>
             <br />
             <!--NOMBRE-->
@@ -46,12 +46,9 @@
                 <asp:Label ID="txtAbierta" runat="server" CssClass="col-md-6 lblaliizq" Font-Bold="true"></asp:Label>
             </div>
         </asp:Panel>
-
-
         <asp:Panel ID="panelInferior" CssClass="panel panel-default" runat="server">
-            <!--LISTA DE MODALIDADES CARGADAS-->
             <div class="panel-heading">
-                <h4>Modalidades de la Convocatoria</h4>
+                <h3>Modalidades</h3>
             </div>
             <div class="panel-body">
                 <div class="form-group">
@@ -61,12 +58,12 @@
                             CssClass="table table-hover" BorderWidth="2px" EmptyDataText="No existen modalidades cargadas" ShowHeaderWhenEmpty="true">
                             <Columns>
                                 <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="IdM" DataField="idModalidad" ItemStyle-HorizontalAlign="Center" />
-                                <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Center" />
+                                <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Modalidad" DataField="nombre" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="120" />
                                 <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Descripcion" DataField="descripcion" ItemStyle-HorizontalAlign="Justify" HeaderStyle-HorizontalAlign="Right" />
                                 <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Objetivo" DataField="objetivo" ItemStyle-HorizontalAlign="Justify" />
-                                <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Monto Maximo" DataField="montoMaximoProyecto" ItemStyle-HorizontalAlign="Center" />
-                                <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="% Fin" DataField="porcentajeFinanciamiento" ItemStyle-HorizontalAlign="Center" />
-                                <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Plazo Ejecucion" DataField="plazoEjecucion" ItemStyle-HorizontalAlign="Center" />
+                                <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Monto Maximo" DataField="montoMaximoProyecto" DataFormatString="{0:c}" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="120"/>
+                                <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="% fin" DataField="porcentajeFinanciamiento" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="60"/>
+                                <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Plazo" DataField="plazoEjecucion" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="60"/>
                                 <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="IdC" DataField="idConvocatoria" ItemStyle-HorizontalAlign="Center" />
                             </Columns>
                         </asp:GridView>
@@ -75,4 +72,23 @@
             </div>
         </asp:Panel>
     </div>
+    <asp:Button ID="Button1" runat="server" Text="Imprimir" CssClass="boton_azul" OnClientClick="printDiv('nombreDiv')" />
+    <script>
+        function printDiv(nombreDiv) {
+
+            //var c = document.getElementById('logo').innerHTML;
+            var contenido = document.getElementById(nombreDiv).innerHTML;
+            var contenidoOriginal = document.body.innerHTML;
+
+            document.body.innerHTML = contenido;
+
+            window.print();
+
+            document.body.innerHTML = contenidoOriginal;
+        }
+    </script>
+    <br />
+    <br />
+    <br />
+    <br />
 </asp:Content>

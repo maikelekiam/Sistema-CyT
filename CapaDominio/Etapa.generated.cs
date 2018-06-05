@@ -163,6 +163,15 @@ namespace CapaDominio
 			}
 		}
 		
+		private IList<Actividad> actividads = new List<Actividad>();
+		public virtual IList<Actividad> Actividads
+		{
+			get
+			{
+				return this.actividads;
+			}
+		}
+		
 	}
 }
 #pragma warning restore 1591

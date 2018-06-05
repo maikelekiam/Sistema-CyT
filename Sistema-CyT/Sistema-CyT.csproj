@@ -160,6 +160,7 @@
     <Content Include="ActuacionesProyectoCofecyt.aspx" />
     <Content Include="AgregarActividad.aspx" />
     <Content Include="AgregarEtapa.aspx" />
+    <Content Include="AgregarEtapaCofecyt.aspx" />
     <Content Include="AltaConvocatoria.aspx" />
     <Content Include="AltaEmpresa.aspx" />
     <Content Include="AltaFondo.aspx" />
@@ -365,9 +366,11 @@
     <Content Include="EditarUdtUvt.aspx" />
     <Content Include="FiltrarProyecto.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="imagenes\background01.jpg" />
     <Content Include="imagenes\bg02.jpg" />
+    <Content Include="imagenes\background01.jpg" />
+    <Content Include="imagenes\bg04.jpg" />
     <Content Include="imagenes\bg03.png" />
+    <Content Include="imagenes\copade-barra.jpg" />
     <Content Include="imagenes\copade.ico" />
     <Content Include="imagenes\copade.png" />
     <Content Include="imagenes\copade03.jpg" />
@@ -519,6 +522,13 @@
     </Compile>
     <Compile Include="AgregarEtapa.aspx.designer.cs">
       <DependentUpon>AgregarEtapa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarEtapaCofecyt.aspx.cs">
+      <DependentUpon>AgregarEtapaCofecyt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarEtapaCofecyt.aspx.designer.cs">
+      <DependentUpon>AgregarEtapaCofecyt.aspx</DependentUpon>
     </Compile>
     <Compile Include="AltaConvocatoria.aspx.cs">
       <DependentUpon>AltaConvocatoria.aspx</DependentUpon>

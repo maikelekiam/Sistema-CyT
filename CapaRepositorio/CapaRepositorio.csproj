@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActividadCofecytRepo.cs" />
+    <Compile Include="ActividadRepo.cs" />
     <Compile Include="ActuacionPersonaRepo.cs" />
     <Compile Include="ActuacionProyectoCofecytRepo.cs" />
     <Compile Include="ActuacionRepo.cs" />

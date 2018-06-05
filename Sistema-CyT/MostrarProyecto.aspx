@@ -4,9 +4,10 @@
     <div class="container">
         <asp:Panel ID="PanelProyecto" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <asp:Label ID="lblNombreProyecto" Font-Bold="true" runat="server" CssClass="col-md-12"></asp:Label>
-                <br />
-                <br />
+                <h3>
+                    <asp:Label ID="lblNombreProyecto" runat="server" CssClass="col-md-12"></asp:Label>
+                    <br />
+                </h3>
             </div>
             <div class="panel-body">
                 <!--CONTACTO-->
@@ -55,9 +56,15 @@
                     <asp:Label ID="txtObservaciones" runat="server" CssClass="AlineadoIzquierda" Font-Bold="true" TextMode="MultiLine" Rows="1"></asp:Label>
                 </div>
             </div>
+        </asp:Panel>
 
+        <asp:Panel ID="PanelEtapasActividades" CssClass="panel panel-default" runat="server">
+            <div class="panel-heading">
+                <h3>Etapas y Actividades del Proyecto</h3>
+            </div>
             <!--LISTA DE ETAPAS CARGADAS-->
             <div class="form-group">
+                <br />
                 <div class="col-md-10 col-md-offset-1">
                     <asp:GridView ID="dgvEtapas" runat="server" AutoGenerateColumns="false"
                         DataKeyNames="idEtapa"
@@ -65,20 +72,55 @@
                         <Columns>
                             <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="IdE" DataField="idEtapa" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="50" />
                             <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="IdP" DataField="idProyecto" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="50" />
-                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Etapas" DataField="nombre" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="250" />
+                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Etapas" DataField="nombre" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="250" />
                             <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Inicio" DataFormatString="{0:dd-MMM-yyyy}" DataField="fechaInicio" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100" />
                             <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Fin" DataFormatString="{0:dd-MMM-yyyy}" DataField="fechaFin" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100" />
-                            <asp:TemplateField HeaderStyle-BackColor="#cccccc" HeaderText="Rendicion" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100">
+                            <asp:TemplateField HeaderStyle-BackColor="#cccccc" HeaderText="Estado" HeaderStyle-HorizontalAlign="Left" HeaderStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Center" ControlStyle-Font-Size="Small" HeaderStyle-Width="100">
+                                <ItemTemplate>
+                                    <asp:Label ID="Label1" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "TipoEstadoEtapa.Nombre") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderStyle-BackColor="#cccccc" HeaderText="Rendicion" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="50">
                                 <ItemTemplate><%# (Boolean.Parse(Eval("Rendicion").ToString())) ? "Si" : "No" %></ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderStyle-BackColor="#cccccc" HeaderText="Informe Tecnico" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100">
+                            <asp:TemplateField HeaderStyle-BackColor="#cccccc" HeaderText="Informe Tecnico" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="50">
                                 <ItemTemplate><%# (Boolean.Parse(Eval("Informe").ToString())) ? "Si" : "No" %></ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
                 </div>
             </div>
-            <asp:Button runat="server" ID="btnActuaciones" Text="HISTORIAL DE ACTUACIONES" Width="250" CssClass="boton_azul" OnClick="btnActuaciones_Click" />
+            <!--LISTA DE ACTIVIDADES CARGADAS-->
+            <div class="form-group">
+                <div class="col-md-10 col-md-offset-1">
+                    <asp:GridView ID="dgvActividades" runat="server" AutoGenerateColumns="false"
+                        DataKeyNames="idActividad"
+                        CssClass="table table-hover" BorderWidth="2px" EmptyDataText="No existen actividades cargadas" ShowHeaderWhenEmpty="true">
+                        <Columns>
+                            <asp:TemplateField HeaderStyle-BackColor="#cccccc" HeaderText="Etapa" HeaderStyle-HorizontalAlign="Left" HeaderStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Center" ControlStyle-Font-Size="Small" HeaderStyle-Width="100">
+                                <ItemTemplate>
+                                    <asp:Label ID="l2" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Etapa.Nombre") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Actividad" DataField="nombre" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="250" />
+                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Descripcion" DataField="descripcion" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="250" />
+                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Resultados Esperados" DataField="resultadosEsperados" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="250" />
+                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Localizacion" DataField="localizacion" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="250" />
+                        </Columns>
+                    </asp:GridView>
+                </div>
+            </div>
         </asp:Panel>
+        <div class="form-group">
+            <div class="col-md-4">
+                <asp:Button Style="text-align: left;" runat="server" ID="btnEtapa" Text=" Agregar/Editar Etapas" Width="200" CssClass="boton_azul" OnClick="btnEtapa_Click" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4">
+                <asp:Button Style="text-align: left;" runat="server" ID="btnActividad" Text=" Agregar/Editar Actividades" Width="200" CssClass="boton_azul style-1" OnClick="btnActividad_Click" />
+            </div>
+        </div>
+        <asp:Button runat="server" ID="btnActuaciones" Text="HISTORIAL DE ACTUACIONES" Width="250" CssClass="boton_azul" OnClick="btnActuaciones_Click" />
     </div>
 </asp:Content>

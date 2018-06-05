@@ -78,12 +78,10 @@ namespace Sistema_CyT
 
                 if (Session["usergrupo"].ToString() == "1")
                 {
-                    dropdownusuarios.Visible = true;
                     dropdownSistema.Visible = true;
                 }
                 else
                 {
-                    dropdownusuarios.Visible = false;
                     dropdownSistema.Visible = false;
                 }
             }

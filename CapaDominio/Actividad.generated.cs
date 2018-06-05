@@ -18,21 +18,48 @@ using Telerik.OpenAccess.Metadata;
 using Telerik.OpenAccess.Data.Common;
 using Telerik.OpenAccess.Metadata.Fluent;
 using Telerik.OpenAccess.Metadata.Fluent.Advanced;
+using CapaDominio;
 
 namespace CapaDominio	
 {
-	public partial class Usuario
+	public partial class Actividad
 	{
-		private int idUsuario;
-		public virtual int IdUsuario
+		private int idActividad;
+		public virtual int IdActividad
 		{
 			get
 			{
-				return this.idUsuario;
+				return this.idActividad;
 			}
 			set
 			{
-				this.idUsuario = value;
+				this.idActividad = value;
+			}
+		}
+		
+		private int idProyecto;
+		public virtual int IdProyecto
+		{
+			get
+			{
+				return this.idProyecto;
+			}
+			set
+			{
+				this.idProyecto = value;
+			}
+		}
+		
+		private int idEtapa;
+		public virtual int IdEtapa
+		{
+			get
+			{
+				return this.idEtapa;
+			}
+			set
+			{
+				this.idEtapa = value;
 			}
 		}
 		
@@ -49,55 +76,68 @@ namespace CapaDominio
 			}
 		}
 		
-		private string mail;
-		public virtual string Mail
+		private string descripcion;
+		public virtual string Descripcion
 		{
 			get
 			{
-				return this.mail;
+				return this.descripcion;
 			}
 			set
 			{
-				this.mail = value;
+				this.descripcion = value;
 			}
 		}
 		
-		private string contrasenia;
-		public virtual string Contrasenia
+		private string resultadosEsperados;
+		public virtual string ResultadosEsperados
 		{
 			get
 			{
-				return this.contrasenia;
+				return this.resultadosEsperados;
 			}
 			set
 			{
-				this.contrasenia = value;
+				this.resultadosEsperados = value;
 			}
 		}
 		
-		private int? grupo;
-		public virtual int? Grupo
+		private string localizacion;
+		public virtual string Localizacion
 		{
 			get
 			{
-				return this.grupo;
+				return this.localizacion;
 			}
 			set
 			{
-				this.grupo = value;
+				this.localizacion = value;
 			}
 		}
 		
-		private bool? activo;
-		public virtual bool? Activo
+		private Proyecto proyecto;
+		public virtual Proyecto Proyecto
 		{
 			get
 			{
-				return this.activo;
+				return this.proyecto;
 			}
 			set
 			{
-				this.activo = value;
+				this.proyecto = value;
+			}
+		}
+		
+		private Etapa etapa;
+		public virtual Etapa Etapa
+		{
+			get
+			{
+				return this.etapa;
+			}
+			set
+			{
+				this.etapa = value;
 			}
 		}
 		

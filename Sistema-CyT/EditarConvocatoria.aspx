@@ -5,7 +5,7 @@
     <div class="container">
         <asp:Panel ID="PanelSuperior" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <h3>EDITAR Convocatoria</h3>
+                <h3>Editar Convocatoria</h3>
             </div>
             <!-- LISTA CON LOS FONDOS EN LA BASE DE DATOS -->
             <div class="form-group">
@@ -149,7 +149,7 @@
                 <div class="form-group">
                     <asp:Label ID="lblModalidad" runat="server" Text="MODALIDADES" CssClass="col-md-2 AlineadoDerecha"> </asp:Label>
                     <div class="col-md-4">
-                        <button id="btnAgregarModalidad" type="button" class="boton_verde" data-toggle="modal" data-target="#modalModalidad">Agregar Modalidad</button>
+                        <button id="btnAgregarModalidad" type="button" class="boton_azul" data-toggle="modal" data-target="#modalModalidad">Agregar Modalidad</button>
                     </div>
                 </div>
             </asp:Panel>
@@ -215,7 +215,7 @@
             <!-- BOTON ACTUALIZAR CONVOCATORIA-->
             <div class="form-group">
                 <div class="col-md-2 col-md-offset-2">
-                    <asp:Button ID="btnActualizarConvocatoria" runat="server" Text="Actualizar" CssClass="boton_azul" Width="200" OnClick="btnActualizarConvocatoria_Click" />
+                    <asp:Button ID="btnActualizarConvocatoria" runat="server" Text="Actualizar" CssClass="boton_verde" Width="200" OnClick="btnActualizarConvocatoria_Click" />
                 </div>
             </div>
         </asp:Panel>
@@ -232,14 +232,14 @@
                     OnSelectedIndexChanging="dgvModalidades_SelectedIndexChanging">
                     <Columns>
                         <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="IdM" DataField="idModalidad" ItemStyle-HorizontalAlign="Center" />
-                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Center" />
-                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Descripcion" DataField="descripcion" ItemStyle-HorizontalAlign="Left" HeaderStyle-HorizontalAlign="Right" />
-                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Objetivo" DataField="objetivo" ItemStyle-HorizontalAlign="Left" />
-                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Monto Maximo" DataField="montoMaximoProyecto" ItemStyle-HorizontalAlign="Center" />
-                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="% Fin" DataField="porcentajeFinanciamiento" ItemStyle-HorizontalAlign="Center" />
-                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Plazo Ejecucion" DataField="plazoEjecucion" ItemStyle-HorizontalAlign="Center" />
+                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Modalidad" DataField="nombre" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="120" />
+                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Descripcion" DataField="descripcion" ItemStyle-HorizontalAlign="Justify" HeaderStyle-HorizontalAlign="Right" />
+                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Objetivo" DataField="objetivo" ItemStyle-HorizontalAlign="Justify" />
+                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Monto Maximo" DataField="montoMaximoProyecto" DataFormatString="{0:c}" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="120" />
+                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="% fin" DataField="porcentajeFinanciamiento" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="60" />
+                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Plazo" DataField="plazoEjecucion" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="60" />
                         <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="IdC" DataField="idConvocatoria" ItemStyle-HorizontalAlign="Center" />
-                        <asp:ButtonField Text="Editar" ButtonType="Button" CommandName="select" HeaderStyle-BackColor="#cccccc" />
+                        <asp:ButtonField Text="Editar" ButtonType="Button" CommandName="select" HeaderStyle-BackColor="#cccccc" HeaderStyle-Width="60" />
                     </Columns>
                 </asp:GridView>
             </div>

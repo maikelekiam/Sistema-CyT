@@ -17,7 +17,7 @@
                         GridLines="Both" EmptyDataText="No existen Udt/Uvt registradas" ShowHeaderWhenEmpty="true"
                         OnSelectedIndexChanging="dgvUdtUvt_SelectedIndexChanging">
                         <Columns>
-                            <asp:BoundField HeaderText="ID" DataField="idOrganismo" ItemStyle-HorizontalAlign="Center" HeaderStyle-BackColor="#cccccc" />
+                            <asp:BoundField HeaderText="ID" DataField="idUdtUvt" ItemStyle-HorizontalAlign="Center" HeaderStyle-BackColor="#cccccc" />
                             <asp:BoundField HeaderText="Nombre" DataField="nombre" ItemStyle-HorizontalAlign="Left" HeaderStyle-BackColor="#cccccc" ItemStyle-CssClass="text-uppercase" />
                             <asp:BoundField HeaderText="Telefono" DataField="telefono" ItemStyle-HorizontalAlign="Left" HeaderStyle-BackColor="#cccccc" />
                             <asp:BoundField HeaderText="Correo Electronico" DataField="correoElectronico" ItemStyle-HorizontalAlign="Left" HeaderStyle-BackColor="#cccccc" ItemStyle-CssClass="text-lowercase" />

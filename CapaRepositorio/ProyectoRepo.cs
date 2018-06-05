@@ -86,11 +86,11 @@ namespace CapaRepositorio
                 return result;
             }
         }
-        public Proyecto ObtenerProyectoSegunNombreYConvocatoria(int id, string nom)
+        public Proyecto ObtenerProyectoSegunCodigoInternoYConvocatoria(string nom, int id)
         {
             using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
             {
-                Proyecto proyecto = modeloDeDominio.Proyectos.Where(c => c.NumeroExpediente == nom && c.IdConvocatoria == id).FirstOrDefault();
+                Proyecto proyecto = modeloDeDominio.Proyectos.Where(c => c.CodigoInterno == nom && c.IdConvocatoria == id).FirstOrDefault();
 
                 return proyecto;
             }

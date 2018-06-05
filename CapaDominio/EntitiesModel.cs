@@ -290,6 +290,14 @@ namespace CapaDominio
 			}
 		}
 		
+		public IQueryable<Actividad> Actividads 
+		{
+			get
+			{
+				return this.GetAll<Actividad>();
+			}
+		}
+		
 		public IEnumerable<pr01ResultSet0> Pr01(int? id)
 		{
 			int returnValue;
@@ -527,6 +535,10 @@ namespace CapaDominio
 			get;
 		}
 		IQueryable<ActuacionProyectoCofecyt> ActuacionProyectoCofecyts
+		{
+			get;
+		}
+		IQueryable<Actividad> Actividads
 		{
 			get;
 		}

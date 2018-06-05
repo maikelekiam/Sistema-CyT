@@ -13,12 +13,19 @@ namespace Sistema_CyT
     {
         ProyectoNego proyectoNego = new ProyectoNego();
         ConvocatoriaNego convocatoriaNego = new ConvocatoriaNego();
-        EtapaNego etapaNego = new EtapaNego();
-        TipoProyectoNego tipoProyectoNego = new TipoProyectoNego();
         PersonaNego personaNego = new PersonaNego();
+        TipoProyectoNego tipoProyectoNego = new TipoProyectoNego();
+        
+        EtapaNego etapaNego = new EtapaNego();
+        ActividadNego actividadNego = new ActividadNego();
 
-        public static List<Etapa> listaTemporalEtapas = new List<Etapa>();
+
+        public static List<Etapa> listaEtapas = new List<Etapa>();
+        public static List<Actividad> listaActividades = new List<Actividad>();
+
         public static int idProyectoSeleccionado;
+        public static int idEtapaSeleccionada;
+        public static int idActividadSeleccionada;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,15 +35,14 @@ namespace Sistema_CyT
         }
         private void ObtenerProyecto()
         {
+            string nom = ListarProyectos.codigoInternoProyectoSeleccionado;
 
-            string nom = ListarProyectos.numeroExpedienteProyectoSeleccionado;
-
-            Proyecto proyecto = proyectoNego.ObtenerProyectoSegunNombreYConvocatoria(ListarProyectos.idConvocatoriaSeleccionada, ListarProyectos.numeroExpedienteProyectoSeleccionado);
+            Proyecto proyecto = proyectoNego.ObtenerProyectoSegunCodigoInternoYConvocatoria(ListarProyectos.codigoInternoProyectoSeleccionado, ListarProyectos.idConvocatoriaSeleccionada);
 
             idProyectoSeleccionado = proyecto.IdProyecto;
 
             //lblNombreProyecto.Text = "Proyecto: " + proyecto.Nombre.ToString();
-            lblNombreProyecto.Text = proyecto.Nombre.ToString().ToUpper();
+            lblNombreProyecto.Text = proyecto.Nombre.ToString();//.ToUpper();
 
             txtConvocatoria.Text = convocatoriaNego.ObtenerConvocatoria(Convert.ToInt32(proyecto.IdConvocatoria)).Nombre;
             txtNumeroExp.Text = proyecto.NumeroExpediente.ToString();
@@ -65,7 +71,7 @@ namespace Sistema_CyT
 
 
             //AHORA TENGO QUE TRAER UNA LISTA DE ETAPAS SEGUN EL IdProyectoActual
-            listaTemporalEtapas = (List<Etapa>)etapaNego.TraerEtapasSegunIdProyecto(proyecto.IdProyecto).ToList();
+            listaEtapas = (List<Etapa>)etapaNego.TraerEtapasSegunIdProyecto(proyecto.IdProyecto).ToList();
 
             dgvEtapas.Columns[0].Visible = true;
             dgvEtapas.Columns[1].Visible = true;
@@ -75,18 +81,32 @@ namespace Sistema_CyT
             dgvEtapas.Columns[5].Visible = true;
             dgvEtapas.Columns[6].Visible = true;
 
-            dgvEtapas.DataSource = listaTemporalEtapas;
+            dgvEtapas.DataSource = listaEtapas.OrderBy(c=>c.Nombre);
             dgvEtapas.DataBind();
 
             dgvEtapas.Columns[0].Visible = false;
             dgvEtapas.Columns[1].Visible = false;
 
+            listaActividades = (List<Actividad>)actividadNego.TraerActividadsSegunIdProyecto(proyecto.IdProyecto).ToList();
+
+            dgvActividades.DataSource = listaActividades.OrderBy(c => c.IdEtapa).ThenBy(c => c.Nombre).ToList();
+            dgvActividades.DataBind();
         }
 
         protected void btnActuaciones_Click(object sender, EventArgs e)
         {
             FiltrarProyecto.idProyectoSeleccionado = idProyectoSeleccionado;
             Response.Redirect("Actuaciones.aspx");
+        }
+
+        protected void btnEtapa_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AgregarEtapa.aspx");
+        }
+
+        protected void btnActividad_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AgregarActividad.aspx");
         }
     }
 }

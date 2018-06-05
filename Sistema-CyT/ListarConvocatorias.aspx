@@ -7,7 +7,7 @@
             <div class="panel-heading">
                 <h3>Lista de Convocatorias</h3>
             </div>
-            <div class="form-group">
+            <%--<div class="form-group">
                 <br />
                 <asp:Label ID="lblEstado" runat="server" Text="ESTADO" CssClass="col-md-1 AlineadoDerecha"></asp:Label>
                 <div class="col-md-3 ">
@@ -37,7 +37,7 @@
                 <asp:Button runat="server" ID="btnFiltrarConvocatoriasAbiertas" Text="ABIERTAS" CssClass="boton_azul" OnClick="btnFiltrarConvocatoriasAbiertas_Click" />
             </div>
 
-            <asp:Button runat="server" ID="btnFiltrarConvocatoriasTodas" Text="TODAS" CssClass="boton_azul" OnClick="btnFiltrarConvocatoriasTodas_Click" />
+            <asp:Button runat="server" ID="btnFiltrarConvocatoriasTodas" Text="TODAS" CssClass="boton_azul" OnClick="btnFiltrarConvocatoriasTodas_Click" />--%>
 
             <div class="form-group">
                 <br />

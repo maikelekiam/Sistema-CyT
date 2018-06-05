@@ -197,7 +197,7 @@ namespace Sistema_CyT
             ddlTipoFinanciamiento.SelectedIndex = 0;
             txtFechaApertura.Text = null;
             txtFechaCierre.Text = null;
-            chkAbierta.Checked = false;
+            chkAbierta.Checked = true;
             //listaModalidades.Clear();
             //LlenarGrillaModalidades();
         }

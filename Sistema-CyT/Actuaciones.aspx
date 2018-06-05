@@ -4,9 +4,10 @@
     <div class="container">
         <asp:Panel ID="PanelProyecto" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <asp:Label ID="lblProyecto" Font-Bold="true" runat="server" CssClass="col-md-12"></asp:Label>
+                <h3>
+                <asp:Label ID="lblProyecto" runat="server" CssClass="col-md-12"></asp:Label>
                 <br />
-                <br />
+                <br /></h3>
             </div>
         </asp:Panel>
         <asp:Panel ID="PanelActuacion" CssClass="panel" runat="server">
@@ -39,7 +40,7 @@
             </div>
             <!--CONTACTO-->
             <div class="form-group">
-                <asp:Label ID="lblContacto" runat="server" Text="CONTACTO" CssClass="col-md-2 AlineadoDerecha"></asp:Label>
+                <asp:Label ID="lblContacto" runat="server" Text="REFERENTE" CssClass="col-md-2 AlineadoDerecha"></asp:Label>
                 <div class="col-md-4">
                     <asp:DropDownList ID="ddlContacto" runat="server"
                         BackColor="WhiteSmoke"
@@ -331,7 +332,7 @@
                         </asp:TemplateField>
                         <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Detalle" DataField="detalle"
                             ItemStyle-HorizontalAlign="Justify" ItemStyle-Width="100" HeaderStyle-Width="300" />
-                        <asp:ButtonField Text="Editar" CommandName="select" HeaderStyle-BackColor="#cccccc" HeaderStyle-Width="80" />
+                        <asp:ButtonField CommandName="select" HeaderStyle-BackColor="#cccccc" ControlStyle-Width="30" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" ControlStyle-CssClass="glyphicon glyphicon-edit" ItemStyle-Width="30" HeaderStyle-Width="30"/>
                     </Columns>
                 </asp:GridView>
             </div>

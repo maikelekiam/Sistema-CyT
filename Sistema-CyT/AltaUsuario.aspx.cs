@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using CapaDominio;
 using CapaNegocio;
 
@@ -37,7 +34,7 @@ namespace Sistema_CyT
         }
         public void MostrarListas()
         {
-            ddlUsuarios.DataSource = usuarioNego.MostrarUsuarios().ToList().OrderBy(c=>c.Nombre);
+            ddlUsuarios.DataSource = usuarioNego.MostrarUsuarios().ToList().OrderBy(c => c.Nombre);
             ddlUsuarios.DataValueField = "idUsuario";
             ddlUsuarios.DataBind();
         }
@@ -68,6 +65,9 @@ namespace Sistema_CyT
                 txtContrasenia.Text = usuario.Contrasenia;
                 txtGrupo.Text = Convert.ToString(usuario.Grupo);
                 txtMail.Text = usuario.Mail;
+
+                if (usuario.Activo.Value == true) { chkActivo.Checked = true; }
+                else if (usuario.Activo.Value == false) { chkActivo.Checked = false; }
             }
             else
             {
@@ -108,6 +108,9 @@ namespace Sistema_CyT
                     usuario.Grupo = Convert.ToInt32(txtGrupo.Text);
                     usuario.Mail = txtMail.Text;
 
+                    if (chkActivo.Checked) { usuario.Activo = true; }
+                    else if (!chkActivo.Checked) { usuario.Activo = false; }
+
                     usuarioNego.GuardarUsuario(usuario);
 
                     MostrarGrillaUsuarios();
@@ -143,6 +146,9 @@ namespace Sistema_CyT
                     usuario.Grupo = Convert.ToInt32(txtGrupo.Text);
                     usuario.Mail = txtMail.Text;
 
+                    if (chkActivo.Checked) { usuario.Activo = true; }
+                    else if (!chkActivo.Checked) { usuario.Activo = false; }
+
                     usuarioNego.ActualizarUsuario(usuario);
 
                     MostrarGrillaUsuarios();
@@ -167,6 +173,9 @@ namespace Sistema_CyT
                         usuario.Contrasenia = txtContrasenia.Text;
                         usuario.Grupo = Convert.ToInt32(txtGrupo.Text);
                         usuario.Mail = txtMail.Text;
+
+                        if (chkActivo.Checked) { usuario.Activo = true; }
+                        else if (!chkActivo.Checked) { usuario.Activo = false; }
 
                         usuarioNego.ActualizarUsuario(usuario);
 

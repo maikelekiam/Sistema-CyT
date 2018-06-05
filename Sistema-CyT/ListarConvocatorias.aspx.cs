@@ -27,20 +27,20 @@ namespace Sistema_CyT
 
             listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().OrderBy(c => c.Nombre).Where(c => c.Activa == true).ToList();
             MostrarListaConvocatorias();
-            LlenarListaEstados();
-            LlenarListaFiltroFondo();
+            //LlenarListaEstados();
+            //LlenarListaFiltroFondo();
         }
-        private void LlenarListaEstados()
-        {
-            ddlEstado.DataSource = listaEstados;
-            ddlEstado.DataBind();
-        }
-        private void LlenarListaFiltroFondo()
-        {
-            ddlFiltroFondo.DataSource = fondoNego.MostrarFondos().OrderBy(c => c.Nombre).ToList();
-            ddlFiltroFondo.DataValueField = "idFondo";
-            ddlFiltroFondo.DataBind();
-        }
+        //private void LlenarListaEstados()
+        //{
+        //    ddlEstado.DataSource = listaEstados;
+        //    ddlEstado.DataBind();
+        //}
+        //private void LlenarListaFiltroFondo()
+        //{
+        //    ddlFiltroFondo.DataSource = fondoNego.MostrarFondos().OrderBy(c => c.Nombre).ToList();
+        //    ddlFiltroFondo.DataValueField = "idFondo";
+        //    ddlFiltroFondo.DataBind();
+        //}
 
         private void MostrarListaConvocatorias()
         {
@@ -57,48 +57,48 @@ namespace Sistema_CyT
             dgvConvocatoria.Columns[0].Visible = false;
         }
 
-        protected void btnFiltrarConvocatorias_Click(object sender, EventArgs e)
-        {
-            FiltrarConvocatorias();
-        }
-        public void FiltrarConvocatorias()
-        {
-            idEstadoActual = Convert.ToInt32(ddlEstado.SelectedIndex.ToString());
+        //protected void btnFiltrarConvocatorias_Click(object sender, EventArgs e)
+        //{
+        //    FiltrarConvocatorias();
+        //}
+        //public void FiltrarConvocatorias()
+        //{
+        //    idEstadoActual = Convert.ToInt32(ddlEstado.SelectedIndex.ToString());
 
-            if (Convert.ToInt32(ddlFiltroFondo.SelectedValue) != -1)
-            {
-                idFondoSeleccionado = fondoNego.ObtenerFondoSegunNombre(ddlFiltroFondo.SelectedItem.ToString()).IdFondo;
+        //    if (Convert.ToInt32(ddlFiltroFondo.SelectedValue) != -1)
+        //    {
+        //        idFondoSeleccionado = fondoNego.ObtenerFondoSegunNombre(ddlFiltroFondo.SelectedItem.ToString()).IdFondo;
 
-                if (idEstadoActual == 0) //todas
-                {
-                    listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().Where(c => c.IdFondo == idFondoSeleccionado).OrderBy(c => c.Nombre).ToList();
-                }
-                else if (idEstadoActual == 1) //abiertas
-                {
-                    listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().Where(c => (c.Abierta == true && c.IdFondo == idFondoSeleccionado)).OrderBy(c => c.Nombre).ToList();
-                }
-                else if (idEstadoActual == 2) //cerradas
-                {
-                    listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().Where(c => (c.Abierta == false && c.IdFondo == idFondoSeleccionado)).OrderBy(c => c.Nombre).ToList();
-                }
-                else if (idEstadoActual == 3) //en evaluacion
-                {
-                    listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().Where(c => (c.Anio == 5 && c.IdFondo == idFondoSeleccionado)).OrderBy(c => c.Nombre).ToList();
-                }
+        //        if (idEstadoActual == 0) //todas
+        //        {
+        //            listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().Where(c => c.IdFondo == idFondoSeleccionado).OrderBy(c => c.Nombre).ToList();
+        //        }
+        //        else if (idEstadoActual == 1) //abiertas
+        //        {
+        //            listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().Where(c => (c.Abierta == true && c.IdFondo == idFondoSeleccionado)).OrderBy(c => c.Nombre).ToList();
+        //        }
+        //        else if (idEstadoActual == 2) //cerradas
+        //        {
+        //            listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().Where(c => (c.Abierta == false && c.IdFondo == idFondoSeleccionado)).OrderBy(c => c.Nombre).ToList();
+        //        }
+        //        else if (idEstadoActual == 3) //en evaluacion
+        //        {
+        //            listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().Where(c => (c.Anio == 5 && c.IdFondo == idFondoSeleccionado)).OrderBy(c => c.Nombre).ToList();
+        //        }
 
-                dgvConvocatoria.Columns[0].Visible = true;
-                dgvConvocatoria.Columns[1].Visible = true;
-                dgvConvocatoria.Columns[2].Visible = true;
-                dgvConvocatoria.Columns[3].Visible = true;
-                dgvConvocatoria.Columns[4].Visible = true;
-                dgvConvocatoria.Columns[5].Visible = true;
+        //        dgvConvocatoria.Columns[0].Visible = true;
+        //        dgvConvocatoria.Columns[1].Visible = true;
+        //        dgvConvocatoria.Columns[2].Visible = true;
+        //        dgvConvocatoria.Columns[3].Visible = true;
+        //        dgvConvocatoria.Columns[4].Visible = true;
+        //        dgvConvocatoria.Columns[5].Visible = true;
 
-                dgvConvocatoria.DataSource = listaConvocatoriasFiltradas;
-                dgvConvocatoria.DataBind();
+        //        dgvConvocatoria.DataSource = listaConvocatoriasFiltradas;
+        //        dgvConvocatoria.DataBind();
 
-                dgvConvocatoria.Columns[0].Visible = false;
-            }
-        }
+        //        dgvConvocatoria.Columns[0].Visible = false;
+        //    }
+        //}
 
         protected void btnFiltrarConvocatoriasAbiertas_Click(object sender, EventArgs e)
         {

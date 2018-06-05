@@ -5,7 +5,7 @@
     <div class="container">
         <asp:Panel ID="Panel1" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <h3>Lista de FONDOS Activos</h3>
+                <h3>Lista de FONDOS</h3>
             </div>
             <div class="form-group">
                 <br />

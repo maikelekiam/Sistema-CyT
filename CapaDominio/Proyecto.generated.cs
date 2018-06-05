@@ -258,6 +258,19 @@ namespace CapaDominio
 			}
 		}
 		
+		private string codigoInterno;
+		public virtual string CodigoInterno
+		{
+			get
+			{
+				return this.codigoInterno;
+			}
+			set
+			{
+				this.codigoInterno = value;
+			}
+		}
+		
 		private Convocatorium convocatorium;
 		public virtual Convocatorium Convocatorium
 		{
@@ -395,6 +408,15 @@ namespace CapaDominio
 			get
 			{
 				return this.actuacions;
+			}
+		}
+		
+		private IList<Actividad> actividads = new List<Actividad>();
+		public virtual IList<Actividad> Actividads
+		{
+			get
+			{
+				return this.actividads;
 			}
 		}
 		

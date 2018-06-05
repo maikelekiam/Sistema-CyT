@@ -60,5 +60,8 @@
             document.body.innerHTML = contenidoOriginal;
         }
     </script>
-    <br /><br /><br /><br />
+    <br />
+    <br />
+    <br />
+    <br />
 </asp:Content>

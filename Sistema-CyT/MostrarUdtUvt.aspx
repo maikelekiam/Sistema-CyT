@@ -13,13 +13,11 @@
                 <asp:Label ID="txtTipo" runat="server" CssClass="col-md-6 lblaliizq" Font-Bold="true"></asp:Label>
             </div>
             <!-- NOMBRE -->
-            <br />
             <div class="form-group">
                 <asp:Label ID="lblNombre" runat="server" Text="NOMBRE" CssClass="col-md-2 lblalider"></asp:Label>
                 <asp:Label ID="txtNombre" runat="server" CssClass="col-md-6 lblaliizq" Font-Bold="true"></asp:Label>
             </div>
             <!-- REFERENTE TECNICO -->
-            <br />
             <div class="form-group">
                 <asp:Label ID="Label2" runat="server" Text="REFERENTE TECNICO" CssClass="col-md-2 lblalider"></asp:Label>
                 <asp:Label ID="txtReferenteTecnico" runat="server" CssClass="col-md-6 lblaliizq" Font-Bold="true"></asp:Label>
@@ -43,7 +41,7 @@
             <!-- DOMICILIO -->
             <div class="form-group">
                 <asp:Label ID="lblDomicilio" runat="server" Text="DOMICILIO" CssClass="col-md-2   lblalider"> </asp:Label>
-                <asp:Label ID="txtDomicilio" runat="server" Font-Bold="true" CssClass="col-md-6   lblalider"> </asp:Label>
+                <asp:Label ID="txtDomicilio" runat="server" CssClass="col-md-6 lblaliizq" Font-Bold="true"></asp:Label><br />
             </div>
             <!-- LOCALIDAD -->
             <div class="form-group">

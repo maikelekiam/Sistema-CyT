@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActividadCofecytNego.cs" />
+    <Compile Include="ActividadNego.cs" />
     <Compile Include="ActuacionNego.cs" />
     <Compile Include="ActuacionPersonaNego.cs" />
     <Compile Include="ActuacionProyectoCofecytNego.cs" />

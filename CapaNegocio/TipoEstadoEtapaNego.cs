@@ -21,5 +21,9 @@ namespace CapaNegocio
         {
             return tipoEstadoEtapaRepo.TraerTipoEstadoEtapaIdSegunItem(item);
         }
+        public string TraerTipoEstadoEtapa(int id)
+        {
+            return tipoEstadoEtapaRepo.TraerTipoEstadoEtapa(id);
+        }
     }
 }

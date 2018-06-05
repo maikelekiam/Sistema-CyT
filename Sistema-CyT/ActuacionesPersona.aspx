@@ -122,7 +122,7 @@
                 <h4>ACTUACIONES REALIZADAS</h4>
         </asp:Label>
         <div class="form-group">
-            <div class="col-md-9 col-md-offset-1">
+            <div class="col-md-10 col-md-offset-1">
                 <asp:GridView ID="dgvActuaciones" runat="server" AutoGenerateColumns="false"
                     CssClass="table table-hover table-striped" BorderWidth="2px" GridLines="Both"
                     OnSelectedIndexChanging="dgvActuaciones_SelectedIndexChanging">
@@ -138,7 +138,7 @@
                         <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Detalle" DataField="detalle"
                             ItemStyle-HorizontalAlign="Justify" ItemStyle-Width="100" HeaderStyle-Width="300" />
                         <%--                        <asp:ButtonField Text="Editar" CommandName="select" HeaderStyle-BackColor="#cccccc" HeaderStyle-Width="80" />--%>
-                        <asp:ButtonField HeaderText="Editar" CommandName="select" HeaderStyle-BackColor="#cccccc" ControlStyle-Width="50" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" ControlStyle-CssClass="glyphicon glyphicon-edit" ItemStyle-Width="50" HeaderStyle-Width="50" />
+                        <asp:ButtonField CommandName="select" HeaderStyle-BackColor="#cccccc" ControlStyle-Width="30" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" ControlStyle-CssClass="glyphicon glyphicon-edit" ItemStyle-Width="30" HeaderStyle-Width="30" />
 
                     </Columns>
                 </asp:GridView>

@@ -193,6 +193,15 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.Label txtObservaciones;
         
         /// <summary>
+        /// PanelEtapasActividades control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelEtapasActividades;
+        
+        /// <summary>
         /// dgvEtapas control.
         /// </summary>
         /// <remarks>
@@ -200,6 +209,33 @@ namespace Sistema_CyT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView dgvEtapas;
+        
+        /// <summary>
+        /// dgvActividades control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView dgvActividades;
+        
+        /// <summary>
+        /// btnEtapa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEtapa;
+        
+        /// <summary>
+        /// btnActividad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnActividad;
         
         /// <summary>
         /// btnActuaciones control.
