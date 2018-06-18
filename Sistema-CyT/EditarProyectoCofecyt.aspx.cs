@@ -31,6 +31,9 @@ namespace Sistema_CyT
         public static int idFondoSeleccionado = 1;
 
         public static int idProyectoCofecytActual;
+        static int idDirectorActual;
+        static int idContactoBeneficiarioActual;
+        static int idContraparteActual;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -44,6 +47,7 @@ namespace Sistema_CyT
             LlenarListaUdtUvts();
             LlenarListaDirectores();
             LlenarListaContactoBeneficiarios();
+            LlenarListaContraparte();
             LlenarListaTipoEstadoCofecyt();
 
         }
@@ -72,6 +76,14 @@ namespace Sistema_CyT
             ddlContactoBeneficiario.DataSource = nombreCompleto;
             ddlContactoBeneficiario.DataValueField = "nombre";
             ddlContactoBeneficiario.DataBind();
+        }
+        private void LlenarListaContraparte()
+        {
+            ddlContraparte.DataSource = personaNego.MostrarPersonas().OrderBy(c => c.Nombre).ToList();
+            IList<Persona> nombreCompleto = personaNego.MostrarPersonas().Select(p => new Persona() { Nombre = p.Apellido + "," + p.Nombre, IdPersona = p.IdPersona }).OrderBy(c => c.IdPersona).ToList();
+            ddlContraparte.DataSource = nombreCompleto;
+            ddlContraparte.DataValueField = "nombre";
+            ddlContraparte.DataBind();
         }
         //Muestra en el DROPDOWNLIST las UDT UVT
         private void LlenarListaUdtUvts()
@@ -434,6 +446,66 @@ namespace Sistema_CyT
         private string TraerLocalidad(int id)
         {
             return localidadNego.TraerLocalidad(id);
+        }
+
+        protected void btnModalContactoDirectorGuardar_Click(object sender, EventArgs e)
+        {
+            Persona persona = new Persona();
+
+            persona.Nombre = txtContactoNombreModalDirector.Text;
+            persona.Apellido = txtContactoApellidoModalDirector.Text;
+            persona.Telefono = txtContactoTelefonoModalDirector.Text;
+            persona.CorreoElectronico = txtContactoCorreoElectronicoModalDirector.Text;
+
+            idDirectorActual = personaNego.GuardarPersona(persona);
+
+            ddlDirector.Items.Clear();
+            ddlDirector.Text = TraerPersona(idDirectorActual);
+
+            LlenarListaDirectores();
+            LlenarListaContactoBeneficiarios();
+            LlenarListaContraparte();
+        }
+        private string TraerPersona(int id)
+        {
+            return personaNego.TraerPersona(id);
+        }
+        protected void btnModalContactoBeneficiarioGuardar_Click(object sender, EventArgs e)
+        {
+            Persona persona = new Persona();
+
+            persona.Nombre = txtContactoBeneficiarioNombreModal.Text;
+            persona.Apellido = txtContactoBeneficiarioApellidoModal.Text;
+            persona.Telefono = txtContactoBeneficiarioTelefonoModal.Text;
+            persona.CorreoElectronico = txtContactoBeneficiarioCorreoElectronicoModal.Text;
+
+            idContactoBeneficiarioActual = personaNego.GuardarPersona(persona);
+
+            ddlContactoBeneficiario.Items.Clear();
+            ddlContactoBeneficiario.Text = TraerPersona(idContactoBeneficiarioActual);
+
+            LlenarListaDirectores();
+            LlenarListaContactoBeneficiarios();
+            LlenarListaContraparte();
+        }
+
+        protected void btnContraparteGuardar_Click(object sender, EventArgs e)
+        {
+            Persona persona = new Persona();
+
+            persona.Nombre = txtContraparteNombre.Text;
+            persona.Apellido = txtContraparteApellido.Text;
+            persona.Telefono = txtContraparteTelefono.Text;
+            persona.CorreoElectronico = txtContraparteCorreoElectronico.Text;
+
+            idContraparteActual = personaNego.GuardarPersona(persona);
+
+            ddlContraparte.Items.Clear();
+            ddlContraparte.Text = TraerPersona(idContraparteActual);
+
+            LlenarListaDirectores();
+            LlenarListaContactoBeneficiarios();
+            LlenarListaContraparte();
         }
     }
 }

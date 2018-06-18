@@ -37,27 +37,33 @@
         </asp:Panel>
     </div>
     <asp:Button ID="Button1" runat="server" Text="Imprimir" CssClass="boton_azul" OnClientClick="printDiv('nombreDiv')" />
+    
 
-    <div class="form-group">
+
+
+    <asp:Panel ID="PanelSuperior" CssClass="panel panel-default" runat="server">
         <br />
-
-        <asp:Panel ID="PanelSuperior" CssClass="panel panel-default" runat="server">
-            <div class="panel-heading">
-                <h3>Lista de Convocatorias</h3>
+        <div class="panel-heading">
+            <h3>Lista de Convocatorias</h3>
+        </div>
+        <div class="form-group">
+            <br />
+            <div class="col-md-12">
+                <asp:GridView ID="dgvConvocatoria" runat="server" AutoGenerateColumns="false"
+                    CssClass="table table-hover table-striped" BorderWidth="2px"
+                    EmptyDataText="No existen Convocatorias para este Fondo" ShowHeaderWhenEmpty="true"
+                    GridLines="Both">
+                    <Columns>
+                        <asp:BoundField HeaderText="AÑO" DataField="anio" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="100" />
+                        <asp:BoundField HeaderText="NOMBRE" DataField="nombre" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="500" />
+                        <asp:BoundField HeaderText="APERTURA" DataFormatString="{0:dd-MMM-yyyy}" DataField="fechaApertura" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="250" />
+                        <asp:BoundField HeaderText="CIERRE" DataFormatString="{0:dd-MMM-yyyy}" DataField="fechaCierre" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="250" />
+                    </Columns>
+                </asp:GridView>
             </div>
-            <asp:GridView ID="dgvConvocatoria" runat="server" AutoGenerateColumns="false"
-                CssClass="table table-hover table-striped" BorderWidth="2px"
-                EmptyDataText="No existen Convocatorias para este Fondo" ShowHeaderWhenEmpty="true"
-                GridLines="Both">
-                <Columns>
-                    <asp:BoundField HeaderText="AÑO" DataField="anio" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="100" />
-                    <asp:BoundField HeaderText="NOMBRE" DataField="nombre" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="500" />
-                    <asp:BoundField HeaderText="APERTURA" DataFormatString="{0:dd-MMM-yyyy}" DataField="fechaApertura" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="250" />
-                    <asp:BoundField HeaderText="CIERRE" DataFormatString="{0:dd-MMM-yyyy}" DataField="fechaCierre" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="250" />
-                </Columns>
-            </asp:GridView>
-        </asp:Panel>
-    </div>
+        </div>
+    </asp:Panel>
+
 
 
 

@@ -2,12 +2,11 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
-        <!--PANEL COFECYT - Informacion del Proyecto-->
         <asp:Panel ID="PanelCofecytInformacion" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
                 <h3>Nuevo Proyecto</h3>
             </div>
-                <br />
+            <br />
             <div class="form-group">
                 <asp:Label ID="Label2" runat="server" Text="FONDO" CssClass="col-md-2 AlineadoDerecha"></asp:Label>
                 <asp:Label ID="Label3" runat="server" CssClass="col-md-4 AlineadoIzquierda">
@@ -18,7 +17,7 @@
             </div>
             <!-- LISTA CON LAS CONVOCATORIAS EN LA BASE DE DATOS -->
             <div class="form-group">
-                <asp:Label ID="lblConvocatoria" runat="server" Text="Convocatoria" CssClass="col-md-2 AlineadoDerecha"></asp:Label>
+                <asp:Label ID="lblConvocatoria" runat="server" Text="CONVOCATORIA" CssClass="col-md-2 AlineadoDerecha"></asp:Label>
                 <div class="col-md-8">
                     <asp:DropDownList ID="ddlConvocatoria" runat="server"
                         BackColor="WhiteSmoke"
@@ -34,26 +33,14 @@
                     </asp:DropDownList>
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <!--EXPEDIENTE COPADE-->
+            <!--CODIGO INTERNO-->
             <div class="form-group">
-                <asp:Label ID="lblNumeroExpedienteCopadeCofecyt" runat="server" Text="ID Interno" CssClass="col-md-2 AlineadoDerecha"> </asp:Label>
+                <asp:Label ID="lblCodigoInterno" runat="server" Text="CODIGO INTERNO" CssClass="col-md-2 control-label"> </asp:Label>
                 <div class="col-md-4">
-                    <asp:TextBox ID="txtNumeroExpedienteCopadeCofecyt" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtCodigoInterno" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
+
             <!--TITULO/NOMBRE DEL PROYECTO-->
             <div class="form-group">
                 <asp:Label ID="lblTituloCofecyt" runat="server" Text="TITULO" CssClass="col-md-2 col-xs-12 AlineadoDerecha"></asp:Label>
@@ -167,8 +154,13 @@
                     </asp:DropDownList>
                 </div>
             </div>
-
-
+            <!--EXPEDIENTE COPADE-->
+            <div class="form-group">
+                <asp:Label ID="lblNumeroExpedienteCopadeCofecyt" runat="server" Text="N° EXP COPADE" CssClass="col-md-2 AlineadoDerecha"> </asp:Label>
+                <div class="col-md-4">
+                    <asp:TextBox ID="txtNumeroExpedienteCopadeCofecyt" runat="server" CssClass="form-control"></asp:TextBox>
+                </div>
+            </div>
             <!--NUMERO DE CONVENIO-->
             <div class="form-group">
                 <asp:Label ID="lblNumeroConvenio" runat="server" Text="N° CONVENIO" CssClass="col-md-2 AlineadoDerecha"> </asp:Label>
@@ -213,6 +205,55 @@
                         AppendDataBoundItems="true">
                         <asp:ListItem Value="-1">&lt;Seleccione Persona&gt;</asp:ListItem>
                     </asp:DropDownList>
+                </div>
+                <%--NUEVO DIRECTOR--%>
+                <div class="form-group">
+                    <div class="col-md-2">
+                        <button type="button" class="boton_azul" data-toggle="modal" data-target="#modalContactoDirector">Nuevo Contacto</button>
+                    </div>
+                    <!-- MODAL NUEVO CONTACTO  -->
+                    <div class="modal fade" id="modalContactoDirector" tabindex="-1" role="dialog" aria-labelledby="modalLabelContactoDirector" aria-hidden="true">
+                        <div class="modal-dialog modal-md">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h3 class="modal-title" id="modalLabelContactoDirector">Nuevo Contacto</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <asp:Label ID="lblContactoNombreModalDirector" runat="server" Text="NOMBRE" CssClass="col-md-4 control-label"></asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtContactoNombreModalDirector" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <asp:Label ID="lblContactoApellidoModalDirector" runat="server" Text="APELLIDO" CssClass="col-md-4 control-label"> </asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtContactoApellidoModalDirector" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <asp:Label ID="lblContactoTelefonoModalDirector" runat="server" Text="TELEFONO" CssClass="col-md-4 control-label"></asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtContactoTelefonoModalDirector" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <asp:Label ID="lblContactoCorreoElectronicoModalDirector" runat="server" Text="CORREO ELECTRONICO" CssClass="col-md-4 control-label"></asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtContactoCorreoElectronicoModalDirector" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <asp:Button runat="server" ID="btnModalContactoDirectorSalir" Text="Salir" class="boton_rojo" data-dismiss="modal" />
+                                        <asp:Button runat="server" ID="btnModalContactoDirectorGuardar" Text="Guardar" CssClass="boton_verde" OnClick="btnModalContactoDirectorGuardar_Click" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- FECHA DE PRESENTACION -->
@@ -325,7 +366,126 @@
                         <asp:ListItem Value="-1">&lt;Seleccione Persona&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
+
+                <%--NUEVO CONTACTO BENEFICIARIO--%>
+                <div class="form-group">
+                    <div class="col-md-2">
+                        <button type="button" class="boton_azul" data-toggle="modal" data-target="#modalContactoBeneficiario">Nuevo Contacto</button>
+                    </div>
+                    <!-- MODAL NUEVO CONTACTO  -->
+                    <div class="modal fade" id="modalContactoBeneficiario" tabindex="-1" role="dialog" aria-labelledby="modalLabelContactoBeneficiario" aria-hidden="true">
+                        <div class="modal-dialog modal-md">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h3 class="modal-title" id="modalLabelContactoBeneficiario">Nuevo Contacto</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <asp:Label ID="lblContactoBeneficiarioNombreModal" runat="server" Text="NOMBRE" CssClass="col-md-4 control-label"></asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtContactoBeneficiarioNombreModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <asp:Label ID="lblContactoBeneficiarioApellidoModal" runat="server" Text="APELLIDO" CssClass="col-md-4 control-label"> </asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtContactoBeneficiarioApellidoModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <asp:Label ID="lblContactoBeneficiarioTelefonoModal" runat="server" Text="TELEFONO" CssClass="col-md-4 control-label"></asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtContactoBeneficiarioTelefonoModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <asp:Label ID="lblContactoBeneficiarioCorreoElectronicoModal" runat="server" Text="CORREO ELECTRONICO" CssClass="col-md-4 control-label"></asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtContactoBeneficiarioCorreoElectronicoModal" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <asp:Button runat="server" ID="btnModalContactoBeneficiarioSalir" Text="Salir" class="boton_rojo" data-dismiss="modal" />
+                                        <asp:Button runat="server" ID="btnModalContactoBeneficiarioGuardar" Text="Guardar" CssClass="boton_verde" OnClick="btnModalContactoBeneficiarioGuardar_Click" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <!--CONTRAPARTE-->
+            <div class="form-group">
+                <asp:Label ID="lblContraparte" runat="server" Text="CONTRAPARTE" CssClass="col-md-3 AlineadoDerecha"></asp:Label>
+                <div class="col-md-4">
+                    <asp:DropDownList ID="ddlContraparte" runat="server"
+                        BackColor="WhiteSmoke"
+                        ForeColor="#000066"
+                        CssClass="selectpicker form-control show-tick"
+                        data-live-search="true"
+                        DataTextField="nombre"
+                        AutoPostBack="false"
+                        AppendDataBoundItems="true">
+                        <asp:ListItem Value="-1">&lt;Seleccione Persona&gt;</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+
+                <%--NUEVO CONTRAPARTE--%>
+                <div class="form-group">
+                    <div class="col-md-2">
+                        <button type="button" class="boton_azul" data-toggle="modal" data-target="#modalContraparte">Nuevo Contacto</button>
+                    </div>
+                    <!-- MODAL NUEVO CONTACTO  -->
+                    <div class="modal fade" id="modalContraparte" tabindex="-1" role="dialog" aria-labelledby="modalLabelContraparte" aria-hidden="true">
+                        <div class="modal-dialog modal-md">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h3 class="modal-title" id="modalLabelContraparte">Nuevo Contacto</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <asp:Label ID="lblContraparteNombre" runat="server" Text="NOMBRE" CssClass="col-md-4 control-label"></asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtContraparteNombre" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <asp:Label ID="lblContraparteApellido" runat="server" Text="APELLIDO" CssClass="col-md-4 control-label"> </asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtContraparteApellido" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <asp:Label ID="lblContraparteTelefono" runat="server" Text="TELEFONO" CssClass="col-md-4 control-label"></asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtContraparteTelefono" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <asp:Label ID="lblContraparteCorreoElectronico" runat="server" Text="CORREO ELECTRONICO" CssClass="col-md-4 control-label"></asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtContraparteCorreoElectronico" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <asp:Button runat="server" ID="btnContraparteSalir" Text="Salir" class="boton_rojo" data-dismiss="modal" />
+                                        <asp:Button runat="server" ID="btnContraparteGuardar" Text="Guardar" CssClass="boton_verde" OnClick="btnContraparteGuardar_Click" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <!--OBSERVACIONES-->
             <div class="form-group">
                 <asp:Label ID="lblObservacionesCofecyt" runat="server" Text="OBSERVACIONES" CssClass="col-md-2 col-xs-12 AlineadoDerecha"> </asp:Label>
@@ -334,7 +494,6 @@
                 </div>
             </div>
         </asp:Panel>
-
 
         <!--PANEL DEL COFECYT - FINANCIAMIENTO-->
         <asp:Panel ID="PanelCofecytFinanciamiento" CssClass="panel panel-default" runat="server">
@@ -386,7 +545,7 @@
             </div>
         </asp:Panel>
 
-        <asp:Panel ID="PanelMostrarEtapasCofecyt" CssClass="panel panel-default" runat="server">
+        <%--<asp:Panel ID="PanelMostrarEtapasCofecyt" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
                 <h3>Etapas del Proyecto</h3>
             </div>
@@ -611,18 +770,15 @@
                     </div>
                 </div>
             </div>
-        </asp:Panel>
+        </asp:Panel>--%>
+
+
+
         <!--BOTON GUARDAR PROYECTO  -->
         <div class="form-group">
             <div class="col-md-2 col-md-offset-2">
                 <asp:Button ID="btnGuardarProyecto" runat="server" Text="Guardar Proyecto" CssClass="boton_verde" OnClick="btnGuardarProyecto_Click" />
             </div>
         </div>
-
     </div>
-
-
-
-
-
 </asp:Content>

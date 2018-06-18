@@ -49,18 +49,18 @@
                         OnRowDeleting="dgvProyectos_RowDeleting">
                         <Columns>
                             <asp:BoundField HeaderText="ID" DataField="idProyectoCofecyt" ItemStyle-HorizontalAlign="Center" HeaderStyle-BackColor="#cccccc" />
-
-                            <%-- <asp:TemplateField HeaderText="Convocatoria" HeaderStyle-BackColor="#cccccc" HeaderStyle-Width="120">
-                                <ItemTemplate>
-                                    <asp:Label ID="lblConvocatoria" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, ".Nombre") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>--%>
-
+                            <asp:BoundField HeaderText="COD INT" DataField="CodigoInterno" ItemStyle-HorizontalAlign="Center" HeaderStyle-BackColor="#cccccc" />
+                            
                             <asp:BoundField HeaderText="Titulo" DataField="titulo" ItemStyle-HorizontalAlign="Left" HeaderStyle-BackColor="#cccccc" />
 
+                            <asp:TemplateField HeaderText="Estado" HeaderStyle-BackColor="#cccccc" HeaderStyle-Width="120">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblEstado" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "TipoEstadoCofecyt.Nombre") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
 
-                            <asp:ButtonField HeaderText="Actuaciones" CommandName="select" HeaderStyle-BackColor="#cccccc" ControlStyle-Width="50" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" ControlStyle-CssClass="glyphicon glyphicon-list" HeaderStyle-Width="50"/>
-                            <asp:ButtonField HeaderText="Detalles" CommandName="delete" HeaderStyle-BackColor="#cccccc" ControlStyle-Width="50" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" ControlStyle-CssClass="glyphicon glyphicon-search" HeaderStyle-Width="50"/>
+                            <asp:ButtonField HeaderText="Actuaciones" CommandName="select" HeaderStyle-BackColor="#cccccc" ControlStyle-Width="50" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" ControlStyle-CssClass="glyphicon glyphicon-list" HeaderStyle-Width="50" />
+                            <asp:ButtonField HeaderText="Detalles" CommandName="delete" HeaderStyle-BackColor="#cccccc" ControlStyle-Width="50" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" ControlStyle-CssClass="glyphicon glyphicon-search" HeaderStyle-Width="50" />
                         </Columns>
                     </asp:GridView>
                 </div>

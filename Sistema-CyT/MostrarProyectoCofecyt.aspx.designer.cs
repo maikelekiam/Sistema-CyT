@@ -31,6 +31,24 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.Label lblNombreProyectoCofecyt;
         
         /// <summary>
+        /// lblCodigoInterno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCodigoInterno;
+        
+        /// <summary>
+        /// txtCodigoInterno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtCodigoInterno;
+        
+        /// <summary>
         /// lblConvocatoria control.
         /// </summary>
         /// <remarks>
@@ -535,13 +553,13 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.Label txtMontoRescindidoCofecyt;
         
         /// <summary>
-        /// btnActuaciones control.
+        /// PanelEtapasActividades control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnActuaciones;
+        protected global::System.Web.UI.WebControls.Panel PanelEtapasActividades;
         
         /// <summary>
         /// dgvEtapasCofecyt control.
@@ -560,5 +578,32 @@ namespace Sistema_CyT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView dgvActividadesCofecyt;
+        
+        /// <summary>
+        /// btnEtapa control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEtapa;
+        
+        /// <summary>
+        /// btnActividad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnActividad;
+        
+        /// <summary>
+        /// btnActuaciones control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnActuaciones;
     }
 }

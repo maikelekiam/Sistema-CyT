@@ -25,7 +25,7 @@ namespace Sistema_CyT
         {
             if (IsPostBack) return;
 
-            listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().OrderBy(c => c.Nombre).Where(c => c.Activa == true).ToList();
+            listaConvocatoriasFiltradas = convocatoriaNego.MostrarConvocatorias().OrderByDescending(c => c.Anio).ThenBy(c => c.Nombre).Where(c => c.Activa == true).ToList();
             MostrarListaConvocatorias();
             //LlenarListaEstados();
             //LlenarListaFiltroFondo();

@@ -159,6 +159,7 @@
     <Content Include="ActuacionesPersona.aspx" />
     <Content Include="ActuacionesProyectoCofecyt.aspx" />
     <Content Include="AgregarActividad.aspx" />
+    <Content Include="AgregarActividadCofecyt.aspx" />
     <Content Include="AgregarEtapa.aspx" />
     <Content Include="AgregarEtapaCofecyt.aspx" />
     <Content Include="AltaConvocatoria.aspx" />
@@ -515,6 +516,13 @@
     </Compile>
     <Compile Include="AgregarActividad.aspx.designer.cs">
       <DependentUpon>AgregarActividad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarActividadCofecyt.aspx.cs">
+      <DependentUpon>AgregarActividadCofecyt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarActividadCofecyt.aspx.designer.cs">
+      <DependentUpon>AgregarActividadCofecyt.aspx</DependentUpon>
     </Compile>
     <Compile Include="AgregarEtapa.aspx.cs">
       <DependentUpon>AgregarEtapa.aspx</DependentUpon>

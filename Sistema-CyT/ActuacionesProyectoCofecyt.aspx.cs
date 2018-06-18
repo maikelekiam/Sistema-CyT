@@ -208,5 +208,10 @@ namespace Sistema_CyT
             txtObservaciones.Text = actuacionProyectoCofecyt.Observaciones;
             txtDocumentacionAnexada.Text = actuacionProyectoCofecyt.DocumentacionAnexada;
         }
+
+        protected void btnMostrarProyectoCofecyt_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MostrarProyectoCofecyt.aspx");
+        }
     }
 }

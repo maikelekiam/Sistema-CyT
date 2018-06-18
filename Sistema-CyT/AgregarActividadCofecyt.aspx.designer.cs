@@ -10,7 +10,7 @@
 namespace Sistema_CyT {
     
     
-    public partial class AgregarEtapaCofecyt {
+    public partial class AgregarActividadCofecyt {
         
         /// <summary>
         /// PanelSuperior control.
@@ -40,130 +40,94 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.Panel PanelInformacionProyecto;
         
         /// <summary>
-        /// lblTipoEstadoEtapa control.
+        /// lblEtapa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTipoEstadoEtapa;
+        protected global::System.Web.UI.WebControls.Label lblEtapa;
         
         /// <summary>
-        /// ddlTipoEstadoEtapa control.
+        /// ddlEtapa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipoEstadoEtapa;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEtapa;
         
         /// <summary>
-        /// lblNombre control.
+        /// lblNombreActividad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNombre;
+        protected global::System.Web.UI.WebControls.Label lblNombreActividad;
         
         /// <summary>
-        /// txtNombreEtapa control.
+        /// txtNombreActividad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombreEtapa;
+        protected global::System.Web.UI.WebControls.TextBox txtNombreActividad;
         
         /// <summary>
-        /// lblFechaInicioEtapa control.
+        /// lblDescripcionActividad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFechaInicioEtapa;
+        protected global::System.Web.UI.WebControls.Label lblDescripcionActividad;
         
         /// <summary>
-        /// txtFechaInicioEtapa control.
+        /// txtDescripcionActividad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFechaInicioEtapa;
+        protected global::System.Web.UI.WebControls.TextBox txtDescripcionActividad;
         
         /// <summary>
-        /// lblFechaFinEtapa control.
+        /// lblResultadosEsperadosActividad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFechaFinEtapa;
+        protected global::System.Web.UI.WebControls.Label lblResultadosEsperadosActividad;
         
         /// <summary>
-        /// txtFechaFinEtapa control.
+        /// txtResultadosEsperadosActividad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFechaFinEtapa;
+        protected global::System.Web.UI.WebControls.TextBox txtResultadosEsperadosActividad;
         
         /// <summary>
-        /// lblRendicionEtapa control.
+        /// lblLocalizacionActividad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRendicionEtapa;
+        protected global::System.Web.UI.WebControls.Label lblLocalizacionActividad;
         
         /// <summary>
-        /// chkRendicionEtapa control.
+        /// txtLocalizacionActividad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkRendicionEtapa;
-        
-        /// <summary>
-        /// lblInformeEtapa control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblInformeEtapa;
-        
-        /// <summary>
-        /// chkInformeEtapa control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkInformeEtapa;
-        
-        /// <summary>
-        /// lblDuracionSegunUvt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDuracionSegunUvt;
-        
-        /// <summary>
-        /// txtDuracionSegunUvt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDuracionSegunUvt;
+        protected global::System.Web.UI.WebControls.TextBox txtLocalizacionActividad;
         
         /// <summary>
         /// btnGuardar control.
@@ -193,12 +157,12 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.Button btnActualizar;
         
         /// <summary>
-        /// dgvEtapas control.
+        /// dgvActividades control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dgvEtapas;
+        protected global::System.Web.UI.WebControls.GridView dgvActividades;
     }
 }

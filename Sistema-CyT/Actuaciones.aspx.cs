@@ -291,7 +291,7 @@ namespace Sistema_CyT
             }
             else
             {
-                // Mostrar aviso de completar todos los datos
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Correct", "alert('Complete todos los campos.')", true);
             }
         }
 

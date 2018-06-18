@@ -4,12 +4,18 @@
     <div class="container">
         <asp:Panel ID="PanelProyectoCofecyt" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <%--<asp:Label ID="lblNombreProyectoCofecyt" Style="text-align: justify;" Font-Bold="true" runat="server" CssClass="col-md-12 control-label"></asp:Label>--%>
-                <asp:Label ID="lblNombreProyectoCofecyt" Font-Bold="true" runat="server" CssClass="col-md-12"></asp:Label>
-                <br />
-                <br />
+                <h3>
+                    <asp:Label ID="lblNombreProyectoCofecyt" runat="server" CssClass="col-md-12"></asp:Label>
+                    <br />
+                    <br />
+                </h3>
             </div>
             <div class="panel-body">
+                <!--CODIGO INTERNO-->
+                <div class="form-group">
+                    <asp:Label ID="lblCodigoInterno" runat="server" Text="CODIGO INTERNO" CssClass="col-md-2 lblalider"></asp:Label>
+                    <asp:Label ID="txtCodigoInterno" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
+                </div>
                 <!--CONVOCATORIA-->
                 <div class="form-group">
                     <asp:Label ID="lblConvocatoria" runat="server" Text="CONVOCATORIA" CssClass="col-md-2 lblalider"></asp:Label>
@@ -150,11 +156,16 @@
                     <asp:Label ID="lblMontoRescindidoCofecyt" runat="server" Text="MONTO RESCINDIDO" CssClass="col-md-3 lblalider"> </asp:Label>
                     <asp:Label ID="txtMontoRescindidoCofecyt" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
-                <asp:Button runat="server" ID="btnActuaciones" Width="200" Text="Actuaciones" CssClass="boton_azul col-md-offset-1" OnClick="btnActuaciones_Click" />
             </div>
+        </asp:Panel>
 
+        <asp:Panel ID="PanelEtapasActividades" CssClass="panel panel-default" runat="server">
+            <div class="panel-heading">
+                <h3>Etapas y Actividades del Proyecto</h3>
+            </div>
             <!--LISTA DE ETAPAS COFECYT-->
             <div class="form-group">
+                <br />
                 <div class="col-md-10 col-md-offset-1">
                     <asp:GridView ID="dgvEtapasCofecyt" runat="server" AutoGenerateColumns="false"
                         DataKeyNames="idEtapaCofecyt"
@@ -170,7 +181,7 @@
                             <asp:TemplateField HeaderStyle-BackColor="#cccccc" HeaderText="Informe Tecnico" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="100">
                                 <ItemTemplate><%# (Boolean.Parse(Eval("Informe").ToString())) ? "Si" : "No" %></ItemTemplate>
                             </asp:TemplateField>
-                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Duracion (UVT)" DataField="duracionSegunUvt" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="100" />
+                            <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Duracion segun UVT" DataField="duracionSegunUvt" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="100" />
                             <asp:TemplateField HeaderStyle-BackColor="#cccccc" HeaderText="Estado" HeaderStyle-HorizontalAlign="Left" HeaderStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="100">
                                 <ItemTemplate>
                                     <asp:Label ID="Label1" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "TipoEstadoEtapa.Nombre") %>'></asp:Label>
@@ -182,7 +193,7 @@
             </div>
             <!--LISTA DE ACTIVIDADES COFECYT-->
             <div class="form-group">
-                <div class="col-md-10 col-md-offset-1">
+                <div class="col-md-12">
                     <asp:GridView ID="dgvActividadesCofecyt" runat="server" AutoGenerateColumns="false"
                         DataKeyNames="idActividadCofecyt"
                         CssClass="table table-hover" BorderWidth="2px" EmptyDataText="No existen actividades cargadas" ShowHeaderWhenEmpty="true">
@@ -203,5 +214,19 @@
 
 
         </asp:Panel>
+
+        <div class="form-group">
+            <div class="col-md-4">
+                <asp:Button Style="text-align: left;" runat="server" ID="btnEtapa" Text=" Agregar/Editar Etapas" Width="200" CssClass="boton_azul" OnClick="btnEtapa_Click" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4">
+                <asp:Button Style="text-align: left;" runat="server" ID="btnActividad" Text=" Agregar/Editar Actividades" Width="200" CssClass="boton_azul style-1" OnClick="btnActividad_Click" />
+            </div>
+        </div>
+
+        <asp:Button Style="text-align: left;" runat="server" ID="btnActuaciones" Width="250" Text=" Historial de Actuaciones" CssClass="boton_azul" OnClick="btnActuaciones_Click" />
+
     </div>
 </asp:Content>

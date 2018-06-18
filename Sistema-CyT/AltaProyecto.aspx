@@ -9,7 +9,7 @@
             <!-- LISTA CON LOS FONDOS EN LA BASE DE DATOS -->
             <div class="form-group">
                 <br />
-                <asp:Label ID="lblFondoChoice" runat="server" Text="" CssClass="col-md-2 AlineadoDerecha"> </asp:Label>
+                <asp:Label ID="lblFondoChoice" runat="server" Text="FONDO" CssClass="col-md-2 AlineadoDerecha"> </asp:Label>
                 <div class="col-md-8">
                     <asp:DropDownList ID="ddlFondoChoice" runat="server"
                         ForeColor="#000066"
@@ -26,7 +26,7 @@
             </div>
             <!-- LISTA CON LAS CONVOCATORIAS EN LA BASE DE DATOS -->
             <div class="form-group">
-                <asp:Label ID="lblConvocatoria" runat="server" Text="" CssClass="col-md-2 AlineadoDerecha"></asp:Label>
+                <asp:Label ID="lblConvocatoria" runat="server" Text="CONVOCATORIA" CssClass="col-md-2 AlineadoDerecha"></asp:Label>
                 <div class="col-md-8">
                     <asp:DropDownList ID="ddlConvocatoria" runat="server"
                         BackColor="WhiteSmoke"

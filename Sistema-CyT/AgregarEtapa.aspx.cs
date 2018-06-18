@@ -33,7 +33,7 @@ namespace Sistema_CyT
 
             MostrarProyectoSeleccionado();
             MostrarEtapas();
-            LlenarListaTipoEstadoEtapasCofecyt();
+            LlenarListaTipoEstadoEtapas();
         }
 
         public void MostrarProyectoSeleccionado()
@@ -57,7 +57,7 @@ namespace Sistema_CyT
             dgvEtapas.Columns[0].Visible = false;
         }
 
-        private void LlenarListaTipoEstadoEtapasCofecyt()
+        private void LlenarListaTipoEstadoEtapas()
         {
             ddlTipoEstadoEtapa.DataSource = tipoEstadoEtapaNego.MostrarTipoEstadoEtapas().ToList();
             ddlTipoEstadoEtapa.DataValueField = "nombre";

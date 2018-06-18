@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AgregarActividad.aspx.cs" Inherits="Sistema_CyT.AgregarActividad" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AgregarActividadCofecyt.aspx.cs" Inherits="Sistema_CyT.AgregarActividadCofecyt" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -70,14 +70,14 @@
         <div class="form-group">
             <div class="col-md-12">
                 <asp:GridView ID="dgvActividades" runat="server" AutoGenerateColumns="false"
-                    DataKeyNames="idActividad"
+                    DataKeyNames="idActividadCofecyt"
                     OnSelectedIndexChanging="dgvActividades_SelectedIndexChanging"
                     CssClass="table table-hover" BorderWidth="2px" EmptyDataText="No existen actividades cargadas" ShowHeaderWhenEmpty="true">
                     <Columns>
-                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Id" DataField="idActividad" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="30" />
+                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Id" DataField="idActividadCofecyt" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="30" />
                         <asp:TemplateField HeaderStyle-BackColor="#cccccc" HeaderText="Etapa" HeaderStyle-HorizontalAlign="Left" HeaderStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Center" ControlStyle-Font-Size="Small" HeaderStyle-Width="100">
                             <ItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Etapa.Nombre") %>'></asp:Label>
+                                <asp:Label ID="Label1" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "EtapaCofecyt.Nombre") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Actividad" DataField="nombre" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="250" />
@@ -90,4 +90,5 @@
             </div>
         </div>
     </div>
+
 </asp:Content>

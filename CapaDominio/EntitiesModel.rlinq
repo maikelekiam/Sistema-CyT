@@ -318,6 +318,9 @@
         <orm:field name="proyectoCofecyts1" property="ProyectoCofecyts1" behavior="readwrite" uniqueId="7da81f6f-b526-43d3-bd61-876c59f42b98" type="CapaDominio.ProyectoCofecyt">
           <orm:collection element-class="CapaDominio.ProyectoCofecyt" inverse-field="persona1" order-by="" uniqueId="46175d37-6778-4a96-852d-f0e2d61094ac" />
         </orm:field>
+        <orm:field name="proyectoCofecyts2" property="ProyectoCofecyts2" behavior="readwrite" uniqueId="52b05e98-9ccd-480f-934c-338bf784bc49" type="CapaDominio.ProyectoCofecyt">
+          <orm:collection element-class="CapaDominio.ProyectoCofecyt" inverse-field="persona2" order-by="" uniqueId="835f6e09-2347-42e4-8708-0822ab0ce35b" />
+        </orm:field>
       </orm:class>
       <orm:class name="Origen" uniqueId="6d7b7763-a635-4aae-9c10-55a9d2ecab1f">
         <orm:table name="Origen" />
@@ -1046,6 +1049,9 @@
         <orm:field name="codigoInterno" property="CodigoInterno" behavior="readwrite" uniqueId="5d0bb54f-5674-445d-a7dd-c0d79a3627ea" type="System.String">
           <orm:column name="codigoInterno" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         </orm:field>
+        <orm:field name="idContraparte" property="IdContraparte" behavior="readwrite" uniqueId="1df0436c-8190-4966-a4f1-dcf88d143e01" type="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <orm:column name="idContraparte" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
+        </orm:field>
         <orm:field name="udtUvt" property="UdtUvt" behavior="readwrite" uniqueId="92641916-c64c-4de5-a454-6b66f8846e6b" type="CapaDominio.UdtUvt">
           <orm:reference uniqueId="d0716b3a-758e-4952-8c6b-ccd6c9641df5" association-name="ProyectoCofecytHasUdtUvt">
             <orm:sharedfield name="idUdtUvt" target-class="CapaDominio.UdtUvt" target-field="idUdtUvt" />
@@ -1102,6 +1108,12 @@
         </orm:field>
         <orm:field name="actuacionProyectoCofecyts" property="ActuacionProyectoCofecyts" behavior="readwrite" uniqueId="89281ecd-43db-4d6b-9425-f09e141b154d" type="CapaDominio.ActuacionProyectoCofecyt">
           <orm:collection element-class="CapaDominio.ActuacionProyectoCofecyt" inverse-field="proyectoCofecyt" order-by="" uniqueId="f334515f-b39d-45e7-a597-0dad416239b4" />
+        </orm:field>
+        <orm:field name="persona2" property="Persona2" behavior="readwrite" uniqueId="dbd53d6d-bfd4-40a5-8ab9-01a3a962dcc6" type="CapaDominio.Persona">
+          <orm:reference uniqueId="835f6e09-2347-42e4-8708-0822ab0ce35b" association-name="ProyectoCofecytHasPersona2">
+            <orm:sharedfield name="idContraparte" target-class="CapaDominio.Persona" target-field="idPersona" />
+            <orm:constraint name="FK_ProyectoCofecyt_Persona2" delete-action="dbdefaultrule" destination-table="Persona" />
+          </orm:reference>
         </orm:field>
       </orm:class>
       <orm:class name="Tematica" uniqueId="a6668582-34f7-4261-a955-4700277c4d3c">
@@ -1641,6 +1653,7 @@
         <orm:column name="destinatarios" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         <orm:column name="descripcion" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
         <orm:column name="codigoInterno" sql-type="varchar(max)" nullable="true" length="0" scale="0" ado-type="StringInfiniteLength" />
+        <orm:column name="idContraparte" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         <orm:constraint name="FK_ProyectoCofecyt_UdtUvt" delete-action="dbdefaultrule" destination-table="UdtUvt">
           <orm:column name="idUdtUvt" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:constraint>
@@ -1664,6 +1677,9 @@
         </orm:constraint>
         <orm:constraint name="FK_ProyectoCofecyt_Convocatoria" delete-action="dbdefaultrule" destination-table="Convocatoria">
           <orm:column name="idConvocatoria" sql-type="int" nullable="false" length="0" scale="0" ado-type="Int32" />
+        </orm:constraint>
+        <orm:constraint name="FK_ProyectoCofecyt_Persona2" delete-action="dbdefaultrule" destination-table="Persona">
+          <orm:column name="idContraparte" sql-type="int" nullable="true" length="0" scale="0" ado-type="Int32" />
         </orm:constraint>
       </orm:table>
       <orm:table name="Tematica">
@@ -2043,6 +2059,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="add2830c-2e6f-4888-9026-4e22cae34d46">
           <NavigationalProperty Id="7da81f6f-b526-43d3-bd61-876c59f42b98" name="ProyectoCofecyts1" type="IList&lt;ProyectoCofecyt&gt;" label="ProyectoCofecyts1 : IList&lt;ProyectoCofecyt&gt;" nullable="true" kind="Persistent" fieldName="proyectoCofecyts1" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="f93c11f3-badb-4fae-8c15-e4cad7816a01">
+          <NavigationalProperty Id="52b05e98-9ccd-480f-934c-338bf784bc49" name="ProyectoCofecyts2" type="IList&lt;ProyectoCofecyt&gt;" label="ProyectoCofecyts2 : IList&lt;ProyectoCofecyt&gt;" nullable="true" kind="Persistent" fieldName="proyectoCofecyts2" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>
@@ -2665,6 +2684,7 @@
       <Property Id="22e2b6dc-2260-455d-8fd5-79086e7759d0" name="Destinatarios" label="Destinatarios : String" kind="Persistent" fieldName="destinatarios" />
       <Property Id="605684d4-56a4-49de-93b0-17ee19f15d6e" name="Descripcion" label="Descripcion : String" kind="Persistent" fieldName="descripcion" />
       <Property Id="5d0bb54f-5674-445d-a7dd-c0d79a3627ea" name="CodigoInterno" label="CodigoInterno : String" kind="Persistent" fieldName="codigoInterno" />
+      <Property Id="1df0436c-8190-4966-a4f1-dcf88d143e01" name="IdContraparte" type="Int32" label="IdContraparte : Int32" nullable="true" kind="Persistent" fieldName="idContraparte" />
       <AssociationTargets>
         <Association Id="d0716b3a-758e-4952-8c6b-ccd6c9641df5" SourceMultiplicity="ZeroOne" name="ProyectoCofecytHasUdtUvt">
           <DomainClassMoniker name="/ModeloDeDominio/UdtUvt" />
@@ -2770,6 +2790,19 @@
             </associationDefinesSourceProperty>
           </sourceNavigationalProperty>
         </Association>
+        <Association Id="835f6e09-2347-42e4-8708-0822ab0ce35b" SourceMultiplicity="ZeroOne" name="ProyectoCofecytHasPersona2">
+          <DomainClassMoniker name="/ModeloDeDominio/Persona" />
+          <targetNavigationalProperty>
+            <associationDefinesTargetProperty Id="2b08900a-685b-4d27-9f43-e3a753c5faeb">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/Persona/ProyectoCofecyts2" />
+            </associationDefinesTargetProperty>
+          </targetNavigationalProperty>
+          <sourceNavigationalProperty>
+            <associationDefinesSourceProperty Id="9162b47e-0124-41a0-b4cb-fd8064ec7d04">
+              <NavigationalPropertyMoniker name="/ModeloDeDominio/ProyectoCofecyt/Persona2" />
+            </associationDefinesSourceProperty>
+          </sourceNavigationalProperty>
+        </Association>
       </AssociationTargets>
       <navigationalProperties>
         <classHasNavigationalProperties Id="799203ab-f22d-43fb-9e2e-cdeff138fa56">
@@ -2804,6 +2837,9 @@
         </classHasNavigationalProperties>
         <classHasNavigationalProperties Id="cc22b0e5-a37f-4820-8d6f-4c6bbeb43e8f">
           <NavigationalProperty Id="89281ecd-43db-4d6b-9425-f09e141b154d" name="ActuacionProyectoCofecyts" type="IList&lt;ActuacionProyectoCofecyt&gt;" label="ActuacionProyectoCofecyts : IList&lt;ActuacionProyectoCofecyt&gt;" nullable="true" kind="Persistent" fieldName="actuacionProyectoCofecyts" isDependent="false" isManaged="false" />
+        </classHasNavigationalProperties>
+        <classHasNavigationalProperties Id="5938f19e-f05a-4f74-ae80-42f628b2964b">
+          <NavigationalProperty Id="dbd53d6d-bfd4-40a5-8ab9-01a3a962dcc6" name="Persona2" type="Persona" label="Persona2 : Persona" nullable="true" kind="Persistent" fieldName="persona2" isDependent="false" isManaged="false" />
         </classHasNavigationalProperties>
       </navigationalProperties>
     </DomainClass>

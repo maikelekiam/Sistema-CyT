@@ -51,7 +51,7 @@ namespace Sistema_CyT
         //}
         private void LlenarListaConvocatorias()
         {
-            ddlConvocatoria.DataSource = convocatoriaNego.MostrarConvocatorias().ToList();
+            ddlConvocatoria.DataSource = convocatoriaNego.MostrarConvocatorias().OrderBy(c => c.Nombre).ToList();
             ddlConvocatoria.DataValueField = "idConvocatoria";
             ddlConvocatoria.DataBind();
         }
@@ -93,7 +93,7 @@ namespace Sistema_CyT
 
         private void LlenarChoiceConvocatorias(int id)
         {
-            ddlConvocatoria.DataSource = convocatoriaNego.ListarChoiceConvocatorias(id);
+            ddlConvocatoria.DataSource = convocatoriaNego.ListarChoiceConvocatorias(id).OrderBy(c => c.nombre);
             ddlConvocatoria.DataTextField = "nombre";
             ddlConvocatoria.DataValueField = "idConvocatoria";
             ddlConvocatoria.DataBind();

@@ -7,6 +7,7 @@
                 <h3>
                     <asp:Label ID="lblNombreProyecto" runat="server" CssClass="col-md-12"></asp:Label>
                     <br />
+                    <br />
                 </h3>
             </div>
             <div class="panel-body">
@@ -14,6 +15,11 @@
                 <div class="form-group">
                     <asp:Label ID="lblContacto" runat="server" Text="REFERENTE" CssClass="col-md-2 AlineadoDerecha"> </asp:Label>
                     <asp:Label ID="txtContacto" runat="server" CssClass="AlineadoIzquierda" Font-Bold="true"></asp:Label>
+                </div>
+                <!--CODIGO INTERNO-->
+                <div class="form-group">
+                    <asp:Label ID="lblCodigoInterno" runat="server" Text="CODIGO INTERNO" CssClass="col-md-2 AlineadoDerecha"></asp:Label>
+                    <asp:Label ID="txtCodigoInterno" runat="server" CssClass="AlineadoIzquierda" Font-Bold="true"></asp:Label>
                 </div>
                 <!--EXPEDIENTE-->
                 <div class="form-group">

@@ -427,6 +427,19 @@ namespace CapaDominio
 			}
 		}
 		
+		private int? idContraparte;
+		public virtual int? IdContraparte
+		{
+			get
+			{
+				return this.idContraparte;
+			}
+			set
+			{
+				this.idContraparte = value;
+			}
+		}
+		
 		private UdtUvt udtUvt;
 		public virtual UdtUvt UdtUvt
 		{
@@ -528,6 +541,19 @@ namespace CapaDominio
 			set
 			{
 				this.convocatorium = value;
+			}
+		}
+		
+		private Persona persona2;
+		public virtual Persona Persona2
+		{
+			get
+			{
+				return this.persona2;
+			}
+			set
+			{
+				this.persona2 = value;
 			}
 		}
 		

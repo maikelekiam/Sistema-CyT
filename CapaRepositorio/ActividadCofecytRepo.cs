@@ -33,5 +33,13 @@ namespace CapaRepositorio
                 modeloDeDominio.SaveChanges();
             }
         }
+        public ActividadCofecyt ObtenerActividadCofecytSegunId(int id)
+        {
+            using (ModeloDeDominio modeloDeDominio = new ModeloDeDominio())
+            {
+                ActividadCofecyt actividadCofecyt = modeloDeDominio.ActividadCofecyts.Where(c => c.IdActividadCofecyt == id).FirstOrDefault();
+                return actividadCofecyt;
+            }
+        }
     }
 }

@@ -46,6 +46,7 @@ namespace Sistema_CyT
 
             txtConvocatoria.Text = convocatoriaNego.ObtenerConvocatoria(Convert.ToInt32(proyecto.IdConvocatoria)).Nombre;
             txtNumeroExp.Text = proyecto.NumeroExpediente.ToString();
+            txtCodigoInterno.Text = proyecto.CodigoInterno;
 
             txtMontoSolicitado.Text = "$ " + Convert.ToString(proyecto.MontoSolicitado);
             txtMontoContraparte.Text = "$ " + Convert.ToString(proyecto.MontoContraparte);

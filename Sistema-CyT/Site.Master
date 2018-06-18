@@ -119,7 +119,7 @@
                                         <li><a runat="server" href="~/AltaProyectoCofecyt.aspx"><span class="glyphicon glyphicon-plus fa-fw"></span>Nuevo Proyecto</a></li>
                                         <li><a runat="server" href="~/EditarProyectoCofecyt.aspx"><span class="glyphicon glyphicon-edit fa-fw"></span>Editar Proyecto</a></li>
                                         <li><a runat="server" href="~/ListarProyectosCofecyt.aspx"><span class="glyphicon glyphicon-list fa-fw"></span>Listar Proyectos</a></li>
-                                        <li><a href="#"><span>ETAPAS</span></a>
+                                        <%--<li><a href="#"><span>ETAPAS</span></a>
                                             <ul>
                                                 <li><a runat="server" href="~/AgregarEtapaCofecyt.aspx"><span class="glyphicon glyphicon-plus fa-fw"></span>Agregar Etapa</a></li>
                                                 <li><a runat="server" href="~/ModificarEtapaCofecyt.aspx"><span class="glyphicon glyphicon-edit fa-fw"></span>Modificar Etapa</a></li>
@@ -130,7 +130,7 @@
                                                 <li><a runat="server" href="~/AgregarActividadCofecyt.aspx"><span class="glyphicon glyphicon-plus fa-fw"></span>Agregar Actividad</a></li>
                                                 <li><a runat="server" href="~/ModificarActividadCofecyt.aspx"><span class="glyphicon glyphicon-edit fa-fw"></span>Modificar Actividad</a></li>
                                             </ul>
-                                        </li>
+                                        </li>--%>
                                     </ul>
                                 </li>
                                 <li><a href="#"><span>Proyectos</span></a>

@@ -4,8 +4,11 @@
     <div class="container">
         <asp:Panel ID="PanelProyectoCofecyt" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <asp:Label ID="lblProyectoCofecyt" Font-Bold="true" runat="server" CssClass="col-md-12"></asp:Label>
-                <br /><br />
+                <h3>
+                    <asp:Label ID="lblProyectoCofecyt" runat="server" CssClass="col-md-12"></asp:Label>
+                    <br />
+                    <br />
+                </h3>
             </div>
         </asp:Panel>
 
@@ -14,6 +17,9 @@
             <div class="form-group">
                 <div class="col-md-2">
                     <asp:Button ID="btnAgregarActuacionProyectoCofecyt" runat="server" Text="Agregar Actuacion" Width="180" CssClass="boton_azul" OnClick="btnAgregarActuacionProyectoCofecyt_Click" />
+                </div>
+                <div class="col-md-2">
+                    <asp:Button ID="btnMostrarProyectoCofecyt" runat="server" Text="Mostrar Proyecto" Width="180" CssClass="boton_azul" OnClick="btnMostrarProyectoCofecyt_Click" />
                 </div>
             </div>
         </asp:Panel>
@@ -92,7 +98,7 @@
             </div>
             <!--DOCUMENTACION ANEXADA-->
             <div class="form-group">
-                <asp:Label ID="lblDocumentacionAnexada" runat="server" Text="DOCUMENTACION ANEXADA" CssClass="col-md-2 control-label"></asp:Label>
+                <asp:Label ID="lblDocumentacionAnexada" runat="server" Text="DOCUMENTACION ANEXA" CssClass="col-md-2 control-label"></asp:Label>
                 <div class="col-md-6">
                     <asp:TextBox ID="txtDocumentacionAnexada" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="4"></asp:TextBox>
                 </div>
@@ -100,20 +106,20 @@
             <!--BOTONES GUARDAR + CANCELAR -->
             <div class="form-group">
                 <div class="col-md-2 col-md-offset-2">
-                    <asp:Button ID="btnGuardarActuacion" runat="server" Text="Guardar Actuacion"  Width="180" CssClass="boton_verde" OnClick="btnGuardarActuacion_Click" />
+                    <asp:Button ID="btnGuardarActuacion" runat="server" Text="Guardar Actuacion" Width="180" CssClass="boton_verde" OnClick="btnGuardarActuacion_Click" />
                 </div>
                 <div class="col-md-2">
                     <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="boton_rojo" Width="180" OnClick="btnCancelar_Click" />
                 </div>
                 <div class="col-md-2">
-                    <asp:Button ID="btnActualizarActuacion" runat="server" Text="Actualizar Actuacion"  Width="180" CssClass="boton_verde" OnClick="btnActualizarActuacion_Click" />
+                    <asp:Button ID="btnActualizarActuacion" runat="server" Text="Actualizar Actuacion" Width="180" CssClass="boton_verde" OnClick="btnActualizarActuacion_Click" />
                 </div>
             </div>
         </asp:Panel>
 
         <!--GRILLA CON LAS ACTUACIONES-->
         <asp:Label ID="lblGrillaActuaciones" runat="server" Text="GRILLA DE ACTUACIONES">
-                <h4>ACTUACIONES REALIZADAS</h4>
+                <h3>ACTUACIONES REALIZADAS</h3>
         </asp:Label>
         <div class="form-group">
             <div class="col-md-12">

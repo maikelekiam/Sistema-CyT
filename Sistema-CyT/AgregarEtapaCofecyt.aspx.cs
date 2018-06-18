@@ -1,127 +1,206 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using CapaDominio;
 using CapaNegocio;
-using System.Data;
+using System.Globalization;
+using System.Web.UI.WebControls;
 
 namespace Sistema_CyT
 {
     public partial class AgregarEtapaCofecyt : System.Web.UI.Page
     {
-        ProyectoNego proyectoNego = new ProyectoNego();
         ProyectoCofecytNego proyectoCofecytNego = new ProyectoCofecytNego();
         ConvocatoriaNego convocatoriaNego = new ConvocatoriaNego();
-        TipoEstadoNego tipoEstadoNego = new TipoEstadoNego();
+        TipoEstadoCofecytNego tipoEstadoCofecytNego = new TipoEstadoCofecytNego();
         FondoNego fondoNego = new FondoNego();
 
-        public static int idProyectoSeleccionado = 1;
-        public static int idConvocatoriaSeleccionada = 1;
-        public static int idEstadoSeleccionado = 1;
-        public static string codigoInternoProyectoSeleccionado = null;
+        EtapaCofecytNego etapaCofecytNego = new EtapaCofecytNego();
+
+        TipoEstadoEtapaNego tipoEstadoEtapaNego = new TipoEstadoEtapaNego();
+
+        public static int idProyectoCofecytSeleccionado;
+        public static int idConvocatoriaSeleccionada;
+        public static int idEstadoSeleccionado;
+        public static string codigoInternoProyectoCofecytSeleccionado;
+        public static int idEtapaCofecytActual;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack) return;
 
-            LlenarListaFondoChoice();
+            btnGuardar.Visible = true;
+            btnActualizar.Visible = false;
+
+            MostrarProyectoCofecytSeleccionado();
+            MostrarEtapas();
+            LlenarListaTipoEstadoEtapas();
         }
 
-        private void LlenarListaFondoChoice()
+        public void MostrarProyectoCofecytSeleccionado()
         {
-            ddlFondoChoice.DataSource = fondoNego.MostrarFondos().ToList();
-            ddlFondoChoice.DataValueField = "idFondo";
-            ddlFondoChoice.DataBind();
+            idProyectoCofecytSeleccionado = MostrarProyectoCofecyt.idProyectoCofecytSeleccionado;
+
+            ProyectoCofecyt proyectoCofecyt = proyectoCofecytNego.ObtenerProyectoCofecyt(idProyectoCofecytSeleccionado);
+
+            lblPanelSuperiorTitulo.InnerText = proyectoCofecyt.Titulo;
+        }
+        private void LlenarListaTipoEstadoEtapas()
+        {
+            ddlTipoEstadoEtapa.DataSource = tipoEstadoEtapaNego.MostrarTipoEstadoEtapas().ToList();
+            ddlTipoEstadoEtapa.DataValueField = "nombre";
+            ddlTipoEstadoEtapa.DataValueField = "idTipoEstadoEtapa";
+            ddlTipoEstadoEtapa.DataBind();
         }
 
-
-
-        protected void ddlFondoChoice_SelectedIndexChanged(object sender, EventArgs e)
+        public void MostrarEtapas()
         {
-            if (ddlFondoChoice.SelectedValue != "-1")
+            dgvEtapas.Columns[0].Visible = true;
+            dgvEtapas.Columns[1].Visible = true;
+            dgvEtapas.Columns[2].Visible = true;
+
+            dgvEtapas.DataSource = etapaCofecytNego.TraerEtapaCofecytsSegunIdProyecto(idProyectoCofecytSeleccionado).OrderBy(c => c.Nombre);
+            dgvEtapas.DataBind();
+
+            dgvEtapas.Columns[0].Visible = false;
+        }
+
+                
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            if (txtNombreEtapa.Text != "" && ddlTipoEstadoEtapa.SelectedValue != "-1")
             {
-                if (fondoNego.ObtenerFondo(Convert.ToInt32(ddlFondoChoice.SelectedValue)).Nombre.ToUpper() == "COFECYT")
-                {
-                    Response.Redirect("AgregarEtapaCofecyt.aspx");
-                }
-                else
-                {
+                GuardarEtapa();
 
-                }
-
-
-
-
-
-                //lblPanelSuperiorTitulo.InnerText = "Proyectos: " + fondoNego.ObtenerFondo(Convert.ToInt32(ddlFondoChoice.SelectedValue)).Nombre;
-                LlenarChoiceConvocatorias(Convert.ToInt32(ddlFondoChoice.SelectedValue));
+                Response.Redirect("MostrarProyectoCofecyt.aspx");
             }
             else
             {
-                Response.Redirect("AgregarEtapa.aspx");
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Correct", "alert('Debe completar los campos NOMBRE y ESTADO ETAPA.')", true);
             }
         }
 
-        private void LlenarChoiceConvocatorias(int id)
+        private void GuardarEtapa()
         {
-            ddlConvocatoria.DataSource = convocatoriaNego.ListarChoiceConvocatorias(id);
-            ddlConvocatoria.DataTextField = "nombre";
-            ddlConvocatoria.DataValueField = "idConvocatoria";
-            ddlConvocatoria.DataBind();
+            EtapaCofecyt etapaCofecyt = new EtapaCofecyt();
 
-            if (ddlConvocatoria.SelectedValue != "-1" && ddlConvocatoria.SelectedValue != "")
+            etapaCofecyt.IdProyectoCofecyt = idProyectoCofecytSeleccionado;
+            etapaCofecyt.Nombre = txtNombreEtapa.Text;
+
+            if (txtFechaInicioEtapa.Text == "") { etapaCofecyt.FechaInicio = null; }
+            else { etapaCofecyt.FechaInicio = DateTime.ParseExact(txtFechaInicioEtapa.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture); }
+
+            if (txtFechaFinEtapa.Text == "") { etapaCofecyt.FechaFin = null; }
+            else { etapaCofecyt.FechaFin = DateTime.ParseExact(txtFechaFinEtapa.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture); }
+
+            etapaCofecyt.IdTipoEstadoEtapa = Convert.ToInt32(ddlTipoEstadoEtapa.SelectedValue);
+
+            if (chkRendicionEtapa.Checked) { etapaCofecyt.Rendicion = true; }
+            else if (!chkRendicionEtapa.Checked) { etapaCofecyt.Rendicion = false; }
+
+            if (chkInformeEtapa.Checked) { etapaCofecyt.Informe = true; }
+            else if (!chkInformeEtapa.Checked) { etapaCofecyt.Informe = false; }
+
+            etapaCofecyt.DuracionSegunUvt = txtDuracionSegunUvt.Text;
+
+            etapaCofecytNego.GuardarEtapaCofecyt(etapaCofecyt);
+
+            Limpiar();
+        }
+
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            btnGuardar.Visible = true;
+            btnActualizar.Visible = false;
+
+            Response.Redirect("MostrarProyectoCofecyt.aspx");
+        }
+
+        protected void btnActualizar_Click(object sender, EventArgs e)
+        {
+            btnGuardar.Visible = false;
+            btnActualizar.Visible = true;
+
+            if (txtNombreEtapa.Text != "" && ddlTipoEstadoEtapa.SelectedValue != "-1")
             {
-                idConvocatoriaSeleccionada = Convert.ToInt32(ddlConvocatoria.SelectedValue.ToString());
+                ActualizarEtapa();
 
-                //Me fijo si es un proyecto simple o un proyectocofecyt
-                if (fondoNego.ObtenerFondo(Convert.ToInt32(ddlFondoChoice.SelectedValue)).Nombre.ToUpper() == "COFECYT")
-                {
-                    Response.Redirect("AgregarEtapaCofecyt.aspx");
-
-                    //dgvProyectos.Visible = false;
-
-                    //cantidadProyectosSumatoria = proyectoCofecytNego.ListarChoiceProyectoCofecyts(idConvocatoriaSeleccionada).Count();
-                    //lblCantidadProyectosSumatoria.Text = "Cantidad de Proyectos = " + Convert.ToString(cantidadProyectosSumatoria);
-                }
-                else
-                {
-                }
+                Response.Redirect("MostrarProyectoCofecyt.aspx");
             }
             else
             {
-                if (fondoNego.ObtenerFondo(Convert.ToInt32(ddlFondoChoice.SelectedValue)).Nombre.ToUpper() == "COFECYT")
-                {
-
-                }
-                else
-                {
-
-                }
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Correct", "alert('Debe completar los campos NOMBRE y ESTADO ETAPA.')", true);
             }
         }
 
-
-        protected void ddlConvocatoria_SelectedIndexChanged(object sender, EventArgs e)
+        protected void dgvEtapas_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
+            btnGuardar.Visible = false;
+            btnActualizar.Visible = true;
 
+            GridViewRow row = dgvEtapas.Rows[e.NewSelectedIndex];
+
+            idEtapaCofecytActual = Convert.ToInt32(row.Cells[0].Text);
+
+            EtapaCofecyt etapaCofecyt = etapaCofecytNego.ObtenerEtapaCofecytSegunId(idEtapaCofecytActual);
+
+            if (etapaCofecyt.FechaInicio == null) { txtFechaInicioEtapa.Text = ""; }
+            else { txtFechaInicioEtapa.Text = Convert.ToDateTime(etapaCofecyt.FechaInicio).ToShortDateString(); };
+
+            if (etapaCofecyt.FechaFin == null) { txtFechaFinEtapa.Text = ""; }
+            else { txtFechaFinEtapa.Text = Convert.ToDateTime(etapaCofecyt.FechaFin).ToShortDateString(); };
+
+            txtNombreEtapa.Text = etapaCofecyt.Nombre;
+
+            txtDuracionSegunUvt.Text = etapaCofecyt.DuracionSegunUvt;
+
+            ddlTipoEstadoEtapa.Text = Convert.ToString(etapaCofecyt.IdTipoEstadoEtapa);
+
+            if (etapaCofecyt.Informe.Value == true) { chkInformeEtapa.Checked = true; }
+            else if (etapaCofecyt.Informe.Value == false) { chkInformeEtapa.Checked = false; }
+
+            if (etapaCofecyt.Rendicion.Value == true) { chkRendicionEtapa.Checked = true; }
+            else if (etapaCofecyt.Rendicion.Value == false) { chkRendicionEtapa.Checked = false; }
         }
 
-        protected void ddlProyectoChoice_SelectedIndexChanged(object sender, EventArgs e)
+        public void ActualizarEtapa()
         {
+            EtapaCofecyt etapaCofecyt = new EtapaCofecyt();
 
+            etapaCofecyt.IdProyectoCofecyt = idProyectoCofecytSeleccionado;
+            etapaCofecyt.Nombre = txtNombreEtapa.Text;
+            etapaCofecyt.IdEtapaCofecyt = idEtapaCofecytActual;
+
+            if (txtFechaInicioEtapa.Text == "") { etapaCofecyt.FechaInicio = null; }
+            else { etapaCofecyt.FechaInicio = DateTime.ParseExact(txtFechaInicioEtapa.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture); }
+
+            if (txtFechaFinEtapa.Text == "") { etapaCofecyt.FechaFin = null; }
+            else { etapaCofecyt.FechaFin = DateTime.ParseExact(txtFechaFinEtapa.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture); }
+
+            etapaCofecyt.IdTipoEstadoEtapa = Convert.ToInt32(ddlTipoEstadoEtapa.SelectedValue);
+
+            if (chkRendicionEtapa.Checked) { etapaCofecyt.Rendicion = true; }
+            else if (!chkRendicionEtapa.Checked) { etapaCofecyt.Rendicion = false; }
+
+            if (chkInformeEtapa.Checked) { etapaCofecyt.Informe = true; }
+            else if (!chkInformeEtapa.Checked) { etapaCofecyt.Informe = false; }
+
+            etapaCofecyt.DuracionSegunUvt = txtDuracionSegunUvt.Text;
+
+            etapaCofecytNego.ActualizarEtapaCofecyt(etapaCofecyt);
+
+            Limpiar();
         }
 
-        protected void dgvProyectoCofecyts_SelectedIndexChanged(object sender, EventArgs e)
+        public void Limpiar()
         {
-
-        }
-
-        protected void dgvProyectos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            txtNombreEtapa.Text = null;
+            txtFechaInicioEtapa.Text = null;
+            txtFechaFinEtapa.Text = null;
+            chkInformeEtapa.Text = null;
+            chkRendicionEtapa.Text = null;
+            ddlTipoEstadoEtapa.Text = null;
+            txtDuracionSegunUvt.Text = null;
         }
     }
 }

@@ -24,7 +24,10 @@ namespace CapaNegocio
         {
             actividadCofecytRepo.ActualizarActividadCofecyt(actividadCofecyt);
         }
-
+        public ActividadCofecyt ObtenerActividadCofecytSegunId(int id)
+        {
+            return actividadCofecytRepo.ObtenerActividadCofecytSegunId(id);
+        }
 
     }
 }

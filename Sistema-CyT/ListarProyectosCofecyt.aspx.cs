@@ -93,11 +93,13 @@ namespace Sistema_CyT
             dgvProyectos.Columns[0].Visible = true;
             dgvProyectos.Columns[1].Visible = true;
             dgvProyectos.Columns[2].Visible = true;
+            dgvProyectos.Columns[3].Visible = true;
 
             dgvProyectos.DataSource = proyectoCofecytNego.MostrarProyectoCofecyts().Where(c => c.IdConvocatoria == idConvocatoriaSeleccionada).ToList();
             dgvProyectos.DataBind();
 
             dgvProyectos.Columns[0].Visible = false;
+            dgvProyectos.Columns[1].Visible = false;
         }
     }
 }
