@@ -103,6 +103,24 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.TextBox txtTituloCofecyt;
         
         /// <summary>
+        /// lblEstadoCofecyt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEstadoCofecyt;
+        
+        /// <summary>
+        /// ddlEstadoCofecyt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlEstadoCofecyt;
+        
+        /// <summary>
         /// lblObjetivosCofecyt control.
         /// </summary>
         /// <remarks>
@@ -535,24 +553,6 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.TextBox txtDuracionEstimadaIfaa;
         
         /// <summary>
-        /// lblBeneficiarios control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBeneficiarios;
-        
-        /// <summary>
-        /// txtBeneficiarios control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBeneficiarios;
-        
-        /// <summary>
         /// lblEntidadesIntervinientes control.
         /// </summary>
         /// <remarks>
@@ -571,22 +571,22 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.TextBox txtEntidadesIntervinientes;
         
         /// <summary>
-        /// lblEstadoCofecyt control.
+        /// lblBeneficiarios control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEstadoCofecyt;
+        protected global::System.Web.UI.WebControls.Label lblBeneficiarios;
         
         /// <summary>
-        /// ddlEstadoCofecyt control.
+        /// txtBeneficiarios control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEstadoCofecyt;
+        protected global::System.Web.UI.WebControls.TextBox txtBeneficiarios;
         
         /// <summary>
         /// lblContactoBeneficiario control.
@@ -704,6 +704,24 @@ namespace Sistema_CyT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblContraparte;
+        
+        /// <summary>
+        /// txtContraparte control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtContraparte;
+        
+        /// <summary>
+        /// lblContactoContraparte control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblContactoContraparte;
         
         /// <summary>
         /// ddlContraparte control.

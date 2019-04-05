@@ -33,7 +33,7 @@ namespace Sistema_CyT
         {
             Fondo fondo = fondoNego.ObtenerFondoSegunNombre("COFECyT");
 
-            ddlConvocatoria.DataSource = convocatoriaNego.MostrarConvocatorias().Where(c => c.IdFondo == fondo.IdFondo).Where(c => c.Activa == true).ToList();
+            ddlConvocatoria.DataSource = convocatoriaNego.MostrarConvocatorias().Where(c => c.IdFondo == fondo.IdFondo).Where(c => c.Activa == true).OrderBy(c=>c.Nombre).ToList();
             ddlConvocatoria.DataValueField = "idConvocatoria";
             ddlConvocatoria.DataBind();
         }

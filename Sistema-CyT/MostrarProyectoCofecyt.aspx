@@ -4,11 +4,11 @@
     <div class="container">
         <asp:Panel ID="PanelProyectoCofecyt" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <h3>
-                    <asp:Label ID="lblNombreProyectoCofecyt" runat="server" CssClass="col-md-12"></asp:Label>
+                <h4>
+                    <asp:Label ID="lblNombreProyectoCofecyt" runat="server" CssClass="col-md-12" Font-Size="Larger"></asp:Label>
                     <br />
                     <br />
-                </h3>
+                </h4>
             </div>
             <div class="panel-body">
                 <!--CODIGO INTERNO-->
@@ -101,11 +101,6 @@
                     <asp:Label ID="lblDuracionEstimadaIfaa" runat="server" Text="DURACION ESTIMADA SEGUN IFAA" CssClass="col-md-3 lblalider"> </asp:Label>
                     <asp:Label ID="txtDuracionEstimadaIfaa" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
-                <!--BENEFICIARIOS-->
-                <div class="form-group">
-                    <asp:Label ID="lblBeneficiarios" runat="server" Text="BENEFICIARIOS" CssClass="col-md-3 lblalider"> </asp:Label>
-                    <asp:Label ID="txtBeneficiarios" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
-                </div>
                 <!--ENTIDADES INTERVINIENTES-->
                 <div class="form-group">
                     <asp:Label ID="lblEntidadesIntervinientes" runat="server" Text="ENTIDADES INTERVINIENTES" CssClass="col-md-3 lblalider"> </asp:Label>
@@ -116,10 +111,25 @@
                     <asp:Label ID="lblEstadoCofecyt" runat="server" Text="ESTADO DE SITUACION" CssClass="col-md-3 lblalider"></asp:Label>
                     <asp:Label ID="txtEstadoCofecyt" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
+                <!--BENEFICIARIOS-->
+                <div class="form-group">
+                    <asp:Label ID="lblBeneficiarios" runat="server" Text="BENEFICIARIOS" CssClass="col-md-3 lblalider"> </asp:Label>
+                    <asp:Label ID="txtBeneficiarios" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
+                </div>
                 <!--CONTACTO BENEFICIARIO-->
                 <div class="form-group">
                     <asp:Label ID="lblContactoBeneficiario" runat="server" Text="CONTACTO BENEFICIARIO" CssClass="col-md-3 lblalider"></asp:Label>
                     <asp:Label ID="txtContactoBeneficiario" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
+                </div>
+                <!--CONTRAPARTE-->
+                <div class="form-group">
+                    <asp:Label ID="lblContraparte" runat="server" Text="CONTRAPARTE" CssClass="col-md-3 lblalider"> </asp:Label>
+                    <asp:Label ID="txtContraparte" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
+                </div>
+                <!--CONTACTO CONTRAPARTE-->
+                <div class="form-group">
+                    <asp:Label ID="lblContactoContraparte" runat="server" Text="CONTACTO CONTRAPARTE" CssClass="col-md-3 lblalider"></asp:Label>
+                    <asp:Label ID="txtContactoContraparte" runat="server" CssClass="col-md-8 lblaliizq" Font-Bold="true"></asp:Label>
                 </div>
                 <!--OBSERVACIONES-->
                 <div class="form-group">

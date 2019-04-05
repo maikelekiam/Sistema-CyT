@@ -4,11 +4,11 @@
     <div class="container">
         <asp:Panel ID="PanelProyectoCofecyt" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <h3>
-                    <asp:Label ID="lblProyectoCofecyt" runat="server" CssClass="col-md-12"></asp:Label>
+                <h4>
+                    <asp:Label ID="lblProyectoCofecyt" runat="server" CssClass="col-md-12" Font-Size="Larger"></asp:Label>
                     <br />
                     <br />
-                </h3>
+                </h4>
             </div>
         </asp:Panel>
 
@@ -116,27 +116,28 @@
                 </div>
             </div>
         </asp:Panel>
-
-        <!--GRILLA CON LAS ACTUACIONES-->
-        <asp:Label ID="lblGrillaActuaciones" runat="server" Text="GRILLA DE ACTUACIONES">
-                <h3>ACTUACIONES REALIZADAS</h3>
+    </div>
+    <!--GRILLA CON LAS ACTUACIONES-->
+    <div class="container" id="nombreDiv">
+        <asp:Label ID="lblGrillaActuaciones" runat="server" Text="GRILLA DE ACTUACIONES" Font-Size="Larger">
+                <h4>ACTUACIONES REALIZADAS</h4>
         </asp:Label>
+        <div class="col-md-11">
         <div class="form-group">
-            <div class="col-md-12">
-                <asp:GridView ID="dgvActuaciones" runat="server" AutoGenerateColumns="false"
-                    CssClass="table table-hover table-striped" BorderWidth="2px" GridLines="Both"
-                    OnSelectedIndexChanging="dgvActuaciones_SelectedIndexChanging"
-                    OnRowDeleting="dgvActuaciones_RowDeleting">
-                    <Columns>
-                        <asp:BoundField HeaderText="idActuacion" DataField="idActuacionProyectoCofecyt" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="50" />
-                        <asp:BoundField HeaderText="idP" DataField="idProyectoCofecyt" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="50" />
-                        <asp:BoundField HeaderText="Fecha" DataField="fechaActuacion"
-                            DataFormatString="{0:dd-MMM-yyyy}" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="80" HeaderStyle-Width="80" />
-                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Detalle" DataField="detalle"
-                            ItemStyle-HorizontalAlign="Justify" ItemStyle-Width="300" HeaderStyle-Width="300" />
-                        <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Pendiente" DataField="pendiente"
-                            ItemStyle-HorizontalAlign="Justify" ItemStyle-Width="250" HeaderStyle-Width="250" />
-                        <%--<asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Responsable" DataField="responsable"
+            <asp:GridView ID="dgvActuaciones" runat="server" AutoGenerateColumns="false"
+                CssClass="table table-hover table-striped" BorderWidth="2px" GridLines="Both"
+                OnSelectedIndexChanging="dgvActuaciones_SelectedIndexChanging"
+                OnRowDeleting="dgvActuaciones_RowDeleting">
+                <Columns>
+                    <asp:BoundField HeaderText="idActuacion" DataField="idActuacionProyectoCofecyt" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="50" />
+                    <asp:BoundField HeaderText="idP" DataField="idProyectoCofecyt" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Left" ControlStyle-Font-Size="Small" HeaderStyle-Width="50" />
+                    <asp:BoundField HeaderText="Fecha" DataField="fechaActuacion"
+                        DataFormatString="{0:dd-MMM-yyyy}" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="110" HeaderStyle-Width="110" />
+                    <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Detalle" DataField="detalle"
+                        ItemStyle-HorizontalAlign="Justify" ItemStyle-Width="300" HeaderStyle-Width="300" />
+                    <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Pendiente" DataField="pendiente"
+                        ItemStyle-HorizontalAlign="Justify" ItemStyle-Width="200" HeaderStyle-Width="200" />
+                    <%--<asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Responsable" DataField="responsable"
                             ItemStyle-HorizontalAlign="Justify" ItemStyle-Width="100" HeaderStyle-Width="100" />
                         <asp:BoundField HeaderStyle-BackColor="#cccccc" HeaderText="Agente" DataField="agente"
                             ItemStyle-HorizontalAlign="Justify" ItemStyle-Width="100" HeaderStyle-Width="100" />
@@ -144,11 +145,27 @@
                             DataFormatString="{0:dd-MMM-yyyy}" HeaderStyle-BackColor="#cccccc" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="80" HeaderStyle-Width="80" />--%>
 
 
-                        <asp:ButtonField HeaderText="Mostrar" CommandName="select" HeaderStyle-BackColor="#cccccc" ControlStyle-Width="50" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" ControlStyle-CssClass="glyphicon glyphicon-search" HeaderStyle-Width="50" />
-                        <asp:ButtonField HeaderText="Editar" CommandName="delete" HeaderStyle-BackColor="#cccccc" ControlStyle-Width="50" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" ControlStyle-CssClass="glyphicon glyphicon-edit" HeaderStyle-Width="50" />
-                    </Columns>
-                </asp:GridView>
-            </div>
+                    <asp:ButtonField CommandName="select" HeaderStyle-BackColor="#cccccc" ControlStyle-Width="30" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" ControlStyle-CssClass="glyphicon glyphicon-search" HeaderStyle-Width="30" />
+                    <asp:ButtonField CommandName="delete" HeaderStyle-BackColor="#cccccc" ControlStyle-Width="30" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" ControlStyle-CssClass="glyphicon glyphicon-edit" HeaderStyle-Width="30" />
+                </Columns>
+            </asp:GridView>
         </div>
-    </div>
+    </div></div>
+
+    <asp:Button ID="Button1" runat="server" Text="Imprimir" CssClass="boton_azul" OnClientClick="printDiv('nombreDiv')" />
+
+    <script>
+        function printDiv(nombreDiv) {
+
+            //var c = document.getElementById('logo').innerHTML;
+            var contenido = document.getElementById(nombreDiv).innerHTML;
+            var contenidoOriginal = document.body.innerHTML;
+
+            document.body.innerHTML = contenido;
+
+            window.print();
+
+            document.body.innerHTML = contenidoOriginal;
+        }
+    </script>
 </asp:Content>

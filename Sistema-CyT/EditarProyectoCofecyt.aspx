@@ -65,6 +65,22 @@
                     <asp:TextBox ID="txtTituloCofecyt" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
                 </div>
             </div>
+            <!--ESTADO COFECYT del Proyecto-->
+            <div class="form-group">
+                <asp:Label ID="lblEstadoCofecyt" runat="server" Text="ESTADO DE SITUACION" CssClass="col-md-2 control-label"></asp:Label>
+                <div class="col-md-4">
+                    <asp:DropDownList ID="ddlEstadoCofecyt" runat="server"
+                        BackColor="WhiteSmoke"
+                        ForeColor="#000066"
+                        CssClass="selectpicker form-control show-tick"
+                        data-live-search="true"
+                        DataTextField="nombre"
+                        AutoPostBack="False"
+                        AppendDataBoundItems="true">
+                        <asp:ListItem Value="-1">&lt;Seleccione Estado&gt;</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+            </div>
             <!--OBJETIVOS DEL PROYECTO-->
             <div class="form-group">
                 <asp:Label ID="lblObjetivosCofecyt" runat="server" Text="OBJETIVOS" CssClass="col-md-2 col-xs-12 control-label"> </asp:Label>
@@ -327,7 +343,7 @@
             </div>
             <!--DURACION DEL PROYECTO EN MESES SEGUN LO ESTIMADO-->
             <div class="form-group">
-                <asp:Label ID="lblDuracionEstimada" runat="server" Text="DURACION ESTIMADA" CssClass="col-md-3 control-label"> </asp:Label>
+                <asp:Label ID="lblDuracionEstimada" runat="server" Text="DURACION ESTIMADA (meses)" CssClass="col-md-3 control-label"> </asp:Label>
                 <div class="col-md-4 col-xs-12">
                     <asp:TextBox ID="txtDuracionEstimada" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
@@ -339,13 +355,6 @@
                     <asp:TextBox ID="txtDuracionEstimadaIfaa" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
-            <!--BENEFICIARIOS-->
-            <div class="form-group">
-                <asp:Label ID="lblBeneficiarios" runat="server" Text="BENEFICIARIOS" CssClass="col-md-3 control-label"> </asp:Label>
-                <div class="col-md-7">
-                    <asp:TextBox ID="txtBeneficiarios" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
-                </div>
-            </div>
             <!--ENTIDADES INTERVINIENTES-->
             <div class="form-group">
                 <asp:Label ID="lblEntidadesIntervinientes" runat="server" Text="ENTIDADES INTERVINIENTES" CssClass="col-md-3 control-label"> </asp:Label>
@@ -353,20 +362,12 @@
                     <asp:TextBox ID="txtEntidadesIntervinientes" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
                 </div>
             </div>
-            <!--ESTADO COFECYT del Proyecto-->
+            
+            <!--BENEFICIARIOS-->
             <div class="form-group">
-                <asp:Label ID="lblEstadoCofecyt" runat="server" Text="ESTADO DE SITUACION" CssClass="col-md-3 control-label"></asp:Label>
-                <div class="col-md-4">
-                    <asp:DropDownList ID="ddlEstadoCofecyt" runat="server"
-                        BackColor="WhiteSmoke"
-                        ForeColor="#000066"
-                        CssClass="selectpicker form-control show-tick"
-                        data-live-search="true"
-                        DataTextField="nombre"
-                        AutoPostBack="False"
-                        AppendDataBoundItems="true">
-                        <asp:ListItem Value="-1">&lt;Seleccione Estado&gt;</asp:ListItem>
-                    </asp:DropDownList>
+                <asp:Label ID="lblBeneficiarios" runat="server" Text="BENEFICIARIOS" CssClass="col-md-3 control-label"> </asp:Label>
+                <div class="col-md-7">
+                    <asp:TextBox ID="txtBeneficiarios" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
                 </div>
             </div>
             <!--CONTACTO BENEFICIARIO-->
@@ -436,7 +437,14 @@
             </div>
             <!--CONTRAPARTE-->
             <div class="form-group">
-                <asp:Label ID="lblContraparte" runat="server" Text="CONTRAPARTE" CssClass="col-md-3 AlineadoDerecha"></asp:Label>
+                <asp:Label ID="lblContraparte" runat="server" Text="CONTRAPARTE" CssClass="col-md-3 control-label"> </asp:Label>
+                <div class="col-md-7">
+                    <asp:TextBox ID="txtContraparte" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
+                </div>
+            </div>
+            <!--CONTACTO CONTRAPARTE-->
+            <div class="form-group">
+                <asp:Label ID="lblContactoContraparte" runat="server" Text="CONTACTO CONTRAPARTE" CssClass="col-md-3 AlineadoDerecha"></asp:Label>
                 <div class="col-md-4">
                     <asp:DropDownList ID="ddlContraparte" runat="server"
                         BackColor="WhiteSmoke"
@@ -509,7 +517,7 @@
             </div>
         </asp:Panel>
         <!--PANEL DEL COFECYT - FINANCIAMIENTO-->
-        <asp:Panel ID="PanelCofecytFinanciamiento" CssClass="panel panel-info" runat="server">
+        <asp:Panel ID="PanelCofecytFinanciamiento" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
                 <h3>COFECyT - Financiamiento del Proyecto</h3>
             </div>
@@ -537,7 +545,7 @@
             </div>
             <!--MONTO TOTAL RENDIDO Y APROBADO (DGA)-->
             <div class="form-group">
-                <asp:Label ID="lblMontoTotalDgaCofecyt" runat="server" Text="MONTO TOTAL RENDIDO Y APROBADO DGA" CssClass="col-md-3 col-xs-12 control-label"> </asp:Label>
+                <asp:Label ID="lblMontoTotalDgaCofecyt" runat="server" Text="MTO TOTAL RENDIDO Y APROBADO DGA" CssClass="col-md-3 col-xs-12 control-label"> </asp:Label>
                 <div class="col-md-4 col-xs-12">
                     <asp:TextBox ID="txtMontoTotalDgaCofecyt" Text="0" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>

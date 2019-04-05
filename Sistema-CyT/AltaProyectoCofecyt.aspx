@@ -40,7 +40,6 @@
                     <asp:TextBox ID="txtCodigoInterno" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
-
             <!--TITULO/NOMBRE DEL PROYECTO-->
             <div class="form-group">
                 <asp:Label ID="lblTituloCofecyt" runat="server" Text="TITULO" CssClass="col-md-2 col-xs-12 AlineadoDerecha"></asp:Label>
@@ -113,8 +112,8 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <asp:Button runat="server" ID="Button2" Text="Salir" class="boton_rojo" data-dismiss="modal" />
-                                        <asp:Button runat="server" ID="Button3" Text="Guardar" CssClass="boton_verde" />
+                                        <asp:Button runat="server" ID="btnLocalidadModalSalir" Text="Salir" class="boton_rojo" data-dismiss="modal" />
+                                        <asp:Button runat="server" ID="btnLocalidadModalGuardar" Text="Guardar" CssClass="boton_verde" OnClick="btnLocalidadModalGuardar_Click" />
                                     </div>
                                 </div>
                             </div>
@@ -321,13 +320,6 @@
                     <asp:TextBox ID="txtDuracionEstimadaIfaa" runat="server" CssClass="form-control"></asp:TextBox>
                 </div>
             </div>
-            <!--BENEFICIARIOS-->
-            <div class="form-group">
-                <asp:Label ID="lblBeneficiarios" runat="server" Text="BENEFICIARIOS" CssClass="col-md-3 AlineadoDerecha"> </asp:Label>
-                <div class="col-md-7">
-                    <asp:TextBox ID="txtBeneficiarios" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
-                </div>
-            </div>
             <!--ENTIDADES INTERVINIENTES-->
             <div class="form-group">
                 <asp:Label ID="lblEntidadesIntervinientes" runat="server" Text="ENTIDADES INTERVINIENTES" CssClass="col-md-3 AlineadoDerecha"> </asp:Label>
@@ -351,6 +343,13 @@
                     </asp:DropDownList>
                 </div>
             </div>
+            <!--BENEFICIARIOS-->
+            <div class="form-group">
+                <asp:Label ID="lblBeneficiarios" runat="server" Text="BENEFICIARIOS" CssClass="col-md-3 AlineadoDerecha"> </asp:Label>
+                <div class="col-md-7">
+                    <asp:TextBox ID="txtBeneficiarios" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
+                </div>
+            </div>
             <!--CONTACTO BENEFICIARIO-->
             <div class="form-group">
                 <asp:Label ID="lblContactoBeneficiario" runat="server" Text="CONTACTO BENEFICIARIO" CssClass="col-md-3 AlineadoDerecha"></asp:Label>
@@ -366,7 +365,6 @@
                         <asp:ListItem Value="-1">&lt;Seleccione Persona&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
-
                 <%--NUEVO CONTACTO BENEFICIARIO--%>
                 <div class="form-group">
                     <div class="col-md-2">
@@ -417,12 +415,18 @@
                     </div>
                 </div>
             </div>
-
             <!--CONTRAPARTE-->
             <div class="form-group">
-                <asp:Label ID="lblContraparte" runat="server" Text="CONTRAPARTE" CssClass="col-md-3 AlineadoDerecha"></asp:Label>
+                <asp:Label ID="lblContraparte" runat="server" Text="CONTRAPARTE" CssClass="col-md-3 AlineadoDerecha"> </asp:Label>
+                <div class="col-md-7">
+                    <asp:TextBox ID="txtContraparte" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
+                </div>
+            </div>
+            <!--CONTACTO CONTRAPARTE-->
+            <div class="form-group">
+                <asp:Label ID="lblContactoContraparte" runat="server" Text="CONTACTO CONTRAPARTE" CssClass="col-md-3 AlineadoDerecha"></asp:Label>
                 <div class="col-md-4">
-                    <asp:DropDownList ID="ddlContraparte" runat="server"
+                    <asp:DropDownList ID="ddlContactoContraparte" runat="server"
                         BackColor="WhiteSmoke"
                         ForeColor="#000066"
                         CssClass="selectpicker form-control show-tick"
@@ -433,7 +437,6 @@
                         <asp:ListItem Value="-1">&lt;Seleccione Persona&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
-
                 <%--NUEVO CONTRAPARTE--%>
                 <div class="form-group">
                     <div class="col-md-2">
@@ -484,8 +487,6 @@
                     </div>
                 </div>
             </div>
-
-
             <!--OBSERVACIONES-->
             <div class="form-group">
                 <asp:Label ID="lblObservacionesCofecyt" runat="server" Text="OBSERVACIONES" CssClass="col-md-2 col-xs-12 AlineadoDerecha"> </asp:Label>

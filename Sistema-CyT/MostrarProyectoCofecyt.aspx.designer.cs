@@ -355,24 +355,6 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.Label txtDuracionEstimadaIfaa;
         
         /// <summary>
-        /// lblBeneficiarios control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBeneficiarios;
-        
-        /// <summary>
-        /// txtBeneficiarios control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtBeneficiarios;
-        
-        /// <summary>
         /// lblEntidadesIntervinientes control.
         /// </summary>
         /// <remarks>
@@ -409,6 +391,24 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.Label txtEstadoCofecyt;
         
         /// <summary>
+        /// lblBeneficiarios control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBeneficiarios;
+        
+        /// <summary>
+        /// txtBeneficiarios control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtBeneficiarios;
+        
+        /// <summary>
         /// lblContactoBeneficiario control.
         /// </summary>
         /// <remarks>
@@ -425,6 +425,42 @@ namespace Sistema_CyT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label txtContactoBeneficiario;
+        
+        /// <summary>
+        /// lblContraparte control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblContraparte;
+        
+        /// <summary>
+        /// txtContraparte control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtContraparte;
+        
+        /// <summary>
+        /// lblContactoContraparte control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblContactoContraparte;
+        
+        /// <summary>
+        /// txtContactoContraparte control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label txtContactoContraparte;
         
         /// <summary>
         /// lblObservacionesCofecyt control.

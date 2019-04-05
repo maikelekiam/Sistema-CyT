@@ -147,6 +147,7 @@ namespace Sistema_CyT
                 else
                 {
                     txtTituloCofecyt.Text = proyectoCofecyt.Titulo;
+                    txtCodigoInterno.Text = proyectoCofecyt.CodigoInterno;
                     txtObjetivosCofecyt.Text = proyectoCofecyt.Objetivos;
                     txtDescripcionCofecyt.Text = proyectoCofecyt.Descripcion;
                     //txtFiltroProyecto.Text = Convert.ToString(proyectoCofecyt.IdLocalidad);
@@ -187,6 +188,7 @@ namespace Sistema_CyT
                     txtDuracionEstimada.Text = Convert.ToString(proyectoCofecyt.DuracionEstimada);
                     txtDuracionEstimadaIfaa.Text = Convert.ToString(proyectoCofecyt.DuracionEstimadaIfaa);
                     txtBeneficiarios.Text = proyectoCofecyt.Beneficiarios;
+                    txtContraparte.Text = proyectoCofecyt.Contraparte;
                     txtEntidadesIntervinientes.Text = proyectoCofecyt.EntidadesIntervinientes;
                     //ddlEstadoCofecyt.Text = tipoEstadoCofecytNego.TraerTipoEstadoCofecyt(Convert.ToInt32(proyectoCofecyt.IdTipoEstadoCofecyt));
 
@@ -195,6 +197,9 @@ namespace Sistema_CyT
 
                     if (proyectoCofecyt.IdContactoBeneficiario == null) { ddlContactoBeneficiario.Text = "-1"; }
                     else { ddlContactoBeneficiario.Text = personaNego.TraerPersona(Convert.ToInt32(proyectoCofecyt.IdContactoBeneficiario)); }
+
+                    if (proyectoCofecyt.IdContactoContraparte == null) { ddlContraparte.Text = "-1"; }
+                    else { ddlContraparte.Text = personaNego.TraerPersona(Convert.ToInt32(proyectoCofecyt.IdContactoContraparte)); }
 
                     txtObservacionesCofecyt.Text = proyectoCofecyt.Observaciones;
                     txtMontoSolicitadoCofecyt.Text = Convert.ToString(proyectoCofecyt.MontoSolicitadoCofecyt);
@@ -205,12 +210,16 @@ namespace Sistema_CyT
                     txtMontoRescindidoCofecyt.Text = Convert.ToString(proyectoCofecyt.MontoRescindidoCofecyt);
                 }
             }
+            else
+            {
+                LimpiarFormularioCofecyt(); //lo puse recien
+            }
         }
 
         protected void btnActualizarProyecto_Click(object sender, EventArgs e)
         {
             if (
-                //ddlLocalidadCofecyt.SelectedValue != "-1"
+                txtCodigoInterno.Text != "" &&
                 //&& ddlContactoBeneficiario.SelectedValue != "-1"
                 //&& ddlDirector.SelectedValue != "-1"
                 //&& ddlEstadoCofecyt.SelectedValue != "-1"
@@ -226,7 +235,7 @@ namespace Sistema_CyT
             }
             else
             {
-                // Mostrar aviso de completar todos los datos
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Correct", "alert('Debe completar el Titulo y Codigo Interno.')", true);
             }
         }
         public void ActualizarProyectoCofecyt()
@@ -238,6 +247,7 @@ namespace Sistema_CyT
 
             proyectoCofecyt.Titulo = txtTituloCofecyt.Text;
             proyectoCofecyt.Objetivos = txtObjetivosCofecyt.Text;
+            proyectoCofecyt.CodigoInterno = txtCodigoInterno.Text;
             proyectoCofecyt.Descripcion = txtDescripcionCofecyt.Text;
             proyectoCofecyt.Destinatarios = txtDestinatariosCofecyt.Text;
 
@@ -253,10 +263,10 @@ namespace Sistema_CyT
             if (ddlUvt.SelectedValue == "-1") { proyectoCofecyt.UdtUvt = null; }
             else { proyectoCofecyt.IdUdtUvt = udtUvtNego.TraerUdtUvtIdSegunItem(ddlUvt.SelectedItem.ToString()); }
 
+            //para DIRECTOR
             if (ddlDirector.SelectedValue == "-1") { proyectoCofecyt.IdDirector = null; }
             else
             {
-                //para DIRECTOR
                 string cadena = ddlDirector.SelectedItem.ToString();
                 string[] separadas;
                 separadas = cadena.Split(',');
@@ -280,10 +290,21 @@ namespace Sistema_CyT
                 proyectoCofecyt.IdContactoBeneficiario = personaNego.TraerPersonaIdSegunItem(itemApellido, itemNombre);
             }
 
+            //para CONTRAPARTE
+            if (ddlContraparte.SelectedValue == "-1") { proyectoCofecyt.IdContactoContraparte = null; }
+            else
+            {
+                string cadena = ddlContraparte.SelectedItem.ToString();
+                string[] separadas;
+                separadas = cadena.Split(',');
+                string itemApellido = separadas[0];
+                string itemNombre = separadas[1];
+                proyectoCofecyt.IdContactoContraparte = personaNego.TraerPersonaIdSegunItem(itemApellido, itemNombre);
+            }
+
             proyectoCofecyt.NumeroEspedienteCopade = txtNumeroExpedienteCopadeCofecyt.Text;
             proyectoCofecyt.NumeroConvenio = txtNumeroConvenio.Text;
             proyectoCofecyt.NumeroExpedienteDga = txtNumeroExpedienteDga.Text;
-
 
             if (txtFechaPresentacion.Text == "") { proyectoCofecyt.FechaPresentacion = null; }
             else { proyectoCofecyt.FechaPresentacion = DateTime.ParseExact(txtFechaPresentacion.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture); }
@@ -301,6 +322,7 @@ namespace Sistema_CyT
             else { proyectoCofecyt.DuracionEstimadaIfaa = Int32.Parse(txtDuracionEstimadaIfaa.Text); }
 
             proyectoCofecyt.Beneficiarios = txtBeneficiarios.Text;
+            proyectoCofecyt.Contraparte = txtContraparte.Text;
             proyectoCofecyt.EntidadesIntervinientes = txtEntidadesIntervinientes.Text;
 
             proyectoCofecyt.Observaciones = txtObservacionesCofecyt.Text;
@@ -331,6 +353,7 @@ namespace Sistema_CyT
         private void LimpiarFormularioCofecyt()
         {
             txtTituloCofecyt.Text = null;
+            txtCodigoInterno.Text = null;
             txtObjetivosCofecyt.Text = null;
             txtDescripcionCofecyt.Text = null;
             txtDestinatariosCofecyt.Text = null;
@@ -348,10 +371,12 @@ namespace Sistema_CyT
             txtDuracionEstimada.Text = null;
             txtDuracionEstimadaIfaa.Text = null;
             txtBeneficiarios.Text = null;
+            txtContraparte.Text = null;
             txtEntidadesIntervinientes.Text = null;
             //ddlEstadoCofecyt.Text = tipoEstadoCofecytNego.TraerTipoEstadoCofecyt(Convert.ToInt32(proyectoCofecyt.IdTipoEstadoCofecyt));
             ddlEstadoCofecyt.SelectedIndex = 0;
             ddlContactoBeneficiario.SelectedIndex = 0;
+            ddlContraparte.SelectedIndex = 0;
             txtObservacionesCofecyt.Text = null; ;
             txtMontoSolicitadoCofecyt.Text = null;
             txtMontoContraparteCofecyt.Text = null;
@@ -375,6 +400,7 @@ namespace Sistema_CyT
             else
             {
                 txtTituloCofecyt.Text = proyectoCofecyt.Titulo;
+                txtCodigoInterno.Text = proyectoCofecyt.CodigoInterno;
                 txtObjetivosCofecyt.Text = proyectoCofecyt.Objetivos;
                 txtDescripcionCofecyt.Text = proyectoCofecyt.Descripcion;
                 txtDestinatariosCofecyt.Text = proyectoCofecyt.Destinatarios;
@@ -398,8 +424,6 @@ namespace Sistema_CyT
                 if (proyectoCofecyt.IdDirector == null) { ddlDirector.Text = "-1"; }
                 else { ddlDirector.Text = personaNego.TraerPersona(Convert.ToInt32(proyectoCofecyt.IdDirector)); }
 
-
-
                 if (proyectoCofecyt.FechaPresentacion == null) { txtFechaPresentacion.Text = ""; }
                 else { txtFechaPresentacion.Text = Convert.ToDateTime(proyectoCofecyt.FechaPresentacion).ToShortDateString(); };
 
@@ -412,6 +436,7 @@ namespace Sistema_CyT
                 txtDuracionEstimada.Text = Convert.ToString(proyectoCofecyt.DuracionEstimada);
                 txtDuracionEstimadaIfaa.Text = Convert.ToString(proyectoCofecyt.DuracionEstimadaIfaa);
                 txtBeneficiarios.Text = proyectoCofecyt.Beneficiarios;
+                txtContraparte.Text = proyectoCofecyt.Contraparte;
                 txtEntidadesIntervinientes.Text = proyectoCofecyt.EntidadesIntervinientes;
                 //ddlEstadoCofecyt.Text = tipoEstadoCofecytNego.TraerTipoEstadoCofecyt(Convert.ToInt32(proyectoCofecyt.IdTipoEstadoCofecyt));
 
@@ -420,6 +445,9 @@ namespace Sistema_CyT
 
                 if (proyectoCofecyt.IdContactoBeneficiario == null) { ddlContactoBeneficiario.Text = "-1"; }
                 else { ddlContactoBeneficiario.Text = personaNego.TraerPersona(Convert.ToInt32(proyectoCofecyt.IdContactoBeneficiario)); }
+
+                if (proyectoCofecyt.IdContactoContraparte == null) { ddlContraparte.Text = "-1"; }
+                else { ddlContraparte.Text = personaNego.TraerPersona(Convert.ToInt32(proyectoCofecyt.IdContactoContraparte)); }
 
                 txtObservacionesCofecyt.Text = proyectoCofecyt.Observaciones;
                 txtMontoSolicitadoCofecyt.Text = Convert.ToString(proyectoCofecyt.MontoSolicitadoCofecyt);

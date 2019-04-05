@@ -29,7 +29,11 @@ namespace Sistema_CyT
             txtPendiente.Text = actuacionProyectoCofecyt.Pendiente;
             txtResponsable.Text = actuacionProyectoCofecyt.Responsable;
             txtAgente.Text = actuacionProyectoCofecyt.Agente;
-            txtFechaLimite.Text = Convert.ToDateTime(actuacionProyectoCofecyt.FechaLimite).ToShortDateString();
+
+            if (actuacionProyectoCofecyt.FechaLimite != null) {txtFechaLimite.Text = Convert.ToDateTime(actuacionProyectoCofecyt.FechaLimite).ToShortDateString(); }
+            else { txtFechaLimite.Text = ""; }
+
+            
             txtObservaciones.Text = actuacionProyectoCofecyt.Observaciones;
             txtDocumentacionAnexada.Text = actuacionProyectoCofecyt.DocumentacionAnexada;
         }

@@ -26,7 +26,7 @@
             <!-- DOMICILIO -->
             <div class="form-group">
                 <asp:Label ID="lblDomicilio" runat="server" Text="DOMICILIO" CssClass="col-md-2   lblalider"> </asp:Label>
-                <asp:Label ID="txtDomicilio" runat="server" Font-Bold="true" CssClass="col-md-6   lblalider"> </asp:Label>
+                <asp:Label ID="txtDomicilio" runat="server" Font-Bold="true" CssClass="col-md-6 lblaliizq  lblalider"> </asp:Label>
             </div>
             <!-- LOCALIDAD -->
             <div class="form-group">

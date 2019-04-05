@@ -202,22 +202,22 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.TextBox txtCodigoPostalCofecyt;
         
         /// <summary>
-        /// Button2 control.
+        /// btnLocalidadModalSalir control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button btnLocalidadModalSalir;
         
         /// <summary>
-        /// Button3 control.
+        /// btnLocalidadModalGuardar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
+        protected global::System.Web.UI.WebControls.Button btnLocalidadModalGuardar;
         
         /// <summary>
         /// lblSectorCofecyt control.
@@ -526,24 +526,6 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.TextBox txtDuracionEstimadaIfaa;
         
         /// <summary>
-        /// lblBeneficiarios control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblBeneficiarios;
-        
-        /// <summary>
-        /// txtBeneficiarios control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBeneficiarios;
-        
-        /// <summary>
         /// lblEntidadesIntervinientes control.
         /// </summary>
         /// <remarks>
@@ -578,6 +560,24 @@ namespace Sistema_CyT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlEstadoCofecyt;
+        
+        /// <summary>
+        /// lblBeneficiarios control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBeneficiarios;
+        
+        /// <summary>
+        /// txtBeneficiarios control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBeneficiarios;
         
         /// <summary>
         /// lblContactoBeneficiario control.
@@ -697,13 +697,31 @@ namespace Sistema_CyT {
         protected global::System.Web.UI.WebControls.Label lblContraparte;
         
         /// <summary>
-        /// ddlContraparte control.
+        /// txtContraparte control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlContraparte;
+        protected global::System.Web.UI.WebControls.TextBox txtContraparte;
+        
+        /// <summary>
+        /// lblContactoContraparte control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblContactoContraparte;
+        
+        /// <summary>
+        /// ddlContactoContraparte control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlContactoContraparte;
         
         /// <summary>
         /// lblContraparteNombre control.

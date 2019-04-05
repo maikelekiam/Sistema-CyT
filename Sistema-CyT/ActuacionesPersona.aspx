@@ -4,9 +4,9 @@
     <div class="container">
         <asp:Panel ID="PanelPersona" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <h3>
-                    <asp:Label ID="lblPersona" runat="server" CssClass="col-md-12"></asp:Label>
-                </h3>
+                <h4>
+                    <asp:Label ID="lblPersona" runat="server" CssClass="col-md-12" Font-Size="Larger"></asp:Label>
+                </h4>
                 <%--<asp:Label ID="lblPersona" Style="text-align: justify;" Font-Bold="true" runat="server" CssClass="col-md-12 control-label"></asp:Label>--%>
                 <br />
                 <br />

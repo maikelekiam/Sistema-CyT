@@ -22,7 +22,7 @@
                         AutoPostBack="True"
                         AppendDataBoundItems="true"
                         OnSelectedIndexChanged="ddlUsuarios_SelectedIndexChanged">
-                        <asp:ListItem Value="-1">&lt;Seleccione un Usuario&gt;</asp:ListItem>
+                        <asp:ListItem Value="-1">&lt;Seleccione Usuario&gt;</asp:ListItem>
                     </asp:DropDownList>
                 </div>
                 <div style="margin-left: auto; margin-right: auto; text-align: right;">

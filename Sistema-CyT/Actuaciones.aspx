@@ -4,13 +4,14 @@
     <div class="container">
         <asp:Panel ID="PanelProyecto" CssClass="panel panel-default" runat="server">
             <div class="panel-heading">
-                <h3>
-                    <asp:Label ID="lblProyecto" runat="server" CssClass="col-md-12"></asp:Label>
+                <h4>
+                    <asp:Label ID="lblProyecto" runat="server" CssClass="col-md-12" Font-Size="Larger"></asp:Label>
                     <br />
                     <br />
-                </h3>
+                </h4>
             </div>
         </asp:Panel>
+
         <asp:Panel ID="PanelActuacion" CssClass="panel" runat="server">
             <!-- BOTON AGREGAR ACTUACION -->
             <div class="form-group">

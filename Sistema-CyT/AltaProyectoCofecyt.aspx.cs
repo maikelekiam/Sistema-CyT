@@ -33,10 +33,10 @@ namespace Sistema_CyT
         TipoEstadoCofecytNego tipoEstadoCofecytNego = new TipoEstadoCofecytNego();
         //ActividadCofecytNego actividadCofecytNego = new ActividadCofecytNego();
 
-        static int idProyectoCofecytActual;
         static int idDirectorActual;
         static int idContactoBeneficiarioActual;
         static int idContraparteActual;
+        static int idLocalidadActual = 1;
 
 
         //static List<Etapa> listaEtapasTemporal = new List<Etapa>();
@@ -151,11 +151,11 @@ namespace Sistema_CyT
         }
         private void LlenarListaContraparte()
         {
-            ddlContraparte.DataSource = personaNego.MostrarPersonas().OrderBy(c => c.Nombre).ToList();
+            ddlContactoContraparte.DataSource = personaNego.MostrarPersonas().OrderBy(c => c.Nombre).ToList();
             IList<Persona> nombreCompleto = personaNego.MostrarPersonas().Select(p => new Persona() { Nombre = p.Apellido + "," + p.Nombre, IdPersona = p.IdPersona }).OrderBy(c => c.IdPersona).ToList();
-            ddlContraparte.DataSource = nombreCompleto;
-            ddlContraparte.DataValueField = "nombre";
-            ddlContraparte.DataBind();
+            ddlContactoContraparte.DataSource = nombreCompleto;
+            ddlContactoContraparte.DataValueField = "nombre";
+            ddlContactoContraparte.DataBind();
         }
 
         //protected void btnModalEtapaCofecytGuardar_Click(object sender, EventArgs e)
@@ -226,16 +226,16 @@ namespace Sistema_CyT
                 proyectoCofecyt.IdContactoBeneficiario = personaNego.TraerPersonaIdSegunItem(itemApellido, itemNombre);
             }
 
-            //para CONTRAPARTE
-            if (ddlContraparte.SelectedValue == "-1") { proyectoCofecyt.IdContraparte = null; }
+            //para CONTACTO CONTRAPARTE
+            if (ddlContactoContraparte.SelectedValue == "-1") { proyectoCofecyt.IdContactoContraparte = null; }
             else
             {
-                string cadena = ddlContraparte.SelectedItem.ToString();
+                string cadena = ddlContactoContraparte.SelectedItem.ToString();
                 string[] separadas;
                 separadas = cadena.Split(',');
                 string itemApellido = separadas[0];
                 string itemNombre = separadas[1];
-                proyectoCofecyt.IdContraparte = personaNego.TraerPersonaIdSegunItem(itemApellido, itemNombre);
+                proyectoCofecyt.IdContactoContraparte = personaNego.TraerPersonaIdSegunItem(itemApellido, itemNombre);
             }
 
             if (txtFechaPresentacion.Text == "") { proyectoCofecyt.FechaPresentacion = null; }
@@ -255,6 +255,7 @@ namespace Sistema_CyT
 
             proyectoCofecyt.Beneficiarios = txtBeneficiarios.Text;
             proyectoCofecyt.EntidadesIntervinientes = txtEntidadesIntervinientes.Text;
+            proyectoCofecyt.Contraparte = txtContraparte.Text;
 
             proyectoCofecyt.Observaciones = txtObservacionesCofecyt.Text;
 
@@ -453,12 +454,32 @@ namespace Sistema_CyT
 
             idContraparteActual = personaNego.GuardarPersona(persona);
 
-            ddlContraparte.Items.Clear();
-            ddlContraparte.Text = TraerPersona(idContraparteActual);
+            ddlContactoContraparte.Items.Clear();
+            ddlContactoContraparte.Text = TraerPersona(idContraparteActual);
 
             LlenarListaDirectores();
             LlenarListaContactoBeneficiarios();
             LlenarListaContraparte();
         }
+
+        protected void btnLocalidadModalGuardar_Click(object sender, EventArgs e)
+        {
+            Localidad localidad = new Localidad();
+
+            localidad.Nombre = txtNombreCofecyt.Text;
+            localidad.CodigoPostal = txtCodigoPostalCofecyt.Text;
+
+            idLocalidadActual = localidadNego.GuardarLocalidad(localidad);
+
+            ddlLocalidadCofecyt.Items.Clear();
+            ddlLocalidadCofecyt.Text = TraerLocalidad(idLocalidadActual);
+
+            LlenarListaLocalidadesCofecyt();
+        }
+        private string TraerLocalidad(int id)
+        {
+            return localidadNego.TraerLocalidad(id);
+        }
+        
     }
 }

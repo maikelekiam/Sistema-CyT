@@ -23,7 +23,7 @@
     </style>
 
 
- <%--   <style>
+    <%--   <style>
         body {
             background: url('../imagenes/background01.jpg') fixed;
             background-size: cover;
@@ -189,19 +189,12 @@
             left: 45%;
         }
     </style>--%>
-
-
-
-
-
-
-
 </head>
 <body>
     <form id="form1" runat="server" class="form-horizontal">
-    <div class="container">
+        <div class="container">
 
-       <%-- <div class="row">
+            <%-- <div class="row">
             <div class="col-md-12">
                 <div class="pr-wrap">
                     <div class="pass-reset">
@@ -239,46 +232,49 @@
                 </div>
             </div>
         </div>--%>
-        <br />
-        <br />
-        <br />
-        <br />
-        <div class="col-md-4 col-md-offset-4">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <br />
-                    <div class="form-group">
-                        <div class="col-md-12 col-md-offset-2">
-                            <h2b>Sistema CyT</h2b>
+            <br />
+            <br />
+            <br />
+            <br />
+            <div class="col-md-4 col-md-offset-4">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <br />
+                        <div class="form-group">
+                            <div class="col-md-12 col-md-offset-2">
+                                <h2b>Sistema CyT</h2b>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-10 col-md-offset-1">
-                            <asp:TextBox ID="txtuserid" runat="server" CssClass="form-control" placeholder="Usuario"></asp:TextBox>
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-1">
+                                <asp:TextBox ID="txtuserid" runat="server" CssClass="form-control" placeholder="Usuario"></asp:TextBox>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-10 col-md-offset-1">
-                            <asp:TextBox ID="txtpassword" runat="server" CssClass="form-control" TextMode="Password" placeholder="Contraseña"></asp:TextBox>
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-1">
+                                <asp:TextBox ID="txtpassword" runat="server" CssClass="form-control" TextMode="Password" placeholder="Contraseña"></asp:TextBox>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-10 col-md-offset-1">
-                            <asp:Button ID="btnlogin" runat="server"
-                                Text="Ingresar" OnClick="btnlogin_Click" CssClass="btn btn-default btn-lg btn-block" />
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-1">
+                                <asp:Button ID="btnlogin" runat="server"
+                                    Text="Ingresar" OnClick="btnlogin_Click" CssClass="btn btn-default btn-lg btn-block" />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+
+
+
         </div>
-
-
-
-
-
-
-
-    </div>
     </form>
+
+
+
+
+
+
 </body>
 </html>

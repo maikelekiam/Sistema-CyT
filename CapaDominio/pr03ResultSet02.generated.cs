@@ -62,6 +62,19 @@ namespace CapaDominio
 			}
 		}
 		
+		private string _codigoInterno;
+		public virtual string codigoInterno
+		{
+			get
+			{
+				return this._codigoInterno;
+			}
+			set
+			{
+				this._codigoInterno = value;
+			}
+		}
+		
 		private string _objetivos;
 		public virtual string objetivos
 		{
@@ -101,16 +114,16 @@ namespace CapaDominio
 			}
 		}
 		
-		private string _localidad;
-		public virtual string localidad
+		private int? _idLocalidad;
+		public virtual int? idLocalidad
 		{
 			get
 			{
-				return this._localidad;
+				return this._idLocalidad;
 			}
 			set
 			{
-				this._localidad = value;
+				this._idLocalidad = value;
 			}
 		}
 		

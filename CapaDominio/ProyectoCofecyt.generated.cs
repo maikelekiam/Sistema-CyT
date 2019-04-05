@@ -427,16 +427,29 @@ namespace CapaDominio
 			}
 		}
 		
-		private int? idContraparte;
-		public virtual int? IdContraparte
+		private int? idContactoContraparte;
+		public virtual int? IdContactoContraparte
 		{
 			get
 			{
-				return this.idContraparte;
+				return this.idContactoContraparte;
 			}
 			set
 			{
-				this.idContraparte = value;
+				this.idContactoContraparte = value;
+			}
+		}
+		
+		private string contraparte;
+		public virtual string Contraparte
+		{
+			get
+			{
+				return this.contraparte;
+			}
+			set
+			{
+				this.contraparte = value;
 			}
 		}
 		
